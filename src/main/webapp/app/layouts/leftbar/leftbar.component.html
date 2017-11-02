@@ -1,0 +1,68 @@
+<nav class="navbar-default navbar-static-side" role="navigation" >
+    <div class="sidebar-collapse">
+      <div class="d-flex align-items-center my-3">
+        <div class="perfil-img col-md-3 pr-0">
+            <span class="img-img img-fluid img-thumbnail mr-2"></span>
+          
+        </div>
+        <div class="perfil-info col-md-9">
+          <span class="text-muted"><small>Bienvenido</small></span><br>
+          <span>Jhon Doe</span>
+        </div>
+      </div>
+    </div>
+    <div class="my-2">
+      <!-- <h3 class="pl-3 text-uppercase h3coll">MANTENIMIENTO DE MÓDULO DE SEGURIDAD</h3> -->
+      <ul class="nav metismenu" id="side-menu" >
+        <li routerLinkActive="active">
+          <a routerLink="seguridad/aplicacion"  class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <i class="fa fa-institution px-2" aria-hidden="true"></i> <span>Gestión de Aplicaciones</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="seguridad/modulo"  class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <i class="fa fa-server px-2" aria-hidden="true"></i> <span>Gestión de Modulos</span>
+          </a>
+        </li>
+        <li routerLinkActive="active" >
+          <a routerLink="seguridad/entidad" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <i class="fa fa-building px-2" aria-hidden="true"></i> <span>Gestión de Entidades</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+            <a routerLink="seguridad/usuario"  class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+              <i class="fa fa-user px-2" aria-hidden="true"></i> <span>Gestión de Usuarios</span>
+            </a>
+        </li>
+        <li routerLinkActive="active" >
+            <a routerLink="seguridad/perfil" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+              <i class="fa fa-user-circle px-2" aria-hidden="true"></i> <span>Gestión de Perfil</span>
+            </a>
+        </li>
+        <li routerLinkActive="active" >
+            <a routerLink="seguridad/menu" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+              <i class="fa fa-shield px-2" aria-hidden="true"></i> <span>Gestión de Menu</span>
+            </a>
+        </li>
+        <li routerLinkActive="active"  >
+            <a routerLink="seguridad/grupo" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+              <i class="fa fa-users px-2" aria-hidden="true"></i> <span>Gestión de Grupo</span>
+            </a>
+        </li>
+        
+        
+        
+          
+      </ul>
+    </div>
+    <div class="my-2">
+      <h3 class="pl-3 text-uppercase h3coll">Dashboard</h3>
+      <ul class="level-one mt-2 p-0" id="accordion">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+          <a routerLink="/" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <i class="fa fa-dashboard px-2" aria-hidden="true"></i> <span>Dashboard</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>

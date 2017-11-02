@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="menu-horizontal pr-0 col d-flex flex-wrap justify-content-start align-items-center">
+        <div><a href="#" (click)="toggleNavbar()" class="toggle-bars"><i class="fa fa-bars" aria-hidden="true"></i></a></div>
+        <div class="ml-3">
+            <select class="form-control select-aplicativo" id="selectAplicativos">
+                <option value="">Módulo de Seguridad</option>
+            </select>
+        </div>
+        
+        <div class="col" id="col-title-application">
+            <h5 class="mx-3 text-center" id="title-application">Módulo de Seguridad</h5>
+        </div>
+        <div class="ml-auto order-md-12">
+            <div class="menu-top">
+                <ul>
+                <li ngbDropdown placement="bottom-right"  class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
+                        <span *ngIf="!getImageUrl()">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <span>
+                            Jhon Doe
+                        </span>
+                        </span>
+                        <span *ngIf="getImageUrl()">
+                            <img [src]="getImageUrl()" class="profile-image img-circle" alt="Avatar">
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu" ngbDropdownMenu>
+                            <li>
+                                <a class="dropdown-item" routerLink="settings" routerLinkActive="active">
+                                    <i class="fa fa-fw fa-wrench" aria-hidden="true"></i>
+                                    <span>Configuración</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" routerLink="password" routerLinkActive="active">
+                                    <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>
+                                    <span>Contraseña</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" (click)="logout()" id="logout">
+                                    <i class="fa fa-fw fa-sign-out" aria-hidden="true"></i>
+                                    <span>Cerrar Sesión</span>
+                                </a>
+                            </li>
+                    </ul>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
