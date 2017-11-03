@@ -11,20 +11,14 @@
     <jhi-footer></jhi-footer>
 </div> -->
 
-<div id="wrapper">    
-    <router-outlet name="leftbar"></router-outlet>    
-    <div id="page-wrapper" class="gray-bg">
-        <div class="row border-bottom">
-            <router-outlet name="topbar"></router-outlet>
-        </div>
-        <div class="row wrapper border-bottom white-bg page-heading">
-        </div>
-        <div class="wrapper wrapper-content animated fadeInRight">
-            <router-outlet></router-outlet>
+<div class="wrapper container-fluid">    
+    <router-outlet name="topbar"></router-outlet>
+    <section class="row flex-nowrap">
+        <jhi-leftbar class="left-col col-lg-2" id="sidebar-nav"></jhi-leftbar>
+        <div class="content-wrapper right-col col-12 col-lg-10">
+            <router-outlet></router-outlet>    
             <router-outlet name="popup"></router-outlet>
-        </div>
-        <div class="footer">
-            <jhi-footer></jhi-footer>
-        </div>
-    </div>
+        </div>        
+    </section>  
+    <jhi-footer></jhi-footer>
 </div>

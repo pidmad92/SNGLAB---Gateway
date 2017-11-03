@@ -57,15 +57,36 @@ export class TopbarComponent implements OnInit {
     }
 
     toggleNavbar() {
-        $('.left-col').toggleClass('active');
-        $('.logo a span').toggleClass('active');
-        $('.welcome').toggleClass('active');
-        $('.left-col nav h3').toggleClass('active');
-        $('nav a').toggleClass('d-flex flex-column align-items-center');
-        $('.fa-chevron-down').toggleClass('active');
-        $('#sidebar-nav').toggleClass('normalizar');
-        $('.level-two').toggleClass('level-two-min');
-        this.isNavbarCollapsed = !this.isNavbarCollapsed;
+        if ($( window ).width() > 992) {
+            $('.left-col').toggleClass('col-lg-2').toggleClass('col-lg-1').toggleClass('active'); // reduce el menu vertical
+            $('.right-col').toggleClass('col-lg-11').toggleClass('col-12').toggleClass('col-lg-10');
+            $('.logo a span').toggleClass('active'); // desaparece la letra del logo
+            $('.welcome').toggleClass('active'); // desaparece el bienvenido
+            $('.left-col nav h3').toggleClass('active'); // desaparece los titulo
+            $('nav a.a-menu').toggleClass('d-flex flex-column align-items-center'); // poner en vertical el contenido del menu vertical
+            $('.fa-chevron-down').toggleClass('active');
+            $('.level-two').toggleClass('level-two-min');
+        }
+        if ($( window ).width() < 992) {
+            $('.left-col').toggleClass('active');
+            $('a.logo span').toggleClass('active');
+            // $('.left-col').animate({width: ['toggle']}, 'fast', 'linear'); // reduce el menu vertical
+            $('.right-col').toggleClass('col-12').toggleClass('col-10');
+            $('.welcome').addClass('active'); // desaparece el bienvenido
+            // $('.left-col nav h3').addClass('active'); // desaparece los titulo
+            $('nav a.a-menu').addClass('d-flex flex-column align-items-center'); // poner en vertical el contenido del menu vertical
+            $('.fa-chevron-down').toggleClass('active');
+            $('.level-two').toggleClass('level-two-min');
+        }
+        // $('.left-col').toggleClass('active');
+        // $('.logo a span').toggleClass('active');
+        // $('.welcome').toggleClass('active');
+        // $('.left-col nav h3').toggleClass('active');
+        // $('nav a').toggleClass('d-flex flex-column align-items-center');
+        // $('.fa-chevron-down').toggleClass('active');
+        // $('#sidebar-nav').toggleClass('normalizar');
+        // $('.level-two').toggleClass('level-two-min');
+        // this.isNavbarCollapsed = !this.isNavbarCollapsed;
     }
     getImageUrl() {
         return this.isAuthenticated() ? this.principal.getImageUrl() : null;
