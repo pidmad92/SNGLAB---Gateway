@@ -1,0 +1,30 @@
+{
+    "gatewayApp": {
+        "permiso" : {
+            "home": {
+                "title": "Permisos",
+                "createLabel": "Crear nuevo Permiso",
+                "createOrEditLabel": "Crear o editar Permiso",
+                "search": "Search for Permiso"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Permiso {{ id }}?"
+            },
+            "detail": {
+                "title": "Permiso"
+            },
+            "varNomPermiso": "Var Nom Permiso",
+            "varUsuarioLog": "Var Usuario Log",
+            "datFechaLog": "Dat Fecha Log",
+            "numEliminar": "Num Eliminar",
+            "usuPer": "Usu Per"
+        }
+    },
+    "seguridadApp": {
+        "permiso" : {
+            "created": "Un nuevo Permiso ha sido creado con el identificador {{ param }}",
+            "updated": "Un Permiso ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Permiso ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

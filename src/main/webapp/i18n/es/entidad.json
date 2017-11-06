@@ -1,0 +1,44 @@
+{
+    "gatewayApp": {
+        "entidad" : {
+            "home": {
+                "title": "Entidads",
+                "createLabel": "Crear nuevo Entidad",
+                "createOrEditLabel": "Crear o editar Entidad",
+                "search": "Search for Entidad"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Entidad {{ id }}?"
+            },
+            "detail": {
+                "title": "Entidad"
+            },
+            "varRsocialEntidad": "Var Rsocial Entidad",
+            "varRucEntidad": "Var Ruc Entidad",
+            "varDirecEntidad": "Var Direc Entidad",
+            "numCodDepartamento": "Num Cod Departamento",
+            "numCodProvincia": "Num Cod Provincia",
+            "numCodDistrito": "Num Cod Distrito",
+            "varTelefEntidad": "Var Telef Entidad",
+            "varFaxEntidad": "Var Fax Entidad",
+            "varEmailEntidad": "Var Email Entidad",
+            "varPagwebEntidad": "Var Pagweb Entidad",
+            "varUsuarioLog": "Var Usuario Log",
+            "datFechaLog": "Dat Fecha Log",
+            "numEliminar": "Num Eliminar",
+            "sCodigoentcer": "S Codigoentcer",
+            "latitud": "Latitud",
+            "longitud": "Longitud",
+            "tipoEntidad": "Tipo Entidad",
+            "moduloEntidad": "Modulo Entidad",
+            "grupo": "Grupo"
+        }
+    },
+    "seguridadApp": {
+        "entidad" : {
+            "created": "Un nuevo Entidad ha sido creado con el identificador {{ param }}",
+            "updated": "Un Entidad ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Entidad ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

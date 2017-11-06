@@ -1,0 +1,93 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.dlabingperc.home.title">Dlabingpercs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-dlabingperc" [routerLink]="['/', { outlets: { popup: ['dlabingperc-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.dlabingperc.home.createLabel">
+            Create new Dlabingperc
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.dlabingperc.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="dlabingpercs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.dlabingperc.vUsuarioreg">V Usuarioreg</span></th>
+            <th><span jhiTranslate="gatewayApp.dlabingperc.dFechareg">D Fechareg</span></th>
+            <th><span jhiTranslate="gatewayApp.dlabingperc.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.dlabingperc.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.dlabingperc.vUsuarioupd">V Usuarioupd</span></th>
+            <th><span jhiTranslate="gatewayApp.dlabingperc.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.dlabingperc.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.dlabingperc.datlaboral">Datlaboral</span></th>
+            <th><span jhiTranslate="gatewayApp.dlabingperc.docingreperc">Docingreperc</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let dlabingperc of dlabingpercs ;trackBy: trackId">
+                <td><a [routerLink]="['../dlabingperc', dlabingperc.id ]">{{dlabingperc.id}}</a></td>
+                <td>{{dlabingperc.vUsuarioreg}}</td>
+                <td>{{dlabingperc.dFechareg | date:'medium'}}</td>
+                <td>{{dlabingperc.nEliminar}}</td>
+                <td>{{dlabingperc.nSedereg}}</td>
+                <td>{{dlabingperc.vUsuarioupd}}</td>
+                <td>{{dlabingperc.dFechaupd | date:'medium'}}</td>
+                <td>{{dlabingperc.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="dlabingperc.datlaboral">
+                        <a [routerLink]="['../datlaboral', dlabingperc.datlaboral?.id ]" >{{dlabingperc.datlaboral?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="dlabingperc.docingreperc">
+                        <a [routerLink]="['../docingreperc', dlabingperc.docingreperc?.id ]" >{{dlabingperc.docingreperc?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../dlabingperc', dlabingperc.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'dlabingperc/'+ dlabingperc.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'dlabingperc/'+ dlabingperc.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

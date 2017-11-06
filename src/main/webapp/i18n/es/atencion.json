@@ -1,0 +1,45 @@
+{
+    "gatewayApp": {
+        "atencion" : {
+            "home": {
+                "title": "Atencions",
+                "createLabel": "Crear nuevo Atencion",
+                "createOrEditLabel": "Crear o editar Atencion",
+                "search": "Search for Atencion"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Atencion {{ id }}?"
+            },
+            "detail": {
+                "title": "Atencion"
+            },
+            "vObservacion": "V Observacion",
+            "cFlgpresentaembarazo": "C Flgpresentaembarazo",
+            "cFlgestado": "C Flgestado",
+            "vNumeroticket": "V Numeroticket",
+            "nCodtrabrepresentante": "N Codtrabrepresentante",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "pase": "Pase",
+            "atendisca": "Atendisca",
+            "atenaccadop": "Atenaccadop",
+            "atenmotiaten": "Atenmotiaten",
+            "datlaboral": "Datlaboral",
+            "empleador": "Empleador",
+            "tipatencion": "Tipatencion",
+            "trabajador": "Trabajador"
+        }
+    },
+    "consultasApp": {
+        "atencion" : {
+            "created": "Un nuevo Atencion ha sido creado con el identificador {{ param }}",
+            "updated": "Un Atencion ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Atencion ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

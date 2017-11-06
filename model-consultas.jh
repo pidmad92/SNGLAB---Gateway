@@ -1,0 +1,451 @@
+entity Activecono {
+    vCiuu String required maxlength(20),
+	vDescripcion String required maxlength(200),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Atencion {
+    vObservacion String maxlength(500),
+    cFlgpresentaembarazo String required maxlength(1),
+    cFlgestado String required maxlength(1),
+    vNumeroticket String required maxlength(10),
+    nCodtrabrepresentante Integer,
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Accionadop {
+    vDescripcion String required maxlength(100),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Atenaccadop {
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Atendisca {
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Atenmotiaten {
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Dlabingperc {
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Docpresenta {
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Pasemotiaten {
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Perjuridire {
+    vCoddep String required maxlength(20),
+    vCodpro String required maxlength(20),
+    vCoddis String required maxlength(20),
+    vDircompleta String required maxlength(200),
+    vReferencia String maxlength(500),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Pernatudire {
+    vCoddep String required maxlength(20),
+    vCodpro String required maxlength(20),
+    vCoddis String required maxlength(20),
+    vDircompleta String required maxlength(200),
+    vReferencia String maxlength(500),
+    vFlgnotifica String required maxlength(1),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Cargotrabaja {
+    vDescargotrabaja String required maxlength(100),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Datlaboral {
+    cFlgmantienesituacionlab String required maxlength(1),
+    dFecvinculo Instant,
+    dFeccese Instant,
+    dFecfincontrato Instant,
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Discapacidad {
+    vDescripcion String required maxlength(100),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Docingreperc {
+    vDescripcion String required maxlength(200),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Documento {
+    vDescripcion String required maxlength(200),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Empleador {
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Modacontrato {
+    vDescripcion String required maxlength(200),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Motivoatenci {
+    vDescripcion String required maxlength(200),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Motivocese {
+    vDescripcion String required maxlength(200),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Oficina {
+    vDescripcion String required maxlength(200),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Pase {
+    vObservacion String maxlength(500),
+    cFlgestado String required maxlength(1),
+    nCodoficinaorigen Integer,
+    nCodoficinadestino Integer,
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Personajurid {
+    vRazonsocial String required maxlength(200),
+	vNombrealternativo String maxlength(200),
+    vNumdocumento String required maxlength(20),
+    vEmail String maxlength(100),
+    vTelefono String maxlength(15),
+    vFax String maxlength(15),
+    cFlgestado String required maxlength(1),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Personanatur {
+    vNombres String required maxlength(100),
+    vApepaterno String required maxlength(100),
+    vApematerno String required maxlength(100),
+    vNumdocumento String required maxlength(15),
+    vTelefono String maxlength(15),
+    vCelular String maxlength(15),
+    vEmail String maxlength(100),
+    dFecnacimiento Instant,
+    csexo String required maxlength(1),
+    cFlgestado String required maxlength(1),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Direcalter {
+    vRazonsocial String required maxlength(100),
+    vDireccion String required maxlength(200),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Regimenlabo {
+    vDescripcion String required maxlength(100),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Sucesor {
+    cFlgestado String required maxlength(1),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipatencion {
+    vDescripcion String required maxlength(100),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipdocident {
+    vDescripcion String required maxlength(100),
+    nNumdigitos Integer required,
+    vDescripcioncorta String required maxlength(5),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipdocumento {
+    vDescripcion String required maxlength(100),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Tippersona {
+    vDescripcion String required maxlength(100),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Trabajador {
+    vNumdocumento String required maxlength(15),
+    vFlgsucesor String required maxlength(1),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Motatenofic {
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Subregilabo {
+    vDescripcion String required maxlength(100),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+relationship OneToMany {
+    Regimenlabo{subregilabo} to Subregilabo,
+    Tipdocident{personanatur} to Personanatur,
+    Tipdocident{personajurid} to Personajurid,
+    Personanatur{pernatudire} to Pernatudire,
+    Personajurid{perjuridire} to Perjuridire,
+    Datlaboral{dlabingperc} to Dlabingperc,
+    Docingreperc{dlabingperc} to Dlabingperc,
+    Tipdocumento{documento} to Documento,
+    Discapacidad{atendisca} to Atendisca,
+    Atencion{atendisca} to Atendisca,
+    Documento{docpresenta} to Docpresenta,
+    Atenmotiaten{docpresenta} to Docpresenta,
+    Atencion{atenaccadop} to Atenaccadop,
+    Accionadop{atenaccadop} to Atenaccadop,
+    Atencion{atenmotiaten} to Atenmotiaten,
+    Direcalter{atenmotiaten} to Atenmotiaten,
+    Motatenofic{atenmotiaten} to Atenmotiaten,
+    Motivoatenci{motatenofic} to Motatenofic,
+    Oficina{motatenofic} to Motatenofic,
+    Motatenofic{pasemotiaten} to Pasemotiaten,
+    Pase{pasemotiaten} to Pasemotiaten,
+    Tippersona{empleador} to Empleador,
+    Personajurid{empleador} to Empleador,
+    Personanatur{empleador} to Empleador,
+    Personanatur{trabajador} to Trabajador,
+    Cargotrabaja{trabajador} to Trabajador,
+    Subregilabo{datlaboral} to Datlaboral,
+    Modacontrato{datlaboral} to Datlaboral,
+    Motivocese{datlaboral} to Datlaboral,
+    Empleador{datlaboral} to Datlaboral,
+    Trabajador{datlaboral} to Datlaboral,
+    Tipatencion{atencion} to Atencion,
+    Datlaboral{atencion} to Atencion,
+    Empleador{atencion} to Atencion,
+    Trabajador{atencion} to Atencion,
+    Trabajador{sucesor} to Sucesor,
+    Personanatur{sucesor} to Sucesor,
+    Activecono{personajurid} to Personajurid
+}
+
+relationship OneToOne {
+    Atencion{pase} to Pase{atencion}
+}
+
+microservice * with consultas

@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "tipdocumento" : {
+            "home": {
+                "title": "Tipdocumentos",
+                "createLabel": "Crear nuevo Tipdocumento",
+                "createOrEditLabel": "Crear o editar Tipdocumento",
+                "search": "Search for Tipdocumento"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipdocumento {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipdocumento"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "documento": "Documento"
+        }
+    },
+    "consultasApp": {
+        "tipdocumento" : {
+            "created": "Un nuevo Tipdocumento ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipdocumento ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipdocumento ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

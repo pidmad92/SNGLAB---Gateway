@@ -1,0 +1,107 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.personajurid.home.title">Personajurids</span>
+        <button class="btn btn-primary float-right jh-create-entity create-personajurid" [routerLink]="['/', { outlets: { popup: ['personajurid-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.personajurid.home.createLabel">
+            Create new Personajurid
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.personajurid.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="personajurids">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.personajurid.vRazonsocial">V Razonsocial</span></th>
+            <th><span jhiTranslate="gatewayApp.personajurid.vNombrealternativo">V Nombrealternativo</span></th>
+            <th><span jhiTranslate="gatewayApp.personajurid.vNumdocumento">V Numdocumento</span></th>
+            <th><span jhiTranslate="gatewayApp.personajurid.vEmail">V Email</span></th>
+            <th><span jhiTranslate="gatewayApp.personajurid.vTelefono">V Telefono</span></th>
+            <th><span jhiTranslate="gatewayApp.personajurid.vFax">V Fax</span></th>
+            <th><span jhiTranslate="gatewayApp.personajurid.cFlgestado">C Flgestado</span></th>
+            <th><span jhiTranslate="gatewayApp.personajurid.vUsuarioreg">V Usuarioreg</span></th>
+            <th><span jhiTranslate="gatewayApp.personajurid.dFechareg">D Fechareg</span></th>
+            <th><span jhiTranslate="gatewayApp.personajurid.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.personajurid.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.personajurid.vUsuarioupd">V Usuarioupd</span></th>
+            <th><span jhiTranslate="gatewayApp.personajurid.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.personajurid.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.personajurid.activecono">Activecono</span></th>
+            <th><span jhiTranslate="gatewayApp.personajurid.tipdocident">Tipdocident</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let personajurid of personajurids ;trackBy: trackId">
+                <td><a [routerLink]="['../personajurid', personajurid.id ]">{{personajurid.id}}</a></td>
+                <td>{{personajurid.vRazonsocial}}</td>
+                <td>{{personajurid.vNombrealternativo}}</td>
+                <td>{{personajurid.vNumdocumento}}</td>
+                <td>{{personajurid.vEmail}}</td>
+                <td>{{personajurid.vTelefono}}</td>
+                <td>{{personajurid.vFax}}</td>
+                <td>{{personajurid.cFlgestado}}</td>
+                <td>{{personajurid.vUsuarioreg}}</td>
+                <td>{{personajurid.dFechareg | date:'medium'}}</td>
+                <td>{{personajurid.nEliminar}}</td>
+                <td>{{personajurid.nSedereg}}</td>
+                <td>{{personajurid.vUsuarioupd}}</td>
+                <td>{{personajurid.dFechaupd | date:'medium'}}</td>
+                <td>{{personajurid.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="personajurid.activecono">
+                        <a [routerLink]="['../activecono', personajurid.activecono?.id ]" >{{personajurid.activecono?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="personajurid.tipdocident">
+                        <a [routerLink]="['../tipdocident', personajurid.tipdocident?.id ]" >{{personajurid.tipdocident?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../personajurid', personajurid.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'personajurid/'+ personajurid.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'personajurid/'+ personajurid.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

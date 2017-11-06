@@ -1,0 +1,57 @@
+
+<div *ngIf="direcalter">
+    <h2><span jhiTranslate="gatewayApp.direcalter.detail.title">Direcalter</span> {{direcalter.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.direcalter.vRazonsocial">V Razonsocial</span></dt>
+        <dd>
+            <span>{{direcalter.vRazonsocial}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direcalter.vDireccion">V Direccion</span></dt>
+        <dd>
+            <span>{{direcalter.vDireccion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direcalter.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{direcalter.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direcalter.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{direcalter.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direcalter.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{direcalter.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direcalter.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{direcalter.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direcalter.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{direcalter.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direcalter.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{direcalter.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direcalter.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{direcalter.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'direcalter/'+ direcalter.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

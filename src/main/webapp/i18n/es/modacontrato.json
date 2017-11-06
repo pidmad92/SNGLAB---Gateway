@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "modacontrato" : {
+            "home": {
+                "title": "Modacontratoes",
+                "createLabel": "Crear nuevo Modacontrato",
+                "createOrEditLabel": "Crear o editar Modacontrato",
+                "search": "Search for Modacontrato"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Modacontrato {{ id }}?"
+            },
+            "detail": {
+                "title": "Modacontrato"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "datlaboral": "Datlaboral"
+        }
+    },
+    "consultasApp": {
+        "modacontrato" : {
+            "created": "Un nuevo Modacontrato ha sido creado con el identificador {{ param }}",
+            "updated": "Un Modacontrato ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Modacontrato ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "modulo" : {
+            "home": {
+                "title": "Modulos",
+                "createLabel": "Crear nuevo Modulo",
+                "createOrEditLabel": "Crear o editar Modulo",
+                "search": "Search for Modulo"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Modulo {{ id }}?"
+            },
+            "detail": {
+                "title": "Modulo"
+            },
+            "varNomModulo": "Var Nom Modulo",
+            "varDescModulo": "Var Desc Modulo",
+            "numEstModulo": "Num Est Modulo",
+            "varUsuarioLog": "Var Usuario Log",
+            "datFechaLog": "Dat Fecha Log",
+            "numEliminar": "Num Eliminar",
+            "aplicacion": "Aplicacion",
+            "moduloEntidad": "Modulo Entidad",
+            "menu": "Menu",
+            "perfil": "Perfil"
+        }
+    },
+    "seguridadApp": {
+        "modulo" : {
+            "created": "Un nuevo Modulo ha sido creado con el identificador {{ param }}",
+            "updated": "Un Modulo ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Modulo ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

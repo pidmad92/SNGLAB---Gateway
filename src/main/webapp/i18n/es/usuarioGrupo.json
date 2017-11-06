@@ -1,0 +1,31 @@
+{
+    "gatewayApp": {
+        "usuarioGrupo" : {
+            "home": {
+                "title": "Usuario Grupos",
+                "createLabel": "Crear nuevo Usuario Grupo",
+                "createOrEditLabel": "Crear o editar Usuario Grupo",
+                "search": "Search for Usuario Grupo"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Usuario Grupo {{ id }}?"
+            },
+            "detail": {
+                "title": "Usuario Grupo"
+            },
+            "varUsuarioLog": "Var Usuario Log",
+            "datFechaLog": "Dat Fecha Log",
+            "numEliminar": "Num Eliminar",
+            "usuario": "Usuario",
+            "usuPer": "Usu Per",
+            "grupo": "Grupo"
+        }
+    },
+    "seguridadApp": {
+        "usuarioGrupo" : {
+            "created": "Un nuevo Usuario Grupo ha sido creado con el identificador {{ param }}",
+            "updated": "Un Usuario Grupo ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Usuario Grupo ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

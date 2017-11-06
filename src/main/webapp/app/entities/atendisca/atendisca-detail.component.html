@@ -1,0 +1,61 @@
+
+<div *ngIf="atendisca">
+    <h2><span jhiTranslate="gatewayApp.atendisca.detail.title">Atendisca</span> {{atendisca.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.atendisca.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{atendisca.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atendisca.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{atendisca.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atendisca.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{atendisca.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atendisca.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{atendisca.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atendisca.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{atendisca.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atendisca.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{atendisca.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atendisca.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{atendisca.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atendisca.atencion">Atencion</span></dt>
+        <dd>
+            <div *ngIf="atendisca.atencion">
+                <a [routerLink]="['/atencion', atendisca.atencion?.id]">{{atendisca.atencion?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atendisca.discapacidad">Discapacidad</span></dt>
+        <dd>
+            <div *ngIf="atendisca.discapacidad">
+                <a [routerLink]="['/discapacidad', atendisca.discapacidad?.id]">{{atendisca.discapacidad?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'atendisca/'+ atendisca.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

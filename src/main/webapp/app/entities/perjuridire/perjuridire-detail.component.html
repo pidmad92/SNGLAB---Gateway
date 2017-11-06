@@ -1,0 +1,75 @@
+
+<div *ngIf="perjuridire">
+    <h2><span jhiTranslate="gatewayApp.perjuridire.detail.title">Perjuridire</span> {{perjuridire.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.perjuridire.vCoddep">V Coddep</span></dt>
+        <dd>
+            <span>{{perjuridire.vCoddep}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridire.vCodpro">V Codpro</span></dt>
+        <dd>
+            <span>{{perjuridire.vCodpro}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridire.vCoddis">V Coddis</span></dt>
+        <dd>
+            <span>{{perjuridire.vCoddis}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridire.vDircompleta">V Dircompleta</span></dt>
+        <dd>
+            <span>{{perjuridire.vDircompleta}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridire.vReferencia">V Referencia</span></dt>
+        <dd>
+            <span>{{perjuridire.vReferencia}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridire.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{perjuridire.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridire.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{perjuridire.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridire.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{perjuridire.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridire.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{perjuridire.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridire.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{perjuridire.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridire.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{perjuridire.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridire.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{perjuridire.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridire.personajurid">Personajurid</span></dt>
+        <dd>
+            <div *ngIf="perjuridire.personajurid">
+                <a [routerLink]="['/personajurid', perjuridire.personajurid?.id]">{{perjuridire.personajurid?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'perjuridire/'+ perjuridire.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

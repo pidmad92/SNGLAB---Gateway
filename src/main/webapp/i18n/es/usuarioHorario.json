@@ -1,0 +1,32 @@
+{
+    "gatewayApp": {
+        "usuarioHorario" : {
+            "home": {
+                "title": "Usuario Horarios",
+                "createLabel": "Crear nuevo Usuario Horario",
+                "createOrEditLabel": "Crear o editar Usuario Horario",
+                "search": "Search for Usuario Horario"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Usuario Horario {{ id }}?"
+            },
+            "detail": {
+                "title": "Usuario Horario"
+            },
+            "numDiaSemana": "Num Dia Semana",
+            "datHoraInicio": "Dat Hora Inicio",
+            "datHoraFin": "Dat Hora Fin",
+            "varUsuarioLog": "Var Usuario Log",
+            "datFechaLog": "Dat Fecha Log",
+            "numEliminar": "Num Eliminar",
+            "usuario": "Usuario"
+        }
+    },
+    "seguridadApp": {
+        "usuarioHorario" : {
+            "created": "Un nuevo Usuario Horario ha sido creado con el identificador {{ param }}",
+            "updated": "Un Usuario Horario ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Usuario Horario ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

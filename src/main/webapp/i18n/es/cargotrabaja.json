@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "cargotrabaja" : {
+            "home": {
+                "title": "Cargotrabajas",
+                "createLabel": "Crear nuevo Cargotrabaja",
+                "createOrEditLabel": "Crear o editar Cargotrabaja",
+                "search": "Search for Cargotrabaja"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Cargotrabaja {{ id }}?"
+            },
+            "detail": {
+                "title": "Cargotrabaja"
+            },
+            "vDescargotrabaja": "V Descargotrabaja",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "trabajador": "Trabajador"
+        }
+    },
+    "consultasApp": {
+        "cargotrabaja" : {
+            "created": "Un nuevo Cargotrabaja ha sido creado con el identificador {{ param }}",
+            "updated": "Un Cargotrabaja ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Cargotrabaja ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

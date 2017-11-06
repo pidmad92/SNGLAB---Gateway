@@ -1,0 +1,37 @@
+{
+    "gatewayApp": {
+        "empleador" : {
+            "home": {
+                "title": "Empleadors",
+                "createLabel": "Crear nuevo Empleador",
+                "createOrEditLabel": "Crear o editar Empleador",
+                "search": "Search for Empleador"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Empleador {{ id }}?"
+            },
+            "detail": {
+                "title": "Empleador"
+            },
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "datlaboral": "Datlaboral",
+            "atencion": "Atencion",
+            "personajurid": "Personajurid",
+            "personanatur": "Personanatur",
+            "tippersona": "Tippersona"
+        }
+    },
+    "consultasApp": {
+        "empleador" : {
+            "created": "Un nuevo Empleador ha sido creado con el identificador {{ param }}",
+            "updated": "Un Empleador ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Empleador ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

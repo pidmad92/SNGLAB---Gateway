@@ -1,0 +1,69 @@
+
+<div *ngIf="trabajador">
+    <h2><span jhiTranslate="gatewayApp.trabajador.detail.title">Trabajador</span> {{trabajador.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.trabajador.vNumdocumento">V Numdocumento</span></dt>
+        <dd>
+            <span>{{trabajador.vNumdocumento}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.trabajador.vFlgsucesor">V Flgsucesor</span></dt>
+        <dd>
+            <span>{{trabajador.vFlgsucesor}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.trabajador.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{trabajador.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.trabajador.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{trabajador.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.trabajador.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{trabajador.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.trabajador.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{trabajador.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.trabajador.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{trabajador.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.trabajador.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{trabajador.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.trabajador.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{trabajador.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.trabajador.cargotrabaja">Cargotrabaja</span></dt>
+        <dd>
+            <div *ngIf="trabajador.cargotrabaja">
+                <a [routerLink]="['/cargotrabaja', trabajador.cargotrabaja?.id]">{{trabajador.cargotrabaja?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.trabajador.personanatur">Personanatur</span></dt>
+        <dd>
+            <div *ngIf="trabajador.personanatur">
+                <a [routerLink]="['/personanatur', trabajador.personanatur?.id]">{{trabajador.personanatur?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'trabajador/'+ trabajador.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

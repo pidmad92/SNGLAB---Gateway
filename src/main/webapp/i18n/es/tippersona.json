@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "tippersona" : {
+            "home": {
+                "title": "Tippersonas",
+                "createLabel": "Crear nuevo Tippersona",
+                "createOrEditLabel": "Crear o editar Tippersona",
+                "search": "Search for Tippersona"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tippersona {{ id }}?"
+            },
+            "detail": {
+                "title": "Tippersona"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "empleador": "Empleador"
+        }
+    },
+    "consultasApp": {
+        "tippersona" : {
+            "created": "Un nuevo Tippersona ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tippersona ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tippersona ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

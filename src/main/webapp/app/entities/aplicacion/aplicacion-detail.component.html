@@ -1,0 +1,49 @@
+
+<div *ngIf="aplicacion">
+    <h2><span jhiTranslate="gatewayApp.aplicacion.detail.title">Aplicacion</span> {{aplicacion.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.aplicacion.varNomApp">Var Nom App</span></dt>
+        <dd>
+            <span>{{aplicacion.varNomApp}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.aplicacion.varDescApp">Var Desc App</span></dt>
+        <dd>
+            <span>{{aplicacion.varDescApp}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.aplicacion.varUrlApp">Var Url App</span></dt>
+        <dd>
+            <span>{{aplicacion.varUrlApp}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.aplicacion.numEstApp">Num Est App</span></dt>
+        <dd>
+            <span>{{aplicacion.numEstApp}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.aplicacion.varUsuarioLog">Var Usuario Log</span></dt>
+        <dd>
+            <span>{{aplicacion.varUsuarioLog}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.aplicacion.datFechaLog">Dat Fecha Log</span></dt>
+        <dd>
+            <span>{{aplicacion.datFechaLog | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.aplicacion.numEliminar">Num Eliminar</span></dt>
+        <dd>
+            <span>{{aplicacion.numEliminar}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'aplicacion/'+ aplicacion.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

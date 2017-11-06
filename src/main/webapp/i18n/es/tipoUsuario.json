@@ -1,0 +1,31 @@
+{
+    "gatewayApp": {
+        "tipoUsuario" : {
+            "home": {
+                "title": "Tipo Usuarios",
+                "createLabel": "Crear nuevo Tipo Usuario",
+                "createOrEditLabel": "Crear o editar Tipo Usuario",
+                "search": "Search for Tipo Usuario"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipo Usuario {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipo Usuario"
+            },
+            "varNomTpusuario": "Var Nom Tpusuario",
+            "varDescTpusuario": "Var Desc Tpusuario",
+            "varUsuarioLog": "Var Usuario Log",
+            "datFechaLog": "Dat Fecha Log",
+            "numEliminar": "Num Eliminar",
+            "usuario": "Usuario"
+        }
+    },
+    "seguridadApp": {
+        "tipoUsuario" : {
+            "created": "Un nuevo Tipo Usuario ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipo Usuario ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipo Usuario ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

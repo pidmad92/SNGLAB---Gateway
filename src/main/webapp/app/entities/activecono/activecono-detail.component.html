@@ -1,0 +1,57 @@
+
+<div *ngIf="activecono">
+    <h2><span jhiTranslate="gatewayApp.activecono.detail.title">Activecono</span> {{activecono.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.activecono.vCiuu">V Ciuu</span></dt>
+        <dd>
+            <span>{{activecono.vCiuu}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.activecono.vDescripcion">V Descripcion</span></dt>
+        <dd>
+            <span>{{activecono.vDescripcion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.activecono.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{activecono.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.activecono.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{activecono.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.activecono.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{activecono.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.activecono.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{activecono.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.activecono.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{activecono.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.activecono.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{activecono.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.activecono.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{activecono.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'activecono/'+ activecono.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

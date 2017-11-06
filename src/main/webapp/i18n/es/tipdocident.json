@@ -1,0 +1,37 @@
+{
+    "gatewayApp": {
+        "tipdocident" : {
+            "home": {
+                "title": "Tipdocidents",
+                "createLabel": "Crear nuevo Tipdocident",
+                "createOrEditLabel": "Crear o editar Tipdocident",
+                "search": "Search for Tipdocident"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipdocident {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipdocident"
+            },
+            "vDescripcion": "V Descripcion",
+            "nNumdigitos": "N Numdigitos",
+            "vDescripcioncorta": "V Descripcioncorta",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "personanatur": "Personanatur",
+            "personajurid": "Personajurid"
+        }
+    },
+    "consultasApp": {
+        "tipdocident" : {
+            "created": "Un nuevo Tipdocident ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipdocident ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipdocident ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

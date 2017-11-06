@@ -1,0 +1,32 @@
+{
+    "gatewayApp": {
+        "usuPer" : {
+            "home": {
+                "title": "Usu Pers",
+                "createLabel": "Crear nuevo Usu Per",
+                "createOrEditLabel": "Crear o editar Usu Per",
+                "search": "Search for Usu Per"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Usu Per {{ id }}?"
+            },
+            "detail": {
+                "title": "Usu Per"
+            },
+            "varUsuarioLog": "Var Usuario Log",
+            "datFechaLog": "Dat Fecha Log",
+            "numEliminar": "Num Eliminar",
+            "usuario": "Usuario",
+            "usuarioGrupo": "Usuario Grupo",
+            "permiso": "Permiso",
+            "perfil": "Perfil"
+        }
+    },
+    "seguridadApp": {
+        "usuPer" : {
+            "created": "Un nuevo Usu Per ha sido creado con el identificador {{ param }}",
+            "updated": "Un Usu Per ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Usu Per ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

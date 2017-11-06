@@ -1,0 +1,93 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.perfil.home.title">Perfils</span>
+        <button class="btn btn-primary float-right jh-create-entity create-perfil" [routerLink]="['/', { outlets: { popup: ['perfil-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.perfil.home.createLabel">
+            Create new Perfil
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.perfil.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="perfils">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="varNomPerfil"><span jhiTranslate="gatewayApp.perfil.varNomPerfil">Var Nom Perfil</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="varDescPerfil"><span jhiTranslate="gatewayApp.perfil.varDescPerfil">Var Desc Perfil</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numEstPerfil"><span jhiTranslate="gatewayApp.perfil.numEstPerfil">Num Est Perfil</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="varUsuarioLog"><span jhiTranslate="gatewayApp.perfil.varUsuarioLog">Var Usuario Log</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="datFechaLog"><span jhiTranslate="gatewayApp.perfil.datFechaLog">Dat Fecha Log</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numEliminar"><span jhiTranslate="gatewayApp.perfil.numEliminar">Num Eliminar</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="modulo.id"><span jhiTranslate="gatewayApp.perfil.modulo">Modulo</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let perfil of perfils ;trackBy: trackId">
+                <td><a [routerLink]="['../perfil', perfil.id ]">{{perfil.id}}</a></td>
+                <td>{{perfil.varNomPerfil}}</td>
+                <td>{{perfil.varDescPerfil}}</td>
+                <td>{{perfil.numEstPerfil}}</td>
+                <td>{{perfil.varUsuarioLog}}</td>
+                <td>{{perfil.datFechaLog | date:'medium'}}</td>
+                <td>{{perfil.numEliminar}}</td>
+                <td>
+                    <div *ngIf="perfil.modulo">
+                        <a [routerLink]="['../modulo', perfil.modulo?.id ]" >{{perfil.modulo?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../perfil', perfil.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'perfil/'+ perfil.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'perfil/'+ perfil.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="perfils && perfils.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [maxSize]="5" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

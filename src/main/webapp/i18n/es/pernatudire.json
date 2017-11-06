@@ -1,0 +1,39 @@
+{
+    "gatewayApp": {
+        "pernatudire" : {
+            "home": {
+                "title": "Pernatudires",
+                "createLabel": "Crear nuevo Pernatudire",
+                "createOrEditLabel": "Crear o editar Pernatudire",
+                "search": "Search for Pernatudire"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Pernatudire {{ id }}?"
+            },
+            "detail": {
+                "title": "Pernatudire"
+            },
+            "vCoddep": "V Coddep",
+            "vCodpro": "V Codpro",
+            "vCoddis": "V Coddis",
+            "vDircompleta": "V Dircompleta",
+            "vReferencia": "V Referencia",
+            "vFlgnotifica": "V Flgnotifica",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "personanatur": "Personanatur"
+        }
+    },
+    "consultasApp": {
+        "pernatudire" : {
+            "created": "Un nuevo Pernatudire ha sido creado con el identificador {{ param }}",
+            "updated": "Un Pernatudire ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Pernatudire ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

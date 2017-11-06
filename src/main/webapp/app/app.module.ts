@@ -1,4 +1,3 @@
-
 import './vendor.ts';
 
 import { NgModule } from '@angular/core';
@@ -7,6 +6,7 @@ import { Ng2Webstorage } from 'ng2-webstorage';
 import { RouterModule } from '@angular/router';
 
 import { GatewaySharedModule, UserRouteAccessService } from './shared';
+import {  } from './shared/auth/user-login-route.service';
 import { GatewayHomeModule } from './home/home.module';
 import { GatewayAdminModule } from './admin/admin.module';
 import { GatewayAccountModule } from './account/account.module';
@@ -49,7 +49,7 @@ const LAZY_ROUTES = [
         GatewayHomeModule,
         GatewayAdminModule,
         GatewayAccountModule,
-        GatewayEntityModule,
+        // GatewayEntityModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
@@ -69,6 +69,6 @@ const LAZY_ROUTES = [
         PaginationConfig,
         UserRouteAccessService
     ],
-    bootstrap: [ JhiMainComponent ]
+    bootstrap: [ LoginComponent ]
 })
 export class GatewayAppModule {}

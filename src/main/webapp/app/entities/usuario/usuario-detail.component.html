@@ -1,0 +1,95 @@
+
+<div *ngIf="usuario">
+    <h2><span jhiTranslate="gatewayApp.usuario.detail.title">Usuario</span> {{usuario.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.usuario.varNomUsuario">Var Nom Usuario</span></dt>
+        <dd>
+            <span>{{usuario.varNomUsuario}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuario.varLoginUsuario">Var Login Usuario</span></dt>
+        <dd>
+            <span>{{usuario.varLoginUsuario}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuario.varInicialUsuario">Var Inicial Usuario</span></dt>
+        <dd>
+            <span>{{usuario.varInicialUsuario}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuario.numEstUsuario">Num Est Usuario</span></dt>
+        <dd>
+            <span>{{usuario.numEstUsuario}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuario.varMotivUsuario">Var Motiv Usuario</span></dt>
+        <dd>
+            <span>{{usuario.varMotivUsuario}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuario.varDocContacto">Var Doc Contacto</span></dt>
+        <dd>
+            <span>{{usuario.varDocContacto}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuario.varNomContacto">Var Nom Contacto</span></dt>
+        <dd>
+            <span>{{usuario.varNomContacto}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuario.varRefContacto">Var Ref Contacto</span></dt>
+        <dd>
+            <span>{{usuario.varRefContacto}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuario.varUsuarioLog">Var Usuario Log</span></dt>
+        <dd>
+            <span>{{usuario.varUsuarioLog}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuario.datFechaLog">Dat Fecha Log</span></dt>
+        <dd>
+            <span>{{usuario.datFechaLog | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuario.numEliminar">Num Eliminar</span></dt>
+        <dd>
+            <span>{{usuario.numEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuario.varDireccionIp">Var Direccion Ip</span></dt>
+        <dd>
+            <span>{{usuario.varDireccionIp}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuario.varMacAddress">Var Mac Address</span></dt>
+        <dd>
+            <span>{{usuario.varMacAddress}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuario.varNombrePc">Var Nombre Pc</span></dt>
+        <dd>
+            <span>{{usuario.varNombrePc}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuario.varCodSeguridad">Var Cod Seguridad</span></dt>
+        <dd>
+            <span>{{usuario.varCodSeguridad}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuario.datFecTermino">Dat Fec Termino</span></dt>
+        <dd>
+            <span>{{usuario.datFecTermino | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuario.varPtoControl">Var Pto Control</span></dt>
+        <dd>
+            <span>{{usuario.varPtoControl}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuario.tipoUsuario">Tipo Usuario</span></dt>
+        <dd>
+            <div *ngIf="usuario.tipoUsuario">
+                <a [routerLink]="['/tipo-usuario', usuario.tipoUsuario?.id]">{{usuario.tipoUsuario?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'usuario/'+ usuario.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

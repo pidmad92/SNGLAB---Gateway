@@ -1,0 +1,36 @@
+{
+    "gatewayApp": {
+        "motatenofic" : {
+            "home": {
+                "title": "Motatenofics",
+                "createLabel": "Crear nuevo Motatenofic",
+                "createOrEditLabel": "Crear o editar Motatenofic",
+                "search": "Search for Motatenofic"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Motatenofic {{ id }}?"
+            },
+            "detail": {
+                "title": "Motatenofic"
+            },
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "motivoatenci": "Motivoatenci",
+            "oficina": "Oficina",
+            "atenmotiaten": "Atenmotiaten",
+            "pasemotiaten": "Pasemotiaten"
+        }
+    },
+    "consultasApp": {
+        "motatenofic" : {
+            "created": "Un nuevo Motatenofic ha sido creado con el identificador {{ param }}",
+            "updated": "Un Motatenofic ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Motatenofic ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

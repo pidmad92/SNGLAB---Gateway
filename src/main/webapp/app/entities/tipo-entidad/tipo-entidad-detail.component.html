@@ -1,0 +1,41 @@
+
+<div *ngIf="tipoEntidad">
+    <h2><span jhiTranslate="gatewayApp.tipoEntidad.detail.title">Tipo Entidad</span> {{tipoEntidad.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.tipoEntidad.varNomTpentidad">Var Nom Tpentidad</span></dt>
+        <dd>
+            <span>{{tipoEntidad.varNomTpentidad}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipoEntidad.varDescTpentidad">Var Desc Tpentidad</span></dt>
+        <dd>
+            <span>{{tipoEntidad.varDescTpentidad}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipoEntidad.varUsuarioLog">Var Usuario Log</span></dt>
+        <dd>
+            <span>{{tipoEntidad.varUsuarioLog}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipoEntidad.datFechaLog">Dat Fecha Log</span></dt>
+        <dd>
+            <span>{{tipoEntidad.datFechaLog | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipoEntidad.numEliminar">Num Eliminar</span></dt>
+        <dd>
+            <span>{{tipoEntidad.numEliminar}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'tipo-entidad/'+ tipoEntidad.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

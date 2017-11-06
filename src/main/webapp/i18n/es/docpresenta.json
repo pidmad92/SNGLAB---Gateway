@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "docpresenta" : {
+            "home": {
+                "title": "Docpresentas",
+                "createLabel": "Crear nuevo Docpresenta",
+                "createOrEditLabel": "Crear o editar Docpresenta",
+                "search": "Search for Docpresenta"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Docpresenta {{ id }}?"
+            },
+            "detail": {
+                "title": "Docpresenta"
+            },
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "atenmotiaten": "Atenmotiaten",
+            "documento": "Documento"
+        }
+    },
+    "consultasApp": {
+        "docpresenta" : {
+            "created": "Un nuevo Docpresenta ha sido creado con el identificador {{ param }}",
+            "updated": "Un Docpresenta ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Docpresenta ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

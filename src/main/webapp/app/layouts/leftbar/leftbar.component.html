@@ -10,7 +10,7 @@
         </div>
       </div>
     </div>
-    <div class="my-2">
+    <div class="my-2" *ngIf="aplicacion == 'seguridad'">
       <!-- <h3 class="pl-3 text-uppercase h3coll">MANTENIMIENTO DE MÓDULO DE SEGURIDAD</h3> -->
       <ul class="level-one mt-2 p-0" id="accordion" >
         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
@@ -53,10 +53,40 @@
               <i class="fa fa-users px-2" aria-hidden="true"></i> <span>Gestión de Grupo</span>
             </a>
         </li>
-        
-        
-        
-          
+      </ul>
+    </div>
+    <div class="my-2" *ngIf="aplicacion == 'consultas'">
+      <ul class="level-one mt-2 p-0" id="accordion">
+        <li routerLinkActive="active">
+          <a href="index.html" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <i class="fa fa-tachometer px-2" aria-hidden="true"></i> <span>Dashboard</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a href="#" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <i class="fa fa-commenting-o px-2" aria-hidden="true"></i> <span>Forms</span> <span class="fa fa-chevron-down ml-auto"></span>
+          </a>
+          <ul class="level-two p-0">
+            <li><a href="general.html"><span>General Elements</span></a></li>
+            <li class="active-submenu"><a href="advanced.html"><span>Advanced Elements</span></a></li>
+            <li><a href="editors.html"><span>Editors</span></a></li>
+          </ul>
+        </li>
+        <li routerLinkActive="active">
+          <a href="widgets.html" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <i class="fa fa-th-large px-2" aria-hidden="true"></i> <span>Widgets</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <i class="fa fa-commenting-o px-2" aria-hidden="true"></i> <span>Validaciones</span> <span class="fa fa-chevron-down ml-auto"></span>
+          </a>
+          <ul class="level-two p-0">
+            <li><a href="validacion.html"><span>Validación</span></a></li>
+            <li><a href="#"><span>Seccion2</span></a></li>
+            <li><a href="#"><span>Seccion3</span></a></li>                    
+          </ul>
+        </li>
       </ul>
     </div>
   </nav>

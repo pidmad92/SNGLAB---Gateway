@@ -19,6 +19,7 @@ export class LeftbarComponent implements OnInit {
     swaggerEnabled: boolean;
     modalRef: NgbModalRef;
     version: string;
+    aplicacion: string;
 
     constructor(
         private loginService: LoginService,
@@ -29,6 +30,7 @@ export class LeftbarComponent implements OnInit {
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
+        this.aplicacion = 'consultas';
     }
 
     ngOnInit() {

@@ -1,0 +1,30 @@
+{
+    "gatewayApp": {
+        "menuPerfil" : {
+            "home": {
+                "title": "Menu Perfils",
+                "createLabel": "Crear nuevo Menu Perfil",
+                "createOrEditLabel": "Crear o editar Menu Perfil",
+                "search": "Search for Menu Perfil"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Menu Perfil {{ id }}?"
+            },
+            "detail": {
+                "title": "Menu Perfil"
+            },
+            "varUsuarioLog": "Var Usuario Log",
+            "datFechaLog": "Dat Fecha Log",
+            "numEliminar": "Num Eliminar",
+            "perfil": "Perfil",
+            "menu": "Menu"
+        }
+    },
+    "seguridadApp": {
+        "menuPerfil" : {
+            "created": "Un nuevo Menu Perfil ha sido creado con el identificador {{ param }}",
+            "updated": "Un Menu Perfil ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Menu Perfil ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

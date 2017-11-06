@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "direcalter" : {
+            "home": {
+                "title": "Direcalters",
+                "createLabel": "Crear nuevo Direcalter",
+                "createOrEditLabel": "Crear o editar Direcalter",
+                "search": "Search for Direcalter"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Direcalter {{ id }}?"
+            },
+            "detail": {
+                "title": "Direcalter"
+            },
+            "vRazonsocial": "V Razonsocial",
+            "vDireccion": "V Direccion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "atenmotiaten": "Atenmotiaten"
+        }
+    },
+    "consultasApp": {
+        "direcalter" : {
+            "created": "Un nuevo Direcalter ha sido creado con el identificador {{ param }}",
+            "updated": "Un Direcalter ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Direcalter ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

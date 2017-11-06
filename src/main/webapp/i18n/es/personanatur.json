@@ -1,0 +1,47 @@
+{
+    "gatewayApp": {
+        "personanatur" : {
+            "home": {
+                "title": "Personanaturs",
+                "createLabel": "Crear nuevo Personanatur",
+                "createOrEditLabel": "Crear o editar Personanatur",
+                "search": "Search for Personanatur"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Personanatur {{ id }}?"
+            },
+            "detail": {
+                "title": "Personanatur"
+            },
+            "vNombres": "V Nombres",
+            "vApepaterno": "V Apepaterno",
+            "vApematerno": "V Apematerno",
+            "vNumdocumento": "V Numdocumento",
+            "vTelefono": "V Telefono",
+            "vCelular": "V Celular",
+            "vEmail": "V Email",
+            "dFecnacimiento": "D Fecnacimiento",
+            "csexo": "Csexo",
+            "cFlgestado": "C Flgestado",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "pernatudire": "Pernatudire",
+            "empleador": "Empleador",
+            "trabajador": "Trabajador",
+            "sucesor": "Sucesor",
+            "tipdocident": "Tipdocident"
+        }
+    },
+    "consultasApp": {
+        "personanatur" : {
+            "created": "Un nuevo Personanatur ha sido creado con el identificador {{ param }}",
+            "updated": "Un Personanatur ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Personanatur ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

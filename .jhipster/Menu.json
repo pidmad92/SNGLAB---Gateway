@@ -1,0 +1,89 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "modulo",
+            "otherEntityName": "modulo",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "menu",
+            "otherEntityName": "menu",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "menu",
+            "otherEntityName": "menu",
+            "otherEntityRelationshipName": "menu"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "menuPerfil",
+            "otherEntityName": "menuPerfil",
+            "otherEntityRelationshipName": "menu"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "varNomMenu",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "numOrdenItem",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "varUrlMenu",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 300
+        },
+        {
+            "fieldName": "numOpcion",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "varUsuarioLog",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "datFechaLog",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "numEliminar",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": 0,
+            "fieldValidateRulesMax": 1
+        }
+    ],
+    "changelogDate": "20171106145145",
+    "entityTableName": "menu",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "seguridad"
+}

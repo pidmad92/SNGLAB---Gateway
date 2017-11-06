@@ -1,0 +1,67 @@
+
+<div *ngIf="empleador">
+    <h2><span jhiTranslate="gatewayApp.empleador.detail.title">Empleador</span> {{empleador.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.empleador.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{empleador.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empleador.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{empleador.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empleador.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{empleador.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empleador.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{empleador.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empleador.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{empleador.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empleador.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{empleador.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empleador.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{empleador.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empleador.personajurid">Personajurid</span></dt>
+        <dd>
+            <div *ngIf="empleador.personajurid">
+                <a [routerLink]="['/personajurid', empleador.personajurid?.id]">{{empleador.personajurid?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empleador.personanatur">Personanatur</span></dt>
+        <dd>
+            <div *ngIf="empleador.personanatur">
+                <a [routerLink]="['/personanatur', empleador.personanatur?.id]">{{empleador.personanatur?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empleador.tippersona">Tippersona</span></dt>
+        <dd>
+            <div *ngIf="empleador.tippersona">
+                <a [routerLink]="['/tippersona', empleador.tippersona?.id]">{{empleador.tippersona?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'empleador/'+ empleador.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

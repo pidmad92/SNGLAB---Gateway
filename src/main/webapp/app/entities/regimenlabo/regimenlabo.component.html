@@ -1,0 +1,83 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.regimenlabo.home.title">Regimenlabos</span>
+        <button class="btn btn-primary float-right jh-create-entity create-regimenlabo" [routerLink]="['/', { outlets: { popup: ['regimenlabo-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.regimenlabo.home.createLabel">
+            Create new Regimenlabo
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.regimenlabo.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="regimenlabos">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.regimenlabo.vDescripcion">V Descripcion</span></th>
+            <th><span jhiTranslate="gatewayApp.regimenlabo.vUsuarioreg">V Usuarioreg</span></th>
+            <th><span jhiTranslate="gatewayApp.regimenlabo.dFechareg">D Fechareg</span></th>
+            <th><span jhiTranslate="gatewayApp.regimenlabo.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.regimenlabo.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.regimenlabo.vUsuarioupd">V Usuarioupd</span></th>
+            <th><span jhiTranslate="gatewayApp.regimenlabo.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.regimenlabo.nSedeupd">N Sedeupd</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let regimenlabo of regimenlabos ;trackBy: trackId">
+                <td><a [routerLink]="['../regimenlabo', regimenlabo.id ]">{{regimenlabo.id}}</a></td>
+                <td>{{regimenlabo.vDescripcion}}</td>
+                <td>{{regimenlabo.vUsuarioreg}}</td>
+                <td>{{regimenlabo.dFechareg | date:'medium'}}</td>
+                <td>{{regimenlabo.nEliminar}}</td>
+                <td>{{regimenlabo.nSedereg}}</td>
+                <td>{{regimenlabo.vUsuarioupd}}</td>
+                <td>{{regimenlabo.dFechaupd | date:'medium'}}</td>
+                <td>{{regimenlabo.nSedeupd}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../regimenlabo', regimenlabo.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'regimenlabo/'+ regimenlabo.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'regimenlabo/'+ regimenlabo.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

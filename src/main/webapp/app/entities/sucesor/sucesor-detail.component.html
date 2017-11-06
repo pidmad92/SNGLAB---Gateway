@@ -1,0 +1,65 @@
+
+<div *ngIf="sucesor">
+    <h2><span jhiTranslate="gatewayApp.sucesor.detail.title">Sucesor</span> {{sucesor.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.sucesor.cFlgestado">C Flgestado</span></dt>
+        <dd>
+            <span>{{sucesor.cFlgestado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.sucesor.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{sucesor.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.sucesor.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{sucesor.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.sucesor.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{sucesor.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.sucesor.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{sucesor.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.sucesor.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{sucesor.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.sucesor.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{sucesor.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.sucesor.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{sucesor.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.sucesor.personanatur">Personanatur</span></dt>
+        <dd>
+            <div *ngIf="sucesor.personanatur">
+                <a [routerLink]="['/personanatur', sucesor.personanatur?.id]">{{sucesor.personanatur?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.sucesor.trabajador">Trabajador</span></dt>
+        <dd>
+            <div *ngIf="sucesor.trabajador">
+                <a [routerLink]="['/trabajador', sucesor.trabajador?.id]">{{sucesor.trabajador?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'sucesor/'+ sucesor.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

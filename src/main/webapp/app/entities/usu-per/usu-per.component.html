@@ -1,0 +1,105 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.usuPer.home.title">Usu Pers</span>
+        <button class="btn btn-primary float-right jh-create-entity create-usu-per" [routerLink]="['/', { outlets: { popup: ['usu-per-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.usuPer.home.createLabel">
+            Create new Usu Per
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.usuPer.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="usuPers">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="varUsuarioLog"><span jhiTranslate="gatewayApp.usuPer.varUsuarioLog">Var Usuario Log</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="datFechaLog"><span jhiTranslate="gatewayApp.usuPer.datFechaLog">Dat Fecha Log</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numEliminar"><span jhiTranslate="gatewayApp.usuPer.numEliminar">Num Eliminar</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="usuario.id"><span jhiTranslate="gatewayApp.usuPer.usuario">Usuario</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="usuarioGrupo.id"><span jhiTranslate="gatewayApp.usuPer.usuarioGrupo">Usuario Grupo</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="permiso.id"><span jhiTranslate="gatewayApp.usuPer.permiso">Permiso</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="perfil.id"><span jhiTranslate="gatewayApp.usuPer.perfil">Perfil</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let usuPer of usuPers ;trackBy: trackId">
+                <td><a [routerLink]="['../usu-per', usuPer.id ]">{{usuPer.id}}</a></td>
+                <td>{{usuPer.varUsuarioLog}}</td>
+                <td>{{usuPer.datFechaLog | date:'medium'}}</td>
+                <td>{{usuPer.numEliminar}}</td>
+                <td>
+                    <div *ngIf="usuPer.usuario">
+                        <a [routerLink]="['../usuario', usuPer.usuario?.id ]" >{{usuPer.usuario?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="usuPer.usuarioGrupo">
+                        <a [routerLink]="['../usuario-grupo', usuPer.usuarioGrupo?.id ]" >{{usuPer.usuarioGrupo?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="usuPer.permiso">
+                        <a [routerLink]="['../permiso', usuPer.permiso?.id ]" >{{usuPer.permiso?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="usuPer.perfil">
+                        <a [routerLink]="['../perfil', usuPer.perfil?.id ]" >{{usuPer.perfil?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../usu-per', usuPer.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'usu-per/'+ usuPer.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'usu-per/'+ usuPer.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="usuPers && usuPers.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [maxSize]="5" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

@@ -1,0 +1,43 @@
+{
+    "gatewayApp": {
+        "personajurid" : {
+            "home": {
+                "title": "Personajurids",
+                "createLabel": "Crear nuevo Personajurid",
+                "createOrEditLabel": "Crear o editar Personajurid",
+                "search": "Search for Personajurid"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Personajurid {{ id }}?"
+            },
+            "detail": {
+                "title": "Personajurid"
+            },
+            "vRazonsocial": "V Razonsocial",
+            "vNombrealternativo": "V Nombrealternativo",
+            "vNumdocumento": "V Numdocumento",
+            "vEmail": "V Email",
+            "vTelefono": "V Telefono",
+            "vFax": "V Fax",
+            "cFlgestado": "C Flgestado",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "activecono": "Activecono",
+            "perjuridire": "Perjuridire",
+            "empleador": "Empleador",
+            "tipdocident": "Tipdocident"
+        }
+    },
+    "consultasApp": {
+        "personajurid" : {
+            "created": "Un nuevo Personajurid ha sido creado con el identificador {{ param }}",
+            "updated": "Un Personajurid ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Personajurid ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -1,0 +1,65 @@
+
+<div *ngIf="pase">
+    <h2><span jhiTranslate="gatewayApp.pase.detail.title">Pase</span> {{pase.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.pase.vObservacion">V Observacion</span></dt>
+        <dd>
+            <span>{{pase.vObservacion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pase.cFlgestado">C Flgestado</span></dt>
+        <dd>
+            <span>{{pase.cFlgestado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pase.nCodoficinaorigen">N Codoficinaorigen</span></dt>
+        <dd>
+            <span>{{pase.nCodoficinaorigen}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pase.nCodoficinadestino">N Codoficinadestino</span></dt>
+        <dd>
+            <span>{{pase.nCodoficinadestino}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pase.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{pase.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pase.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{pase.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pase.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{pase.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pase.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{pase.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pase.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{pase.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pase.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{pase.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pase.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{pase.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'pase/'+ pase.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

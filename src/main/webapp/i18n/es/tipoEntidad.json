@@ -1,0 +1,31 @@
+{
+    "gatewayApp": {
+        "tipoEntidad" : {
+            "home": {
+                "title": "Tipo Entidads",
+                "createLabel": "Crear nuevo Tipo Entidad",
+                "createOrEditLabel": "Crear o editar Tipo Entidad",
+                "search": "Search for Tipo Entidad"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipo Entidad {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipo Entidad"
+            },
+            "varNomTpentidad": "Var Nom Tpentidad",
+            "varDescTpentidad": "Var Desc Tpentidad",
+            "varUsuarioLog": "Var Usuario Log",
+            "datFechaLog": "Dat Fecha Log",
+            "numEliminar": "Num Eliminar",
+            "entidad": "Entidad"
+        }
+    },
+    "seguridadApp": {
+        "tipoEntidad" : {
+            "created": "Un nuevo Tipo Entidad ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipo Entidad ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipo Entidad ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -1,0 +1,61 @@
+
+<div *ngIf="docpresenta">
+    <h2><span jhiTranslate="gatewayApp.docpresenta.detail.title">Docpresenta</span> {{docpresenta.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.docpresenta.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{docpresenta.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docpresenta.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{docpresenta.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docpresenta.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{docpresenta.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docpresenta.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{docpresenta.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docpresenta.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{docpresenta.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docpresenta.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{docpresenta.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docpresenta.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{docpresenta.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docpresenta.atenmotiaten">Atenmotiaten</span></dt>
+        <dd>
+            <div *ngIf="docpresenta.atenmotiaten">
+                <a [routerLink]="['/atenmotiaten', docpresenta.atenmotiaten?.id]">{{docpresenta.atenmotiaten?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docpresenta.documento">Documento</span></dt>
+        <dd>
+            <div *ngIf="docpresenta.documento">
+                <a [routerLink]="['/documento', docpresenta.documento?.id]">{{docpresenta.documento?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'docpresenta/'+ docpresenta.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

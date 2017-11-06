@@ -1,0 +1,37 @@
+
+<div *ngIf="permiso">
+    <h2><span jhiTranslate="gatewayApp.permiso.detail.title">Permiso</span> {{permiso.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.permiso.varNomPermiso">Var Nom Permiso</span></dt>
+        <dd>
+            <span>{{permiso.varNomPermiso}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.permiso.varUsuarioLog">Var Usuario Log</span></dt>
+        <dd>
+            <span>{{permiso.varUsuarioLog}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.permiso.datFechaLog">Dat Fecha Log</span></dt>
+        <dd>
+            <span>{{permiso.datFechaLog | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.permiso.numEliminar">Num Eliminar</span></dt>
+        <dd>
+            <span>{{permiso.numEliminar}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'permiso/'+ permiso.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

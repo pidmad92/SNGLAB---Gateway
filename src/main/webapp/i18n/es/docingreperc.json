@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "docingreperc" : {
+            "home": {
+                "title": "Docingrepercs",
+                "createLabel": "Crear nuevo Docingreperc",
+                "createOrEditLabel": "Crear o editar Docingreperc",
+                "search": "Search for Docingreperc"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Docingreperc {{ id }}?"
+            },
+            "detail": {
+                "title": "Docingreperc"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "dlabingperc": "Dlabingperc"
+        }
+    },
+    "consultasApp": {
+        "docingreperc" : {
+            "created": "Un nuevo Docingreperc ha sido creado con el identificador {{ param }}",
+            "updated": "Un Docingreperc ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Docingreperc ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}
