@@ -1,4 +1,4 @@
-<div class="col-md-6 col-md-offset-3">
+<!-- <div class="col-md-6 col-md-offset-3">
     <div class="alert alert-info">
         Username: test<br />
         Password: test
@@ -21,5 +21,62 @@
         </div>
         <div *ngIf="error" class="alert alert-danger">{{error}}</div>
     </form>
-</div>
+</div> -->
+
+<div class="container-fluid" id="fondo">
+    <div class="row">
+      <div class="col d-md-flex align-items-center justify-content-center main-wrapper">
+        <div class="content">
+          <div class="opacity"></div>
+          <div class="triangle-red"></div>
+          <div class="wraper-content">
+            <div class="row">
+              <div class="col d-flex justify-content-center justify-content-md-end">
+                <img src="../../content/images/logo-mtpe.png" class=" m-4" alt="">
+              </div>
+            </div>
+            <div class="row d-flex flex-column flex-md-row justify-content-center align-items-center">
+              <div class="col-sm-6">
+                <p class="login-title ml-md-4 mb-0">Sistema integrado de <span>Gestión Laboral</span></p>
+              </div>
+              <div class="col-sm-6">
+                <div class="card mx-md-5">
+                  <div class="card-body">
+                    <form id="form" (ngSubmit)="login()">
+                      <div class="form-group">
+                        <label for="inpUsuario">User</label>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="{{'global.form.username.placeholder' | translate}}"
+                        [(ngModel)]="username">
+                      </div>
+                      <div class="form-group">
+                        <label for="inpPassword">Password</label>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="{{'login.form.password.placeholder' | translate}}"
+                        [(ngModel)]="password">
+                      </div>
+                      <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-6 pr-1"><img src="../../content/images/captcha_rd.png" alt="" class="img-fluid"></label>
+                        <div class="col-sm-6 pl-md-0">
+                          <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                      </div>
+                      <p class="text-center">
+                          <button type="submit" class="btn btn-danger btn-login"><i class="fa fa-sign-in" aria-hidden="true"></i> Sign in</button>
+                          
+                      </p>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row d-flex">
+              <div class="col d-flex justify-content-center justify-content-md-end">
+                <p class="mt-1 mt-md-4 mr-4 login-text">En el caso de no poder ingresar, por favor envíe un correo a <a href="mailto:glaboral@trabajo.gob.pe" class="link-correo">glaboral@trabajo.gob.pe</a></p>
+              </div>
+            </div>  
+          </div>
+          <img src="../../content/images/image-login.png" class="m-auto" alt="Que necesitas">
+        </div>
+      </div>
+    </div>
+  </div>
     

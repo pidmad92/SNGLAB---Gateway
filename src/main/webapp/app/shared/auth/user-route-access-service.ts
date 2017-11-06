@@ -28,6 +28,7 @@ export class UserRouteAccessService implements CanActivate {
         return Promise.resolve(principal.identity().then((account) => {
 
             if (!authorities || authorities.length === 0) {
+                // this.router.navigate(['/login'], { queryParams: { returnUrl: url }});
                 return true;
             }
 
@@ -43,10 +44,10 @@ export class UserRouteAccessService implements CanActivate {
             }
 
             this.stateStorageService.storeUrl(url);
-            this.router.navigate(['accessdenied']).then(() => {
+            this.router.navigate(['login']).then(() => {
                 // only show the login dialog, if the user hasn't logged in yet
                 if (!account) {
-                    this.loginModalService.open();
+                    // this.loginModalService.open();
                 }
             });
             return false;

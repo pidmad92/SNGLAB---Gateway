@@ -19,6 +19,9 @@
                 "logout": "Cerrar la sesión",
                 "register": "Crear una cuenta"
             },
+            "login": {
+                "titulo": "SSO Ministerio de Trabajo"
+            },
             "admin": {
                 "main": "Administración",
                 "gateway": "Gateway",

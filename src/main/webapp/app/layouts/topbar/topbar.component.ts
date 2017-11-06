@@ -53,7 +53,7 @@ export class TopbarComponent implements OnInit {
     logout() {
         this.collapseNavbar();
         this.loginService.logout();
-        this.router.navigate(['']);
+        this.router.navigate(['/login']);
     }
 
     toggleNavbar() {

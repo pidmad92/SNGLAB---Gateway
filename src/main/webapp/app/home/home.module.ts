@@ -8,7 +8,7 @@ import { HOME_ROUTE, HomeComponent } from './';
 @NgModule({
     imports: [
         GatewaySharedModule,
-        RouterModule.forRoot([ HOME_ROUTE ], { useHash: true })
+        RouterModule.forRoot( HOME_ROUTE , { useHash: true })
     ],
     declarations: [
         HomeComponent,

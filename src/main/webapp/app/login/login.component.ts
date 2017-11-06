@@ -1,37 +1,64 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit, Renderer, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { JhiEventManager } from 'ng-jhipster';
 
-import { AuthenticationService } from './login.service';
+import { LoginService } from '../shared/login/login.service';
+import { StateStorageService } from '../shared/auth/state-storage.service';
 
 @Component({
-    moduleId: module.id,
-    templateUrl: 'login.component.html'
+    selector: 'jhi-login',
+    templateUrl: 'login.component.html',
+    styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit {
-    model: any = {};
-    loading = false;
-    error = '';
+export class LoginComponent implements AfterViewInit {
+    authenticationError: boolean;
+    password: string;
+    rememberMe: boolean;
+    username: string;
+    credentials: any;
 
     constructor(
+        private eventManager: JhiEventManager,
+        private loginService: LoginService,
+        private stateStorageService: StateStorageService,
+        private elementRef: ElementRef,
+        private renderer: Renderer,
         private router: Router,
-        private authenticationService: AuthenticationService) { }
+    ) { }
 
-    ngOnInit() {
-        // reset login status
-        this.authenticationService.logout();
+    ngAfterViewInit() {
+        this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#username'), 'focus', []);
     }
 
     login() {
-        this.loading = true;
-        this.authenticationService.login(this.model.username, this.model.password)
-            .subscribe( result => {
-                if (result === true) {
-                    this.router.navigate(['/']);
-                } else {
-                    this.error = 'Username or password is incorrect';
-                    this.loading = false;
-                }
+        this.loginService.login({
+            username: this.username,
+            password: this.password,
+            rememberMe: this.rememberMe
+        }).then(() => {
+            this.authenticationError = false;
+            // this.activeModal.dismiss('login success');
+            this.router.navigate(['/']);
+            if (this.router.url === '/register' || (/^\/activate\//.test(this.router.url)) ||
+                (/^\/reset\//.test(this.router.url))) {
+                this.router.navigate(['']);
+            }
+
+            this.eventManager.broadcast({
+                name: 'authenticationSuccess',
+                content: 'Sending Authentication Success'
             });
+
+            // // previousState was set in the authExpiredInterceptor before being redirected to login modal.
+            // // since login is succesful, go to stored previousState and clear previousState
+            const redirect = this.stateStorageService.getUrl();
+            if (redirect) {
+                this.stateStorageService.storeUrl(null);
+                this.router.navigate([redirect]);
+            }
+        }).catch(() => {
+            this.authenticationError = true;
+        });
     }
 }

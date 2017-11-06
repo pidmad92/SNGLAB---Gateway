@@ -1,4 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { customHttpProvider } from '../blocks/interceptor/http.provider';
 
 import { GatewayExpedienteModule } from './expediente/expediente.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
@@ -10,7 +11,7 @@ import { GatewayExpedienteModule } from './expediente/expediente.module';
     ],
     declarations: [],
     entryComponents: [],
-    providers: [],
+    providers: [customHttpProvider()],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class GatewayEntityModule {}
