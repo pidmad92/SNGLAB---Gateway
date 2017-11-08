@@ -1,6 +1,6 @@
 
 <div *ngIf="datlaboral">
-    <h2><span jhiTranslate="gatewayApp.datlaboral.detail.title">Datlaboral</span> {{datlaboral.id}}</h2>
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.datlaboral.detail.title">Datlaboral</span> {{datlaboral.id}}</h4>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
@@ -87,7 +87,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'datlaboral/'+ datlaboral.id + '/edit'} }]"
+            [routerLink]="['/consultas', { outlets: { popup: 'datlaboral/'+ datlaboral.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

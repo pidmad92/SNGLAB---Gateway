@@ -30,7 +30,11 @@ export class LeftbarComponent implements OnInit {
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
-        this.aplicacion = 'consultas';
+        if (router.url.indexOf('seguridad') === 1) {
+            this.aplicacion = 'seguridad';
+        } else if (router.url.indexOf('consultas') === 1) {
+            this.aplicacion = 'consultas';
+        }
     }
 
     ngOnInit() {

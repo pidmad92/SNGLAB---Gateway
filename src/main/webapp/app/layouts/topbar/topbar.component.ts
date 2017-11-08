@@ -31,6 +31,14 @@ export class TopbarComponent implements OnInit {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
     }
+    updateModule($event) {
+        const ruta = $event.target.value;
+        if (ruta === '0') {
+            this.router.navigate(['/seguridad/aplicacion']);
+        } else if (ruta === '2') {
+            this.router.navigate(['/consultas/atencion']);
+        }
+    }
 
     ngOnInit() {
         this.profileService.getProfileInfo().subscribe((profileInfo) => {
@@ -57,36 +65,76 @@ export class TopbarComponent implements OnInit {
     }
 
     toggleNavbar() {
-        if ($( window ).width() > 992) {
-            $('.left-col').toggleClass('col-lg-2').toggleClass('col-lg-1').toggleClass('active'); // reduce el menu vertical
-            $('.right-col').toggleClass('col-lg-11').toggleClass('col-12').toggleClass('col-lg-10');
-            $('.logo a span').toggleClass('active'); // desaparece la letra del logo
-            $('.welcome').toggleClass('active'); // desaparece el bienvenido
-            $('.left-col nav h3').toggleClass('active'); // desaparece los titulo
-            $('nav a.a-menu').toggleClass('d-flex flex-column align-items-center'); // poner en vertical el contenido del menu vertical
-            $('.fa-chevron-down').toggleClass('active');
-            $('.level-two').toggleClass('level-two-min');
+        if ($( window ).width() >= 992) {
+            this.large();
         }
-        if ($( window ).width() < 992) {
-            $('.left-col').toggleClass('active');
-            $('a.logo span').toggleClass('active');
-            // $('.left-col').animate({width: ['toggle']}, 'fast', 'linear'); // reduce el menu vertical
-            $('.right-col').toggleClass('col-12').toggleClass('col-10');
-            $('.welcome').addClass('active'); // desaparece el bienvenido
-            // $('.left-col nav h3').addClass('active'); // desaparece los titulo
-            $('nav a.a-menu').addClass('d-flex flex-column align-items-center'); // poner en vertical el contenido del menu vertical
-            $('.fa-chevron-down').toggleClass('active');
-            $('.level-two').toggleClass('level-two-min');
+        if ($( window ).width() >= 768 && $( window ).width() < 992) {
+            this.medium();
         }
-        // $('.left-col').toggleClass('active');
-        // $('.logo a span').toggleClass('active');
-        // $('.welcome').toggleClass('active');
-        // $('.left-col nav h3').toggleClass('active');
-        // $('nav a').toggleClass('d-flex flex-column align-items-center');
-        // $('.fa-chevron-down').toggleClass('active');
-        // $('#sidebar-nav').toggleClass('normalizar');
-        // $('.level-two').toggleClass('level-two-min');
-        // this.isNavbarCollapsed = !this.isNavbarCollapsed;
+        if ($( window ).width() >= 576 && $( window ).width() < 768) {
+            this.small();
+        }
+        if ($( window ).width() < 576) {
+            this.xsmall();
+        }
+    }
+    large() {
+        $('.left-col').toggleClass('col-lg-2').toggleClass('col-lg-1');
+        $('.right-col').toggleClass('col-lg-10').toggleClass('col-lg-11');
+        $('.logo span').toggleClass('active'); // desaparece la letra del logo
+        $('.welcome').toggleClass('active'); // desaparece el welcome
+        $('.left-col nav h3').toggleClass('active'); // desaparece el titulo
+        $('nav a.a-menu').toggleClass('flex-lg-row'); // se convierte en columna
+        $('.level-two').toggleClass('level-two-min'); // el submenu cambia absolute
+        $('.fa-chevron-down').toggleClass('active');
+    }
+    medium() {
+        $('header .left-col').toggleClass('col-lg-2').toggleClass('col-lg-1');
+        $('header .right-col').toggleClass('col-lg-10').toggleClass('col-lg-11');
+        $('section .left-col').toggleClass('col-lg-2').toggleClass('col-lg-1').toggleClass('active-zero');
+        $('section .right-col').toggleClass('col-10').toggleClass('col-sm-10').toggleClass('col-md-10').toggleClass('col-lg-10')
+                               .toggleClass('col-12').toggleClass('col-sm-12').toggleClass('col-md-12').toggleClass('col-lg-11');
+        $('footer .left-col').toggleClass('col-lg-2').toggleClass('col-lg-1').toggleClass('active-zero');
+        $('footer .right-col').toggleClass('col-10').toggleClass('col-sm-10').toggleClass('col-md-10').toggleClass('col-lg-10')
+                              .toggleClass('col-12').toggleClass('col-sm-12').toggleClass('col-md-12').toggleClass('col-lg-11');
+        $('.logo span').toggleClass('active');
+        $('.welcome').toggleClass('active');
+        $('.left-col nav h3').toggleClass('active');
+        $('nav a.a-menu').toggleClass('flex-lg-row');
+        $('.level-two').toggleClass('level-two-min');
+        $('.fa-chevron-down').toggleClass('active');
+    }
+    small() {
+        $('header .left-col').toggleClass('col-lg-2').toggleClass('col-lg-1');
+        $('header .right-col').toggleClass('col-lg-10').toggleClass('col-lg-11');
+        $('section .left-col').toggleClass('col-lg-2').toggleClass('col-lg-1').toggleClass('active-zero');
+        $('section .right-col').toggleClass('col-10').toggleClass('col-sm-10').toggleClass('col-md-10').toggleClass('col-lg-10')
+                               .toggleClass('col-12').toggleClass('col-sm-12').toggleClass('col-md-12').toggleClass('col-lg-11');
+        $('footer .left-col').toggleClass('col-lg-2').toggleClass('col-lg-1').toggleClass('active-zero');
+        $('footer .right-col').toggleClass('col-10').toggleClass('col-sm-10').toggleClass('col-md-10').toggleClass('col-lg-10')
+                              .toggleClass('col-12').toggleClass('col-sm-12').toggleClass('col-md-12').toggleClass('col-lg-11');
+        $('.logo span').toggleClass('active');
+        $('.welcome').toggleClass('active');
+        $('.left-col nav h3').toggleClass('active');
+        $('nav a.a-menu').toggleClass('flex-lg-row');
+        $('.level-two').toggleClass('level-two-min');
+        $('.fa-chevron-down').toggleClass('active');
+    }
+    xsmall() {
+        $('header .left-col').toggleClass('col-lg-2').toggleClass('col-lg-1');
+        $('header .right-col').toggleClass('col-lg-10').toggleClass('col-lg-11');
+        $('section .left-col').toggleClass('col-lg-2').toggleClass('col-lg-1').toggleClass('active-zero');
+        $('section .right-col').toggleClass('col-10').toggleClass('col-sm-10').toggleClass('col-md-10').toggleClass('col-lg-10')
+                               .toggleClass('col-12').toggleClass('col-sm-12').toggleClass('col-md-12').toggleClass('col-lg-11');
+        $('footer .left-col').toggleClass('col-lg-2').toggleClass('col-lg-1').toggleClass('active-zero');
+        $('footer .right-col').toggleClass('col-10').toggleClass('col-sm-10').toggleClass('col-md-10').toggleClass('col-lg-10')
+                              .toggleClass('col-12').toggleClass('col-sm-12').toggleClass('col-md-12').toggleClass('col-lg-11');
+        $('.logo span').toggleClass('active');
+        $('.welcome').toggleClass('active');
+        $('.left-col nav h3').toggleClass('active');
+        $('nav a.a-menu').toggleClass('flex-lg-row');
+        $('.level-two').toggleClass('level-two-min');
+        $('.fa-chevron-down').toggleClass('active');
     }
     getImageUrl() {
         return this.isAuthenticated() ? this.principal.getImageUrl() : null;

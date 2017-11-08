@@ -6,18 +6,14 @@ import { Ng2Webstorage } from 'ng2-webstorage';
 import { RouterModule } from '@angular/router';
 
 import { GatewaySharedModule, UserRouteAccessService } from './shared';
-import {  } from './shared/auth/user-login-route.service';
 import { GatewayHomeModule } from './home/home.module';
-import { GatewayAdminModule } from './admin/admin.module';
 import { GatewayAccountModule } from './account/account.module';
-import { GatewayEntityModule } from './entities/entity.module';
 import { LoginComponent } from './login/login.component';
 
 import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 
-import { entityRoute, adminRoute, loginRoute } from './app.routing';
-
+import { entityRoute, adminRoute, loginRoute, seguridadRoute, consultasRoute } from './app.routing';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 
 import {
@@ -36,7 +32,9 @@ import {
 const LAZY_ROUTES = [
     adminRoute,
     entityRoute,
-    loginRoute
+    loginRoute,
+    seguridadRoute,
+    consultasRoute
 ];
 
 @NgModule({
@@ -47,9 +45,7 @@ const LAZY_ROUTES = [
         RouterModule.forRoot(LAZY_ROUTES, { useHash: true }),
         GatewaySharedModule,
         GatewayHomeModule,
-        GatewayAdminModule,
         GatewayAccountModule,
-        // GatewayEntityModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
@@ -69,6 +65,6 @@ const LAZY_ROUTES = [
         PaginationConfig,
         UserRouteAccessService
     ],
-    bootstrap: [ LoginComponent ]
+    bootstrap: [ JhiMainComponent ]
 })
 export class GatewayAppModule {}

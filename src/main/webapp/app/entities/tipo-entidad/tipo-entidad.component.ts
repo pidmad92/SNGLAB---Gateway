@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } from 'ng-jhipster';
 
 import { TipoEntidad } from './tipo-entidad.model';
 import { TipoEntidadService } from './tipo-entidad.service';
@@ -32,6 +32,7 @@ currentAccount: any;
     constructor(
         private tipoEntidadService: TipoEntidadService,
         private parseLinks: JhiParseLinks,
+        private languageService: JhiLanguageService,
         private jhiAlertService: JhiAlertService,
         private principal: Principal,
         private activatedRoute: ActivatedRoute,

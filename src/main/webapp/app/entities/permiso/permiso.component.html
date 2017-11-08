@@ -1,13 +1,13 @@
 <div>
-    <h2>
+    <h4 class="title my-3">
         <span jhiTranslate="gatewayApp.permiso.home.title">Permisos</span>
-        <button class="btn btn-primary float-right jh-create-entity create-permiso" [routerLink]="['/', { outlets: { popup: ['permiso-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-permiso" [routerLink]="['/seguridad', { outlets: { popup: ['permiso-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.permiso.home.createLabel">
             Create new Permiso
             </span>
         </button>
-    </h2>
+    </h4>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -53,14 +53,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'permiso/'+ permiso.id + '/edit'} }]"
+                                [routerLink]="['/seguridad', { outlets: { popup: 'permiso/'+ permiso.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'permiso/'+ permiso.id + '/delete'} }]"
+                                [routerLink]="['/seguridad', { outlets: { popup: 'permiso/'+ permiso.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

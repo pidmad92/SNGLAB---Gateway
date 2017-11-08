@@ -80,4 +80,4 @@ import { GatewaySubregilaboModule } from './subregilabo/subregilabo.module';
     providers: [customHttpProvider()],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class SeguridadModule {}
+export class ConsultasModule {}

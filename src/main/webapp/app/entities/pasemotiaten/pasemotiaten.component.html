@@ -1,13 +1,13 @@
 <div>
-    <h2>
+    <h4 class="title my-3">
         <span jhiTranslate="gatewayApp.pasemotiaten.home.title">Pasemotiatens</span>
-        <button class="btn btn-primary float-right jh-create-entity create-pasemotiaten" [routerLink]="['/', { outlets: { popup: ['pasemotiaten-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-pasemotiaten" [routerLink]="['/consultas', { outlets: { popup: ['pasemotiaten-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.pasemotiaten.home.createLabel">
             Create new Pasemotiaten
             </span>
         </button>
-    </h2>
+    </h4>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -71,14 +71,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'pasemotiaten/'+ pasemotiaten.id + '/edit'} }]"
+                                [routerLink]="['/consultas', { outlets: { popup: 'pasemotiaten/'+ pasemotiaten.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'pasemotiaten/'+ pasemotiaten.id + '/delete'} }]"
+                                [routerLink]="['/consultas', { outlets: { popup: 'pasemotiaten/'+ pasemotiaten.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

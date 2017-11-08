@@ -1,6 +1,6 @@
 
 <div *ngIf="sucesor">
-    <h2><span jhiTranslate="gatewayApp.sucesor.detail.title">Sucesor</span> {{sucesor.id}}</h2>
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.sucesor.detail.title">Sucesor</span> {{sucesor.id}}</h4>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
@@ -57,7 +57,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'sucesor/'+ sucesor.id + '/edit'} }]"
+            [routerLink]="['/consultas', { outlets: { popup: 'sucesor/'+ sucesor.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

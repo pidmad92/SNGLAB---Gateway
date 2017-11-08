@@ -1,13 +1,13 @@
 <div>
-    <h2>
+    <h4 class="title my-3">
         <span jhiTranslate="gatewayApp.motivocese.home.title">Motivocese</span>
-        <button class="btn btn-primary float-right jh-create-entity create-motivocese" [routerLink]="['/', { outlets: { popup: ['motivocese-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-motivocese" [routerLink]="['/consultas', { outlets: { popup: ['motivocese-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.motivocese.home.createLabel">
             Create new Motivocese
             </span>
         </button>
-    </h2>
+    </h4>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -61,14 +61,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'motivocese/'+ motivocese.id + '/edit'} }]"
+                                [routerLink]="['/consultas', { outlets: { popup: 'motivocese/'+ motivocese.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'motivocese/'+ motivocese.id + '/delete'} }]"
+                                [routerLink]="['/consultas', { outlets: { popup: 'motivocese/'+ motivocese.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

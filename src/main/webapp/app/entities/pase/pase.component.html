@@ -1,13 +1,13 @@
 <div>
-    <h2>
+    <h4 class="title my-3">
         <span jhiTranslate="gatewayApp.pase.home.title">Pases</span>
-        <button class="btn btn-primary float-right jh-create-entity create-pase" [routerLink]="['/', { outlets: { popup: ['pase-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-pase" [routerLink]="['/consultas', { outlets: { popup: ['pase-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.pase.home.createLabel">
             Create new Pase
             </span>
         </button>
-    </h2>
+    </h4>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -67,14 +67,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'pase/'+ pase.id + '/edit'} }]"
+                                [routerLink]="['/consultas', { outlets: { popup: 'pase/'+ pase.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'pase/'+ pase.id + '/delete'} }]"
+                                [routerLink]="['/consultas', { outlets: { popup: 'pase/'+ pase.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

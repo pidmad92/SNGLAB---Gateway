@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } from 'ng-jhipster';
 
 import { Discapacidad } from './discapacidad.model';
 import { DiscapacidadService } from './discapacidad.service';
@@ -20,6 +20,7 @@ discapacidads: Discapacidad[];
     constructor(
         private discapacidadService: DiscapacidadService,
         private jhiAlertService: JhiAlertService,
+        private languageService: JhiLanguageService,
         private eventManager: JhiEventManager,
         private activatedRoute: ActivatedRoute,
         private principal: Principal

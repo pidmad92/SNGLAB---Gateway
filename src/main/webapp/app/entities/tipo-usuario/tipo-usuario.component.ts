@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } from 'ng-jhipster';
 
 import { TipoUsuario } from './tipo-usuario.model';
 import { TipoUsuarioService } from './tipo-usuario.service';
@@ -33,6 +33,7 @@ currentAccount: any;
         private tipoUsuarioService: TipoUsuarioService,
         private parseLinks: JhiParseLinks,
         private jhiAlertService: JhiAlertService,
+        private languageService: JhiLanguageService,
         private principal: Principal,
         private activatedRoute: ActivatedRoute,
         private router: Router,

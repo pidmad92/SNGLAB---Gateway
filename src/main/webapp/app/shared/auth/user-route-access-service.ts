@@ -28,7 +28,6 @@ export class UserRouteAccessService implements CanActivate {
             if (!authorities || authorities.length === 0) {
                 // this.router.navigate(['/login'], { queryParams: { returnUrl: url }});
                 if (url === '/login' && account) {
-                    console.log('3');
                     this.router.navigate(['/']);
                     return false;
                 }else if (url === '/login' && !account) {
@@ -38,7 +37,6 @@ export class UserRouteAccessService implements CanActivate {
             }
 
             if (account) {
-            console.log('4');
               return principal.hasAnyAuthority(authorities).then(
                 (response) => {
                   if (response) {
@@ -48,7 +46,6 @@ export class UserRouteAccessService implements CanActivate {
                 }
               );
             }
-            console.log(authorities, authorities.length);
             this.stateStorageService.storeUrl(url);
             this.router.navigate(['/login']).then(() => {
                 // only show the login dialog, if the user hasn't logged in yet

@@ -5,7 +5,7 @@ import { UserRouteAccessService } from './shared/auth/user-route-access-service'
 
 export const adminRoute: Route = {
     path: 'admin',
-    loadChildren: 'admin/admin.module#AdminModule'
+    loadChildren: './admin/admin.module#GatewayAdminModule'
 };
 export const entityRoute: Route = {
     path: 'entity',
@@ -14,12 +14,12 @@ export const entityRoute: Route = {
 
 export const seguridadRoute: Route = {
     path: 'seguridad',
-    loadChildren: './entities/seguridad.module#SeguridadModule'
+    loadChildren: './applications/seguridad/seguridad.module#GatewaySeguridadModule'
 };
 
-export const conciliacionesRoute: Route = {
-    path: 'conciliaciones',
-    loadChildren: './entities/consultas.module#ConsultasModule'
+export const consultasRoute: Route = {
+    path: 'consultas',
+    loadChildren: './applications/consultas/consultas.module#GatewayConsultasModule'
 };
 
 export const loginRoute: Route = {

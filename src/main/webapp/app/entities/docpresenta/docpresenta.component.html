@@ -1,13 +1,13 @@
 <div>
-    <h2>
+    <h4 class="title my-3">
         <span jhiTranslate="gatewayApp.docpresenta.home.title">Docpresentas</span>
-        <button class="btn btn-primary float-right jh-create-entity create-docpresenta" [routerLink]="['/', { outlets: { popup: ['docpresenta-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-docpresenta" [routerLink]="['/consultas', { outlets: { popup: ['docpresenta-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.docpresenta.home.createLabel">
             Create new Docpresenta
             </span>
         </button>
-    </h2>
+    </h4>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -71,14 +71,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'docpresenta/'+ docpresenta.id + '/edit'} }]"
+                                [routerLink]="['/consultas', { outlets: { popup: 'docpresenta/'+ docpresenta.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'docpresenta/'+ docpresenta.id + '/delete'} }]"
+                                [routerLink]="['/consultas', { outlets: { popup: 'docpresenta/'+ docpresenta.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

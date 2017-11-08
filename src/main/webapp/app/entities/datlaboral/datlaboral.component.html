@@ -1,13 +1,13 @@
 <div>
-    <h2>
+    <h4 class="title my-3">
         <span jhiTranslate="gatewayApp.datlaboral.home.title">Datlaborals</span>
-        <button class="btn btn-primary float-right jh-create-entity create-datlaboral" [routerLink]="['/', { outlets: { popup: ['datlaboral-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-datlaboral" [routerLink]="['/consultas', { outlets: { popup: ['datlaboral-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.datlaboral.home.createLabel">
             Create new Datlaboral
             </span>
         </button>
-    </h2>
+    </h4>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -97,14 +97,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'datlaboral/'+ datlaboral.id + '/edit'} }]"
+                                [routerLink]="['/consultas', { outlets: { popup: 'datlaboral/'+ datlaboral.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'datlaboral/'+ datlaboral.id + '/delete'} }]"
+                                [routerLink]="['/consultas', { outlets: { popup: 'datlaboral/'+ datlaboral.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

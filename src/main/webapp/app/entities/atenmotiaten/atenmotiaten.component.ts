@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } from 'ng-jhipster';
 
 import { Atenmotiaten } from './atenmotiaten.model';
 import { AtenmotiatenService } from './atenmotiaten.service';
@@ -20,6 +20,7 @@ atenmotiatens: Atenmotiaten[];
     constructor(
         private atenmotiatenService: AtenmotiatenService,
         private jhiAlertService: JhiAlertService,
+        private languageService: JhiLanguageService,
         private eventManager: JhiEventManager,
         private activatedRoute: ActivatedRoute,
         private principal: Principal

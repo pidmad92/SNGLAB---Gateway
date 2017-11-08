@@ -1,6 +1,6 @@
 
 <div *ngIf="menuPerfil">
-    <h2><span jhiTranslate="gatewayApp.menuPerfil.detail.title">Menu Perfil</span> {{menuPerfil.id}}</h2>
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.menuPerfil.detail.title">Menu Perfil</span> {{menuPerfil.id}}</h4>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
@@ -37,7 +37,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'menu-perfil/'+ menuPerfil.id + '/edit'} }]"
+            [routerLink]="['/seguridad', { outlets: { popup: 'menu-perfil/'+ menuPerfil.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
