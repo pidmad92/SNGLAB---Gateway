@@ -39,6 +39,7 @@ import { GatewaySubregilaboModule } from '../../entities/subregilabo/subregilabo
 
 import { AtencionTrabajadorModule } from './atencion-trabajador/atencion-trabajador.module';
 import { AtencionEmpleadorModule } from './atencion-empleador/atencion-empleador.module';
+
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
