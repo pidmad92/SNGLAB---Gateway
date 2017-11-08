@@ -2,23 +2,23 @@
     "gatewayApp": {
         "modulo" : {
             "home": {
-                "title": "Modulos",
-                "createLabel": "Crear nuevo Modulo",
-                "createOrEditLabel": "Crear o editar Modulo",
-                "search": "Search for Modulo"
+                "title": "Mantenimiento de Modulos",
+                "createLabel": "Registrar Modulo",
+                "createOrEditLabel": "Registro de Modulo",
+                "search": "Buscar un Modulo"
             },
             "delete": {
-                "question": "¿Seguro que quiere eliminar Modulo {{ id }}?"
+                "question": "¿Seguro que quiere eliminar este Modulo?"
             },
             "detail": {
                 "title": "Modulo"
             },
-            "varNomModulo": "Var Nom Modulo",
-            "varDescModulo": "Var Desc Modulo",
-            "numEstModulo": "Num Est Modulo",
-            "varUsuarioLog": "Var Usuario Log",
-            "datFechaLog": "Dat Fecha Log",
-            "numEliminar": "Num Eliminar",
+            "varNomModulo": "Nombre",
+            "varDescModulo": "Descripción",
+            "numEstModulo": "Estado",
+            "varUsuarioLog": "Usuario_log",
+            "datFechaLog": "Fecha_log",
+            "numEliminar": "Eliminar_log",
             "aplicacion": "Aplicacion",
             "moduloEntidad": "Modulo Entidad",
             "menu": "Menu",
@@ -27,9 +27,9 @@
     },
     "seguridadApp": {
         "modulo" : {
-            "created": "Un nuevo Modulo ha sido creado con el identificador {{ param }}",
-            "updated": "Un Modulo ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Modulo ha sido eliminado con el identificador {{ param }}"
+            "created": "Un nuevo Modulo ha sido creado",
+            "updated": "Un Modulo ha sido actualizado",
+            "deleted": "Un Modulo ha sido eliminado"
         }
     }
 }

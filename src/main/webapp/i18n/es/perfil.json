@@ -2,23 +2,23 @@
     "gatewayApp": {
         "perfil" : {
             "home": {
-                "title": "Perfils",
-                "createLabel": "Crear nuevo Perfil",
-                "createOrEditLabel": "Crear o editar Perfil",
-                "search": "Search for Perfil"
+                "title": "Mantenimiento de Perfiles",
+                "createLabel": "Registrar Perfil",
+                "createOrEditLabel": "Registro de Perfil",
+                "search": "Buscar un Perfil"
             },
             "delete": {
-                "question": "¿Seguro que quiere eliminar Perfil {{ id }}?"
+                "question": "¿Seguro que quiere eliminar este Perfil?"
             },
             "detail": {
                 "title": "Perfil"
             },
-            "varNomPerfil": "Var Nom Perfil",
-            "varDescPerfil": "Var Desc Perfil",
-            "numEstPerfil": "Num Est Perfil",
-            "varUsuarioLog": "Var Usuario Log",
-            "datFechaLog": "Dat Fecha Log",
-            "numEliminar": "Num Eliminar",
+            "varNomPerfil": "Nombre",
+            "varDescPerfil": "Descripcion",
+            "numEstPerfil": "Estado",
+            "varUsuarioLog": "Usuario_Log",
+            "datFechaLog": "Fecha_Log",
+            "numEliminar": "Eliminar_Log",
             "modulo": "Modulo",
             "usuPer": "Usu Per",
             "menuPerfil": "Menu Perfil"
@@ -26,9 +26,9 @@
     },
     "seguridadApp": {
         "perfil" : {
-            "created": "Un nuevo Perfil ha sido creado con el identificador {{ param }}",
-            "updated": "Un Perfil ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Perfil ha sido eliminado con el identificador {{ param }}"
+            "created": "Perfil creado satisfactoriamente",
+            "updated": "Perfil actualizado satisfactoriamente",
+            "deleted": "Perfil eliminado satisfactoriamente"
         }
     }
 }

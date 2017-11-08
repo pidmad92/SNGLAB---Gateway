@@ -2,32 +2,32 @@
     "gatewayApp": {
         "aplicacion" : {
             "home": {
-                "title": "Aplicacions",
-                "createLabel": "Crear nuevo Aplicacion",
-                "createOrEditLabel": "Crear o editar Aplicacion",
-                "search": "Search for Aplicacion"
+                "title": "Mantenimiento de Aplicaciones",
+                "createLabel": "Registrar Aplicacion",
+                "createOrEditLabel": "Registro de Aplicacion",
+                "search": "Buscar una Aplicación"
             },
             "delete": {
-                "question": "¿Seguro que quiere eliminar Aplicacion {{ id }}?"
+                "question": "¿Seguro que quiere eliminar esta Aplicacion?"
             },
             "detail": {
                 "title": "Aplicacion"
             },
-            "varNomApp": "Var Nom App",
-            "varDescApp": "Var Desc App",
-            "varUrlApp": "Var Url App",
-            "numEstApp": "Num Est App",
-            "varUsuarioLog": "Var Usuario Log",
-            "datFechaLog": "Dat Fecha Log",
-            "numEliminar": "Num Eliminar",
+            "varNomApp": "Nombre",
+            "varDescApp": "Descripción",
+            "varUrlApp": "Url de la Aplicación",
+            "numEstApp": "Estado",
+            "varUsuarioLog": "Usuario_log",
+            "datFechaLog": "Fecha_log",
+            "numEliminar": "Eliminar_log",
             "modulo": "Modulo"
         }
     },
     "seguridadApp": {
         "aplicacion" : {
-            "created": "Un nuevo Aplicacion ha sido creado con el identificador {{ param }}",
-            "updated": "Un Aplicacion ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Aplicacion ha sido eliminado con el identificador {{ param }}"
+            "created": "Una nueva Aplicacion ha sido creada",
+            "updated": "Una Aplicacion ha sido actualizada",
+            "deleted": "Una Aplicacion ha sido eliminada"
         }
     }
 }

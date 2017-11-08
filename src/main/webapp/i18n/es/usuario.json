@@ -2,45 +2,50 @@
     "gatewayApp": {
         "usuario" : {
             "home": {
-                "title": "Usuarios",
-                "createLabel": "Crear nuevo Usuario",
-                "createOrEditLabel": "Crear o editar Usuario",
-                "search": "Search for Usuario"
+                "title": "Mantenimiento de Usuarios",
+                "createLabel": "Registrar Usuario",
+                "createOrEditLabel": "Registro de Usuario",
+                "createLabelGroup": "Mantenimiento de Grupos",
+                "createLabelGroupAdd": "Registrar Grupos",
+                "createLabelHorario": "Mantenimiento de Horarios",
+                "createLabelHorarioAdd": "Registrar Horarios",
+                "search": "Buscar un Usuario"
             },
             "delete": {
-                "question": "¿Seguro que quiere eliminar Usuario {{ id }}?"
+                "question": "¿Seguro que quiere eliminar este Usuario?"
             },
             "detail": {
                 "title": "Usuario"
             },
-            "varNomUsuario": "Var Nom Usuario",
-            "varLoginUsuario": "Var Login Usuario",
-            "varInicialUsuario": "Var Inicial Usuario",
-            "numEstUsuario": "Num Est Usuario",
-            "varMotivUsuario": "Var Motiv Usuario",
-            "varDocContacto": "Var Doc Contacto",
-            "varNomContacto": "Var Nom Contacto",
-            "varRefContacto": "Var Ref Contacto",
-            "varUsuarioLog": "Var Usuario Log",
-            "datFechaLog": "Dat Fecha Log",
-            "numEliminar": "Num Eliminar",
-            "varDireccionIp": "Var Direccion Ip",
-            "varMacAddress": "Var Mac Address",
-            "varNombrePc": "Var Nombre Pc",
-            "varCodSeguridad": "Var Cod Seguridad",
-            "datFecTermino": "Dat Fec Termino",
-            "varPtoControl": "Var Pto Control",
-            "tipoUsuario": "Tipo Usuario",
-            "usuarioGrupo": "Usuario Grupo",
-            "usuarioHorario": "Usuario Horario",
-            "usuPer": "Usu Per"
+            "varNomUsuario": "Nombre",
+            "varLoginUsuario": "Login",
+            "varInicialUsuario": "Inicial",
+            "numEstUsuario": "Estado",
+            "varMotivUsuario": "Motivo",
+            "varDocContacto": "Documento",
+            "varNomContacto": "Nombre de Contacto",
+            "varRefContacto": "Referencia",
+            "varUsuarioLog": "Usuario_Log",
+            "datFechaLog": "Fecha_Log",
+            "numEliminar": "Eliminar_Log",
+            "varDireccionIp": "Dirección IP",
+            "varMacAddress": "Dirección MAC",
+            "varNombrePc": "Nombre de PC",
+            "varCodSeguridad": "Código de Seguridad",
+            "datFecTermino": "Fecha de Termino",
+            "varPtoControl": "Punto de Control",
+            "tipoUsuario": "Tipo",
+            "usuarioGrupo": "Grupos",
+            "usuarioHorario": "Horarios",
+            "usuPer": "Perfiles",
+            "user": "User"
         }
     },
     "seguridadApp": {
         "usuario" : {
-            "created": "Un nuevo Usuario ha sido creado con el identificador {{ param }}",
-            "updated": "Un Usuario ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Usuario ha sido eliminado con el identificador {{ param }}"
+            "created": "Usuario creado satisfactoriamente",
+            "updated": "Usuario actualizado satisfactoriamente",
+            "deleted": "Usuario eliminado satisfactoriamente"
         }
     }
 }

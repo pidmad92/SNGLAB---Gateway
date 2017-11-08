@@ -2,30 +2,30 @@
     "gatewayApp": {
         "tipoUsuario" : {
             "home": {
-                "title": "Tipo Usuarios",
-                "createLabel": "Crear nuevo Tipo Usuario",
-                "createOrEditLabel": "Crear o editar Tipo Usuario",
-                "search": "Search for Tipo Usuario"
+                "title": "Mantenimiento de Tipo de Usuarios",
+                "createLabel": "Registrar Tipo Usuario",
+                "createOrEditLabel": "Registro de Tipo de Usuario",
+                "search": "Buscar un Tipo Usuario"
             },
             "delete": {
-                "question": "¿Seguro que quiere eliminar Tipo Usuario {{ id }}?"
+                "question": "¿Seguro que quiere eliminar este Tipo Usuario?"
             },
             "detail": {
                 "title": "Tipo Usuario"
             },
-            "varNomTpusuario": "Var Nom Tpusuario",
-            "varDescTpusuario": "Var Desc Tpusuario",
-            "varUsuarioLog": "Var Usuario Log",
-            "datFechaLog": "Dat Fecha Log",
-            "numEliminar": "Num Eliminar",
+            "varNomTpusuario": "Nombre del Tipo de Usuario",
+            "varDescTpusuario": "Descripcion del Tipo de Usuario",
+            "varUsuarioLog": "Usuario_Log",
+            "datFechaLog": "Fecha_Log",
+            "numEliminar": "Eliminar_Log",
             "usuario": "Usuario"
         }
     },
     "seguridadApp": {
         "tipoUsuario" : {
-            "created": "Un nuevo Tipo Usuario ha sido creado con el identificador {{ param }}",
-            "updated": "Un Tipo Usuario ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Tipo Usuario ha sido eliminado con el identificador {{ param }}"
+            "created": "Un nuevo Tipo Usuario ha sido creado",
+            "updated": "Un Tipo Usuario ha sido actualizado",
+            "deleted": "Un Tipo Usuario ha sido eliminado"
         }
     }
 }

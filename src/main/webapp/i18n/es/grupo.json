@@ -2,33 +2,33 @@
     "gatewayApp": {
         "grupo" : {
             "home": {
-                "title": "Grupos",
-                "createLabel": "Crear nuevo Grupo",
-                "createOrEditLabel": "Crear o editar Grupo",
-                "search": "Search for Grupo"
+                "title": "Mantenimiento de Grupos",
+                "createLabel": "Registrar Grupo",
+                "createOrEditLabel": "Registro de Grupo",
+                "search": "Buscar un Grupo"
             },
             "delete": {
-                "question": "¿Seguro que quiere eliminar Grupo {{ id }}?"
+                "question": "¿Seguro que quiere eliminar este Grupo?"
             },
             "detail": {
                 "title": "Grupo"
             },
-            "numCodLocal": "Num Cod Local",
-            "numEstGrupo": "Num Est Grupo",
-            "varNomGrupo": "Var Nom Grupo",
-            "varDescGrupo": "Var Desc Grupo",
-            "varUsuarioLog": "Var Usuario Log",
-            "datFechaLog": "Dat Fecha Log",
-            "numEliminar": "Num Eliminar",
+            "numCodLocal": "Código Local",
+            "numEstGrupo": "Estado",
+            "varNomGrupo": "Nombre",
+            "varDescGrupo": "Descripcion",
+            "varUsuarioLog": "Usuario_Log",
+            "datFechaLog": "Fecha_Log",
+            "numEliminar": "Eliminar_Log",
             "entidad": "Entidad",
-            "usuarioGrupo": "Usuario Grupo"
+            "usuarioGrupo": "Usuarios"
         }
     },
     "seguridadApp": {
         "grupo" : {
-            "created": "Un nuevo Grupo ha sido creado con el identificador {{ param }}",
-            "updated": "Un Grupo ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Grupo ha sido eliminado con el identificador {{ param }}"
+            "created": "Grupo creado satisfactoriamente",
+            "updated": "Grupo actualizado satisfactoriamente",
+            "deleted": "Grupo eliminado satisfactoriamente"
         }
     }
 }

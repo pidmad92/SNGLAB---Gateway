@@ -2,35 +2,34 @@
     "gatewayApp": {
         "menu" : {
             "home": {
-                "title": "Menus",
-                "createLabel": "Crear nuevo Menu",
-                "createOrEditLabel": "Crear o editar Menu",
-                "search": "Search for Menu"
+                "title": "Mantenimiento de Menus",
+                "createLabel": "Registrar Menu",
+                "createOrEditLabel": "Registro de Menu",
+                "search": "Buscar un Menu"
             },
             "delete": {
-                "question": "¿Seguro que quiere eliminar Menu {{ id }}?"
+                "question": "¿Seguro que quiere eliminar este Menu?"
             },
             "detail": {
                 "title": "Menu"
             },
-            "varNomMenu": "Var Nom Menu",
-            "numOrdenItem": "Num Orden Item",
-            "varUrlMenu": "Var Url Menu",
-            "numOpcion": "Num Opcion",
-            "varUsuarioLog": "Var Usuario Log",
-            "datFechaLog": "Dat Fecha Log",
-            "numEliminar": "Num Eliminar",
+            "varNomMenu": "Nombre",
+            "numOrdenItem": "Orden Item",
+            "varUrlMenu": "Url",
+            "numOpcion": "Opcion",
+            "varUsuarioLog": "Usuario_Log",
+            "datFechaLog": "Fecha_Log",
+            "numEliminar": "Eliminar_Log",
             "modulo": "Modulo",
-            "menu": "Menu",
-            "menu": "Menu",
-            "menuPerfil": "Menu Perfil"
+            "menu": "Menus",
+            "menuPerfil": "Perfiles"
         }
     },
     "seguridadApp": {
         "menu" : {
-            "created": "Un nuevo Menu ha sido creado con el identificador {{ param }}",
-            "updated": "Un Menu ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Menu ha sido eliminado con el identificador {{ param }}"
+            "created": "Menu creado satisfactoriamente",
+            "updated": "Menu actualizado satisfactoriamente",
+            "deleted": "Menu eliminado satisfactoriamente"
         }
     }
 }

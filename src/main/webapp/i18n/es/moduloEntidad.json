@@ -2,13 +2,13 @@
     "gatewayApp": {
         "moduloEntidad" : {
             "home": {
-                "title": "Modulo Entidads",
-                "createLabel": "Crear nuevo Modulo Entidad",
-                "createOrEditLabel": "Crear o editar Modulo Entidad",
-                "search": "Search for Modulo Entidad"
+                "title": "Mantenimiento de Modulo Entidades",
+                "createLabel": "Registrar Modulo Entidad",
+                "createOrEditLabel": "Registro Modulo Entidad",
+                "search": "Buscar un Modulo Entidad"
             },
             "delete": {
-                "question": "¿Seguro que quiere eliminar Modulo Entidad {{ id }}?"
+                "question": "¿Seguro que quiere eliminar Modulo Entidad?"
             },
             "detail": {
                 "title": "Modulo Entidad"
@@ -22,9 +22,9 @@
     },
     "seguridadApp": {
         "moduloEntidad" : {
-            "created": "Un nuevo Modulo Entidad ha sido creado con el identificador {{ param }}",
-            "updated": "Un Modulo Entidad ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Modulo Entidad ha sido eliminado con el identificador {{ param }}"
+            "created": "Un nuevo Modulo Entidad ha sido creado",
+            "updated": "Un Modulo Entidad ha sido actualizado",
+            "deleted": "Un Modulo Entidad ha sido eliminado"
         }
     }
 }
