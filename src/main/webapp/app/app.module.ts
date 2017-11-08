@@ -14,6 +14,7 @@ import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 
 import { entityRoute, adminRoute, loginRoute, seguridadRoute, consultasRoute } from './app.routing';
+import { GatewayprimengModule } from './primeng/primeng.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 
 import {
@@ -46,6 +47,7 @@ const LAZY_ROUTES = [
         GatewaySharedModule,
         GatewayHomeModule,
         GatewayAccountModule,
+        GatewayprimengModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [

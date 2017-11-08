@@ -10,6 +10,24 @@
         </div>
       </div>
     </div>
+    <div class="my-2">
+        <h3>Consultas Trabajador</h3>
+        <ul class="level-one p-0" id="accordion">
+          <li routerLinkActive="active">
+            <a routerLink="consultas/atencion-trabajador" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+              <i class="fa fa-cubes px-2" aria-hidden="true"></i> <span>Registro de Atención Trabajador</span>
+            </a>
+          </li>
+        </ul>
+        <h3>Consultas Empleador</h3>
+        <ul class="level-one p-0" id="accordion">
+          <li routerLinkActive="active">
+            <a routerLink="consultas/atencion-empleador" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+              <i class="fa fa-cubes px-2" aria-hidden="true"></i> <span>Registro de Atención Empleador</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     <div class="my-2" *ngIf="aplicacion == 'seguridad'">
       <!-- <h3 class="pl-3 text-uppercase h3coll">MANTENIMIENTO DE MÓDULO DE SEGURIDAD</h3> -->
       <ul class="level-one mt-2 p-0" id="accordion" >
@@ -52,24 +70,6 @@
             <a routerLink="seguridad/grupo" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
               <i class="fa fa-users px-2" aria-hidden="true"></i> <span>Gestión de Grupo</span>
             </a>
-        </li>
-      </ul>
-    </div>
-    <div class="my-2" *ngIf="aplicacion == 'consultas'">
-      <h3>Consultas Trabajador</h3>
-      <ul class="level-one p-0" id="accordion">
-        <li routerLinkActive="active">
-          <a routerLink="consultas/atencion-trabajador" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
-            <i class="fa fa-cubes px-2" aria-hidden="true"></i> <span>Registro de Atención Trabajador</span>
-          </a>
-        </li>
-      </ul>
-      <h3>Consultas Empleador</h3>
-      <ul class="level-one p-0" id="accordion">
-        <li routerLinkActive="active">
-          <a routerLink="consultas/atencion-empleador" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
-            <i class="fa fa-cubes px-2" aria-hidden="true"></i> <span>Registro de Atención Empleador</span>
-          </a>
         </li>
       </ul>
     </div>
