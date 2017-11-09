@@ -1,0 +1,48 @@
+<h2>WIZARD</h2>
+<ul class="nav nav-tabs" id="myTab">
+	<div class="liner"></div>
+				
+	<!-- circular user icon -->
+	<li>
+		<a [routerLink]="['/consultas/wizard', { outlets: { wizard:['datos-trabajador'] } }]" data-toggle="tab" title="personal">
+			<span class="round-tabs one">
+				<i class="glyphicon glyphicon-user"></i>
+				PRUEBA 1
+			</span>
+		</a>
+	</li>
+
+	<!-- circular tasks icon -->
+	 <li>
+		<a [routerLink]="['/consultas/wizard', { outlets: { wizard: ['motivos-consulta'] } }]"title="work">
+			<span class="round-tabs two">
+				<i class="glyphicon glyphicon-tasks"></i>
+				PRUEBA 2
+			</span> 
+		</a>
+	</li>
+
+	<!-- circular home icon -->
+	<li >
+		<a [routerLink]="['/consultas/wizard', { outlets: { wizard:['motivos-consulta'] } }]" data-toggle="tab" title="address">
+			<span class="round-tabs three">
+				<i class="glyphicon glyphicon-home"></i>
+				PRUEBA 3
+			</span>
+		</a>
+	</li>
+
+	<!-- circular ok icon -->
+	<li>
+		<a  data-toggle="tab" title="completed">
+			<span class="round-tabs four">
+				<i class="glyphicon glyphicon-ok"></i>
+			</span>
+		</a>
+	</li>
+			
+</ul>
+
+<router-outlet name="wizard"></router-outlet>
+
+<h4>Footer</h4>
