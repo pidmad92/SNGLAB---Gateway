@@ -669,3 +669,83 @@ div.pl-0.align-self-center{
 ul.level-one.mt-2.p-0 i{
   text-align: center;
 }
+
+//Wizard
+body .ui-steps:before{
+  border: 1px solid #F90014;
+  border-bottom: 0px solid red;
+}
+body .ui-steps .ui-steps-item.ui-state-highlight .ui-steps-number {
+  background-color: #F90014;
+  color: #ffffff;
+  border-color: #F90014;
+}
+p-steps{
+  width:100%;
+}
+.ui-steps.steps-custom {
+  margin-bottom: 30px;
+}
+.ui-steps.steps-custom .ui-steps-item .ui-menuitem-link {
+  height: 10px;
+  padding: 0 1em;
+}
+.ui-steps.steps-custom .ui-steps-item .ui-steps-number {
+  background-color: #0081c2;
+  color: #FFFFFF;
+  display: inline-block;
+  width: 36px;
+  border-radius: 50%;
+  margin-top: -14px;
+  margin-bottom: 10px;
+}
+.ui-steps.steps-custom .ui-steps-item .ui-steps-title {
+  color: #F90014;
+}
+body .ui-steps .ui-steps-item.ui-state-highlight .ui-steps-title{
+  font-weight: 300;
+  font-size: 16px;
+  font-family: "FranklinGothicStdBC";
+  color: #F90014;
+}
+body .ui-steps .ui-steps-item .ui-menuitem-link .ui-steps-title{
+  font-weight: 300;
+  font-size: 16px;
+  font-family: "FranklinGothicStdBC";
+}
+
+
+.card-header:first-child{
+  border-radius: 0;
+}
+
+
+//TABLE
+body .ui-datatable .ui-datatable-tfoot>tr>td, .ui-datatable .ui-datatable-thead>tr>th {
+  font-weight: 400;
+}
+body .ui-datatable .ui-datatable-data>tr>td, .ui-datatable .ui-datatable-tfoot>tr>td, .ui-datatable .ui-datatable-thead>tr>th {
+  border-color: inherit;
+  box-sizing: border-box;
+  padding: .25em .5em;
+  border-width: 1px;
+  border-style: solid;
+}
+
+body .ui-datatable .ui-datatable-thead > tr > th, body .ui-datatable .ui-datatable-tfoot > tr > td {
+  background-color: #F90014;
+  font-size: 14px;
+  font-family: "FranklinGothicStdBC";
+  padding: .75em;
+  border-color: #d1d7dc;
+  color: #ffffff;
+}
+body .ui-datatable .ui-datatable-data>tr>td, .ui-datatable .ui-datatable-tfoot>tr>td, .ui-datatable .ui-datatable-thead>tr>th {
+  border-color: inherit;
+  font-size: 13px;
+  font-family: "FranklinGothicStdBC";
+  box-sizing: border-box;
+  padding: 3px 6px;
+  border-width: 1px;
+  border-style: solid;
+}
