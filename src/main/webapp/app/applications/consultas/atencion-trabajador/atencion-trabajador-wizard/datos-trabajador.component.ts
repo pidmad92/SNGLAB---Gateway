@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { Trabajador } from './trabajador.model';
-import { AtencionTrabajadorService } from './atencion-trabajador.service';
+import { Trabajador } from './../trabajador.model';
+import { AtencionTrabajadorService } from './../atencion-trabajador.service';
 import { MenuItem, Message } from 'primeng/primeng';
 
 @Component({

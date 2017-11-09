@@ -5,7 +5,9 @@ import { UserRouteAccessService } from '../../../shared';
 import { JhiPaginationUtil } from 'ng-jhipster';
 
 import { AtencionTrabajadorComponent } from './atencion-trabajador.component';
-import { DatosTrabajadorComponent } from './datos-trabajador.component';
+import { AtencionTrabajadorWizardComponent } from './atencion-trabajador-wizard.component';
+import { DatosTrabajadorComponent } from './atencion-trabajador-wizard/datos-trabajador.component';
+import { MotivosConsultaComponent } from './atencion-trabajador-wizard/motivos-consulta.component';
 // import { AccionadopPopupComponent } from './accionadop-dialog.component';
 // import { AccionadopDeletePopupComponent } from './accionadop-delete-dialog.component';
 
@@ -18,47 +20,38 @@ export const atencionTrabajadorRoute: Routes = [
             pageTitle: 'gatewayApp.accionadop.home.title'
         },
         canActivate: [UserRouteAccessService]
-    },
+    }
+];
+
+ export const accionadopPopupRoute: Routes = [
     {
-         path: 'datos-trabajador/:id',
-        component: DatosTrabajadorComponent,
+        path: 'wizard',
+        component: AtencionTrabajadorWizardComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'gatewayApp.accionadop.home.title'
         },
-        canActivate: [UserRouteAccessService]
+        canActivate: [UserRouteAccessService],
+        children: [
+            {
+                path: 'datos-trabajador',
+                component: DatosTrabajadorComponent,
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'gatewayApp.accionadop.home.title'
+                },
+                outlet: 'wizard'
+            },
+            {
+                path: 'motivos-consulta',
+                component: MotivosConsultaComponent,
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'gatewayApp.accionadop.home.title'
+                },
+                outlet: 'wizard'
+            }
+        ]
     }
-];
 
-// export const accionadopPopupRoute: Routes = [
-//     {
-//         path: 'accionadop-new',
-//         component: AccionadopPopupComponent,
-//         data: {
-//             authorities: ['ROLE_USER'],
-//             pageTitle: 'gatewayApp.accionadop.home.title'
-//         },
-//         canActivate: [UserRouteAccessService],
-//         outlet: 'popup'
-//     },
-//     {
-//         path: 'accionadop/:id/edit',
-//         component: AccionadopPopupComponent,
-//         data: {
-//             authorities: ['ROLE_USER'],
-//             pageTitle: 'gatewayApp.accionadop.home.title'
-//         },
-//         canActivate: [UserRouteAccessService],
-//         outlet: 'popup'
-//     },
-//     {
-//         path: 'accionadop/:id/delete',
-//         component: AccionadopDeletePopupComponent,
-//         data: {
-//             authorities: ['ROLE_USER'],
-//             pageTitle: 'gatewayApp.accionadop.home.title'
-//         },
-//         canActivate: [UserRouteAccessService],
-//         outlet: 'popup'
-//     }
-// ];
+];

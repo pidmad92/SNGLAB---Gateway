@@ -3,15 +3,18 @@ import { RouterModule } from '@angular/router';
 import { StepsModule } from 'primeng/primeng';
 
 import { GatewaySharedModule } from '../../../shared';
+import { DatosTrabajadorComponent } from './atencion-trabajador-wizard/datos-trabajador.component';
+import { MotivosConsultaComponent } from './atencion-trabajador-wizard/motivos-consulta.component';
 import { AtencionTrabajadorService,
     AtencionTrabajadorComponent,
-    DatosTrabajadorComponent,
-    atencionTrabajadorRoute
+    AtencionTrabajadorWizardComponent,
+    atencionTrabajadorRoute,
+    accionadopPopupRoute
 } from './';
 
 const ENTITY_STATES = [
     ...atencionTrabajadorRoute,
-    // ...accionadopPopupRoute,
+    ...accionadopPopupRoute,
 ];
 
 @NgModule({
@@ -22,7 +25,9 @@ const ENTITY_STATES = [
     ],
     declarations: [
         AtencionTrabajadorComponent,
+        AtencionTrabajadorWizardComponent,
         DatosTrabajadorComponent,
+        MotivosConsultaComponent,
         // AccionadopDetailComponent,
         // AccionadopDialogComponent,
         // AccionadopDeleteDialogComponent,
@@ -31,7 +36,9 @@ const ENTITY_STATES = [
     ],
     entryComponents: [
         AtencionTrabajadorComponent,
+        AtencionTrabajadorWizardComponent,
         DatosTrabajadorComponent,
+        MotivosConsultaComponent,
         // AccionadopDialogComponent,
         // AccionadopPopupComponent,
         // AccionadopDeleteDialogComponent,
