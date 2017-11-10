@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "hora" : {
+            "home": {
+                "title": "Horas",
+                "createLabel": "Crear nuevo Hora",
+                "createOrEditLabel": "Crear o editar Hora",
+                "search": "Search for Hora"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Hora {{ id }}?"
+            },
+            "detail": {
+                "title": "Hora"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "conciliacion": "Conciliacion"
+        }
+    },
+    "defensaApp": {
+        "hora" : {
+            "created": "Un nuevo Hora ha sido creado con el identificador {{ param }}",
+            "updated": "Un Hora ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Hora ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

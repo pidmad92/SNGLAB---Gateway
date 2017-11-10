@@ -3,33 +3,9 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "datlaboral",
-            "otherEntityName": "datlaboral",
+            "relationshipName": "expediente",
+            "otherEntityName": "expediente",
             "otherEntityRelationshipName": "empleador"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "atencion",
-            "otherEntityName": "atencion",
-            "otherEntityRelationshipName": "empleador"
-        },
-        {
-            "relationshipName": "personajurid",
-            "otherEntityName": "personajurid",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipName": "personanatur",
-            "otherEntityName": "personanatur",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipName": "tippersona",
-            "otherEntityName": "tippersona",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
         }
     ],
     "fields": [
@@ -89,6 +65,5 @@
     "dto": "no",
     "pagination": "no",
     "service": "no",
-    "jpaMetamodelFiltering": false,
-    "microserviceName": "consultas"
+    "jpaMetamodelFiltering": false
 }

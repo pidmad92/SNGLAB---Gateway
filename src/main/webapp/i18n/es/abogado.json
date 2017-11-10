@@ -1,0 +1,36 @@
+{
+    "gatewayApp": {
+        "abogado" : {
+            "home": {
+                "title": "Abogados",
+                "createLabel": "Crear nuevo Abogado",
+                "createOrEditLabel": "Crear o editar Abogado",
+                "search": "Search for Abogado"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Abogado {{ id }}?"
+            },
+            "detail": {
+                "title": "Abogado"
+            },
+            "vNomabogado": "V Nomabogado",
+            "nCodabogadousuario": "N Codabogadousuario",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "oficina": "Oficina",
+            "conciliacion": "Conciliacion"
+        }
+    },
+    "defensaApp": {
+        "abogado" : {
+            "created": "Un nuevo Abogado ha sido creado con el identificador {{ param }}",
+            "updated": "Un Abogado ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Abogado ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

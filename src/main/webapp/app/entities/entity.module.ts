@@ -51,6 +51,23 @@ import { GatewayTippersonaModule } from './tippersona/tippersona.module';
 import { GatewayTrabajadorModule } from './trabajador/trabajador.module';
 import { GatewayMotatenoficModule } from './motatenofic/motatenofic.module';
 import { GatewaySubregilaboModule } from './subregilabo/subregilabo.module';
+import { GatewayConciliacionModule } from './conciliacion/conciliacion.module';
+import { GatewayDocexpedienModule } from './docexpedien/docexpedien.module';
+import { GatewayMultaModule } from './multa/multa.module';
+import { GatewayNotificacionModule } from './notificacion/notificacion.module';
+import { GatewayResolucrdModule } from './resolucrd/resolucrd.module';
+import { GatewayDirecnotifModule } from './direcnotif/direcnotif.module';
+import { GatewayAbogadoModule } from './abogado/abogado.module';
+import { GatewayDettipprovModule } from './dettipprov/dettipprov.module';
+import { GatewayEstexpedienModule } from './estexpedien/estexpedien.module';
+import { GatewayHoraModule } from './hora/hora.module';
+import { GatewayResolutorModule } from './resolutor/resolutor.module';
+import { GatewayResulconciModule } from './resulconci/resulconci.module';
+import { GatewayTipdocexpModule } from './tipdocexp/tipdocexp.module';
+import { GatewayTipenvnotModule } from './tipenvnot/tipenvnot.module';
+import { GatewayTipnotifModule } from './tipnotif/tipnotif.module';
+import { GatewayTipproveidModule } from './tipproveid/tipproveid.module';
+import { GatewayTipresconcModule } from './tipresconc/tipresconc.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -105,6 +122,23 @@ import { GatewaySubregilaboModule } from './subregilabo/subregilabo.module';
         GatewayTrabajadorModule,
         GatewayMotatenoficModule,
         GatewaySubregilaboModule,
+        GatewayConciliacionModule,
+        GatewayDocexpedienModule,
+        GatewayMultaModule,
+        GatewayNotificacionModule,
+        GatewayResolucrdModule,
+        GatewayDirecnotifModule,
+        GatewayAbogadoModule,
+        GatewayDettipprovModule,
+        GatewayEstexpedienModule,
+        GatewayHoraModule,
+        GatewayResolutorModule,
+        GatewayResulconciModule,
+        GatewayTipdocexpModule,
+        GatewayTipenvnotModule,
+        GatewayTipnotifModule,
+        GatewayTipproveidModule,
+        GatewayTipresconcModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

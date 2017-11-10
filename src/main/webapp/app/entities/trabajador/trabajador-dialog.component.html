@@ -136,20 +136,6 @@
                 [(ngModel)]="trabajador.nSedeupd"  />
         </div>
 
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.cargotrabaja" for="field_cargotrabaja">Cargotrabaja</label>
-            <select class="form-control" id="field_cargotrabaja" name="cargotrabaja" [(ngModel)]="trabajador.cargotrabaja" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="cargotrabajaOption.id === trabajador.cargotrabaja?.id ? trabajador.cargotrabaja : cargotrabajaOption" *ngFor="let cargotrabajaOption of cargotrabajas; trackBy: trackCargotrabajaById">{{cargotrabajaOption.id}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.personanatur" for="field_personanatur">Personanatur</label>
-            <select class="form-control" id="field_personanatur" name="personanatur" [(ngModel)]="trabajador.personanatur" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="personanaturOption.id === trabajador.personanatur?.id ? trabajador.personanatur : personanaturOption" *ngFor="let personanaturOption of personanaturs; trackBy: trackPersonanaturById">{{personanaturOption.id}}</option>
-            </select>
-        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

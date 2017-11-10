@@ -14,8 +14,7 @@ export class Pase implements BaseEntity {
         public vUsuarioupd?: string,
         public dFechaupd?: any,
         public nSedeupd?: number,
-        public pasemotiatens?: BaseEntity[],
-        public atencion?: BaseEntity,
+        public expediente?: BaseEntity,
     ) {
     }
 }

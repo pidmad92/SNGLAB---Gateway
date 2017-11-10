@@ -1,0 +1,121 @@
+
+<div *ngIf="resolucrd">
+    <h2><span jhiTranslate="gatewayApp.resolucrd.detail.title">Resolucrd</span> {{resolucrd.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.resolucrd.vNumresolucionsd">V Numresolucionsd</span></dt>
+        <dd>
+            <span>{{resolucrd.vNumresolucionsd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.dFecresolucionsd">D Fecresolucionsd</span></dt>
+        <dd>
+            <span>{{resolucrd.dFecresolucionsd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.vTipodocempleador">V Tipodocempleador</span></dt>
+        <dd>
+            <span>{{resolucrd.vTipodocempleador}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.vDocempleador">V Docempleador</span></dt>
+        <dd>
+            <span>{{resolucrd.vDocempleador}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.vNomempleador">V Nomempleador</span></dt>
+        <dd>
+            <span>{{resolucrd.vNomempleador}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.vTipodoctrabajador">V Tipodoctrabajador</span></dt>
+        <dd>
+            <span>{{resolucrd.vTipodoctrabajador}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.vDoctrabajador">V Doctrabajador</span></dt>
+        <dd>
+            <span>{{resolucrd.vDoctrabajador}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.vNomtrabajador">V Nomtrabajador</span></dt>
+        <dd>
+            <span>{{resolucrd.vNomtrabajador}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.vDireccion">V Direccion</span></dt>
+        <dd>
+            <span>{{resolucrd.vDireccion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.vTelefono">V Telefono</span></dt>
+        <dd>
+            <span>{{resolucrd.vTelefono}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.dFechaconciliacion">D Fechaconciliacion</span></dt>
+        <dd>
+            <span>{{resolucrd.dFechaconciliacion | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.vHoraconciliacion">V Horaconciliacion</span></dt>
+        <dd>
+            <span>{{resolucrd.vHoraconciliacion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.dFechanotificacion">D Fechanotificacion</span></dt>
+        <dd>
+            <span>{{resolucrd.dFechanotificacion | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.vNumnotificacion">V Numnotificacion</span></dt>
+        <dd>
+            <span>{{resolucrd.vNumnotificacion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.fMonMulta">F Mon Multa</span></dt>
+        <dd>
+            <span>{{resolucrd.fMonMulta}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{resolucrd.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{resolucrd.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{resolucrd.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{resolucrd.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{resolucrd.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{resolucrd.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{resolucrd.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.tippersona">Tippersona</span></dt>
+        <dd>
+            <div *ngIf="resolucrd.tippersona">
+                <a [routerLink]="['/tippersona', resolucrd.tippersona?.id]">{{resolucrd.tippersona?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.expediente">Expediente</span></dt>
+        <dd>
+            <div *ngIf="resolucrd.expediente">
+                <a [routerLink]="['/expediente', resolucrd.expediente?.id]">{{resolucrd.expediente?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'resolucrd/'+ resolucrd.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

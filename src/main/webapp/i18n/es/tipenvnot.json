@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "tipenvnot" : {
+            "home": {
+                "title": "Tipenvnots",
+                "createLabel": "Crear nuevo Tipenvnot",
+                "createOrEditLabel": "Crear o editar Tipenvnot",
+                "search": "Search for Tipenvnot"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipenvnot {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipenvnot"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "notificacion": "Notificacion"
+        }
+    },
+    "defensaApp": {
+        "tipenvnot" : {
+            "created": "Un nuevo Tipenvnot ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipenvnot ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipenvnot ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "tipresconc" : {
+            "home": {
+                "title": "Tipresconcs",
+                "createLabel": "Crear nuevo Tipresconc",
+                "createOrEditLabel": "Crear o editar Tipresconc",
+                "search": "Search for Tipresconc"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipresconc {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipresconc"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "resulconci": "Resulconci"
+        }
+    },
+    "defensaApp": {
+        "tipresconc" : {
+            "created": "Un nuevo Tipresconc ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipresconc ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipresconc ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -2,16 +2,11 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipType": "one-to-many",
-            "relationshipName": "pasemotiaten",
-            "otherEntityName": "pasemotiaten",
-            "otherEntityRelationshipName": "pase"
-        },
-        {
             "relationshipType": "one-to-one",
-            "relationshipName": "atencion",
-            "otherEntityName": "atencion",
-            "ownerSide": false,
+            "relationshipName": "expediente",
+            "otherEntityName": "expediente",
+            "otherEntityField": "id",
+            "ownerSide": true,
             "otherEntityRelationshipName": "pase"
         }
     ],
@@ -97,6 +92,5 @@
     "dto": "no",
     "pagination": "no",
     "service": "no",
-    "jpaMetamodelFiltering": false,
-    "microserviceName": "consultas"
+    "jpaMetamodelFiltering": false
 }

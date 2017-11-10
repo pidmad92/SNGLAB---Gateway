@@ -1,0 +1,123 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.resolucrd.home.title">Resolucrds</span>
+        <button class="btn btn-primary float-right jh-create-entity create-resolucrd" [routerLink]="['/', { outlets: { popup: ['resolucrd-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.resolucrd.home.createLabel">
+            Create new Resolucrd
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.resolucrd.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="resolucrds">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.vNumresolucionsd">V Numresolucionsd</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.dFecresolucionsd">D Fecresolucionsd</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.vTipodocempleador">V Tipodocempleador</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.vDocempleador">V Docempleador</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.vNomempleador">V Nomempleador</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.vTipodoctrabajador">V Tipodoctrabajador</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.vDoctrabajador">V Doctrabajador</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.vNomtrabajador">V Nomtrabajador</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.vDireccion">V Direccion</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.vTelefono">V Telefono</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.dFechaconciliacion">D Fechaconciliacion</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.vHoraconciliacion">V Horaconciliacion</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.dFechanotificacion">D Fechanotificacion</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.vNumnotificacion">V Numnotificacion</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.fMonMulta">F Mon Multa</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.vUsuarioreg">V Usuarioreg</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.dFechareg">D Fechareg</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.vUsuarioupd">V Usuarioupd</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.tippersona">Tippersona</span></th>
+            <th><span jhiTranslate="gatewayApp.resolucrd.expediente">Expediente</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let resolucrd of resolucrds ;trackBy: trackId">
+                <td><a [routerLink]="['../resolucrd', resolucrd.id ]">{{resolucrd.id}}</a></td>
+                <td>{{resolucrd.vNumresolucionsd}}</td>
+                <td>{{resolucrd.dFecresolucionsd | date:'medium'}}</td>
+                <td>{{resolucrd.vTipodocempleador}}</td>
+                <td>{{resolucrd.vDocempleador}}</td>
+                <td>{{resolucrd.vNomempleador}}</td>
+                <td>{{resolucrd.vTipodoctrabajador}}</td>
+                <td>{{resolucrd.vDoctrabajador}}</td>
+                <td>{{resolucrd.vNomtrabajador}}</td>
+                <td>{{resolucrd.vDireccion}}</td>
+                <td>{{resolucrd.vTelefono}}</td>
+                <td>{{resolucrd.dFechaconciliacion | date:'medium'}}</td>
+                <td>{{resolucrd.vHoraconciliacion}}</td>
+                <td>{{resolucrd.dFechanotificacion | date:'medium'}}</td>
+                <td>{{resolucrd.vNumnotificacion}}</td>
+                <td>{{resolucrd.fMonMulta}}</td>
+                <td>{{resolucrd.vUsuarioreg}}</td>
+                <td>{{resolucrd.dFechareg | date:'medium'}}</td>
+                <td>{{resolucrd.nEliminar}}</td>
+                <td>{{resolucrd.nSedereg}}</td>
+                <td>{{resolucrd.vUsuarioupd}}</td>
+                <td>{{resolucrd.dFechaupd | date:'medium'}}</td>
+                <td>{{resolucrd.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="resolucrd.tippersona">
+                        <a [routerLink]="['../tippersona', resolucrd.tippersona?.id ]" >{{resolucrd.tippersona?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="resolucrd.expediente">
+                        <a [routerLink]="['../expediente', resolucrd.expediente?.id ]" >{{resolucrd.expediente?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../resolucrd', resolucrd.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'resolucrd/'+ resolucrd.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'resolucrd/'+ resolucrd.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

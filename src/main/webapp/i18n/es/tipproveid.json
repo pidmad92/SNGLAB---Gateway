@@ -1,0 +1,36 @@
+{
+    "gatewayApp": {
+        "tipproveid" : {
+            "home": {
+                "title": "Tipproveids",
+                "createLabel": "Crear nuevo Tipproveid",
+                "createOrEditLabel": "Crear o editar Tipproveid",
+                "search": "Search for Tipproveid"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipproveid {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipproveid"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "tipdocexp": "Tipdocexp",
+            "dettipprov": "Dettipprov",
+            "docexpedien": "Docexpedien"
+        }
+    },
+    "defensaApp": {
+        "tipproveid" : {
+            "created": "Un nuevo Tipproveid ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipproveid ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipproveid ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

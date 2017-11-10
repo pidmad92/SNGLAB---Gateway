@@ -1,6 +1,7 @@
 import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { DatePipe } from '@angular/common';
 import { Expediente } from './expediente.model';
 import { ExpedienteService } from './expediente.service';
 
@@ -9,6 +10,7 @@ export class ExpedientePopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
+        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private expedienteService: ExpedienteService
@@ -26,6 +28,16 @@ export class ExpedientePopupService {
 
             if (id) {
                 this.expedienteService.find(id).subscribe((expediente) => {
+                    expediente.dFecregexp = this.datePipe
+                        .transform(expediente.dFecregexp, 'yyyy-MM-ddTHH:mm:ss');
+                    expediente.dFecmesapartes = this.datePipe
+                        .transform(expediente.dFecmesapartes, 'yyyy-MM-ddTHH:mm:ss');
+                    expediente.dFecArchivo = this.datePipe
+                        .transform(expediente.dFecArchivo, 'yyyy-MM-ddTHH:mm:ss');
+                    expediente.dFechareg = this.datePipe
+                        .transform(expediente.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
+                    expediente.dFechaupd = this.datePipe
+                        .transform(expediente.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.expedienteModalRef(component, expediente);
                     resolve(this.ngbModalRef);
                 });

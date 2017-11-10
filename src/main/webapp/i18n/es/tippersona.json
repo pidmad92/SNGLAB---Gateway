@@ -7,6 +7,9 @@
                 "createOrEditLabel": "Crear o editar Tippersona",
                 "search": "Search for Tippersona"
             },
+            "created": "Un nuevo Tippersona ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tippersona ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tippersona ha sido eliminado con el identificador {{ param }}",
             "delete": {
                 "question": "¿Seguro que quiere eliminar Tippersona {{ id }}?"
             },
@@ -21,14 +24,8 @@
             "vUsuarioupd": "V Usuarioupd",
             "dFechaupd": "D Fechaupd",
             "nSedeupd": "N Sedeupd",
-            "empleador": "Empleador"
-        }
-    },
-    "consultasApp": {
-        "tippersona" : {
-            "created": "Un nuevo Tippersona ha sido creado con el identificador {{ param }}",
-            "updated": "Un Tippersona ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Tippersona ha sido eliminado con el identificador {{ param }}"
+            "expediente": "Expediente",
+            "resolucrd": "Resolucrd"
         }
     }
 }

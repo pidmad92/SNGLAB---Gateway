@@ -106,27 +106,6 @@
                 [(ngModel)]="empleador.nSedeupd"  />
         </div>
 
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.empleador.personajurid" for="field_personajurid">Personajurid</label>
-            <select class="form-control" id="field_personajurid" name="personajurid" [(ngModel)]="empleador.personajurid" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="personajuridOption.id === empleador.personajurid?.id ? empleador.personajurid : personajuridOption" *ngFor="let personajuridOption of personajurids; trackBy: trackPersonajuridById">{{personajuridOption.id}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.empleador.personanatur" for="field_personanatur">Personanatur</label>
-            <select class="form-control" id="field_personanatur" name="personanatur" [(ngModel)]="empleador.personanatur" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="personanaturOption.id === empleador.personanatur?.id ? empleador.personanatur : personanaturOption" *ngFor="let personanaturOption of personanaturs; trackBy: trackPersonanaturById">{{personanaturOption.id}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.empleador.tippersona" for="field_tippersona">Tippersona</label>
-            <select class="form-control" id="field_tippersona" name="tippersona" [(ngModel)]="empleador.tippersona" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="tippersonaOption.id === empleador.tippersona?.id ? empleador.tippersona : tippersonaOption" *ngFor="let tippersonaOption of tippersonas; trackBy: trackTippersonaById">{{tippersonaOption.id}}</option>
-            </select>
-        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

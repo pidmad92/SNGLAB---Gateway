@@ -2,33 +2,9 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipName": "cargotrabaja",
-            "otherEntityName": "cargotrabaja",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipName": "personanatur",
-            "otherEntityName": "personanatur",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
-        },
-        {
             "relationshipType": "one-to-many",
-            "relationshipName": "datlaboral",
-            "otherEntityName": "datlaboral",
-            "otherEntityRelationshipName": "trabajador"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "atencion",
-            "otherEntityName": "atencion",
-            "otherEntityRelationshipName": "trabajador"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "sucesor",
-            "otherEntityName": "sucesor",
+            "relationshipName": "expediente",
+            "otherEntityName": "expediente",
             "otherEntityRelationshipName": "trabajador"
         }
     ],
@@ -107,6 +83,5 @@
     "dto": "no",
     "pagination": "no",
     "service": "no",
-    "jpaMetamodelFiltering": false,
-    "microserviceName": "consultas"
+    "jpaMetamodelFiltering": false
 }

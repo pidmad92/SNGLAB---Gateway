@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "tipdocexp" : {
+            "home": {
+                "title": "Tipdocexps",
+                "createLabel": "Crear nuevo Tipdocexp",
+                "createOrEditLabel": "Crear o editar Tipdocexp",
+                "search": "Search for Tipdocexp"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipdocexp {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipdocexp"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "tipproveid": "Tipproveid",
+            "docexpedien": "Docexpedien"
+        }
+    },
+    "defensaApp": {
+        "tipdocexp" : {
+            "created": "Un nuevo Tipdocexp ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipdocexp ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipdocexp ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}
