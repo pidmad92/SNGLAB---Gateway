@@ -3,8 +3,8 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "motatenofic",
-            "otherEntityName": "motatenofic",
+            "relationshipName": "abogado",
+            "otherEntityName": "abogado",
             "otherEntityRelationshipName": "oficina"
         }
     ],
@@ -74,6 +74,5 @@
     "dto": "no",
     "pagination": "no",
     "service": "no",
-    "jpaMetamodelFiltering": false,
-    "microserviceName": "consultas"
+    "jpaMetamodelFiltering": false
 }

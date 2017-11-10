@@ -13,7 +13,6 @@ import {
     ExpedienteDeleteDialogComponent,
     expedienteRoute,
     expedientePopupRoute,
-    ExpedienteResolvePagingParams,
 } from './';
 
 const ENTITY_STATES = [
@@ -24,7 +23,7 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         GatewaySharedModule,
-        RouterModule.forChild(ENTITY_STATES)
+        RouterModule.forRoot(ENTITY_STATES, { useHash: true })
     ],
     declarations: [
         ExpedienteComponent,
@@ -44,7 +43,6 @@ const ENTITY_STATES = [
     providers: [
         ExpedienteService,
         ExpedientePopupService,
-        ExpedienteResolvePagingParams,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

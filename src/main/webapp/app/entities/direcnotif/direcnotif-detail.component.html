@@ -1,0 +1,67 @@
+
+<div *ngIf="direcnotif">
+    <h2><span jhiTranslate="gatewayApp.direcnotif.detail.title">Direcnotif</span> {{direcnotif.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.direcnotif.vDireccion">V Direccion</span></dt>
+        <dd>
+            <span>{{direcnotif.vDireccion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direcnotif.cflgtrabajador">Cflgtrabajador</span></dt>
+        <dd>
+            <span>{{direcnotif.cflgtrabajador}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direcnotif.vHojaenvio">V Hojaenvio</span></dt>
+        <dd>
+            <span>{{direcnotif.vHojaenvio}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direcnotif.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{direcnotif.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direcnotif.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{direcnotif.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direcnotif.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{direcnotif.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direcnotif.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{direcnotif.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direcnotif.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{direcnotif.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direcnotif.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{direcnotif.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direcnotif.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{direcnotif.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direcnotif.notificacion">Notificacion</span></dt>
+        <dd>
+            <div *ngIf="direcnotif.notificacion">
+                <a [routerLink]="['/notificacion', direcnotif.notificacion?.id]">{{direcnotif.notificacion?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'direcnotif/'+ direcnotif.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

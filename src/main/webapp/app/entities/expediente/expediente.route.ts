@@ -9,29 +9,10 @@ import { ExpedienteDetailComponent } from './expediente-detail.component';
 import { ExpedientePopupComponent } from './expediente-dialog.component';
 import { ExpedienteDeletePopupComponent } from './expediente-delete-dialog.component';
 
-@Injectable()
-export class ExpedienteResolvePagingParams implements Resolve<any> {
-
-    constructor(private paginationUtil: JhiPaginationUtil) {}
-
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        const page = route.queryParams['page'] ? route.queryParams['page'] : '1';
-        const sort = route.queryParams['sort'] ? route.queryParams['sort'] : 'id,asc';
-        return {
-            page: this.paginationUtil.parsePage(page),
-            predicate: this.paginationUtil.parsePredicate(sort),
-            ascending: this.paginationUtil.parseAscending(sort)
-      };
-    }
-}
-
 export const expedienteRoute: Routes = [
     {
         path: 'expediente',
         component: ExpedienteComponent,
-        resolve: {
-            'pagingParams': ExpedienteResolvePagingParams
-        },
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'gatewayApp.expediente.home.title'

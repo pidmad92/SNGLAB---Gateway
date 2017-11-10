@@ -9,7 +9,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Pase } from './pase.model';
 import { PasePopupService } from './pase-popup.service';
 import { PaseService } from './pase.service';
-import { Atencion, AtencionService } from '../atencion';
+import { Expediente, ExpedienteService } from '../expediente';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -21,21 +21,32 @@ export class PaseDialogComponent implements OnInit {
     pase: Pase;
     isSaving: boolean;
 
-    atencions: Atencion[];
+    expedientes: Expediente[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private paseService: PaseService,
-        private atencionService: AtencionService,
+        private expedienteService: ExpedienteService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
-        this.atencionService.query()
-            .subscribe((res: ResponseWrapper) => { this.atencions = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.expedienteService
+            .query({filter: 'pase-is-null'})
+            .subscribe((res: ResponseWrapper) => {
+                if (!this.pase.expediente || !this.pase.expediente.id) {
+                    this.expedientes = res.json;
+                } else {
+                    this.expedienteService
+                        .find(this.pase.expediente.id)
+                        .subscribe((subRes: Expediente) => {
+                            this.expedientes = [subRes].concat(res.json);
+                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
+                }
+            }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -72,7 +83,7 @@ export class PaseDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackAtencionById(index: number, item: Atencion) {
+    trackExpedienteById(index: number, item: Expediente) {
         return item.id;
     }
 }

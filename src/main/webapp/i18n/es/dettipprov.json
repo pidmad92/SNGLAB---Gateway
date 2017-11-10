@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "dettipprov" : {
+            "home": {
+                "title": "Dettipprovs",
+                "createLabel": "Crear nuevo Dettipprov",
+                "createOrEditLabel": "Crear o editar Dettipprov",
+                "search": "Search for Dettipprov"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Dettipprov {{ id }}?"
+            },
+            "detail": {
+                "title": "Dettipprov"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "docexpedien": "Docexpedien",
+            "tipproveid": "Tipproveid"
+        }
+    },
+    "defensaApp": {
+        "dettipprov" : {
+            "created": "Un nuevo Dettipprov ha sido creado con el identificador {{ param }}",
+            "updated": "Un Dettipprov ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Dettipprov ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

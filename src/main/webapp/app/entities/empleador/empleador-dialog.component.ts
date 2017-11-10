@@ -9,10 +9,6 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Empleador } from './empleador.model';
 import { EmpleadorPopupService } from './empleador-popup.service';
 import { EmpleadorService } from './empleador.service';
-import { Personajurid, PersonajuridService } from '../personajurid';
-import { Personanatur, PersonanaturService } from '../personanatur';
-import { Tippersona, TippersonaService } from '../tippersona';
-import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-empleador-dialog',
@@ -23,31 +19,16 @@ export class EmpleadorDialogComponent implements OnInit {
     empleador: Empleador;
     isSaving: boolean;
 
-    personajurids: Personajurid[];
-
-    personanaturs: Personanatur[];
-
-    tippersonas: Tippersona[];
-
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private empleadorService: EmpleadorService,
-        private personajuridService: PersonajuridService,
-        private personanaturService: PersonanaturService,
-        private tippersonaService: TippersonaService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
-        this.personajuridService.query()
-            .subscribe((res: ResponseWrapper) => { this.personajurids = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.personanaturService.query()
-            .subscribe((res: ResponseWrapper) => { this.personanaturs = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.tippersonaService.query()
-            .subscribe((res: ResponseWrapper) => { this.tippersonas = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -82,18 +63,6 @@ export class EmpleadorDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
-    }
-
-    trackPersonajuridById(index: number, item: Personajurid) {
-        return item.id;
-    }
-
-    trackPersonanaturById(index: number, item: Personanatur) {
-        return item.id;
-    }
-
-    trackTippersonaById(index: number, item: Tippersona) {
-        return item.id;
     }
 }
 

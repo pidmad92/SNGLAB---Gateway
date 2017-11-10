@@ -1,16 +1,138 @@
 
 <div *ngIf="expediente">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.expediente.detail.title">Expediente</span> {{expediente.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.expediente.detail.title">Expediente</span> {{expediente.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.expediente.name">Name</span></dt>
+        <dt><span jhiTranslate="gatewayApp.expediente.vNumExpediente">V Num Expediente</span></dt>
         <dd>
-            <span>{{expediente.name}}</span>
+            <span>{{expediente.vNumExpediente}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.expediente.desc">Desc</span></dt>
+        <dt><span jhiTranslate="gatewayApp.expediente.nAnio">N Anio</span></dt>
         <dd>
-            <span>{{expediente.desc}}</span>
+            <span>{{expediente.nAnio}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.dFecregexp">D Fecregexp</span></dt>
+        <dd>
+            <span>{{expediente.dFecregexp | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.vTipodocempleador">V Tipodocempleador</span></dt>
+        <dd>
+            <span>{{expediente.vTipodocempleador}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.vDocempleador">V Docempleador</span></dt>
+        <dd>
+            <span>{{expediente.vDocempleador}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.vNomempleador">V Nomempleador</span></dt>
+        <dd>
+            <span>{{expediente.vNomempleador}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.vTipodoctrabajador">V Tipodoctrabajador</span></dt>
+        <dd>
+            <span>{{expediente.vTipodoctrabajador}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.vDoctrabajador">V Doctrabajador</span></dt>
+        <dd>
+            <span>{{expediente.vDoctrabajador}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.vNomtrabajador">V Nomtrabajador</span></dt>
+        <dd>
+            <span>{{expediente.vNomtrabajador}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.cFlgexpobservado">C Flgexpobservado</span></dt>
+        <dd>
+            <span>{{expediente.cFlgexpobservado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.vRegmesapartes">V Regmesapartes</span></dt>
+        <dd>
+            <span>{{expediente.vRegmesapartes}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.dFecmesapartes">D Fecmesapartes</span></dt>
+        <dd>
+            <span>{{expediente.dFecmesapartes | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.vObservacion">V Observacion</span></dt>
+        <dd>
+            <span>{{expediente.vObservacion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.cFlgarchivo">C Flgarchivo</span></dt>
+        <dd>
+            <span>{{expediente.cFlgarchivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.dFecArchivo">D Fec Archivo</span></dt>
+        <dd>
+            <span>{{expediente.dFecArchivo | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.vObservacionarchivo">V Observacionarchivo</span></dt>
+        <dd>
+            <span>{{expediente.vObservacionarchivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.nCodusuarioarchivo">N Codusuarioarchivo</span></dt>
+        <dd>
+            <span>{{expediente.nCodusuarioarchivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.vNuminformearchivo">V Numinformearchivo</span></dt>
+        <dd>
+            <span>{{expediente.vNuminformearchivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{expediente.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{expediente.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{expediente.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{expediente.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{expediente.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{expediente.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{expediente.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.empleador">Empleador</span></dt>
+        <dd>
+            <div *ngIf="expediente.empleador">
+                <a [routerLink]="['/empleador', expediente.empleador?.id]">{{expediente.empleador?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.trabajador">Trabajador</span></dt>
+        <dd>
+            <div *ngIf="expediente.trabajador">
+                <a [routerLink]="['/trabajador', expediente.trabajador?.id]">{{expediente.trabajador?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.tippersona">Tippersona</span></dt>
+        <dd>
+            <div *ngIf="expediente.tippersona">
+                <a [routerLink]="['/tippersona', expediente.tippersona?.id]">{{expediente.tippersona?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.estexpedien">Estexpedien</span></dt>
+        <dd>
+            <div *ngIf="expediente.estexpedien">
+                <a [routerLink]="['/estexpedien', expediente.estexpedien?.id]">{{expediente.estexpedien?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.resolutor">Resolutor</span></dt>
+        <dd>
+            <div *ngIf="expediente.resolutor">
+                <a [routerLink]="['/resolutor', expediente.resolutor?.id]">{{expediente.resolutor?.id}}</a>
+            </div>
         </dd>
     </dl>
 

@@ -1,20 +1,253 @@
 {
     "fluentMethods": true,
-    "relationships": [],
-    "fields": [
+    "relationships": [
         {
-            "fieldName": "name",
-            "fieldType": "String"
+            "relationshipName": "empleador",
+            "otherEntityName": "empleador",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         },
         {
-            "fieldName": "desc",
-            "fieldType": "String"
+            "relationshipName": "trabajador",
+            "otherEntityName": "trabajador",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "tippersona",
+            "otherEntityName": "tippersona",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "conciliacion",
+            "otherEntityName": "conciliacion",
+            "otherEntityRelationshipName": "expediente"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "docexpedien",
+            "otherEntityName": "docexpedien",
+            "otherEntityRelationshipName": "expediente"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "resolucrd",
+            "otherEntityName": "resolucrd",
+            "otherEntityRelationshipName": "expediente"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "notificacion",
+            "otherEntityName": "notificacion",
+            "otherEntityRelationshipName": "expediente"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "pase",
+            "otherEntityName": "pase",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "expediente"
+        },
+        {
+            "relationshipName": "estexpedien",
+            "otherEntityName": "estexpedien",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "resolutor",
+            "otherEntityName": "resolutor",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "vNumExpediente",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "nAnio",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dFecregexp",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "vTipodocempleador",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "vDocempleador",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "vNomempleador",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 250
+        },
+        {
+            "fieldName": "vTipodoctrabajador",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "vDoctrabajador",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "vNomtrabajador",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 250
+        },
+        {
+            "fieldName": "cFlgexpobservado",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 1
+        },
+        {
+            "fieldName": "vRegmesapartes",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "dFecmesapartes",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "vObservacion",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 500
+        },
+        {
+            "fieldName": "cFlgarchivo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 1
+        },
+        {
+            "fieldName": "dFecArchivo",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "vObservacionarchivo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 500
+        },
+        {
+            "fieldName": "nCodusuarioarchivo",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "vNuminformearchivo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "vUsuarioreg",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "dFechareg",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nEliminar",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": 0,
+            "fieldValidateRulesMax": 1
+        },
+        {
+            "fieldName": "nSedereg",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "vUsuarioupd",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "dFechaupd",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "nSedeupd",
+            "fieldType": "Integer"
         }
     ],
     "changelogDate": "20171102221647",
-    "dto": "no",
-    "service": "no",
     "entityTableName": "expediente",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
     "jpaMetamodelFiltering": false,
-    "pagination": "pagination"
+    "microserviceName": "defensa"
 }

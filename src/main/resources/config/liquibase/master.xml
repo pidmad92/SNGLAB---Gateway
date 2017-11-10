@@ -89,6 +89,11 @@
     <include file="config/liquibase/changelog/20171110153104_added_entity_Tipnotif.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171110153105_added_entity_Tipproveid.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171110153106_added_entity_Tipresconc.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171106150156_added_entity_Empleador.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171106150200_added_entity_Oficina.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171106150201_added_entity_Pase.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171106150210_added_entity_Tippersona.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171106150211_added_entity_Trabajador.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20171110153049_added_entity_constraints_Conciliacion.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171110153050_added_entity_constraints_Docexpedien.xml" relativeToChangelogFile="false"/>
@@ -102,6 +107,7 @@
     <include file="config/liquibase/changelog/20171110153057_added_entity_constraints_Dettipprov.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171110153101_added_entity_constraints_Resulconci.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171110153105_added_entity_constraints_Tipproveid.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171106150201_added_entity_constraints_Pase.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 	<include file="config/liquibase/changelog/20171111203515_change_name_tables_defensa.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

@@ -3,8 +3,14 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "empleador",
-            "otherEntityName": "empleador",
+            "relationshipName": "expediente",
+            "otherEntityName": "expediente",
+            "otherEntityRelationshipName": "tippersona"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "resolucrd",
+            "otherEntityName": "resolucrd",
             "otherEntityRelationshipName": "tippersona"
         }
     ],
@@ -74,6 +80,5 @@
     "dto": "no",
     "pagination": "no",
     "service": "no",
-    "jpaMetamodelFiltering": false,
-    "microserviceName": "consultas"
+    "jpaMetamodelFiltering": false
 }

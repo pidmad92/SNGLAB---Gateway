@@ -1,13 +1,13 @@
 <div>
-    <h4 class="title my-3">
+    <h2>
         <span jhiTranslate="gatewayApp.tippersona.home.title">Tippersonas</span>
-        <button class="btn btn-primary float-right jh-create-entity create-tippersona" [routerLink]="['/consultas', { outlets: { popup: ['tippersona-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-tippersona" [routerLink]="['/', { outlets: { popup: ['tippersona-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.tippersona.home.createLabel">
             Create new Tippersona
             </span>
         </button>
-    </h4>
+    </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -61,14 +61,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/consultas', { outlets: { popup: 'tippersona/'+ tippersona.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'tippersona/'+ tippersona.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/consultas', { outlets: { popup: 'tippersona/'+ tippersona.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'tippersona/'+ tippersona.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

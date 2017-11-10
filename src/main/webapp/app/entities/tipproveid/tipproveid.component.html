@@ -1,0 +1,89 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.tipproveid.home.title">Tipproveids</span>
+        <button class="btn btn-primary float-right jh-create-entity create-tipproveid" [routerLink]="['/', { outlets: { popup: ['tipproveid-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.tipproveid.home.createLabel">
+            Create new Tipproveid
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.tipproveid.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="tipproveids">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.tipproveid.vDescripcion">V Descripcion</span></th>
+            <th><span jhiTranslate="gatewayApp.tipproveid.vUsuarioreg">V Usuarioreg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipproveid.dFechareg">D Fechareg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipproveid.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.tipproveid.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipproveid.vUsuarioupd">V Usuarioupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipproveid.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipproveid.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipproveid.tipdocexp">Tipdocexp</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let tipproveid of tipproveids ;trackBy: trackId">
+                <td><a [routerLink]="['../tipproveid', tipproveid.id ]">{{tipproveid.id}}</a></td>
+                <td>{{tipproveid.vDescripcion}}</td>
+                <td>{{tipproveid.vUsuarioreg}}</td>
+                <td>{{tipproveid.dFechareg | date:'medium'}}</td>
+                <td>{{tipproveid.nEliminar}}</td>
+                <td>{{tipproveid.nSedereg}}</td>
+                <td>{{tipproveid.vUsuarioupd}}</td>
+                <td>{{tipproveid.dFechaupd | date:'medium'}}</td>
+                <td>{{tipproveid.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="tipproveid.tipdocexp">
+                        <a [routerLink]="['../tipdocexp', tipproveid.tipdocexp?.id ]" >{{tipproveid.tipdocexp?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../tipproveid', tipproveid.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'tipproveid/'+ tipproveid.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'tipproveid/'+ tipproveid.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

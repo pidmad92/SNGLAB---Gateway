@@ -1,6 +1,6 @@
 
 <div *ngIf="trabajador">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.trabajador.detail.title">Trabajador</span> {{trabajador.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.trabajador.detail.title">Trabajador</span> {{trabajador.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
@@ -40,18 +40,6 @@
         <dd>
             <span>{{trabajador.nSedeupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.trabajador.cargotrabaja">Cargotrabaja</span></dt>
-        <dd>
-            <div *ngIf="trabajador.cargotrabaja">
-                <a [routerLink]="['/cargotrabaja', trabajador.cargotrabaja?.id]">{{trabajador.cargotrabaja?.id}}</a>
-            </div>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.trabajador.personanatur">Personanatur</span></dt>
-        <dd>
-            <div *ngIf="trabajador.personanatur">
-                <a [routerLink]="['/personanatur', trabajador.personanatur?.id]">{{trabajador.personanatur?.id}}</a>
-            </div>
-        </dd>
     </dl>
 
     <button type="submit"
@@ -61,7 +49,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/consultas', { outlets: { popup: 'trabajador/'+ trabajador.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'trabajador/'+ trabajador.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

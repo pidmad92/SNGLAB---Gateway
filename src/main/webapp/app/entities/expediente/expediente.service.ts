@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { SERVER_API_URL } from '../../app.constants';
+
+import { JhiDateUtils } from 'ng-jhipster';
 
 import { Expediente } from './expediente.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
@@ -9,10 +10,10 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class ExpedienteService {
 
-    private resourceUrl = SERVER_API_URL + 'api/expedientes';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/expedientes';
+    private resourceUrl = '/defensa/api/expedientes';
+    private resourceSearchUrl = '/defensa/api/_search/expedientes';
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
     create(expediente: Expediente): Observable<Expediente> {
         const copy = this.convert(expediente);
@@ -67,6 +68,16 @@ export class ExpedienteService {
      */
     private convertItemFromServer(json: any): Expediente {
         const entity: Expediente = Object.assign(new Expediente(), json);
+        entity.dFecregexp = this.dateUtils
+            .convertDateTimeFromServer(json.dFecregexp);
+        entity.dFecmesapartes = this.dateUtils
+            .convertDateTimeFromServer(json.dFecmesapartes);
+        entity.dFecArchivo = this.dateUtils
+            .convertDateTimeFromServer(json.dFecArchivo);
+        entity.dFechareg = this.dateUtils
+            .convertDateTimeFromServer(json.dFechareg);
+        entity.dFechaupd = this.dateUtils
+            .convertDateTimeFromServer(json.dFechaupd);
         return entity;
     }
 
@@ -75,6 +86,16 @@ export class ExpedienteService {
      */
     private convert(expediente: Expediente): Expediente {
         const copy: Expediente = Object.assign({}, expediente);
+
+        copy.dFecregexp = this.dateUtils.toDate(expediente.dFecregexp);
+
+        copy.dFecmesapartes = this.dateUtils.toDate(expediente.dFecmesapartes);
+
+        copy.dFecArchivo = this.dateUtils.toDate(expediente.dFecArchivo);
+
+        copy.dFechareg = this.dateUtils.toDate(expediente.dFechareg);
+
+        copy.dFechaupd = this.dateUtils.toDate(expediente.dFechaupd);
         return copy;
     }
 }

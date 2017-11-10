@@ -1,0 +1,59 @@
+
+<div *ngIf="tipproveid">
+    <h2><span jhiTranslate="gatewayApp.tipproveid.detail.title">Tipproveid</span> {{tipproveid.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.tipproveid.vDescripcion">V Descripcion</span></dt>
+        <dd>
+            <span>{{tipproveid.vDescripcion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipproveid.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{tipproveid.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipproveid.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{tipproveid.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipproveid.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{tipproveid.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipproveid.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{tipproveid.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipproveid.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{tipproveid.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipproveid.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{tipproveid.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipproveid.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{tipproveid.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipproveid.tipdocexp">Tipdocexp</span></dt>
+        <dd>
+            <div *ngIf="tipproveid.tipdocexp">
+                <a [routerLink]="['/tipdocexp', tipproveid.tipdocexp?.id]">{{tipproveid.tipdocexp?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'tipproveid/'+ tipproveid.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

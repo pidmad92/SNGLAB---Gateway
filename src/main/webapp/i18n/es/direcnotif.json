@@ -1,0 +1,36 @@
+{
+    "gatewayApp": {
+        "direcnotif" : {
+            "home": {
+                "title": "Direcnotifs",
+                "createLabel": "Crear nuevo Direcnotif",
+                "createOrEditLabel": "Crear o editar Direcnotif",
+                "search": "Search for Direcnotif"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Direcnotif {{ id }}?"
+            },
+            "detail": {
+                "title": "Direcnotif"
+            },
+            "vDireccion": "V Direccion",
+            "cflgtrabajador": "Cflgtrabajador",
+            "vHojaenvio": "V Hojaenvio",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "notificacion": "Notificacion"
+        }
+    },
+    "defensaApp": {
+        "direcnotif" : {
+            "created": "Un nuevo Direcnotif ha sido creado con el identificador {{ param }}",
+            "updated": "Un Direcnotif ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Direcnotif ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

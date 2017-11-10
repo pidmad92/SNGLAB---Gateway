@@ -1,6 +1,6 @@
 
 <div *ngIf="pase">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.pase.detail.title">Pase</span> {{pase.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.pase.detail.title">Pase</span> {{pase.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
@@ -48,6 +48,12 @@
         <dd>
             <span>{{pase.nSedeupd}}</span>
         </dd>
+        <dt><span jhiTranslate="gatewayApp.pase.expediente">Expediente</span></dt>
+        <dd>
+            <div *ngIf="pase.expediente">
+                <a [routerLink]="['/expediente', pase.expediente?.id]">{{pase.expediente?.id}}</a>
+            </div>
+        </dd>
     </dl>
 
     <button type="submit"
@@ -57,7 +63,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/consultas', { outlets: { popup: 'pase/'+ pase.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'pase/'+ pase.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

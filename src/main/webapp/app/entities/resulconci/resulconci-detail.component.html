@@ -1,0 +1,59 @@
+
+<div *ngIf="resulconci">
+    <h2><span jhiTranslate="gatewayApp.resulconci.detail.title">Resulconci</span> {{resulconci.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.resulconci.vDescripcion">V Descripcion</span></dt>
+        <dd>
+            <span>{{resulconci.vDescripcion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resulconci.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{resulconci.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resulconci.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{resulconci.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resulconci.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{resulconci.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resulconci.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{resulconci.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resulconci.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{resulconci.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resulconci.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{resulconci.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resulconci.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{resulconci.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.resulconci.tipresconc">Tipresconc</span></dt>
+        <dd>
+            <div *ngIf="resulconci.tipresconc">
+                <a [routerLink]="['/tipresconc', resulconci.tipresconc?.id]">{{resulconci.tipresconc?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'resulconci/'+ resulconci.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
