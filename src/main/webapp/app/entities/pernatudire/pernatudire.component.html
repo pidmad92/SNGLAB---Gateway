@@ -1,0 +1,99 @@
+<div>
+    <h4 class="title my-3">
+        <span jhiTranslate="gatewayApp.pernatudire.home.title">Pernatudires</span>
+        <button class="btn btn-primary float-right jh-create-entity create-pernatudire" [routerLink]="['/consultas', { outlets: { popup: ['pernatudire-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.pernatudire.home.createLabel">
+            Create new Pernatudire
+            </span>
+        </button>
+    </h4>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.pernatudire.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="pernatudires">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatudire.vCoddep">V Coddep</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatudire.vCodpro">V Codpro</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatudire.vCoddis">V Coddis</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatudire.vDircompleta">V Dircompleta</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatudire.vReferencia">V Referencia</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatudire.vFlgnotifica">V Flgnotifica</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatudire.vUsuarioreg">V Usuarioreg</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatudire.dFechareg">D Fechareg</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatudire.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatudire.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatudire.vUsuarioupd">V Usuarioupd</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatudire.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatudire.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatudire.personanatur">Personanatur</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pernatudire of pernatudires ;trackBy: trackId">
+                <td><a [routerLink]="['../pernatudire', pernatudire.id ]">{{pernatudire.id}}</a></td>
+                <td>{{pernatudire.vCoddep}}</td>
+                <td>{{pernatudire.vCodpro}}</td>
+                <td>{{pernatudire.vCoddis}}</td>
+                <td>{{pernatudire.vDircompleta}}</td>
+                <td>{{pernatudire.vReferencia}}</td>
+                <td>{{pernatudire.vFlgnotifica}}</td>
+                <td>{{pernatudire.vUsuarioreg}}</td>
+                <td>{{pernatudire.dFechareg | date:'medium'}}</td>
+                <td>{{pernatudire.nEliminar}}</td>
+                <td>{{pernatudire.nSedereg}}</td>
+                <td>{{pernatudire.vUsuarioupd}}</td>
+                <td>{{pernatudire.dFechaupd | date:'medium'}}</td>
+                <td>{{pernatudire.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="pernatudire.personanatur">
+                        <a [routerLink]="['../personanatur', pernatudire.personanatur?.id ]" >{{pernatudire.personanatur?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../pernatudire', pernatudire.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consultas', { outlets: { popup: 'pernatudire/'+ pernatudire.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consultas', { outlets: { popup: 'pernatudire/'+ pernatudire.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

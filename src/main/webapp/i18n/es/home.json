@@ -1,0 +1,19 @@
+{
+    "home": {
+        "title": "Sistema Nacional de Gestion Laboral",
+        "subtitle": "SNGLAB",
+        "logged": {
+            "message": "Bienvenido, Sr(a). \"{{username}}\"."
+        },
+        "question": "Si tiene preguntas sobre SNGLAB:",
+        "link": {
+            "homepage": "Ministerio de Trabajo y Promoción del Empleo",
+            "stackoverflow": "",
+            "bugtracker": "",
+            "chat": "",
+            "follow": ""
+        },
+        "like": "",
+        "github": ""
+    }
+}

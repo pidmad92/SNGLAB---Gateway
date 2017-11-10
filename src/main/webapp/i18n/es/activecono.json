@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "activecono" : {
+            "home": {
+                "title": "Activeconos",
+                "createLabel": "Crear nuevo Activecono",
+                "createOrEditLabel": "Crear o editar Activecono",
+                "search": "Search for Activecono"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Activecono {{ id }}?"
+            },
+            "detail": {
+                "title": "Activecono"
+            },
+            "vCiuu": "V Ciuu",
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "personajurid": "Personajurid"
+        }
+    },
+    "consultasApp": {
+        "activecono" : {
+            "created": "Un nuevo Activecono ha sido creado con el identificador {{ param }}",
+            "updated": "Un Activecono ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Activecono ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

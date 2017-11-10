@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "dlabingperc" : {
+            "home": {
+                "title": "Dlabingpercs",
+                "createLabel": "Crear nuevo Dlabingperc",
+                "createOrEditLabel": "Crear o editar Dlabingperc",
+                "search": "Search for Dlabingperc"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Dlabingperc {{ id }}?"
+            },
+            "detail": {
+                "title": "Dlabingperc"
+            },
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "datlaboral": "Datlaboral",
+            "docingreperc": "Docingreperc"
+        }
+    },
+    "consultasApp": {
+        "dlabingperc" : {
+            "created": "Un nuevo Dlabingperc ha sido creado con el identificador {{ param }}",
+            "updated": "Un Dlabingperc ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Dlabingperc ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

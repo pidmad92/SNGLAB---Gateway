@@ -1,0 +1,91 @@
+<div>
+    <h4 class="title my-3">
+        <span jhiTranslate="gatewayApp.aplicacion.home.title">Aplicacions</span>
+        
+    </h4>
+    <button class="btn btn-primary jh-create-entity create-aplicacion" [routerLink]="['/seguridad', { outlets: { popup: ['aplicacion-new'] } }]">
+        <span class="fa fa-plus"></span>
+        <span class="hidden-sm-down"  jhiTranslate="gatewayApp.aplicacion.home.createLabel">
+        Create new Aplicacion
+        </span>
+    </button>
+    <br>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.aplicacion.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="aplicacions">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="varNomApp"><span jhiTranslate="gatewayApp.aplicacion.varNomApp">Var Nom App</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="varDescApp"><span jhiTranslate="gatewayApp.aplicacion.varDescApp">Var Desc App</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="varUrlApp"><span jhiTranslate="gatewayApp.aplicacion.varUrlApp">Var Url App</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numEstApp"><span jhiTranslate="gatewayApp.aplicacion.numEstApp">Num Est App</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="varUsuarioLog"><span jhiTranslate="gatewayApp.aplicacion.varUsuarioLog">Var Usuario Log</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="datFechaLog"><span jhiTranslate="gatewayApp.aplicacion.datFechaLog">Dat Fecha Log</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numEliminar"><span jhiTranslate="gatewayApp.aplicacion.numEliminar">Num Eliminar</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let aplicacion of aplicacions ;trackBy: trackId">
+                <td><a [routerLink]="['../aplicacion', aplicacion.id ]">{{aplicacion.id}}</a></td>
+                <td>{{aplicacion.varNomApp}}</td>
+                <td>{{aplicacion.varDescApp}}</td>
+                <td>{{aplicacion.varUrlApp}}</td>
+                <td>{{aplicacion.numEstApp}}</td>
+                <td>{{aplicacion.varUsuarioLog}}</td>
+                <td>{{aplicacion.datFechaLog | date:'medium'}}</td>
+                <td>{{aplicacion.numEliminar}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../aplicacion', aplicacion.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/seguridad', { outlets: { popup: 'aplicacion/'+ aplicacion.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/seguridad', { outlets: { popup: 'aplicacion/'+ aplicacion.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="aplicacions && aplicacions.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [maxSize]="5" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

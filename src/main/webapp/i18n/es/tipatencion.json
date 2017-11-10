@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "tipatencion" : {
+            "home": {
+                "title": "Tipatencions",
+                "createLabel": "Crear nuevo Tipatencion",
+                "createOrEditLabel": "Crear o editar Tipatencion",
+                "search": "Search for Tipatencion"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipatencion {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipatencion"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "atencion": "Atencion"
+        }
+    },
+    "consultasApp": {
+        "tipatencion" : {
+            "created": "Un nuevo Tipatencion ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipatencion ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipatencion ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

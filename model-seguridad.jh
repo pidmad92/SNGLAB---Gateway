@@ -1,0 +1,152 @@
+entity Aplicacion {
+    varNomApp String maxlength(100),
+    varDescApp String maxlength(300),
+    varUrlApp String  maxlength(100),
+    numEstApp Integer,
+    varUsuarioLog String required maxlength(20),
+    datFechaLog Instant required,
+    numEliminar Integer required min(0) max(1)
+}
+entity Modulo {
+    varNomModulo String maxlength(100),
+    varDescModulo String maxlength(300),
+    numEstModulo Integer,
+    varUsuarioLog String required maxlength(20),
+    datFechaLog Instant required,
+    numEliminar Integer required min(0) max(1)
+}
+entity TipoUsuario {
+	varNomTpusuario String maxlength(100),
+    varDescTpusuario String maxlength(300),
+    varUsuarioLog String required maxlength(20),
+    datFechaLog Instant required,
+    numEliminar Integer required min(0) max(1)
+}
+entity Usuario {
+    varNomUsuario String maxlength(100),
+    varLoginUsuario String maxlength(100),
+    varInicialUsuario String maxlength(100),
+    numEstUsuario Integer,
+    varMotivUsuario String maxlength(300),
+    varDocContacto String maxlength(300),
+    varNomContacto String maxlength(300),
+    varRefContacto String maxlength(300),
+    varUsuarioLog String required maxlength(20),
+    datFechaLog Instant required,
+    numEliminar Integer required min(0) max(1),
+    varDireccionIp String maxlength(20),
+    varMacAddress String maxlength(50),
+    varNombrePc String maxlength(20),
+    varCodSeguridad String maxlength(150),
+    datFecTermino LocalDate,
+    varPtoControl Integer
+}
+entity UsuarioHorario{
+	numDiaSemana Integer,
+    datHoraInicio LocalDate,
+    datHoraFin LocalDate,
+	varUsuarioLog String required maxlength(20),
+    datFechaLog Instant required,
+    numEliminar Integer required min(0) max(1)
+}
+entity UsuarioGrupo {
+	varUsuarioLog String required,
+    datFechaLog Instant required,
+    numEliminar Integer required min(0) max(1),
+}
+entity TipoEntidad {
+	varNomTpentidad String maxlength(100),
+    varDescTpentidad String maxlength(300),
+    varUsuarioLog String required maxlength(20),
+    datFechaLog Instant required,
+    numEliminar Integer required min(0) max(1)
+}
+entity Entidad {
+    varRsocialEntidad String maxlength(300),
+    varRucEntidad String maxlength(20),
+    varDirecEntidad String maxlength(300),
+    numCodDepartamento String,
+    numCodProvincia String,
+    numCodDistrito String,
+    varTelefEntidad String maxlength(50),
+    varFaxEntidad String maxlength(50),
+    varEmailEntidad String maxlength(100),
+    varPagwebEntidad String maxlength(300),
+    varUsuarioLog String required,
+    datFechaLog Instant required,
+    numEliminar Integer required min(0) max(1),
+    sCodigoentcer String maxlength(8),
+    latitud String maxlength(50),
+    longitud String maxlength(50)
+}
+entity Permiso{
+	varNomPermiso String maxlength(100),
+    varUsuarioLog String required,
+    datFechaLog Instant required,
+    numEliminar Integer required min(0) max(1),
+}
+entity Perfil {
+    varNomPerfil String maxlength(100),
+    varDescPerfil String maxlength(300),
+    numEstPerfil Integer ,
+    varUsuarioLog String required maxlength(20),
+    datFechaLog Instant required,
+    numEliminar Integer required min(0) max(1)
+}
+entity Menu {
+    varNomMenu String maxlength(100),
+    numOrdenItem Integer,
+    varUrlMenu String maxlength(300),
+    numOpcion Integer,
+    varUsuarioLog String required maxlength(20),
+    datFechaLog Instant required,
+    numEliminar Integer required min(0) max(1)
+}
+entity Grupo{
+	numCodLocal Integer,
+	numEstGrupo Integer,
+	varNomGrupo String maxlength(100),
+	varDescGrupo String maxlength(300),
+	varUsuarioLog String required maxlength(20),
+	datFechaLog Instant required,
+	numEliminar Integer required min(0) max(1)
+}
+entity UsuPer{
+	varUsuarioLog String required maxlength(20),
+	datFechaLog Instant required,
+	numEliminar Integer required min(0) max(1)
+}
+entity ModuloEntidad{
+	varUsuarioLog String required maxlength(20),
+	datFechaLog Instant required,
+	numEliminar Integer required min(0) max(1)
+}
+entity MenuPerfil{
+	varUsuarioLog String required maxlength(20),
+    datFechaLog Instant required,
+    numEliminar Integer required min(0) max(1)
+}
+
+relationship OneToMany {
+  Aplicacion{modulo} to Modulo,
+	TipoUsuario{usuario} to Usuario,
+    Grupo{usuarioGrupo} to UsuarioGrupo,
+    Usuario{usuarioGrupo} to UsuarioGrupo,
+    Usuario{usuarioHorario} to UsuarioHorario,
+    Usuario{usuPer} to UsuPer,
+    Perfil{usuPer} to UsuPer,
+    Permiso{usuPer} to UsuPer,
+    Modulo{moduloEntidad} to ModuloEntidad,
+    Modulo{menu} to Menu,
+    Modulo{perfil} to Perfil,
+    Entidad{moduloEntidad} to ModuloEntidad,
+    Entidad{grupo} to Grupo,
+    TipoEntidad{entidad} to Entidad,
+    UsuarioGrupo{usuPer} to UsuPer,
+    Menu{menu} to Menu,
+    Menu{menuPerfil} to MenuPerfil,
+    Perfil{menuPerfil} to MenuPerfil
+}
+paginate * with pagination
+
+microservice * with seguridad

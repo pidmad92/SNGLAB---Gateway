@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "menu" : {
+            "home": {
+                "title": "Mantenimiento de Menus",
+                "createLabel": "Registrar Menu",
+                "createOrEditLabel": "Registro de Menu",
+                "search": "Buscar un Menu"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar este Menu?"
+            },
+            "detail": {
+                "title": "Menu"
+            },
+            "varNomMenu": "Nombre",
+            "numOrdenItem": "Orden Item",
+            "varUrlMenu": "Url",
+            "numOpcion": "Opcion",
+            "varUsuarioLog": "Usuario_Log",
+            "datFechaLog": "Fecha_Log",
+            "numEliminar": "Eliminar_Log",
+            "modulo": "Modulo",
+            "menu": "Menus",
+            "menuPerfil": "Perfiles"
+        }
+    },
+    "seguridadApp": {
+        "menu" : {
+            "created": "Menu creado satisfactoriamente",
+            "updated": "Menu actualizado satisfactoriamente",
+            "deleted": "Menu eliminado satisfactoriamente"
+        }
+    }
+}

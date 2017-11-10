@@ -1,0 +1,30 @@
+{
+    "gatewayApp": {
+        "moduloEntidad" : {
+            "home": {
+                "title": "Mantenimiento de Modulo Entidades",
+                "createLabel": "Registrar Modulo Entidad",
+                "createOrEditLabel": "Registro Modulo Entidad",
+                "search": "Buscar un Modulo Entidad"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Modulo Entidad?"
+            },
+            "detail": {
+                "title": "Modulo Entidad"
+            },
+            "varUsuarioLog": "Var Usuario Log",
+            "datFechaLog": "Dat Fecha Log",
+            "numEliminar": "Num Eliminar",
+            "modulo": "Modulo",
+            "entidad": "Entidad"
+        }
+    },
+    "seguridadApp": {
+        "moduloEntidad" : {
+            "created": "Un nuevo Modulo Entidad ha sido creado",
+            "updated": "Un Modulo Entidad ha sido actualizado",
+            "deleted": "Un Modulo Entidad ha sido eliminado"
+        }
+    }
+}

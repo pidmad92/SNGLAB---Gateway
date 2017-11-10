@@ -1,0 +1,43 @@
+{
+    "gatewayApp": {
+        "datlaboral" : {
+            "home": {
+                "title": "Datlaborals",
+                "createLabel": "Crear nuevo Datlaboral",
+                "createOrEditLabel": "Crear o editar Datlaboral",
+                "search": "Search for Datlaboral"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Datlaboral {{ id }}?"
+            },
+            "detail": {
+                "title": "Datlaboral"
+            },
+            "cFlgmantienesituacionlab": "C Flgmantienesituacionlab",
+            "dFecvinculo": "D Fecvinculo",
+            "dFeccese": "D Feccese",
+            "dFecfincontrato": "D Fecfincontrato",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "dlabingperc": "Dlabingperc",
+            "atencion": "Atencion",
+            "empleador": "Empleador",
+            "modacontrato": "Modacontrato",
+            "motivocese": "Motivocese",
+            "trabajador": "Trabajador",
+            "subregilabo": "Subregilabo"
+        }
+    },
+    "consultasApp": {
+        "datlaboral" : {
+            "created": "Un nuevo Datlaboral ha sido creado con el identificador {{ param }}",
+            "updated": "Un Datlaboral ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Datlaboral ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

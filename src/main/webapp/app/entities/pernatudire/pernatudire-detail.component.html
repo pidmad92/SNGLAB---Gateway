@@ -1,0 +1,79 @@
+
+<div *ngIf="pernatudire">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.pernatudire.detail.title">Pernatudire</span> {{pernatudire.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.pernatudire.vCoddep">V Coddep</span></dt>
+        <dd>
+            <span>{{pernatudire.vCoddep}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatudire.vCodpro">V Codpro</span></dt>
+        <dd>
+            <span>{{pernatudire.vCodpro}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatudire.vCoddis">V Coddis</span></dt>
+        <dd>
+            <span>{{pernatudire.vCoddis}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatudire.vDircompleta">V Dircompleta</span></dt>
+        <dd>
+            <span>{{pernatudire.vDircompleta}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatudire.vReferencia">V Referencia</span></dt>
+        <dd>
+            <span>{{pernatudire.vReferencia}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatudire.vFlgnotifica">V Flgnotifica</span></dt>
+        <dd>
+            <span>{{pernatudire.vFlgnotifica}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatudire.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{pernatudire.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatudire.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{pernatudire.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatudire.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{pernatudire.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatudire.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{pernatudire.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatudire.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{pernatudire.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatudire.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{pernatudire.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatudire.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{pernatudire.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatudire.personanatur">Personanatur</span></dt>
+        <dd>
+            <div *ngIf="pernatudire.personanatur">
+                <a [routerLink]="['/personanatur', pernatudire.personanatur?.id]">{{pernatudire.personanatur?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/consultas', { outlets: { popup: 'pernatudire/'+ pernatudire.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,119 @@
+<div>
+    <h4 class="title my-3">
+        <span jhiTranslate="gatewayApp.datlaboral.home.title">Datlaborals</span>
+        <button class="btn btn-primary float-right jh-create-entity create-datlaboral" [routerLink]="['/consultas', { outlets: { popup: ['datlaboral-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.datlaboral.home.createLabel">
+            Create new Datlaboral
+            </span>
+        </button>
+    </h4>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.datlaboral.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="datlaborals">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.datlaboral.cFlgmantienesituacionlab">C Flgmantienesituacionlab</span></th>
+            <th><span jhiTranslate="gatewayApp.datlaboral.dFecvinculo">D Fecvinculo</span></th>
+            <th><span jhiTranslate="gatewayApp.datlaboral.dFeccese">D Feccese</span></th>
+            <th><span jhiTranslate="gatewayApp.datlaboral.dFecfincontrato">D Fecfincontrato</span></th>
+            <th><span jhiTranslate="gatewayApp.datlaboral.vUsuarioreg">V Usuarioreg</span></th>
+            <th><span jhiTranslate="gatewayApp.datlaboral.dFechareg">D Fechareg</span></th>
+            <th><span jhiTranslate="gatewayApp.datlaboral.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.datlaboral.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.datlaboral.vUsuarioupd">V Usuarioupd</span></th>
+            <th><span jhiTranslate="gatewayApp.datlaboral.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.datlaboral.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.datlaboral.empleador">Empleador</span></th>
+            <th><span jhiTranslate="gatewayApp.datlaboral.modacontrato">Modacontrato</span></th>
+            <th><span jhiTranslate="gatewayApp.datlaboral.motivocese">Motivocese</span></th>
+            <th><span jhiTranslate="gatewayApp.datlaboral.trabajador">Trabajador</span></th>
+            <th><span jhiTranslate="gatewayApp.datlaboral.subregilabo">Subregilabo</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let datlaboral of datlaborals ;trackBy: trackId">
+                <td><a [routerLink]="['../datlaboral', datlaboral.id ]">{{datlaboral.id}}</a></td>
+                <td>{{datlaboral.cFlgmantienesituacionlab}}</td>
+                <td>{{datlaboral.dFecvinculo | date:'medium'}}</td>
+                <td>{{datlaboral.dFeccese | date:'medium'}}</td>
+                <td>{{datlaboral.dFecfincontrato | date:'medium'}}</td>
+                <td>{{datlaboral.vUsuarioreg}}</td>
+                <td>{{datlaboral.dFechareg | date:'medium'}}</td>
+                <td>{{datlaboral.nEliminar}}</td>
+                <td>{{datlaboral.nSedereg}}</td>
+                <td>{{datlaboral.vUsuarioupd}}</td>
+                <td>{{datlaboral.dFechaupd | date:'medium'}}</td>
+                <td>{{datlaboral.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="datlaboral.empleador">
+                        <a [routerLink]="['../empleador', datlaboral.empleador?.id ]" >{{datlaboral.empleador?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="datlaboral.modacontrato">
+                        <a [routerLink]="['../modacontrato', datlaboral.modacontrato?.id ]" >{{datlaboral.modacontrato?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="datlaboral.motivocese">
+                        <a [routerLink]="['../motivocese', datlaboral.motivocese?.id ]" >{{datlaboral.motivocese?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="datlaboral.trabajador">
+                        <a [routerLink]="['../trabajador', datlaboral.trabajador?.id ]" >{{datlaboral.trabajador?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="datlaboral.subregilabo">
+                        <a [routerLink]="['../subregilabo', datlaboral.subregilabo?.id ]" >{{datlaboral.subregilabo?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../datlaboral', datlaboral.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consultas', { outlets: { popup: 'datlaboral/'+ datlaboral.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consultas', { outlets: { popup: 'datlaboral/'+ datlaboral.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

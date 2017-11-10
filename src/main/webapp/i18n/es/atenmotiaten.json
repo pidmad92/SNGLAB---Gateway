@@ -1,0 +1,36 @@
+{
+    "gatewayApp": {
+        "atenmotiaten" : {
+            "home": {
+                "title": "Atenmotiatens",
+                "createLabel": "Crear nuevo Atenmotiaten",
+                "createOrEditLabel": "Crear o editar Atenmotiaten",
+                "search": "Search for Atenmotiaten"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Atenmotiaten {{ id }}?"
+            },
+            "detail": {
+                "title": "Atenmotiaten"
+            },
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "atencion": "Atencion",
+            "docpresenta": "Docpresenta",
+            "direcalter": "Direcalter",
+            "motatenofic": "Motatenofic"
+        }
+    },
+    "consultasApp": {
+        "atenmotiaten" : {
+            "created": "Un nuevo Atenmotiaten ha sido creado con el identificador {{ param }}",
+            "updated": "Un Atenmotiaten ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Atenmotiaten ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

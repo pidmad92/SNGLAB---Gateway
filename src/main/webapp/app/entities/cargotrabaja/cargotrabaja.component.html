@@ -1,0 +1,83 @@
+<div>
+    <h4 class="title my-3">
+        <span jhiTranslate="gatewayApp.cargotrabaja.home.title">Cargotrabajas</span>
+        <button class="btn btn-primary float-right jh-create-entity create-cargotrabaja" [routerLink]="['/consultas', { outlets: { popup: ['cargotrabaja-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.cargotrabaja.home.createLabel">
+            Create new Cargotrabaja
+            </span>
+        </button>
+    </h4>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.cargotrabaja.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="cargotrabajas">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.cargotrabaja.vDescargotrabaja">V Descargotrabaja</span></th>
+            <th><span jhiTranslate="gatewayApp.cargotrabaja.vUsuarioreg">V Usuarioreg</span></th>
+            <th><span jhiTranslate="gatewayApp.cargotrabaja.dFechareg">D Fechareg</span></th>
+            <th><span jhiTranslate="gatewayApp.cargotrabaja.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.cargotrabaja.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.cargotrabaja.vUsuarioupd">V Usuarioupd</span></th>
+            <th><span jhiTranslate="gatewayApp.cargotrabaja.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.cargotrabaja.nSedeupd">N Sedeupd</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cargotrabaja of cargotrabajas ;trackBy: trackId">
+                <td><a [routerLink]="['../cargotrabaja', cargotrabaja.id ]">{{cargotrabaja.id}}</a></td>
+                <td>{{cargotrabaja.vDescargotrabaja}}</td>
+                <td>{{cargotrabaja.vUsuarioreg}}</td>
+                <td>{{cargotrabaja.dFechareg | date:'medium'}}</td>
+                <td>{{cargotrabaja.nEliminar}}</td>
+                <td>{{cargotrabaja.nSedereg}}</td>
+                <td>{{cargotrabaja.vUsuarioupd}}</td>
+                <td>{{cargotrabaja.dFechaupd | date:'medium'}}</td>
+                <td>{{cargotrabaja.nSedeupd}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../cargotrabaja', cargotrabaja.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consultas', { outlets: { popup: 'cargotrabaja/'+ cargotrabaja.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consultas', { outlets: { popup: 'cargotrabaja/'+ cargotrabaja.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

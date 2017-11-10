@@ -1,0 +1,51 @@
+
+<div *ngIf="usuarioHorario">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.usuarioHorario.detail.title">Usuario Horario</span> {{usuarioHorario.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.usuarioHorario.numDiaSemana">Num Dia Semana</span></dt>
+        <dd>
+            <span>{{usuarioHorario.numDiaSemana}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuarioHorario.datHoraInicio">Dat Hora Inicio</span></dt>
+        <dd>
+            <span>{{usuarioHorario.datHoraInicio | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuarioHorario.datHoraFin">Dat Hora Fin</span></dt>
+        <dd>
+            <span>{{usuarioHorario.datHoraFin | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuarioHorario.varUsuarioLog">Var Usuario Log</span></dt>
+        <dd>
+            <span>{{usuarioHorario.varUsuarioLog}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuarioHorario.datFechaLog">Dat Fecha Log</span></dt>
+        <dd>
+            <span>{{usuarioHorario.datFechaLog | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuarioHorario.numEliminar">Num Eliminar</span></dt>
+        <dd>
+            <span>{{usuarioHorario.numEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuarioHorario.usuario">Usuario</span></dt>
+        <dd>
+            <div *ngIf="usuarioHorario.usuario">
+                <a [routerLink]="['/usuario', usuarioHorario.usuario?.id]">{{usuarioHorario.usuario?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/seguridad', { outlets: { popup: 'usuario-horario/'+ usuarioHorario.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

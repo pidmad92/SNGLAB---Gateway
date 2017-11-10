@@ -1,0 +1,31 @@
+{
+    "gatewayApp": {
+        "tipoEntidad" : {
+            "home": {
+                "title": "Mantenimiento de Tipo de Entidades",
+                "createLabel": "Registrar Tipo Entidad",
+                "createOrEditLabel": "Registro de Tipo de Entidad",
+                "search": "Buscar un Tipo Entidad"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar este Tipo de Entidad?"
+            },
+            "detail": {
+                "title": "Tipo Entidad"
+            },
+            "varNomTpentidad": "Nombre",
+            "varDescTpentidad": "Descripcion",
+            "varUsuarioLog": "Usuario_Log",
+            "datFechaLog": "Fecha_Log",
+            "numEliminar": "Eliminar_Log",
+            "entidad": "Entidad"
+        }
+    },
+    "seguridadApp": {
+        "tipoEntidad" : {
+            "created": "Un nuevo Tipo Entidad ha sido creado",
+            "updated": "Un Tipo Entidad ha sido actualizado",
+            "deleted": "Un Tipo Entidad ha sido eliminado"
+        }
+    }
+}

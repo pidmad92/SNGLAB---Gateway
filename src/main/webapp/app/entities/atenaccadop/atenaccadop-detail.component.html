@@ -1,0 +1,61 @@
+
+<div *ngIf="atenaccadop">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.atenaccadop.detail.title">Atenaccadop</span> {{atenaccadop.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.atenaccadop.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{atenaccadop.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atenaccadop.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{atenaccadop.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atenaccadop.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{atenaccadop.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atenaccadop.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{atenaccadop.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atenaccadop.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{atenaccadop.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atenaccadop.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{atenaccadop.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atenaccadop.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{atenaccadop.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atenaccadop.atencion">Atencion</span></dt>
+        <dd>
+            <div *ngIf="atenaccadop.atencion">
+                <a [routerLink]="['/atencion', atenaccadop.atencion?.id]">{{atenaccadop.atencion?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atenaccadop.accionadop">Accionadop</span></dt>
+        <dd>
+            <div *ngIf="atenaccadop.accionadop">
+                <a [routerLink]="['/accionadop', atenaccadop.accionadop?.id]">{{atenaccadop.accionadop?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/consultas', { outlets: { popup: 'atenaccadop/'+ atenaccadop.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

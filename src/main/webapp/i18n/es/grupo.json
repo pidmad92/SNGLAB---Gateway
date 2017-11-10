@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "grupo" : {
+            "home": {
+                "title": "Mantenimiento de Grupos",
+                "createLabel": "Registrar Grupo",
+                "createOrEditLabel": "Registro de Grupo",
+                "search": "Buscar un Grupo"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar este Grupo?"
+            },
+            "detail": {
+                "title": "Grupo"
+            },
+            "numCodLocal": "Código Local",
+            "numEstGrupo": "Estado",
+            "varNomGrupo": "Nombre",
+            "varDescGrupo": "Descripcion",
+            "varUsuarioLog": "Usuario_Log",
+            "datFechaLog": "Fecha_Log",
+            "numEliminar": "Eliminar_Log",
+            "entidad": "Entidad",
+            "usuarioGrupo": "Usuarios"
+        }
+    },
+    "seguridadApp": {
+        "grupo" : {
+            "created": "Grupo creado satisfactoriamente",
+            "updated": "Grupo actualizado satisfactoriamente",
+            "deleted": "Grupo eliminado satisfactoriamente"
+        }
+    }
+}

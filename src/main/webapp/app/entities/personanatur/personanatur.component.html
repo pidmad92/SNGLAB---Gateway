@@ -1,0 +1,107 @@
+<div>
+    <h4 class="title my-3">
+        <span jhiTranslate="gatewayApp.personanatur.home.title">Personanaturs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-personanatur" [routerLink]="['/consultas', { outlets: { popup: ['personanatur-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.personanatur.home.createLabel">
+            Create new Personanatur
+            </span>
+        </button>
+    </h4>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.personanatur.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="personanaturs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.personanatur.vNombres">V Nombres</span></th>
+            <th><span jhiTranslate="gatewayApp.personanatur.vApepaterno">V Apepaterno</span></th>
+            <th><span jhiTranslate="gatewayApp.personanatur.vApematerno">V Apematerno</span></th>
+            <th><span jhiTranslate="gatewayApp.personanatur.vNumdocumento">V Numdocumento</span></th>
+            <th><span jhiTranslate="gatewayApp.personanatur.vTelefono">V Telefono</span></th>
+            <th><span jhiTranslate="gatewayApp.personanatur.vCelular">V Celular</span></th>
+            <th><span jhiTranslate="gatewayApp.personanatur.vEmail">V Email</span></th>
+            <th><span jhiTranslate="gatewayApp.personanatur.dFecnacimiento">D Fecnacimiento</span></th>
+            <th><span jhiTranslate="gatewayApp.personanatur.csexo">Csexo</span></th>
+            <th><span jhiTranslate="gatewayApp.personanatur.cFlgestado">C Flgestado</span></th>
+            <th><span jhiTranslate="gatewayApp.personanatur.vUsuarioreg">V Usuarioreg</span></th>
+            <th><span jhiTranslate="gatewayApp.personanatur.dFechareg">D Fechareg</span></th>
+            <th><span jhiTranslate="gatewayApp.personanatur.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.personanatur.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.personanatur.vUsuarioupd">V Usuarioupd</span></th>
+            <th><span jhiTranslate="gatewayApp.personanatur.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.personanatur.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.personanatur.tipdocident">Tipdocident</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let personanatur of personanaturs ;trackBy: trackId">
+                <td><a [routerLink]="['../personanatur', personanatur.id ]">{{personanatur.id}}</a></td>
+                <td>{{personanatur.vNombres}}</td>
+                <td>{{personanatur.vApepaterno}}</td>
+                <td>{{personanatur.vApematerno}}</td>
+                <td>{{personanatur.vNumdocumento}}</td>
+                <td>{{personanatur.vTelefono}}</td>
+                <td>{{personanatur.vCelular}}</td>
+                <td>{{personanatur.vEmail}}</td>
+                <td>{{personanatur.dFecnacimiento | date:'medium'}}</td>
+                <td>{{personanatur.csexo}}</td>
+                <td>{{personanatur.cFlgestado}}</td>
+                <td>{{personanatur.vUsuarioreg}}</td>
+                <td>{{personanatur.dFechareg | date:'medium'}}</td>
+                <td>{{personanatur.nEliminar}}</td>
+                <td>{{personanatur.nSedereg}}</td>
+                <td>{{personanatur.vUsuarioupd}}</td>
+                <td>{{personanatur.dFechaupd | date:'medium'}}</td>
+                <td>{{personanatur.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="personanatur.tipdocident">
+                        <a [routerLink]="['../tipdocident', personanatur.tipdocident?.id ]" >{{personanatur.tipdocident?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../personanatur', personanatur.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consultas', { outlets: { popup: 'personanatur/'+ personanatur.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consultas', { outlets: { popup: 'personanatur/'+ personanatur.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

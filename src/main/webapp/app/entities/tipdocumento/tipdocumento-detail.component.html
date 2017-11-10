@@ -1,0 +1,53 @@
+
+<div *ngIf="tipdocumento">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.tipdocumento.detail.title">Tipdocumento</span> {{tipdocumento.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.tipdocumento.vDescripcion">V Descripcion</span></dt>
+        <dd>
+            <span>{{tipdocumento.vDescripcion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocumento.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{tipdocumento.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocumento.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{tipdocumento.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocumento.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{tipdocumento.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocumento.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{tipdocumento.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocumento.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{tipdocumento.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocumento.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{tipdocumento.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocumento.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{tipdocumento.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/consultas', { outlets: { popup: 'tipdocumento/'+ tipdocumento.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

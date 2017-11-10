@@ -1,0 +1,30 @@
+{
+    "gatewayApp": {
+        "permiso" : {
+            "home": {
+                "title": "Mantenimiento de Permisos",
+                "createLabel": "Registrar Permiso",
+                "createOrEditLabel": "Registro de Permiso",
+                "search": "Buscar un Permiso"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar este Permiso?"
+            },
+            "detail": {
+                "title": "Permiso"
+            },
+            "varNomPermiso": "Nombre",
+            "varUsuarioLog": "Usuario_Log",
+            "datFechaLog": "Fecha_Log",
+            "numEliminar": "Eliminar_Log",
+            "usuPer": "Usuarios"
+        }
+    },
+    "seguridadApp": {
+        "permiso" : {
+            "created": "Permiso creado satisfactoriamente",
+            "updated": "Permiso actualizado satisfactoriamente",
+            "deleted": "Permiso eliminado satisfactoriamente"
+        }
+    }
+}

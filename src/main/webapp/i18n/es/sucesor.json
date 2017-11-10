@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "sucesor" : {
+            "home": {
+                "title": "Sucesors",
+                "createLabel": "Crear nuevo Sucesor",
+                "createOrEditLabel": "Crear o editar Sucesor",
+                "search": "Search for Sucesor"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Sucesor {{ id }}?"
+            },
+            "detail": {
+                "title": "Sucesor"
+            },
+            "cFlgestado": "C Flgestado",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "personanatur": "Personanatur",
+            "trabajador": "Trabajador"
+        }
+    },
+    "consultasApp": {
+        "sucesor" : {
+            "created": "Un nuevo Sucesor ha sido creado con el identificador {{ param }}",
+            "updated": "Un Sucesor ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Sucesor ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

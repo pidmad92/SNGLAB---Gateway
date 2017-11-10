@@ -1,0 +1,23 @@
+{
+    "gatewayApp": {
+        "expediente" : {
+            "home": {
+                "title": "Expedientes",
+                "createLabel": "Crear nuevo Expediente",
+                "createOrEditLabel": "Crear o editar Expediente",
+                "search": "Search for Expediente"
+            },
+            "created": "Un nuevo Expediente ha sido creado con el identificador {{ param }}",
+            "updated": "Un Expediente ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Expediente ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Expediente {{ id }}?"
+            },
+            "detail": {
+                "title": "Expediente"
+            },
+            "name": "Name",
+            "desc": "Desc"
+        }
+    }
+}

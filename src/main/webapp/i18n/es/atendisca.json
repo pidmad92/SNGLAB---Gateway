@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "atendisca" : {
+            "home": {
+                "title": "Atendiscas",
+                "createLabel": "Crear nuevo Atendisca",
+                "createOrEditLabel": "Crear o editar Atendisca",
+                "search": "Search for Atendisca"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Atendisca {{ id }}?"
+            },
+            "detail": {
+                "title": "Atendisca"
+            },
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "atencion": "Atencion",
+            "discapacidad": "Discapacidad"
+        }
+    },
+    "consultasApp": {
+        "atendisca" : {
+            "created": "Un nuevo Atendisca ha sido creado con el identificador {{ param }}",
+            "updated": "Un Atendisca ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Atendisca ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

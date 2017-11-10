@@ -1,0 +1,110 @@
+ <nav class="row d-flex justify-content-center flex-column">
+    <div class="welcome">
+      <div class="d-flex align-items-center my-3">
+        <div class="perfil-img col-md-3 pr-0">
+          <img src="../../../content/images/img.jpg" class="img-fluid img-thumbnail mr-2" alt=""> 
+        </div>
+        <div class="perfil-info col-md-9">
+          <span class="text-muted"><small>Bienvenido</small></span><br>
+          <span class="text-white">Jhon Lee</span>
+        </div>
+      </div>
+    </div>
+    <div class="my-2">
+        <h3>Consultas Trabajador</h3>
+        <ul class="level-one p-0" id="accordion">
+          <li routerLinkActive="active">
+            <a routerLink="consultas/atencion-trabajador" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+              <i class="fa fa-cubes px-2" aria-hidden="true"></i> <span>Registro de Atención Trabajador</span>
+            </a>
+          </li>
+        </ul>
+        <h3>Consultas Empleador</h3>
+        <ul class="level-one p-0" id="accordion">
+          <li routerLinkActive="active">
+            <a routerLink="consultas/atencion-empleador" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+              <i class="fa fa-cubes px-2" aria-hidden="true"></i> <span>Registro de Atención Empleador</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    <div class="my-2" *ngIf="aplicacion == 'seguridad'">
+      <!-- <h3 class="pl-3 text-uppercase h3coll">MANTENIMIENTO DE MÓDULO DE SEGURIDAD</h3> -->
+      <ul class="level-one mt-2 p-0" id="accordion" >
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+          <a routerLink="/" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <i class="fa fa-dashboard px-2" aria-hidden="true"></i> <span>Dashboard</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="seguridad/aplicacion"  class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <i class="fa fa-institution px-2" aria-hidden="true"></i> <span>Gestión de Aplicaciones</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="seguridad/modulo"  class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <i class="fa fa-server px-2" aria-hidden="true"></i> <span>Gestión de Modulos</span>
+          </a>
+        </li>
+        <li routerLinkActive="active" >
+          <a routerLink="seguridad/entidad" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <i class="fa fa-building px-2" aria-hidden="true"></i> <span>Gestión de Entidades</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+            <a routerLink="seguridad/usuario"  class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+              <i class="fa fa-user px-2" aria-hidden="true"></i> <span>Gestión de Usuarios</span>
+            </a>
+        </li>
+        <li routerLinkActive="active" >
+            <a routerLink="seguridad/perfil" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+              <i class="fa fa-user-circle px-2" aria-hidden="true"></i> <span>Gestión de Perfil</span>
+            </a>
+        </li>
+        <li routerLinkActive="active" >
+            <a routerLink="seguridad/menu" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+              <i class="fa fa-shield px-2" aria-hidden="true"></i> <span>Gestión de Menu</span>
+            </a>
+        </li>
+        <li routerLinkActive="active"  >
+            <a routerLink="seguridad/grupo" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+              <i class="fa fa-users px-2" aria-hidden="true"></i> <span>Gestión de Grupo</span>
+            </a>
+        </li>
+      </ul>
+    </div>
+    <div class="my-2" *ngIf="aplicacion == 'conciliacion'">
+      <ul class="level-one mt-2 p-0" id="accordion">
+        <li routerLinkActive="active">
+          <a href="index.html" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <i class="fa fa-tachometer px-2" aria-hidden="true"></i> <span>Dashboard</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a href="#" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <i class="fa fa-commenting-o px-2" aria-hidden="true"></i> <span>Forms</span> <span class="fa fa-chevron-down ml-auto"></span>
+          </a>
+          <ul class="level-two p-0">
+            <li><a href="general.html"><span>General Elements</span></a></li>
+            <li class="active-submenu"><a href="advanced.html"><span>Advanced Elements</span></a></li>
+            <li><a href="editors.html"><span>Editors</span></a></li>
+          </ul>
+        </li>
+        <li routerLinkActive="active">
+          <a href="widgets.html" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <i class="fa fa-th-large px-2" aria-hidden="true"></i> <span>Widgets</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <i class="fa fa-commenting-o px-2" aria-hidden="true"></i> <span>Validaciones</span> <span class="fa fa-chevron-down ml-auto"></span>
+          </a>
+          <ul class="level-two p-0">
+            <li><a href="validacion.html"><span>Validación</span></a></li>
+            <li><a href="#"><span>Seccion2</span></a></li>
+            <li><a href="#"><span>Seccion3</span></a></li>                    
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>

@@ -1,0 +1,132 @@
+<div>
+    <h4 class="title my-3">
+        <span>Consulta del Trabajador</span>
+    </h4>
+    <fieldset class="col">     
+        <legend>Criterios de Búsqueda</legend>
+        
+        <div class="panel">
+          <div class="panel-body">
+            <form>
+              <div class="form-row">
+                <div class="col-md">
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="radio"> Documento de Identidad
+                        </div>
+                        <div class="col-12">
+                            <input type="radio"> Nombres y Apellidos
+                        </div>
+
+                    </div>
+                  <div class="form-group row">
+                    <label for="inpTipo" class="col-sm-5 col-form-label">Tipo de documentos</label>
+                    <div class="col-sm-7">
+                      <select class="form-control form-control-sm" id="inpTipo">
+                        <option>DNI</option>
+                        <option>RUC</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="form-group row">
+                    <label for="inpNumero" class="col-sm-3 col-form-label">Número</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control form-control-sm" id="inpNumero" placeholder="">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="form-group row">
+                    <div class="col-sm-9">
+                      <a href="#" class="btn btn-sm btn-secondary"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            
+          </div>
+        </div>
+    </fieldset>
+    <br><br>
+    <button class="btn btn-primary jh-create-entity create-accionadop" [routerLink]="['/consultas/registro-atencion-trabajador', { outlets: { wizard: ['datos-trabajador'] } }]">
+        <span class="fa fa-plus"></span>
+        <span class="hidden-sm-down">
+        Registrar Atención
+        </span>
+    </button>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.accionadop.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="trabajador">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span >ID</span></th>
+            <th><span >V Descripcion</span></th>
+            <th><span >V Usuarioreg</span></th>
+            <th><span >D Fechareg</span></th>
+            <th><span >N Eliminar</span></th>
+            <th><span >N Sedereg</span></th>
+            <th><span >V Usuarioupd</span></th>
+            <th><span >D Fechaupd</span></th>
+            <th><span >N Sedeupd</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let accionadop of trabajador ;trackBy: trackId">
+                <td><a [routerLink]="['../accionadop', accionadop.id ]">{{accionadop.id}}</a></td>
+                <td>{{accionadop.vDescripcion}}</td>
+                <td>{{accionadop.vUsuarioreg}}</td>
+                <td>{{accionadop.dFechareg | date:'medium'}}</td>
+                <td>{{accionadop.nEliminar}}</td>
+                <td>{{accionadop.nSedereg}}</td>
+                <td>{{accionadop.vUsuarioupd}}</td>
+                <td>{{accionadop.dFechaupd | date:'medium'}}</td>
+                <td>{{accionadop.nSedeupd}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../accionadop', accionadop.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" >View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consultas', { outlets: { popup: 'accionadop/'+ accionadop.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" >Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consultas', { outlets: { popup: 'accionadop/'+ accionadop.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" >Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

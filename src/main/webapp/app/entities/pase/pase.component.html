@@ -1,0 +1,89 @@
+<div>
+    <h4 class="title my-3">
+        <span jhiTranslate="gatewayApp.pase.home.title">Pases</span>
+        <button class="btn btn-primary float-right jh-create-entity create-pase" [routerLink]="['/consultas', { outlets: { popup: ['pase-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.pase.home.createLabel">
+            Create new Pase
+            </span>
+        </button>
+    </h4>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.pase.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="pases">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.pase.vObservacion">V Observacion</span></th>
+            <th><span jhiTranslate="gatewayApp.pase.cFlgestado">C Flgestado</span></th>
+            <th><span jhiTranslate="gatewayApp.pase.nCodoficinaorigen">N Codoficinaorigen</span></th>
+            <th><span jhiTranslate="gatewayApp.pase.nCodoficinadestino">N Codoficinadestino</span></th>
+            <th><span jhiTranslate="gatewayApp.pase.vUsuarioreg">V Usuarioreg</span></th>
+            <th><span jhiTranslate="gatewayApp.pase.dFechareg">D Fechareg</span></th>
+            <th><span jhiTranslate="gatewayApp.pase.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.pase.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.pase.vUsuarioupd">V Usuarioupd</span></th>
+            <th><span jhiTranslate="gatewayApp.pase.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.pase.nSedeupd">N Sedeupd</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pase of pases ;trackBy: trackId">
+                <td><a [routerLink]="['../pase', pase.id ]">{{pase.id}}</a></td>
+                <td>{{pase.vObservacion}}</td>
+                <td>{{pase.cFlgestado}}</td>
+                <td>{{pase.nCodoficinaorigen}}</td>
+                <td>{{pase.nCodoficinadestino}}</td>
+                <td>{{pase.vUsuarioreg}}</td>
+                <td>{{pase.dFechareg | date:'medium'}}</td>
+                <td>{{pase.nEliminar}}</td>
+                <td>{{pase.nSedereg}}</td>
+                <td>{{pase.vUsuarioupd}}</td>
+                <td>{{pase.dFechaupd | date:'medium'}}</td>
+                <td>{{pase.nSedeupd}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../pase', pase.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consultas', { outlets: { popup: 'pase/'+ pase.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consultas', { outlets: { popup: 'pase/'+ pase.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

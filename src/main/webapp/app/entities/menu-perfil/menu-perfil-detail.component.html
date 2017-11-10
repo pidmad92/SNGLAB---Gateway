@@ -1,0 +1,45 @@
+
+<div *ngIf="menuPerfil">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.menuPerfil.detail.title">Menu Perfil</span> {{menuPerfil.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.menuPerfil.varUsuarioLog">Var Usuario Log</span></dt>
+        <dd>
+            <span>{{menuPerfil.varUsuarioLog}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.menuPerfil.datFechaLog">Dat Fecha Log</span></dt>
+        <dd>
+            <span>{{menuPerfil.datFechaLog | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.menuPerfil.numEliminar">Num Eliminar</span></dt>
+        <dd>
+            <span>{{menuPerfil.numEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.menuPerfil.perfil">Perfil</span></dt>
+        <dd>
+            <div *ngIf="menuPerfil.perfil">
+                <a [routerLink]="['/perfil', menuPerfil.perfil?.id]">{{menuPerfil.perfil?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.menuPerfil.menu">Menu</span></dt>
+        <dd>
+            <div *ngIf="menuPerfil.menu">
+                <a [routerLink]="['/menu', menuPerfil.menu?.id]">{{menuPerfil.menu?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/seguridad', { outlets: { popup: 'menu-perfil/'+ menuPerfil.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

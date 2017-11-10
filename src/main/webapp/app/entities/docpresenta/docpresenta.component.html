@@ -1,0 +1,93 @@
+<div>
+    <h4 class="title my-3">
+        <span jhiTranslate="gatewayApp.docpresenta.home.title">Docpresentas</span>
+        <button class="btn btn-primary float-right jh-create-entity create-docpresenta" [routerLink]="['/consultas', { outlets: { popup: ['docpresenta-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.docpresenta.home.createLabel">
+            Create new Docpresenta
+            </span>
+        </button>
+    </h4>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.docpresenta.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="docpresentas">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.docpresenta.vUsuarioreg">V Usuarioreg</span></th>
+            <th><span jhiTranslate="gatewayApp.docpresenta.dFechareg">D Fechareg</span></th>
+            <th><span jhiTranslate="gatewayApp.docpresenta.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.docpresenta.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.docpresenta.vUsuarioupd">V Usuarioupd</span></th>
+            <th><span jhiTranslate="gatewayApp.docpresenta.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.docpresenta.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.docpresenta.atenmotiaten">Atenmotiaten</span></th>
+            <th><span jhiTranslate="gatewayApp.docpresenta.documento">Documento</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let docpresenta of docpresentas ;trackBy: trackId">
+                <td><a [routerLink]="['../docpresenta', docpresenta.id ]">{{docpresenta.id}}</a></td>
+                <td>{{docpresenta.vUsuarioreg}}</td>
+                <td>{{docpresenta.dFechareg | date:'medium'}}</td>
+                <td>{{docpresenta.nEliminar}}</td>
+                <td>{{docpresenta.nSedereg}}</td>
+                <td>{{docpresenta.vUsuarioupd}}</td>
+                <td>{{docpresenta.dFechaupd | date:'medium'}}</td>
+                <td>{{docpresenta.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="docpresenta.atenmotiaten">
+                        <a [routerLink]="['../atenmotiaten', docpresenta.atenmotiaten?.id ]" >{{docpresenta.atenmotiaten?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="docpresenta.documento">
+                        <a [routerLink]="['../documento', docpresenta.documento?.id ]" >{{docpresenta.documento?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../docpresenta', docpresenta.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consultas', { outlets: { popup: 'docpresenta/'+ docpresenta.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consultas', { outlets: { popup: 'docpresenta/'+ docpresenta.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

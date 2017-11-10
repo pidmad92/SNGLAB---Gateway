@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "motivocese" : {
+            "home": {
+                "title": "Motivocese",
+                "createLabel": "Crear nuevo Motivocese",
+                "createOrEditLabel": "Crear o editar Motivocese",
+                "search": "Search for Motivocese"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Motivocese {{ id }}?"
+            },
+            "detail": {
+                "title": "Motivocese"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "datlaboral": "Datlaboral"
+        }
+    },
+    "consultasApp": {
+        "motivocese" : {
+            "created": "Un nuevo Motivocese ha sido creado con el identificador {{ param }}",
+            "updated": "Un Motivocese ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Motivocese ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

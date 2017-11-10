@@ -1,0 +1,95 @@
+
+<div *ngIf="datlaboral">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.datlaboral.detail.title">Datlaboral</span> {{datlaboral.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.datlaboral.cFlgmantienesituacionlab">C Flgmantienesituacionlab</span></dt>
+        <dd>
+            <span>{{datlaboral.cFlgmantienesituacionlab}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datlaboral.dFecvinculo">D Fecvinculo</span></dt>
+        <dd>
+            <span>{{datlaboral.dFecvinculo | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datlaboral.dFeccese">D Feccese</span></dt>
+        <dd>
+            <span>{{datlaboral.dFeccese | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datlaboral.dFecfincontrato">D Fecfincontrato</span></dt>
+        <dd>
+            <span>{{datlaboral.dFecfincontrato | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datlaboral.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{datlaboral.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datlaboral.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{datlaboral.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datlaboral.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{datlaboral.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datlaboral.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{datlaboral.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datlaboral.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{datlaboral.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datlaboral.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{datlaboral.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datlaboral.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{datlaboral.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datlaboral.empleador">Empleador</span></dt>
+        <dd>
+            <div *ngIf="datlaboral.empleador">
+                <a [routerLink]="['/empleador', datlaboral.empleador?.id]">{{datlaboral.empleador?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datlaboral.modacontrato">Modacontrato</span></dt>
+        <dd>
+            <div *ngIf="datlaboral.modacontrato">
+                <a [routerLink]="['/modacontrato', datlaboral.modacontrato?.id]">{{datlaboral.modacontrato?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datlaboral.motivocese">Motivocese</span></dt>
+        <dd>
+            <div *ngIf="datlaboral.motivocese">
+                <a [routerLink]="['/motivocese', datlaboral.motivocese?.id]">{{datlaboral.motivocese?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datlaboral.trabajador">Trabajador</span></dt>
+        <dd>
+            <div *ngIf="datlaboral.trabajador">
+                <a [routerLink]="['/trabajador', datlaboral.trabajador?.id]">{{datlaboral.trabajador?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datlaboral.subregilabo">Subregilabo</span></dt>
+        <dd>
+            <div *ngIf="datlaboral.subregilabo">
+                <a [routerLink]="['/subregilabo', datlaboral.subregilabo?.id]">{{datlaboral.subregilabo?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/consultas', { outlets: { popup: 'datlaboral/'+ datlaboral.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

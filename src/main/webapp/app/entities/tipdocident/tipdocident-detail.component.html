@@ -1,0 +1,61 @@
+
+<div *ngIf="tipdocident">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.tipdocident.detail.title">Tipdocident</span> {{tipdocident.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.tipdocident.vDescripcion">V Descripcion</span></dt>
+        <dd>
+            <span>{{tipdocident.vDescripcion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocident.nNumdigitos">N Numdigitos</span></dt>
+        <dd>
+            <span>{{tipdocident.nNumdigitos}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocident.vDescripcioncorta">V Descripcioncorta</span></dt>
+        <dd>
+            <span>{{tipdocident.vDescripcioncorta}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocident.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{tipdocident.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocident.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{tipdocident.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocident.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{tipdocident.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocident.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{tipdocident.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocident.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{tipdocident.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocident.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{tipdocident.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocident.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{tipdocident.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/consultas', { outlets: { popup: 'tipdocident/'+ tipdocident.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

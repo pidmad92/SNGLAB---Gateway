@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "atenaccadop" : {
+            "home": {
+                "title": "Atenaccadops",
+                "createLabel": "Crear nuevo Atenaccadop",
+                "createOrEditLabel": "Crear o editar Atenaccadop",
+                "search": "Search for Atenaccadop"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Atenaccadop {{ id }}?"
+            },
+            "detail": {
+                "title": "Atenaccadop"
+            },
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "atencion": "Atencion",
+            "accionadop": "Accionadop"
+        }
+    },
+    "consultasApp": {
+        "atenaccadop" : {
+            "created": "Un nuevo Atenaccadop ha sido creado con el identificador {{ param }}",
+            "updated": "Un Atenaccadop ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Atenaccadop ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

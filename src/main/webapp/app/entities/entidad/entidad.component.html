@@ -1,0 +1,113 @@
+<div>
+    <h4 class="title my-3">
+        <span jhiTranslate="gatewayApp.entidad.home.title">Entidads</span>
+        <button class="btn btn-primary float-right jh-create-entity create-entidad" [routerLink]="['/seguridad', { outlets: { popup: ['entidad-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.entidad.home.createLabel">
+            Create new Entidad
+            </span>
+        </button>
+    </h4>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.entidad.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="entidads">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="varRsocialEntidad"><span jhiTranslate="gatewayApp.entidad.varRsocialEntidad">Var Rsocial Entidad</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="varRucEntidad"><span jhiTranslate="gatewayApp.entidad.varRucEntidad">Var Ruc Entidad</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="varDirecEntidad"><span jhiTranslate="gatewayApp.entidad.varDirecEntidad">Var Direc Entidad</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numCodDepartamento"><span jhiTranslate="gatewayApp.entidad.numCodDepartamento">Num Cod Departamento</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numCodProvincia"><span jhiTranslate="gatewayApp.entidad.numCodProvincia">Num Cod Provincia</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numCodDistrito"><span jhiTranslate="gatewayApp.entidad.numCodDistrito">Num Cod Distrito</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="varTelefEntidad"><span jhiTranslate="gatewayApp.entidad.varTelefEntidad">Var Telef Entidad</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="varFaxEntidad"><span jhiTranslate="gatewayApp.entidad.varFaxEntidad">Var Fax Entidad</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="varEmailEntidad"><span jhiTranslate="gatewayApp.entidad.varEmailEntidad">Var Email Entidad</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="varPagwebEntidad"><span jhiTranslate="gatewayApp.entidad.varPagwebEntidad">Var Pagweb Entidad</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="varUsuarioLog"><span jhiTranslate="gatewayApp.entidad.varUsuarioLog">Var Usuario Log</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="datFechaLog"><span jhiTranslate="gatewayApp.entidad.datFechaLog">Dat Fecha Log</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numEliminar"><span jhiTranslate="gatewayApp.entidad.numEliminar">Num Eliminar</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sCodigoentcer"><span jhiTranslate="gatewayApp.entidad.sCodigoentcer">S Codigoentcer</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="latitud"><span jhiTranslate="gatewayApp.entidad.latitud">Latitud</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="longitud"><span jhiTranslate="gatewayApp.entidad.longitud">Longitud</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tipoEntidad.id"><span jhiTranslate="gatewayApp.entidad.tipoEntidad">Tipo Entidad</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let entidad of entidads ;trackBy: trackId">
+                <td><a [routerLink]="['../entidad', entidad.id ]">{{entidad.id}}</a></td>
+                <td>{{entidad.varRsocialEntidad}}</td>
+                <td>{{entidad.varRucEntidad}}</td>
+                <td>{{entidad.varDirecEntidad}}</td>
+                <td>{{entidad.numCodDepartamento}}</td>
+                <td>{{entidad.numCodProvincia}}</td>
+                <td>{{entidad.numCodDistrito}}</td>
+                <td>{{entidad.varTelefEntidad}}</td>
+                <td>{{entidad.varFaxEntidad}}</td>
+                <td>{{entidad.varEmailEntidad}}</td>
+                <td>{{entidad.varPagwebEntidad}}</td>
+                <td>{{entidad.varUsuarioLog}}</td>
+                <td>{{entidad.datFechaLog | date:'medium'}}</td>
+                <td>{{entidad.numEliminar}}</td>
+                <td>{{entidad.sCodigoentcer}}</td>
+                <td>{{entidad.latitud}}</td>
+                <td>{{entidad.longitud}}</td>
+                <td>
+                    <div *ngIf="entidad.tipoEntidad">
+                        <a [routerLink]="['../tipo-entidad', entidad.tipoEntidad?.id ]" >{{entidad.tipoEntidad?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../entidad', entidad.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/seguridad', { outlets: { popup: 'entidad/'+ entidad.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/seguridad', { outlets: { popup: 'entidad/'+ entidad.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="entidads && entidads.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [maxSize]="5" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

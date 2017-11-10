@@ -1,0 +1,95 @@
+
+<div *ngIf="personanatur">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.personanatur.detail.title">Personanatur</span> {{personanatur.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.personanatur.vNombres">V Nombres</span></dt>
+        <dd>
+            <span>{{personanatur.vNombres}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personanatur.vApepaterno">V Apepaterno</span></dt>
+        <dd>
+            <span>{{personanatur.vApepaterno}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personanatur.vApematerno">V Apematerno</span></dt>
+        <dd>
+            <span>{{personanatur.vApematerno}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personanatur.vNumdocumento">V Numdocumento</span></dt>
+        <dd>
+            <span>{{personanatur.vNumdocumento}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personanatur.vTelefono">V Telefono</span></dt>
+        <dd>
+            <span>{{personanatur.vTelefono}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personanatur.vCelular">V Celular</span></dt>
+        <dd>
+            <span>{{personanatur.vCelular}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personanatur.vEmail">V Email</span></dt>
+        <dd>
+            <span>{{personanatur.vEmail}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personanatur.dFecnacimiento">D Fecnacimiento</span></dt>
+        <dd>
+            <span>{{personanatur.dFecnacimiento | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personanatur.csexo">Csexo</span></dt>
+        <dd>
+            <span>{{personanatur.csexo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personanatur.cFlgestado">C Flgestado</span></dt>
+        <dd>
+            <span>{{personanatur.cFlgestado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personanatur.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{personanatur.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personanatur.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{personanatur.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personanatur.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{personanatur.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personanatur.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{personanatur.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personanatur.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{personanatur.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personanatur.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{personanatur.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personanatur.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{personanatur.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personanatur.tipdocident">Tipdocident</span></dt>
+        <dd>
+            <div *ngIf="personanatur.tipdocident">
+                <a [routerLink]="['/tipdocident', personanatur.tipdocident?.id]">{{personanatur.tipdocident?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/consultas', { outlets: { popup: 'personanatur/'+ personanatur.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

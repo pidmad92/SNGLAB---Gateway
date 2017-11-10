@@ -1,0 +1,41 @@
+
+<div *ngIf="tipoUsuario">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.tipoUsuario.detail.title">Tipo Usuario</span> {{tipoUsuario.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.tipoUsuario.varNomTpusuario">Var Nom Tpusuario</span></dt>
+        <dd>
+            <span>{{tipoUsuario.varNomTpusuario}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipoUsuario.varDescTpusuario">Var Desc Tpusuario</span></dt>
+        <dd>
+            <span>{{tipoUsuario.varDescTpusuario}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipoUsuario.varUsuarioLog">Var Usuario Log</span></dt>
+        <dd>
+            <span>{{tipoUsuario.varUsuarioLog}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipoUsuario.datFechaLog">Dat Fecha Log</span></dt>
+        <dd>
+            <span>{{tipoUsuario.datFechaLog | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipoUsuario.numEliminar">Num Eliminar</span></dt>
+        <dd>
+            <span>{{tipoUsuario.numEliminar}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/seguridad', { outlets: { popup: 'tipo-usuario/'+ tipoUsuario.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

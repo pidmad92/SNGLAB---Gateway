@@ -1,0 +1,45 @@
+{
+    "gatewayApp": {
+        "entidad" : {
+            "home": {
+                "title": "Mantenimiento de Entidades",
+                "createLabel": "Registrar Entidad",
+                "createOrEditLabel": "Registro de Entidad",
+                "createLabelModule": "Modulos de la Entidad",
+                "search": "Buscar una Entidad"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar esta Entidad?"
+            },
+            "detail": {
+                "title": "Entidad"
+            },
+            "varRsocialEntidad": "Razón social",
+            "varRucEntidad": "RUC",
+            "varDirecEntidad": "Dirección",
+            "numCodDepartamento": "Departamento",
+            "numCodProvincia": "Provincia",
+            "numCodDistrito": "Distrito",
+            "varTelefEntidad": "Teléfono",
+            "varFaxEntidad": "Fax",
+            "varEmailEntidad": "Email",
+            "varPagwebEntidad": "Web",
+            "varUsuarioLog": "Usuario_Log",
+            "datFechaLog": "Fecha_Log",
+            "numEliminar": "Eliminar_Log",
+            "sCodigoentcer": "S Codigoentcer",
+            "latitud": "Latitud",
+            "longitud": "Longitud",
+            "tipoEntidad": "Tipo",
+            "moduloEntidad": "Modulo Entidad",
+            "grupo": "Grupos"
+        }
+    },
+    "seguridadApp": {
+        "entidad" : {
+            "created": "Entidad creada satisfactoriamente",
+            "updated": "Entidad actualizada satisfactoriamente",
+            "deleted": "Entidad eliminada satisfactoriamente"
+        }
+    }
+}

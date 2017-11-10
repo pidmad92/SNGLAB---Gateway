@@ -1,0 +1,53 @@
+
+<div *ngIf="regimenlabo">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.regimenlabo.detail.title">Regimenlabo</span> {{regimenlabo.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.regimenlabo.vDescripcion">V Descripcion</span></dt>
+        <dd>
+            <span>{{regimenlabo.vDescripcion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.regimenlabo.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{regimenlabo.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.regimenlabo.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{regimenlabo.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.regimenlabo.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{regimenlabo.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.regimenlabo.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{regimenlabo.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.regimenlabo.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{regimenlabo.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.regimenlabo.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{regimenlabo.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.regimenlabo.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{regimenlabo.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/consultas', { outlets: { popup: 'regimenlabo/'+ regimenlabo.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

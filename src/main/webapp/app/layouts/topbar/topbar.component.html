@@ -1,0 +1,149 @@
+<header class="row flex-md-nowrap">
+    <div class="left-col col-12 col-sm-12 col-md-2 col-lg-2">
+        <a href="#" class="logo row d-flex p-2 align-items-center justify-content-center text-white">
+            <img src="../../../content/images/icon.png" width="32" height="32" alt="" class="rounded mr-2">
+            <span class="font-weight-bold">SIGLAB</span>
+        </a>
+    </div>
+    <div class="right-col col-12 col-sm-12 col-md-10 col-lg-10">
+        <div class="row d-flex flex-wrap justify-content-start align-items-center">
+            <div class="col-2 col-sm-auto  pr-0 pl-0 align-self-center">
+                <a href="javascript:void(0);" (click)="toggleNavbar()" class="toggle-bars"><i class="fa fa-bars" aria-hidden="true"></i></a>
+            </div>
+            <div class="col-auto ml-auto d-none d-sm-block">
+                <select (change)="updateModule($event)" class="form-control select-aplicativo" id="selectAplicativos">
+                    <option value="0">Aplicativo de Seguridad</option>
+                    <option value="1">Aplicativo de Liquidación de Beneficios Sociales</option>
+                    <option value="2">Aplicativo de consultas laborales</option>
+                    <option value="3">Aplicativo de conciliación</option>
+                    <option value="4">Aplicativo de defensa legal</option>
+                    <option value="5">Aplicativo de patrocinio legal</option>
+                    <option value="6">Aplicativo de Gestión de Organizaciones Sindicales, Federaciones y Confedereaciones</option>
+                    <option value="7">Aplicativo de denuncias laborales</option>
+                    <option value="8">Aplicativo Dictamen Laboral DPNT</option>
+                    <option value="9">Aplicativo de Retorno Productivo</option>
+                </select>
+            </div>
+            <div class="col d-none d-none d-sm-block">
+                <h5 class="text-center mb-0" id="title-application">Aplicativo de consultas laborales</h5>
+            </div>
+            <div class="col-auto ml-auto">
+                <ul class="mb-0 pl-2">
+                    <li ngbDropdown placement="bottom-right"  class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <a href="javascript:void(0);" class="nav-link btn btn-warning dropdown-toggle" ngbDropdownToggle id="account-menu">
+                            <img src="../../../content/images/img.jpg" height="30" width="30" class="rounded" alt="">
+                            <span>David Rojas</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+                            
+                                <a class="dropdown-item" routerLink="settings" routerLinkActive="active">
+                                    <i class="fa fa-fw fa-user" aria-hidden="true"></i>
+                                    Perfil
+                                </a>
+                            
+                                <a class="dropdown-item" routerLink="password" routerLinkActive="active">
+                                    <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>
+                                    <span>Contraseña</span>
+                                </a>
+                            
+                                <a class="dropdown-item" (click)="logout()" id="logout">
+                                    <i class="fa fa-fw fa-sign-out" aria-hidden="true"></i>
+                                    <span>Cerrar Sesión</span>
+                                </a>
+                            
+                        </div>
+                    </li>
+                </ul>
+                
+            </div>
+            <!-- <div class="ml-auto order-md-12">
+                <div class="menu-top">
+                    <ul>
+                    <li ngbDropdown placement="bottom-right"  class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
+                            <span *ngIf="!getImageUrl()">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span>Jhon Lee</span>
+                            </span>
+                            <span *ngIf="getImageUrl()">
+                                <img [src]="getImageUrl()" class="profile-image img-circle" alt="Avatar">
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu" ngbDropdownMenu>
+                            <li>
+                                <a class="dropdown-item" routerLink="settings" routerLinkActive="active">
+                                    <i class="fa fa-fw fa-wrench" aria-hidden="true"></i>
+                                    <span>Configuración</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" routerLink="password" routerLinkActive="active">
+                                    <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>
+                                    <span>Contraseña</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" (click)="logout()" id="logout">
+                                    <i class="fa fa-fw fa-sign-out" aria-hidden="true"></i>
+                                    <span>Cerrar Sesión</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    </ul>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <!-- <div class="menu-horizontal pr-0 col d-flex flex-wrap justify-content-start align-items-center">
+        <div><a href="#" (click)="toggleNavbar()" class="toggle-bars"><i class="fa fa-bars" aria-hidden="true"></i></a></div>
+        <div class="ml-3">
+            <select class="form-control select-aplicativo" id="selectAplicativos">
+                <option value="">Módulo de Seguridad</option>
+            </select>
+        </div>
+        
+        <div class="col" id="col-title-application">
+            <h5 class="mx-3 text-center" id="title-application">Módulo de Seguridad</h5>
+        </div>
+        <div class="ml-auto order-md-12">
+            <div class="menu-top">
+                <ul>
+                <li ngbDropdown placement="bottom-right"  class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
+                        <span *ngIf="!getImageUrl()">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <span>
+                            Jhon Doe
+                        </span>
+                        </span>
+                        <span *ngIf="getImageUrl()">
+                            <img [src]="getImageUrl()" class="profile-image img-circle" alt="Avatar">
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu" ngbDropdownMenu>
+                            <li>
+                                <a class="dropdown-item" routerLink="settings" routerLinkActive="active">
+                                    <i class="fa fa-fw fa-wrench" aria-hidden="true"></i>
+                                    <span>Configuración</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" routerLink="password" routerLinkActive="active">
+                                    <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>
+                                    <span>Contraseña</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" (click)="logout()" id="logout">
+                                    <i class="fa fa-fw fa-sign-out" aria-hidden="true"></i>
+                                    <span>Cerrar Sesión</span>
+                                </a>
+                            </li>
+                    </ul>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </div> -->
+</header>

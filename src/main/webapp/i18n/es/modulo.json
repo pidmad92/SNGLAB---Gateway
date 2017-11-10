@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "modulo" : {
+            "home": {
+                "title": "Mantenimiento de Modulos",
+                "createLabel": "Registrar Modulo",
+                "createOrEditLabel": "Registro de Modulo",
+                "search": "Buscar un Modulo"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar este Modulo?"
+            },
+            "detail": {
+                "title": "Modulo"
+            },
+            "varNomModulo": "Nombre",
+            "varDescModulo": "Descripción",
+            "numEstModulo": "Estado",
+            "varUsuarioLog": "Usuario_log",
+            "datFechaLog": "Fecha_log",
+            "numEliminar": "Eliminar_log",
+            "aplicacion": "Aplicacion",
+            "moduloEntidad": "Modulo Entidad",
+            "menu": "Menu",
+            "perfil": "Perfil"
+        }
+    },
+    "seguridadApp": {
+        "modulo" : {
+            "created": "Un nuevo Modulo ha sido creado",
+            "updated": "Un Modulo ha sido actualizado",
+            "deleted": "Un Modulo ha sido eliminado"
+        }
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "motivoatenci" : {
+            "home": {
+                "title": "Motivoatencis",
+                "createLabel": "Crear nuevo Motivoatenci",
+                "createOrEditLabel": "Crear o editar Motivoatenci",
+                "search": "Search for Motivoatenci"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Motivoatenci {{ id }}?"
+            },
+            "detail": {
+                "title": "Motivoatenci"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "motatenofic": "Motatenofic"
+        }
+    },
+    "consultasApp": {
+        "motivoatenci" : {
+            "created": "Un nuevo Motivoatenci ha sido creado con el identificador {{ param }}",
+            "updated": "Un Motivoatenci ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Motivoatenci ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "gatewayApp": {
+        "trabajador" : {
+            "home": {
+                "title": "Trabajadors",
+                "createLabel": "Crear nuevo Trabajador",
+                "createOrEditLabel": "Crear o editar Trabajador",
+                "search": "Search for Trabajador"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Trabajador {{ id }}?"
+            },
+            "detail": {
+                "title": "Trabajador"
+            },
+            "vNumdocumento": "V Numdocumento",
+            "vFlgsucesor": "V Flgsucesor",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "cargotrabaja": "Cargotrabaja",
+            "personanatur": "Personanatur",
+            "datlaboral": "Datlaboral",
+            "atencion": "Atencion",
+            "sucesor": "Sucesor"
+        }
+    },
+    "consultasApp": {
+        "trabajador" : {
+            "created": "Un nuevo Trabajador ha sido creado con el identificador {{ param }}",
+            "updated": "Un Trabajador ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Trabajador ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

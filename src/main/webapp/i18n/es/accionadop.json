@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "accionadop" : {
+            "home": {
+                "title": "Accionadops",
+                "createLabel": "Crear nuevo Accionadop",
+                "createOrEditLabel": "Crear o editar Accionadop",
+                "search": "Search for Accionadop"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Accionadop {{ id }}?"
+            },
+            "detail": {
+                "title": "Accionadop"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "atenaccadop": "Atenaccadop"
+        }
+    },
+    "consultasApp": {
+        "accionadop" : {
+            "created": "Un nuevo Accionadop ha sido creado con el identificador {{ param }}",
+            "updated": "Un Accionadop ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Accionadop ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

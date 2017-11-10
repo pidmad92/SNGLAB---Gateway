@@ -1,0 +1,57 @@
+
+<div *ngIf="usuPer">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.usuPer.detail.title">Usu Per</span> {{usuPer.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.usuPer.varUsuarioLog">Var Usuario Log</span></dt>
+        <dd>
+            <span>{{usuPer.varUsuarioLog}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuPer.datFechaLog">Dat Fecha Log</span></dt>
+        <dd>
+            <span>{{usuPer.datFechaLog | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuPer.numEliminar">Num Eliminar</span></dt>
+        <dd>
+            <span>{{usuPer.numEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuPer.usuario">Usuario</span></dt>
+        <dd>
+            <div *ngIf="usuPer.usuario">
+                <a [routerLink]="['/usuario', usuPer.usuario?.id]">{{usuPer.usuario?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuPer.usuarioGrupo">Usuario Grupo</span></dt>
+        <dd>
+            <div *ngIf="usuPer.usuarioGrupo">
+                <a [routerLink]="['/usuario-grupo', usuPer.usuarioGrupo?.id]">{{usuPer.usuarioGrupo?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuPer.permiso">Permiso</span></dt>
+        <dd>
+            <div *ngIf="usuPer.permiso">
+                <a [routerLink]="['/permiso', usuPer.permiso?.id]">{{usuPer.permiso?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.usuPer.perfil">Perfil</span></dt>
+        <dd>
+            <div *ngIf="usuPer.perfil">
+                <a [routerLink]="['/perfil', usuPer.perfil?.id]">{{usuPer.perfil?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/seguridad', { outlets: { popup: 'usu-per/'+ usuPer.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

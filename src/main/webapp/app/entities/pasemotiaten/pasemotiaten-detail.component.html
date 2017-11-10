@@ -1,0 +1,61 @@
+
+<div *ngIf="pasemotiaten">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.pasemotiaten.detail.title">Pasemotiaten</span> {{pasemotiaten.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.pasemotiaten.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{pasemotiaten.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasemotiaten.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{pasemotiaten.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasemotiaten.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{pasemotiaten.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasemotiaten.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{pasemotiaten.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasemotiaten.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{pasemotiaten.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasemotiaten.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{pasemotiaten.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasemotiaten.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{pasemotiaten.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasemotiaten.pase">Pase</span></dt>
+        <dd>
+            <div *ngIf="pasemotiaten.pase">
+                <a [routerLink]="['/pase', pasemotiaten.pase?.id]">{{pasemotiaten.pase?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasemotiaten.motatenofic">Motatenofic</span></dt>
+        <dd>
+            <div *ngIf="pasemotiaten.motatenofic">
+                <a [routerLink]="['/motatenofic', pasemotiaten.motatenofic?.id]">{{pasemotiaten.motatenofic?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/consultas', { outlets: { popup: 'pasemotiaten/'+ pasemotiaten.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

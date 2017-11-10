@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "perfil" : {
+            "home": {
+                "title": "Mantenimiento de Perfiles",
+                "createLabel": "Registrar Perfil",
+                "createOrEditLabel": "Registro de Perfil",
+                "search": "Buscar un Perfil"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar este Perfil?"
+            },
+            "detail": {
+                "title": "Perfil"
+            },
+            "varNomPerfil": "Nombre",
+            "varDescPerfil": "Descripcion",
+            "numEstPerfil": "Estado",
+            "varUsuarioLog": "Usuario_Log",
+            "datFechaLog": "Fecha_Log",
+            "numEliminar": "Eliminar_Log",
+            "modulo": "Modulo",
+            "usuPer": "Usu Per",
+            "menuPerfil": "Menu Perfil"
+        }
+    },
+    "seguridadApp": {
+        "perfil" : {
+            "created": "Perfil creado satisfactoriamente",
+            "updated": "Perfil actualizado satisfactoriamente",
+            "deleted": "Perfil eliminado satisfactoriamente"
+        }
+    }
+}

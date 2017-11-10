@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "subregilabo" : {
+            "home": {
+                "title": "Subregilabos",
+                "createLabel": "Crear nuevo Subregilabo",
+                "createOrEditLabel": "Crear o editar Subregilabo",
+                "search": "Search for Subregilabo"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Subregilabo {{ id }}?"
+            },
+            "detail": {
+                "title": "Subregilabo"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "regimenlabo": "Regimenlabo",
+            "datlaboral": "Datlaboral"
+        }
+    },
+    "consultasApp": {
+        "subregilabo" : {
+            "created": "Un nuevo Subregilabo ha sido creado con el identificador {{ param }}",
+            "updated": "Un Subregilabo ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Subregilabo ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

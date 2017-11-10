@@ -1,0 +1,59 @@
+
+<div *ngIf="subregilabo">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.subregilabo.detail.title">Subregilabo</span> {{subregilabo.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.subregilabo.vDescripcion">V Descripcion</span></dt>
+        <dd>
+            <span>{{subregilabo.vDescripcion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.subregilabo.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{subregilabo.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.subregilabo.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{subregilabo.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.subregilabo.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{subregilabo.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.subregilabo.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{subregilabo.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.subregilabo.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{subregilabo.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.subregilabo.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{subregilabo.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.subregilabo.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{subregilabo.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.subregilabo.regimenlabo">Regimenlabo</span></dt>
+        <dd>
+            <div *ngIf="subregilabo.regimenlabo">
+                <a [routerLink]="['/regimenlabo', subregilabo.regimenlabo?.id]">{{subregilabo.regimenlabo?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/consultas', { outlets: { popup: 'subregilabo/'+ subregilabo.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

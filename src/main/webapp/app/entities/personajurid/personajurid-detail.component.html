@@ -1,0 +1,89 @@
+
+<div *ngIf="personajurid">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.personajurid.detail.title">Personajurid</span> {{personajurid.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.personajurid.vRazonsocial">V Razonsocial</span></dt>
+        <dd>
+            <span>{{personajurid.vRazonsocial}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personajurid.vNombrealternativo">V Nombrealternativo</span></dt>
+        <dd>
+            <span>{{personajurid.vNombrealternativo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personajurid.vNumdocumento">V Numdocumento</span></dt>
+        <dd>
+            <span>{{personajurid.vNumdocumento}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personajurid.vEmail">V Email</span></dt>
+        <dd>
+            <span>{{personajurid.vEmail}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personajurid.vTelefono">V Telefono</span></dt>
+        <dd>
+            <span>{{personajurid.vTelefono}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personajurid.vFax">V Fax</span></dt>
+        <dd>
+            <span>{{personajurid.vFax}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personajurid.cFlgestado">C Flgestado</span></dt>
+        <dd>
+            <span>{{personajurid.cFlgestado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personajurid.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{personajurid.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personajurid.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{personajurid.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personajurid.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{personajurid.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personajurid.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{personajurid.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personajurid.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{personajurid.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personajurid.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{personajurid.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personajurid.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{personajurid.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personajurid.activecono">Activecono</span></dt>
+        <dd>
+            <div *ngIf="personajurid.activecono">
+                <a [routerLink]="['/activecono', personajurid.activecono?.id]">{{personajurid.activecono?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.personajurid.tipdocident">Tipdocident</span></dt>
+        <dd>
+            <div *ngIf="personajurid.tipdocident">
+                <a [routerLink]="['/tipdocident', personajurid.tipdocident?.id]">{{personajurid.tipdocident?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/consultas', { outlets: { popup: 'personajurid/'+ personajurid.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

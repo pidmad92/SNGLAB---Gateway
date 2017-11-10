@@ -1,0 +1,32 @@
+{
+    "gatewayApp": {
+        "usuarioHorario" : {
+            "home": {
+                "title": "Mantenimiento de Usuario Horarios",
+                "createLabel": "Registrar Usuario Horario",
+                "createOrEditLabel": "Registro de Usuario Horario",
+                "search": "Buscar un Usuario Horario"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar este Horario?"
+            },
+            "detail": {
+                "title": "Usuario Horario"
+            },
+            "numDiaSemana": "Dia de Semana",
+            "datHoraInicio": "Hora de Inicio",
+            "datHoraFin": "Hora Final",
+            "varUsuarioLog": "Usuario_Log",
+            "datFechaLog": "Fecha_Log",
+            "numEliminar": "Eliminar_Log",
+            "usuario": "Usuario"
+        }
+    },
+    "seguridadApp": {
+        "usuarioHorario" : {
+            "created": "Un nuevo Usuario Horario ha sido creado",
+            "updated": "Un Usuario Horario ha sido actualizado",
+            "deleted": "Un Usuario Horario ha sido eliminado"
+        }
+    }
+}

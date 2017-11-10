@@ -1,0 +1,51 @@
+{
+    "gatewayApp": {
+        "usuario" : {
+            "home": {
+                "title": "Mantenimiento de Usuarios",
+                "createLabel": "Registrar Usuario",
+                "createOrEditLabel": "Registro de Usuario",
+                "createLabelGroup": "Mantenimiento de Grupos",
+                "createLabelGroupAdd": "Registrar Grupos",
+                "createLabelHorario": "Mantenimiento de Horarios",
+                "createLabelHorarioAdd": "Registrar Horarios",
+                "search": "Buscar un Usuario"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar este Usuario?"
+            },
+            "detail": {
+                "title": "Usuario"
+            },
+            "varNomUsuario": "Nombre",
+            "varLoginUsuario": "Login",
+            "varInicialUsuario": "Inicial",
+            "numEstUsuario": "Estado",
+            "varMotivUsuario": "Motivo",
+            "varDocContacto": "Documento",
+            "varNomContacto": "Nombre de Contacto",
+            "varRefContacto": "Referencia",
+            "varUsuarioLog": "Usuario_Log",
+            "datFechaLog": "Fecha_Log",
+            "numEliminar": "Eliminar_Log",
+            "varDireccionIp": "Dirección IP",
+            "varMacAddress": "Dirección MAC",
+            "varNombrePc": "Nombre de PC",
+            "varCodSeguridad": "Código de Seguridad",
+            "datFecTermino": "Fecha de Termino",
+            "varPtoControl": "Punto de Control",
+            "tipoUsuario": "Tipo",
+            "usuarioGrupo": "Grupos",
+            "usuarioHorario": "Horarios",
+            "usuPer": "Perfiles",
+            "user": "User"
+        }
+    },
+    "seguridadApp": {
+        "usuario" : {
+            "created": "Usuario creado satisfactoriamente",
+            "updated": "Usuario actualizado satisfactoriamente",
+            "deleted": "Usuario eliminado satisfactoriamente"
+        }
+    }
+}

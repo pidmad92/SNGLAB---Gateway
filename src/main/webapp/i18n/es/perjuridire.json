@@ -1,0 +1,38 @@
+{
+    "gatewayApp": {
+        "perjuridire" : {
+            "home": {
+                "title": "Perjuridires",
+                "createLabel": "Crear nuevo Perjuridire",
+                "createOrEditLabel": "Crear o editar Perjuridire",
+                "search": "Search for Perjuridire"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Perjuridire {{ id }}?"
+            },
+            "detail": {
+                "title": "Perjuridire"
+            },
+            "vCoddep": "V Coddep",
+            "vCodpro": "V Codpro",
+            "vCoddis": "V Coddis",
+            "vDircompleta": "V Dircompleta",
+            "vReferencia": "V Referencia",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "personajurid": "Personajurid"
+        }
+    },
+    "consultasApp": {
+        "perjuridire" : {
+            "created": "Un nuevo Perjuridire ha sido creado con el identificador {{ param }}",
+            "updated": "Un Perjuridire ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Perjuridire ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

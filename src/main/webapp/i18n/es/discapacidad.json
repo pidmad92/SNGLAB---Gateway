@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "discapacidad" : {
+            "home": {
+                "title": "Discapacidads",
+                "createLabel": "Crear nuevo Discapacidad",
+                "createOrEditLabel": "Crear o editar Discapacidad",
+                "search": "Search for Discapacidad"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Discapacidad {{ id }}?"
+            },
+            "detail": {
+                "title": "Discapacidad"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "atendisca": "Atendisca"
+        }
+    },
+    "consultasApp": {
+        "discapacidad" : {
+            "created": "Un nuevo Discapacidad ha sido creado con el identificador {{ param }}",
+            "updated": "Un Discapacidad ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Discapacidad ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

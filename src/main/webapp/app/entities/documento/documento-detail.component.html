@@ -1,0 +1,59 @@
+
+<div *ngIf="documento">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.documento.detail.title">Documento</span> {{documento.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.documento.vDescripcion">V Descripcion</span></dt>
+        <dd>
+            <span>{{documento.vDescripcion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.documento.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{documento.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.documento.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{documento.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.documento.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{documento.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.documento.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{documento.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.documento.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{documento.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.documento.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{documento.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.documento.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{documento.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.documento.tipdocumento">Tipdocumento</span></dt>
+        <dd>
+            <div *ngIf="documento.tipdocumento">
+                <a [routerLink]="['/tipdocumento', documento.tipdocumento?.id]">{{documento.tipdocumento?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/consultas', { outlets: { popup: 'documento/'+ documento.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

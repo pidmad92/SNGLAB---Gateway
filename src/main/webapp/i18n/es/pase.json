@@ -1,0 +1,38 @@
+{
+    "gatewayApp": {
+        "pase" : {
+            "home": {
+                "title": "Pases",
+                "createLabel": "Crear nuevo Pase",
+                "createOrEditLabel": "Crear o editar Pase",
+                "search": "Search for Pase"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Pase {{ id }}?"
+            },
+            "detail": {
+                "title": "Pase"
+            },
+            "vObservacion": "V Observacion",
+            "cFlgestado": "C Flgestado",
+            "nCodoficinaorigen": "N Codoficinaorigen",
+            "nCodoficinadestino": "N Codoficinadestino",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "pasemotiaten": "Pasemotiaten",
+            "atencion": "Atencion"
+        }
+    },
+    "consultasApp": {
+        "pase" : {
+            "created": "Un nuevo Pase ha sido creado con el identificador {{ param }}",
+            "updated": "Un Pase ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Pase ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}
