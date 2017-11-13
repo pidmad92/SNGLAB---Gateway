@@ -65,6 +65,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="expediente_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="pase" columnName="d_fechareg" columnDataType="datetime"/>

@@ -6,7 +6,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
     
-    <changeSet author="liquibase-docs" id="renameTable-example">
+    <changeSet author="liquibase-docs" id="20171111203515-1">
           <renameTable newTableName="GLMVC_CONCILIACION" oldTableName="CONCILIACION" />
 		  <renameTable newTableName="GLMVC_DOCUMENTOEXPEDIENTE" oldTableName="DOCEXPEDIEN" />
 		  <renameTable newTableName="GLMVC_EXPEDIENTE" oldTableName="EXPEDIENTE" />
@@ -24,7 +24,7 @@
 		  <renameTable newTableName="GLTBC_TIPOENVIONOTIFICACION" oldTableName="Tipenvnot" />
 		  <renameTable newTableName="GLTBC_TIPONOTIFICACION" oldTableName="Tipnotif" />
 		  <renameTable newTableName="GLTBC_TIPOPROVEIDO" oldTableName="Tipproveid" />
-		  <renameTable newTableName="CLTBC_TIPORESULTADOCONC" oldTableName="Tipresconc" />
+		  <renameTable newTableName="GLTBC_TIPORESULTADOCONC" oldTableName="Tipresconc" />
     </changeSet>
 
 </databaseChangeLog>
