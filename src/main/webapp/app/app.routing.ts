@@ -22,6 +22,11 @@ export const consultasRoute: Route = {
     loadChildren: './applications/consultas/consultas.module#GatewayConsultasModule'
 };
 
+export const defensaRoute: Route = {
+    path: 'defensa',
+    loadChildren: './applications/defensa/defensa.module#GatewayDefensaModule'
+};
+
 export const loginRoute: Route = {
     path: 'login',
     component: LoginComponent,
