@@ -69,7 +69,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150159",
+    "changelogDate": "20171114152903",
     "entityTableName": "motivocese",
     "dto": "no",
     "pagination": "no",

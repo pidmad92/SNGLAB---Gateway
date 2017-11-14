@@ -155,6 +155,9 @@
                 "tipnotif": "Tipnotif",
                 "tipproveid": "Tipproveid",
                 "tipresconc": "Tipresconc",
+                "dlabingrperc": "Dlabingrperc",
+                "tipmotaten": "Tipmotaten",
+                "tipvinculo": "Tipvinculo",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

@@ -78,7 +78,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171110210418",
+    "changelogDate": "20171114152926",
     "entityTableName": "abogado",
     "dto": "no",
     "pagination": "no",

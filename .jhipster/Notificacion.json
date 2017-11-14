@@ -90,7 +90,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171110210415",
+    "changelogDate": "20171114152923",
     "entityTableName": "notificacion",
     "dto": "no",
     "pagination": "no",

@@ -6,6 +6,18 @@
             "relationshipName": "abogado",
             "otherEntityName": "abogado",
             "otherEntityRelationshipName": "oficina"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "atencion",
+            "otherEntityName": "atencion",
+            "otherEntityRelationshipName": "oficina"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "motatenofic",
+            "otherEntityName": "motatenofic",
+            "otherEntityRelationshipName": "oficina"
         }
     ],
     "fields": [
@@ -69,10 +81,11 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150200",
+    "changelogDate": "20171114152904",
     "entityTableName": "oficina",
     "dto": "no",
     "pagination": "no",
     "service": "no",
-    "jpaMetamodelFiltering": false
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "consultas"
 }

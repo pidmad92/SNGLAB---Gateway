@@ -81,7 +81,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171110210427",
+    "changelogDate": "20171114152935",
     "entityTableName": "tipproveid",
     "dto": "no",
     "pagination": "no",

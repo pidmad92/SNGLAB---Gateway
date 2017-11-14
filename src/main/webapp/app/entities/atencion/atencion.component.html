@@ -45,6 +45,7 @@
             <th><span jhiTranslate="gatewayApp.atencion.pase">Pase</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.datlaboral">Datlaboral</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.empleador">Empleador</span></th>
+            <th><span jhiTranslate="gatewayApp.atencion.oficina">Oficina</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.tipatencion">Tipatencion</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.trabajador">Trabajador</span></th>
             <th></th>
@@ -78,6 +79,11 @@
                 <td>
                     <div *ngIf="atencion.empleador">
                         <a [routerLink]="['../empleador', atencion.empleador?.id ]" >{{atencion.empleador?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="atencion.oficina">
+                        <a [routerLink]="['../oficina', atencion.oficina?.id ]" >{{atencion.oficina?.id}}</a>
                     </div>
                 </td>
                 <td>

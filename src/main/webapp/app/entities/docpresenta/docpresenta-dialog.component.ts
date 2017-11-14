@@ -9,7 +9,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Docpresenta } from './docpresenta.model';
 import { DocpresentaPopupService } from './docpresenta-popup.service';
 import { DocpresentaService } from './docpresenta.service';
-import { Atenmotiaten, AtenmotiatenService } from '../atenmotiaten';
+import { Atencion, AtencionService } from '../atencion';
 import { Documento, DocumentoService } from '../documento';
 import { ResponseWrapper } from '../../shared';
 
@@ -22,7 +22,7 @@ export class DocpresentaDialogComponent implements OnInit {
     docpresenta: Docpresenta;
     isSaving: boolean;
 
-    atenmotiatens: Atenmotiaten[];
+    atencions: Atencion[];
 
     documentos: Documento[];
 
@@ -30,7 +30,7 @@ export class DocpresentaDialogComponent implements OnInit {
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private docpresentaService: DocpresentaService,
-        private atenmotiatenService: AtenmotiatenService,
+        private atencionService: AtencionService,
         private documentoService: DocumentoService,
         private eventManager: JhiEventManager
     ) {
@@ -38,8 +38,8 @@ export class DocpresentaDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.atenmotiatenService.query()
-            .subscribe((res: ResponseWrapper) => { this.atenmotiatens = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.atencionService.query()
+            .subscribe((res: ResponseWrapper) => { this.atencions = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.documentoService.query()
             .subscribe((res: ResponseWrapper) => { this.documentos = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
@@ -78,7 +78,7 @@ export class DocpresentaDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackAtenmotiatenById(index: number, item: Atenmotiaten) {
+    trackAtencionById(index: number, item: Atencion) {
         return item.id;
     }
 

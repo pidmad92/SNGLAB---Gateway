@@ -13,9 +13,9 @@
             "detail": {
                 "title": "Pernatudire"
             },
-            "vCoddep": "V Coddep",
-            "vCodpro": "V Codpro",
-            "vCoddis": "V Coddis",
+            "vCoddepartamento": "V Coddepartamento",
+            "vCodprovincia": "V Codprovincia",
+            "vCoddistrito": "V Coddistrito",
             "vDircompleta": "V Dircompleta",
             "vReferencia": "V Referencia",
             "vFlgnotifica": "V Flgnotifica",

@@ -100,7 +100,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171110210411",
+    "changelogDate": "20171114152919",
     "javadoc": "Defensa Legal",
     "entityTableName": "conciliacion",
     "dto": "no",

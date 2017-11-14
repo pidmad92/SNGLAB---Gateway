@@ -2,17 +2,17 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { GatewaySharedModule } from '../../../shared';
-import { RegistroExpedienteComponent } from './';
+import { RegistroExpedienteComponent, registroExpedienteRoute } from './';
 
-// const ENTITY_STATES = [
-//     ...atencionEmpleadorRoute,
+const ENTITY_STATES = [
+     ...registroExpedienteRoute
 //     // ...accionadopPopupRoute,
-// ];
+];
 
 @NgModule({
     imports: [
         GatewaySharedModule,
-        // RouterModule.forChild(ENTITY_STATES)
+        RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
         RegistroExpedienteComponent,

@@ -1,0 +1,61 @@
+
+<div *ngIf="dlabingrperc">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.dlabingrperc.detail.title">Dlabingrperc</span> {{dlabingrperc.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.dlabingrperc.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{dlabingrperc.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dlabingrperc.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{dlabingrperc.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dlabingrperc.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{dlabingrperc.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dlabingrperc.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{dlabingrperc.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dlabingrperc.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{dlabingrperc.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dlabingrperc.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{dlabingrperc.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dlabingrperc.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{dlabingrperc.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dlabingrperc.datlaboral">Datlaboral</span></dt>
+        <dd>
+            <div *ngIf="dlabingrperc.datlaboral">
+                <a [routerLink]="['/datlaboral', dlabingrperc.datlaboral?.id]">{{dlabingrperc.datlaboral?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dlabingrperc.docingreperc">Docingreperc</span></dt>
+        <dd>
+            <div *ngIf="dlabingrperc.docingreperc">
+                <a [routerLink]="['/docingreperc', dlabingrperc.docingreperc?.id]">{{dlabingrperc.docingreperc?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'dlabingrperc/'+ dlabingrperc.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

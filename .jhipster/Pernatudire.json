@@ -10,7 +10,7 @@
     ],
     "fields": [
         {
-            "fieldName": "vCoddep",
+            "fieldName": "vCoddepartamento",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -19,7 +19,7 @@
             "fieldValidateRulesMaxlength": 20
         },
         {
-            "fieldName": "vCodpro",
+            "fieldName": "vCodprovincia",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -28,7 +28,7 @@
             "fieldValidateRulesMaxlength": 20
         },
         {
-            "fieldName": "vCoddis",
+            "fieldName": "vCoddistrito",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -113,7 +113,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150150",
+    "changelogDate": "20171114152854",
     "entityTableName": "pernatudire",
     "dto": "no",
     "pagination": "no",

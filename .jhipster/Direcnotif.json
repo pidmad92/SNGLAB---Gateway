@@ -84,7 +84,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171110210417",
+    "changelogDate": "20171114152925",
     "entityTableName": "direcnotif",
     "dto": "no",
     "pagination": "no",

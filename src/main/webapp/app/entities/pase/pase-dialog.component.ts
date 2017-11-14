@@ -10,6 +10,7 @@ import { Pase } from './pase.model';
 import { PasePopupService } from './pase-popup.service';
 import { PaseService } from './pase.service';
 import { Expediente, ExpedienteService } from '../expediente';
+import { Atencion, AtencionService } from '../atencion';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -23,11 +24,14 @@ export class PaseDialogComponent implements OnInit {
 
     expedientes: Expediente[];
 
+    atencions: Atencion[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private paseService: PaseService,
         private expedienteService: ExpedienteService,
+        private atencionService: AtencionService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -47,6 +51,8 @@ export class PaseDialogComponent implements OnInit {
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
+        this.atencionService.query()
+            .subscribe((res: ResponseWrapper) => { this.atencions = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -84,6 +90,10 @@ export class PaseDialogComponent implements OnInit {
     }
 
     trackExpedienteById(index: number, item: Expediente) {
+        return item.id;
+    }
+
+    trackAtencionById(index: number, item: Atencion) {
         return item.id;
     }
 }

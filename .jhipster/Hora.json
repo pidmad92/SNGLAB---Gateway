@@ -69,7 +69,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171110210421",
+    "changelogDate": "20171114152929",
     "entityTableName": "hora",
     "dto": "no",
     "pagination": "no",

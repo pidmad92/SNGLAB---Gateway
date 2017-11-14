@@ -68,6 +68,9 @@ import { GatewayTipenvnotModule } from './tipenvnot/tipenvnot.module';
 import { GatewayTipnotifModule } from './tipnotif/tipnotif.module';
 import { GatewayTipproveidModule } from './tipproveid/tipproveid.module';
 import { GatewayTipresconcModule } from './tipresconc/tipresconc.module';
+import { GatewayDlabingrpercModule } from './dlabingrperc/dlabingrperc.module';
+import { GatewayTipmotatenModule } from './tipmotaten/tipmotaten.module';
+import { GatewayTipvinculoModule } from './tipvinculo/tipvinculo.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -139,6 +142,9 @@ import { GatewayTipresconcModule } from './tipresconc/tipresconc.module';
         GatewayTipnotifModule,
         GatewayTipproveidModule,
         GatewayTipresconcModule,
+        GatewayDlabingrpercModule,
+        GatewayTipmotatenModule,
+        GatewayTipvinculoModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

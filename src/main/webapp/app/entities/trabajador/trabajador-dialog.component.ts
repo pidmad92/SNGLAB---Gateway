@@ -9,6 +9,9 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Trabajador } from './trabajador.model';
 import { TrabajadorPopupService } from './trabajador-popup.service';
 import { TrabajadorService } from './trabajador.service';
+import { Cargotrabaja, CargotrabajaService } from '../cargotrabaja';
+import { Personanatur, PersonanaturService } from '../personanatur';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-trabajador-dialog',
@@ -19,16 +22,26 @@ export class TrabajadorDialogComponent implements OnInit {
     trabajador: Trabajador;
     isSaving: boolean;
 
+    cargotrabajas: Cargotrabaja[];
+
+    personanaturs: Personanatur[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private trabajadorService: TrabajadorService,
+        private cargotrabajaService: CargotrabajaService,
+        private personanaturService: PersonanaturService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.cargotrabajaService.query()
+            .subscribe((res: ResponseWrapper) => { this.cargotrabajas = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.personanaturService.query()
+            .subscribe((res: ResponseWrapper) => { this.personanaturs = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -63,6 +76,14 @@ export class TrabajadorDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackCargotrabajaById(index: number, item: Cargotrabaja) {
+        return item.id;
+    }
+
+    trackPersonanaturById(index: number, item: Personanatur) {
+        return item.id;
     }
 }
 

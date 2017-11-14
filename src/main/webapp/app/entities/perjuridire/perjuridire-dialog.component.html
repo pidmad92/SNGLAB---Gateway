@@ -13,46 +13,46 @@
                    [(ngModel)]="perjuridire.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.perjuridire.vCoddep" for="field_vCoddep">V Coddep</label>
-            <input type="text" class="form-control" name="vCoddep" id="field_vCoddep"
-                [(ngModel)]="perjuridire.vCoddep" required maxlength="20" />
-            <div [hidden]="!(editForm.controls.vCoddep?.dirty && editForm.controls.vCoddep?.invalid)">
+            <label class="form-control-label" jhiTranslate="gatewayApp.perjuridire.vCoddepartamento" for="field_vCoddepartamento">V Coddepartamento</label>
+            <input type="text" class="form-control" name="vCoddepartamento" id="field_vCoddepartamento"
+                [(ngModel)]="perjuridire.vCoddepartamento" required maxlength="20" />
+            <div [hidden]="!(editForm.controls.vCoddepartamento?.dirty && editForm.controls.vCoddepartamento?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCoddep?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.vCoddepartamento?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCoddep?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   [hidden]="!editForm.controls.vCoddepartamento?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
                    This field cannot be longer than 20 characters.
                 </small>
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.perjuridire.vCodpro" for="field_vCodpro">V Codpro</label>
-            <input type="text" class="form-control" name="vCodpro" id="field_vCodpro"
-                [(ngModel)]="perjuridire.vCodpro" required maxlength="20" />
-            <div [hidden]="!(editForm.controls.vCodpro?.dirty && editForm.controls.vCodpro?.invalid)">
+            <label class="form-control-label" jhiTranslate="gatewayApp.perjuridire.vCodprovincia" for="field_vCodprovincia">V Codprovincia</label>
+            <input type="text" class="form-control" name="vCodprovincia" id="field_vCodprovincia"
+                [(ngModel)]="perjuridire.vCodprovincia" required maxlength="20" />
+            <div [hidden]="!(editForm.controls.vCodprovincia?.dirty && editForm.controls.vCodprovincia?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodpro?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.vCodprovincia?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodpro?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   [hidden]="!editForm.controls.vCodprovincia?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
                    This field cannot be longer than 20 characters.
                 </small>
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.perjuridire.vCoddis" for="field_vCoddis">V Coddis</label>
-            <input type="text" class="form-control" name="vCoddis" id="field_vCoddis"
-                [(ngModel)]="perjuridire.vCoddis" required maxlength="20" />
-            <div [hidden]="!(editForm.controls.vCoddis?.dirty && editForm.controls.vCoddis?.invalid)">
+            <label class="form-control-label" jhiTranslate="gatewayApp.perjuridire.vCoddistrito" for="field_vCoddistrito">V Coddistrito</label>
+            <input type="text" class="form-control" name="vCoddistrito" id="field_vCoddistrito"
+                [(ngModel)]="perjuridire.vCoddistrito" required maxlength="20" />
+            <div [hidden]="!(editForm.controls.vCoddistrito?.dirty && editForm.controls.vCoddistrito?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCoddis?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.vCoddistrito?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCoddis?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   [hidden]="!editForm.controls.vCoddistrito?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
                    This field cannot be longer than 20 characters.
                 </small>
             </div>
@@ -80,6 +80,21 @@
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.vReferencia?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 500 }">
                    This field cannot be longer than 500 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.perjuridire.vFlgnotifica" for="field_vFlgnotifica">V Flgnotifica</label>
+            <input type="text" class="form-control" name="vFlgnotifica" id="field_vFlgnotifica"
+                [(ngModel)]="perjuridire.vFlgnotifica" required maxlength="1" />
+            <div [hidden]="!(editForm.controls.vFlgnotifica?.dirty && editForm.controls.vFlgnotifica?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vFlgnotifica?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vFlgnotifica?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
+                   This field cannot be longer than 1 characters.
                 </small>
             </div>
         </div>

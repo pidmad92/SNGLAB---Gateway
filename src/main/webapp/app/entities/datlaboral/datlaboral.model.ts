@@ -14,13 +14,14 @@ export class Datlaboral implements BaseEntity {
         public vUsuarioupd?: string,
         public dFechaupd?: any,
         public nSedeupd?: number,
-        public dlabingpercs?: BaseEntity[],
+        public dlabingrpercs?: BaseEntity[],
         public atencions?: BaseEntity[],
         public empleador?: BaseEntity,
         public modacontrato?: BaseEntity,
         public motivocese?: BaseEntity,
+        public regimenlabo?: BaseEntity,
         public trabajador?: BaseEntity,
-        public subregilabo?: BaseEntity,
+        public tipvinculo?: BaseEntity,
     ) {
     }
 }

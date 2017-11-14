@@ -1,13 +1,13 @@
 <div>
-    <h2>
+    <h4 class="title my-3">
         <span jhiTranslate="gatewayApp.resolucrd.home.title">Resolucrds</span>
-        <button class="btn btn-primary float-right jh-create-entity create-resolucrd" [routerLink]="['/', { outlets: { popup: ['resolucrd-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-resolucrd" [routerLink]="['/defensa', { outlets: { popup: ['resolucrd-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.resolucrd.home.createLabel">
             Create new Resolucrd
             </span>
         </button>
-    </h2>
+    </h4>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -101,14 +101,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'resolucrd/'+ resolucrd.id + '/edit'} }]"
+                                [routerLink]="['/defensa', { outlets: { popup: 'resolucrd/'+ resolucrd.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'resolucrd/'+ resolucrd.id + '/delete'} }]"
+                                [routerLink]="['/defensa', { outlets: { popup: 'resolucrd/'+ resolucrd.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

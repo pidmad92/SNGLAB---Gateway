@@ -30,9 +30,9 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.pernatudire.vCoddep">V Coddep</span></th>
-            <th><span jhiTranslate="gatewayApp.pernatudire.vCodpro">V Codpro</span></th>
-            <th><span jhiTranslate="gatewayApp.pernatudire.vCoddis">V Coddis</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatudire.vCoddepartamento">V Coddepartamento</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatudire.vCodprovincia">V Codprovincia</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatudire.vCoddistrito">V Coddistrito</span></th>
             <th><span jhiTranslate="gatewayApp.pernatudire.vDircompleta">V Dircompleta</span></th>
             <th><span jhiTranslate="gatewayApp.pernatudire.vReferencia">V Referencia</span></th>
             <th><span jhiTranslate="gatewayApp.pernatudire.vFlgnotifica">V Flgnotifica</span></th>
@@ -50,9 +50,9 @@
             <tbody>
             <tr *ngFor="let pernatudire of pernatudires ;trackBy: trackId">
                 <td><a [routerLink]="['../pernatudire', pernatudire.id ]">{{pernatudire.id}}</a></td>
-                <td>{{pernatudire.vCoddep}}</td>
-                <td>{{pernatudire.vCodpro}}</td>
-                <td>{{pernatudire.vCoddis}}</td>
+                <td>{{pernatudire.vCoddepartamento}}</td>
+                <td>{{pernatudire.vCodprovincia}}</td>
+                <td>{{pernatudire.vCoddistrito}}</td>
                 <td>{{pernatudire.vDircompleta}}</td>
                 <td>{{pernatudire.vReferencia}}</td>
                 <td>{{pernatudire.vFlgnotifica}}</td>

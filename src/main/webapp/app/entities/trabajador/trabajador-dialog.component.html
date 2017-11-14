@@ -13,21 +13,6 @@
                    [(ngModel)]="trabajador.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.vNumdocumento" for="field_vNumdocumento">V Numdocumento</label>
-            <input type="text" class="form-control" name="vNumdocumento" id="field_vNumdocumento"
-                [(ngModel)]="trabajador.vNumdocumento" required maxlength="15" />
-            <div [hidden]="!(editForm.controls.vNumdocumento?.dirty && editForm.controls.vNumdocumento?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vNumdocumento?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vNumdocumento?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
-                   This field cannot be longer than 15 characters.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.vFlgsucesor" for="field_vFlgsucesor">V Flgsucesor</label>
             <input type="text" class="form-control" name="vFlgsucesor" id="field_vFlgsucesor"
                 [(ngModel)]="trabajador.vFlgsucesor" required maxlength="1" />
@@ -136,6 +121,20 @@
                 [(ngModel)]="trabajador.nSedeupd"  />
         </div>
 
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.cargotrabaja" for="field_cargotrabaja">Cargotrabaja</label>
+            <select class="form-control" id="field_cargotrabaja" name="cargotrabaja" [(ngModel)]="trabajador.cargotrabaja" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="cargotrabajaOption.id === trabajador.cargotrabaja?.id ? trabajador.cargotrabaja : cargotrabajaOption" *ngFor="let cargotrabajaOption of cargotrabajas; trackBy: trackCargotrabajaById">{{cargotrabajaOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.personanatur" for="field_personanatur">Personanatur</label>
+            <select class="form-control" id="field_personanatur" name="personanatur" [(ngModel)]="trabajador.personanatur" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="personanaturOption.id === trabajador.personanatur?.id ? trabajador.personanatur : personanaturOption" *ngFor="let personanaturOption of personanaturs; trackBy: trackPersonanaturById">{{personanaturOption.id}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

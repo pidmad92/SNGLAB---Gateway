@@ -121,6 +121,13 @@
                 [(ngModel)]="motivoatenci.nSedeupd"  />
         </div>
 
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.motivoatenci.tipmotaten" for="field_tipmotaten">Tipmotaten</label>
+            <select class="form-control" id="field_tipmotaten" name="tipmotaten" [(ngModel)]="motivoatenci.tipmotaten" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="tipmotatenOption.id === motivoatenci.tipmotaten?.id ? motivoatenci.tipmotaten : tipmotatenOption" *ngFor="let tipmotatenOption of tipmotatens; trackBy: trackTipmotatenById">{{tipmotatenOption.id}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

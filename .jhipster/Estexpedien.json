@@ -69,7 +69,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171110210420",
+    "changelogDate": "20171114152928",
     "entityTableName": "estexpedien",
     "dto": "no",
     "pagination": "no",

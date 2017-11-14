@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { SERVER_API_URL } from '../../app.constants';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
@@ -11,8 +10,8 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class TrabajadorService {
 
-    private resourceUrl = SERVER_API_URL + 'api/trabajadors';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/trabajadors';
+    private resourceUrl = '/consultas/api/trabajadors';
+    private resourceSearchUrl = '/consultas/api/_search/trabajadors';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 

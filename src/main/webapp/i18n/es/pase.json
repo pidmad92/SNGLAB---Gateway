@@ -7,9 +7,6 @@
                 "createOrEditLabel": "Crear o editar Pase",
                 "search": "Search for Pase"
             },
-            "created": "Un nuevo Pase ha sido creado con el identificador {{ param }}",
-            "updated": "Un Pase ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Pase ha sido eliminado con el identificador {{ param }}",
             "delete": {
                 "question": "¿Seguro que quiere eliminar Pase {{ id }}?"
             },
@@ -18,7 +15,6 @@
             },
             "vObservacion": "V Observacion",
             "cFlgestado": "C Flgestado",
-            "nCodoficinaorigen": "N Codoficinaorigen",
             "nCodoficinadestino": "N Codoficinadestino",
             "vUsuarioreg": "V Usuarioreg",
             "dFechareg": "D Fechareg",
@@ -27,7 +23,16 @@
             "vUsuarioupd": "V Usuarioupd",
             "dFechaupd": "D Fechaupd",
             "nSedeupd": "N Sedeupd",
-            "expediente": "Expediente"
+            "expediente": "Expediente",
+            "pasemotiaten": "Pasemotiaten",
+            "atencion": "Atencion"
+        }
+    },
+    "consultasApp": {
+        "pase" : {
+            "created": "Un nuevo Pase ha sido creado con el identificador {{ param }}",
+            "updated": "Un Pase ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Pase ha sido eliminado con el identificador {{ param }}"
         }
     }
 }

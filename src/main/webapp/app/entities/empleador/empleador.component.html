@@ -1,13 +1,13 @@
 <div>
-    <h2>
+    <h4 class="title my-3">
         <span jhiTranslate="gatewayApp.empleador.home.title">Empleadors</span>
-        <button class="btn btn-primary float-right jh-create-entity create-empleador" [routerLink]="['/', { outlets: { popup: ['empleador-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-empleador" [routerLink]="['/consultas', { outlets: { popup: ['empleador-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.empleador.home.createLabel">
             Create new Empleador
             </span>
         </button>
-    </h2>
+    </h4>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -37,6 +37,9 @@
             <th><span jhiTranslate="gatewayApp.empleador.vUsuarioupd">V Usuarioupd</span></th>
             <th><span jhiTranslate="gatewayApp.empleador.dFechaupd">D Fechaupd</span></th>
             <th><span jhiTranslate="gatewayApp.empleador.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.empleador.personajurid">Personajurid</span></th>
+            <th><span jhiTranslate="gatewayApp.empleador.personanatur">Personanatur</span></th>
+            <th><span jhiTranslate="gatewayApp.empleador.tippersona">Tippersona</span></th>
             <th></th>
             </tr>
             </thead>
@@ -50,6 +53,21 @@
                 <td>{{empleador.vUsuarioupd}}</td>
                 <td>{{empleador.dFechaupd | date:'medium'}}</td>
                 <td>{{empleador.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="empleador.personajurid">
+                        <a [routerLink]="['../personajurid', empleador.personajurid?.id ]" >{{empleador.personajurid?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="empleador.personanatur">
+                        <a [routerLink]="['../personanatur', empleador.personanatur?.id ]" >{{empleador.personanatur?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="empleador.tippersona">
+                        <a [routerLink]="['../tippersona', empleador.tippersona?.id ]" >{{empleador.tippersona?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
@@ -59,14 +77,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'empleador/'+ empleador.id + '/edit'} }]"
+                                [routerLink]="['/consultas', { outlets: { popup: 'empleador/'+ empleador.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'empleador/'+ empleador.id + '/delete'} }]"
+                                [routerLink]="['/consultas', { outlets: { popup: 'empleador/'+ empleador.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

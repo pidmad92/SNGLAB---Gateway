@@ -6,6 +6,36 @@
             "relationshipName": "expediente",
             "otherEntityName": "expediente",
             "otherEntityRelationshipName": "empleador"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "datlaboral",
+            "otherEntityName": "datlaboral",
+            "otherEntityRelationshipName": "empleador"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "atencion",
+            "otherEntityName": "atencion",
+            "otherEntityRelationshipName": "empleador"
+        },
+        {
+            "relationshipName": "personajurid",
+            "otherEntityName": "personajurid",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "personanatur",
+            "otherEntityName": "personanatur",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "tippersona",
+            "otherEntityName": "tippersona",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         }
     ],
     "fields": [
@@ -60,10 +90,11 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150156",
+    "changelogDate": "20171114152900",
     "entityTableName": "empleador",
     "dto": "no",
     "pagination": "no",
     "service": "no",
-    "jpaMetamodelFiltering": false
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "consultas"
 }

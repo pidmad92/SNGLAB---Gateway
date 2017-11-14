@@ -30,11 +30,12 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.perjuridire.vCoddep">V Coddep</span></th>
-            <th><span jhiTranslate="gatewayApp.perjuridire.vCodpro">V Codpro</span></th>
-            <th><span jhiTranslate="gatewayApp.perjuridire.vCoddis">V Coddis</span></th>
+            <th><span jhiTranslate="gatewayApp.perjuridire.vCoddepartamento">V Coddepartamento</span></th>
+            <th><span jhiTranslate="gatewayApp.perjuridire.vCodprovincia">V Codprovincia</span></th>
+            <th><span jhiTranslate="gatewayApp.perjuridire.vCoddistrito">V Coddistrito</span></th>
             <th><span jhiTranslate="gatewayApp.perjuridire.vDircompleta">V Dircompleta</span></th>
             <th><span jhiTranslate="gatewayApp.perjuridire.vReferencia">V Referencia</span></th>
+            <th><span jhiTranslate="gatewayApp.perjuridire.vFlgnotifica">V Flgnotifica</span></th>
             <th><span jhiTranslate="gatewayApp.perjuridire.vUsuarioreg">V Usuarioreg</span></th>
             <th><span jhiTranslate="gatewayApp.perjuridire.dFechareg">D Fechareg</span></th>
             <th><span jhiTranslate="gatewayApp.perjuridire.nEliminar">N Eliminar</span></th>
@@ -49,11 +50,12 @@
             <tbody>
             <tr *ngFor="let perjuridire of perjuridires ;trackBy: trackId">
                 <td><a [routerLink]="['../perjuridire', perjuridire.id ]">{{perjuridire.id}}</a></td>
-                <td>{{perjuridire.vCoddep}}</td>
-                <td>{{perjuridire.vCodpro}}</td>
-                <td>{{perjuridire.vCoddis}}</td>
+                <td>{{perjuridire.vCoddepartamento}}</td>
+                <td>{{perjuridire.vCodprovincia}}</td>
+                <td>{{perjuridire.vCoddistrito}}</td>
                 <td>{{perjuridire.vDircompleta}}</td>
                 <td>{{perjuridire.vReferencia}}</td>
+                <td>{{perjuridire.vFlgnotifica}}</td>
                 <td>{{perjuridire.vUsuarioreg}}</td>
                 <td>{{perjuridire.dFechareg | date:'medium'}}</td>
                 <td>{{perjuridire.nEliminar}}</td>

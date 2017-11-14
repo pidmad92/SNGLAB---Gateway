@@ -87,7 +87,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171110210414",
+    "changelogDate": "20171114152922",
     "entityTableName": "multa",
     "dto": "no",
     "pagination": "no",

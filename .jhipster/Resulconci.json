@@ -75,7 +75,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171110210423",
+    "changelogDate": "20171114152931",
     "entityTableName": "resulconci",
     "dto": "no",
     "pagination": "no",

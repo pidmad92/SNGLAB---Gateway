@@ -12,6 +12,8 @@ export class Oficina implements BaseEntity {
         public dFechaupd?: any,
         public nSedeupd?: number,
         public abogados?: BaseEntity[],
+        public atencions?: BaseEntity[],
+        public motatenofics?: BaseEntity[],
     ) {
     }
 }

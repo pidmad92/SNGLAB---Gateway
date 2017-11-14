@@ -98,7 +98,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171110210412",
+    "changelogDate": "20171114152920",
     "entityTableName": "docexpedien",
     "dto": "no",
     "pagination": "no",

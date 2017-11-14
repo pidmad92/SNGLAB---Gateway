@@ -23,7 +23,7 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         GatewaySharedModule,
-        RouterModule.forChild(ENTITY_STATES )
+        RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
         TrabajadorComponent,
