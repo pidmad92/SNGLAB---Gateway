@@ -8,6 +8,19 @@
             "otherEntityField": "id",
             "ownerSide": true,
             "otherEntityRelationshipName": "pase"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "pasemotiaten",
+            "otherEntityName": "pasemotiaten",
+            "otherEntityRelationshipName": "pase"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "atencion",
+            "otherEntityName": "atencion",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "pase"
         }
     ],
     "fields": [
@@ -27,10 +40,6 @@
                 "maxlength"
             ],
             "fieldValidateRulesMaxlength": 1
-        },
-        {
-            "fieldName": "nCodoficinaorigen",
-            "fieldType": "Integer"
         },
         {
             "fieldName": "nCodoficinadestino",
@@ -87,10 +96,11 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150201",
+    "changelogDate": "20171114152905",
     "entityTableName": "pase",
     "dto": "no",
     "pagination": "no",
     "service": "no",
-    "jpaMetamodelFiltering": false
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "consultas"
 }

@@ -7,9 +7,6 @@
                 "createOrEditLabel": "Crear o editar Oficina",
                 "search": "Search for Oficina"
             },
-            "created": "Un nuevo Oficina ha sido creado con el identificador {{ param }}",
-            "updated": "Un Oficina ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Oficina ha sido eliminado con el identificador {{ param }}",
             "delete": {
                 "question": "¿Seguro que quiere eliminar Oficina {{ id }}?"
             },
@@ -24,7 +21,16 @@
             "vUsuarioupd": "V Usuarioupd",
             "dFechaupd": "D Fechaupd",
             "nSedeupd": "N Sedeupd",
-            "abogado": "Abogado"
+            "abogado": "Abogado",
+            "atencion": "Atencion",
+            "motatenofic": "Motatenofic"
+        }
+    },
+    "consultasApp": {
+        "oficina" : {
+            "created": "Un nuevo Oficina ha sido creado con el identificador {{ param }}",
+            "updated": "Un Oficina ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Oficina ha sido eliminado con el identificador {{ param }}"
         }
     }
 }

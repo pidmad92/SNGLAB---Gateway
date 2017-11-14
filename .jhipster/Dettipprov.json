@@ -75,7 +75,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171110210419",
+    "changelogDate": "20171114152927",
     "entityTableName": "dettipprov",
     "dto": "no",
     "pagination": "no",

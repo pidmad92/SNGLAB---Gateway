@@ -66,7 +66,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150144",
+    "changelogDate": "20171114152848",
     "entityTableName": "atendisca",
     "dto": "no",
     "pagination": "no",

@@ -75,7 +75,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171110210424",
+    "changelogDate": "20171114152932",
     "entityTableName": "tipdocexp",
     "dto": "no",
     "pagination": "no",

@@ -3,7 +3,7 @@ import { BaseEntity } from './../../shared';
 export class Cargotrabaja implements BaseEntity {
     constructor(
         public id?: number,
-        public vDescargotrabaja?: string,
+        public vDescripcion?: string,
         public vUsuarioreg?: string,
         public dFechareg?: any,
         public nEliminar?: number,

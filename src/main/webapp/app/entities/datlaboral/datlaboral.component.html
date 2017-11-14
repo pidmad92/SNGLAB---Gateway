@@ -44,8 +44,9 @@
             <th><span jhiTranslate="gatewayApp.datlaboral.empleador">Empleador</span></th>
             <th><span jhiTranslate="gatewayApp.datlaboral.modacontrato">Modacontrato</span></th>
             <th><span jhiTranslate="gatewayApp.datlaboral.motivocese">Motivocese</span></th>
+            <th><span jhiTranslate="gatewayApp.datlaboral.regimenlabo">Regimenlabo</span></th>
             <th><span jhiTranslate="gatewayApp.datlaboral.trabajador">Trabajador</span></th>
-            <th><span jhiTranslate="gatewayApp.datlaboral.subregilabo">Subregilabo</span></th>
+            <th><span jhiTranslate="gatewayApp.datlaboral.tipvinculo">Tipvinculo</span></th>
             <th></th>
             </tr>
             </thead>
@@ -79,13 +80,18 @@
                     </div>
                 </td>
                 <td>
+                    <div *ngIf="datlaboral.regimenlabo">
+                        <a [routerLink]="['../regimenlabo', datlaboral.regimenlabo?.id ]" >{{datlaboral.regimenlabo?.id}}</a>
+                    </div>
+                </td>
+                <td>
                     <div *ngIf="datlaboral.trabajador">
                         <a [routerLink]="['../trabajador', datlaboral.trabajador?.id ]" >{{datlaboral.trabajador?.id}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="datlaboral.subregilabo">
-                        <a [routerLink]="['../subregilabo', datlaboral.subregilabo?.id ]" >{{datlaboral.subregilabo?.id}}</a>
+                    <div *ngIf="datlaboral.tipvinculo">
+                        <a [routerLink]="['../tipvinculo', datlaboral.tipvinculo?.id ]" >{{datlaboral.tipvinculo?.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">

@@ -13,11 +13,12 @@
             "detail": {
                 "title": "Perjuridire"
             },
-            "vCoddep": "V Coddep",
-            "vCodpro": "V Codpro",
-            "vCoddis": "V Coddis",
+            "vCoddepartamento": "V Coddepartamento",
+            "vCodprovincia": "V Codprovincia",
+            "vCoddistrito": "V Coddistrito",
             "vDircompleta": "V Dircompleta",
             "vReferencia": "V Referencia",
+            "vFlgnotifica": "V Flgnotifica",
             "vUsuarioreg": "V Usuarioreg",
             "dFechareg": "D Fechareg",
             "nEliminar": "N Eliminar",

@@ -1,6 +1,6 @@
 
 <div *ngIf="pase">
-    <h2><span jhiTranslate="gatewayApp.pase.detail.title">Pase</span> {{pase.id}}</h2>
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.pase.detail.title">Pase</span> {{pase.id}}</h4>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
@@ -11,10 +11,6 @@
         <dt><span jhiTranslate="gatewayApp.pase.cFlgestado">C Flgestado</span></dt>
         <dd>
             <span>{{pase.cFlgestado}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.pase.nCodoficinaorigen">N Codoficinaorigen</span></dt>
-        <dd>
-            <span>{{pase.nCodoficinaorigen}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.pase.nCodoficinadestino">N Codoficinadestino</span></dt>
         <dd>
@@ -63,7 +59,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'pase/'+ pase.id + '/edit'} }]"
+            [routerLink]="['/consultas', { outlets: { popup: 'pase/'+ pase.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

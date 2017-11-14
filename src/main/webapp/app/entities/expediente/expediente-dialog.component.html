@@ -302,17 +302,17 @@
             </select>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.expediente.trabajador" for="field_trabajador">Trabajador</label>
-            <select class="form-control" id="field_trabajador" name="trabajador" [(ngModel)]="expediente.trabajador" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="trabajadorOption.id === expediente.trabajador?.id ? expediente.trabajador : trabajadorOption" *ngFor="let trabajadorOption of trabajadors; trackBy: trackTrabajadorById">{{trabajadorOption.id}}</option>
-            </select>
-        </div>
-        <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.expediente.tippersona" for="field_tippersona">Tippersona</label>
             <select class="form-control" id="field_tippersona" name="tippersona" [(ngModel)]="expediente.tippersona" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="tippersonaOption.id === expediente.tippersona?.id ? expediente.tippersona : tippersonaOption" *ngFor="let tippersonaOption of tippersonas; trackBy: trackTippersonaById">{{tippersonaOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.expediente.trabajador" for="field_trabajador">Trabajador</label>
+            <select class="form-control" id="field_trabajador" name="trabajador" [(ngModel)]="expediente.trabajador" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="trabajadorOption.id === expediente.trabajador?.id ? expediente.trabajador : trabajadorOption" *ngFor="let trabajadorOption of trabajadors; trackBy: trackTrabajadorById">{{trabajadorOption.id}}</option>
             </select>
         </div>
         <div class="form-group">

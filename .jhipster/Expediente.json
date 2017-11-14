@@ -8,14 +8,14 @@
             "otherEntityField": "id"
         },
         {
-            "relationshipName": "trabajador",
-            "otherEntityName": "trabajador",
+            "relationshipName": "tippersona",
+            "otherEntityName": "tippersona",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         },
         {
-            "relationshipName": "tippersona",
-            "otherEntityName": "tippersona",
+            "relationshipName": "trabajador",
+            "otherEntityName": "trabajador",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         },
@@ -243,7 +243,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171102221647",
+    "changelogDate": "20171114152921",
     "entityTableName": "expediente",
     "dto": "no",
     "pagination": "no",

@@ -73,7 +73,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171110210422",
+    "changelogDate": "20171114152930",
     "entityTableName": "resolutor",
     "dto": "no",
     "pagination": "no",

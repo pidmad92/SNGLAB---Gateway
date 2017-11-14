@@ -176,7 +176,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171110210416",
+    "changelogDate": "20171114152924",
     "entityTableName": "resolucrd",
     "dto": "no",
     "pagination": "no",

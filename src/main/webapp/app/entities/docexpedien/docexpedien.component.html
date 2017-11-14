@@ -1,13 +1,13 @@
 <div>
-    <h2>
+    <h4 class="title my-3">
         <span jhiTranslate="gatewayApp.docexpedien.home.title">Docexpediens</span>
-        <button class="btn btn-primary float-right jh-create-entity create-docexpedien" [routerLink]="['/', { outlets: { popup: ['docexpedien-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-docexpedien" [routerLink]="['/defensa', { outlets: { popup: ['docexpedien-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.docexpedien.home.createLabel">
             Create new Docexpedien
             </span>
         </button>
-    </h2>
+    </h4>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">

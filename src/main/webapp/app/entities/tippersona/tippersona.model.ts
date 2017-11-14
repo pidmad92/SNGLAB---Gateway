@@ -13,6 +13,7 @@ export class Tippersona implements BaseEntity {
         public nSedeupd?: number,
         public expedientes?: BaseEntity[],
         public resolucrds?: BaseEntity[],
+        public empleadors?: BaseEntity[],
     ) {
     }
 }

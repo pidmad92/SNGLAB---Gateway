@@ -12,6 +12,12 @@
             "relationshipName": "resolucrd",
             "otherEntityName": "resolucrd",
             "otherEntityRelationshipName": "tippersona"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "empleador",
+            "otherEntityName": "empleador",
+            "otherEntityRelationshipName": "tippersona"
         }
     ],
     "fields": [
@@ -75,10 +81,11 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150210",
+    "changelogDate": "20171114152914",
     "entityTableName": "tippersona",
     "dto": "no",
     "pagination": "no",
     "service": "no",
-    "jpaMetamodelFiltering": false
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "consultas"
 }

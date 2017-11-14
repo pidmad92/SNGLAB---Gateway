@@ -1,13 +1,9 @@
 
 <div *ngIf="trabajador">
-    <h2><span jhiTranslate="gatewayApp.trabajador.detail.title">Trabajador</span> {{trabajador.id}}</h2>
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.trabajador.detail.title">Trabajador</span> {{trabajador.id}}</h4>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.trabajador.vNumdocumento">V Numdocumento</span></dt>
-        <dd>
-            <span>{{trabajador.vNumdocumento}}</span>
-        </dd>
         <dt><span jhiTranslate="gatewayApp.trabajador.vFlgsucesor">V Flgsucesor</span></dt>
         <dd>
             <span>{{trabajador.vFlgsucesor}}</span>
@@ -39,6 +35,18 @@
         <dt><span jhiTranslate="gatewayApp.trabajador.nSedeupd">N Sedeupd</span></dt>
         <dd>
             <span>{{trabajador.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.trabajador.cargotrabaja">Cargotrabaja</span></dt>
+        <dd>
+            <div *ngIf="trabajador.cargotrabaja">
+                <a [routerLink]="['/cargotrabaja', trabajador.cargotrabaja?.id]">{{trabajador.cargotrabaja?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.trabajador.personanatur">Personanatur</span></dt>
+        <dd>
+            <div *ngIf="trabajador.personanatur">
+                <a [routerLink]="['/personanatur', trabajador.personanatur?.id]">{{trabajador.personanatur?.id}}</a>
+            </div>
         </dd>
     </dl>
 

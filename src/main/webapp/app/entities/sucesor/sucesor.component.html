@@ -31,6 +31,7 @@
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="gatewayApp.sucesor.cFlgestado">C Flgestado</span></th>
+            <th><span jhiTranslate="gatewayApp.sucesor.vCodpartida">V Codpartida</span></th>
             <th><span jhiTranslate="gatewayApp.sucesor.vUsuarioreg">V Usuarioreg</span></th>
             <th><span jhiTranslate="gatewayApp.sucesor.dFechareg">D Fechareg</span></th>
             <th><span jhiTranslate="gatewayApp.sucesor.nEliminar">N Eliminar</span></th>
@@ -47,6 +48,7 @@
             <tr *ngFor="let sucesor of sucesors ;trackBy: trackId">
                 <td><a [routerLink]="['../sucesor', sucesor.id ]">{{sucesor.id}}</a></td>
                 <td>{{sucesor.cFlgestado}}</td>
+                <td>{{sucesor.vCodpartida}}</td>
                 <td>{{sucesor.vUsuarioreg}}</td>
                 <td>{{sucesor.dFechareg | date:'medium'}}</td>
                 <td>{{sucesor.nEliminar}}</td>

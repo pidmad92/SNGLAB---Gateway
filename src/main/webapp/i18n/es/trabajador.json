@@ -7,16 +7,12 @@
                 "createOrEditLabel": "Crear o editar Trabajador",
                 "search": "Search for Trabajador"
             },
-            "created": "Un nuevo Trabajador ha sido creado con el identificador {{ param }}",
-            "updated": "Un Trabajador ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Trabajador ha sido eliminado con el identificador {{ param }}",
             "delete": {
                 "question": "¿Seguro que quiere eliminar Trabajador {{ id }}?"
             },
             "detail": {
                 "title": "Trabajador"
             },
-            "vNumdocumento": "V Numdocumento",
             "vFlgsucesor": "V Flgsucesor",
             "vUsuarioreg": "V Usuarioreg",
             "dFechareg": "D Fechareg",
@@ -25,7 +21,19 @@
             "vUsuarioupd": "V Usuarioupd",
             "dFechaupd": "D Fechaupd",
             "nSedeupd": "N Sedeupd",
-            "expediente": "Expediente"
+            "cargotrabaja": "Cargotrabaja",
+            "personanatur": "Personanatur",
+            "expediente": "Expediente",
+            "datlaboral": "Datlaboral",
+            "atencion": "Atencion",
+            "sucesor": "Sucesor"
+        }
+    },
+    "consultasApp": {
+        "trabajador" : {
+            "created": "Un nuevo Trabajador ha sido creado con el identificador {{ param }}",
+            "updated": "Un Trabajador ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Trabajador ha sido eliminado con el identificador {{ param }}"
         }
     }
 }

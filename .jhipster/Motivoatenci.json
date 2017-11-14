@@ -6,6 +6,12 @@
             "relationshipName": "motatenofic",
             "otherEntityName": "motatenofic",
             "otherEntityRelationshipName": "motivoatenci"
+        },
+        {
+            "relationshipName": "tipmotaten",
+            "otherEntityName": "tipmotaten",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         }
     ],
     "fields": [
@@ -69,7 +75,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150158",
+    "changelogDate": "20171114152902",
     "entityTableName": "motivoatenci",
     "dto": "no",
     "pagination": "no",

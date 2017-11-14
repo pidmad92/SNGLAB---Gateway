@@ -78,7 +78,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150212",
+    "changelogDate": "20171114152916",
     "entityTableName": "motatenofic",
     "dto": "no",
     "pagination": "no",

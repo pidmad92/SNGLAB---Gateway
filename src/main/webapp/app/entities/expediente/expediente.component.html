@@ -1,5 +1,5 @@
 <div>
-    <h2>
+    <h4 class="title my-3">
         <span jhiTranslate="gatewayApp.expediente.home.title">Expedientes</span>
         <button class="btn btn-primary float-right jh-create-entity create-expediente" [routerLink]="['/', { outlets: { popup: ['expediente-new'] } }]">
             <span class="fa fa-plus"></span>
@@ -7,7 +7,7 @@
             Create new Expediente
             </span>
         </button>
-    </h2>
+    </h4>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -56,8 +56,8 @@
             <th><span jhiTranslate="gatewayApp.expediente.dFechaupd">D Fechaupd</span></th>
             <th><span jhiTranslate="gatewayApp.expediente.nSedeupd">N Sedeupd</span></th>
             <th><span jhiTranslate="gatewayApp.expediente.empleador">Empleador</span></th>
-            <th><span jhiTranslate="gatewayApp.expediente.trabajador">Trabajador</span></th>
             <th><span jhiTranslate="gatewayApp.expediente.tippersona">Tippersona</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.trabajador">Trabajador</span></th>
             <th><span jhiTranslate="gatewayApp.expediente.estexpedien">Estexpedien</span></th>
             <th><span jhiTranslate="gatewayApp.expediente.resolutor">Resolutor</span></th>
             <th></th>
@@ -97,13 +97,13 @@
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="expediente.trabajador">
-                        <a [routerLink]="['../trabajador', expediente.trabajador?.id ]" >{{expediente.trabajador?.id}}</a>
+                    <div *ngIf="expediente.tippersona">
+                        <a [routerLink]="['../tippersona', expediente.tippersona?.id ]" >{{expediente.tippersona?.id}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="expediente.tippersona">
-                        <a [routerLink]="['../tippersona', expediente.tippersona?.id ]" >{{expediente.tippersona?.id}}</a>
+                    <div *ngIf="expediente.trabajador">
+                        <a [routerLink]="['../trabajador', expediente.trabajador?.id ]" >{{expediente.trabajador?.id}}</a>
                     </div>
                 </td>
                 <td>

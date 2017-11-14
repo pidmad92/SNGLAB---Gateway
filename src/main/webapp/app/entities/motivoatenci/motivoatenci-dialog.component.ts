@@ -9,6 +9,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Motivoatenci } from './motivoatenci.model';
 import { MotivoatenciPopupService } from './motivoatenci-popup.service';
 import { MotivoatenciService } from './motivoatenci.service';
+import { Tipmotaten, TipmotatenService } from '../tipmotaten';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-motivoatenci-dialog',
@@ -19,16 +21,21 @@ export class MotivoatenciDialogComponent implements OnInit {
     motivoatenci: Motivoatenci;
     isSaving: boolean;
 
+    tipmotatens: Tipmotaten[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private motivoatenciService: MotivoatenciService,
+        private tipmotatenService: TipmotatenService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.tipmotatenService.query()
+            .subscribe((res: ResponseWrapper) => { this.tipmotatens = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -63,6 +70,10 @@ export class MotivoatenciDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackTipmotatenById(index: number, item: Tipmotaten) {
+        return item.id;
     }
 }
 

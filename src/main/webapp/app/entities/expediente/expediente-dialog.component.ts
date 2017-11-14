@@ -10,8 +10,8 @@ import { Expediente } from './expediente.model';
 import { ExpedientePopupService } from './expediente-popup.service';
 import { ExpedienteService } from './expediente.service';
 import { Empleador, EmpleadorService } from '../empleador';
-import { Trabajador, TrabajadorService } from '../trabajador';
 import { Tippersona, TippersonaService } from '../tippersona';
+import { Trabajador, TrabajadorService } from '../trabajador';
 import { Pase, PaseService } from '../pase';
 import { Estexpedien, EstexpedienService } from '../estexpedien';
 import { Resolutor, ResolutorService } from '../resolutor';
@@ -28,9 +28,9 @@ export class ExpedienteDialogComponent implements OnInit {
 
     empleadors: Empleador[];
 
-    trabajadors: Trabajador[];
-
     tippersonas: Tippersona[];
+
+    trabajadors: Trabajador[];
 
     pases: Pase[];
 
@@ -43,8 +43,8 @@ export class ExpedienteDialogComponent implements OnInit {
         private jhiAlertService: JhiAlertService,
         private expedienteService: ExpedienteService,
         private empleadorService: EmpleadorService,
-        private trabajadorService: TrabajadorService,
         private tippersonaService: TippersonaService,
+        private trabajadorService: TrabajadorService,
         private paseService: PaseService,
         private estexpedienService: EstexpedienService,
         private resolutorService: ResolutorService,
@@ -56,10 +56,10 @@ export class ExpedienteDialogComponent implements OnInit {
         this.isSaving = false;
         this.empleadorService.query()
             .subscribe((res: ResponseWrapper) => { this.empleadors = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.trabajadorService.query()
-            .subscribe((res: ResponseWrapper) => { this.trabajadors = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.tippersonaService.query()
             .subscribe((res: ResponseWrapper) => { this.tippersonas = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.trabajadorService.query()
+            .subscribe((res: ResponseWrapper) => { this.trabajadors = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.paseService.query()
             .subscribe((res: ResponseWrapper) => { this.pases = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.estexpedienService.query()
@@ -106,11 +106,11 @@ export class ExpedienteDialogComponent implements OnInit {
         return item.id;
     }
 
-    trackTrabajadorById(index: number, item: Trabajador) {
+    trackTippersonaById(index: number, item: Tippersona) {
         return item.id;
     }
 
-    trackTippersonaById(index: number, item: Tippersona) {
+    trackTrabajadorById(index: number, item: Trabajador) {
         return item.id;
     }
 
