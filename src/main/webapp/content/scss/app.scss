@@ -721,6 +721,8 @@ body .ui-steps .ui-steps-item .ui-menuitem-link .ui-steps-title{
 
 
 //TABLE
+
+
 body .ui-datatable .ui-datatable-tfoot>tr>td, .ui-datatable .ui-datatable-thead>tr>th {
   font-weight: 400;
 }
@@ -748,4 +750,44 @@ body .ui-datatable .ui-datatable-data>tr>td, .ui-datatable .ui-datatable-tfoot>t
   padding: 3px 6px;
   border-width: 1px;
   border-style: solid;
+}
+
+body .ui-widget{
+  font-family: "FranklinGothicStdBC";
+  font-size: 14px;
+}
+
+body .ui-togglebutton.ui-button.ui-state-default, .ui-selectbutton .ui-button.ui-state-default {
+  border: 1px solid #d6d6d6;
+  background: #ffffff;
+  font-weight: normal;
+  color: #555555;
+}
+body .ui-togglebutton:not(.ui-state-disabled):not(.ui-state-active):hover {
+  border-color: #c0c0c0;
+  background: #eeeeee;
+  color: #212121;
+}
+body .ui-togglebutton.ui-button.ui-state-active, .ui-selectbutton .ui-button.ui-state-active {
+  border: 1px solid #156090;
+  background: #186ba0;
+  color: #FFFFFF;
+}
+input[name=rangeDates] {
+  width: 180px;
+}
+body .ui-inputtext {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.1rem;
+}
+label.ui-radiobutton-label{
+  margin-bottom: 0;
+}
+body .ui-radiobutton .ui-radiobutton-box .ui-radiobutton-icon {
+  font-size: 0.5em;
+  overflow: visible;
+  position: relative;
+  top: -0.50em;
 }
