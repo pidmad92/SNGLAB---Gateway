@@ -7,6 +7,7 @@ import { ProfileService } from '../profiles/profile.service';
 import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from '../../shared';
 
 import { VERSION } from '../../app.constants';
+declare var $: any;
 
 @Component({
     selector: 'jhi-navbar',
@@ -52,9 +53,10 @@ export class NavbarComponent implements OnInit {
     }
 
     collapseNavbar() {
-        this.isNavbarCollapsed = true;
     }
-
+    collapseNavbar1() {
+        $('nav.navbar-dark').css('display', 'none');
+    }
     isAuthenticated() {
         return this.principal.isAuthenticated();
     }

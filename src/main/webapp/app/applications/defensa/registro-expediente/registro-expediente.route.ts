@@ -5,7 +5,11 @@ import { UserRouteAccessService } from '../../../shared';
 import { JhiPaginationUtil } from 'ng-jhipster';
 
 import { RegistroExpedienteComponent } from './registro-expediente.component';
-// import { AccionadopDetailComponent } from './accionadop-detail.component';
+import { DatosPaseComponent } from './registro-expediente-wizard/datos-pase.component';
+import { DatosTrabajadorComponent } from './registro-expediente-wizard/datos-trabajador.component';
+import { DatosEmpleadorComponent } from './registro-expediente-wizard/datos-empleador.component';
+import { DatosExpedienteComponent } from './registro-expediente-wizard/datos-expediente.component';
+import { DatosAudienciaComponent } from './registro-expediente-wizard/datos-audiencia.component';
 // import { AccionadopPopupComponent } from './accionadop-dialog.component';
 // import { AccionadopDeletePopupComponent } from './accionadop-delete-dialog.component';
 
@@ -15,50 +19,56 @@ export const registroExpedienteRoute: Routes = [
         component: RegistroExpedienteComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
+            pageTitle: 'global.menu.entities.registroExpediente'
         },
-        canActivate: [UserRouteAccessService]
+        canActivate: [UserRouteAccessService],
+        children: [
+            {
+                path: 'datos-pase',
+                component: DatosPaseComponent,
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'global.menu.entities.registroExpediente'
+                },
+                outlet: 'wizard'
+            },
+            {
+                path: 'datos-trabajador',
+                component: DatosTrabajadorComponent,
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'global.menu.entities.registroExpediente'
+                },
+                outlet: 'wizard'
+            },
+            {
+                path: 'datos-empleador',
+                component: DatosEmpleadorComponent,
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'global.menu.entities.registroExpediente'
+                },
+                outlet: 'wizard'
+            },
+            {
+                path: 'datos-expediente',
+                component: DatosExpedienteComponent,
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'global.menu.entities.registroExpediente'
+                },
+                outlet: 'wizard'
+            },
+            {
+                path: 'datos-audiencia',
+                component: DatosAudienciaComponent,
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'global.menu.entities.registroExpediente'
+                },
+                outlet: 'wizard'
+            }
+        ]
     }
-    // {
-    //     path: 'accionadop/:id',
-    //     component: AccionadopDetailComponent,
-    //     data: {
-    //         authorities: ['ROLE_USER'],
-    //         pageTitle: 'gatewayApp.accionadop.home.title'
-    //     },
-    //     canActivate: [UserRouteAccessService]
-    // }
-];
 
-// export const accionadopPopupRoute: Routes = [
-//     {
-//         path: 'accionadop-new',
-//         component: AccionadopPopupComponent,
-//         data: {
-//             authorities: ['ROLE_USER'],
-//             pageTitle: 'gatewayApp.accionadop.home.title'
-//         },
-//         canActivate: [UserRouteAccessService],
-//         outlet: 'popup'
-//     },
-//     {
-//         path: 'accionadop/:id/edit',
-//         component: AccionadopPopupComponent,
-//         data: {
-//             authorities: ['ROLE_USER'],
-//             pageTitle: 'gatewayApp.accionadop.home.title'
-//         },
-//         canActivate: [UserRouteAccessService],
-//         outlet: 'popup'
-//     },
-//     {
-//         path: 'accionadop/:id/delete',
-//         component: AccionadopDeletePopupComponent,
-//         data: {
-//             authorities: ['ROLE_USER'],
-//             pageTitle: 'gatewayApp.accionadop.home.title'
-//         },
-//         canActivate: [UserRouteAccessService],
-//         outlet: 'popup'
-//     }
-// ];
+];
