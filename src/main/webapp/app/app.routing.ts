@@ -22,6 +22,11 @@ export const consultasRoute: Route = {
     loadChildren: './applications/consultas/consultas.module#GatewayConsultasModule'
 };
 
+export const sindicatosRoute: Route = {
+    path: 'sindicatos',
+    loadChildren: './applications/sindicatos/sindicatos.module#GatewaySindicatosModule'
+};
+
 export const loginRoute: Route = {
     path: 'login',
     component: LoginComponent,

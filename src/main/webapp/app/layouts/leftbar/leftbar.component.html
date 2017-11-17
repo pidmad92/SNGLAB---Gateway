@@ -107,4 +107,37 @@
         </li>
       </ul>
     </div>
+
+    <!-- JROMERO SINDICATOS -->
+    <div class="my-2">
+        <ul class="level-one mt-2 p-0" id="accordion">
+            <li routerLinkActive="active">
+                <ngb-accordion [closeOthers]="true" activeIds="static-1">
+                    <ngb-panel id="static-1">
+                      <ng-template ngbPanelTitle>
+                          <li routerLinkActive="active">
+                              <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                                <i class="fa fa-cubes px-2" aria-hidden="true"></i> <span>Sindicatos</span>
+                                <span class="fa fa-chevron-down ml-auto"></span>
+                              </a>
+                          </li>
+                      </ng-template>
+                      <ng-template ngbPanelContent>
+                      <div class="level-two p-0">
+                        <li><a routerLink="sindicatos/consulta-organizacion" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Registro Organización</span></a></li>
+                        <li><a routerLink="sindicatos/registro-observacion" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Registro de Recursos</span></a></li>
+                        <li><a routerLink="sindicatos/registro-delegados" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Registro de Delegados</span></a></li>
+                        <li><a routerLink="sindicatos/evaluar-solicitudes" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Revisar Solicitudes</span></a></li>
+                        <li><a routerLink="sindicatos/bienvenida" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Bienvenida</span></a></li>
+                      </div>
+                  </ng-template>
+              </ngb-panel>
+              </ngb-accordion>
+            </li> 
+        </ul>
+        
+    </div>
+
+    
+    <!-- JROMERO SINDICATOS -->
   </nav>

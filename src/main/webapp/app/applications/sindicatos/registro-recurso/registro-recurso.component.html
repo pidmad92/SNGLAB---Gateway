@@ -1,0 +1,337 @@
+<style>
+        .table tr td:nth-last-child(1) {
+                       text-align: left;
+                   }
+     </style>
+
+<div>
+        <br/>
+        <h4 class="title my-3" align="left">
+            <span>Registro de Recurso</span>
+        </h4>
+        <h4 class="title my-3" align="center">
+                <span>Tipo de Recurso :</span> Nombre del tipo de recurso
+        </h4>
+
+        <ngb-tabset>
+                <ngb-tab id="tab-selectbyid2" title="Recurso">
+                  <ng-template ngbTabContent>
+                      <br/>
+                      <div class="table-responsive">
+                          <table class="table table-striped" border="0">
+                              <tr>
+                                  <td>Or. Sindical </td>
+                                  <td colspan="3"><label class="form-control form-control-sm">sindicatoooossss</label></td>
+                              </tr>
+                              <tr>
+                                  <td>N° Expediente </td>
+                                  <td colspan="3"><label class="form-control form-control-sm">654684-65468</label></td>
+                              </tr>
+                              <tr>
+                                  <td>Recurso </td>
+                                  <td><input type="text" class="form-control form-control-sm"/></td>
+                                  <td>Fecha Recurso </td>
+                                  <td><input type="date" /></td>
+                              </tr>
+                              <tr>
+                                  <td>Fecha Proveido </td>
+                                  <td><input type="date" /></td>
+                                  <td>Tipo Recurso </td>
+                                  <td>
+                                      <select class="form-control form-control-sm" id="">
+                                          <option>Junta Directiva</option>
+                                          <option>Estatuto</option>
+                                        </select>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Estado </td>
+                                  <td colspan="3">VIGENTE</td>
+                              </tr>
+                          </table>
+                          <div align="center">
+                              <button class="btn mx-1 btn-dark float-center">Atras</button>
+                              <button class="btn mx-1 btn-dark float-center">Siguiente</button>
+                          </div>
+                        </div>
+                  </ng-template>
+                </ngb-tab>
+                <ngb-tab id="tab-selectbyid3" title="Junta Directiva">
+                  <ng-template ngbTabContent>
+                      <br/>
+                      <div class="table-responsive">
+                          <table class="table table-striped" border="0">
+                              <tr>
+                                  <td colspan="4">Org. Sindical <label class="form-control form-control-sm">sindicatoooossss</label></td>
+                              </tr>
+                              <tr>
+                                  <td colspan="4">N° Expediente <label class="form-control form-control-sm">654684-65468</label></td>
+                              </tr>
+                              <tr>
+                                  <td colspan="2">
+                                      <fieldset class="col">     
+                                          <legend>Periodo de Vigencia</legend>
+                                                          <div class="col-6">
+                                                              F. Inicio(*) <input type="date" class="form-control form-control-sm" />
+                                                          </div>
+                                                          <div class="col-6">
+                                                              F. Fin(*) <input type="date" class="form-control form-control-sm" />
+                                                          </div>
+                                                          <div class="col-6">
+                                                              Estado <label>VIGENTE</label>
+                                                          </div>
+                                      </fieldset>
+                                  </td>
+                                  <td colspan="2">
+                                      <fieldset class="col">     
+                                          <legend>Número Miembros</legend>
+                                                          <div class="col-6">
+                                                              Titulares(*) <input type="text" value="0" class="form-control form-control-sm" />
+                                                          </div>
+                                                          <div class="col-6">
+                                                              Suplentes(*) <input type="text" value="0" class="form-control form-control-sm" />
+                                                          </div>
+                                                          <div class="col-6">
+                                                          </div>
+                                      </fieldset>
+                                  </td>
+                              </tr>
+                              <tr>
+                                <td colspan="4">
+                                    <div align="left">
+                                        <button class="btn mx-1 btn-dark float-left">Agregar</button>
+                                        <button class="btn mx-1 btn-dark float-left">Eliminar</button>
+                                    </div>
+                                </td>
+                              </tr>
+                              <tr align="center">
+                                <td colspan="4">
+                                    <table class="table table-striped" border="0">
+                                        <thead>
+                                            <tr>
+                                              <th><span >ID</span></th>
+                                              <th><span >N°</span></th>
+                                              <th><span >Tipo Doc.</span></th>
+                                              <th><span >Num. Doc.</span></th>
+                                              <th><span >Nombre</span></th>
+                                              <th><span >Cargo</span></th>
+                                              <th></th>
+                                              <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+          
+                                        </tbody>
+                                    </table>
+                                </td>
+                              </tr>
+                          </table>
+                          <div align="center">
+                              <button class="btn mx-1 btn-dark float-center">Cancelar</button>
+                              <button class="btn mx-1 btn-dark float-center">Siguiente</button>
+                          </div>
+                        </div>
+                  </ng-template>
+                </ngb-tab>
+                <ngb-tab id="tab-selectbyid4" title="Estatuto">
+                  <ng-template ngbTabContent>
+                      <br/>
+                      <div class="table-responsive">
+                          <table class="table table-striped" border="0">
+                              <tr>
+                                  <td colspan="4">Org. Sindical <label class="form-control form-control-sm">sindicatoooossss</label></td>
+                              </tr>
+                              <tr>
+                                  <td colspan="4">N° Expediente <label class="form-control form-control-sm">654684-65468</label></td>
+                              </tr>
+                              <tr>
+                                <td colspan="4">
+                                    <div align="left">
+                                        <button class="btn mx-1 btn-dark float-left">Agregar</button>
+                                        <button class="btn mx-1 btn-dark float-left">Eliminar</button>
+                                    </div>
+                                </td>
+                              </tr>
+                              <tr align="center">
+                                <td colspan="4">
+                                    <table class="table table-striped" border="0">
+                                        <thead>
+                                            <tr>
+                                              <th><span >ID</span></th>
+                                              <th><span >Fecha Asamblea</span></th>
+                                              <th><span >Descripción</span></th>
+                                              <th><span >Archivo</span></th>
+                                              <th></th>
+                                              <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+          
+                                        </tbody>
+                                    </table>
+                                </td>
+                              </tr>
+                          </table>
+                          <div align="center">
+                              <button class="btn mx-1 btn-dark float-center">Cancelar</button>
+                              <button class="btn mx-1 btn-dark float-center">Siguiente</button>
+                          </div>
+                        </div>
+                  </ng-template>
+                </ngb-tab>
+                <ngb-tab id="tab-selectbyid5" title="Otros">
+                    <ng-template ngbTabContent>
+                            <br/>
+                            <div class="table-responsive">
+                                <table class="table table-striped" border="0">
+                                    <tr>
+                                        <td>Or. Sindical </td>
+                                        <td colspan="3"><label class="form-control form-control-sm">sindicatoooossss</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td>N° Expediente </td>
+                                        <td colspan="3"><label class="form-control form-control-sm">654684-65468</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nro. Resolución </td>
+                                        <td><input type="text" class="form-control form-control-sm"/></td>
+                                        <td>Fecha Resolución </td>
+                                        <td><input type="date" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div align="left">
+                                                <input type="submit" value="Buscar" class="btn mx-1 btn-dark"/>
+                                                <input type="submit" value="Nuevo" class="btn mx-1 btn-dark"/>
+                                                <input type="submit" value="Eliminar" class="btn mx-1 btn-dark"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="table table-striped" border="0">
+                                        <thead>
+                                            <tr>
+                                              <th><span>Nro. Resolución</span></th>
+                                              <th><span>Fecha Resolución</span></th>
+                                              <th><span>Observación</span></th>
+                                              <th></th>
+                                              <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+          
+                                        </tbody>
+                                    </table>
+                                <div align="center">
+                                    <button class="btn mx-1 btn-dark float-center">Atras</button>
+                                    <button class="btn mx-1 btn-dark float-center">Siguiente</button>
+                                </div>
+                              </div>        
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab id="tab-selectbyid6" title="Libro Sindical">
+                  <ng-template ngbTabContent>
+                        <br/>
+                        <div class="table-responsive">
+                            <table class="table table-striped" border="0">
+                                <tr>
+                                    <td>Or. Sindical </td>
+                                    <td colspan="3"><label class="form-control form-control-sm">sindicatoooossss</label></td>
+                                </tr>
+                                <tr>
+                                    <td>N° Expediente </td>
+                                    <td colspan="3"><label class="form-control form-control-sm">654684-65468</label></td>
+                                </tr>
+                                <tr>
+                                    <td>Nro. Registro Libro </td>
+                                    <td><input type="text" class="form-control form-control-sm"/></td>
+                                    <td>Nro. Libro </td>
+                                    <td><input type="text" class="form-control form-control-sm"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Tipo Libro </td>
+                                    <td>
+                                        <select class="form-control form-control-sm" id="">
+                                            <option>Tipo 1</option>
+                                            <option>Tipo 2</option>
+                                        </select>
+                                    </td>
+                                    <td>Fecha Resolución </td>
+                                    <td><input type="date" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Usuario quien registra<br/>la autorización</td>
+                                    <td><input type="text" class="form-control form-control-sm" /></td>
+                                    <td>Estado</td>
+                                    <td>VIGENTE</td>
+                                </tr>
+                            </table>
+                            <div align="center">
+                                <button class="btn mx-1 btn-dark float-center">Atras</button>
+                                <button class="btn mx-1 btn-dark float-center">Siguiente</button>
+                            </div>
+                          </div> 
+                  </ng-template>
+                </ngb-tab>
+                <ngb-tab id="tab-selectbyid7" title="Califiación">
+                  <ng-template ngbTabContent>
+                      <br/>
+                      <div class="table-responsive">
+                          <table class="table table-striped" border="0">
+                              <tr>
+                                  <td colspan="4">Org. Sindical <label class="form-control form-control-sm">sindicatoooossss</label></td>
+                              </tr>
+                              <tr>
+                                  <td colspan="4">N° Expediente <label class="form-control form-control-sm">654684-65468</label></td>
+                              </tr>
+                              <tr>
+                                <td colspan="4">
+                                    Requisitos
+                                </td>
+                              </tr>
+                              <tr align="center">
+                                <td colspan="4">
+                                    <table class="table table-striped" border="0">
+                                        <thead>
+                                            <tr>
+                                              <th><span >Descripción</span></th>
+                                              <th><span >Presento</span></th>
+                                              <th><span >En Regla</span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                              <td>Observación 1</td>
+                                              <td><input type="checkbox" /></td>
+                                              <td><input type="checkbox" /></td>
+                                          </tr>
+                                          <tr>
+                                              <td>Observación 2</td>
+                                              <td><input type="checkbox" /></td>
+                                              <td><input type="checkbox" /></td>
+                                          </tr>
+                                          <tr>
+                                              <td>Observación 3</td>
+                                              <td><input type="checkbox" /></td>
+                                              <td><input type="checkbox" /></td>
+                                          </tr>
+                                          <tr>
+                                              <td>Observación 4</td>
+                                              <td><input type="checkbox" /></td>
+                                              <td><input type="checkbox" /></td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                              </tr>
+                          </table>
+                          <div align="center">
+                              <button class="btn mx-1 btn-dark float-center">Cancelar</button>
+                              <button class="btn mx-1 btn-dark float-center">Siguiente</button>
+                          </div>
+                        </div>
+                  </ng-template>
+                </ngb-tab>
+        </ngb-tabset>
+    
+    </div>

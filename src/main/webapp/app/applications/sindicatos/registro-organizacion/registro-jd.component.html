@@ -1,0 +1,64 @@
+<style>
+    .table tr td:nth-last-child(1) {
+        text-align: left;
+    }
+ </style>
+
+<br/>
+<div>
+    <h4 class="title my-3" align="center">
+        <span>Agregar Miembro de Junta Directiva</span>
+    </h4>
+    
+    <div class="table-responsive">
+    <table class="table table-striped" border="0">
+    <tr>
+        <td>Tipo Doc. </td>
+        <td>
+            <select class="form-control form-control-sm">
+                <option>DNI</option>
+                <option>RUC</option>
+            </select>
+        </td>
+        <td><input type="submit" value="Buscar" /></td>
+        <td>Num. Docu. </td>
+        <td><input type="text" class="form-control form-control-sm" /></td>
+    </tr>
+    <tr>
+        <td>Nombre</td>
+        <td colspan="4" align="left"><input type="text" class="form-control form-control-sm" /></td>
+    </tr>
+    <tr>
+        <td>Sexo</td>
+        <td>
+            <select class="form-control form-control-sm">
+                <option>Masculino</option>
+                <option>Femenino</option>
+            </select>
+        </td>
+        <td>Tipo Miembro</td>
+        <td colspan="2">
+            <select class="form-control form-control-sm">
+                <option>Titular</option>
+                <option>Suplente</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Cargo</td>
+        <td colspan="2">
+            <select class="form-control form-control-sm">
+                <option>Cargo 1</option>
+                <option>Cargo 2</option>
+            </select>
+        </td>
+        <td><button class="btn mx-1 btn-dark float-center">Nuevo Cargo</button></td>
+    </tr>
+    </table>
+    <br/>
+    <div align="center">
+        <button class="btn mx-1 btn-dark float-center">Cancelar</button>
+        <button class="btn mx-1 btn-dark float-center">Guardar</button>
+    </div>
+    </div> 
+</div>
