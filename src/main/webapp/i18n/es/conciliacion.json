@@ -1,0 +1,39 @@
+{
+    "gatewayApp": {
+        "conciliacion" : {
+            "home": {
+                "title": "Conciliacions",
+                "createLabel": "Crear nuevo Conciliacion",
+                "createOrEditLabel": "Crear o editar Conciliacion",
+                "search": "Search for Conciliacion"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Conciliacion {{ id }}?"
+            },
+            "detail": {
+                "title": "Conciliacion"
+            },
+            "dFecha": "D Fecha",
+            "vFlgaudienciaresistida": "V Flgaudienciaresistida",
+            "vFlgreprogramacion": "V Flgreprogramacion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "expediente": "Expediente",
+            "abogado": "Abogado",
+            "hora": "Hora",
+            "resulconci": "Resulconci"
+        }
+    },
+    "defensaApp": {
+        "conciliacion" : {
+            "created": "Un nuevo Conciliacion ha sido creado con el identificador {{ param }}",
+            "updated": "Un Conciliacion ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Conciliacion ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

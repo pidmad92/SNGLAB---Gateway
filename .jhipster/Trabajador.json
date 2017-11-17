@@ -15,6 +15,12 @@
         },
         {
             "relationshipType": "one-to-many",
+            "relationshipName": "expediente",
+            "otherEntityName": "expediente",
+            "otherEntityRelationshipName": "trabajador"
+        },
+        {
+            "relationshipType": "one-to-many",
             "relationshipName": "datlaboral",
             "otherEntityName": "datlaboral",
             "otherEntityRelationshipName": "trabajador"
@@ -33,15 +39,6 @@
         }
     ],
     "fields": [
-        {
-            "fieldName": "vNumdocumento",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 15
-        },
         {
             "fieldName": "vFlgsucesor",
             "fieldType": "String",
@@ -102,7 +99,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150211",
+    "changelogDate": "20171114152915",
     "entityTableName": "trabajador",
     "dto": "no",
     "pagination": "no",

@@ -21,7 +21,8 @@
             "vUsuarioupd": "V Usuarioupd",
             "dFechaupd": "D Fechaupd",
             "nSedeupd": "N Sedeupd",
-            "motatenofic": "Motatenofic"
+            "motatenofic": "Motatenofic",
+            "tipmotaten": "Tipmotaten"
         }
     },
     "consultasApp": {

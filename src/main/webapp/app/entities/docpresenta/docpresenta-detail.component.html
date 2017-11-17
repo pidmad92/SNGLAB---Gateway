@@ -32,10 +32,10 @@
         <dd>
             <span>{{docpresenta.nSedeupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.docpresenta.atenmotiaten">Atenmotiaten</span></dt>
+        <dt><span jhiTranslate="gatewayApp.docpresenta.atencion">Atencion</span></dt>
         <dd>
-            <div *ngIf="docpresenta.atenmotiaten">
-                <a [routerLink]="['/atenmotiaten', docpresenta.atenmotiaten?.id]">{{docpresenta.atenmotiaten?.id}}</a>
+            <div *ngIf="docpresenta.atencion">
+                <a [routerLink]="['/atencion', docpresenta.atencion?.id]">{{docpresenta.atencion?.id}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="gatewayApp.docpresenta.documento">Documento</span></dt>

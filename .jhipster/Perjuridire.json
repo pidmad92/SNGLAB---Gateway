@@ -10,7 +10,7 @@
     ],
     "fields": [
         {
-            "fieldName": "vCoddep",
+            "fieldName": "vCoddepartamento",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -19,7 +19,7 @@
             "fieldValidateRulesMaxlength": 20
         },
         {
-            "fieldName": "vCodpro",
+            "fieldName": "vCodprovincia",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -28,7 +28,7 @@
             "fieldValidateRulesMaxlength": 20
         },
         {
-            "fieldName": "vCoddis",
+            "fieldName": "vCoddistrito",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -52,6 +52,15 @@
                 "maxlength"
             ],
             "fieldValidateRulesMaxlength": 500
+        },
+        {
+            "fieldName": "vFlgnotifica",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 1
         },
         {
             "fieldName": "vUsuarioreg",
@@ -104,7 +113,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150149",
+    "changelogDate": "20171114152853",
     "entityTableName": "perjuridire",
     "dto": "no",
     "pagination": "no",

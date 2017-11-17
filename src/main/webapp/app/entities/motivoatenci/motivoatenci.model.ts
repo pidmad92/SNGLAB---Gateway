@@ -12,6 +12,7 @@ export class Motivoatenci implements BaseEntity {
         public dFechaupd?: any,
         public nSedeupd?: number,
         public motatenofics?: BaseEntity[],
+        public tipmotaten?: BaseEntity,
     ) {
     }
 }

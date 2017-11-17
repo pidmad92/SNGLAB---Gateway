@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    
+    <changeSet author="liquibase-docs" id="20171114153920-1">
+        <renameTable newTableName="GLMVC_ATENCION" oldTableName="ATENCION" />
+        <renameTable newTableName="GLTBC_ACCIONADOPTADA" oldTableName="ACCIONADOP" />
+        <renameTable newTableName="GLMVD_ATEACCIONADOP" oldTableName="ATENACCADOP" />
+        <renameTable newTableName="GLMVD_ATEDISCAPACIDAD" oldTableName="ATENDISCA" />
+        <renameTable newTableName="GLMVD_ATEMOTIVOATE" oldTableName="ATENMOTIATEN" />
+        <renameTable newTableName="GLMVD_DATLABDOCINGRPER" oldTableName="DLABINGRPERC" />
+        <renameTable newTableName="GLMVD_DOCPRESENTADO" oldTableName="DOCPRESENTA" />
+        <renameTable newTableName="GLMVD_PASEMOTATE" oldTableName="PASEMOTIATEN" />
+        <renameTable newTableName="GLMVD_PERJUDIREC" oldTableName="PERJURIDIRE" />
+        <renameTable newTableName="GLMVD_PERNADIREC" oldTableName="PERNATUDIRE" />
+        <renameTable newTableName="GLTBC_CARGOTRABAJA" oldTableName="CARGOTRABAJA" />
+        <renameTable newTableName="GLTBC_DATOSLABORAL" oldTableName="DATLABORAL" />
+        <renameTable newTableName="GLTBC_DISCAPACIDAD" oldTableName="DISCAPACIDAD" />
+        <renameTable newTableName="GLTBC_DOCINGRPERCIBIDOS" oldTableName="DOCINGREPERC" />
+        <renameTable newTableName="GLTBC_DOCUMENTO" oldTableName="DOCUMENTO" />
+        <renameTable newTableName="GLTBC_EMPLEADOR" oldTableName="EMPLEADOR" />
+        <renameTable newTableName="GLTBC_MODALIDACONTRATO" oldTableName="MODACONTRATO" />
+        <renameTable newTableName="GLTBC_MOTIVOATENCION" oldTableName="MOTIVOATENCI" />
+        <renameTable newTableName="GLTBC_MOTIVOCESE" oldTableName="MOTIVOCESE" />
+        <renameTable newTableName="GLTBC_OFIMINTRA" oldTableName="OFICINA" />
+        <renameTable newTableName="GLTBC_PASE" oldTableName="PASE" />
+        <renameTable newTableName="GLTBC_PERJURIDICA" oldTableName="PERSONAJURID" />
+        <renameTable newTableName="GLTBC_PERNATURAL" oldTableName="PERSONANATUR" />
+        <renameTable newTableName="GLTBC_RAZONSOCIALATE" oldTableName="DIRECALTER" />
+        <renameTable newTableName="GLTBC_REGIMENLAB" oldTableName="REGIMENLABO" />
+        <renameTable newTableName="GLTBC_SUCESOR" oldTableName="SUCESOR" />
+        <renameTable newTableName="GLTBC_TIPOATENCION" oldTableName="TIPATENCION" />
+        <renameTable newTableName="GLTBC_TIPODOCIDENTIDAD" oldTableName="TIPDOCIDENT" />
+        <renameTable newTableName="GLTBC_TIPODOCUMENTO" oldTableName="TIPDOCUMENTO" />
+        <renameTable newTableName="GLTBC_TIPOPERSONA" oldTableName="TIPPERSONA" />
+        <renameTable newTableName="GLTBC_TRABAJADOR" oldTableName="TRABAJADOR" />
+        <renameTable newTableName="GLTBD_MOTATEOFIMINTRA" oldTableName="MOTATENOFIC" />
+        <renameTable newTableName="GLTBC_ACTIVECONO" oldTableName="ACTIVECONO" />
+    </changeSet>
+
+</databaseChangeLog>
+                        

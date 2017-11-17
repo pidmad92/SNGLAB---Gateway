@@ -12,10 +12,6 @@
         <dd>
             <span>{{pase.cFlgestado}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.pase.nCodoficinaorigen">N Codoficinaorigen</span></dt>
-        <dd>
-            <span>{{pase.nCodoficinaorigen}}</span>
-        </dd>
         <dt><span jhiTranslate="gatewayApp.pase.nCodoficinadestino">N Codoficinadestino</span></dt>
         <dd>
             <span>{{pase.nCodoficinadestino}}</span>
@@ -47,6 +43,12 @@
         <dt><span jhiTranslate="gatewayApp.pase.nSedeupd">N Sedeupd</span></dt>
         <dd>
             <span>{{pase.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pase.expediente">Expediente</span></dt>
+        <dd>
+            <div *ngIf="pase.expediente">
+                <a [routerLink]="['/expediente', pase.expediente?.id]">{{pase.expediente?.id}}</a>
+            </div>
         </dd>
     </dl>
 

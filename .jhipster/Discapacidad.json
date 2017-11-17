@@ -69,7 +69,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150153",
+    "changelogDate": "20171114152857",
     "entityTableName": "discapacidad",
     "dto": "no",
     "pagination": "no",

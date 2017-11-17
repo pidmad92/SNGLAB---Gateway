@@ -17,6 +17,12 @@
         },
         {
             "relationshipType": "one-to-many",
+            "relationshipName": "docpresenta",
+            "otherEntityName": "docpresenta",
+            "otherEntityRelationshipName": "atencion"
+        },
+        {
+            "relationshipType": "one-to-many",
             "relationshipName": "atenaccadop",
             "otherEntityName": "atenaccadop",
             "otherEntityRelationshipName": "atencion"
@@ -36,6 +42,12 @@
         {
             "relationshipName": "empleador",
             "otherEntityName": "empleador",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "oficina",
+            "otherEntityName": "oficina",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         },
@@ -143,7 +155,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150141",
+    "changelogDate": "20171114152845",
     "entityTableName": "atencion",
     "dto": "no",
     "pagination": "no",

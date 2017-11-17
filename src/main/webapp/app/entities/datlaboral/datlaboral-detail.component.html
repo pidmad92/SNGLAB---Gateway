@@ -66,16 +66,22 @@
                 <a [routerLink]="['/motivocese', datlaboral.motivocese?.id]">{{datlaboral.motivocese?.id}}</a>
             </div>
         </dd>
+        <dt><span jhiTranslate="gatewayApp.datlaboral.regimenlabo">Regimenlabo</span></dt>
+        <dd>
+            <div *ngIf="datlaboral.regimenlabo">
+                <a [routerLink]="['/regimenlabo', datlaboral.regimenlabo?.id]">{{datlaboral.regimenlabo?.id}}</a>
+            </div>
+        </dd>
         <dt><span jhiTranslate="gatewayApp.datlaboral.trabajador">Trabajador</span></dt>
         <dd>
             <div *ngIf="datlaboral.trabajador">
                 <a [routerLink]="['/trabajador', datlaboral.trabajador?.id]">{{datlaboral.trabajador?.id}}</a>
             </div>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.datlaboral.subregilabo">Subregilabo</span></dt>
+        <dt><span jhiTranslate="gatewayApp.datlaboral.tipvinculo">Tipvinculo</span></dt>
         <dd>
-            <div *ngIf="datlaboral.subregilabo">
-                <a [routerLink]="['/subregilabo', datlaboral.subregilabo?.id]">{{datlaboral.subregilabo?.id}}</a>
+            <div *ngIf="datlaboral.tipvinculo">
+                <a [routerLink]="['/tipvinculo', datlaboral.tipvinculo?.id]">{{datlaboral.tipvinculo?.id}}</a>
             </div>
         </dd>
     </dl>

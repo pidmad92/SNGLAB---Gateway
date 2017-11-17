@@ -10,7 +10,7 @@
     ],
     "fields": [
         {
-            "fieldName": "vDescargotrabaja",
+            "fieldName": "vDescripcion",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -69,7 +69,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150151",
+    "changelogDate": "20171114152855",
     "entityTableName": "cargotrabaja",
     "dto": "no",
     "pagination": "no",

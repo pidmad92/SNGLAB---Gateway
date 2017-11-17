@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "estexpedien" : {
+            "home": {
+                "title": "Estexpediens",
+                "createLabel": "Crear nuevo Estexpedien",
+                "createOrEditLabel": "Crear o editar Estexpedien",
+                "search": "Search for Estexpedien"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Estexpedien {{ id }}?"
+            },
+            "detail": {
+                "title": "Estexpedien"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "expediente": "Expediente"
+        }
+    },
+    "defensaApp": {
+        "estexpedien" : {
+            "created": "Un nuevo Estexpedien ha sido creado con el identificador {{ param }}",
+            "updated": "Un Estexpedien ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Estexpedien ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

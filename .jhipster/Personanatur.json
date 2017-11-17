@@ -166,7 +166,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150203",
+    "changelogDate": "20171114152907",
     "entityTableName": "personanatur",
     "dto": "no",
     "pagination": "no",

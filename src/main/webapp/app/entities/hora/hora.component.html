@@ -1,0 +1,83 @@
+<div>
+    <h4 class="title my-3">
+        <span jhiTranslate="gatewayApp.hora.home.title">Horas</span>
+        <button class="btn btn-primary float-right jh-create-entity create-hora" [routerLink]="['/defensa', { outlets: { popup: ['hora-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.hora.home.createLabel">
+            Create new Hora
+            </span>
+        </button>
+    </h4>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.hora.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="horas">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.hora.vDescripcion">V Descripcion</span></th>
+            <th><span jhiTranslate="gatewayApp.hora.vUsuarioreg">V Usuarioreg</span></th>
+            <th><span jhiTranslate="gatewayApp.hora.dFechareg">D Fechareg</span></th>
+            <th><span jhiTranslate="gatewayApp.hora.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.hora.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.hora.vUsuarioupd">V Usuarioupd</span></th>
+            <th><span jhiTranslate="gatewayApp.hora.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.hora.nSedeupd">N Sedeupd</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let hora of horas ;trackBy: trackId">
+                <td><a [routerLink]="['../hora', hora.id ]">{{hora.id}}</a></td>
+                <td>{{hora.vDescripcion}}</td>
+                <td>{{hora.vUsuarioreg}}</td>
+                <td>{{hora.dFechareg | date:'medium'}}</td>
+                <td>{{hora.nEliminar}}</td>
+                <td>{{hora.nSedereg}}</td>
+                <td>{{hora.vUsuarioupd}}</td>
+                <td>{{hora.dFechaupd | date:'medium'}}</td>
+                <td>{{hora.nSedeupd}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../hora', hora.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/defensa', { outlets: { popup: 'hora/'+ hora.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/defensa', { outlets: { popup: 'hora/'+ hora.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

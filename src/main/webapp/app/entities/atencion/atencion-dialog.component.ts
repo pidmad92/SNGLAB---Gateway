@@ -12,6 +12,7 @@ import { AtencionService } from './atencion.service';
 import { Pase, PaseService } from '../pase';
 import { Datlaboral, DatlaboralService } from '../datlaboral';
 import { Empleador, EmpleadorService } from '../empleador';
+import { Oficina, OficinaService } from '../oficina';
 import { Tipatencion, TipatencionService } from '../tipatencion';
 import { Trabajador, TrabajadorService } from '../trabajador';
 import { ResponseWrapper } from '../../shared';
@@ -31,6 +32,8 @@ export class AtencionDialogComponent implements OnInit {
 
     empleadors: Empleador[];
 
+    oficinas: Oficina[];
+
     tipatencions: Tipatencion[];
 
     trabajadors: Trabajador[];
@@ -42,6 +45,7 @@ export class AtencionDialogComponent implements OnInit {
         private paseService: PaseService,
         private datlaboralService: DatlaboralService,
         private empleadorService: EmpleadorService,
+        private oficinaService: OficinaService,
         private tipatencionService: TipatencionService,
         private trabajadorService: TrabajadorService,
         private eventManager: JhiEventManager
@@ -67,6 +71,8 @@ export class AtencionDialogComponent implements OnInit {
             .subscribe((res: ResponseWrapper) => { this.datlaborals = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.empleadorService.query()
             .subscribe((res: ResponseWrapper) => { this.empleadors = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.oficinaService.query()
+            .subscribe((res: ResponseWrapper) => { this.oficinas = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.tipatencionService.query()
             .subscribe((res: ResponseWrapper) => { this.tipatencions = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.trabajadorService.query()
@@ -116,6 +122,10 @@ export class AtencionDialogComponent implements OnInit {
     }
 
     trackEmpleadorById(index: number, item: Empleador) {
+        return item.id;
+    }
+
+    trackOficinaById(index: number, item: Oficina) {
         return item.id;
     }
 

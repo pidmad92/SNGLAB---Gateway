@@ -32,7 +32,6 @@
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="gatewayApp.pase.vObservacion">V Observacion</span></th>
             <th><span jhiTranslate="gatewayApp.pase.cFlgestado">C Flgestado</span></th>
-            <th><span jhiTranslate="gatewayApp.pase.nCodoficinaorigen">N Codoficinaorigen</span></th>
             <th><span jhiTranslate="gatewayApp.pase.nCodoficinadestino">N Codoficinadestino</span></th>
             <th><span jhiTranslate="gatewayApp.pase.vUsuarioreg">V Usuarioreg</span></th>
             <th><span jhiTranslate="gatewayApp.pase.dFechareg">D Fechareg</span></th>
@@ -41,6 +40,7 @@
             <th><span jhiTranslate="gatewayApp.pase.vUsuarioupd">V Usuarioupd</span></th>
             <th><span jhiTranslate="gatewayApp.pase.dFechaupd">D Fechaupd</span></th>
             <th><span jhiTranslate="gatewayApp.pase.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.pase.expediente">Expediente</span></th>
             <th></th>
             </tr>
             </thead>
@@ -49,7 +49,6 @@
                 <td><a [routerLink]="['../pase', pase.id ]">{{pase.id}}</a></td>
                 <td>{{pase.vObservacion}}</td>
                 <td>{{pase.cFlgestado}}</td>
-                <td>{{pase.nCodoficinaorigen}}</td>
                 <td>{{pase.nCodoficinadestino}}</td>
                 <td>{{pase.vUsuarioreg}}</td>
                 <td>{{pase.dFechareg | date:'medium'}}</td>
@@ -58,6 +57,11 @@
                 <td>{{pase.vUsuarioupd}}</td>
                 <td>{{pase.dFechaupd | date:'medium'}}</td>
                 <td>{{pase.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="pase.expediente">
+                        <a [routerLink]="['../expediente', pase.expediente?.id ]" >{{pase.expediente?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

@@ -1,0 +1,89 @@
+
+<div *ngIf="docexpedien">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.docexpedien.detail.title">Docexpedien</span> {{docexpedien.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.docexpedien.vNumoficio">V Numoficio</span></dt>
+        <dd>
+            <span>{{docexpedien.vNumoficio}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.dFecha">D Fecha</span></dt>
+        <dd>
+            <span>{{docexpedien.dFecha | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.nFolios">N Folios</span></dt>
+        <dd>
+            <span>{{docexpedien.nFolios}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.nNunresolucionrd">N Nunresolucionrd</span></dt>
+        <dd>
+            <span>{{docexpedien.nNunresolucionrd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{docexpedien.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{docexpedien.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{docexpedien.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{docexpedien.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{docexpedien.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{docexpedien.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{docexpedien.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.expediente">Expediente</span></dt>
+        <dd>
+            <div *ngIf="docexpedien.expediente">
+                <a [routerLink]="['/expediente', docexpedien.expediente?.id]">{{docexpedien.expediente?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.dettipprov">Dettipprov</span></dt>
+        <dd>
+            <div *ngIf="docexpedien.dettipprov">
+                <a [routerLink]="['/dettipprov', docexpedien.dettipprov?.id]">{{docexpedien.dettipprov?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.tipdocexp">Tipdocexp</span></dt>
+        <dd>
+            <div *ngIf="docexpedien.tipdocexp">
+                <a [routerLink]="['/tipdocexp', docexpedien.tipdocexp?.id]">{{docexpedien.tipdocexp?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.tipproveid">Tipproveid</span></dt>
+        <dd>
+            <div *ngIf="docexpedien.tipproveid">
+                <a [routerLink]="['/tipproveid', docexpedien.tipproveid?.id]">{{docexpedien.tipproveid?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/defensa', { outlets: { popup: 'docexpedien/'+ docexpedien.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

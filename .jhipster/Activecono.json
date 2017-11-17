@@ -16,7 +16,7 @@
                 "required",
                 "maxlength"
             ],
-            "fieldValidateRulesMaxlength": 20
+            "fieldValidateRulesMaxlength": 5
         },
         {
             "fieldName": "vDescripcion",
@@ -78,7 +78,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150140",
+    "changelogDate": "20171114152844",
     "entityTableName": "activecono",
     "dto": "no",
     "pagination": "no",

@@ -1,0 +1,279 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myResolucrdLabel" jhiTranslate="gatewayApp.resolucrd.home.createOrEditLabel">Create or edit a Resolucrd</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!resolucrd.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="resolucrd.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.vNumresolucionsd" for="field_vNumresolucionsd">V Numresolucionsd</label>
+            <input type="text" class="form-control" name="vNumresolucionsd" id="field_vNumresolucionsd"
+                [(ngModel)]="resolucrd.vNumresolucionsd" maxlength="20" />
+            <div [hidden]="!(editForm.controls.vNumresolucionsd?.dirty && editForm.controls.vNumresolucionsd?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNumresolucionsd?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.dFecresolucionsd" for="field_dFecresolucionsd">D Fecresolucionsd</label>
+            <div class="d-flex">
+                <input id="field_dFecresolucionsd" type="datetime-local" class="form-control" name="dFecresolucionsd" [(ngModel)]="resolucrd.dFecresolucionsd"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.vTipodocempleador" for="field_vTipodocempleador">V Tipodocempleador</label>
+            <input type="text" class="form-control" name="vTipodocempleador" id="field_vTipodocempleador"
+                [(ngModel)]="resolucrd.vTipodocempleador" maxlength="50" />
+            <div [hidden]="!(editForm.controls.vTipodocempleador?.dirty && editForm.controls.vTipodocempleador?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vTipodocempleador?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.vDocempleador" for="field_vDocempleador">V Docempleador</label>
+            <input type="text" class="form-control" name="vDocempleador" id="field_vDocempleador"
+                [(ngModel)]="resolucrd.vDocempleador" maxlength="20" />
+            <div [hidden]="!(editForm.controls.vDocempleador?.dirty && editForm.controls.vDocempleador?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vDocempleador?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.vNomempleador" for="field_vNomempleador">V Nomempleador</label>
+            <input type="text" class="form-control" name="vNomempleador" id="field_vNomempleador"
+                [(ngModel)]="resolucrd.vNomempleador" maxlength="250" />
+            <div [hidden]="!(editForm.controls.vNomempleador?.dirty && editForm.controls.vNomempleador?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNomempleador?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 250 }">
+                   This field cannot be longer than 250 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.vTipodoctrabajador" for="field_vTipodoctrabajador">V Tipodoctrabajador</label>
+            <input type="text" class="form-control" name="vTipodoctrabajador" id="field_vTipodoctrabajador"
+                [(ngModel)]="resolucrd.vTipodoctrabajador" maxlength="50" />
+            <div [hidden]="!(editForm.controls.vTipodoctrabajador?.dirty && editForm.controls.vTipodoctrabajador?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vTipodoctrabajador?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.vDoctrabajador" for="field_vDoctrabajador">V Doctrabajador</label>
+            <input type="text" class="form-control" name="vDoctrabajador" id="field_vDoctrabajador"
+                [(ngModel)]="resolucrd.vDoctrabajador" maxlength="20" />
+            <div [hidden]="!(editForm.controls.vDoctrabajador?.dirty && editForm.controls.vDoctrabajador?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vDoctrabajador?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.vNomtrabajador" for="field_vNomtrabajador">V Nomtrabajador</label>
+            <input type="text" class="form-control" name="vNomtrabajador" id="field_vNomtrabajador"
+                [(ngModel)]="resolucrd.vNomtrabajador" maxlength="250" />
+            <div [hidden]="!(editForm.controls.vNomtrabajador?.dirty && editForm.controls.vNomtrabajador?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNomtrabajador?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 250 }">
+                   This field cannot be longer than 250 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.vDireccion" for="field_vDireccion">V Direccion</label>
+            <input type="text" class="form-control" name="vDireccion" id="field_vDireccion"
+                [(ngModel)]="resolucrd.vDireccion" maxlength="250" />
+            <div [hidden]="!(editForm.controls.vDireccion?.dirty && editForm.controls.vDireccion?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vDireccion?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 250 }">
+                   This field cannot be longer than 250 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.vTelefono" for="field_vTelefono">V Telefono</label>
+            <input type="text" class="form-control" name="vTelefono" id="field_vTelefono"
+                [(ngModel)]="resolucrd.vTelefono" maxlength="250" />
+            <div [hidden]="!(editForm.controls.vTelefono?.dirty && editForm.controls.vTelefono?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vTelefono?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 250 }">
+                   This field cannot be longer than 250 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.dFechaconciliacion" for="field_dFechaconciliacion">D Fechaconciliacion</label>
+            <div class="d-flex">
+                <input id="field_dFechaconciliacion" type="datetime-local" class="form-control" name="dFechaconciliacion" [(ngModel)]="resolucrd.dFechaconciliacion"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.vHoraconciliacion" for="field_vHoraconciliacion">V Horaconciliacion</label>
+            <input type="text" class="form-control" name="vHoraconciliacion" id="field_vHoraconciliacion"
+                [(ngModel)]="resolucrd.vHoraconciliacion" maxlength="20" />
+            <div [hidden]="!(editForm.controls.vHoraconciliacion?.dirty && editForm.controls.vHoraconciliacion?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vHoraconciliacion?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.dFechanotificacion" for="field_dFechanotificacion">D Fechanotificacion</label>
+            <div class="d-flex">
+                <input id="field_dFechanotificacion" type="datetime-local" class="form-control" name="dFechanotificacion" [(ngModel)]="resolucrd.dFechanotificacion"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.vNumnotificacion" for="field_vNumnotificacion">V Numnotificacion</label>
+            <input type="text" class="form-control" name="vNumnotificacion" id="field_vNumnotificacion"
+                [(ngModel)]="resolucrd.vNumnotificacion" maxlength="20" />
+            <div [hidden]="!(editForm.controls.vNumnotificacion?.dirty && editForm.controls.vNumnotificacion?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNumnotificacion?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.fMonMulta" for="field_fMonMulta">F Mon Multa</label>
+            <input type="number" class="form-control" name="fMonMulta" id="field_fMonMulta"
+                [(ngModel)]="resolucrd.fMonMulta"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.vUsuarioreg" for="field_vUsuarioreg">V Usuarioreg</label>
+            <input type="text" class="form-control" name="vUsuarioreg" id="field_vUsuarioreg"
+                [(ngModel)]="resolucrd.vUsuarioreg" required maxlength="20" />
+            <div [hidden]="!(editForm.controls.vUsuarioreg?.dirty && editForm.controls.vUsuarioreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vUsuarioreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vUsuarioreg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.dFechareg" for="field_dFechareg">D Fechareg</label>
+            <div class="d-flex">
+                <input id="field_dFechareg" type="datetime-local" class="form-control" name="dFechareg" [(ngModel)]="resolucrd.dFechareg"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.dFechareg?.dirty && editForm.controls.dFechareg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dFechareg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.dFechareg?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.nEliminar" for="field_nEliminar">N Eliminar</label>
+            <input type="number" class="form-control" name="nEliminar" id="field_nEliminar"
+                [(ngModel)]="resolucrd.nEliminar" required min="0" max="1" />
+            <div [hidden]="!(editForm.controls.nEliminar?.dirty && editForm.controls.nEliminar?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nEliminar?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nEliminar?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 0 }">
+                    This field should be at least 0.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nEliminar?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 1 }">
+                    This field cannot be more than 1.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nEliminar?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.nSedereg" for="field_nSedereg">N Sedereg</label>
+            <input type="number" class="form-control" name="nSedereg" id="field_nSedereg"
+                [(ngModel)]="resolucrd.nSedereg" required />
+            <div [hidden]="!(editForm.controls.nSedereg?.dirty && editForm.controls.nSedereg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nSedereg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nSedereg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.vUsuarioupd" for="field_vUsuarioupd">V Usuarioupd</label>
+            <input type="text" class="form-control" name="vUsuarioupd" id="field_vUsuarioupd"
+                [(ngModel)]="resolucrd.vUsuarioupd" maxlength="20" />
+            <div [hidden]="!(editForm.controls.vUsuarioupd?.dirty && editForm.controls.vUsuarioupd?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vUsuarioupd?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.dFechaupd" for="field_dFechaupd">D Fechaupd</label>
+            <div class="d-flex">
+                <input id="field_dFechaupd" type="datetime-local" class="form-control" name="dFechaupd" [(ngModel)]="resolucrd.dFechaupd"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.nSedeupd" for="field_nSedeupd">N Sedeupd</label>
+            <input type="number" class="form-control" name="nSedeupd" id="field_nSedeupd"
+                [(ngModel)]="resolucrd.nSedeupd"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.tippersona" for="field_tippersona">Tippersona</label>
+            <select class="form-control" id="field_tippersona" name="tippersona" [(ngModel)]="resolucrd.tippersona" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="tippersonaOption.id === resolucrd.tippersona?.id ? resolucrd.tippersona : tippersonaOption" *ngFor="let tippersonaOption of tippersonas; trackBy: trackTippersonaById">{{tippersonaOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.resolucrd.expediente" for="field_expediente">Expediente</label>
+            <select class="form-control" id="field_expediente" name="expediente" [(ngModel)]="resolucrd.expediente" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="expedienteOption.id === resolucrd.expediente?.id ? resolucrd.expediente : expedienteOption" *ngFor="let expedienteOption of expedientes; trackBy: trackExpedienteById">{{expedienteOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

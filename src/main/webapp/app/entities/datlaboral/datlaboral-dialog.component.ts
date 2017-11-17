@@ -12,8 +12,9 @@ import { DatlaboralService } from './datlaboral.service';
 import { Empleador, EmpleadorService } from '../empleador';
 import { Modacontrato, ModacontratoService } from '../modacontrato';
 import { Motivocese, MotivoceseService } from '../motivocese';
+import { Regimenlabo, RegimenlaboService } from '../regimenlabo';
 import { Trabajador, TrabajadorService } from '../trabajador';
-import { Subregilabo, SubregilaboService } from '../subregilabo';
+import { Tipvinculo, TipvinculoService } from '../tipvinculo';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -31,9 +32,11 @@ export class DatlaboralDialogComponent implements OnInit {
 
     motivocese: Motivocese[];
 
+    regimenlabos: Regimenlabo[];
+
     trabajadors: Trabajador[];
 
-    subregilabos: Subregilabo[];
+    tipvinculos: Tipvinculo[];
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -42,8 +45,9 @@ export class DatlaboralDialogComponent implements OnInit {
         private empleadorService: EmpleadorService,
         private modacontratoService: ModacontratoService,
         private motivoceseService: MotivoceseService,
+        private regimenlaboService: RegimenlaboService,
         private trabajadorService: TrabajadorService,
-        private subregilaboService: SubregilaboService,
+        private tipvinculoService: TipvinculoService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -56,10 +60,12 @@ export class DatlaboralDialogComponent implements OnInit {
             .subscribe((res: ResponseWrapper) => { this.modacontratoes = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.motivoceseService.query()
             .subscribe((res: ResponseWrapper) => { this.motivocese = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.regimenlaboService.query()
+            .subscribe((res: ResponseWrapper) => { this.regimenlabos = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.trabajadorService.query()
             .subscribe((res: ResponseWrapper) => { this.trabajadors = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.subregilaboService.query()
-            .subscribe((res: ResponseWrapper) => { this.subregilabos = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.tipvinculoService.query()
+            .subscribe((res: ResponseWrapper) => { this.tipvinculos = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -108,11 +114,15 @@ export class DatlaboralDialogComponent implements OnInit {
         return item.id;
     }
 
+    trackRegimenlaboById(index: number, item: Regimenlabo) {
+        return item.id;
+    }
+
     trackTrabajadorById(index: number, item: Trabajador) {
         return item.id;
     }
 
-    trackSubregilaboById(index: number, item: Subregilabo) {
+    trackTipvinculoById(index: number, item: Tipvinculo) {
         return item.id;
     }
 }

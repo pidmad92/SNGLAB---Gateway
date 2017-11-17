@@ -1,0 +1,40 @@
+{
+    "gatewayApp": {
+        "docexpedien" : {
+            "home": {
+                "title": "Docexpediens",
+                "createLabel": "Crear nuevo Docexpedien",
+                "createOrEditLabel": "Crear o editar Docexpedien",
+                "search": "Search for Docexpedien"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Docexpedien {{ id }}?"
+            },
+            "detail": {
+                "title": "Docexpedien"
+            },
+            "vNumoficio": "V Numoficio",
+            "dFecha": "D Fecha",
+            "nFolios": "N Folios",
+            "nNunresolucionrd": "N Nunresolucionrd",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "expediente": "Expediente",
+            "dettipprov": "Dettipprov",
+            "tipdocexp": "Tipdocexp",
+            "tipproveid": "Tipproveid"
+        }
+    },
+    "defensaApp": {
+        "docexpedien" : {
+            "created": "Un nuevo Docexpedien ha sido creado con el identificador {{ param }}",
+            "updated": "Un Docexpedien ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Docexpedien ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

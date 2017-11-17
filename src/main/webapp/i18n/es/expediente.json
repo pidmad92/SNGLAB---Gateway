@@ -7,17 +7,54 @@
                 "createOrEditLabel": "Crear o editar Expediente",
                 "search": "Search for Expediente"
             },
-            "created": "Un nuevo Expediente ha sido creado con el identificador {{ param }}",
-            "updated": "Un Expediente ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Expediente ha sido eliminado con el identificador {{ param }}",
             "delete": {
                 "question": "¿Seguro que quiere eliminar Expediente {{ id }}?"
             },
             "detail": {
                 "title": "Expediente"
             },
-            "name": "Name",
-            "desc": "Desc"
+            "vNumExpediente": "V Num Expediente",
+            "nAnio": "N Anio",
+            "dFecregexp": "D Fecregexp",
+            "vTipodocempleador": "V Tipodocempleador",
+            "vDocempleador": "V Docempleador",
+            "vNomempleador": "V Nomempleador",
+            "vTipodoctrabajador": "V Tipodoctrabajador",
+            "vDoctrabajador": "V Doctrabajador",
+            "vNomtrabajador": "V Nomtrabajador",
+            "cFlgexpobservado": "C Flgexpobservado",
+            "vRegmesapartes": "V Regmesapartes",
+            "dFecmesapartes": "D Fecmesapartes",
+            "vObservacion": "V Observacion",
+            "cFlgarchivo": "C Flgarchivo",
+            "dFecArchivo": "D Fec Archivo",
+            "vObservacionarchivo": "V Observacionarchivo",
+            "nCodusuarioarchivo": "N Codusuarioarchivo",
+            "vNuminformearchivo": "V Numinformearchivo",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "empleador": "Empleador",
+            "tippersona": "Tippersona",
+            "trabajador": "Trabajador",
+            "conciliacion": "Conciliacion",
+            "docexpedien": "Docexpedien",
+            "resolucrd": "Resolucrd",
+            "notificacion": "Notificacion",
+            "pase": "Pase",
+            "estexpedien": "Estexpedien",
+            "resolutor": "Resolutor"
+        }
+    },
+    "defensaApp": {
+        "expediente" : {
+            "created": "Un nuevo Expediente ha sido creado con el identificador {{ param }}",
+            "updated": "Un Expediente ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Expediente ha sido eliminado con el identificador {{ param }}"
         }
     }
 }

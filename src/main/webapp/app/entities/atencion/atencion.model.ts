@@ -17,10 +17,12 @@ export class Atencion implements BaseEntity {
         public nSedeupd?: number,
         public pase?: BaseEntity,
         public atendiscas?: BaseEntity[],
+        public docpresentas?: BaseEntity[],
         public atenaccadops?: BaseEntity[],
         public atenmotiatens?: BaseEntity[],
         public datlaboral?: BaseEntity,
         public empleador?: BaseEntity,
+        public oficina?: BaseEntity,
         public tipatencion?: BaseEntity,
         public trabajador?: BaseEntity,
     ) {

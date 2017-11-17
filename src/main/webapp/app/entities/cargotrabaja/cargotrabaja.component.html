@@ -30,7 +30,7 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.cargotrabaja.vDescargotrabaja">V Descargotrabaja</span></th>
+            <th><span jhiTranslate="gatewayApp.cargotrabaja.vDescripcion">V Descripcion</span></th>
             <th><span jhiTranslate="gatewayApp.cargotrabaja.vUsuarioreg">V Usuarioreg</span></th>
             <th><span jhiTranslate="gatewayApp.cargotrabaja.dFechareg">D Fechareg</span></th>
             <th><span jhiTranslate="gatewayApp.cargotrabaja.nEliminar">N Eliminar</span></th>
@@ -44,7 +44,7 @@
             <tbody>
             <tr *ngFor="let cargotrabaja of cargotrabajas ;trackBy: trackId">
                 <td><a [routerLink]="['../cargotrabaja', cargotrabaja.id ]">{{cargotrabaja.id}}</a></td>
-                <td>{{cargotrabaja.vDescargotrabaja}}</td>
+                <td>{{cargotrabaja.vDescripcion}}</td>
                 <td>{{cargotrabaja.vUsuarioreg}}</td>
                 <td>{{cargotrabaja.dFechareg | date:'medium'}}</td>
                 <td>{{cargotrabaja.nEliminar}}</td>

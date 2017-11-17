@@ -15,15 +15,15 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.activecono.vCiuu" for="field_vCiuu">V Ciuu</label>
             <input type="text" class="form-control" name="vCiuu" id="field_vCiuu"
-                [(ngModel)]="activecono.vCiuu" required maxlength="20" />
+                [(ngModel)]="activecono.vCiuu" required maxlength="5" />
             <div [hidden]="!(editForm.controls.vCiuu?.dirty && editForm.controls.vCiuu?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.vCiuu?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCiuu?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
-                   This field cannot be longer than 20 characters.
+                   [hidden]="!editForm.controls.vCiuu?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 5 }">
+                   This field cannot be longer than 5 characters.
                 </small>
             </div>
         </div>

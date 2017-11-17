@@ -1,0 +1,330 @@
+entity Pase {
+    vObservacion String maxlength(500),
+    cFlgestado String required maxlength(1),
+    nCodoficinaorigen Integer,
+    nCodoficinadestino Integer,
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+entity Empleador {
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+entity Oficina {
+    vDescripcion String required maxlength(200),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Trabajador {
+    vNumdocumento String required maxlength(15),
+    vFlgsucesor String required maxlength(1),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+entity Tippersona {
+    vDescripcion String required maxlength(100),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+
+/*Defensa Legal*/
+entity Conciliacion {
+	dFecha Instant,
+    vFlgaudienciaresistida String required maxlength(1),
+    vFlgreprogramacion String required maxlength(1),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Docexpedien {
+	vNumoficio String maxlength(20),
+    dFecha Instant,
+    nFolios Integer,
+    nNunresolucionrd String,
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Expediente {
+	vNumExpediente String required maxlength(20),
+    nAnio Integer required,
+    dFecregexp Instant,
+    vTipodocempleador String maxlength(50),
+    vDocempleador String maxlength(20), 
+  	vNomempleador String maxlength(250),    
+    vTipodoctrabajador String maxlength(50),
+    vDoctrabajador String maxlength(20),
+  	vNomtrabajador String maxlength(250),    
+    cFlgexpobservado String maxlength(1),
+    vRegmesapartes String maxlength(50),
+    dFecmesapartes Instant,
+    vObservacion String maxlength(500), 
+    cFlgarchivo String maxlength(1),
+    dFecArchivo Instant,
+    vObservacionarchivo String maxlength(500), 
+    nCodusuarioarchivo Integer,
+    vNuminformearchivo String maxlength(50),     
+	vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Multa {
+	fMonmulta Float required,
+    vNumresolucionsd String maxlength(20),
+    dFecresolucionsd Instant,
+    vcodigo String maxlength(20),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Notificacion {
+	nNumfolios Integer, 
+    vHojaenvio String maxlength(20),	
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Resolucrd {
+	vNumresolucionsd String maxlength(20),
+	dFecresolucionsd Instant,
+    vTipodocempleador String maxlength(50),
+    vDocempleador String maxlength(20), 
+  	vNomempleador String maxlength(250),    
+    vTipodoctrabajador String maxlength(50),
+    vDoctrabajador String maxlength(20),
+  	vNomtrabajador String maxlength(250), 
+    vDireccion String maxlength(250),
+    vTelefono String maxlength(250),
+    dFechaconciliacion Instant,
+    vHoraconciliacion String maxlength(20),
+    dFechanotificacion Instant,
+    vNumnotificacion String maxlength(20),
+    fMonMulta Float,
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Direcnotif {
+	vDireccion String maxlength(250),
+    cflgtrabajador String maxlength(1),
+    vHojaenvio String maxlength(20),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Abogado {
+	vNomabogado String maxlength(250),
+    nCodabogadousuario Integer,
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Dettipprov {
+	vDescripcion String required maxlength(200)
+	vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Estexpedien {
+	vDescripcion String required maxlength (200),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Hora {
+	vDescripcion String required maxlength (20),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Resolutor {
+	vNomresolutor String required maxlength(250),
+    nCodresolutorusuario Integer,
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Resulconci {
+	vDescripcion String required maxlength(100)
+	vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipdocexp {
+	vDescripcion String required maxlength(100),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipenvnot {
+	vDescripcion String required maxlength(100),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipnotif {
+	vDescripcion String required maxlength(100),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipproveid {
+	vDescripcion String required maxlength(100),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipresconc {
+	vDescripcion String required maxlength(200),
+    vUsuarioreg String required maxlength(20),
+    dFechareg Instant required,
+    nEliminar Integer required min(0) max(1),
+    nSedereg Integer required,
+    vUsuarioupd String maxlength(20),
+    dFechaupd Instant,
+    nSedeupd Integer
+}
+
+relationship OneToMany {
+	Trabajador{expediente} to Expediente,
+    Empleador{expediente} to Expediente,
+    Tippersona{expediente} to Expediente,
+    Estexpedien{expediente} to Expediente,
+    Expediente{conciliacion} to Conciliacion, 
+    Abogado{conciliacion} to Conciliacion,
+    Resulconci{conciliacion} to Conciliacion,
+    Tipdocexp{tipproveid} to Tipproveid,
+    Tipproveid{dettipprov} to Dettipprov,
+    Expediente{docexpedien} to Docexpedien,
+    Tipdocexp{docexpedien} to Docexpedien,
+    Tipproveid{docexpedien} to Docexpedien,
+    Dettipprov{docexpedien} to Docexpedien,
+    Expediente{resolucrd} to Resolucrd,
+	Tippersona{resolucrd} to Resolucrd,
+    Hora{conciliacion} to Conciliacion,
+ 	Resolucrd{multa} to Multa,
+    Expediente{notificacion} to Notificacion,
+    Tipnotif{notificacion} to Notificacion,
+    Tipenvnot{notificacion} to Notificacion,
+    Notificacion{direcnotif} to Direcnotif,
+    Oficina{abogado} to Abogado,
+    Resolutor{expediente} to Expediente,
+    Tipresconc{Resulconci} to Resulconci 
+}
+relationship OneToOne {
+	Pase{expediente} to Expediente{pase}
+}
+microservice Conciliacion, Docexpedien, Expediente, Multa, Notificacion, Resolucrd, Direcnotif, 
+			 Abogado, Dettipprov, Estexpedien, Hora, Resolutor, Resulconci, Tipdocexp, Tipenvnot, Tipnotif, Tipproveid, Tipresconc  with  defensa

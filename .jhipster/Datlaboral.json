@@ -3,8 +3,8 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "dlabingperc",
-            "otherEntityName": "dlabingperc",
+            "relationshipName": "dlabingrperc",
+            "otherEntityName": "dlabingrperc",
             "otherEntityRelationshipName": "datlaboral"
         },
         {
@@ -32,14 +32,20 @@
             "otherEntityField": "id"
         },
         {
+            "relationshipName": "regimenlabo",
+            "otherEntityName": "regimenlabo",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
             "relationshipName": "trabajador",
             "otherEntityName": "trabajador",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         },
         {
-            "relationshipName": "subregilabo",
-            "otherEntityName": "subregilabo",
+            "relationshipName": "tipvinculo",
+            "otherEntityName": "tipvinculo",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         }
@@ -117,7 +123,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150152",
+    "changelogDate": "20171114152856",
     "entityTableName": "datlaboral",
     "dto": "no",
     "pagination": "no",

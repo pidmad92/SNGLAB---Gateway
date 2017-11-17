@@ -1,0 +1,50 @@
+{
+    "gatewayApp": {
+        "resolucrd" : {
+            "home": {
+                "title": "Resolucrds",
+                "createLabel": "Crear nuevo Resolucrd",
+                "createOrEditLabel": "Crear o editar Resolucrd",
+                "search": "Search for Resolucrd"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Resolucrd {{ id }}?"
+            },
+            "detail": {
+                "title": "Resolucrd"
+            },
+            "vNumresolucionsd": "V Numresolucionsd",
+            "dFecresolucionsd": "D Fecresolucionsd",
+            "vTipodocempleador": "V Tipodocempleador",
+            "vDocempleador": "V Docempleador",
+            "vNomempleador": "V Nomempleador",
+            "vTipodoctrabajador": "V Tipodoctrabajador",
+            "vDoctrabajador": "V Doctrabajador",
+            "vNomtrabajador": "V Nomtrabajador",
+            "vDireccion": "V Direccion",
+            "vTelefono": "V Telefono",
+            "dFechaconciliacion": "D Fechaconciliacion",
+            "vHoraconciliacion": "V Horaconciliacion",
+            "dFechanotificacion": "D Fechanotificacion",
+            "vNumnotificacion": "V Numnotificacion",
+            "fMonMulta": "F Mon Multa",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "tippersona": "Tippersona",
+            "expediente": "Expediente",
+            "multa": "Multa"
+        }
+    },
+    "defensaApp": {
+        "resolucrd" : {
+            "created": "Un nuevo Resolucrd ha sido creado con el identificador {{ param }}",
+            "updated": "Un Resolucrd ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Resolucrd ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -3,6 +3,18 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
+            "relationshipName": "expediente",
+            "otherEntityName": "expediente",
+            "otherEntityRelationshipName": "tippersona"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "resolucrd",
+            "otherEntityName": "resolucrd",
+            "otherEntityRelationshipName": "tippersona"
+        },
+        {
+            "relationshipType": "one-to-many",
             "relationshipName": "empleador",
             "otherEntityName": "empleador",
             "otherEntityRelationshipName": "tippersona"
@@ -69,7 +81,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150210",
+    "changelogDate": "20171114152914",
     "entityTableName": "tippersona",
     "dto": "no",
     "pagination": "no",

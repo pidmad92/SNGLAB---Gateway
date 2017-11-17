@@ -189,6 +189,13 @@
             </select>
         </div>
         <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.atencion.oficina" for="field_oficina">Oficina</label>
+            <select class="form-control" id="field_oficina" name="oficina" [(ngModel)]="atencion.oficina" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="oficinaOption.id === atencion.oficina?.id ? atencion.oficina : oficinaOption" *ngFor="let oficinaOption of oficinas; trackBy: trackOficinaById">{{oficinaOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.atencion.tipatencion" for="field_tipatencion">Tipatencion</label>
             <select class="form-control" id="field_tipatencion" name="tipatencion" [(ngModel)]="atencion.tipatencion" >
                 <option [ngValue]="null"></option>

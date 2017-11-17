@@ -10,7 +10,7 @@ export class Docpresenta implements BaseEntity {
         public vUsuarioupd?: string,
         public dFechaupd?: any,
         public nSedeupd?: number,
-        public atenmotiaten?: BaseEntity,
+        public atencion?: BaseEntity,
         public documento?: BaseEntity,
     ) {
     }
