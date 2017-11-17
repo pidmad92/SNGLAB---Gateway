@@ -288,6 +288,7 @@ footer .footer{
   background-color: #fff;
   color: #000;
   font-size: .9rem;
+  height: 50px;
   border-top: 1px solid #d2d6de;
 }
 @media (max-width: 991px){
@@ -790,4 +791,40 @@ body .ui-radiobutton .ui-radiobutton-box .ui-radiobutton-icon {
   overflow: visible;
   position: relative;
   top: -0.50em;
+}
+
+.footer-steps{
+  width: 100%;
+  background: white;
+  margin: 0px auto 20px;
+  padding: 5px;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.15rem;
+  border-top: 0px;
+}
+
+.fa{
+  .fa-chevron-right{
+    font-size: 11px;
+  }
+  .fa-chevron-left{
+    font-size: 11px;
+  }
+}
+
+body .ui-datatable .ui-datatable-header, body .ui-datatable .ui-datatable-footer {
+  padding: .3em 1em;
+  background-color: #f5f5f5;
+}
+p-header{
+  font-family: "FranklinGothicStdMC";
+}
+
+body .ui-widget, body .ui-widget .ui-widget, body .ui-widget input, body .ui-widget select, body .ui-widget textarea, body .ui-widget button {
+  font-family: "FranklinGothicStdBC";
+  font-size:13px;
+}
+button.ui-button-text-icon-left .ui-button-text {
+  padding: .25em .5em .25em 1.5em;
 }
