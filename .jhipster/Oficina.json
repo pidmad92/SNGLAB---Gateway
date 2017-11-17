@@ -3,6 +3,18 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
+            "relationshipName": "abogado",
+            "otherEntityName": "abogado",
+            "otherEntityRelationshipName": "oficina"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "atencion",
+            "otherEntityName": "atencion",
+            "otherEntityRelationshipName": "oficina"
+        },
+        {
+            "relationshipType": "one-to-many",
             "relationshipName": "motatenofic",
             "otherEntityName": "motatenofic",
             "otherEntityRelationshipName": "oficina"
@@ -69,7 +81,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150200",
+    "changelogDate": "20171114152904",
     "entityTableName": "oficina",
     "dto": "no",
     "pagination": "no",

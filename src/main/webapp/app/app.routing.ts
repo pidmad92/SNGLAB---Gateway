@@ -27,6 +27,11 @@ export const sindicatosRoute: Route = {
     loadChildren: './applications/sindicatos/sindicatos.module#GatewaySindicatosModule'
 };
 
+export const defensaRoute: Route = {
+    path: 'defensa',
+    loadChildren: './applications/defensa/defensa.module#GatewayDefensaModule'
+};
+
 export const loginRoute: Route = {
     path: 'login',
     component: LoginComponent,

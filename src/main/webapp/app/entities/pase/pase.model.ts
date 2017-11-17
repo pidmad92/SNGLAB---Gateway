@@ -5,7 +5,6 @@ export class Pase implements BaseEntity {
         public id?: number,
         public vObservacion?: string,
         public cFlgestado?: string,
-        public nCodoficinaorigen?: number,
         public nCodoficinadestino?: number,
         public vUsuarioreg?: string,
         public dFechareg?: any,
@@ -14,6 +13,7 @@ export class Pase implements BaseEntity {
         public vUsuarioupd?: string,
         public dFechaupd?: any,
         public nSedeupd?: number,
+        public expediente?: BaseEntity,
         public pasemotiatens?: BaseEntity[],
         public atencion?: BaseEntity,
     ) {

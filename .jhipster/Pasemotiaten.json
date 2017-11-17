@@ -66,7 +66,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150148",
+    "changelogDate": "20171114152852",
     "entityTableName": "pasemotiaten",
     "dto": "no",
     "pagination": "no",

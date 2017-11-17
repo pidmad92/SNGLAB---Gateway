@@ -1,0 +1,174 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myDocexpedienLabel" jhiTranslate="gatewayApp.docexpedien.home.createOrEditLabel">Create or edit a Docexpedien</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!docexpedien.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="docexpedien.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.docexpedien.vNumoficio" for="field_vNumoficio">V Numoficio</label>
+            <input type="text" class="form-control" name="vNumoficio" id="field_vNumoficio"
+                [(ngModel)]="docexpedien.vNumoficio" maxlength="20" />
+            <div [hidden]="!(editForm.controls.vNumoficio?.dirty && editForm.controls.vNumoficio?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNumoficio?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.docexpedien.dFecha" for="field_dFecha">D Fecha</label>
+            <div class="d-flex">
+                <input id="field_dFecha" type="datetime-local" class="form-control" name="dFecha" [(ngModel)]="docexpedien.dFecha"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.docexpedien.nFolios" for="field_nFolios">N Folios</label>
+            <input type="number" class="form-control" name="nFolios" id="field_nFolios"
+                [(ngModel)]="docexpedien.nFolios"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.docexpedien.nNunresolucionrd" for="field_nNunresolucionrd">N Nunresolucionrd</label>
+            <input type="text" class="form-control" name="nNunresolucionrd" id="field_nNunresolucionrd"
+                [(ngModel)]="docexpedien.nNunresolucionrd"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.docexpedien.vUsuarioreg" for="field_vUsuarioreg">V Usuarioreg</label>
+            <input type="text" class="form-control" name="vUsuarioreg" id="field_vUsuarioreg"
+                [(ngModel)]="docexpedien.vUsuarioreg" required maxlength="20" />
+            <div [hidden]="!(editForm.controls.vUsuarioreg?.dirty && editForm.controls.vUsuarioreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vUsuarioreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vUsuarioreg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.docexpedien.dFechareg" for="field_dFechareg">D Fechareg</label>
+            <div class="d-flex">
+                <input id="field_dFechareg" type="datetime-local" class="form-control" name="dFechareg" [(ngModel)]="docexpedien.dFechareg"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.dFechareg?.dirty && editForm.controls.dFechareg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dFechareg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.dFechareg?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.docexpedien.nEliminar" for="field_nEliminar">N Eliminar</label>
+            <input type="number" class="form-control" name="nEliminar" id="field_nEliminar"
+                [(ngModel)]="docexpedien.nEliminar" required min="0" max="1" />
+            <div [hidden]="!(editForm.controls.nEliminar?.dirty && editForm.controls.nEliminar?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nEliminar?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nEliminar?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 0 }">
+                    This field should be at least 0.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nEliminar?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 1 }">
+                    This field cannot be more than 1.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nEliminar?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.docexpedien.nSedereg" for="field_nSedereg">N Sedereg</label>
+            <input type="number" class="form-control" name="nSedereg" id="field_nSedereg"
+                [(ngModel)]="docexpedien.nSedereg" required />
+            <div [hidden]="!(editForm.controls.nSedereg?.dirty && editForm.controls.nSedereg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nSedereg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nSedereg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.docexpedien.vUsuarioupd" for="field_vUsuarioupd">V Usuarioupd</label>
+            <input type="text" class="form-control" name="vUsuarioupd" id="field_vUsuarioupd"
+                [(ngModel)]="docexpedien.vUsuarioupd" maxlength="20" />
+            <div [hidden]="!(editForm.controls.vUsuarioupd?.dirty && editForm.controls.vUsuarioupd?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vUsuarioupd?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.docexpedien.dFechaupd" for="field_dFechaupd">D Fechaupd</label>
+            <div class="d-flex">
+                <input id="field_dFechaupd" type="datetime-local" class="form-control" name="dFechaupd" [(ngModel)]="docexpedien.dFechaupd"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.docexpedien.nSedeupd" for="field_nSedeupd">N Sedeupd</label>
+            <input type="number" class="form-control" name="nSedeupd" id="field_nSedeupd"
+                [(ngModel)]="docexpedien.nSedeupd"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.docexpedien.expediente" for="field_expediente">Expediente</label>
+            <select class="form-control" id="field_expediente" name="expediente" [(ngModel)]="docexpedien.expediente" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="expedienteOption.id === docexpedien.expediente?.id ? docexpedien.expediente : expedienteOption" *ngFor="let expedienteOption of expedientes; trackBy: trackExpedienteById">{{expedienteOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.docexpedien.dettipprov" for="field_dettipprov">Dettipprov</label>
+            <select class="form-control" id="field_dettipprov" name="dettipprov" [(ngModel)]="docexpedien.dettipprov" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="dettipprovOption.id === docexpedien.dettipprov?.id ? docexpedien.dettipprov : dettipprovOption" *ngFor="let dettipprovOption of dettipprovs; trackBy: trackDettipprovById">{{dettipprovOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.docexpedien.tipdocexp" for="field_tipdocexp">Tipdocexp</label>
+            <select class="form-control" id="field_tipdocexp" name="tipdocexp" [(ngModel)]="docexpedien.tipdocexp" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="tipdocexpOption.id === docexpedien.tipdocexp?.id ? docexpedien.tipdocexp : tipdocexpOption" *ngFor="let tipdocexpOption of tipdocexps; trackBy: trackTipdocexpById">{{tipdocexpOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.docexpedien.tipproveid" for="field_tipproveid">Tipproveid</label>
+            <select class="form-control" id="field_tipproveid" name="tipproveid" [(ngModel)]="docexpedien.tipproveid" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="tipproveidOption.id === docexpedien.tipproveid?.id ? docexpedien.tipproveid : tipproveidOption" *ngFor="let tipproveidOption of tipproveids; trackBy: trackTipproveidById">{{tipproveidOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

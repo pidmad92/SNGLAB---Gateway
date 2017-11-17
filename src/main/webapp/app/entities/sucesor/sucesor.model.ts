@@ -4,6 +4,7 @@ export class Sucesor implements BaseEntity {
     constructor(
         public id?: number,
         public cFlgestado?: string,
+        public vCodpartida?: string,
         public vUsuarioreg?: string,
         public dFechareg?: any,
         public nEliminar?: number,

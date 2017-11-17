@@ -45,15 +45,15 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.tipdocident.vDescripcioncorta" for="field_vDescripcioncorta">V Descripcioncorta</label>
             <input type="text" class="form-control" name="vDescripcioncorta" id="field_vDescripcioncorta"
-                [(ngModel)]="tipdocident.vDescripcioncorta" required maxlength="5" />
+                [(ngModel)]="tipdocident.vDescripcioncorta" required maxlength="15" />
             <div [hidden]="!(editForm.controls.vDescripcioncorta?.dirty && editForm.controls.vDescripcioncorta?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.vDescripcioncorta?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vDescripcioncorta?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 5 }">
-                   This field cannot be longer than 5 characters.
+                   [hidden]="!editForm.controls.vDescripcioncorta?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                   This field cannot be longer than 15 characters.
                 </small>
             </div>
         </div>

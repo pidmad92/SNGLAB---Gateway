@@ -70,6 +70,12 @@
                 <a [routerLink]="['/empleador', atencion.empleador?.id]">{{atencion.empleador?.id}}</a>
             </div>
         </dd>
+        <dt><span jhiTranslate="gatewayApp.atencion.oficina">Oficina</span></dt>
+        <dd>
+            <div *ngIf="atencion.oficina">
+                <a [routerLink]="['/oficina', atencion.oficina?.id]">{{atencion.oficina?.id}}</a>
+            </div>
+        </dd>
         <dt><span jhiTranslate="gatewayApp.atencion.tipatencion">Tipatencion</span></dt>
         <dd>
             <div *ngIf="atencion.tipatencion">
@@ -91,7 +97,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/consultas', { outlets: { popup: 'atencion/'+ atencion.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'atencion/'+ atencion.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

@@ -78,7 +78,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150204",
+    "changelogDate": "20171114152908",
     "entityTableName": "direcalter",
     "dto": "no",
     "pagination": "no",

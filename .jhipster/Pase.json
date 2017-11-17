@@ -2,6 +2,14 @@
     "fluentMethods": true,
     "relationships": [
         {
+            "relationshipType": "one-to-one",
+            "relationshipName": "expediente",
+            "otherEntityName": "expediente",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "pase"
+        },
+        {
             "relationshipType": "one-to-many",
             "relationshipName": "pasemotiaten",
             "otherEntityName": "pasemotiaten",
@@ -32,10 +40,6 @@
                 "maxlength"
             ],
             "fieldValidateRulesMaxlength": 1
-        },
-        {
-            "fieldName": "nCodoficinaorigen",
-            "fieldType": "Integer"
         },
         {
             "fieldName": "nCodoficinadestino",
@@ -92,7 +96,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150201",
+    "changelogDate": "20171114152905",
     "entityTableName": "pase",
     "dto": "no",
     "pagination": "no",

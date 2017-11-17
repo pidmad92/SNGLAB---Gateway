@@ -24,13 +24,14 @@
             "vUsuarioupd": "V Usuarioupd",
             "dFechaupd": "D Fechaupd",
             "nSedeupd": "N Sedeupd",
-            "dlabingperc": "Dlabingperc",
+            "dlabingrperc": "Dlabingrperc",
             "atencion": "Atencion",
             "empleador": "Empleador",
             "modacontrato": "Modacontrato",
             "motivocese": "Motivocese",
+            "regimenlabo": "Regimenlabo",
             "trabajador": "Trabajador",
-            "subregilabo": "Subregilabo"
+            "tipvinculo": "Tipvinculo"
         }
     },
     "consultasApp": {

@@ -69,7 +69,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150157",
+    "changelogDate": "20171114152901",
     "entityTableName": "modacontrato",
     "dto": "no",
     "pagination": "no",

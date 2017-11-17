@@ -3,6 +3,12 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
+            "relationshipName": "expediente",
+            "otherEntityName": "expediente",
+            "otherEntityRelationshipName": "empleador"
+        },
+        {
+            "relationshipType": "one-to-many",
             "relationshipName": "datlaboral",
             "otherEntityName": "datlaboral",
             "otherEntityRelationshipName": "empleador"
@@ -84,7 +90,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150156",
+    "changelogDate": "20171114152900",
     "entityTableName": "empleador",
     "dto": "no",
     "pagination": "no",

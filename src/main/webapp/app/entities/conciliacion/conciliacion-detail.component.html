@@ -1,0 +1,85 @@
+
+<div *ngIf="conciliacion">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.conciliacion.detail.title">Conciliacion</span> {{conciliacion.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.conciliacion.dFecha">D Fecha</span></dt>
+        <dd>
+            <span>{{conciliacion.dFecha | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conciliacion.vFlgaudienciaresistida">V Flgaudienciaresistida</span></dt>
+        <dd>
+            <span>{{conciliacion.vFlgaudienciaresistida}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conciliacion.vFlgreprogramacion">V Flgreprogramacion</span></dt>
+        <dd>
+            <span>{{conciliacion.vFlgreprogramacion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conciliacion.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{conciliacion.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conciliacion.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{conciliacion.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conciliacion.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{conciliacion.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conciliacion.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{conciliacion.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conciliacion.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{conciliacion.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conciliacion.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{conciliacion.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conciliacion.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{conciliacion.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conciliacion.expediente">Expediente</span></dt>
+        <dd>
+            <div *ngIf="conciliacion.expediente">
+                <a [routerLink]="['/expediente', conciliacion.expediente?.id]">{{conciliacion.expediente?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conciliacion.abogado">Abogado</span></dt>
+        <dd>
+            <div *ngIf="conciliacion.abogado">
+                <a [routerLink]="['/abogado', conciliacion.abogado?.id]">{{conciliacion.abogado?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conciliacion.hora">Hora</span></dt>
+        <dd>
+            <div *ngIf="conciliacion.hora">
+                <a [routerLink]="['/hora', conciliacion.hora?.id]">{{conciliacion.hora?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conciliacion.resulconci">Resulconci</span></dt>
+        <dd>
+            <div *ngIf="conciliacion.resulconci">
+                <a [routerLink]="['/resulconci', conciliacion.resulconci?.id]">{{conciliacion.resulconci?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/defensa', { outlets: { popup: 'conciliacion/'+ conciliacion.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

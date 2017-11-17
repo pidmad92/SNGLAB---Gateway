@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col">
+        <div class="card card-panel mb-3">
+            <div class="card-header d-sm-flex justify-content-between">
+                <h5>Registro de Expediente<small class="ml-3">Datos del Pase</small></h5>
+            </div>
+            <div class="card-body">
+                <div class="panel">
+                    <fieldset class="col">     
+                        <legend>Búsqueda del Pase</legend>
+                        <form>
+                            <div class="form-row">
+                                <div class="col-md-3">
+                                    <!-- <p-toggleButton name="checked2" [(ngModel)]="checked2" onLabel="Por: N° Documentos" offLabel="Por: Rango de Fechas"></p-toggleButton> -->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p-radioButton name="groupname" value="nroDoc" label="Por: Nro. de Doc." [(ngModel)]="tipoBusqueda"></p-radioButton>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p-radioButton name="groupname" value="fechas" label="Por: Rango de Fechas" [(ngModel)]="tipoBusqueda"></p-radioButton>        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="tipoBusqueda=='nroDoc'" class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="inpTipo" class="col-sm-3 col-form-label">Tipo de documento:</label>
+                                        <div class="col-sm-3 pl-0">
+                                            <select class="form-control form-control-sm" id="inpTipo">
+                                                <option>DNI</option>
+                                                <option>RUC</option>
+                                            </select>
+                                        </div>
+                                        <label for="inpNumero" class="col-sm-2 col-form-label">Número:</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control form-control-sm" id="inpNumero" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="tipoBusqueda=='fechas'" class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="inpTipo" class="col-sm-3 col-form-label">Fechas:</label>
+                                        <p-calendar name="rangeDates" [(ngModel)]="rangeDates" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" selectionMode="range" readonlyInput="true"></p-calendar>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <a href="#" class="btn btn-sm btn-secondary "><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                                </div>
+                            </div>
+                        </form>
+                    </fieldset>
+                    <br>
+                    <form>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <p-dataTable [value]="cars" [(selection)]="pasesDoc" dataKey="codPase">
+                                        <p-header>Pases</p-header>
+                                        <p-column [style]="{'width':'38px'}" selectionMode="single"></p-column>
+                                        <p-column field="codPase" header="Cod. Pase"></p-column>
+                                        <p-column field="fechaPase" header="Fecha de Pase"></p-column>
+                                        <p-column field="rucEmp" header="RUC Empleador"></p-column>
+                                        <p-column field="razonSocial" header="Razón Social del Empleador"></p-column>
+                                        <p-column field="nroTra" header="Nro. Documento Trabajador"></p-column>
+                                        <p-column field="nomTra" header="Apellidos y Nombres Trabajador"></p-column>
+                                        <p-column field="ofDer" header="Of. de Derivación"></p-column>
+                                </p-dataTable>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+{
+    "gatewayApp": {
+        "multa" : {
+            "home": {
+                "title": "Multas",
+                "createLabel": "Crear nuevo Multa",
+                "createOrEditLabel": "Crear o editar Multa",
+                "search": "Search for Multa"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Multa {{ id }}?"
+            },
+            "detail": {
+                "title": "Multa"
+            },
+            "fMonmulta": "F Monmulta",
+            "vNumresolucionsd": "V Numresolucionsd",
+            "dFecresolucionsd": "D Fecresolucionsd",
+            "vcodigo": "Vcodigo",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "resolucrd": "Resolucrd"
+        }
+    },
+    "defensaApp": {
+        "multa" : {
+            "created": "Un nuevo Multa ha sido creado con el identificador {{ param }}",
+            "updated": "Un Multa ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Multa ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

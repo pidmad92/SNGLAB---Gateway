@@ -1,0 +1,95 @@
+<div>
+    <h4 class="title my-3">
+        <span jhiTranslate="gatewayApp.multa.home.title">Multas</span>
+        <button class="btn btn-primary float-right jh-create-entity create-multa" [routerLink]="['/defensa', { outlets: { popup: ['multa-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.multa.home.createLabel">
+            Create new Multa
+            </span>
+        </button>
+    </h4>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.multa.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="multas">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.multa.fMonmulta">F Monmulta</span></th>
+            <th><span jhiTranslate="gatewayApp.multa.vNumresolucionsd">V Numresolucionsd</span></th>
+            <th><span jhiTranslate="gatewayApp.multa.dFecresolucionsd">D Fecresolucionsd</span></th>
+            <th><span jhiTranslate="gatewayApp.multa.vcodigo">Vcodigo</span></th>
+            <th><span jhiTranslate="gatewayApp.multa.vUsuarioreg">V Usuarioreg</span></th>
+            <th><span jhiTranslate="gatewayApp.multa.dFechareg">D Fechareg</span></th>
+            <th><span jhiTranslate="gatewayApp.multa.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.multa.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.multa.vUsuarioupd">V Usuarioupd</span></th>
+            <th><span jhiTranslate="gatewayApp.multa.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.multa.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.multa.resolucrd">Resolucrd</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let multa of multas ;trackBy: trackId">
+                <td><a [routerLink]="['../multa', multa.id ]">{{multa.id}}</a></td>
+                <td>{{multa.fMonmulta}}</td>
+                <td>{{multa.vNumresolucionsd}}</td>
+                <td>{{multa.dFecresolucionsd | date:'medium'}}</td>
+                <td>{{multa.vcodigo}}</td>
+                <td>{{multa.vUsuarioreg}}</td>
+                <td>{{multa.dFechareg | date:'medium'}}</td>
+                <td>{{multa.nEliminar}}</td>
+                <td>{{multa.nSedereg}}</td>
+                <td>{{multa.vUsuarioupd}}</td>
+                <td>{{multa.dFechaupd | date:'medium'}}</td>
+                <td>{{multa.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="multa.resolucrd">
+                        <a [routerLink]="['../resolucrd', multa.resolucrd?.id ]" >{{multa.resolucrd?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../multa', multa.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/defensa', { outlets: { popup: 'multa/'+ multa.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/defensa', { outlets: { popup: 'multa/'+ multa.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

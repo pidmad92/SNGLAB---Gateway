@@ -15,7 +15,6 @@
             },
             "vObservacion": "V Observacion",
             "cFlgestado": "C Flgestado",
-            "nCodoficinaorigen": "N Codoficinaorigen",
             "nCodoficinadestino": "N Codoficinadestino",
             "vUsuarioreg": "V Usuarioreg",
             "dFechareg": "D Fechareg",
@@ -24,6 +23,7 @@
             "vUsuarioupd": "V Usuarioupd",
             "dFechaupd": "D Fechaupd",
             "nSedeupd": "N Sedeupd",
+            "expediente": "Expediente",
             "pasemotiaten": "Pasemotiaten",
             "atencion": "Atencion"
         }

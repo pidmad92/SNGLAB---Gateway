@@ -1,0 +1,91 @@
+<div>
+    <h4 class="title my-3">
+        <span jhiTranslate="gatewayApp.abogado.home.title">Abogados</span>
+        <button class="btn btn-primary float-right jh-create-entity create-abogado" [routerLink]="['/consultas', { outlets: { popup: ['abogado-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.abogado.home.createLabel">
+            Create new Abogado
+            </span>
+        </button>
+    </h4>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.abogado.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="abogados">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.abogado.vNomabogado">V Nomabogado</span></th>
+            <th><span jhiTranslate="gatewayApp.abogado.nCodabogadousuario">N Codabogadousuario</span></th>
+            <th><span jhiTranslate="gatewayApp.abogado.vUsuarioreg">V Usuarioreg</span></th>
+            <th><span jhiTranslate="gatewayApp.abogado.dFechareg">D Fechareg</span></th>
+            <th><span jhiTranslate="gatewayApp.abogado.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.abogado.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.abogado.vUsuarioupd">V Usuarioupd</span></th>
+            <th><span jhiTranslate="gatewayApp.abogado.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.abogado.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.abogado.oficina">Oficina</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let abogado of abogados ;trackBy: trackId">
+                <td><a [routerLink]="['../abogado', abogado.id ]">{{abogado.id}}</a></td>
+                <td>{{abogado.vNomabogado}}</td>
+                <td>{{abogado.nCodabogadousuario}}</td>
+                <td>{{abogado.vUsuarioreg}}</td>
+                <td>{{abogado.dFechareg | date:'medium'}}</td>
+                <td>{{abogado.nEliminar}}</td>
+                <td>{{abogado.nSedereg}}</td>
+                <td>{{abogado.vUsuarioupd}}</td>
+                <td>{{abogado.dFechaupd | date:'medium'}}</td>
+                <td>{{abogado.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="abogado.oficina">
+                        <a [routerLink]="['../oficina', abogado.oficina?.id ]" >{{abogado.oficina?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../abogado', abogado.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consulta', { outlets: { popup: 'abogado/'+ abogado.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consulta', { outlets: { popup: 'abogado/'+ abogado.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

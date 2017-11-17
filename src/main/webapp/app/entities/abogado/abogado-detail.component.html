@@ -1,0 +1,63 @@
+
+<div *ngIf="abogado">
+    <h2><span jhiTranslate="gatewayApp.abogado.detail.title">Abogado</span> {{abogado.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.abogado.vNomabogado">V Nomabogado</span></dt>
+        <dd>
+            <span>{{abogado.vNomabogado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.abogado.nCodabogadousuario">N Codabogadousuario</span></dt>
+        <dd>
+            <span>{{abogado.nCodabogadousuario}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.abogado.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{abogado.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.abogado.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{abogado.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.abogado.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{abogado.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.abogado.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{abogado.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.abogado.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{abogado.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.abogado.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{abogado.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.abogado.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{abogado.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.abogado.oficina">Oficina</span></dt>
+        <dd>
+            <div *ngIf="abogado.oficina">
+                <a [routerLink]="['/oficina', abogado.oficina?.id]">{{abogado.oficina?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/defensa', { outlets: { popup: 'abogado/'+ abogado.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

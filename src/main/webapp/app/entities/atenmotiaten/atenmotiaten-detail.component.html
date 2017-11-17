@@ -59,7 +59,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/consultas', { outlets: { popup: 'atenmotiaten/'+ atenmotiaten.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'atenmotiaten/'+ atenmotiaten.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

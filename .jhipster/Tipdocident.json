@@ -38,7 +38,7 @@
                 "required",
                 "maxlength"
             ],
-            "fieldValidateRulesMaxlength": 5
+            "fieldValidateRulesMaxlength": 15
         },
         {
             "fieldName": "vUsuarioreg",
@@ -91,7 +91,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150208",
+    "changelogDate": "20171114152912",
     "entityTableName": "tipdocident",
     "dto": "no",
     "pagination": "no",

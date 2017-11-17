@@ -1,0 +1,113 @@
+<div>
+    <h4 class="title my-3">
+        <span jhiTranslate="gatewayApp.docexpedien.home.title">Docexpediens</span>
+        <button class="btn btn-primary float-right jh-create-entity create-docexpedien" [routerLink]="['/defensa', { outlets: { popup: ['docexpedien-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.docexpedien.home.createLabel">
+            Create new Docexpedien
+            </span>
+        </button>
+    </h4>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.docexpedien.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="docexpediens">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.vNumoficio">V Numoficio</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.dFecha">D Fecha</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.nFolios">N Folios</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.nNunresolucionrd">N Nunresolucionrd</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.vUsuarioreg">V Usuarioreg</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.dFechareg">D Fechareg</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.vUsuarioupd">V Usuarioupd</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.expediente">Expediente</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.dettipprov">Dettipprov</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.tipdocexp">Tipdocexp</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.tipproveid">Tipproveid</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let docexpedien of docexpediens ;trackBy: trackId">
+                <td><a [routerLink]="['../docexpedien', docexpedien.id ]">{{docexpedien.id}}</a></td>
+                <td>{{docexpedien.vNumoficio}}</td>
+                <td>{{docexpedien.dFecha | date:'medium'}}</td>
+                <td>{{docexpedien.nFolios}}</td>
+                <td>{{docexpedien.nNunresolucionrd}}</td>
+                <td>{{docexpedien.vUsuarioreg}}</td>
+                <td>{{docexpedien.dFechareg | date:'medium'}}</td>
+                <td>{{docexpedien.nEliminar}}</td>
+                <td>{{docexpedien.nSedereg}}</td>
+                <td>{{docexpedien.vUsuarioupd}}</td>
+                <td>{{docexpedien.dFechaupd | date:'medium'}}</td>
+                <td>{{docexpedien.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="docexpedien.expediente">
+                        <a [routerLink]="['../expediente', docexpedien.expediente?.id ]" >{{docexpedien.expediente?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="docexpedien.dettipprov">
+                        <a [routerLink]="['../dettipprov', docexpedien.dettipprov?.id ]" >{{docexpedien.dettipprov?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="docexpedien.tipdocexp">
+                        <a [routerLink]="['../tipdocexp', docexpedien.tipdocexp?.id ]" >{{docexpedien.tipdocexp?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="docexpedien.tipproveid">
+                        <a [routerLink]="['../tipproveid', docexpedien.tipproveid?.id ]" >{{docexpedien.tipproveid?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../docexpedien', docexpedien.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'docexpedien/'+ docexpedien.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'docexpedien/'+ docexpedien.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

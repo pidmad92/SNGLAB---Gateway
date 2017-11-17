@@ -51,7 +51,7 @@
                 "required",
                 "maxlength"
             ],
-            "fieldValidateRulesMaxlength": 20
+            "fieldValidateRulesMaxlength": 15
         },
         {
             "fieldName": "vEmail",
@@ -137,7 +137,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150202",
+    "changelogDate": "20171114152906",
     "entityTableName": "personajurid",
     "dto": "no",
     "pagination": "no",

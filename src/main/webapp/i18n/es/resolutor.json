@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "resolutor" : {
+            "home": {
+                "title": "Resolutors",
+                "createLabel": "Crear nuevo Resolutor",
+                "createOrEditLabel": "Crear o editar Resolutor",
+                "search": "Search for Resolutor"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Resolutor {{ id }}?"
+            },
+            "detail": {
+                "title": "Resolutor"
+            },
+            "vNomresolutor": "V Nomresolutor",
+            "nCodresolutorusuario": "N Codresolutorusuario",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "expediente": "Expediente"
+        }
+    },
+    "defensaApp": {
+        "resolutor" : {
+            "created": "Un nuevo Resolutor ha sido creado con el identificador {{ param }}",
+            "updated": "Un Resolutor ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Resolutor ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

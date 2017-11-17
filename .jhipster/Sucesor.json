@@ -25,6 +25,15 @@
             "fieldValidateRulesMaxlength": 1
         },
         {
+            "fieldName": "vCodpartida",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
             "fieldName": "vUsuarioreg",
             "fieldType": "String",
             "fieldValidateRules": [
@@ -75,7 +84,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171106150206",
+    "changelogDate": "20171114152910",
     "entityTableName": "sucesor",
     "dto": "no",
     "pagination": "no",

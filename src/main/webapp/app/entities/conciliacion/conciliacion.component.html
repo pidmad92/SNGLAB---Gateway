@@ -1,0 +1,111 @@
+<div>
+    <h4 class="title my-3">
+        <span jhiTranslate="gatewayApp.conciliacion.home.title">Conciliacions</span>
+        <button class="btn btn-primary float-right jh-create-entity create-conciliacion" [routerLink]="['/defensa', { outlets: { popup: ['conciliacion-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.conciliacion.home.createLabel">
+            Create new Conciliacion
+            </span>
+        </button>
+    </h4>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.conciliacion.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="conciliacions">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.conciliacion.dFecha">D Fecha</span></th>
+            <th><span jhiTranslate="gatewayApp.conciliacion.vFlgaudienciaresistida">V Flgaudienciaresistida</span></th>
+            <th><span jhiTranslate="gatewayApp.conciliacion.vFlgreprogramacion">V Flgreprogramacion</span></th>
+            <th><span jhiTranslate="gatewayApp.conciliacion.vUsuarioreg">V Usuarioreg</span></th>
+            <th><span jhiTranslate="gatewayApp.conciliacion.dFechareg">D Fechareg</span></th>
+            <th><span jhiTranslate="gatewayApp.conciliacion.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.conciliacion.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.conciliacion.vUsuarioupd">V Usuarioupd</span></th>
+            <th><span jhiTranslate="gatewayApp.conciliacion.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.conciliacion.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.conciliacion.expediente">Expediente</span></th>
+            <th><span jhiTranslate="gatewayApp.conciliacion.abogado">Abogado</span></th>
+            <th><span jhiTranslate="gatewayApp.conciliacion.hora">Hora</span></th>
+            <th><span jhiTranslate="gatewayApp.conciliacion.resulconci">Resulconci</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let conciliacion of conciliacions ;trackBy: trackId">
+                <td><a [routerLink]="['../conciliacion', conciliacion.id ]">{{conciliacion.id}}</a></td>
+                <td>{{conciliacion.dFecha | date:'medium'}}</td>
+                <td>{{conciliacion.vFlgaudienciaresistida}}</td>
+                <td>{{conciliacion.vFlgreprogramacion}}</td>
+                <td>{{conciliacion.vUsuarioreg}}</td>
+                <td>{{conciliacion.dFechareg | date:'medium'}}</td>
+                <td>{{conciliacion.nEliminar}}</td>
+                <td>{{conciliacion.nSedereg}}</td>
+                <td>{{conciliacion.vUsuarioupd}}</td>
+                <td>{{conciliacion.dFechaupd | date:'medium'}}</td>
+                <td>{{conciliacion.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="conciliacion.expediente">
+                        <a [routerLink]="['../expediente', conciliacion.expediente?.id ]" >{{conciliacion.expediente?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="conciliacion.abogado">
+                        <a [routerLink]="['../abogado', conciliacion.abogado?.id ]" >{{conciliacion.abogado?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="conciliacion.hora">
+                        <a [routerLink]="['../hora', conciliacion.hora?.id ]" >{{conciliacion.hora?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="conciliacion.resulconci">
+                        <a [routerLink]="['../resulconci', conciliacion.resulconci?.id ]" >{{conciliacion.resulconci?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../conciliacion', conciliacion.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/defensa', { outlets: { popup: 'conciliacion/'+ conciliacion.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/defensa', { outlets: { popup: 'conciliacion/'+ conciliacion.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

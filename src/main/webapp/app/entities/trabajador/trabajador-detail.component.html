@@ -4,10 +4,6 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.trabajador.vNumdocumento">V Numdocumento</span></dt>
-        <dd>
-            <span>{{trabajador.vNumdocumento}}</span>
-        </dd>
         <dt><span jhiTranslate="gatewayApp.trabajador.vFlgsucesor">V Flgsucesor</span></dt>
         <dd>
             <span>{{trabajador.vFlgsucesor}}</span>
@@ -61,7 +57,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/consultas', { outlets: { popup: 'trabajador/'+ trabajador.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'trabajador/'+ trabajador.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

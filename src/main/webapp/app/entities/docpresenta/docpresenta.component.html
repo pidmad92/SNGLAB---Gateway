@@ -37,7 +37,7 @@
             <th><span jhiTranslate="gatewayApp.docpresenta.vUsuarioupd">V Usuarioupd</span></th>
             <th><span jhiTranslate="gatewayApp.docpresenta.dFechaupd">D Fechaupd</span></th>
             <th><span jhiTranslate="gatewayApp.docpresenta.nSedeupd">N Sedeupd</span></th>
-            <th><span jhiTranslate="gatewayApp.docpresenta.atenmotiaten">Atenmotiaten</span></th>
+            <th><span jhiTranslate="gatewayApp.docpresenta.atencion">Atencion</span></th>
             <th><span jhiTranslate="gatewayApp.docpresenta.documento">Documento</span></th>
             <th></th>
             </tr>
@@ -53,8 +53,8 @@
                 <td>{{docpresenta.dFechaupd | date:'medium'}}</td>
                 <td>{{docpresenta.nSedeupd}}</td>
                 <td>
-                    <div *ngIf="docpresenta.atenmotiaten">
-                        <a [routerLink]="['../atenmotiaten', docpresenta.atenmotiaten?.id ]" >{{docpresenta.atenmotiaten?.id}}</a>
+                    <div *ngIf="docpresenta.atencion">
+                        <a [routerLink]="['../atencion', docpresenta.atencion?.id ]" >{{docpresenta.atencion?.id}}</a>
                     </div>
                 </td>
                 <td>

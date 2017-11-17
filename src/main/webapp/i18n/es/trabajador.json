@@ -13,7 +13,6 @@
             "detail": {
                 "title": "Trabajador"
             },
-            "vNumdocumento": "V Numdocumento",
             "vFlgsucesor": "V Flgsucesor",
             "vUsuarioreg": "V Usuarioreg",
             "dFechareg": "D Fechareg",
@@ -24,6 +23,7 @@
             "nSedeupd": "N Sedeupd",
             "cargotrabaja": "Cargotrabaja",
             "personanatur": "Personanatur",
+            "expediente": "Expediente",
             "datlaboral": "Datlaboral",
             "atencion": "Atencion",
             "sucesor": "Sucesor"

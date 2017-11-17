@@ -13,7 +13,6 @@ import {
     ExpedienteDeleteDialogComponent,
     expedienteRoute,
     expedientePopupRoute,
-    ExpedienteResolvePagingParams,
 } from './';
 
 const ENTITY_STATES = [
@@ -44,7 +43,6 @@ const ENTITY_STATES = [
     providers: [
         ExpedienteService,
         ExpedientePopupService,
-        ExpedienteResolvePagingParams,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

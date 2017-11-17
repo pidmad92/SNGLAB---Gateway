@@ -1,0 +1,71 @@
+
+<div *ngIf="multa">
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.multa.detail.title">Multa</span> {{multa.id}}</h4>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.multa.fMonmulta">F Monmulta</span></dt>
+        <dd>
+            <span>{{multa.fMonmulta}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.multa.vNumresolucionsd">V Numresolucionsd</span></dt>
+        <dd>
+            <span>{{multa.vNumresolucionsd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.multa.dFecresolucionsd">D Fecresolucionsd</span></dt>
+        <dd>
+            <span>{{multa.dFecresolucionsd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.multa.vcodigo">Vcodigo</span></dt>
+        <dd>
+            <span>{{multa.vcodigo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.multa.vUsuarioreg">V Usuarioreg</span></dt>
+        <dd>
+            <span>{{multa.vUsuarioreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.multa.dFechareg">D Fechareg</span></dt>
+        <dd>
+            <span>{{multa.dFechareg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.multa.nEliminar">N Eliminar</span></dt>
+        <dd>
+            <span>{{multa.nEliminar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.multa.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{multa.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.multa.vUsuarioupd">V Usuarioupd</span></dt>
+        <dd>
+            <span>{{multa.vUsuarioupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.multa.dFechaupd">D Fechaupd</span></dt>
+        <dd>
+            <span>{{multa.dFechaupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.multa.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{multa.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.multa.resolucrd">Resolucrd</span></dt>
+        <dd>
+            <div *ngIf="multa.resolucrd">
+                <a [routerLink]="['/resolucrd', multa.resolucrd?.id]">{{multa.resolucrd?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/defensa', { outlets: { popup: 'multa/'+ multa.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

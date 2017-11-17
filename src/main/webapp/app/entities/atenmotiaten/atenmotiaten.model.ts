@@ -11,7 +11,6 @@ export class Atenmotiaten implements BaseEntity {
         public dFechaupd?: any,
         public nSedeupd?: number,
         public atencion?: BaseEntity,
-        public docpresentas?: BaseEntity[],
         public direcalter?: BaseEntity,
         public motatenofic?: BaseEntity,
     ) {

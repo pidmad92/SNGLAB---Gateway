@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "tipnotif" : {
+            "home": {
+                "title": "Tipnotifs",
+                "createLabel": "Crear nuevo Tipnotif",
+                "createOrEditLabel": "Crear o editar Tipnotif",
+                "search": "Search for Tipnotif"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipnotif {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipnotif"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "notificacion": "Notificacion"
+        }
+    },
+    "defensaApp": {
+        "tipnotif" : {
+            "created": "Un nuevo Tipnotif ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipnotif ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipnotif ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

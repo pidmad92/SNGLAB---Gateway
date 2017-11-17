@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "tipvinculo" : {
+            "home": {
+                "title": "Tipvinculos",
+                "createLabel": "Crear nuevo Tipvinculo",
+                "createOrEditLabel": "Crear o editar Tipvinculo",
+                "search": "Search for Tipvinculo"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipvinculo {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipvinculo"
+            },
+            "vDescripcion": "V Descripcion",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "datlaboral": "Datlaboral"
+        }
+    },
+    "consultasApp": {
+        "tipvinculo" : {
+            "created": "Un nuevo Tipvinculo ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipvinculo ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipvinculo ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

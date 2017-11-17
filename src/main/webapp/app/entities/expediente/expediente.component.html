@@ -28,18 +28,94 @@
     <div class="table-responsive" *ngIf="expedientes">
         <table class="table table-striped">
             <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="name"><span jhiTranslate="gatewayApp.expediente.name">Name</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="desc"><span jhiTranslate="gatewayApp.expediente.desc">Desc</span> <span class="fa fa-sort"></span></th>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.vNumExpediente">V Num Expediente</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.nAnio">N Anio</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.dFecregexp">D Fecregexp</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.vTipodocempleador">V Tipodocempleador</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.vDocempleador">V Docempleador</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.vNomempleador">V Nomempleador</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.vTipodoctrabajador">V Tipodoctrabajador</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.vDoctrabajador">V Doctrabajador</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.vNomtrabajador">V Nomtrabajador</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.cFlgexpobservado">C Flgexpobservado</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.vRegmesapartes">V Regmesapartes</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.dFecmesapartes">D Fecmesapartes</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.vObservacion">V Observacion</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.cFlgarchivo">C Flgarchivo</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.dFecArchivo">D Fec Archivo</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.vObservacionarchivo">V Observacionarchivo</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.nCodusuarioarchivo">N Codusuarioarchivo</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.vNuminformearchivo">V Numinformearchivo</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.vUsuarioreg">V Usuarioreg</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.dFechareg">D Fechareg</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.vUsuarioupd">V Usuarioupd</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.empleador">Empleador</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.tippersona">Tippersona</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.trabajador">Trabajador</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.estexpedien">Estexpedien</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.resolutor">Resolutor</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let expediente of expedientes ;trackBy: trackId">
                 <td><a [routerLink]="['../expediente', expediente.id ]">{{expediente.id}}</a></td>
-                <td>{{expediente.name}}</td>
-                <td>{{expediente.desc}}</td>
+                <td>{{expediente.vNumExpediente}}</td>
+                <td>{{expediente.nAnio}}</td>
+                <td>{{expediente.dFecregexp | date:'medium'}}</td>
+                <td>{{expediente.vTipodocempleador}}</td>
+                <td>{{expediente.vDocempleador}}</td>
+                <td>{{expediente.vNomempleador}}</td>
+                <td>{{expediente.vTipodoctrabajador}}</td>
+                <td>{{expediente.vDoctrabajador}}</td>
+                <td>{{expediente.vNomtrabajador}}</td>
+                <td>{{expediente.cFlgexpobservado}}</td>
+                <td>{{expediente.vRegmesapartes}}</td>
+                <td>{{expediente.dFecmesapartes | date:'medium'}}</td>
+                <td>{{expediente.vObservacion}}</td>
+                <td>{{expediente.cFlgarchivo}}</td>
+                <td>{{expediente.dFecArchivo | date:'medium'}}</td>
+                <td>{{expediente.vObservacionarchivo}}</td>
+                <td>{{expediente.nCodusuarioarchivo}}</td>
+                <td>{{expediente.vNuminformearchivo}}</td>
+                <td>{{expediente.vUsuarioreg}}</td>
+                <td>{{expediente.dFechareg | date:'medium'}}</td>
+                <td>{{expediente.nEliminar}}</td>
+                <td>{{expediente.nSedereg}}</td>
+                <td>{{expediente.vUsuarioupd}}</td>
+                <td>{{expediente.dFechaupd | date:'medium'}}</td>
+                <td>{{expediente.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="expediente.empleador">
+                        <a [routerLink]="['../empleador', expediente.empleador?.id ]" >{{expediente.empleador?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="expediente.tippersona">
+                        <a [routerLink]="['../tippersona', expediente.tippersona?.id ]" >{{expediente.tippersona?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="expediente.trabajador">
+                        <a [routerLink]="['../trabajador', expediente.trabajador?.id ]" >{{expediente.trabajador?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="expediente.estexpedien">
+                        <a [routerLink]="['../estexpedien', expediente.estexpedien?.id ]" >{{expediente.estexpedien?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="expediente.resolutor">
+                        <a [routerLink]="['../resolutor', expediente.resolutor?.id ]" >{{expediente.resolutor?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
@@ -68,12 +144,4 @@
             </tbody>
         </table>
     </div>
-        <div *ngIf="expedientes && expedientes.length">
-            <div class="row justify-content-center">
-                <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
-            </div>
-            <div class="row justify-content-center">
-                <ngb-pagination [collectionSize]="totalItems" [maxSize]="5" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
-            </div>
-        </div>
 </div>

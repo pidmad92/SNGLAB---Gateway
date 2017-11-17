@@ -3,9 +3,9 @@ import { BaseEntity } from './../../shared';
 export class Pernatudire implements BaseEntity {
     constructor(
         public id?: number,
-        public vCoddep?: string,
-        public vCodpro?: string,
-        public vCoddis?: string,
+        public vCoddepartamento?: string,
+        public vCodprovincia?: string,
+        public vCoddistrito?: string,
         public vDircompleta?: string,
         public vReferencia?: string,
         public vFlgnotifica?: string,

@@ -1,0 +1,38 @@
+{
+    "gatewayApp": {
+        "notificacion" : {
+            "home": {
+                "title": "Notificacions",
+                "createLabel": "Crear nuevo Notificacion",
+                "createOrEditLabel": "Crear o editar Notificacion",
+                "search": "Search for Notificacion"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Notificacion {{ id }}?"
+            },
+            "detail": {
+                "title": "Notificacion"
+            },
+            "nNumfolios": "N Numfolios",
+            "vHojaenvio": "V Hojaenvio",
+            "vUsuarioreg": "V Usuarioreg",
+            "dFechareg": "D Fechareg",
+            "nEliminar": "N Eliminar",
+            "nSedereg": "N Sedereg",
+            "vUsuarioupd": "V Usuarioupd",
+            "dFechaupd": "D Fechaupd",
+            "nSedeupd": "N Sedeupd",
+            "expediente": "Expediente",
+            "direcnotif": "Direcnotif",
+            "tipenvnot": "Tipenvnot",
+            "tipnotif": "Tipnotif"
+        }
+    },
+    "defensaApp": {
+        "notificacion" : {
+            "created": "Un nuevo Notificacion ha sido creado con el identificador {{ param }}",
+            "updated": "Un Notificacion ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Notificacion ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}
