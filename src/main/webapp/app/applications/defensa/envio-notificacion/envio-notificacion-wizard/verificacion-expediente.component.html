@@ -1,0 +1,123 @@
+VERIFICACION EXPEDIENTE
+<div class="row">
+    <div class="col">
+        <div class="card card-panel">
+                <div class="card-header d-sm-flex justify-content-between">
+                        <h5>Envió de Notificaciones<small class="ml-3">Verificación</small></h5>
+                    <h5 class="mb-0"><small>Paso 2 de 3</small></h5>
+                </div>
+                <div class="card-body">
+                    <form class="form-notificacion">
+                        <div class="form-row">
+                            <div class="col-lg-12">
+                                <h4>Expediente N° 0051702304</h4>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="form-group row">
+                                    <label for="inpTipo" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo de Notificación</label>
+                                    <div class="col-sm-7">
+                                        <p-dropdown name="tipoNotificacion" [options]="tipoNotificacion" [(ngModel)]="selectedTNotificacion" placeholder="Seleccione el Tipo de Notificación"></p-dropdown>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group row">
+                                    <label for="inpNumero" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo de Envió</label>
+                                    <div class="col-sm-5">
+                                        <p-dropdown name="tipoEnvio" [options]="tipoEnvio" [(ngModel)]="selectedTEnvio" placeholder="Seleccione el Tipo de Envió"></p-dropdown>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group row">
+                                    <label for="inpNumero" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">N° de Folios</label>
+                                    <div class="col-sm-5">
+                                        <input type="number" class="form-control form-control-sm" id="inpNumero" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row mb-3">
+                            <div class="col-md-12">
+                                <p-dataTable [value]="direcciones" dataKey="codPase">
+                                    <p-header>Direcciones del Trabajador</p-header>
+                                    <p-column [style]="{'width':'38px'}" header="Notificar" selectionMode="multiple"></p-column>
+                                    <p-column field="departamento" header="Departamento"></p-column>
+                                    <p-column field="provincia" header="Provincia"></p-column>
+                                    <p-column field="distrito" header="Distrito"></p-column>
+                                    <p-column field="direccion" header="Dirección"></p-column>
+                                </p-dataTable>
+                            </div>
+                        </div>
+                        <div class="form-row mb-3">
+                                <div class="col-md-12">
+                                    <p-dataTable [value]="direccionesEmp" dataKey="codPase">
+                                        <p-header>Direcciones del Empleador</p-header>
+                                        <p-column [style]="{'width':'38px'}" header="Notificar" selectionMode="multiple"></p-column>
+                                        <p-column field="departamento" header="Departamento"></p-column>
+                                        <p-column field="provincia" header="Provincia"></p-column>
+                                        <p-column field="distrito" header="Distrito"></p-column>
+                                        <p-column field="direccion" header="Dirección"></p-column>
+                                    </p-dataTable>
+                                </div>
+                            </div>
+                    </form>
+                    <form class="form-notificacion">
+                        <div class="form-row">
+                            <div class="col-lg-12">
+                                <h4>Expediente N° 0051702304</h4>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="form-group row">
+                                    <label for="inpTipo" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo de Notificación</label>
+                                    <div class="col-sm-7">
+                                        <p-dropdown name="tipoNotificacion" [options]="tipoNotificacion" [(ngModel)]="selectedTNotificacion" placeholder="Seleccione el Tipo de Notificación"></p-dropdown>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group row">
+                                    <label for="inpNumero" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo de Envió</label>
+                                    <div class="col-sm-5">
+                                        <p-dropdown name="tipoEnvio" [options]="tipoEnvio" [(ngModel)]="selectedTEnvio" placeholder="Seleccione el Tipo de Envió"></p-dropdown>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group row">
+                                    <label for="inpNumero" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">N° de Folios</label>
+                                    <div class="col-sm-5">
+                                        <input type="number" class="form-control form-control-sm" id="inpNumero" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row mb-3">
+                            <div class="col-md-12">
+                                <p-dataTable [value]="direcciones" dataKey="codPase">
+                                    <p-header>Direcciones del Trabajador</p-header>
+                                    <p-column [style]="{'width':'38px'}" header="Notificar" selectionMode="multiple"></p-column>
+                                    <p-column field="departamento" header="Departamento"></p-column>
+                                    <p-column field="provincia" header="Provincia"></p-column>
+                                    <p-column field="distrito" header="Distrito"></p-column>
+                                    <p-column field="direccion" header="Dirección"></p-column>
+                                </p-dataTable>
+                            </div>
+                        </div>
+                        <div class="form-row mb-3">
+                                <div class="col-md-12">
+                                    <p-dataTable [value]="direccionesEmp" dataKey="codPase">
+                                        <p-header>Direcciones del Empleador</p-header>
+                                        <p-column [style]="{'width':'38px'}" header="Notificar" selectionMode="multiple"></p-column>
+                                        <p-column field="departamento" header="Departamento"></p-column>
+                                        <p-column field="provincia" header="Provincia"></p-column>
+                                        <p-column field="distrito" header="Distrito"></p-column>
+                                        <p-column field="direccion" header="Dirección"></p-column>
+                                    </p-dataTable>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+        </div>
+    </div>
+</div>
