@@ -1,0 +1,41 @@
+<style>
+    .table tr td:nth-last-child(1) {
+        text-align: left;
+    }
+    .table {
+    width: 0%;
+    }
+</style>
+    
+<div>
+<br/>
+<div align="center">
+<div style="border: 1px solid black; width: 300px;">
+<h4 class="title my-3" align="center">
+    <span>BIENVENIDO</span>
+</h4>
+
+<table align="center" style="text-align: center" border="0">
+<tr>
+    <td colspan="2">¿Sus afiliados son mayores o iguales a 20?</td>
+</tr>
+<tr>
+    <td><input type="radio" name="radioo"/> SI</td>
+    <td colspan="2"><input type="radio" name="radioo"/>NO</td>
+</tr>
+</table>
+<br/>
+<div align="center">
+        <button class="btn btn-primary jh-create-entity create-accionadop" [routerLink]="['/consultas/registro-atencion-trabajador', { outlets: { wizard: ['datos-trabajador'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down">
+            Registrar Atención
+            </span>
+        </button>
+    <button class="btn btn-primary jh-create-entity create-accionadop"  [routerLink]="['/sindicatos/bienvenida', { outlets: { wizardbt: ['bienvenidat'] } }]" routerLinkActive="active">Ingresar</button>
+    <button type="button" class="btn btn-primary jh-create-entity create-accionadop" (click)="salirr()">hola</button>
+</div>
+<br/>
+</div>
+</div>
+</div>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Docexpedien.
+    -->
+    <changeSet id="20171110153050-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="expediente_id"
+                                 baseTableName="docexpedien"
+                                 constraintName="fk_docexpedien_expediente_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="expediente"/>
+
+        <addForeignKeyConstraint baseColumnNames="dettipprov_id"
+                                 baseTableName="docexpedien"
+                                 constraintName="fk_docexpedien_dettipprov_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dettipprov"/>
+
+        <addForeignKeyConstraint baseColumnNames="tipdocexp_id"
+                                 baseTableName="docexpedien"
+                                 constraintName="fk_docexpedien_tipdocexp_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipdocexp"/>
+
+        <addForeignKeyConstraint baseColumnNames="tipproveid_id"
+                                 baseTableName="docexpedien"
+                                 constraintName="fk_docexpedien_tipproveid_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipproveid"/>
+
+    </changeSet>
+</databaseChangeLog>

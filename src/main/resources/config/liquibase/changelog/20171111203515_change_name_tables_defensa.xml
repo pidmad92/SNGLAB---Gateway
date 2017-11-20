@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    
+    <changeSet author="liquibase-docs" id="renameTable-example">
+          <renameTable newTableName="GLMVC_CONCILIACION" oldTableName="CONCILIACION" />
+		  <renameTable newTableName="GLMVC_DOCUMENTOEXPEDIENTE" oldTableName="DOCEXPEDIEN" />
+		  <renameTable newTableName="GLMVC_EXPEDIENTE" oldTableName="EXPEDIENTE" />
+		  <renameTable newTableName="GLMVC_MULTA" oldTableName="MULTA" />
+		  <renameTable newTableName="GLMVC_NOTIFICACION" oldTableName="NOTIFICACION" />
+		  <renameTable newTableName="GLMVC_RESOLUCIONSD" oldTableName="RESOLUCRD" />
+		  <renameTable newTableName="GLMVD_DIRECCIONNOTFICACION" oldTableName="DIRECNOTIF" />
+		  <renameTable newTableName="GLTBC_ABOGADO" oldTableName="ABOGADO" />
+		  <renameTable newTableName="GLTBC_DETALLETIPOPROVEIDO" oldTableName="Dettipprov" />
+		  <renameTable newTableName="GLTBC_ESTADOEXPEDIENTE" oldTableName="Estexpedien" />
+		  <renameTable newTableName="GLTBC_HORA" oldTableName="Hora" />
+		  <renameTable newTableName="GLTBC_RESOLUTOR" oldTableName="Resolutor" />
+		  <renameTable newTableName="GLTBC_RESULTADOCONCILIACION" oldTableName="Resulconci" />
+		  <renameTable newTableName="GLTBC_TIPODOCUMENTOEXP" oldTableName="Tipdocexp" />
+		  <renameTable newTableName="GLTBC_TIPOENVIONOTIFICACION" oldTableName="Tipenvnot" />
+		  <renameTable newTableName="GLTBC_TIPONOTIFICACION" oldTableName="Tipnotif" />
+		  <renameTable newTableName="GLTBC_TIPOPROVEIDO" oldTableName="Tipproveid" />
+		  <renameTable newTableName="CLTBC_TIPORESULTADOCONC" oldTableName="Tipresconc" />
+    </changeSet>
+
+</databaseChangeLog>
+                        

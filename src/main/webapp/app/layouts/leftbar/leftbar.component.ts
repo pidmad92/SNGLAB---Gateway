@@ -10,6 +10,9 @@ import { VERSION, DEBUG_INFO_ENABLED } from '../../app.constants';
 @Component({
     selector: 'jhi-leftbar',
     templateUrl: './leftbar.component.html',
+    styleUrls: [
+        'leftbar.scss'
+    ]
 })
 export class LeftbarComponent implements OnInit {
 
