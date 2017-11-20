@@ -649,7 +649,19 @@
                     <li>
                         <a class="dropdown-item" [routerLink]="['/defensa/registro-expediente' , { outlets: { wizard: ['datos-pase'] } }]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.entities.expediente">Registro - Expediente</span>
+                            <span>Registro - Expediente</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" [routerLink]="['/defensa/envio-notificacion' , { outlets: { wizard: ['seleccion-expediente'] } }]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span>Envio - Notificacion</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="defensa/consulta-expediente" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span>Consulta de Expediente</span>
                         </a>
                     </li>
                     <li>

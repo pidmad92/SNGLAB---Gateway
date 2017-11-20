@@ -85,31 +85,31 @@
                                 </p-footer>
                             </p-dataTable>
                             <p-dialog header="Dirección:" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
-                                    <div class="ui-grid ui-grid-responsive ui-fluid">
-                                        <div class="ui-grid-row">
-                                            <div class="ui-grid-col-4"><label for="vin">Departamento</label></div>
-                                            <div class="ui-grid-col-8"><p-dropdown [options]="departamentos"></p-dropdown></div>
-                                        </div>
-                                        <div class="ui-grid-row">
-                                            <div class="ui-grid-col-4"><label for="year">Provincia</label></div>
-                                            <div class="ui-grid-col-8"><input pInputText id="provincia" /></div>
-                                        </div>
-                                        <div class="ui-grid-row">
-                                                <div class="ui-grid-col-4"><label for="year">Distrito</label></div>
-                                                <div class="ui-grid-col-8"><input pInputText id="provincia" /></div>
-                                        </div>
-                                        <div class="ui-grid-row">
-                                                <div class="ui-grid-col-4"><label for="year">Dirección</label></div>
-                                                <div class="ui-grid-col-8"><input pInputText id="provincia" /></div>
-                                        </div>
+                                <div class="ui-grid ui-grid-responsive ui-fluid">
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-4"><label for="vin">Departamento</label></div>
+                                        <div class="ui-grid-col-8"><p-dropdown [options]="departamentos"></p-dropdown></div>
                                     </div>
-                                    <p-footer>
-                                        <div class="ui-dialog-buttonpane ui-helper-clearfix">
-                                            <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
-                                            <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
-                                        </div>
-                                    </p-footer>
-                                </p-dialog>
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-4"><label for="year">Provincia</label></div>
+                                        <div class="ui-grid-col-8"><input pInputText id="provincia" /></div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                            <div class="ui-grid-col-4"><label for="year">Distrito</label></div>
+                                            <div class="ui-grid-col-8"><input pInputText id="provincia" /></div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                            <div class="ui-grid-col-4"><label for="year">Dirección</label></div>
+                                            <div class="ui-grid-col-8"><input pInputText id="provincia" /></div>
+                                    </div>
+                                </div>
+                                <p-footer>
+                                    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                                        <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+                                        <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+                                    </div>
+                                </p-footer>
+                            </p-dialog>
                         </div>
                     </div>
                 </form>

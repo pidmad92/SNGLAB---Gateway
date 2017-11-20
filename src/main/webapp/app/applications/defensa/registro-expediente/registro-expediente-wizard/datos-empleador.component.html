@@ -1,1 +1,150 @@
-Empleador
+<div class="row">
+    <div class="col">
+        <div class="card card-panel">
+            <div class="card-header d-sm-flex justify-content-between">
+                <h5>Registro de Expediente<small class="ml-3">Datos del Trabajador</small></h5>
+                <h5 class="mb-0"><small>Paso 3 de 5</small></h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-row">
+                        <div class="col-lg-5">
+                            <div class="form-group row">
+                                <label for="inpTipo" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo de documentos</label>
+                                <div class="col-sm-7">
+                                    <p-dropdown name="tipoDocumento" [options]="tipoDocumento" [(ngModel)]="selectedTDocumento" placeholder="Seleccione Tipo de Documento"></p-dropdown>
+                                    <!-- <select class="form-control form-control-sm" [(ngModel)]="tipoDocumento" id="inpTipo">
+                                        <option>RUC</option>
+                                        <option>DNI</option>
+                                    </select> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group row">
+                            <label for="inpNumero" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Número</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control form-control-sm" id="inpNumero" placeholder="">
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group row">
+                            <div class="col-sm-9">
+                                <a href="#" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#regLaborales"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form>
+                    <div *ngIf="selectedTDocumento=='2'" class="row">
+                        <div class="col-md-7">
+                            <div class="row d-flex justify-content-between">
+                            <div class="col-md-5 mb-2">
+                                <label for="inpAP" class="col-form-label col-form-label-sm">Apellido Paterno:</label>
+                                <input type="text" class="form-control form-control-sm" id="inpAP" placeholder="" value="Maldonado">
+                            </div>
+                            <div class="col-md-5 mb-2">
+                                <label for="inpAM" class="col-form-label col-form-label-sm">Apellido Materno:</label>
+                                <input type="text" class="form-control form-control-sm" id="inpAM" placeholder="" value="Diaz">
+                            </div>
+                            </div>  
+                        </div>
+                        <div class="col-md-5">
+                            <label for="inpN" class="col-form-label col-form-label-sm">Nombres:</label>
+                            <input type="text" class="form-control form-control-sm" id="inpN" placeholder="" value="Pierre David">
+                        </div>
+                    </div>
+                    <div *ngIf="selectedTDocumento=='2'" class="row">
+                        <div class="col-md-7">
+                            <div class="row d-flex justify-content-between">
+                            <div class="col-md-5 mb-2">
+                                <label for="inpFec" class="col-form-label col-form-label-sm">Fecha de Nacimiento:</label>
+                                <input type="text" class="form-control form-control-sm" id="inpFec" placeholder="" value="Maldonado">
+                            </div>
+                            <div class="col-md-5 mb-2">
+                                <label for="selectSexo" class="col-form-label col-form-label-sm">Sexo:</label>
+                                <select class="form-control form-control-sm" id="selectSexo">
+                                <option>Masculino</option>
+                                <option>Femenino</option>
+                                </select>
+                            </div>
+                            </div>  
+                        </div>
+                        <div class="col-md-5">
+                            <div class="row">
+                            <div class="col-md-6">
+                                <label for="inpTele" class="col-form-label col-form-label-sm">Telefono:</label>
+                                <input type="text" class="form-control form-control-sm" id="inpTele" placeholder="" value="123456789">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inpCel" class="col-form-label col-form-label-sm">Celular:</label>
+                                <input type="text" class="form-control form-control-sm" id="inpCel" placeholder="" value="987654321">
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="selectedTDocumento=='1'" class="row">
+                        <div class="col-md-7 mb-2">
+                            <label for="inpFec" class="col-form-label col-form-label-sm">Razón social:</label>
+                            <input type="text" class="form-control form-control-sm" id="inpFec" placeholder="" value="MINIST DE TRABAJO Y PROMOCIÓN DEL EMPLEO">  
+                        </div>
+                        <div class="col-md-5 mb-2">
+                            <div class="row">
+                            <div class="col-md-6">
+                                <label for="inpTele" class="col-form-label col-form-label-sm">Telefono:</label>
+                                <input type="text" class="form-control form-control-sm" id="inpTele" placeholder="" value="123456789">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inpCel" class="col-form-label col-form-label-sm">Celular:</label>
+                                <input type="text" class="form-control form-control-sm" id="inpCel" placeholder="" value="987654321">
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-12">
+                            <p-dataTable [value]="direcciones" dataKey="codPase">
+                                <p-header>Direcciones</p-header>
+                                <p-column field="departamento" header="Departamento"></p-column>
+                                <p-column field="provincia" header="Provincia"></p-column>
+                                <p-column field="distrito" header="Distrito"></p-column>
+                                <p-column field="direccion" header="Dirección"></p-column>
+                                <p-footer><div class="ui-helper-clearfix" style="width:100%">
+                                    <button type="button" class="btn btn-sm btn-primary" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Añadir Dirección"></button></div>
+                                </p-footer>
+                            </p-dataTable>
+                            <p-dialog header="Dirección:" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+                                <div class="ui-grid ui-grid-responsive ui-fluid">
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-4"><label for="vin">Departamento</label></div>
+                                        <div class="ui-grid-col-8"><p-dropdown [options]="departamentos"></p-dropdown></div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                        <div class="ui-grid-col-4"><label for="year">Provincia</label></div>
+                                        <div class="ui-grid-col-8"><input pInputText id="provincia" /></div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                            <div class="ui-grid-col-4"><label for="year">Distrito</label></div>
+                                            <div class="ui-grid-col-8"><input pInputText id="provincia" /></div>
+                                    </div>
+                                    <div class="ui-grid-row">
+                                            <div class="ui-grid-col-4"><label for="year">Dirección</label></div>
+                                            <div class="ui-grid-col-8"><input pInputText id="provincia" /></div>
+                                    </div>
+                                </div>
+                                <p-footer>
+                                    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                                        <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+                                        <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+                                    </div>
+                                </p-footer>
+                            </p-dialog>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

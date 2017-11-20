@@ -1,0 +1,57 @@
+SELECCION EXPEDIENTE
+<div class="row">
+    <div class="col">
+        <div class="card card-panel">
+            <div class="card-header d-sm-flex justify-content-between">
+                <h5>Envió de Notificaciones<small class="ml-3">Selección</small></h5>
+                <h5 class="mb-0"><small>Paso 1 de 3</small></h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-row">
+                        <div class="col-lg-5">
+                            <div class="form-group row">
+                                <label for="inpTipo" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo de documentos</label>
+                                <div class="col-sm-7">
+                                    <p-dropdown name="tipoDocumento" [options]="tipoDocumento" [(ngModel)]="selectedTDocumento" placeholder="Seleccione Tipo de Documento"></p-dropdown>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group row">
+                            <label for="inpNumero" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Número</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control form-control-sm" id="inpNumero" placeholder="">
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group row">
+                            <div class="col-sm-9">
+                                <a href="#" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#regLaborales"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form>
+                    <div class="row mt-2">
+                        <div class="col-md-12">
+                            <p-dataTable [value]="expedientes" dataKey="codigo">
+                                <p-header>Expedientes</p-header>
+                                <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+                                <p-column field="codigo" header="Cod. Expediente"></p-column>
+                                <p-column field="fecha" header="Fecha de Expediente"></p-column>
+                                <p-column field="docempleador" header="RUC Empleador"></p-column>
+                                <p-column field="nomempleador" header="Razón Social Empleador"></p-column>
+                                <p-column field="doctrabajador" header="Num.Doc. Trabajador"></p-column>
+                                <p-column field="nomtrabajador" header="Apellidos y Nombres Emp."></p-column>
+                                <p-column field="ofderivacion" header="Of. Derivación"></p-column>
+                            </p-dataTable>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
