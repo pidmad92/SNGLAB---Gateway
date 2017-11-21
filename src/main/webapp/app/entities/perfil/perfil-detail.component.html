@@ -1,37 +1,25 @@
 
 <div *ngIf="perfil">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.perfil.detail.title">Perfil</span> {{perfil.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.perfil.detail.title">Perfil</span></h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.perfil.varNomPerfil">Var Nom Perfil</span></dt>
+        <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.perfil.varNomPerfil">Var Nom Perfil</span><span>:</span></dt>
         <dd>
             <span>{{perfil.varNomPerfil}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.perfil.varDescPerfil">Var Desc Perfil</span></dt>
+        <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.perfil.varDescPerfil">Var Desc Perfil</span><span>:</span></dt>
         <dd>
             <span>{{perfil.varDescPerfil}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.perfil.numEstPerfil">Num Est Perfil</span></dt>
+        <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.perfil.numEstPerfil">Num Est Perfil</span><span>:</span></dt>
         <dd>
-            <span>{{perfil.numEstPerfil}}</span>
+            <span>{{perfil.numEstPerfil==1 ? 'Activo':'Inactivo'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.perfil.varUsuarioLog">Var Usuario Log</span></dt>
-        <dd>
-            <span>{{perfil.varUsuarioLog}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.perfil.datFechaLog">Dat Fecha Log</span></dt>
-        <dd>
-            <span>{{perfil.datFechaLog | date:'medium'}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.perfil.numEliminar">Num Eliminar</span></dt>
-        <dd>
-            <span>{{perfil.numEliminar}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.perfil.modulo">Modulo</span></dt>
+        <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.perfil.modulo">Modulo</span><span>:</span></dt>
         <dd>
             <div *ngIf="perfil.modulo">
-                <a [routerLink]="['/modulo', perfil.modulo?.id]">{{perfil.modulo?.id}}</a>
+                {{perfil.modulo?.varNomModulo}}
             </div>
         </dd>
     </dl>
@@ -43,7 +31,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/seguridad', { outlets: { popup: 'perfil/'+ perfil.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'perfil/'+ perfil.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

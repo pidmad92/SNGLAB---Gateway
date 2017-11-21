@@ -1,7 +1,7 @@
 <div>
     <h4 class="title my-3">
         <span jhiTranslate="gatewayApp.menu.home.title">Menus</span>
-        <button class="btn btn-primary float-right jh-create-entity create-menu" [routerLink]="['/seguridad', { outlets: { popup: ['menu-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-menu" [routerLink]="['/', { outlets: { popup: ['menu-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.menu.home.createLabel">
             Create new Menu
@@ -71,14 +71,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/seguridad', { outlets: { popup: 'menu/'+ menu.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'menu/'+ menu.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/seguridad', { outlets: { popup: 'menu/'+ menu.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'menu/'+ menu.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

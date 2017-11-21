@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { JhiDateUtils } from 'ng-jhipster';
 
 import { UsuPer } from './usu-per.model';
-import { ResponseWrapper, createRequestOption } from '../../shared';
+import { ResponseWrapper, createRequestOption, AuthServerProvider } from '../../shared';
 
 @Injectable()
 export class UsuPerService {
@@ -13,9 +13,12 @@ export class UsuPerService {
     private resourceUrl = '/seguridad/api/usu-pers';
     private resourceSearchUrl = '/seguridad/api/_search/usu-pers';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils, private authServerProvider: AuthServerProvider) { }
 
     create(usuPer: UsuPer): Observable<UsuPer> {
+        const token = this.authServerProvider.getToken();
+        usuPer.numEliminar = 1;
+        usuPer.varUsuarioLog = token.substring(token.length - 20);
         const copy = this.convert(usuPer);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();

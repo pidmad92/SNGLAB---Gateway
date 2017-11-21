@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { JhiDateUtils } from 'ng-jhipster';
 
 import { Grupo } from './grupo.model';
-import { ResponseWrapper, createRequestOption } from '../../shared';
+import { ResponseWrapper, createRequestOption, AuthServerProvider } from '../../shared';
 
 @Injectable()
 export class GrupoService {
@@ -13,9 +13,12 @@ export class GrupoService {
     private resourceUrl = '/seguridad/api/grupos';
     private resourceSearchUrl = '/seguridad/api/_search/grupos';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils, private authServerProvider: AuthServerProvider) { }
 
     create(grupo: Grupo): Observable<Grupo> {
+        const token = this.authServerProvider.getToken();
+        grupo.numEliminar = 1;
+        grupo.varUsuarioLog = token.substring(token.length - 20);
         const copy = this.convert(grupo);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
@@ -28,6 +31,15 @@ export class GrupoService {
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
+        });
+    }
+    updateLogic(grupo: Grupo): Observable<Grupo> {
+        grupo.numEliminar = 0;
+        const copy = this.convert(grupo);
+        return this.http.put(this.resourceUrl, copy).map((res: Response) => {
+            const jsonResponse = res.json();
+            this.convertItemFromServer(jsonResponse);
+            return jsonResponse;
         });
     }
 

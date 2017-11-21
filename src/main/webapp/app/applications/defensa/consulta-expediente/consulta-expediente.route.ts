@@ -4,7 +4,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@a
 import { UserRouteAccessService } from '../../../shared';
 import { JhiPaginationUtil } from 'ng-jhipster';
 
-import { ConsultaExpedienteComponent, ConsultaExpedienteEmpleadorComponent, ConsultaExpedienteTrabajadorComponent } from './';
+import { ConsultaExpedienteComponent, ConsultaExpedienteEmpleadorComponent, ConsultaExpedientePopupComponent } from './';
 
 export const consultaExpedienteRoute: Routes = [
     {
@@ -17,13 +17,13 @@ export const consultaExpedienteRoute: Routes = [
         canActivate: [UserRouteAccessService],
         children: [
             {
-                path: 'consulta-expediente-trabajador',
-                component: ConsultaExpedienteTrabajadorComponent,
+                path: 'expediente/:id',
+                component: ConsultaExpedientePopupComponent,
                 data: {
                     authorities: ['ROLE_USER'],
                     pageTitle: 'global.menu.entities.consultaExpediente'
                 },
-                outlet: 'wizard'
+                outlet: 'popupexp'
             },
             {
                 path: 'consulta-expediente-empleador',
@@ -34,6 +34,7 @@ export const consultaExpedienteRoute: Routes = [
                 },
                 outlet: 'wizard'
             }
+
         ]
     }
 

@@ -2,7 +2,13 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { GatewaySharedModule } from '../../../shared';
-import { ConsultaExpedienteEmpleadorComponent, ConsultaExpedienteTrabajadorComponent, ConsultaExpedienteComponent, consultaExpedienteRoute } from './';
+import {
+    ConsultaExpedientePopupService,
+    ConsultaExpedienteEmpleadorComponent,
+    ConsultaExpedienteDialogComponent,
+    ConsultaExpedienteComponent,
+    ConsultaExpedientePopupComponent,
+    consultaExpedienteRoute } from './';
 import { TabViewModule, DataTableModule } from 'primeng/primeng';
 
 const ENTITY_STATES = [
@@ -19,15 +25,16 @@ const ENTITY_STATES = [
     declarations: [
         ConsultaExpedienteComponent,
         ConsultaExpedienteEmpleadorComponent,
-        ConsultaExpedienteTrabajadorComponent,
+        ConsultaExpedientePopupComponent,
+        ConsultaExpedienteDialogComponent
     ],
     entryComponents: [
         ConsultaExpedienteComponent,
-        ConsultaExpedienteEmpleadorComponent,
-        ConsultaExpedienteTrabajadorComponent
+        ConsultaExpedientePopupComponent,
+        ConsultaExpedienteDialogComponent
     ],
     providers: [
-        // AtencionEmpleadorService,
+        ConsultaExpedientePopupService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

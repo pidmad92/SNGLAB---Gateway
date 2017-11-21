@@ -1,7 +1,7 @@
 <div>
     <h4 class="title my-3">
         <span jhiTranslate="gatewayApp.modulo.home.title">Modulos</span>
-        <button class="btn btn-primary float-right jh-create-entity create-modulo" [routerLink]="['/seguridad', { outlets: { popup: ['modulo-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-modulo" [routerLink]="['/', { outlets: { popup: ['modulo-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.modulo.home.createLabel">
             Create new Modulo
@@ -29,56 +29,44 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">Nro</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="varNomModulo"><span jhiTranslate="gatewayApp.modulo.varNomModulo">Var Nom Modulo</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="varDescModulo"><span jhiTranslate="gatewayApp.modulo.varDescModulo">Var Desc Modulo</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="numEstModulo"><span jhiTranslate="gatewayApp.modulo.numEstModulo">Num Est Modulo</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varUsuarioLog"><span jhiTranslate="gatewayApp.modulo.varUsuarioLog">Var Usuario Log</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="datFechaLog"><span jhiTranslate="gatewayApp.modulo.datFechaLog">Dat Fecha Log</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="numEliminar"><span jhiTranslate="gatewayApp.modulo.numEliminar">Num Eliminar</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="aplicacion.id"><span jhiTranslate="gatewayApp.modulo.aplicacion">Aplicacion</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let modulo of modulos ;trackBy: trackId">
-                <td><a [routerLink]="['../modulo', modulo.id ]">{{modulo.id}}</a></td>
-                <td>{{modulo.varNomModulo}}</td>
-                <td>{{modulo.varDescModulo}}</td>
-                <td>{{modulo.numEstModulo}}</td>
-                <td>{{modulo.varUsuarioLog}}</td>
-                <td>{{modulo.datFechaLog | date:'medium'}}</td>
-                <td>{{modulo.numEliminar}}</td>
-                <td>
-                    <div *ngIf="modulo.aplicacion">
-                        <a [routerLink]="['../aplicacion', modulo.aplicacion?.id ]" >{{modulo.aplicacion?.id}}</a>
-                    </div>
-                </td>
-                <td class="text-right">
-                    <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                [routerLink]="['../modulo', modulo.id ]"
-                                class="btn btn-info btn-sm">
-                            <span class="fa fa-eye"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/seguridad', { outlets: { popup: 'modulo/'+ modulo.id + '/edit'} }]"
-                                replaceUrl="true"
-                                class="btn btn-primary btn-sm">
-                            <span class="fa fa-pencil"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/seguridad', { outlets: { popup: 'modulo/'+ modulo.id + '/delete'} }]"
-                                replaceUrl="true"
-                                class="btn btn-danger btn-sm">
-                            <span class="fa fa-remove"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                        </button>
-                    </div>
-                </td>
-            </tr>
+                <tr *ngFor="let modulo of modulos ;trackBy: trackId;let i = index;">
+                    <td>{{i+1}}</td>
+                    <td>{{modulo.varNomModulo}}</td>
+                    <td>{{modulo.varDescModulo}}</td>
+                    <td>{{ modulo.numEstModulo==1 ? 'Activo':'Inactivo'}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    [routerLink]="['../modulo', modulo.id ]"
+                                    class="btn btn-info btn-sm">
+                                <span class="fa fa-eye"></span>
+                                <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                            </button>
+                            <button type="submit"
+                                    [routerLink]="['/', { outlets: { popup: 'modulo/'+ modulo.id + '/edit'} }]"
+                                    replaceUrl="true"
+                                    class="btn btn-primary btn-sm">
+                                <span class="fa fa-pencil"></span>
+                                <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+                            <button type="submit"
+                                    [routerLink]="['/', { outlets: { popup: 'modulo/'+ modulo.id + '/delete'} }]"
+                                    replaceUrl="true"
+                                    class="btn btn-danger btn-sm">
+                                <span class="fa fa-remove"></span>
+                                <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>

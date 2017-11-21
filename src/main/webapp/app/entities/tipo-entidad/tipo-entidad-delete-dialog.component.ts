@@ -27,8 +27,9 @@ export class TipoEntidadDeleteDialogComponent {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete(id: number) {
-        this.tipoEntidadService.delete(id).subscribe((response) => {
+    confirmDelete(tipoEntidad) {
+        tipoEntidad.numEliminar = 0;
+        this.tipoEntidadService.update(tipoEntidad).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'tipoEntidadListModification',
                 content: 'Deleted an tipoEntidad'

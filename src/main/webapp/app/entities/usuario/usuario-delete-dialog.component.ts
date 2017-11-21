@@ -27,8 +27,9 @@ export class UsuarioDeleteDialogComponent {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete(id: number) {
-        this.usuarioService.delete(id).subscribe((response) => {
+    confirmDelete(usuario) {
+        usuario.numEliminar = 0;
+        this.usuarioService.update(usuario).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'usuarioListModification',
                 content: 'Deleted an usuario'

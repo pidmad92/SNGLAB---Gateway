@@ -10,7 +10,7 @@
         </div>
       </div>
     </div>
-    <div class="my-2">
+    <div class="my-2" *ngIf="aplicacion == 'consultas'">
         <h3>Consultas Trabajador</h3>
         <ul class="level-one p-0" id="accordion">
           <li routerLinkActive="active">
@@ -27,7 +27,7 @@
             </a>
           </li>
         </ul>
-      </div>
+    </div>
     <div class="my-2" *ngIf="aplicacion == 'seguridad'">
       <!-- <h3 class="pl-3 text-uppercase h3coll">MANTENIMIENTO DE MÓDULO DE SEGURIDAD</h3> -->
       <ul class="level-one mt-2 p-0" id="accordion" >
@@ -37,37 +37,37 @@
           </a>
         </li>
         <li routerLinkActive="active">
-          <a routerLink="seguridad/aplicacion"  class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+          <a routerLink="aplicacion"  class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
             <i class="fa fa-institution px-2" aria-hidden="true"></i> <span>Gestión de Aplicaciones</span>
           </a>
         </li>
         <li routerLinkActive="active">
-          <a routerLink="seguridad/modulo"  class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+          <a routerLink="modulo"  class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
             <i class="fa fa-server px-2" aria-hidden="true"></i> <span>Gestión de Modulos</span>
           </a>
         </li>
         <li routerLinkActive="active" >
-          <a routerLink="seguridad/entidad" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+          <a routerLink="entidad" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
             <i class="fa fa-building px-2" aria-hidden="true"></i> <span>Gestión de Entidades</span>
           </a>
         </li>
         <li routerLinkActive="active">
-            <a routerLink="seguridad/usuario"  class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <a routerLink="usuario"  class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
               <i class="fa fa-user px-2" aria-hidden="true"></i> <span>Gestión de Usuarios</span>
             </a>
         </li>
         <li routerLinkActive="active" >
-            <a routerLink="seguridad/perfil" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <a routerLink="perfil" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
               <i class="fa fa-user-circle px-2" aria-hidden="true"></i> <span>Gestión de Perfil</span>
             </a>
         </li>
         <li routerLinkActive="active" >
-            <a routerLink="seguridad/menu" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <a routerLink="menu" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
               <i class="fa fa-shield px-2" aria-hidden="true"></i> <span>Gestión de Menu</span>
             </a>
         </li>
         <li routerLinkActive="active"  >
-            <a routerLink="seguridad/grupo" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+            <a routerLink="grupo" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
               <i class="fa fa-users px-2" aria-hidden="true"></i> <span>Gestión de Grupo</span>
             </a>
         </li>
@@ -109,7 +109,7 @@
     </div>
 
     <!-- JROMERO SINDICATOS -->
-    <div class="my-2">
+    <div class="my-2" *ngIf="aplicacion == 'sindicatos'">
         <ul class="level-one mt-2 p-0" id="accordion">
             <li routerLinkActive="active">
                 <ngb-accordion [closeOthers]="true" activeIds="static-1">

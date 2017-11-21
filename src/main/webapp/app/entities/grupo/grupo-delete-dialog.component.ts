@@ -27,8 +27,9 @@ export class GrupoDeleteDialogComponent {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete(id: number) {
-        this.grupoService.delete(id).subscribe((response) => {
+    confirmDelete(grupo) {
+        grupo.numEliminar = 0;
+        this.grupoService.update(grupo).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'grupoListModification',
                 content: 'Deleted an grupo'

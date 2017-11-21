@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { JhiDateUtils } from 'ng-jhipster';
 
 import { Modulo } from './modulo.model';
-import { ResponseWrapper, createRequestOption } from '../../shared';
+import { ResponseWrapper, createRequestOption, AuthServerProvider } from '../../shared';
 
 @Injectable()
 export class ModuloService {
@@ -13,9 +13,12 @@ export class ModuloService {
     private resourceUrl = '/seguridad/api/modulos';
     private resourceSearchUrl = '/seguridad/api/_search/modulos';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils, private authServerProvider: AuthServerProvider) { }
 
     create(modulo: Modulo): Observable<Modulo> {
+        const token = this.authServerProvider.getToken();
+        modulo.numEliminar = 1;
+        modulo.varUsuarioLog = token.substring(token.length - 20);
         const copy = this.convert(modulo);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();

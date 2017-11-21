@@ -27,8 +27,9 @@ export class PerfilDeleteDialogComponent {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete(id: number) {
-        this.perfilService.delete(id).subscribe((response) => {
+    confirmDelete(perfil) {
+        perfil.numEliminar = 0;
+        this.perfilService.update(perfil).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'perfilListModification',
                 content: 'Deleted an perfil'

@@ -5,17 +5,20 @@ import { Observable } from 'rxjs/Rx';
 import { JhiDateUtils } from 'ng-jhipster';
 
 import { Entidad } from './entidad.model';
-import { ResponseWrapper, createRequestOption } from '../../shared';
+import { ResponseWrapper, createRequestOption, AuthServerProvider } from '../../shared';
 
 @Injectable()
 export class EntidadService {
 
-    private resourceUrl = '/seguridad/api/entidads';
-    private resourceSearchUrl = '/seguridad/api/_search/entidads';
+    private resourceUrl = '/seguridad/api/entidades';
+    private resourceSearchUrl = '/seguridad/api/_search/entidades';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils, private authServerProvider: AuthServerProvider) { }
 
     create(entidad: Entidad): Observable<Entidad> {
+        const token = this.authServerProvider.getToken();
+        entidad.numEliminar = 1;
+        entidad.varUsuarioLog = token.substring(token.length - 20);
         const copy = this.convert(entidad);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
@@ -28,6 +31,15 @@ export class EntidadService {
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
+        });
+    }
+    updateLogic(entidad: Entidad): Observable<Entidad> {
+        entidad.numEliminar = 0;
+        const copy = this.convert(entidad);
+        return this.http.put(this.resourceUrl, copy).map((res: Response) => {
+            const jsonResponse = res.json();
+            this.convertItemFromServer(jsonResponse);
+            return jsonResponse;
         });
     }
 

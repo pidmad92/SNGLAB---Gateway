@@ -27,8 +27,9 @@ export class PermisoDeleteDialogComponent {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete(id: number) {
-        this.permisoService.delete(id).subscribe((response) => {
+    confirmDelete(permiso) {
+        permiso.numEliminar = 0;
+        this.permisoService.update(permiso).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'permisoListModification',
                 content: 'Deleted an permiso'

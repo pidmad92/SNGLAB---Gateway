@@ -27,8 +27,9 @@ export class UsuarioGrupoDeleteDialogComponent {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete(id: number) {
-        this.usuarioGrupoService.delete(id).subscribe((response) => {
+    confirmDelete(usuarioGrupo) {
+        usuarioGrupo.numEliminar = 0;
+        this.usuarioGrupoService.update(usuarioGrupo).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'usuarioGrupoListModification',
                 content: 'Deleted an usuarioGrupo'

@@ -1,7 +1,7 @@
 <div>
     <h4 class="title my-3">
         <span jhiTranslate="gatewayApp.usuarioHorario.home.title">Usuario Horarios</span>
-        <button class="btn btn-primary float-right jh-create-entity create-usuario-horario" [routerLink]="['/seguridad', { outlets: { popup: ['usuario-horario-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-usuario-horario" [routerLink]="['/', { outlets: { popup: ['usuario-horario-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.usuarioHorario.home.createLabel">
             Create new Usuario Horario
@@ -63,14 +63,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/seguridad', { outlets: { popup: 'usuario-horario/'+ usuarioHorario.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'usuario-horario/'+ usuarioHorario.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/seguridad', { outlets: { popup: 'usuario-horario/'+ usuarioHorario.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'usuario-horario/'+ usuarioHorario.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

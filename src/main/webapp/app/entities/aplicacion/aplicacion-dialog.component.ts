@@ -32,7 +32,7 @@ export class AplicacionDialogComponent implements OnInit {
     }
 
     clear() {
-        this.activeModal.dismiss('cancel');
+        this.activeModal.close('cancel');
     }
 
     save() {

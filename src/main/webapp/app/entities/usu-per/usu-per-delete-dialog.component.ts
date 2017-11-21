@@ -27,8 +27,9 @@ export class UsuPerDeleteDialogComponent {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete(id: number) {
-        this.usuPerService.delete(id).subscribe((response) => {
+    confirmDelete(usuPer) {
+        usuPer.numEliminar = 0;
+        this.usuPerService.update(usuPer).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'usuPerListModification',
                 content: 'Deleted an usuPer'
