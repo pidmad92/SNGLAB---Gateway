@@ -27,8 +27,9 @@ export class MenuDeleteDialogComponent {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete(id: number) {
-        this.menuService.delete(id).subscribe((response) => {
+    confirmDelete(menu) {
+        menu.numEliminar = 0;
+        this.menuService.update(menu).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'menuListModification',
                 content: 'Deleted an menu'

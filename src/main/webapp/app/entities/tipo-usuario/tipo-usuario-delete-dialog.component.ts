@@ -27,8 +27,9 @@ export class TipoUsuarioDeleteDialogComponent {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete(id: number) {
-        this.tipoUsuarioService.delete(id).subscribe((response) => {
+    confirmDelete(tipoUsuario) {
+        tipoUsuario.numEliminar = 0;
+        this.tipoUsuarioService.update(tipoUsuario).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'tipoUsuarioListModification',
                 content: 'Deleted an tipoUsuario'

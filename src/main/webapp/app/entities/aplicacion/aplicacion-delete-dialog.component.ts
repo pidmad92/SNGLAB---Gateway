@@ -27,8 +27,9 @@ export class AplicacionDeleteDialogComponent {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete(id: number) {
-        this.aplicacionService.delete(id).subscribe((response) => {
+    confirmDelete(aplicacion) {
+        aplicacion.numEliminar = 0;
+        this.aplicacionService.update(aplicacion).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'aplicacionListModification',
                 content: 'Deleted an aplicacion'

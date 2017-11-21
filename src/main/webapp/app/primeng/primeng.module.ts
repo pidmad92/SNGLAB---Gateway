@@ -55,7 +55,6 @@ import { GatewayScheduleDemoModule } from './data/schedule/scheduledemo.module';
 import { GatewayTreeDemoModule } from './data/tree/treedemo.module';
 import { GatewayTreeTableDemoModule } from './data/treetable/treetabledemo.module';
 import { GatewayPaginatorDemoModule } from './data/paginator/paginatordemo.module';
-import { GatewayGmapDemoModule } from './data/gmap/gmapdemo.module';
 import { GatewayOrgChartDemoModule } from './data/orgchart/orgchartdemo.module';
 import { GatewayCarouselDemoModule } from './data/carousel/carouseldemo.module';
 
@@ -176,7 +175,6 @@ import { GatewayValidationDemoModule } from './misc/validation/validationdemo.mo
         GatewayTreeTableDemoModule,
         GatewayPaginatorDemoModule,
         GatewayOrgChartDemoModule,
-        GatewayGmapDemoModule,
         GatewayCarouselDemoModule
 
     ],

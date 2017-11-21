@@ -27,8 +27,9 @@ export class ModuloDeleteDialogComponent {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete(id: number) {
-        this.moduloService.delete(id).subscribe((response) => {
+    confirmDelete(modulo) {
+        modulo.numEliminar = 0;
+        this.moduloService.update(modulo).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'moduloListModification',
                 content: 'Deleted an modulo'

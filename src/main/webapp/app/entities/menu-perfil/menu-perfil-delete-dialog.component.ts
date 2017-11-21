@@ -27,8 +27,9 @@ export class MenuPerfilDeleteDialogComponent {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete(id: number) {
-        this.menuPerfilService.delete(id).subscribe((response) => {
+    confirmDelete(menuPerfil) {
+        menuPerfil.numEliminar = 0;
+        this.menuPerfilService.update(menuPerfil).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'menuPerfilListModification',
                 content: 'Deleted an menuPerfil'

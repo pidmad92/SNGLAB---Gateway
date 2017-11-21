@@ -5,17 +5,20 @@ import { Observable } from 'rxjs/Rx';
 import { JhiDateUtils } from 'ng-jhipster';
 
 import { Perfil } from './perfil.model';
-import { ResponseWrapper, createRequestOption } from '../../shared';
+import { ResponseWrapper, createRequestOption, AuthServerProvider } from '../../shared';
 
 @Injectable()
 export class PerfilService {
 
-    private resourceUrl = '/seguridad/api/perfils';
-    private resourceSearchUrl = '/seguridad/api/_search/perfils';
+    private resourceUrl = '/seguridad/api/perfiles';
+    private resourceSearchUrl = '/seguridad/api/_search/perfiles';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils, private authServerProvider: AuthServerProvider) { }
 
     create(perfil: Perfil): Observable<Perfil> {
+        const token = this.authServerProvider.getToken();
+        perfil.numEliminar = 1;
+        perfil.varUsuarioLog = token.substring(token.length - 20);
         const copy = this.convert(perfil);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();

@@ -1,7 +1,7 @@
 <div>
     <h4 class="title my-3">
         <span jhiTranslate="gatewayApp.usuario.home.title">Usuarios</span>
-        <button class="btn btn-primary float-right jh-create-entity create-usuario" [routerLink]="['/seguridad', { outlets: { popup: ['usuario-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-usuario" [routerLink]="['/', { outlets: { popup: ['usuario-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.usuario.home.createLabel">
             Create new Usuario
@@ -85,14 +85,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/seguridad', { outlets: { popup: 'usuario/'+ usuario.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'usuario/'+ usuario.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/seguridad', { outlets: { popup: 'usuario/'+ usuario.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'usuario/'+ usuario.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>
