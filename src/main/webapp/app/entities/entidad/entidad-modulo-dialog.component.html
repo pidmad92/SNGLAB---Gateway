@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="myEntidadLabel" jhiTranslate="snglabApp.entidad.home.createLabelModule">Create or edit a entidad</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="clear()">&times;</button>
+</div>
+<div class="modal-body">
+    <jhi-alert-error></jhi-alert-error>
+    <div class="table-responsive" *ngIf="moduloEntidades">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><span jhiTranslate="global.field.id">Nro</span> </th>
+                    <th><span jhiTranslate="snglabApp.modulo.varNomModulo">varNomModulo</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let modulo of moduloEntidades; let i = index;">
+                    <td>{{i+1}}</td>
+                    <td>{{modulo[1]}}</td>
+                    <td class="text-right">
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label><input [checked]="modulo[2]" (change)="$event.target.checked? saveModuloEntidad(modulo[0]) : deleteModuloEntidad(modulo[2])"  type="checkbox"></label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal-footer">
+    <button (click)="clear()" class="btn btn-success">
+        <span class="fa fa-save12"></span>&nbsp;<span >Aceptar</span>
+    </button>
+</div>

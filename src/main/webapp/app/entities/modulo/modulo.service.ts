@@ -40,6 +40,10 @@ export class ModuloService {
             return this.convertItemFromServer(jsonResponse);
         });
     }
+    findByEntidad(id: number): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceUrl}/tipo/${id}`)
+            .map((res: Response) => this.convertResponse(res));
+    }
 
     query(req?: any): Observable<ResponseWrapper> {
         const options = createRequestOption(req);

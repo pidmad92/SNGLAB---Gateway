@@ -9,6 +9,11 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Entidad } from './entidad.model';
 import { EntidadPopupService } from './entidad-popup.service';
 import { EntidadService } from './entidad.service';
+import { Departamento } from '../../shared/ubigeo/departamento.model';
+import { DepartamentoService   } from '../../shared/ubigeo/departamento.service';
+import { Provincia } from '../../shared/ubigeo/provincia.model';
+import { ProvinciaService   } from '../../shared/ubigeo/provincia.service';
+import { DistritoService   } from '../../shared/ubigeo/distrito.service';
 import { TipoEntidad, TipoEntidadService } from '../tipo-entidad';
 import { ResponseWrapper } from '../../shared';
 
@@ -19,14 +24,20 @@ import { ResponseWrapper } from '../../shared';
 export class EntidadDialogComponent implements OnInit {
 
     entidad: Entidad;
+    departamentos: ResponseWrapper;
+    provincias: ResponseWrapper;
+    distritos: ResponseWrapper
     isSaving: boolean;
 
-    tipoentidads: TipoEntidad[];
+    tipoentidades: TipoEntidad[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private entidadService: EntidadService,
+        private departamentoService: DepartamentoService,
+        private provinciaService: ProvinciaService,
+        private distritoService: DistritoService,
         private tipoEntidadService: TipoEntidadService,
         private eventManager: JhiEventManager
     ) {
@@ -35,7 +46,25 @@ export class EntidadDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.tipoEntidadService.query()
-            .subscribe((res: ResponseWrapper) => { this.tipoentidads = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+            .subscribe((res: ResponseWrapper) => { this.tipoentidades = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+    }
+    loadDepartamentos() {
+        this.departamentoService.query().subscribe((departamentos) => {
+            this.departamentos = departamentos.json;
+        });
+    }
+    loadProvincias(init: boolean, idDept) {
+        this.provinciaService.find(idDept).subscribe((provincias) => {
+            this.provincias = provincias.json;
+        });
+        if (init) {
+            this.loadDistritos(0);
+        }
+    }
+    loadDistritos(idProv) {
+        this.distritoService.find(this.entidad.numCodDepartamento, idProv).subscribe((distritos) => {
+            this.distritos = distritos.json;
+        });
     }
 
     clear() {

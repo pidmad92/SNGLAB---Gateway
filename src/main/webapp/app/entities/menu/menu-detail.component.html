@@ -20,28 +20,16 @@
         <dd>
             <span>{{menu.numOpcion}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.menu.varUsuarioLog">Var Usuario Log</span></dt>
-        <dd>
-            <span>{{menu.varUsuarioLog}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.menu.datFechaLog">Dat Fecha Log</span></dt>
-        <dd>
-            <span>{{menu.datFechaLog | date:'medium'}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.menu.numEliminar">Num Eliminar</span></dt>
-        <dd>
-            <span>{{menu.numEliminar}}</span>
-        </dd>
         <dt><span jhiTranslate="gatewayApp.menu.modulo">Modulo</span></dt>
         <dd>
             <div *ngIf="menu.modulo">
-                <a [routerLink]="['/modulo', menu.modulo?.id]">{{menu.modulo?.id}}</a>
+                <span>{{menu.modulo?.varNomModulo}}</span>
             </div>
         </dd>
         <dt><span jhiTranslate="gatewayApp.menu.menu">Menu</span></dt>
         <dd>
             <div *ngIf="menu.menu">
-                <a [routerLink]="['/menu', menu.menu?.id]">{{menu.menu?.id}}</a>
+                <span>{{menu.menu?.varNomMenu}}</span>
             </div>
         </dd>
     </dl>

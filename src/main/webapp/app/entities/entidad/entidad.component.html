@@ -44,7 +44,7 @@
                     <td>{{entidad.varDirecEntidad}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
-                        <button type="submit" [routerLink]="['/seguridad', { outlets: { popup: 'entidad/'+ entidad.id + '/modulos'} }]" replaceUrl="true" class="btn btn-warning btn-sm">
+                        <button type="submit" [routerLink]="['/', { outlets: { popup: 'entidad/'+ entidad.id + '/modulos'} }]" replaceUrl="true" class="btn btn-warning btn-sm">
                             <span class="fa fa-plus"></span>
                             <span class="hidden-md-down">Modulos</span>
                         </button>

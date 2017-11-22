@@ -40,6 +40,11 @@ export class UsuPerService {
             return this.convertItemFromServer(jsonResponse);
         });
     }
+    findByIdUsuario(id: number): Observable<ResponseWrapper> {
+        console.log('estamos donde se envia la URL')
+        return this.http.get(`${this.resourceUrl}/usuario/${id}`)
+            .map((res: Response) => this.convertResponse(res));
+    }
 
     query(req?: any): Observable<ResponseWrapper> {
         const options = createRequestOption(req);

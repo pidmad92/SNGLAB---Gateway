@@ -29,78 +29,67 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varNomUsuario"><span jhiTranslate="gatewayApp.usuario.varNomUsuario">Var Nom Usuario</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varLoginUsuario"><span jhiTranslate="gatewayApp.usuario.varLoginUsuario">Var Login Usuario</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varInicialUsuario"><span jhiTranslate="gatewayApp.usuario.varInicialUsuario">Var Inicial Usuario</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="numEstUsuario"><span jhiTranslate="gatewayApp.usuario.numEstUsuario">Num Est Usuario</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varMotivUsuario"><span jhiTranslate="gatewayApp.usuario.varMotivUsuario">Var Motiv Usuario</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varDocContacto"><span jhiTranslate="gatewayApp.usuario.varDocContacto">Var Doc Contacto</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varNomContacto"><span jhiTranslate="gatewayApp.usuario.varNomContacto">Var Nom Contacto</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varRefContacto"><span jhiTranslate="gatewayApp.usuario.varRefContacto">Var Ref Contacto</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varUsuarioLog"><span jhiTranslate="gatewayApp.usuario.varUsuarioLog">Var Usuario Log</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="datFechaLog"><span jhiTranslate="gatewayApp.usuario.datFechaLog">Dat Fecha Log</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="numEliminar"><span jhiTranslate="gatewayApp.usuario.numEliminar">Num Eliminar</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varDireccionIp"><span jhiTranslate="gatewayApp.usuario.varDireccionIp">Var Direccion Ip</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varMacAddress"><span jhiTranslate="gatewayApp.usuario.varMacAddress">Var Mac Address</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varNombrePc"><span jhiTranslate="gatewayApp.usuario.varNombrePc">Var Nombre Pc</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varCodSeguridad"><span jhiTranslate="gatewayApp.usuario.varCodSeguridad">Var Cod Seguridad</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="datFecTermino"><span jhiTranslate="gatewayApp.usuario.datFecTermino">Dat Fec Termino</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varPtoControl"><span jhiTranslate="gatewayApp.usuario.varPtoControl">Var Pto Control</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="tipoUsuario.id"><span jhiTranslate="gatewayApp.usuario.tipoUsuario">Tipo Usuario</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="id"><span jhiTranslate="global.field.id">Nro</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="varNomUsuario"><span jhiTranslate="gatewayApp.usuario.varNomUsuario">Var Nom Usuario</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="varLoginUsuario"><span jhiTranslate="gatewayApp.usuario.varLoginUsuario">Var Login Usuario</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="varInicialUsuario"><span jhiTranslate="gatewayApp.usuario.varInicialUsuario">Var Inicial Usuario</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="numEstUsuario"><span jhiTranslate="gatewayApp.usuario.numEstUsuario">Num Est Usuario</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let usuario of usuarios ;trackBy: trackId">
-                <td><a [routerLink]="['../usuario', usuario.id ]">{{usuario.id}}</a></td>
-                <td>{{usuario.varNomUsuario}}</td>
-                <td>{{usuario.varLoginUsuario}}</td>
-                <td>{{usuario.varInicialUsuario}}</td>
-                <td>{{usuario.numEstUsuario}}</td>
-                <td>{{usuario.varMotivUsuario}}</td>
-                <td>{{usuario.varDocContacto}}</td>
-                <td>{{usuario.varNomContacto}}</td>
-                <td>{{usuario.varRefContacto}}</td>
-                <td>{{usuario.varUsuarioLog}}</td>
-                <td>{{usuario.datFechaLog | date:'medium'}}</td>
-                <td>{{usuario.numEliminar}}</td>
-                <td>{{usuario.varDireccionIp}}</td>
-                <td>{{usuario.varMacAddress}}</td>
-                <td>{{usuario.varNombrePc}}</td>
-                <td>{{usuario.varCodSeguridad}}</td>
-                <td>{{usuario.datFecTermino | date:'mediumDate'}}</td>
-                <td>{{usuario.varPtoControl}}</td>
-                <td>
-                    <div *ngIf="usuario.tipoUsuario">
-                        <a [routerLink]="['../tipo-usuario', usuario.tipoUsuario?.id ]" >{{usuario.tipoUsuario?.id}}</a>
-                    </div>
-                </td>
-                <td class="text-right">
-                    <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                [routerLink]="['../usuario', usuario.id ]"
-                                class="btn btn-info btn-sm">
-                            <span class="fa fa-eye"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'usuario/'+ usuario.id + '/edit'} }]"
+                <tr *ngFor="let usuario of usuarios ;trackBy: trackId;let i = index;">
+                    <td>{{i+1}}</td>
+                    <td>{{usuario.varNomUsuario}}</td>
+                    <td>{{usuario.varLoginUsuario}}</td>
+                    <td>{{usuario.varInicialUsuario}}</td>
+                    <td>{{usuario.numEstUsuario===1 ? 'Activo' : 'Inactivo'}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'usuario/'+ usuario.id + '/horarios'} }]"
                                 replaceUrl="true"
-                                class="btn btn-primary btn-sm">
-                            <span class="fa fa-pencil"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'usuario/'+ usuario.id + '/delete'} }]"
+                                class="btn btn-warning btn-sm">
+                                <span class="fa fa-plus"></span>
+                                <span class="hidden-md-down" jhiTranslate="entity.action.addhorary">Horarios</span>
+                            </button>
+                            <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'usuario/'+ usuario.id + '/perfiles'} }]"
                                 replaceUrl="true"
-                                class="btn btn-danger btn-sm">
-                            <span class="fa fa-remove"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                        </button>
-                    </div>
-                </td>
-            </tr>
+                                class="btn btn-warning btn-sm">
+                                <span class="fa fa-plus"></span>
+                                <span class="hidden-md-down" jhiTranslate="entity.action.addprofile">Perfiles</span>
+                            </button>
+                            <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'usuario/'+ usuario.id + '/grupos'} }]"
+                                replaceUrl="true"
+                                class="btn btn-warning btn-sm">
+                                <span class="fa fa-plus"></span>
+                                <span class="hidden-md-down" jhiTranslate="entity.action.addgroup">Grupos</span>
+                            </button>
+                            <button type="submit"
+                                    [routerLink]="['../usuario', usuario.id ]"
+                                    class="btn btn-info btn-sm">
+                                <span class="fa fa-eye"></span>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+                            <button type="submit"
+                                    [routerLink]="['/', { outlets: { popup: 'usuario/'+ usuario.id + '/edit'} }]"
+                                    replaceUrl="true"
+                                    class="btn btn-primary btn-sm">
+                                <span class="fa fa-pencil"></span>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+                            <button type="submit"
+                                    [routerLink]="['/', { outlets: { popup: 'usuario/'+ usuario.id + '/delete'} }]"
+                                    replaceUrl="true"
+                                    class="btn btn-danger btn-sm">
+                                <span class="fa fa-remove"></span>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>

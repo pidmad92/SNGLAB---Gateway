@@ -49,6 +49,10 @@ export class GrupoService {
             return this.convertItemFromServer(jsonResponse);
         });
     }
+    findByGrupo(id: number): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceUrl}/${id}/grupo`)
+            .map((res: Response) => this.convertResponse(res));
+    }
 
     query(req?: any): Observable<ResponseWrapper> {
         const options = createRequestOption(req);

@@ -32,9 +32,6 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="varNomTpusuario"><span jhiTranslate="gatewayApp.tipoUsuario.varNomTpusuario">Var Nom Tpusuario</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="varDescTpusuario"><span jhiTranslate="gatewayApp.tipoUsuario.varDescTpusuario">Var Desc Tpusuario</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varUsuarioLog"><span jhiTranslate="gatewayApp.tipoUsuario.varUsuarioLog">Var Usuario Log</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="datFechaLog"><span jhiTranslate="gatewayApp.tipoUsuario.datFechaLog">Dat Fecha Log</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="numEliminar"><span jhiTranslate="gatewayApp.tipoUsuario.numEliminar">Num Eliminar</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -43,9 +40,6 @@
                 <td><a [routerLink]="['../tipo-usuario', tipoUsuario.id ]">{{tipoUsuario.id}}</a></td>
                 <td>{{tipoUsuario.varNomTpusuario}}</td>
                 <td>{{tipoUsuario.varDescTpusuario}}</td>
-                <td>{{tipoUsuario.varUsuarioLog}}</td>
-                <td>{{tipoUsuario.datFechaLog | date:'medium'}}</td>
-                <td>{{tipoUsuario.numEliminar}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

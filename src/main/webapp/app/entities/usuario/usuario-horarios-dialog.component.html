@@ -1,0 +1,89 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="myUsuarioLabel" >Agregar horarios</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="clear()">&times;</button>
+</div>
+<div class="modal-body">
+    <jhi-alert-error></jhi-alert-error>
+    <div class="mb-1 row">
+        <div class="col-sm-12">
+            <h2>
+                <button (click)="changeBarAddHorary()" class="btn btn-primary float-right jh-create-entity create-usuario">
+                        <span class="fa fa-plus"></span>
+                        <span  jhiTranslate="snglabApp.usuario.home.createLabelHorarioAdd">
+                        Create new Usuario
+                        </span>
+                    </button>
+            </h2>
+        </div>
+    </div>
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="form-group row mx-1 p-2 mb-3" style="background:oldlace;border: 1px solid gainsboro;" *ngIf="addHorary">
+            <input type="hidden" id="field_usuario" name="usuario" [(ngModel)]="usuarioHorario.usuario" value="{{usuario}}">
+            <input type="hidden" class="form-control" id="id" name="id" [(ngModel)]="usuarioHorario.id" readonly />
+            <label class="col-sm-2 col-form-label form-control-label">Día de Semana</label>
+            <div class="col-sm-2">
+                <select required [(ngModel)]="usuarioHorario.numDiaSemana" name="numDiaSemana" id="field_numDiaSemana" class="form-control">
+                        <option></option>
+                        <option value="1">Lunes</option><option value="2">Martes</option><option value="3">Miercoles</option><option value="4">Jueves</option>
+                        <option value="5">Viernes</option><option value="6">Sabado</option><option value="7">Domingo</option>                    
+                    </select>
+            </div>
+            <label class="col-sm-2 col-form-label form-control-label">Hora de Inicio</label>
+            <div class="col-sm-2">
+                <p-inputMask required name="datHoraInicio" id="field_datHoraInicio" [(ngModel)]="usuarioHorario.datHoraInicio" styleClass="form-control" name="inicio" mask="99:99" placeholder="12:00"></p-inputMask>
+            </div>
+            <label class="col-sm-2 col-form-label form-control-label">Hora Final</label>
+            <div class="col-sm-2">
+                <p-inputMask required name="datHoraFin" id="field_datHoraFin" [(ngModel)]="usuarioHorario.datHoraFin" styleClass="form-control" name="fin" mask="99:99" placeholder="12:00"></p-inputMask>
+            </div>
+            <br>
+            <div class="col-sm-12 mt-2">
+                <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-sm btn-primary float-right">
+                    <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+                <button type="button" class="btn btn-sm btn-default float-right mr-2" data-dismiss="modal" (click)="clearBarAddHorary()">
+                    <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+            </div>
+        </div>
+    </form>
+    <div class="table-responsive" *ngIf="usuarioHorarios">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><span jhiTranslate="global.field.id">Nro</span> </th>
+                    <th><span jhiTranslate="snglabApp.usuarioHorario.numDiaSemana">Num Dia Semana</span></th>
+                    <th><span jhiTranslate="snglabApp.usuarioHorario.datHoraInicio">Dat Hora Inicio</span></th>
+                    <th><span jhiTranslate="snglabApp.usuarioHorario.datHoraFin">Dat Hora Fin</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usuarioHorario of usuarioHorarios ;trackBy: trackId;let ind = index;">
+                    <td>{{ ind+1 }}</td>
+                    <td>{{ diaSemana(usuarioHorario.numDiaSemana) }}</td>
+                    <td>{{ usuarioHorario.datHoraInicio }}</td>
+                    <td>{{ usuarioHorario.datHoraFin }}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button (click)="loadById(usuarioHorario)" type="button" class="btn btn-primary btn-sm">
+                                <span class="fa fa-pencil"></span>
+                                <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+                            <button type="submit" [routerLink]="['/', { outlets: { popup: 'usuario-horario/'+ usuarioHorario.id + '/delete'} }]" replaceUrl="true" class="btn btn-danger btn-sm">
+                                <span class="fa fa-remove"></span>
+                                <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal-footer">
+    <button (click)="clear()" class="btn btn-success">
+            <span class="fa fa-save12"></span>&nbsp;<span >Aceptar</span>
+        </button>
+</div>
