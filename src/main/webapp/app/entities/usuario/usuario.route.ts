@@ -7,6 +7,9 @@ import { JhiPaginationUtil } from 'ng-jhipster';
 import { UsuarioComponent } from './usuario.component';
 import { UsuarioDetailComponent } from './usuario-detail.component';
 import { UsuarioPopupComponent } from './usuario-dialog.component';
+import { UsuarioHorariosPopupComponent } from './usuario-horarios-dialog.component';
+import { UsuarioPerfilesPopupComponent } from './usuario-perfiles-dialog.component';
+import { UsuarioGruposPopupComponent } from './usuario-grupos-dialog.component';
 import { UsuarioDeletePopupComponent } from './usuario-delete-dialog.component';
 
 @Injectable()
@@ -75,6 +78,36 @@ export const usuarioPopupRoute: Routes = [
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'gatewayApp.usuario.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
+    },
+    {
+        path: 'usuario/:id/horarios',
+        component: UsuarioHorariosPopupComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'snglabApp.usuario.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
+    },
+    {
+        path: 'usuario/:id/perfiles',
+        component: UsuarioPerfilesPopupComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'snglabApp.usuario.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
+    },
+    {
+        path: 'usuario/:id/grupos',
+        component: UsuarioGruposPopupComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'snglabApp.usuario.home.title'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
