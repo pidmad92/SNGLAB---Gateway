@@ -95,12 +95,13 @@ export class UsuarioHorariosDialogComponent implements OnInit {
     }
 
     private onSaveSuccessHorario(result: ResponseWrapper) {
-        this.eventManager.broadcast({ name: 'usuarioListModification', content: 'OK'});
-        this.usuarioHorarios.push(result.json);
+        // this.eventManager.broadcast({ name: 'usuarioListModification', content: 'OK'});
+        this.usuarioHorarios.push(this.usuarioHorario);
         this.isSaving = false;
+        this.clear();
     }
     private onSaveSuccessHorarioUpdate(result: ResponseWrapper) {
-        this.eventManager.broadcast({ name: 'usuarioListModification', content: 'OK'});
+        // this.eventManager.broadcast({ name: 'usuarioListModification', content: 'OK'});
         this.isSaving = false;
     }
 

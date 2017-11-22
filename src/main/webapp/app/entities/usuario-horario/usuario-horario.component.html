@@ -33,10 +33,6 @@
             <th jhiSortBy="numDiaSemana"><span jhiTranslate="gatewayApp.usuarioHorario.numDiaSemana">Num Dia Semana</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="datHoraInicio"><span jhiTranslate="gatewayApp.usuarioHorario.datHoraInicio">Dat Hora Inicio</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="datHoraFin"><span jhiTranslate="gatewayApp.usuarioHorario.datHoraFin">Dat Hora Fin</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varUsuarioLog"><span jhiTranslate="gatewayApp.usuarioHorario.varUsuarioLog">Var Usuario Log</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="datFechaLog"><span jhiTranslate="gatewayApp.usuarioHorario.datFechaLog">Dat Fecha Log</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="numEliminar"><span jhiTranslate="gatewayApp.usuarioHorario.numEliminar">Num Eliminar</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="usuario.id"><span jhiTranslate="gatewayApp.usuarioHorario.usuario">Usuario</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -46,14 +42,6 @@
                 <td>{{usuarioHorario.numDiaSemana}}</td>
                 <td>{{usuarioHorario.datHoraInicio | date:'mediumDate'}}</td>
                 <td>{{usuarioHorario.datHoraFin | date:'mediumDate'}}</td>
-                <td>{{usuarioHorario.varUsuarioLog}}</td>
-                <td>{{usuarioHorario.datFechaLog | date:'medium'}}</td>
-                <td>{{usuarioHorario.numEliminar}}</td>
-                <td>
-                    <div *ngIf="usuarioHorario.usuario">
-                        <a [routerLink]="['../usuario', usuarioHorario.usuario?.id ]" >{{usuarioHorario.usuario?.id}}</a>
-                    </div>
-                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

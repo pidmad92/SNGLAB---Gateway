@@ -9,7 +9,7 @@
             <h2>
                 <button (click)="changeBarAddHorary()" class="btn btn-primary float-right jh-create-entity create-usuario">
                         <span class="fa fa-plus"></span>
-                        <span  jhiTranslate="snglabApp.usuario.home.createLabelHorarioAdd">
+                        <span  jhiTranslate="gatewayApp.usuario.home.createLabelHorarioAdd">
                         Create new Usuario
                         </span>
                     </button>
@@ -53,25 +53,25 @@
             <thead>
                 <tr>
                     <th><span jhiTranslate="global.field.id">Nro</span> </th>
-                    <th><span jhiTranslate="snglabApp.usuarioHorario.numDiaSemana">Num Dia Semana</span></th>
-                    <th><span jhiTranslate="snglabApp.usuarioHorario.datHoraInicio">Dat Hora Inicio</span></th>
-                    <th><span jhiTranslate="snglabApp.usuarioHorario.datHoraFin">Dat Hora Fin</span></th>
+                    <th><span jhiTranslate="gatewayApp.usuarioHorario.numDiaSemana">Num Dia Semana</span></th>
+                    <th><span jhiTranslate="gatewayApp.usuarioHorario.datHoraInicio">Dat Hora Inicio</span></th>
+                    <th><span jhiTranslate="gatewayApp.usuarioHorario.datHoraFin">Dat Hora Fin</span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let usuarioHorario of usuarioHorarios ;trackBy: trackId;let ind = index;">
+                <tr *ngFor="let usuarioHora of usuarioHorarios ;trackBy: trackId;let ind = index;">
                     <td>{{ ind+1 }}</td>
-                    <td>{{ diaSemana(usuarioHorario.numDiaSemana) }}</td>
-                    <td>{{ usuarioHorario.datHoraInicio }}</td>
-                    <td>{{ usuarioHorario.datHoraFin }}</td>
+                    <td>{{ diaSemana(usuarioHora.numDiaSemana) }}</td>
+                    <td>{{ usuarioHora.datHoraInicio }}</td>
+                    <td>{{ usuarioHora.datHoraFin }}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
-                            <button (click)="loadById(usuarioHorario)" type="button" class="btn btn-primary btn-sm">
+                            <button (click)="loadById(usuarioHora)" type="button" class="btn btn-primary btn-sm">
                                 <span class="fa fa-pencil"></span>
                                 <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
                             </button>
-                            <button type="submit" [routerLink]="['/', { outlets: { popup: 'usuario-horario/'+ usuarioHorario.id + '/delete'} }]" replaceUrl="true" class="btn btn-danger btn-sm">
+                            <button type="submit" [routerLink]="['/', { outlets: { popup: 'usuario-horario/'+ usuarioHora.id + '/delete'} }]" replaceUrl="true" class="btn btn-danger btn-sm">
                                 <span class="fa fa-remove"></span>
                                 <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
                             </button>
@@ -83,7 +83,7 @@
     </div>
 </div>
 <div class="modal-footer">
-    <button (click)="clear()" class="btn btn-success">
+    <button (click)="clear()" class="btn btn-dark">
             <span class="fa fa-save12"></span>&nbsp;<span >Aceptar</span>
         </button>
 </div>

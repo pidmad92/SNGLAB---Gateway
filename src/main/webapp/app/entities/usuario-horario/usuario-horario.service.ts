@@ -26,6 +26,9 @@ export class UsuarioHorarioService {
         });
     }
     createFromUser(usuarioHorario: UsuarioHorario): Observable<ResponseWrapper> {
+        const token = this.authServerProvider.getToken();
+        usuarioHorario.numEliminar = 1;
+        usuarioHorario.varUsuarioLog = token.substring(token.length - 20);
         const copy = this.convert(usuarioHorario);
         return this.http.post(this.resourceUrl, copy)
             .map((res: Response) => this.convertResponse(res));
@@ -84,10 +87,6 @@ export class UsuarioHorarioService {
      */
     private convertItemFromServer(json: any): UsuarioHorario {
         const entity: UsuarioHorario = Object.assign(new UsuarioHorario(), json);
-        entity.datHoraInicio = this.dateUtils
-            .convertLocalDateFromServer(json.datHoraInicio);
-        entity.datHoraFin = this.dateUtils
-            .convertLocalDateFromServer(json.datHoraFin);
         entity.datFechaLog = this.dateUtils
             .convertDateTimeFromServer(json.datFechaLog);
         return entity;
@@ -98,11 +97,6 @@ export class UsuarioHorarioService {
      */
     private convert(usuarioHorario: UsuarioHorario): UsuarioHorario {
         const copy: UsuarioHorario = Object.assign({}, usuarioHorario);
-        copy.datHoraInicio = this.dateUtils
-            .convertLocalDateToServer(usuarioHorario.datHoraInicio);
-        copy.datHoraFin = this.dateUtils
-            .convertLocalDateToServer(usuarioHorario.datHoraFin);
-
         copy.datFechaLog = this.dateUtils.toDate(usuarioHorario.datFechaLog);
         return copy;
     }
