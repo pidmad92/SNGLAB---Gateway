@@ -29,33 +29,19 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="numCodLocal"><span jhiTranslate="gatewayApp.grupo.numCodLocal">Num Cod Local</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="numEstGrupo"><span jhiTranslate="gatewayApp.grupo.numEstGrupo">Num Est Grupo</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varNomGrupo"><span jhiTranslate="gatewayApp.grupo.varNomGrupo">Var Nom Grupo</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varDescGrupo"><span jhiTranslate="gatewayApp.grupo.varDescGrupo">Var Desc Grupo</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varUsuarioLog"><span jhiTranslate="gatewayApp.grupo.varUsuarioLog">Var Usuario Log</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="datFechaLog"><span jhiTranslate="gatewayApp.grupo.datFechaLog">Dat Fecha Log</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="numEliminar"><span jhiTranslate="gatewayApp.grupo.numEliminar">Num Eliminar</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="entidad.id"><span jhiTranslate="gatewayApp.grupo.entidad">Entidad</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="id"><span jhiTranslate="global.field.id">Nro</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="numCodLocal"><span jhiTranslate="gatewayApp.grupo.numCodLocal">Num Cod Local</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="numEstGrupo"><span jhiTranslate="gatewayApp.grupo.numEstGrupo">Num Est Grupo</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="varNomGrupo"><span jhiTranslate="gatewayApp.grupo.varNomGrupo">Var Nom Grupo</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let grupo of grupos ;trackBy: trackId">
-                <td><a [routerLink]="['../grupo', grupo.id ]">{{grupo.id}}</a></td>
-                <td>{{grupo.numCodLocal}}</td>
-                <td>{{grupo.numEstGrupo}}</td>
-                <td>{{grupo.varNomGrupo}}</td>
-                <td>{{grupo.varDescGrupo}}</td>
-                <td>{{grupo.varUsuarioLog}}</td>
-                <td>{{grupo.datFechaLog | date:'medium'}}</td>
-                <td>{{grupo.numEliminar}}</td>
-                <td>
-                    <div *ngIf="grupo.entidad">
-                        <a [routerLink]="['../entidad', grupo.entidad?.id ]" >{{grupo.entidad?.id}}</a>
-                    </div>
-                </td>
+                <tr *ngFor="let grupo of grupos ;trackBy: trackId;let i = index;">
+                    <td>{{i+1}}</td>
+                    <td>{{grupo.numCodLocal}}</td>
+                    <td>{{ grupo.numEstGrupo==1 ? 'Activo':'Inactivo'}}</td>
+                    <td>{{grupo.varNomGrupo}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

@@ -25,7 +25,11 @@ export class UsuarioHorarioService {
             return this.convertItemFromServer(jsonResponse);
         });
     }
-
+    createFromUser(usuarioHorario: UsuarioHorario): Observable<ResponseWrapper> {
+        const copy = this.convert(usuarioHorario);
+        return this.http.post(this.resourceUrl, copy)
+            .map((res: Response) => this.convertResponse(res));
+    }
     update(usuarioHorario: UsuarioHorario): Observable<UsuarioHorario> {
         const copy = this.convert(usuarioHorario);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
@@ -33,12 +37,21 @@ export class UsuarioHorarioService {
             return this.convertItemFromServer(jsonResponse);
         });
     }
+    updateFromUser(usuarioHorario: UsuarioHorario): Observable<ResponseWrapper> {
+        const copy = this.convert(usuarioHorario);
+        return this.http.put(this.resourceUrl, copy)
+            .map((res: Response) => this.convertResponse(res));
+    }
 
     find(id: number): Observable<UsuarioHorario> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
+    }
+    findById(id: number): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceUrl}/tipo/${id}`)
+            .map((res: Response) => this.convertResponse(res));
     }
 
     query(req?: any): Observable<ResponseWrapper> {

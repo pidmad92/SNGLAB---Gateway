@@ -6,3 +6,5 @@ export * from './entidad-delete-dialog.component';
 export * from './entidad-detail.component';
 export * from './entidad.component';
 export * from './entidad.route';
+export * from './entidad-modulo-popup.service';
+export * from './entidad-modulo-dialog.component';

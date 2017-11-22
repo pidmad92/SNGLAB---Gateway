@@ -3,77 +3,69 @@
     <h4 class="title my-3"><span jhiTranslate="gatewayApp.entidad.detail.title">Entidad</span> {{entidad.id}}</h4>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.entidad.varRsocialEntidad">Var Rsocial Entidad</span></dt>
-        <dd>
-            <span>{{entidad.varRsocialEntidad}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.entidad.varRucEntidad">Var Ruc Entidad</span></dt>
-        <dd>
-            <span>{{entidad.varRucEntidad}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.entidad.varDirecEntidad">Var Direc Entidad</span></dt>
-        <dd>
-            <span>{{entidad.varDirecEntidad}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.entidad.numCodDepartamento">Num Cod Departamento</span></dt>
-        <dd>
-            <span>{{entidad.numCodDepartamento}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.entidad.numCodProvincia">Num Cod Provincia</span></dt>
-        <dd>
-            <span>{{entidad.numCodProvincia}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.entidad.numCodDistrito">Num Cod Distrito</span></dt>
-        <dd>
-            <span>{{entidad.numCodDistrito}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.entidad.varTelefEntidad">Var Telef Entidad</span></dt>
-        <dd>
-            <span>{{entidad.varTelefEntidad}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.entidad.varFaxEntidad">Var Fax Entidad</span></dt>
-        <dd>
-            <span>{{entidad.varFaxEntidad}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.entidad.varEmailEntidad">Var Email Entidad</span></dt>
-        <dd>
-            <span>{{entidad.varEmailEntidad}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.entidad.varPagwebEntidad">Var Pagweb Entidad</span></dt>
-        <dd>
-            <span>{{entidad.varPagwebEntidad}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.entidad.varUsuarioLog">Var Usuario Log</span></dt>
-        <dd>
-            <span>{{entidad.varUsuarioLog}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.entidad.datFechaLog">Dat Fecha Log</span></dt>
-        <dd>
-            <span>{{entidad.datFechaLog | date:'medium'}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.entidad.numEliminar">Num Eliminar</span></dt>
-        <dd>
-            <span>{{entidad.numEliminar}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.entidad.sCodigoentcer">S Codigoentcer</span></dt>
-        <dd>
-            <span>{{entidad.sCodigoentcer}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.entidad.latitud">Latitud</span></dt>
-        <dd>
-            <span>{{entidad.latitud}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.entidad.longitud">Longitud</span></dt>
-        <dd>
-            <span>{{entidad.longitud}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.entidad.tipoEntidad">Tipo Entidad</span></dt>
-        <dd>
-            <div *ngIf="entidad.tipoEntidad">
-                <a [routerLink]="['/tipo-entidad', entidad.tipoEntidad?.id]">{{entidad.tipoEntidad?.id}}</a>
-            </div>
-        </dd>
+    <dl class="row-md jh-entity-details row">
+        <div class="col-md-6">
+            <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.entidad.varRsocialEntidad">Var Rsocial Entidad</span><span>:</span></dt>
+            <dd>
+                <span>{{entidad.varRsocialEntidad}}</span>
+            </dd>
+            <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.entidad.varRucEntidad">Var Ruc Entidad</span><span>:</span></dt>
+            <dd>
+                <span>{{entidad.varRucEntidad}}</span>
+            </dd>
+            <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.entidad.varDirecEntidad">Var Direc Entidad</span><span>:</span></dt>
+            <dd>
+                <span>{{entidad.varDirecEntidad}}</span>
+            </dd>
+            <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.entidad.numCodDepartamento">Num Cod Departamento</span><span>:</span></dt>
+            <dd>
+                <span>{{entidad.numCodDepartamento}}</span>
+            </dd>
+            <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.entidad.numCodProvincia">Num Cod Provincia</span><span>:</span></dt>
+            <dd>
+                <span>{{entidad.numCodProvincia}}</span>
+            </dd>
+            <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.entidad.numCodDistrito">Num Cod Distrito</span><span>:</span></dt>
+            <dd>
+                <span>{{entidad.numCodDistrito}}</span>
+            </dd>
+            <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.entidad.varTelefEntidad">Var Telef Entidad</span><span>:</span></dt>
+            <dd>
+                <span>{{entidad.varTelefEntidad}}</span>
+            </dd>
+        </div>
+        <div class="col-md-6">
+            <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.entidad.varFaxEntidad">Var Fax Entidad</span><span>:</span></dt>
+            <dd>
+                <span>{{entidad.varFaxEntidad}}</span>
+            </dd>
+            <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.entidad.varEmailEntidad">Var Email Entidad</span><span>:</span></dt>
+            <dd>
+                <span>{{entidad.varEmailEntidad}}</span>
+            </dd>
+            <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.entidad.varPagwebEntidad">Var Pagweb Entidad</span><span>:</span></dt>
+            <dd>
+                <span>{{entidad.varPagwebEntidad}}</span>
+            </dd>
+            <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.entidad.sCodigoentcer">S Codigoentcer</span><span>:</span></dt>
+            <dd>
+                <span>{{entidad.sCodigoentcer}}</span>
+            </dd>
+            <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.entidad.latitud">Latitud</span><span>:</span></dt>
+            <dd>
+                <span>{{entidad.latitud}}</span>
+            </dd>
+            <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.entidad.longitud">Longitud</span><span>:</span></dt>
+            <dd>
+                <span>{{entidad.longitud}}</span>
+            </dd>
+            <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.entidad.tipoEntidad">Tipo Entidad</span><span>:</span></dt>
+            <dd>
+                <div *ngIf="entidad.tipoEntidad">
+                    {{entidad.tipoEntidad?.varNomTpentidad}}
+                </div>
+            </dd>
+        </div>
     </dl>
 
     <button type="submit"
