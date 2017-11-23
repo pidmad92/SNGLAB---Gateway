@@ -1,16 +1,19 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { EvaluarSolicitudesComponent } from './evaluar-solicitudes.component';
-
 import { GatewaySharedModule } from '../../../shared';
-import { RevisarSolicitudesService,
+import {
+    RevisarSolicitudesService,
+    EvaluarSolicitudesService,
     RevisarSolicitudesComponent,
+    EvaluarSolicitudesComponent,
+    RevisarSolicitudesPopupRoute,
     RevisarSolicitudesRoute,
 } from './';
 
 const ENTITY_STATES = [
     ...RevisarSolicitudesRoute,
+    ...RevisarSolicitudesPopupRoute,
     // ...accionadopPopupRoute,
 ];
 
@@ -22,6 +25,7 @@ const ENTITY_STATES = [
     declarations: [
         RevisarSolicitudesComponent,
         EvaluarSolicitudesComponent,
+        // EvaluarSolicitudesPopupComponent,
         // AccionadopDetailComponent,
         // AccionadopDialogComponent,
         // AccionadopDeleteDialogComponent,
@@ -31,6 +35,7 @@ const ENTITY_STATES = [
     entryComponents: [
         RevisarSolicitudesComponent,
         EvaluarSolicitudesComponent,
+        // EvaluarSolicitudesPopupComponent,
         // AccionadopDialogComponent,
         // AccionadopPopupComponent,
         // AccionadopDeleteDialogComponent,
@@ -38,6 +43,7 @@ const ENTITY_STATES = [
     ],
     providers: [
         RevisarSolicitudesService,
+        EvaluarSolicitudesService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

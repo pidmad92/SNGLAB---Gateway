@@ -13,7 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 
-import { entityRoute, adminRoute, loginRoute, seguridadRoute, consultasRoute, defensaRoute } from './app.routing';
+import { entityRoute, adminRoute, loginRoute, seguridadRoute, consultasRoute, defensaRoute, sindicatosRoute } from './app.routing';
 import { GatewayprimengModule } from './primeng/primeng.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 
@@ -29,12 +29,14 @@ import {
     ActiveMenuDirective,
     ErrorComponent
 } from './layouts';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
 
 const LAZY_ROUTES = [
     adminRoute,
     entityRoute,
     loginRoute,
     seguridadRoute,
+    sindicatosRoute,
     consultasRoute,
     defensaRoute
 ];

@@ -42,8 +42,8 @@
     </table>    
             
     <br/>    
-    
-    <button class="btn btn-primary jh-create-entity create-accionadop">Nuevo Registro</button>
+
+    <button type="button" class="btn btn-primary jh-create-entity create-accionadop" (click)="open()">Nuevo Registro</button>
     
     <br/>
     <div class="table-responsive">
@@ -55,13 +55,19 @@
                 <th><span >R.U.C.</span></th>
                 <th><span >Estado</span></th>
                 <th><span ></span></th>
-                <th></th>
-                </tr>
+                
+            </tr>
             </thead>
             <tbody>
-    
+                <tr>
+                    <td>12234214</td>
+                    <td>12234214</td>
+                    <td>12234214</td>
+                    <td>12234214</td>
+                    <td><button [routerLink]="['/sindicatos/principal', {outlets: { wizard: 'nuevo-delegados' } } ]" class="btn btn-primary jh-create-entity create-accionadop">Ver Detalle</button></td>
+                </tr>
             </tbody>
         </table>
     </div>
-    
+
     </div>

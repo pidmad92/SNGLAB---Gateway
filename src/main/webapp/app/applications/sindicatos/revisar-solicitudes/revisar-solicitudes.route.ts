@@ -14,19 +14,11 @@ export const RevisarSolicitudesRoute: Routes = [
     {
         path: 'revisar-solicitudes',
         component: RevisarSolicitudesComponent,
-        /*data: {
+        data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
-        },*/
-        canActivate: [UserRouteAccessService]
-    },
-    {
-        path: 'evaluar-solicitudes',
-        component: EvaluarSolicitudesComponent,
-        /*data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
-        },*/
+            pageTitle: 'Revisar Solicitudes'
+        },
+
         canActivate: [UserRouteAccessService]
     }
     // {
@@ -38,6 +30,19 @@ export const RevisarSolicitudesRoute: Routes = [
     //     },
     //     canActivate: [UserRouteAccessService]
     // }
+];
+
+export const RevisarSolicitudesPopupRoute: Routes = [
+    {
+        path: 'evaluar-solicitudes',
+        component: EvaluarSolicitudesComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'Evaluar Solicitudes'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
+    }
 ];
 
 // export const accionadopPopupRoute: Routes = [
