@@ -48,9 +48,11 @@ export class AplicacionPopupService {
         modalRef.componentInstance.aplicacion = aplicacion;
         modalRef.result.then((result) => {
             this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
+            console.log('Co-A');
             this.ngbModalRef = null;
         }, (reason) => {
             this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
+            console.log('Co-B');
             this.ngbModalRef = null;
         });
         return modalRef;

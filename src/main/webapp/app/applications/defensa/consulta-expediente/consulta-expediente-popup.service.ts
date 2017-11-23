@@ -46,14 +46,15 @@ export class ConsultaExpedientePopupService {
     }
 
     consultaExpedienteModalRef(component: Component, expediente: Expediente): NgbModalRef {
-        console.log('12345')
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
         modalRef.componentInstance.expediente = expediente;
         modalRef.result.then((result) => {
-            this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
+            this.router.navigate(['defensa/consulta-expediente'], { replaceUrl: true });
+            console.log('Cc-A');
             this.ngbModalRef = null;
         }, (reason) => {
-            this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
+            this.router.navigate(['defensa/consulta-expediente'], { replaceUrl: true });
+            console.log('Cc-B');
             this.ngbModalRef = null;
         });
         return modalRef;

@@ -80,6 +80,7 @@ export class AplicacionPopupComponent implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit() {
+        console.log('OpenAplicacion');
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
                 this.aplicacionPopupService
@@ -92,6 +93,7 @@ export class AplicacionPopupComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
+        console.log('CloseAplicacion');
         this.routeSub.unsubscribe();
     }
 }

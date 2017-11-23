@@ -50,7 +50,6 @@ export class LeftbarComponent implements OnInit {
         } else {
             this.aplicacion = 'seguridad';
         }
-        console.log('getRoute: ' + this.aplicacion + ' |  ' + router.url + ' | ' + this.route.snapshot);
     }
 
     ngOnInit() {

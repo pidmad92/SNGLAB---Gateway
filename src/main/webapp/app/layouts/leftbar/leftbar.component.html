@@ -43,9 +43,9 @@
           </ng-template>
           <ng-template ngbPanelContent>
             <div class="level-two p-0">
-              <li><a routerLink="sindicatos/consulta-organizacion" class="a-menu d-sm-flex align-items-sm-center "><span>Registro Expedientes</span></a></li>
-              <li><a routerLink="sindicatos/registro-observacion" class="a-menu d-sm-flex align-items-sm-center "><span>Registro de Notificaciones</span></a></li>
-              <li><a routerLink="sindicatos/registro-delegados" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Expedientes</span></a></li>
+              <li><a [routerLink]="['/defensa/registro-expediente' , { outlets: { wizard: ['datos-pase'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro Expedientes</span></a></li>
+              <li><a [routerLink]="['/defensa/envio-notificacion' , { outlets: { wizard: ['seleccion-expediente'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro de Notificaciones</span></a></li>
+              <li><a routerLink="defensa/consulta-expediente" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Expedientes</span></a></li>
               <li><a routerLink="sindicatos/evaluar-solicitudes" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Notificaciones</span></a></li>
             </div>
           </ng-template>
