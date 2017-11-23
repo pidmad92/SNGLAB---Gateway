@@ -31,8 +31,8 @@
     </div>
 
     <div class="my-2" *ngIf="aplicacion == 'defensa'">
-      <ngb-accordion class="level-one mt-2 p-0" id="accordion" [closeOthers]="true" >
-        <ngb-panel id="static-1">
+      <ngb-accordion class="level-one mt-2 p-0" id="accordion" activeIds="defensa-1" [closeOthers]="true" >
+        <ngb-panel id="defensa-1">
           <ng-template ngbPanelTitle>
             <li routerLinkActive="active">
               <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
@@ -43,14 +43,14 @@
           </ng-template>
           <ng-template ngbPanelContent>
             <div class="level-two p-0">
-              <li><a routerLink="sindicatos/consulta-organizacion" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Registro Expedientes</span></a></li>
-              <li><a routerLink="sindicatos/registro-observacion" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Registro de Notificaciones</span></a></li>
-              <li><a routerLink="sindicatos/registro-delegados" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Consulta de Expedientes</span></a></li>
-              <li><a routerLink="sindicatos/evaluar-solicitudes" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Consulta de Notificaciones</span></a></li>
+              <li><a routerLink="sindicatos/consulta-organizacion" class="a-menu d-sm-flex align-items-sm-center "><span>Registro Expedientes</span></a></li>
+              <li><a routerLink="sindicatos/registro-observacion" class="a-menu d-sm-flex align-items-sm-center "><span>Registro de Notificaciones</span></a></li>
+              <li><a routerLink="sindicatos/registro-delegados" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Expedientes</span></a></li>
+              <li><a routerLink="sindicatos/evaluar-solicitudes" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Notificaciones</span></a></li>
             </div>
           </ng-template>
         </ngb-panel>
-        <ngb-panel id="static-2">
+        <ngb-panel id="defensa-2">
           <ng-template ngbPanelTitle>
             <li routerLinkActive="active">
                 <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
@@ -61,11 +61,11 @@
           </ng-template>
           <ng-template ngbPanelContent>
             <div class="level-two p-0">
-              <li><a routerLink="sindicatos/consulta-organizacion" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Asignación de Abogados</span></a></li>
-              <li><a routerLink="sindicatos/registro-observacion" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Resultado de Audiencia</span></a></li>
-              <li><a routerLink="sindicatos/registro-delegados" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Reprog. de Audiencia</span></a></li>
-              <li><a routerLink="sindicatos/evaluar-solicitudes" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Registrar Escrito</span></a></li>
-              <li><a routerLink="sindicatos/evaluar-solicitudes" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Consulta de Audiencias</span></a></li>
+              <li><a routerLink="sindicatos/consulta-organizacion" class="a-menu d-sm-flex align-items-sm-center "><span>Asignación de Abogados</span></a></li>
+              <li><a routerLink="sindicatos/registro-observacion" class="a-menu d-sm-flex align-items-sm-center "><span>Resultado de Audiencia</span></a></li>
+              <li><a routerLink="sindicatos/registro-delegados" class="a-menu d-sm-flex align-items-sm-center "><span>Reprog. de Audiencia</span></a></li>
+              <li><a routerLink="sindicatos/evaluar-solicitudes" class="a-menu d-sm-flex align-items-sm-center "><span>Registrar Escrito</span></a></li>
+              <li><a routerLink="sindicatos/evaluar-solicitudes" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Audiencias</span></a></li>
             </div>
           </ng-template>
         </ngb-panel>
