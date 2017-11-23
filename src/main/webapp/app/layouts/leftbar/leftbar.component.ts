@@ -39,6 +39,8 @@ export class LeftbarComponent implements OnInit {
             this.aplicacion = 'consultas';
         } else if (router.url.indexOf('sindicatos') === 1) {
             this.aplicacion = 'sindicatos';
+        } else if (router.url.indexOf('denuncias') === 1) {
+            this.aplicacion = 'denuncias';
         } else {
             this.aplicacion = 'seguridad';
         }
