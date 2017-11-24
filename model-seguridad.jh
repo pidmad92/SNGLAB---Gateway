@@ -52,7 +52,7 @@ entity UsuarioHorario{
 entity UsuarioGrupo {
 	varUsuarioLog String required,
     datFechaLog Instant required,
-    numEliminar Integer required min(0) max(1),
+    numEliminar Integer required min(0) max(1)
 }
 entity TipoEntidad {
 	varNomTpentidad String maxlength(100),
@@ -83,7 +83,7 @@ entity Permiso{
 	varNomPermiso String maxlength(100),
     varUsuarioLog String required,
     datFechaLog Instant required,
-    numEliminar Integer required min(0) max(1),
+    numEliminar Integer required min(0) max(1)
 }
 entity Perfil {
     varNomPerfil String maxlength(100),

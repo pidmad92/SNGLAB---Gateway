@@ -27,8 +27,9 @@ export class EntidadDeleteDialogComponent {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete(id: number) {
-        this.entidadService.delete(id).subscribe((response) => {
+    confirmDelete(entidad) {
+        entidad.numEliminar = 0;
+        this.entidadService.update(entidad).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'entidadListModification',
                 content: 'Deleted an entidad'

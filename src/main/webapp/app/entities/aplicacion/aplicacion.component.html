@@ -3,7 +3,7 @@
         <span jhiTranslate="gatewayApp.aplicacion.home.title">Aplicacions</span>
         
     </h4>
-    <button class="btn btn-primary jh-create-entity create-aplicacion" [routerLink]="['/seguridad', { outlets: { popup: ['aplicacion-new'] } }]">
+    <button class="btn btn-warning jh-create-entity create-aplicacion" [routerLink]="['/', { outlets: { popup: ['aplicacion-new'] } }]">
         <span class="fa fa-plus"></span>
         <span class="hidden-sm-down"  jhiTranslate="gatewayApp.aplicacion.home.createLabel">
         Create new Aplicacion
@@ -36,39 +36,33 @@
             <th jhiSortBy="varDescApp"><span jhiTranslate="gatewayApp.aplicacion.varDescApp">Var Desc App</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="varUrlApp"><span jhiTranslate="gatewayApp.aplicacion.varUrlApp">Var Url App</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="numEstApp"><span jhiTranslate="gatewayApp.aplicacion.numEstApp">Num Est App</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varUsuarioLog"><span jhiTranslate="gatewayApp.aplicacion.varUsuarioLog">Var Usuario Log</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="datFechaLog"><span jhiTranslate="gatewayApp.aplicacion.datFechaLog">Dat Fecha Log</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="numEliminar"><span jhiTranslate="gatewayApp.aplicacion.numEliminar">Num Eliminar</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let aplicacion of aplicacions ;trackBy: trackId">
-                <td><a [routerLink]="['../aplicacion', aplicacion.id ]">{{aplicacion.id}}</a></td>
+            <tr *ngFor="let aplicacion of aplicacions ;trackBy: trackId;let i = index;">
+                <td>{{i+1}}</td>
                 <td>{{aplicacion.varNomApp}}</td>
                 <td>{{aplicacion.varDescApp}}</td>
                 <td>{{aplicacion.varUrlApp}}</td>
-                <td>{{aplicacion.numEstApp}}</td>
-                <td>{{aplicacion.varUsuarioLog}}</td>
-                <td>{{aplicacion.datFechaLog | date:'medium'}}</td>
-                <td>{{aplicacion.numEliminar}}</td>
+                <td>{{ aplicacion.numEstApp==1 ? 'Activo':'Inactivo'}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
                                 [routerLink]="['../aplicacion', aplicacion.id ]"
-                                class="btn btn-info btn-sm">
+                                class="btn btn-secondary btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/seguridad', { outlets: { popup: 'aplicacion/'+ aplicacion.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'aplicacion/'+ aplicacion.id + '/edit'} }]"
                                 replaceUrl="true"
-                                class="btn btn-primary btn-sm">
+                                class="btn btn-dark btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/seguridad', { outlets: { popup: 'aplicacion/'+ aplicacion.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'aplicacion/'+ aplicacion.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

@@ -21,7 +21,7 @@ export class GrupoDialogComponent implements OnInit {
     grupo: Grupo;
     isSaving: boolean;
 
-    entidads: Entidad[];
+    entidades: Entidad[];
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -35,7 +35,7 @@ export class GrupoDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.entidadService.query()
-            .subscribe((res: ResponseWrapper) => { this.entidads = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+            .subscribe((res: ResponseWrapper) => { this.entidades = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {

@@ -4,52 +4,40 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.grupo.numCodLocal">Num Cod Local</span></dt>
-        <dd>
-            <span>{{grupo.numCodLocal}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.grupo.numEstGrupo">Num Est Grupo</span></dt>
-        <dd>
-            <span>{{grupo.numEstGrupo}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.grupo.varNomGrupo">Var Nom Grupo</span></dt>
+        <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.grupo.varNomGrupo">Var Nom Grupo</span><span>:</span></dt>
         <dd>
             <span>{{grupo.varNomGrupo}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.grupo.varDescGrupo">Var Desc Grupo</span></dt>
+        <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.grupo.varDescGrupo">Var Desc Grupo</span><span>:</span></dt>
         <dd>
             <span>{{grupo.varDescGrupo}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.grupo.varUsuarioLog">Var Usuario Log</span></dt>
+        <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.grupo.numCodLocal">Num Cod Local</span><span>:</span></dt>
         <dd>
-            <span>{{grupo.varUsuarioLog}}</span>
+            <span>{{grupo.numCodLocal}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.grupo.datFechaLog">Dat Fecha Log</span></dt>
+        <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.grupo.numEstGrupo">Num Est Grupo</span><span>:</span></dt>
         <dd>
-            <span>{{grupo.datFechaLog | date:'medium'}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.grupo.numEliminar">Num Eliminar</span></dt>
-        <dd>
-            <span>{{grupo.numEliminar}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.grupo.entidad">Entidad</span></dt>
+            <span>{{ grupo.numEstGrupo==1 ? 'Activo':'Inactivo'}}</span>
+        </dd>        
+        <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.grupo.entidad">Entidad</span><span>:</span></dt>
         <dd>
             <div *ngIf="grupo.entidad">
-                <a [routerLink]="['/entidad', grupo.entidad?.id]">{{grupo.entidad?.id}}</a>
+               {{grupo.entidad?.varRsocialEntidad}}
             </div>
         </dd>
     </dl>
 
     <button type="submit"
             (click)="previousState()"
-            class="btn btn-info">
+            class="btn btn-secondary">
         <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
     </button>
 
     <button type="button"
-            [routerLink]="['/seguridad', { outlets: { popup: 'grupo/'+ grupo.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'grupo/'+ grupo.id + '/edit'} }]"
             replaceUrl="true"
-            class="btn btn-primary">
+            class="btn btn-dark">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
     </button>
 </div>

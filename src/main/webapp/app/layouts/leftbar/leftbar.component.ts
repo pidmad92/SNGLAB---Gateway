@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Subscription } from 'rxjs/Rx';
 
 import { ProfileService } from '../profiles/profile.service';
-import { JhiLanguageService } from 'ng-jhipster';
+import { JhiLanguageService, JhiEventManager } from 'ng-jhipster';
 import { Principal, LoginModalService, LoginService } from '../../shared';
 import { VERSION, DEBUG_INFO_ENABLED } from '../../app.constants';
 
@@ -19,6 +20,7 @@ export class LeftbarComponent implements OnInit {
     inProduction: boolean;
     isNavbarCollapsed: boolean;
     languages: any[];
+    eventSubscriber: Subscription;
     swaggerEnabled: boolean;
     modalRef: NgbModalRef;
     version: string;
@@ -29,14 +31,24 @@ export class LeftbarComponent implements OnInit {
         private principal: Principal,
         private loginModalService: LoginModalService,
         private profileService: ProfileService,
-        private router: Router
+        private router: Router,
+        private route: ActivatedRoute,
+        private eventManager: JhiEventManager
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
-        if (router.url.indexOf('seguridad') === 1) {
-            this.aplicacion = 'seguridad';
+        this.getRoute(router);
+    }
+
+    getRoute(router) {
+        if (router.url.indexOf('defensa') === 1) {
+            this.aplicacion = 'defensa';
         } else if (router.url.indexOf('consultas') === 1) {
             this.aplicacion = 'consultas';
+        } else if (router.url.indexOf('sindicatos') === 1) {
+            this.aplicacion = 'sindicatos';
+        } else {
+            this.aplicacion = 'seguridad';
         }
     }
 
@@ -45,6 +57,11 @@ export class LeftbarComponent implements OnInit {
             this.inProduction = profileInfo.inProduction;
             this.swaggerEnabled = profileInfo.swaggerEnabled;
         });
+        this.registerChangeInRoutes();
+    }
+
+    registerChangeInRoutes() {
+        this.eventSubscriber = this.eventManager.subscribe('changeRoute', (response) => this.getRoute(this.router));
     }
 
     collapseNavbar() {

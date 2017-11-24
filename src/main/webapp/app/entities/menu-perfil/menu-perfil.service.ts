@@ -5,17 +5,20 @@ import { Observable } from 'rxjs/Rx';
 import { JhiDateUtils } from 'ng-jhipster';
 
 import { MenuPerfil } from './menu-perfil.model';
-import { ResponseWrapper, createRequestOption } from '../../shared';
+import { ResponseWrapper, createRequestOption, AuthServerProvider } from '../../shared';
 
 @Injectable()
 export class MenuPerfilService {
 
-    private resourceUrl = '/seguridad/api/menu-perfils';
-    private resourceSearchUrl = '/seguridad/api/_search/menu-perfils';
+    private resourceUrl = '/seguridad/api/menu-perfiles';
+    private resourceSearchUrl = '/seguridad/api/_search/menu-perfiles';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils, private authServerProvider: AuthServerProvider) { }
 
     create(menuPerfil: MenuPerfil): Observable<MenuPerfil> {
+        const token = this.authServerProvider.getToken();
+        menuPerfil.numEliminar = 1;
+        menuPerfil.varUsuarioLog = token.substring(token.length - 20);
         const copy = this.convert(menuPerfil);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
@@ -28,6 +31,16 @@ export class MenuPerfilService {
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
+        });
+    }
+
+    updateLogic(menuPerfil: MenuPerfil): Observable<MenuPerfil> {
+        menuPerfil.numEliminar = 0;
+        const copy = this.convert(menuPerfil);
+        return this.http.put(this.resourceUrl, copy).map((res: Response) => {
+            const jsonResponse = res.json();
+            this.convertItemFromServer(jsonResponse);
+            return jsonResponse;
         });
     }
 

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { JhiDateUtils } from 'ng-jhipster';
 
 import { TipoUsuario } from './tipo-usuario.model';
-import { ResponseWrapper, createRequestOption } from '../../shared';
+import { ResponseWrapper, createRequestOption, AuthServerProvider } from '../../shared';
 
 @Injectable()
 export class TipoUsuarioService {
@@ -13,9 +13,12 @@ export class TipoUsuarioService {
     private resourceUrl = '/seguridad/api/tipo-usuarios';
     private resourceSearchUrl = '/seguridad/api/_search/tipo-usuarios';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils, private authServerProvider: AuthServerProvider) { }
 
     create(tipoUsuario: TipoUsuario): Observable<TipoUsuario> {
+        const token = this.authServerProvider.getToken();
+        tipoUsuario.numEliminar = 1;
+        tipoUsuario.varUsuarioLog = token.substring(token.length - 20);
         const copy = this.convert(tipoUsuario);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();

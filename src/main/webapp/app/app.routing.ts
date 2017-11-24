@@ -12,10 +12,10 @@ export const entityRoute: Route = {
     loadChildren: './entities/entity.module#EntityModule'
 };
 
-export const seguridadRoute: Route = {
-    path: 'seguridad',
-    loadChildren: './applications/seguridad/seguridad.module#GatewaySeguridadModule'
-};
+// export const seguridadRoute: Route = {
+//     path: 'seguridad',
+//     loadChildren: './applications/seguridad/seguridad.module#GatewaySeguridadModule'
+// };
 
 export const consultasRoute: Route = {
     path: 'consultas',

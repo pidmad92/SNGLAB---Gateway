@@ -1,1 +1,24 @@
-Datos Audiencia
+<div class="row">
+    <div class="col">
+        <div class="card card-panel">
+            <div class="card-header d-sm-flex justify-content-between">
+                <h5>Registro de Expediente<small class="ml-3">Audiencias</small></h5>
+                <h5 class="mb-0"><small>Paso 5 de 5</small></h5>
+            </div>
+            <div class="card-body">
+                <div class="row my-3">
+                    <div class="col-md-12">
+                        <p-dataTable [value]="audiencia" dataKey="item">
+                            <p-header>Audiencias</p-header>
+                            <p-column field="item" header="N°"></p-column>
+                            <p-column field="fecha" header="Fecha"></p-column>
+                            <p-column field="hora" header="Hora"></p-column>
+                            <p-column field="conciliador" header="Conciliador"></p-column>
+                            <p-column field="resultado" header="Resultado"></p-column>
+                            <p-column field="tresultado" header="Tipo de Resultado"></p-column>
+                        </p-dataTable>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { JhiDateUtils } from 'ng-jhipster';
 
 import { UsuarioGrupo } from './usuario-grupo.model';
-import { ResponseWrapper, createRequestOption } from '../../shared';
+import { ResponseWrapper, createRequestOption, AuthServerProvider } from '../../shared';
 
 @Injectable()
 export class UsuarioGrupoService {
@@ -13,9 +13,12 @@ export class UsuarioGrupoService {
     private resourceUrl = '/seguridad/api/usuario-grupos';
     private resourceSearchUrl = '/seguridad/api/_search/usuario-grupos';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils, private authServerProvider: AuthServerProvider) { }
 
     create(usuarioGrupo: UsuarioGrupo): Observable<UsuarioGrupo> {
+        const token = this.authServerProvider.getToken();
+        usuarioGrupo.numEliminar = 1;
+        usuarioGrupo.varUsuarioLog = token.substring(token.length - 20);
         const copy = this.convert(usuarioGrupo);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();

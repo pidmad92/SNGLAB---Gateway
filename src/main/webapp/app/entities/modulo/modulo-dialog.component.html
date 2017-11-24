@@ -7,107 +7,65 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!modulo.id">
-            <label for="id" jhiTranslate="global.field.id">ID</label>
+        <div class="form-group" hidden>
+            <label for="id" jhiTranslate="global.field.id">Nro</label>
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="modulo.id" readonly />
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.modulo.varNomModulo" for="field_varNomModulo">Var Nom Modulo</label>
-            <input type="text" class="form-control" name="varNomModulo" id="field_varNomModulo"
-                [(ngModel)]="modulo.varNomModulo" maxlength="100" />
-            <div [hidden]="!(editForm.controls.varNomModulo?.dirty && editForm.controls.varNomModulo?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.varNomModulo?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
-                   This field cannot be longer than 100 characters.
-                </small>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label form-control-label" jhiTranslate="gatewayApp.modulo.aplicacion" for="field_aplicacion">Aplicacion</label>
+            <div class="col-sm-10">
+                <select autofocus required class="form-control" id="field_aplicacion" name="aplicacion" [(ngModel)]="modulo.aplicacion" >
+                    <option [ngValue]="aplicacionOption.id === modulo.aplicacion?.id ? modulo.aplicacion : aplicacionOption" *ngFor="let aplicacionOption of aplicacions; trackBy: trackAplicacionById">{{aplicacionOption.varNomApp}}</option>
+                </select>
+            </div>            
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label form-control-label" jhiTranslate="gatewayApp.modulo.varNomModulo" for="field_varNomModulo">Var Nom Modulo</label>
+            <div class="col-sm-10">
+                <input required type="text" class="form-control" name="varNomModulo" id="field_varNomModulo"
+                    [(ngModel)]="modulo.varNomModulo" maxlength="100" />
+                <div [hidden]="!(editForm.controls.varNomModulo?.dirty && editForm.controls.varNomModulo?.invalid)">
+                    <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.varNomModulo?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                    </small>
+                    <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.varNomModulo?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                    This field cannot be longer than 100 characters.
+                    </small>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.modulo.varDescModulo" for="field_varDescModulo">Var Desc Modulo</label>
-            <input type="text" class="form-control" name="varDescModulo" id="field_varDescModulo"
-                [(ngModel)]="modulo.varDescModulo" maxlength="300" />
-            <div [hidden]="!(editForm.controls.varDescModulo?.dirty && editForm.controls.varDescModulo?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.varDescModulo?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 300 }">
-                   This field cannot be longer than 300 characters.
-                </small>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label form-control-label" jhiTranslate="gatewayApp.modulo.varDescModulo" for="field_varDescModulo">Var Desc Modulo</label>
+            <div class="col-sm-10">
+                <textarea rows="3" class="form-control" name="varDescModulo" id="field_varDescModulo"
+                    [(ngModel)]="modulo.varDescModulo" maxlength="300" ></textarea>
+                <div [hidden]="!(editForm.controls.varDescModulo?.dirty && editForm.controls.varDescModulo?.invalid)">
+                    <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.varDescModulo?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 300 }">
+                    This field cannot be longer than 300 characters.
+                    </small>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.modulo.numEstModulo" for="field_numEstModulo">Num Est Modulo</label>
-            <input type="number" class="form-control" name="numEstModulo" id="field_numEstModulo"
-                [(ngModel)]="modulo.numEstModulo"  />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.modulo.varUsuarioLog" for="field_varUsuarioLog">Var Usuario Log</label>
-            <input type="text" class="form-control" name="varUsuarioLog" id="field_varUsuarioLog"
-                [(ngModel)]="modulo.varUsuarioLog" required maxlength="20" />
-            <div [hidden]="!(editForm.controls.varUsuarioLog?.dirty && editForm.controls.varUsuarioLog?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.varUsuarioLog?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.varUsuarioLog?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
-                   This field cannot be longer than 20 characters.
-                </small>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label form-control-label" jhiTranslate="gatewayApp.modulo.numEstModulo" for="field_numEstModulo">Num Est Modulo</label>
+            <div class="col-sm-10">
+                <select required class="form-control" name="numEstModulo" id="field_numEstModulo" [(ngModel)]="modulo.numEstModulo">
+                        <option value="1">Activo</option>
+                        <option value="0">Inactivo</option>
+                </select>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.modulo.datFechaLog" for="field_datFechaLog">Dat Fecha Log</label>
-            <div class="d-flex">
-                <input id="field_datFechaLog" type="datetime-local" class="form-control" name="datFechaLog" [(ngModel)]="modulo.datFechaLog"
-                required  />
-            </div>
-            <div [hidden]="!(editForm.controls.datFechaLog?.dirty && editForm.controls.datFechaLog?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.datFechaLog?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.datFechaLog?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
-                    This field should be a date and time.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.modulo.numEliminar" for="field_numEliminar">Num Eliminar</label>
-            <input type="number" class="form-control" name="numEliminar" id="field_numEliminar"
-                [(ngModel)]="modulo.numEliminar" required min="0" max="1" />
-            <div [hidden]="!(editForm.controls.numEliminar?.dirty && editForm.controls.numEliminar?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.numEliminar?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.numEliminar?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 0 }">
-                    This field should be at least 0.
-                </small>
-                <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.numEliminar?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 1 }">
-                    This field cannot be more than 1.
-                </small>
-                <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.numEliminar?.errors?.number" jhiTranslate="entity.validation.number">
-                    This field should be a number.
-                </small>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.modulo.aplicacion" for="field_aplicacion">Aplicacion</label>
-            <select class="form-control" id="field_aplicacion" name="aplicacion" [(ngModel)]="modulo.aplicacion" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="aplicacionOption.id === modulo.aplicacion?.id ? modulo.aplicacion : aplicacionOption" *ngFor="let aplicacionOption of aplicacions; trackBy: trackAplicacionById">{{aplicacionOption.id}}</option>
-            </select>
-        </div>
+        </div>     
+        
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
             <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
         </button>
-        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-dark">
             <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
         </button>
     </div>

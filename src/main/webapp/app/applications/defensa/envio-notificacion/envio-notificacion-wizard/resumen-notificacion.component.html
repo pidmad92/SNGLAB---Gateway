@@ -1,0 +1,28 @@
+RESUMEN NOTIFICACION
+<div class="row">
+    <div class="col">
+        <div class="card card-panel">
+                <div class="card-header d-sm-flex justify-content-between">
+                    <h5>Envio de Notificacion<small class="ml-3">Resumen</small></h5>
+                    <h5 class="mb-0"><small>Paso 3 de 3</small></h5>
+                </div>
+                <div class="card-body">
+                    <div class="row my-3">
+                        <div class="col-md-12">
+                            <p-dataTable [value]="notificaciones" dataKey="codigo">
+                                <p-header>Notificaciones Enviadas</p-header>
+                                <p-column field="item" header="Item"></p-column>
+                                <p-column field="henvio" header="Hoja de Envió"></p-column>
+                                <p-column field="nexpediente" header="N° Expediente"></p-column>                                
+                                <p-column field="nombrerazon" header="Nombre o Razón Social"></p-column>
+                                <p-column field="direccion" header="Dirección Destinatario"></p-column>
+                                <p-column field="faudiencia" header="Fecha Audiencia"></p-column>
+                                <p-column field="tipodoc" header="Tipo Doc."></p-column>
+                                <p-column field="notificar" header="Notificar"></p-column>
+                            </p-dataTable>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

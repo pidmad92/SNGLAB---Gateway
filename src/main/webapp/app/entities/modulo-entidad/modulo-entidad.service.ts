@@ -5,17 +5,20 @@ import { Observable } from 'rxjs/Rx';
 import { JhiDateUtils } from 'ng-jhipster';
 
 import { ModuloEntidad } from './modulo-entidad.model';
-import { ResponseWrapper, createRequestOption } from '../../shared';
+import { ResponseWrapper, createRequestOption, AuthServerProvider } from '../../shared';
 
 @Injectable()
 export class ModuloEntidadService {
 
-    private resourceUrl = '/seguridad/api/modulo-entidads';
-    private resourceSearchUrl = '/seguridad/api/_search/modulo-entidads';
+    private resourceUrl = '/seguridad/api/modulo-entidades';
+    private resourceSearchUrl = '/seguridad/api/_search/modulo-entidades';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils, private authServerProvider: AuthServerProvider) { }
 
     create(moduloEntidad: ModuloEntidad): Observable<ModuloEntidad> {
+        const token = this.authServerProvider.getToken();
+        moduloEntidad.numEliminar = 1;
+        moduloEntidad.varUsuarioLog = token.substring(token.length - 20);
         const copy = this.convert(moduloEntidad);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();

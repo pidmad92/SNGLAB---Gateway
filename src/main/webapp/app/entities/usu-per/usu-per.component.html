@@ -1,7 +1,7 @@
 <div>
     <h4 class="title my-3">
         <span jhiTranslate="gatewayApp.usuPer.home.title">Usu Pers</span>
-        <button class="btn btn-primary float-right jh-create-entity create-usu-per" [routerLink]="['/seguridad', { outlets: { popup: ['usu-per-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-usu-per" [routerLink]="['/', { outlets: { popup: ['usu-per-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.usuPer.home.createLabel">
             Create new Usu Per
@@ -75,14 +75,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/seguridad', { outlets: { popup: 'usu-per/'+ usuPer.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'usu-per/'+ usuPer.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/seguridad', { outlets: { popup: 'usu-per/'+ usuPer.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'usu-per/'+ usuPer.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

@@ -1,7 +1,7 @@
 <div>
     <h4 class="title my-3">
         <span jhiTranslate="gatewayApp.tipoUsuario.home.title">Tipo Usuarios</span>
-        <button class="btn btn-primary float-right jh-create-entity create-tipo-usuario" [routerLink]="['/seguridad', { outlets: { popup: ['tipo-usuario-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-tipo-usuario" [routerLink]="['/', { outlets: { popup: ['tipo-usuario-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.tipoUsuario.home.createLabel">
             Create new Tipo Usuario
@@ -32,9 +32,6 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="varNomTpusuario"><span jhiTranslate="gatewayApp.tipoUsuario.varNomTpusuario">Var Nom Tpusuario</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="varDescTpusuario"><span jhiTranslate="gatewayApp.tipoUsuario.varDescTpusuario">Var Desc Tpusuario</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="varUsuarioLog"><span jhiTranslate="gatewayApp.tipoUsuario.varUsuarioLog">Var Usuario Log</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="datFechaLog"><span jhiTranslate="gatewayApp.tipoUsuario.datFechaLog">Dat Fecha Log</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="numEliminar"><span jhiTranslate="gatewayApp.tipoUsuario.numEliminar">Num Eliminar</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -43,9 +40,6 @@
                 <td><a [routerLink]="['../tipo-usuario', tipoUsuario.id ]">{{tipoUsuario.id}}</a></td>
                 <td>{{tipoUsuario.varNomTpusuario}}</td>
                 <td>{{tipoUsuario.varDescTpusuario}}</td>
-                <td>{{tipoUsuario.varUsuarioLog}}</td>
-                <td>{{tipoUsuario.datFechaLog | date:'medium'}}</td>
-                <td>{{tipoUsuario.numEliminar}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
@@ -55,14 +49,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/seguridad', { outlets: { popup: 'tipo-usuario/'+ tipoUsuario.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'tipo-usuario/'+ tipoUsuario.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/seguridad', { outlets: { popup: 'tipo-usuario/'+ tipoUsuario.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'tipo-usuario/'+ tipoUsuario.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

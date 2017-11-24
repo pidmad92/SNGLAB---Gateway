@@ -5,17 +5,20 @@ import { Observable } from 'rxjs/Rx';
 import { JhiDateUtils } from 'ng-jhipster';
 
 import { Aplicacion } from './aplicacion.model';
-import { ResponseWrapper, createRequestOption } from '../../shared';
+import { ResponseWrapper, createRequestOption, AuthServerProvider } from '../../shared';
 
 @Injectable()
 export class AplicacionService {
 
-    private resourceUrl = '/seguridad/api/aplicacions';
-    private resourceSearchUrl = '/seguridad/api/_search/aplicacions';
+    private resourceUrl = '/seguridad/api/aplicaciones';
+    private resourceSearchUrl = '/seguridad/api/_search/aplicaciones';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils, private authServerProvider: AuthServerProvider) { }
 
     create(aplicacion: Aplicacion): Observable<Aplicacion> {
+        const token = this.authServerProvider.getToken();
+        aplicacion.numEliminar = 1;
+        aplicacion.varUsuarioLog = token.substring(token.length - 20);
         const copy = this.convert(aplicacion);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
@@ -46,6 +49,16 @@ export class AplicacionService {
 
     delete(id: number): Observable<Response> {
         return this.http.delete(`${this.resourceUrl}/${id}`);
+    }
+
+    updateLogic(aplicacion: Aplicacion): Observable<Aplicacion> {
+        aplicacion.numEliminar = 0;
+        const copy = this.convert(aplicacion);
+        return this.http.put(this.resourceUrl, copy).map((res: Response) => {
+            const jsonResponse = res.json();
+            this.convertItemFromServer(jsonResponse);
+            return jsonResponse;
+        });
     }
 
     search(req?: any): Observable<ResponseWrapper> {

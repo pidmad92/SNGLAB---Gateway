@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { JhiDateUtils } from 'ng-jhipster';
 
 import { UsuarioHorario } from './usuario-horario.model';
-import { ResponseWrapper, createRequestOption } from '../../shared';
+import { ResponseWrapper, createRequestOption, AuthServerProvider } from '../../shared';
 
 @Injectable()
 export class UsuarioHorarioService {
@@ -13,16 +13,26 @@ export class UsuarioHorarioService {
     private resourceUrl = '/seguridad/api/usuario-horarios';
     private resourceSearchUrl = '/seguridad/api/_search/usuario-horarios';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils, private authServerProvider: AuthServerProvider) { }
 
     create(usuarioHorario: UsuarioHorario): Observable<UsuarioHorario> {
+        const token = this.authServerProvider.getToken();
+        usuarioHorario.numEliminar = 1;
+        usuarioHorario.varUsuarioLog = token.substring(token.length - 20);
         const copy = this.convert(usuarioHorario);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
-
+    createFromUser(usuarioHorario: UsuarioHorario): Observable<ResponseWrapper> {
+        const token = this.authServerProvider.getToken();
+        usuarioHorario.numEliminar = 1;
+        usuarioHorario.varUsuarioLog = token.substring(token.length - 20);
+        const copy = this.convert(usuarioHorario);
+        return this.http.post(this.resourceUrl, copy)
+            .map((res: Response) => this.convertResponse(res));
+    }
     update(usuarioHorario: UsuarioHorario): Observable<UsuarioHorario> {
         const copy = this.convert(usuarioHorario);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
@@ -30,12 +40,21 @@ export class UsuarioHorarioService {
             return this.convertItemFromServer(jsonResponse);
         });
     }
+    updateFromUser(usuarioHorario: UsuarioHorario): Observable<ResponseWrapper> {
+        const copy = this.convert(usuarioHorario);
+        return this.http.put(this.resourceUrl, copy)
+            .map((res: Response) => this.convertResponse(res));
+    }
 
     find(id: number): Observable<UsuarioHorario> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
+    }
+    findById(id: number): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceUrl}/tipo/${id}`)
+            .map((res: Response) => this.convertResponse(res));
     }
 
     query(req?: any): Observable<ResponseWrapper> {
@@ -68,10 +87,6 @@ export class UsuarioHorarioService {
      */
     private convertItemFromServer(json: any): UsuarioHorario {
         const entity: UsuarioHorario = Object.assign(new UsuarioHorario(), json);
-        entity.datHoraInicio = this.dateUtils
-            .convertLocalDateFromServer(json.datHoraInicio);
-        entity.datHoraFin = this.dateUtils
-            .convertLocalDateFromServer(json.datHoraFin);
         entity.datFechaLog = this.dateUtils
             .convertDateTimeFromServer(json.datFechaLog);
         return entity;
@@ -82,11 +97,6 @@ export class UsuarioHorarioService {
      */
     private convert(usuarioHorario: UsuarioHorario): UsuarioHorario {
         const copy: UsuarioHorario = Object.assign({}, usuarioHorario);
-        copy.datHoraInicio = this.dateUtils
-            .convertLocalDateToServer(usuarioHorario.datHoraInicio);
-        copy.datHoraFin = this.dateUtils
-            .convertLocalDateToServer(usuarioHorario.datHoraFin);
-
         copy.datFechaLog = this.dateUtils.toDate(usuarioHorario.datFechaLog);
         return copy;
     }

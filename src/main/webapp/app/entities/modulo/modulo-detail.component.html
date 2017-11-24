@@ -1,51 +1,39 @@
 
 <div *ngIf="modulo">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.modulo.detail.title">Modulo</span> {{modulo.id}}</h4>
+    <h4 class="title my-3"><span jhiTranslate="gatewayApp.modulo.detail.title">Modulo</span></h4>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.modulo.varNomModulo">Var Nom Modulo</span></dt>
+        <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.modulo.varNomModulo">Var Nom Modulo</span><span>:</span></dt>
         <dd>
             <span>{{modulo.varNomModulo}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.modulo.varDescModulo">Var Desc Modulo</span></dt>
+        <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.modulo.varDescModulo">Var Desc Modulo</span><span>:</span></dt>
         <dd>
             <span>{{modulo.varDescModulo}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.modulo.numEstModulo">Num Est Modulo</span></dt>
+        <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.modulo.numEstModulo">Num Est Modulo</span><span>:</span></dt>
         <dd>
-            <span>{{modulo.numEstModulo}}</span>
+            <span>{{ modulo.numEstModulo==1 ? 'Activo':'Inactivo'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.modulo.varUsuarioLog">Var Usuario Log</span></dt>
-        <dd>
-            <span>{{modulo.varUsuarioLog}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.modulo.datFechaLog">Dat Fecha Log</span></dt>
-        <dd>
-            <span>{{modulo.datFechaLog | date:'medium'}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.modulo.numEliminar">Num Eliminar</span></dt>
-        <dd>
-            <span>{{modulo.numEliminar}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.modulo.aplicacion">Aplicacion</span></dt>
+        <dt><span class="span-trans-bold" jhiTranslate="gatewayApp.modulo.aplicacion">Aplicacion</span><span>:</span></dt>
         <dd>
             <div *ngIf="modulo.aplicacion">
-                <a [routerLink]="['/aplicacion', modulo.aplicacion?.id]">{{modulo.aplicacion?.id}}</a>
+                {{modulo.aplicacion?.varNomApp}}
             </div>
         </dd>
     </dl>
 
     <button type="submit"
             (click)="previousState()"
-            class="btn btn-info">
+            class="btn btn-secondary">
         <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
     </button>
 
     <button type="button"
-            [routerLink]="['/seguridad', { outlets: { popup: 'modulo/'+ modulo.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'modulo/'+ modulo.id + '/edit'} }]"
             replaceUrl="true"
-            class="btn btn-primary">
+            class="btn btn-dark">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
     </button>
 </div>

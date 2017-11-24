@@ -27,8 +27,9 @@ export class UsuarioHorarioDeleteDialogComponent {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete(id: number) {
-        this.usuarioHorarioService.delete(id).subscribe((response) => {
+    confirmDelete(usuarioHorario) {
+        usuarioHorario.numEliminar = 0;
+        this.usuarioHorarioService.update(usuarioHorario).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'usuarioHorarioListModification',
                 content: 'Deleted an usuarioHorario'

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    
+    <changeSet author="liquibase-docs" id="20171117153921-1">
+		  <!-- <dropForeignKeyConstraint baseTableName="gltbc_pase" constraintName="fk_pase_expediente_id"/> -->
+		  <!-- <dropColumn columnName="expediente_id" tableName="gltbc_pase"/> -->
+		  <!-- <addColumn tableName="glmvc_expediente">
+        	<column name="pase_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>
+    	  </addColumn>			 -->
+          <addForeignKeyConstraint baseColumnNames="pase_id"
+                                 baseTableName="glmvc_expediente"
+                                 constraintName="fk_expediente_pase_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="gltbc_pase"/>
+    </changeSet>
+</databaseChangeLog>
+                        

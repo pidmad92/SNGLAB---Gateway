@@ -21,29 +21,33 @@ import { GatewayTipproveidModule } from '../../entities/tipproveid/tipproveid.mo
 import { GatewayTipresconcModule } from '../../entities/tipresconc/tipresconc.module';
 
 import { RegistroExpedienteModule } from './registro-expediente/registro-expediente.module';
+import { EnvioNotificacionModule } from './envio-notificacion/envio-notificacion.module';
+import { ConsultaExpedienteModule } from './consulta-expediente/consulta-expediente.module';
 
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
     imports: [
-        GatewayConciliacionModule,
-        GatewayDocexpedienModule,
-        GatewayMultaModule,
-        GatewayNotificacionModule,
-        GatewayResolucrdModule,
-        GatewayDirecnotifModule,
-        GatewayAbogadoModule,
-        GatewayDettipprovModule,
-        GatewayEstexpedienModule,
-        GatewayHoraModule,
-        GatewayResolutorModule,
-        GatewayResulconciModule,
-        GatewayTipdocexpModule,
-        GatewayTipenvnotModule,
-        GatewayTipnotifModule,
-        GatewayTipproveidModule,
-        GatewayTipresconcModule,
+        // GatewayConciliacionModule,
+        // GatewayDocexpedienModule,
+        // GatewayMultaModule,
+        // GatewayNotificacionModule,
+        // GatewayResolucrdModule,
+        // GatewayDirecnotifModule,
+        // GatewayAbogadoModule,
+        // GatewayDettipprovModule,
+        // GatewayEstexpedienModule,
+        // GatewayHoraModule,
+        // GatewayResolutorModule,
+        // GatewayResulconciModule,
+        // GatewayTipdocexpModule,
+        // GatewayTipenvnotModule,
+        // GatewayTipnotifModule,
+        // GatewayTipproveidModule,
+        // GatewayTipresconcModule,
         RegistroExpedienteModule,
+        EnvioNotificacionModule,
+        ConsultaExpedienteModule
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

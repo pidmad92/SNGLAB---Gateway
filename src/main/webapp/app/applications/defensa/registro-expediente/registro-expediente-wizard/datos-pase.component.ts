@@ -9,7 +9,7 @@ export class DatosPaseComponent implements OnInit {
 
     tipoBusqueda= 'nroDoc';
     rangeDates: Date[];
-    cars: any;
+    pases: any;
     es: any;
     pasesDoc: Object;
 
@@ -17,7 +17,7 @@ export class DatosPaseComponent implements OnInit {
 
     ngOnInit() {
         this.es = ES;
-        this.cars = [
+        this.pases = [
             {codPase : '895624233', fechaPase: '02/02/2017', rucEmp: '2334343333', razonSocial: 'Ministerio de Trabajo',
              nroTra: '23341289', nomTra: 'Pedro Peña Salazar', ofDer: 'Liquidaciones'},
             {codPase : '454545541', fechaPase: '03/02/2017', rucEmp: '2143423331', razonSocial: 'Apple S.A.C.', nroTra: '3432233', nomTra: 'Nombre aleaotorio', ofDer: 'Consultas'},

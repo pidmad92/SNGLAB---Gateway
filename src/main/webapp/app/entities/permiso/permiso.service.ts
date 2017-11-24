@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { JhiDateUtils } from 'ng-jhipster';
 
 import { Permiso } from './permiso.model';
-import { ResponseWrapper, createRequestOption } from '../../shared';
+import { ResponseWrapper, createRequestOption, AuthServerProvider } from '../../shared';
 
 @Injectable()
 export class PermisoService {
@@ -13,9 +13,12 @@ export class PermisoService {
     private resourceUrl = '/seguridad/api/permisos';
     private resourceSearchUrl = '/seguridad/api/_search/permisos';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils, private authServerProvider: AuthServerProvider) { }
 
     create(permiso: Permiso): Observable<Permiso> {
+        const token = this.authServerProvider.getToken();
+        permiso.numEliminar = 1;
+        permiso.varUsuarioLog = token.substring(token.length - 20);
         const copy = this.convert(permiso);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();

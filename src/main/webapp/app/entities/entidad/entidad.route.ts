@@ -7,6 +7,7 @@ import { JhiPaginationUtil } from 'ng-jhipster';
 import { EntidadComponent } from './entidad.component';
 import { EntidadDetailComponent } from './entidad-detail.component';
 import { EntidadPopupComponent } from './entidad-dialog.component';
+import { EntidadModuloPopupComponent } from './entidad-modulo-dialog.component';
 import { EntidadDeletePopupComponent } from './entidad-delete-dialog.component';
 
 @Injectable()
@@ -75,6 +76,16 @@ export const entidadPopupRoute: Routes = [
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'gatewayApp.entidad.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
+    },
+    {
+        path: 'entidad/:id/modulos',
+        component: EntidadModuloPopupComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'snglabApp.entidad.home.title'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

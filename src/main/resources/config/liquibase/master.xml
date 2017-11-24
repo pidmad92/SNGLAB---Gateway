@@ -93,4 +93,5 @@
 	
 	<include file="config/liquibase/changelog/20171114153920_change_name_tables_consultas.xml" relativeToChangelogFile="false"/>
 	<include file="config/liquibase/changelog/20171114153921_change_name_tables_defensa.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171117153921_change_relation-expediente-pase.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

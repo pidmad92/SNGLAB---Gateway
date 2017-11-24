@@ -27,7 +27,6 @@ export class JhiMainComponent implements OnInit {
     }
 
     ngOnInit() {
-        // console.log('|' + this.location);
         this.router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
                 this.jhiLanguageHelper.updateTitle(this.getPageTitle(this.router.routerState.snapshot.root));

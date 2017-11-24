@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { JhiDateUtils } from 'ng-jhipster';
 
 import { Menu } from './menu.model';
-import { ResponseWrapper, createRequestOption } from '../../shared';
+import { ResponseWrapper, createRequestOption, AuthServerProvider } from '../../shared';
 
 @Injectable()
 export class MenuService {
@@ -13,9 +13,12 @@ export class MenuService {
     private resourceUrl = '/seguridad/api/menus';
     private resourceSearchUrl = '/seguridad/api/_search/menus';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils, private authServerProvider: AuthServerProvider) { }
 
     create(menu: Menu): Observable<Menu> {
+        const token = this.authServerProvider.getToken();
+        menu.numEliminar = 1;
+        menu.varUsuarioLog = token.substring(token.length - 20);
         const copy = this.convert(menu);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
@@ -28,6 +31,15 @@ export class MenuService {
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
+        });
+    }
+    updateLogic(menu: Menu): Observable<Menu> {
+        menu.numEliminar = 0;
+        const copy = this.convert(menu);
+        return this.http.put(this.resourceUrl, copy).map((res: Response) => {
+            const jsonResponse = res.json();
+            this.convertItemFromServer(jsonResponse);
+            return jsonResponse;
         });
     }
 
