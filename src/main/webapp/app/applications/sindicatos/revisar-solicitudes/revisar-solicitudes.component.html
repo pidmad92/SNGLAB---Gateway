@@ -37,10 +37,16 @@
                     <td>sdfsdfdsf</td>
                     <td>12/12/12</td>
                     <!--td><button type="button" class="btn btn-primary jh-create-entity create-accionadop" (click)="open('prueba')">Detalle</button></td-->
-                    <td><button type="button" [routerLink]="['/sindicatos', { outlets: { popup: ['evaluar-solicitudes'] } }]" class="btn btn-primary jh-create-entity create-accionadop">Detalle</button></td>
+                    <td><button type="button" [routerLink]="['/sindicatos/revisar-solicitudes', { outlets:  { popupexp: 'evaluar-solicitudes/'+ id } }]" class="btn btn-primary jh-create-entity create-accionadop">Detalle</button></td>
+                                              
+                                              
                 </tr>
             </tbody>
         </table>
     </div>
     
     </div>
+
+    <router-outlet name="popupexp"></router-outlet>
+    
+    

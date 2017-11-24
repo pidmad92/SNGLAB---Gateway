@@ -9,11 +9,11 @@ import {
     EvaluarSolicitudesComponent,
     RevisarSolicitudesPopupRoute,
     RevisarSolicitudesRoute,
+    EvaluarSolicitudesPopupComponent,
 } from './';
 
 const ENTITY_STATES = [
     ...RevisarSolicitudesRoute,
-    ...RevisarSolicitudesPopupRoute,
     // ...accionadopPopupRoute,
 ];
 
@@ -25,6 +25,7 @@ const ENTITY_STATES = [
     declarations: [
         RevisarSolicitudesComponent,
         EvaluarSolicitudesComponent,
+        EvaluarSolicitudesPopupComponent,
         // EvaluarSolicitudesPopupComponent,
         // AccionadopDetailComponent,
         // AccionadopDialogComponent,
@@ -35,6 +36,7 @@ const ENTITY_STATES = [
     entryComponents: [
         RevisarSolicitudesComponent,
         EvaluarSolicitudesComponent,
+        EvaluarSolicitudesPopupComponent
         // EvaluarSolicitudesPopupComponent,
         // AccionadopDialogComponent,
         // AccionadopPopupComponent,

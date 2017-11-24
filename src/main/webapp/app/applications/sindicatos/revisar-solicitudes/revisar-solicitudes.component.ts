@@ -17,6 +17,7 @@ export class RevisarSolicitudesComponent implements OnInit {
     eventSubscriber: Subscription;
     currentSearch: string;
     routeSub: any;
+    id = '14';
 
     constructor(
         private eventManager: JhiEventManager,

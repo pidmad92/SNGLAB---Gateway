@@ -19,7 +19,19 @@ export const RevisarSolicitudesRoute: Routes = [
             pageTitle: 'Revisar Solicitudes'
         },
 
-        canActivate: [UserRouteAccessService]
+        canActivate: [UserRouteAccessService],
+        children: [
+            {
+                path: 'evaluar-solicitudes/:id',
+                component: EvaluarSolicitudesComponent,
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'Evaluar Solicitudes'
+                },
+                canActivate: [UserRouteAccessService],
+                outlet: 'popupexp'
+            }
+        ]
     }
     // {
     //     path: 'accionadop/:id',
@@ -41,7 +53,7 @@ export const RevisarSolicitudesPopupRoute: Routes = [
             pageTitle: 'Evaluar Solicitudes'
         },
         canActivate: [UserRouteAccessService],
-        outlet: 'popup'
+        outlet: 'popupexp'
     }
 ];
 
