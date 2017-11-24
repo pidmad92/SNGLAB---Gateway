@@ -8,6 +8,9 @@ import { RegistroAfiliadoComponent } from './registro-afiliado.component';
 import { RegistroFederacionComponent } from './registro-federacion.component';
 import { RegistroConfederacionComponent } from './registro-confederacion.component';
 import { ConsultaOrganizacionComponent } from './consulta-organizacion.component';
+import { PrincipalComponent } from './principal.component';
+
+import {ChipsModule} from 'primeng/primeng';
 
 import { GatewaySharedModule } from '../../../shared';
 import { RegistroOrganizacionService,
@@ -23,6 +26,7 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         GatewaySharedModule,
+        ChipsModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
@@ -34,6 +38,7 @@ const ENTITY_STATES = [
         RegistroFederacionComponent,
         RegistroConfederacionComponent,
         ConsultaOrganizacionComponent,
+        PrincipalComponent,
         // AccionadopDetailComponent,
         // AccionadopDialogComponent,
         // AccionadopDeleteDialogComponent,
@@ -49,6 +54,7 @@ const ENTITY_STATES = [
         RegistroFederacionComponent,
         RegistroConfederacionComponent,
         ConsultaOrganizacionComponent,
+        PrincipalComponent,
         // AccionadopDialogComponent,
         // AccionadopPopupComponent,
         // AccionadopDeleteDialogComponent,

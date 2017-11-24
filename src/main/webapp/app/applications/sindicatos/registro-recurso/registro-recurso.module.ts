@@ -3,10 +3,12 @@ import { RouterModule } from '@angular/router';
 
 import { ConsultaRecursoComponent } from './consulta-recurso.component';
 import { RegistroObservacionComponent } from './registro-observacion.component';
+import { PrincipalComponent } from './principal.component';
 
 import { GatewaySharedModule } from '../../../shared';
 import { RegistroRecursoService,
     RegistroRecursoComponent,
+    NuevoRecursoComponent,
     RegistroRecursoRoute,
 } from './';
 
@@ -24,6 +26,8 @@ const ENTITY_STATES = [
         RegistroRecursoComponent,
         ConsultaRecursoComponent,
         RegistroObservacionComponent,
+        PrincipalComponent,
+        NuevoRecursoComponent,
         // AccionadopDetailComponent,
         // AccionadopDialogComponent,
         // AccionadopDeleteDialogComponent,
@@ -34,6 +38,8 @@ const ENTITY_STATES = [
         RegistroRecursoComponent,
         ConsultaRecursoComponent,
         RegistroObservacionComponent,
+        PrincipalComponent,
+        NuevoRecursoComponent,
         // AccionadopDialogComponent,
         // AccionadopPopupComponent,
         // AccionadopDeleteDialogComponent,

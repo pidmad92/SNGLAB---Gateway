@@ -45,11 +45,11 @@
                 </button>
             </td>
         </tr>
-    </table>    
+    </table>
             
     <br/>    
     
-    <button class="btn btn-primary jh-create-entity create-accionadop">Nuevo Registro</button>
+    <button type="button"  [routerLink]="['/sindicatos/principal', {outlets: { wizard: 'registro-organizacion' } } ]" class="btn btn-primary jh-create-entity create-accionadop">Nuevo Registro</button>
     
     <br/>
     <div class="table-responsive">

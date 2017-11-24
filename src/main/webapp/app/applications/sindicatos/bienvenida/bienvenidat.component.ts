@@ -14,10 +14,23 @@ export class BienvenidatComponent implements OnInit {
     currentAccount: any;
     eventSubscriber: Subscription;
     currentSearch: string;
+    hideElement: false;
 
     constructor(
         private eventManager: JhiEventManager
     ) {
+    }
+
+    verAmbito(valor: number) {
+        console.log('valor=> ' + valor);
+        if (valor === 1) {
+        } else if (valor === 2) {
+            document.getElementById('divOpciones').style.display = 'none';
+        } else if (valor === 3) {
+            document.getElementById('divTbOt').style.display = 'block';
+        } else if (valor === 4) {
+            document.getElementById('divTbOt').style.display = 'none';
+        }
     }
 
     loadAll() {

@@ -1,57 +1,57 @@
 <style>
-        .table tr td:nth-last-child(1) {
-            text-align: left;
-        }
-    </style>
-<div>
-    <br/>
-    <h4 class="title my-3" align="center">
-        <span>Registro de Delegado</span>
-    </h4>
-<div class="table-responsive">
-<table class="table table-striped" border="0">
-    <tr>
-        <td>
-            Razón Social:
-        </td>
-        <td colspan="4">
-            aqui va la razonnnnnnnnnn
-        </td>
-    </tr>
-    <tr>
-        <td>Tipo Documento</td>
-        <td>
-        <select class="form-control form-control-sm" id="">
-            <option>DNI</option>
-            <option>RUC</option>
-        </select>
-        </td>
-        <td>Número Documento</td>
-        <td>
-            <input type="text" class="form-control" id="currentSearch"/>
-        </td>
-        <td>
-            <button class="input-group-addon btn btn-info">
-                <span class="fa fa-search"></span>
-            </button>
-        </td>
-    </tr>
-    <tr>
-        <td>Nombre Completo</td>
-        <td><input type="text" /></td>
-        <td colspan="3"><input type="text" size="100" /></td>
-    </tr>
-    <tr>
-        <td>F. Inicio</td>
-        <td><input type="date" /></td>
-        <td>F. Fin</td>
-        <td colspan="2"><input type="date" /></td>
-    </tr>
-</table>    
-</div>   
-<br/>
-<div align="center">
-    <button class="btn mx-1 btn-dark float-center">Atras</button>
-    <button class="btn mx-1 btn-dark float-center">Agregar</button>
+    .table tr td:nth-last-child(1) {
+        text-align: left;
+    }
+</style>
+
+<div class="modal-header">
+    <h4 class="modal-title">Registro de Delegado</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
+<div class="modal-body">
+    <div class="table-responsive">
+        <table class="table table-striped" border="0">
+            <tr>
+                <td>Razón Social:</td>
+                <td colspan="4">aqui va la razonnnnnnnnnn</td>
+            </tr>
+            <tr>
+                <td>Tipo Documento</td>
+                <td>
+                <select>
+                    <option>DNI</option>
+                    <option>RUC</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Número Documento</td>
+                <td><input type="text" /></td>
+                <td>
+                    <button class="input-group-addon btn btn-info"><span class="fa fa-search"></span></button>
+                </td>
+            </tr>
+            <tr>
+                <td>Nombre Completo</td>
+                <td><input type="text" /></td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="text" size="80px" /></td>
+            </tr>
+            <tr>
+                <td>F. Inicio</td>
+                <td><input type="date" /></td>
+            </tr>
+            <tr>
+                <td>F. Fin</td>
+                <td colspan="2"><input type="date" /></td>
+            </tr>
+        </table>    
+    </div> 
+</div>
+<div class="modal-footer" align="center">
+    <button type="button" class="btn mx-1 btn-dark float-center" (click)="activeModal.dismiss('Cross click')">Atras</button>
+    <button type="button" class="btn mx-1 btn-dark float-center" (click)="ver();activeModal.dismiss();">Agregar</button>
 </div>

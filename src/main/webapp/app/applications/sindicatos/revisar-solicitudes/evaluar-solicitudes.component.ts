@@ -5,6 +5,9 @@ import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } f
 
 import { RevisarSolicitudesService } from './revisar-solicitudes.service';
 import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../shared';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { EvaluarSolicitudesService } from './index';
 
 @Component({
     selector: 'jhi-evaluar-solicitudes',
@@ -14,9 +17,12 @@ export class EvaluarSolicitudesComponent implements OnInit {
     currentAccount: any;
     eventSubscriber: Subscription;
     currentSearch: string;
+    isSaving: boolean;
 
     constructor(
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        public activeModal: NgbActiveModal,
+        private jhiAlertService: JhiAlertService
     ) {
     }
 
@@ -40,10 +46,55 @@ export class EvaluarSolicitudesComponent implements OnInit {
     }
 
     clear() {
-        /*this.currentSearch = '';
-        this.loadAll();*/
+        this.activeModal.dismiss('cancel');
     }
+
+    private onSaveError() {
+        this.isSaving = false;
+    }
+
+    private onError(error: any) {
+        this.jhiAlertService.error(error.message, null, null);
+    }
+
+    private onSaveSuccess() {
+        this.eventManager.broadcast({ name: 'horaListModification', content: 'OK'});
+        this.isSaving = false;
+        // this.activeModal.dismiss(result);
+    }
+
+    ver() {
+        console.log('holaaaasdaaaaa');
+    }
+
     ngOnInit() {
+        this.isSaving = false;
+    }
+
+    /*ngOnDestroy() {
+        this.eventManager.destroy(this.eventSubscriber);
+    }*/
+}
+
+@Component({
+    selector: 'jhi-evaluar-solicitudes-popup',
+    templateUrl: './evaluar-solicitudes.component.html'
+})
+export class EvaluarSolicitudesPopupComponent implements OnInit, OnDestroy {
+    routeSub: any;
+
+    constructor(
+        private route: ActivatedRoute,
+        public activeModal: NgbActiveModal,
+        private evaluarSolicitudesService: EvaluarSolicitudesService
+    ) {
+    }
+
+    ngOnInit() {
+        this.routeSub = this.route.params.subscribe((params) => {
+            this.evaluarSolicitudesService
+            .open(EvaluarSolicitudesPopupComponent as Component);
+        });
         /*this.loadAll();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
@@ -51,7 +102,7 @@ export class EvaluarSolicitudesComponent implements OnInit {
         this.registerChangeInAtencionEmpleador();*/
     }
 
-    /*ngOnDestroy() {
-        this.eventManager.destroy(this.eventSubscriber);
-    }*/
+    ngOnDestroy() {
+        this.routeSub.unsubscribe();
+    }
 }
