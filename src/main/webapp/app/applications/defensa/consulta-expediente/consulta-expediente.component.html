@@ -101,6 +101,9 @@
                             <div class="col-md-2 text-center">
                                 <a href="#" class="btn btn-warning px-5"><i class="fa fa-sticky-note" aria-hidden="true"></i> Observar</a>
                             </div>
+                            <div class="col-md-2 text-center">
+                                <button [routerLink]="['/defensa/consulta-expediente', { outlets: { popupexp: 'expediente/'+ id } }]" class="btn btn-info"><i class="fa fa-sticky-note" aria-hidden="true"></i> Ver datos del Exp.</button>
+                            </div>
                         </div>
                         <form>
                             <div class="row">

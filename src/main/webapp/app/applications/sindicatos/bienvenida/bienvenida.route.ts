@@ -43,7 +43,7 @@ export const BienvenidaRoute: Routes = [
          ]
     },
     {
-        path: 'bienvenidat',
+        path: 'bienvenidatmodal',
         component: BienvenidatComponent,
         /*data: {
             authorities: ['ROLE_USER'],

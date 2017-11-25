@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs/Rx';
+import { JhiEventManager } from 'ng-jhipster';
 
 import { ProfileService } from '../profiles/profile.service';
 import { Principal, LoginModalService, LoginService } from '../../shared';
@@ -20,26 +22,51 @@ export class TopbarComponent implements OnInit {
     swaggerEnabled: boolean;
     modalRef: NgbModalRef;
     version: string;
+    ruta: any;
 
     constructor(
         private loginService: LoginService,
         private principal: Principal,
         private loginModalService: LoginModalService,
         private profileService: ProfileService,
+        private eventManager: JhiEventManager,
         private router: Router
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
+        if (router.url.indexOf('defensa') === 1) {
+            this.ruta = '4';
+        } else if (router.url.indexOf('consultas') === 1) {
+            this.ruta = '2';
+        } else if (router.url.indexOf('sindicatos') === 1) {
+            this.ruta = '6';
+        } else {
+            this.ruta = '0';
+        }
     }
     updateModule($event) {
-        const ruta = $event.target.value;
-        if (ruta === '0') {
-            this.router.navigate(['/seguridad/aplicacion']);
-        } else if (ruta === '2') {
+        this.ruta = $event.target.value;
+        if (this.ruta === '0') {
+            this.router.navigate(['/']);
+        } else if (this.ruta === '2') {
             this.router.navigate(['/consultas/atencion']);
-        } else if (ruta === '8') {
+        } else if (this.ruta === '8') {
             this.router.navigate(['/dictamenes/listado-solicitudes']);
+        } else if (this.ruta === '3') {
+            this.router.navigate(['/defensa/registro-expediente' , { outlets: { wizard: ['datos-pase'] } }]);
+        } else if (this.ruta === '4') {
+            this.router.navigate(['/defensa/registro-expediente' , { outlets: { wizard: ['datos-pase'] } }]);
+        } else if (this.ruta === '6') {
+            this.router.navigate(['sindicatos/bienvenida']);
         }
+        this.router.events
+            .filter((event) => event instanceof NavigationEnd)
+            .subscribe((event: NavigationEnd) => {
+           this.onChangeSuccess();
+        });
+    }
+    private onChangeSuccess() {
+        this.eventManager.broadcast({ name: 'changeRoute', content: 'OK'});
     }
 
     ngOnInit() {

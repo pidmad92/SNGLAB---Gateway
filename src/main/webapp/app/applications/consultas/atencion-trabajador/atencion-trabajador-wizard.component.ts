@@ -91,10 +91,12 @@ export class AtencionTrabajadorWizardComponent implements OnInit, OnChanges  {
             return;
         }
     }
+    /**
+     * Can be used to return step current, passing the url.
+     */
     getStepCurrent(url) {
         let ct = 0;
         for (const r of this.routes) {
-            console.log(r);
             if ( url.indexOf(r) !== -1 ) {
                 return ct;
             }

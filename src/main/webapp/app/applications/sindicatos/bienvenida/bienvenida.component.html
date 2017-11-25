@@ -26,16 +26,10 @@
 </table>
 <br/>
 <div align="center">
-        <button class="btn btn-primary jh-create-entity create-accionadop" [routerLink]="['/consultas/registro-atencion-trabajador', { outlets: { wizard: ['datos-trabajador'] } }]">
-            <span class="fa fa-plus"></span>
-            <span class="hidden-sm-down">
-            Registrar Atención
-            </span>
-        </button>
     <button class="btn btn-primary jh-create-entity create-accionadop"  [routerLink]="['/sindicatos/bienvenida', { outlets: { wizardbt: ['bienvenidat'] } }]" routerLinkActive="active">Ingresar</button>
-    <button type="button" class="btn btn-primary jh-create-entity create-accionadop" (click)="salirr()">hola</button>
 </div>
 <br/>
+<router-outlet name="wizardbt"></router-outlet>
 </div>
 </div>
 </div>

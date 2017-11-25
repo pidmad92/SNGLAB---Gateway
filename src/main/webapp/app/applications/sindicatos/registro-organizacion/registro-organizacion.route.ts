@@ -12,19 +12,35 @@ import { RegistroAfiliadoComponent } from './registro-afiliado.component';
 import { RegistroFederacionComponent } from './registro-federacion.component';
 import { RegistroConfederacionComponent } from './registro-confederacion.component';
 import { ConsultaOrganizacionComponent } from './consulta-organizacion.component';
+import { PrincipalComponent } from './principal.component';
 // import { AccionadopDetailComponent } from './accionadop-detail.component';
 // import { AccionadopPopupComponent } from './accionadop-dialog.component';
 // import { AccionadopDeletePopupComponent } from './accionadop-delete-dialog.component';
 
 export const RegistroOrganizacionRoute: Routes = [
     {
-        path: 'registro-organizacion',
-        component: RegistroOrganizacionComponent,
-        /*data: {
+        path: 'principal',
+        component: PrincipalComponent,
+        data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
-        },*/
-        canActivate: [UserRouteAccessService]
+            pageTitle: 'consulta Organización'
+        },
+        canActivate: [UserRouteAccessService],
+        children: [
+            {
+                path: 'registro-organizacion',
+                component: RegistroOrganizacionComponent,
+                /*data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'gatewayApp.accionadop.home.title'
+                },*/
+                outlet: 'wizard'
+            }
+        ]
+    },
+    {
+        path: 'registro-organizacion',
+        component: RegistroOrganizacionComponent
     },
     {
         path: 'registro-jd',

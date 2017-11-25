@@ -15,14 +15,7 @@ export class RegistroOrganizacionComponent implements OnInit {
     eventSubscriber: Subscription;
     currentSearch: string;
 
-    placeholder: 'Add a tag';
-    ngModel: string[];
-    delimiterCode: '188';
-
-    public settings = {
-        recipients: [],
-        tags: ['one', 'two', 'three']
-      };
+    values1: string[];
 
     constructor(
         private eventManager: JhiEventManager
@@ -52,6 +45,16 @@ export class RegistroOrganizacionComponent implements OnInit {
         /*this.currentSearch = '';
         this.loadAll();*/
     }
+
+    mostrarOcultar(valor: number) {
+        console.log('==>VALOR: ' + valor);
+        if (valor === 1) {
+            document.getElementById('divDatosGenerales').style.display = 'block';
+        } else {
+            document.getElementById('divDatosGenerales').style.display = 'none';
+        }
+    }
+
     ngOnInit() {
         /*this.loadAll();
         this.principal.identity().then((account) => {

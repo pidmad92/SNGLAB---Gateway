@@ -3,6 +3,8 @@ import { RouterModule } from '@angular/router';
 
 import { ConsultaDelegadosComponent } from './consulta-delegados.component';
 import { IngresoDelegadosComponent } from './ingreso-delegados.component';
+import { NuevoDelegadosComponent } from './nuevo-delegados.component';
+import { PrincipalComponent } from './principal.component';
 
 import { GatewaySharedModule } from '../../../shared';
 import { RegistroDelegadosService,
@@ -24,6 +26,8 @@ const ENTITY_STATES = [
         RegistroDelegadosComponent,
         ConsultaDelegadosComponent,
         IngresoDelegadosComponent,
+        NuevoDelegadosComponent,
+        PrincipalComponent,
         // AccionadopDetailComponent,
         // AccionadopDialogComponent,
         // AccionadopDeleteDialogComponent,
@@ -34,6 +38,8 @@ const ENTITY_STATES = [
         RegistroDelegadosComponent,
         ConsultaDelegadosComponent,
         IngresoDelegadosComponent,
+        NuevoDelegadosComponent,
+        PrincipalComponent,
         // AccionadopDialogComponent,
         // AccionadopPopupComponent,
         // AccionadopDeleteDialogComponent,

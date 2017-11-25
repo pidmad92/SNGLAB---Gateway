@@ -5,6 +5,7 @@ import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } f
 
 import { RegistroDelegadosService } from './registro-delegados.service';
 import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../shared';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
 
 @Component({
     selector: 'jhi-registro-delegados',
@@ -14,9 +15,11 @@ export class RegistroDelegadosComponent implements OnInit {
     currentAccount: any;
     eventSubscriber: Subscription;
     currentSearch: string;
+    closeResult: string;
 
     constructor(
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        public activeModal: NgbActiveModal
     ) {
     }
 
@@ -43,6 +46,11 @@ export class RegistroDelegadosComponent implements OnInit {
         /*this.currentSearch = '';
         this.loadAll();*/
     }
+
+    ver() {
+        console.log('holaaaaaaaa');
+    }
+
     ngOnInit() {
         /*this.loadAll();
         this.principal.identity().then((account) => {
