@@ -1,0 +1,70 @@
+<p-blockUI [blocked]="block"></p-blockUI>
+<form name="validarUsuario" role="form" novalidate (ngSubmit)="onSubmit()" #validarUsuario="ngForm">
+    <p-messages [(value)]="messages"></p-messages>
+    <p-panel header="Inicio de Sesión" [toggleable]="false" [style]="{'margin-bottom':'20px','width': '400px'}">
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Correo *:
+                </div>
+                <div class="ui-grid-col-10">
+                    <input type="email" class="form-control" name="username" [(ngModel)]="validarUsuario.username" placeholder="Ingresar su usuario"
+                    />
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Password *:
+                </div>
+                <div class="ui-grid-col-10">
+                    <input type="password" class="form-control" name="password" [(ngModel)]="validarUsuario.password" placeholder="Minimo 6 digitos"
+                    />
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Captcha*:
+                </div>
+                <div class="ui-grid-col-10">
+                </div>
+            </div>
+
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-12">
+                    <p class="center">
+                        <button type="submit" class="btn btn-primary" name="btnIngresar">Ingresar Usuario</button>
+                        <button type="button" (click)="showNuevoUsuario()" class="btn btn-secondary" name="btnNuevo">Nuevo Usuario</button>
+                    </p>
+                </div>
+            </div>
+    </p-panel>
+</form>
+<p-dialog header="Nuevo Usuario" [(visible)]="displayNuevoUsuario" modal="modal" width="600" [responsive]="true">
+
+    <p-tabView>
+        <p-tabPanel header="Datos Generales" leftIcon="fa-id-card">
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Ingresar el RUC de la empresa</label>
+                </div>
+                <div class="col-md-2">
+                    <label>Tipo Doc.</label>
+                </div>
+                <div class="col-md-4">
+                    <p-dropdown [options]="tipodocs" [(ngModel)]="selectedTipodoc" placeholder="Select a City" optionLabel="name"></p-dropdown>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="" id="" value="" />
+                </div>
+            </div>
+        </p-tabPanel>
+        <p-tabPanel header="Dirección" leftIcon="fa-podcast">
+
+        </p-tabPanel>
+    </p-tabView>
+
+    <p-footer>
+        <button type="button" pButton icon="fa-check" (click)="displayNuevoUsuario=false" label="Yes"></button>
+        <button type="button" pButton icon="fa-close" (click)="displayNuevoUsuario=false" label="No"></button>
+    </p-footer>
+</p-dialog>

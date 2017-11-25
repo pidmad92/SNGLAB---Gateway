@@ -59,7 +59,7 @@ export class TopbarComponent implements OnInit {
         } else if (this.ruta === '6') {
             this.router.navigate(['sindicatos/bienvenida']);
         } else if (this.ruta === '7') {
-            this.router.navigate(['denuncias/validarruc']);
+            this.router.navigate(['/denuncias/validarruc']);
         }
         this.router.events
             .filter((event) => event instanceof NavigationEnd)
