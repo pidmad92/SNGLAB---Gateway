@@ -3,19 +3,20 @@ import { BaseEntity } from './../../shared';
 export class Empleador implements BaseEntity {
     constructor(
         public id?: number,
-        public vUsuarioreg?: string,
-        public dFechareg?: any,
-        public nEliminar?: number,
+        public nUsuareg?: number,
+        public tFecreg?: any,
+        public nFlgactivo?: boolean,
         public nSedereg?: number,
-        public vUsuarioupd?: string,
-        public dFechaupd?: any,
+        public nUsuaupd?: number,
+        public tFecupd?: any,
         public nSedeupd?: number,
         public expedientes?: BaseEntity[],
-        public datlaborals?: BaseEntity[],
+        public datlabs?: BaseEntity[],
         public atencions?: BaseEntity[],
-        public personajurid?: BaseEntity,
-        public personanatur?: BaseEntity,
+        public perjuridica?: BaseEntity,
+        public pernatural?: BaseEntity,
         public tippersona?: BaseEntity,
     ) {
+        this.nFlgactivo = false;
     }
 }

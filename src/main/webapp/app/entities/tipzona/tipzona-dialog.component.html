@@ -1,0 +1,130 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myTipzonaLabel" jhiTranslate="gatewayApp.tipzona.home.createOrEditLabel">Create or edit a Tipzona</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!tipzona.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="tipzona.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.tipzona.vDescrip" for="field_vDescrip">V Descrip</label>
+            <input type="text" class="form-control" name="vDescrip" id="field_vDescrip"
+                [(ngModel)]="tipzona.vDescrip" required maxlength="200" />
+            <div [hidden]="!(editForm.controls.vDescrip?.dirty && editForm.controls.vDescrip?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vDescrip?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vDescrip?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                   This field cannot be longer than 200 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.tipzona.vDesccorta" for="field_vDesccorta">V Desccorta</label>
+            <input type="text" class="form-control" name="vDesccorta" id="field_vDesccorta"
+                [(ngModel)]="tipzona.vDesccorta" required maxlength="50" />
+            <div [hidden]="!(editForm.controls.vDesccorta?.dirty && editForm.controls.vDesccorta?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vDesccorta?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vDesccorta?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.tipzona.vUsuareg" for="field_vUsuareg">V Usuareg</label>
+            <input type="text" class="form-control" name="vUsuareg" id="field_vUsuareg"
+                [(ngModel)]="tipzona.vUsuareg" required maxlength="20" />
+            <div [hidden]="!(editForm.controls.vUsuareg?.dirty && editForm.controls.vUsuareg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vUsuareg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vUsuareg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.tipzona.tFecreg" for="field_tFecreg">T Fecreg</label>
+            <div class="d-flex">
+                <input id="field_tFecreg" type="datetime-local" class="form-control" name="tFecreg" [(ngModel)]="tipzona.tFecreg"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.tFecreg?.dirty && editForm.controls.tFecreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tFecreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.tFecreg?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.tipzona.nFlgactivo" for="field_nFlgactivo">N Flgactivo</label>
+            <input type="checkbox" class="form-control" name="nFlgactivo" id="field_nFlgactivo"
+                [(ngModel)]="tipzona.nFlgactivo"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.tipzona.nSedereg" for="field_nSedereg">N Sedereg</label>
+            <input type="number" class="form-control" name="nSedereg" id="field_nSedereg"
+                [(ngModel)]="tipzona.nSedereg" required />
+            <div [hidden]="!(editForm.controls.nSedereg?.dirty && editForm.controls.nSedereg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nSedereg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nSedereg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.tipzona.vUsuaupd" for="field_vUsuaupd">V Usuaupd</label>
+            <input type="text" class="form-control" name="vUsuaupd" id="field_vUsuaupd"
+                [(ngModel)]="tipzona.vUsuaupd" maxlength="20" />
+            <div [hidden]="!(editForm.controls.vUsuaupd?.dirty && editForm.controls.vUsuaupd?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vUsuaupd?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.tipzona.tFecupd" for="field_tFecupd">T Fecupd</label>
+            <div class="d-flex">
+                <input id="field_tFecupd" type="datetime-local" class="form-control" name="tFecupd" [(ngModel)]="tipzona.tFecupd"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.tipzona.nSedeupd" for="field_nSedeupd">N Sedeupd</label>
+            <input type="number" class="form-control" name="nSedeupd" id="field_nSedeupd"
+                [(ngModel)]="tipzona.nSedeupd"  />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,41 @@
+{
+    "gatewayApp": {
+        "datdenu" : {
+            "home": {
+                "title": "Datdenus",
+                "createLabel": "Crear nuevo Datdenu",
+                "createOrEditLabel": "Crear o editar Datdenu",
+                "search": "Search for Datdenu"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Datdenu {{ id }}?"
+            },
+            "detail": {
+                "title": "Datdenu"
+            },
+            "nNumtrbafe": "N Numtrbafe",
+            "vHoraini": "V Horaini",
+            "vHorafin": "V Horafin",
+            "vDesmotivo": "V Desmotivo",
+            "vDesotro": "V Desotro",
+            "bArchivo": "B Archivo",
+            "vArchtipo": "V Archtipo",
+            "vFlggreide": "V Flggreide",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "detmotden": "Detmotden"
+        }
+    },
+    "denunciasApp": {
+        "datdenu" : {
+            "created": "Un nuevo Datdenu ha sido creado con el identificador {{ param }}",
+            "updated": "Un Datdenu ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Datdenu ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

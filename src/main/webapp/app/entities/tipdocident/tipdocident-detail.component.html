@@ -1,44 +1,44 @@
 
 <div *ngIf="tipdocident">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.tipdocident.detail.title">Tipdocident</span> {{tipdocident.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.tipdocident.detail.title">Tipdocident</span> {{tipdocident.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.tipdocident.vDescripcion">V Descripcion</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipdocident.vDesdocide">V Desdocide</span></dt>
         <dd>
-            <span>{{tipdocident.vDescripcion}}</span>
+            <span>{{tipdocident.vDesdocide}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipdocident.nNumdigitos">N Numdigitos</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipdocident.nNumdigi">N Numdigi</span></dt>
         <dd>
-            <span>{{tipdocident.nNumdigitos}}</span>
+            <span>{{tipdocident.nNumdigi}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipdocident.vDescripcioncorta">V Descripcioncorta</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipdocident.vDescorta">V Descorta</span></dt>
         <dd>
-            <span>{{tipdocident.vDescripcioncorta}}</span>
+            <span>{{tipdocident.vDescorta}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipdocident.vUsuarioreg">V Usuarioreg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipdocident.nUsuareg">N Usuareg</span></dt>
         <dd>
-            <span>{{tipdocident.vUsuarioreg}}</span>
+            <span>{{tipdocident.nUsuareg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipdocident.dFechareg">D Fechareg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipdocident.tFecreg">T Fecreg</span></dt>
         <dd>
-            <span>{{tipdocident.dFechareg | date:'medium'}}</span>
+            <span>{{tipdocident.tFecreg | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipdocident.nEliminar">N Eliminar</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipdocident.nFlgactivo">N Flgactivo</span></dt>
         <dd>
-            <span>{{tipdocident.nEliminar}}</span>
+            <span>{{tipdocident.nFlgactivo}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.tipdocident.nSedereg">N Sedereg</span></dt>
         <dd>
             <span>{{tipdocident.nSedereg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipdocident.vUsuarioupd">V Usuarioupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipdocident.nUsuaupd">N Usuaupd</span></dt>
         <dd>
-            <span>{{tipdocident.vUsuarioupd}}</span>
+            <span>{{tipdocident.nUsuaupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipdocident.dFechaupd">D Fechaupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipdocident.tFecupd">T Fecupd</span></dt>
         <dd>
-            <span>{{tipdocident.dFechaupd | date:'medium'}}</span>
+            <span>{{tipdocident.tFecupd | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.tipdocident.nSedeupd">N Sedeupd</span></dt>
         <dd>
@@ -53,7 +53,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/consultas', { outlets: { popup: 'tipdocident/'+ tipdocident.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'tipdocident/'+ tipdocident.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

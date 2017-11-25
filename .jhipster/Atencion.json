@@ -3,39 +3,39 @@
     "relationships": [
         {
             "relationshipType": "one-to-one",
-            "relationshipName": "pase",
-            "otherEntityName": "pase",
+            "relationshipName": "pasegl",
+            "otherEntityName": "pasegl",
             "otherEntityField": "id",
             "ownerSide": true,
             "otherEntityRelationshipName": "atencion"
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "atendisca",
-            "otherEntityName": "atendisca",
+            "relationshipName": "discapate",
+            "otherEntityName": "discapate",
             "otherEntityRelationshipName": "atencion"
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "docpresenta",
-            "otherEntityName": "docpresenta",
+            "relationshipName": "docpresate",
+            "otherEntityName": "docpresate",
             "otherEntityRelationshipName": "atencion"
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "atenaccadop",
-            "otherEntityName": "atenaccadop",
+            "relationshipName": "accadoate",
+            "otherEntityName": "accadoate",
             "otherEntityRelationshipName": "atencion"
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "atenmotiaten",
-            "otherEntityName": "atenmotiaten",
+            "relationshipName": "motateselec",
+            "otherEntityName": "motateselec",
             "otherEntityRelationshipName": "atencion"
         },
         {
-            "relationshipName": "datlaboral",
-            "otherEntityName": "datlaboral",
+            "relationshipName": "datlab",
+            "otherEntityName": "datlab",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         },
@@ -66,7 +66,7 @@
     ],
     "fields": [
         {
-            "fieldName": "vObservacion",
+            "fieldName": "vObsatenci",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -74,7 +74,14 @@
             "fieldValidateRulesMaxlength": 500
         },
         {
-            "fieldName": "cFlgpresentaembarazo",
+            "fieldName": "nFlgembara",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "vEstado",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -83,16 +90,7 @@
             "fieldValidateRulesMaxlength": 1
         },
         {
-            "fieldName": "cFlgestado",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 1
-        },
-        {
-            "fieldName": "vNumeroticket",
+            "fieldName": "vNumticket",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -101,35 +99,29 @@
             "fieldValidateRulesMaxlength": 10
         },
         {
-            "fieldName": "nCodtrabrepresentante",
+            "fieldName": "nCodtrabre",
             "fieldType": "Integer"
         },
         {
-            "fieldName": "vUsuarioreg",
-            "fieldType": "String",
+            "fieldName": "nUsuareg",
+            "fieldType": "Integer",
             "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 20
+                "required"
+            ]
         },
         {
-            "fieldName": "dFechareg",
+            "fieldName": "tFecreg",
             "fieldType": "Instant",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
-            "fieldName": "nEliminar",
-            "fieldType": "Integer",
+            "fieldName": "nFlgactivo",
+            "fieldType": "Boolean",
             "fieldValidateRules": [
-                "required",
-                "min",
-                "max"
-            ],
-            "fieldValidateRulesMin": 0,
-            "fieldValidateRulesMax": 1
+                "required"
+            ]
         },
         {
             "fieldName": "nSedereg",
@@ -139,15 +131,11 @@
             ]
         },
         {
-            "fieldName": "vUsuarioupd",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 20
+            "fieldName": "nUsuaupd",
+            "fieldType": "Integer"
         },
         {
-            "fieldName": "dFechaupd",
+            "fieldName": "tFecupd",
             "fieldType": "Instant"
         },
         {

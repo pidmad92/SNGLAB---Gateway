@@ -28,10 +28,10 @@ export class TipdocidentPopupService {
 
             if (id) {
                 this.tipdocidentService.find(id).subscribe((tipdocident) => {
-                    tipdocident.dFechareg = this.datePipe
-                        .transform(tipdocident.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    tipdocident.dFechaupd = this.datePipe
-                        .transform(tipdocident.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    tipdocident.tFecreg = this.datePipe
+                        .transform(tipdocident.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    tipdocident.tFecupd = this.datePipe
+                        .transform(tipdocident.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.tipdocidentModalRef(component, tipdocident);
                     resolve(this.ngbModalRef);
                 });

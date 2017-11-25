@@ -1,0 +1,95 @@
+
+<div *ngIf="pernatural">
+    <h2><span jhiTranslate="gatewayApp.pernatural.detail.title">Pernatural</span> {{pernatural.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.pernatural.vNombres">V Nombres</span></dt>
+        <dd>
+            <span>{{pernatural.vNombres}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatural.vApepat">V Apepat</span></dt>
+        <dd>
+            <span>{{pernatural.vApepat}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatural.vApemat">V Apemat</span></dt>
+        <dd>
+            <span>{{pernatural.vApemat}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatural.vNumdoc">V Numdoc</span></dt>
+        <dd>
+            <span>{{pernatural.vNumdoc}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatural.vTelefono">V Telefono</span></dt>
+        <dd>
+            <span>{{pernatural.vTelefono}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatural.vCelular">V Celular</span></dt>
+        <dd>
+            <span>{{pernatural.vCelular}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatural.vEmailper">V Emailper</span></dt>
+        <dd>
+            <span>{{pernatural.vEmailper}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatural.dFecnac">D Fecnac</span></dt>
+        <dd>
+            <span>{{pernatural.dFecnac | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatural.vsexoper">Vsexoper</span></dt>
+        <dd>
+            <span>{{pernatural.vsexoper}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatural.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{pernatural.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatural.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{pernatural.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatural.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{pernatural.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatural.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{pernatural.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatural.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{pernatural.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatural.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{pernatural.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatural.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{pernatural.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatural.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{pernatural.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pernatural.tipdocident">Tipdocident</span></dt>
+        <dd>
+            <div *ngIf="pernatural.tipdocident">
+                <a [routerLink]="['/tipdocident', pernatural.tipdocident?.id]">{{pernatural.tipdocident?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'pernatural/'+ pernatural.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

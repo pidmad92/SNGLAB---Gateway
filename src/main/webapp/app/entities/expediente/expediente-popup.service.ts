@@ -28,16 +28,31 @@ export class ExpedientePopupService {
 
             if (id) {
                 this.expedienteService.find(id).subscribe((expediente) => {
-                    expediente.dFecregexp = this.datePipe
-                        .transform(expediente.dFecregexp, 'yyyy-MM-ddTHH:mm:ss');
-                    expediente.dFecmesapartes = this.datePipe
-                        .transform(expediente.dFecmesapartes, 'yyyy-MM-ddTHH:mm:ss');
-                    expediente.dFecArchivo = this.datePipe
-                        .transform(expediente.dFecArchivo, 'yyyy-MM-ddTHH:mm:ss');
-                    expediente.dFechareg = this.datePipe
-                        .transform(expediente.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    expediente.dFechaupd = this.datePipe
-                        .transform(expediente.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    if (expediente.dFecregexp) {
+                        expediente.dFecregexp = {
+                            year: expediente.dFecregexp.getFullYear(),
+                            month: expediente.dFecregexp.getMonth() + 1,
+                            day: expediente.dFecregexp.getDate()
+                        };
+                    }
+                    if (expediente.dFecmespar) {
+                        expediente.dFecmespar = {
+                            year: expediente.dFecmespar.getFullYear(),
+                            month: expediente.dFecmespar.getMonth() + 1,
+                            day: expediente.dFecmespar.getDate()
+                        };
+                    }
+                    if (expediente.dFecArchiv) {
+                        expediente.dFecArchiv = {
+                            year: expediente.dFecArchiv.getFullYear(),
+                            month: expediente.dFecArchiv.getMonth() + 1,
+                            day: expediente.dFecArchiv.getDate()
+                        };
+                    }
+                    expediente.tFecreg = this.datePipe
+                        .transform(expediente.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    expediente.tFecupd = this.datePipe
+                        .transform(expediente.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.expedienteModalRef(component, expediente);
                     resolve(this.ngbModalRef);
                 });

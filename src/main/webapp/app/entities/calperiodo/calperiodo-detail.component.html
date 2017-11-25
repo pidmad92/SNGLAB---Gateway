@@ -1,0 +1,115 @@
+
+<div *ngIf="calperiodo">
+    <h2><span jhiTranslate="gatewayApp.calperiodo.detail.title">Calperiodo</span> {{calperiodo.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.calperiodo.nCalper">N Calper</span></dt>
+        <dd>
+            <span>{{calperiodo.nCalper}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.nCalper2">N Calper 2</span></dt>
+        <dd>
+            <span>{{calperiodo.nCalper2}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.nNumper">N Numper</span></dt>
+        <dd>
+            <span>{{calperiodo.nNumper}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.tFecini">T Fecini</span></dt>
+        <dd>
+            <span>{{calperiodo.tFecini | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.tFecfin">T Fecfin</span></dt>
+        <dd>
+            <span>{{calperiodo.tFecfin | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.nTnocomput">N Tnocomput</span></dt>
+        <dd>
+            <span>{{calperiodo.nTnocomput}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.nDgozados">N Dgozados</span></dt>
+        <dd>
+            <span>{{calperiodo.nDgozados}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.nDadeudos">N Dadeudos</span></dt>
+        <dd>
+            <span>{{calperiodo.nDadeudos}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.nBase">N Base</span></dt>
+        <dd>
+            <span>{{calperiodo.nBase}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{calperiodo.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{calperiodo.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{calperiodo.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{calperiodo.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{calperiodo.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{calperiodo.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{calperiodo.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.calbensoc">Calbensoc</span></dt>
+        <dd>
+            <div *ngIf="calperiodo.calbensoc">
+                <a [routerLink]="['/calbensoc', calperiodo.calbensoc?.id]">{{calperiodo.calbensoc?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.interesperi">Interesperi</span></dt>
+        <dd>
+            <div *ngIf="calperiodo.interesperi">
+                <a [routerLink]="['/interesperi', calperiodo.interesperi?.id]">{{calperiodo.interesperi?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.calrcmperi">Calrcmperi</span></dt>
+        <dd>
+            <div *ngIf="calperiodo.calrcmperi">
+                <a [routerLink]="['/calrcmperi', calperiodo.calrcmperi?.id]">{{calperiodo.calrcmperi?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.estperical">Estperical</span></dt>
+        <dd>
+            <div *ngIf="calperiodo.estperical">
+                <a [routerLink]="['/estperical', calperiodo.estperical?.id]">{{calperiodo.estperical?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.tipcalperi">Tipcalperi</span></dt>
+        <dd>
+            <div *ngIf="calperiodo.tipcalperi">
+                <a [routerLink]="['/tipcalperi', calperiodo.tipcalperi?.id]">{{calperiodo.tipcalperi?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'calperiodo/'+ calperiodo.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

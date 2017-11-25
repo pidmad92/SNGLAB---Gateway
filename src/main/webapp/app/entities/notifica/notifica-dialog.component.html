@@ -1,0 +1,137 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myNotificaLabel" jhiTranslate="gatewayApp.notifica.home.createOrEditLabel">Create or edit a Notifica</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!notifica.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="notifica.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notifica.nNumfolios" for="field_nNumfolios">N Numfolios</label>
+            <input type="number" class="form-control" name="nNumfolios" id="field_nNumfolios"
+                [(ngModel)]="notifica.nNumfolios"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notifica.vHojaenvio" for="field_vHojaenvio">V Hojaenvio</label>
+            <input type="text" class="form-control" name="vHojaenvio" id="field_vHojaenvio"
+                [(ngModel)]="notifica.vHojaenvio" maxlength="20" />
+            <div [hidden]="!(editForm.controls.vHojaenvio?.dirty && editForm.controls.vHojaenvio?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vHojaenvio?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notifica.nUsuareg" for="field_nUsuareg">N Usuareg</label>
+            <input type="number" class="form-control" name="nUsuareg" id="field_nUsuareg"
+                [(ngModel)]="notifica.nUsuareg" required />
+            <div [hidden]="!(editForm.controls.nUsuareg?.dirty && editForm.controls.nUsuareg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nUsuareg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nUsuareg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notifica.tFecreg" for="field_tFecreg">T Fecreg</label>
+            <div class="d-flex">
+                <input id="field_tFecreg" type="datetime-local" class="form-control" name="tFecreg" [(ngModel)]="notifica.tFecreg"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.tFecreg?.dirty && editForm.controls.tFecreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tFecreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.tFecreg?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notifica.nFlgactivo" for="field_nFlgactivo">N Flgactivo</label>
+            <input type="checkbox" class="form-control" name="nFlgactivo" id="field_nFlgactivo"
+                [(ngModel)]="notifica.nFlgactivo"  />
+            <div [hidden]="!(editForm.controls.nFlgactivo?.dirty && editForm.controls.nFlgactivo?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nFlgactivo?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notifica.nSedereg" for="field_nSedereg">N Sedereg</label>
+            <input type="number" class="form-control" name="nSedereg" id="field_nSedereg"
+                [(ngModel)]="notifica.nSedereg" required />
+            <div [hidden]="!(editForm.controls.nSedereg?.dirty && editForm.controls.nSedereg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nSedereg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nSedereg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notifica.nUsuaupd" for="field_nUsuaupd">N Usuaupd</label>
+            <input type="number" class="form-control" name="nUsuaupd" id="field_nUsuaupd"
+                [(ngModel)]="notifica.nUsuaupd"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notifica.tFecupd" for="field_tFecupd">T Fecupd</label>
+            <div class="d-flex">
+                <input id="field_tFecupd" type="datetime-local" class="form-control" name="tFecupd" [(ngModel)]="notifica.tFecupd"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notifica.nSedeupd" for="field_nSedeupd">N Sedeupd</label>
+            <input type="number" class="form-control" name="nSedeupd" id="field_nSedeupd"
+                [(ngModel)]="notifica.nSedeupd"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notifica.expediente" for="field_expediente">Expediente</label>
+            <select class="form-control" id="field_expediente" name="expediente" [(ngModel)]="notifica.expediente" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="expedienteOption.id === notifica.expediente?.id ? notifica.expediente : expedienteOption" *ngFor="let expedienteOption of expedientes; trackBy: trackExpedienteById">{{expedienteOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notifica.tipenvnot" for="field_tipenvnot">Tipenvnot</label>
+            <select class="form-control" id="field_tipenvnot" name="tipenvnot" [(ngModel)]="notifica.tipenvnot" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="tipenvnotOption.id === notifica.tipenvnot?.id ? notifica.tipenvnot : tipenvnotOption" *ngFor="let tipenvnotOption of tipenvnots; trackBy: trackTipenvnotById">{{tipenvnotOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notifica.tipnotif" for="field_tipnotif">Tipnotif</label>
+            <select class="form-control" id="field_tipnotif" name="tipnotif" [(ngModel)]="notifica.tipnotif" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="tipnotifOption.id === notifica.tipnotif?.id ? notifica.tipnotif : tipnotifOption" *ngFor="let tipnotifOption of tipnotifs; trackBy: trackTipnotifById">{{tipnotifOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

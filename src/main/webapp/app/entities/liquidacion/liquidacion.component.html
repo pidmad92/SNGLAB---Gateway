@@ -1,0 +1,89 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.liquidacion.home.title">Liquidacions</span>
+        <button class="btn btn-primary float-right jh-create-entity create-liquidacion" [routerLink]="['/', { outlets: { popup: ['liquidacion-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.liquidacion.home.createLabel">
+            Create new Liquidacion
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.liquidacion.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="liquidacions">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.liquidacion.nLiquid">N Liquid</span></th>
+            <th><span jhiTranslate="gatewayApp.liquidacion.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.liquidacion.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.liquidacion.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.liquidacion.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.liquidacion.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.liquidacion.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.liquidacion.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.liquidacion.atencion">Atencion</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let liquidacion of liquidacions ;trackBy: trackId">
+                <td><a [routerLink]="['../liquidacion', liquidacion.id ]">{{liquidacion.id}}</a></td>
+                <td>{{liquidacion.nLiquid}}</td>
+                <td>{{liquidacion.nUsuareg}}</td>
+                <td>{{liquidacion.tFecreg | date:'medium'}}</td>
+                <td>{{liquidacion.nFlgactivo}}</td>
+                <td>{{liquidacion.nSedereg}}</td>
+                <td>{{liquidacion.nUsuaupd}}</td>
+                <td>{{liquidacion.tFecupd | date:'medium'}}</td>
+                <td>{{liquidacion.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="liquidacion.atencion">
+                        <a [routerLink]="['../atencion', liquidacion.atencion?.id ]" >{{liquidacion.atencion?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../liquidacion', liquidacion.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'liquidacion/'+ liquidacion.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'liquidacion/'+ liquidacion.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

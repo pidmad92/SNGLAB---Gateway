@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "motivpase" : {
+            "home": {
+                "title": "Motivpases",
+                "createLabel": "Crear nuevo Motivpase",
+                "createOrEditLabel": "Crear o editar Motivpase",
+                "search": "Search for Motivpase"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Motivpase {{ id }}?"
+            },
+            "detail": {
+                "title": "Motivpase"
+            },
+            "vObsmotpas": "V Obsmotpas",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "pasegl": "Pasegl",
+            "motatenofic": "Motatenofic"
+        }
+    },
+    "consultasApp": {
+        "motivpase" : {
+            "created": "Un nuevo Motivpase ha sido creado con el identificador {{ param }}",
+            "updated": "Un Motivpase ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Motivpase ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

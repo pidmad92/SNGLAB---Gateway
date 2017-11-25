@@ -1,0 +1,89 @@
+
+<div *ngIf="perjuridica">
+    <h2><span jhiTranslate="gatewayApp.perjuridica.detail.title">Perjuridica</span> {{perjuridica.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.perjuridica.vRazsocial">V Razsocial</span></dt>
+        <dd>
+            <span>{{perjuridica.vRazsocial}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridica.vNomalter">V Nomalter</span></dt>
+        <dd>
+            <span>{{perjuridica.vNomalter}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridica.vNumdoc">V Numdoc</span></dt>
+        <dd>
+            <span>{{perjuridica.vNumdoc}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridica.vEmail">V Email</span></dt>
+        <dd>
+            <span>{{perjuridica.vEmail}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridica.vTelefono">V Telefono</span></dt>
+        <dd>
+            <span>{{perjuridica.vTelefono}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridica.vFaxperju">V Faxperju</span></dt>
+        <dd>
+            <span>{{perjuridica.vFaxperju}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridica.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{perjuridica.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridica.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{perjuridica.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridica.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{perjuridica.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridica.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{perjuridica.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridica.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{perjuridica.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridica.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{perjuridica.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridica.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{perjuridica.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridica.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{perjuridica.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridica.actiecon">Actiecon</span></dt>
+        <dd>
+            <div *ngIf="perjuridica.actiecon">
+                <a [routerLink]="['/actiecon', perjuridica.actiecon?.id]">{{perjuridica.actiecon?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.perjuridica.tipdocident">Tipdocident</span></dt>
+        <dd>
+            <div *ngIf="perjuridica.tipdocident">
+                <a [routerLink]="['/tipdocident', perjuridica.tipdocident?.id]">{{perjuridica.tipdocident?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'perjuridica/'+ perjuridica.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

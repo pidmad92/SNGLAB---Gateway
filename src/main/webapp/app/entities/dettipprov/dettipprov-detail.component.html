@@ -1,36 +1,36 @@
 
 <div *ngIf="dettipprov">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.dettipprov.detail.title">Dettipprov</span> {{dettipprov.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.dettipprov.detail.title">Dettipprov</span> {{dettipprov.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.dettipprov.vDescripcion">V Descripcion</span></dt>
+        <dt><span jhiTranslate="gatewayApp.dettipprov.vDescrip">V Descrip</span></dt>
         <dd>
-            <span>{{dettipprov.vDescripcion}}</span>
+            <span>{{dettipprov.vDescrip}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.dettipprov.vUsuarioreg">V Usuarioreg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.dettipprov.nUsuareg">N Usuareg</span></dt>
         <dd>
-            <span>{{dettipprov.vUsuarioreg}}</span>
+            <span>{{dettipprov.nUsuareg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.dettipprov.dFechareg">D Fechareg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.dettipprov.tFecreg">T Fecreg</span></dt>
         <dd>
-            <span>{{dettipprov.dFechareg | date:'medium'}}</span>
+            <span>{{dettipprov.tFecreg | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.dettipprov.nEliminar">N Eliminar</span></dt>
+        <dt><span jhiTranslate="gatewayApp.dettipprov.nFlgactivo">N Flgactivo</span></dt>
         <dd>
-            <span>{{dettipprov.nEliminar}}</span>
+            <span>{{dettipprov.nFlgactivo}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.dettipprov.nSedereg">N Sedereg</span></dt>
         <dd>
             <span>{{dettipprov.nSedereg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.dettipprov.vUsuarioupd">V Usuarioupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.dettipprov.nUsuaupd">N Usuaupd</span></dt>
         <dd>
-            <span>{{dettipprov.vUsuarioupd}}</span>
+            <span>{{dettipprov.nUsuaupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.dettipprov.dFechaupd">D Fechaupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.dettipprov.tFecupd">T Fecupd</span></dt>
         <dd>
-            <span>{{dettipprov.dFechaupd | date:'medium'}}</span>
+            <span>{{dettipprov.tFecupd | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.dettipprov.nSedeupd">N Sedeupd</span></dt>
         <dd>
@@ -51,7 +51,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/consultas', { outlets: { popup: 'dettipprov/'+ dettipprov.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'dettipprov/'+ dettipprov.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

@@ -1,0 +1,107 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.pernatural.home.title">Pernaturals</span>
+        <button class="btn btn-primary float-right jh-create-entity create-pernatural" [routerLink]="['/', { outlets: { popup: ['pernatural-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.pernatural.home.createLabel">
+            Create new Pernatural
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.pernatural.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="pernaturals">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatural.vNombres">V Nombres</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatural.vApepat">V Apepat</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatural.vApemat">V Apemat</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatural.vNumdoc">V Numdoc</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatural.vTelefono">V Telefono</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatural.vCelular">V Celular</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatural.vEmailper">V Emailper</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatural.dFecnac">D Fecnac</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatural.vsexoper">Vsexoper</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatural.vEstado">V Estado</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatural.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatural.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatural.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatural.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatural.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatural.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatural.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.pernatural.tipdocident">Tipdocident</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pernatural of pernaturals ;trackBy: trackId">
+                <td><a [routerLink]="['../pernatural', pernatural.id ]">{{pernatural.id}}</a></td>
+                <td>{{pernatural.vNombres}}</td>
+                <td>{{pernatural.vApepat}}</td>
+                <td>{{pernatural.vApemat}}</td>
+                <td>{{pernatural.vNumdoc}}</td>
+                <td>{{pernatural.vTelefono}}</td>
+                <td>{{pernatural.vCelular}}</td>
+                <td>{{pernatural.vEmailper}}</td>
+                <td>{{pernatural.dFecnac | date:'mediumDate'}}</td>
+                <td>{{pernatural.vsexoper}}</td>
+                <td>{{pernatural.vEstado}}</td>
+                <td>{{pernatural.nUsuareg}}</td>
+                <td>{{pernatural.tFecreg | date:'medium'}}</td>
+                <td>{{pernatural.nFlgactivo}}</td>
+                <td>{{pernatural.nSedereg}}</td>
+                <td>{{pernatural.nUsuaupd}}</td>
+                <td>{{pernatural.tFecupd | date:'medium'}}</td>
+                <td>{{pernatural.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="pernatural.tipdocident">
+                        <a [routerLink]="['../tipdocident', pernatural.tipdocident?.id ]" >{{pernatural.tipdocident?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../pernatural', pernatural.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'pernatural/'+ pernatural.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'pernatural/'+ pernatural.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -28,10 +28,10 @@ export class AccionadopPopupService {
 
             if (id) {
                 this.accionadopService.find(id).subscribe((accionadop) => {
-                    accionadop.dFechareg = this.datePipe
-                        .transform(accionadop.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    accionadop.dFechaupd = this.datePipe
-                        .transform(accionadop.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    accionadop.tFecreg = this.datePipe
+                        .transform(accionadop.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    accionadop.tFecupd = this.datePipe
+                        .transform(accionadop.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.accionadopModalRef(component, accionadop);
                     resolve(this.ngbModalRef);
                 });

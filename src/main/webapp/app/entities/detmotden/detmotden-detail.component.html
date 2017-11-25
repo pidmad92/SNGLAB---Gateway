@@ -1,0 +1,59 @@
+
+<div *ngIf="detmotden">
+    <h2><span jhiTranslate="gatewayApp.detmotden.detail.title">Detmotden</span> {{detmotden.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.detmotden.vDescrip">V Descrip</span></dt>
+        <dd>
+            <span>{{detmotden.vDescrip}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.detmotden.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{detmotden.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.detmotden.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{detmotden.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.detmotden.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{detmotden.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.detmotden.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{detmotden.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.detmotden.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{detmotden.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.detmotden.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{detmotden.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.detmotden.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{detmotden.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.detmotden.motidenun">Motidenun</span></dt>
+        <dd>
+            <div *ngIf="detmotden.motidenun">
+                <a [routerLink]="['/motidenun', detmotden.motidenun?.id]">{{detmotden.motidenun?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'detmotden/'+ detmotden.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -31,6 +31,7 @@ export class DocexpedienDialogComponent implements OnInit {
     tipdocexps: Tipdocexp[];
 
     tipproveids: Tipproveid[];
+    dFechadocDp: any;
 
     constructor(
         public activeModal: NgbActiveModal,

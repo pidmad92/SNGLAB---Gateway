@@ -1,0 +1,121 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "docinperdlb",
+            "otherEntityName": "docinperdlb",
+            "otherEntityRelationshipName": "datlab"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "atencion",
+            "otherEntityName": "atencion",
+            "otherEntityRelationshipName": "datlab"
+        },
+        {
+            "relationshipName": "empleador",
+            "otherEntityName": "empleador",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "modcontrato",
+            "otherEntityName": "modcontrato",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "motcese",
+            "otherEntityName": "motcese",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "regimenlab",
+            "otherEntityName": "regimenlab",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "trabajador",
+            "otherEntityName": "trabajador",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "tipvinculo",
+            "otherEntityName": "tipvinculo",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nFlgsitlab",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dFecvincul",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dFeccese",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dFecfincon",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "nUsuareg",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tFecreg",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nFlgactivo",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nSedereg",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nUsuaupd",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tFecupd",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "nSedeupd",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171122172608",
+    "entityTableName": "datlab",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "consultas"
+}

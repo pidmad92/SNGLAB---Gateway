@@ -1,0 +1,57 @@
+
+<div *ngIf="oridenu">
+    <h2><span jhiTranslate="gatewayApp.oridenu.detail.title">Oridenu</span> {{oridenu.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.oridenu.vDescripcion">V Descripcion</span></dt>
+        <dd>
+            <span>{{oridenu.vDescripcion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.oridenu.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{oridenu.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.oridenu.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{oridenu.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.oridenu.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{oridenu.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.oridenu.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{oridenu.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.oridenu.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{oridenu.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.oridenu.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{oridenu.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.oridenu.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{oridenu.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.oridenu.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{oridenu.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'oridenu/'+ oridenu.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

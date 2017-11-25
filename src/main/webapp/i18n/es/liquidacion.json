@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "liquidacion" : {
+            "home": {
+                "title": "Liquidacions",
+                "createLabel": "Crear nuevo Liquidacion",
+                "createOrEditLabel": "Crear o editar Liquidacion",
+                "search": "Search for Liquidacion"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Liquidacion {{ id }}?"
+            },
+            "detail": {
+                "title": "Liquidacion"
+            },
+            "nLiquid": "N Liquid",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "atencion": "Atencion",
+            "calbensoc": "Calbensoc"
+        }
+    },
+    "liquidacionesApp": {
+        "liquidacion" : {
+            "created": "Un nuevo Liquidacion ha sido creado con el identificador {{ param }}",
+            "updated": "Un Liquidacion ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Liquidacion ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

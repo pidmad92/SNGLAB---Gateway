@@ -9,8 +9,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Atencion } from './atencion.model';
 import { AtencionPopupService } from './atencion-popup.service';
 import { AtencionService } from './atencion.service';
-import { Pase, PaseService } from '../pase';
-import { Datlaboral, DatlaboralService } from '../datlaboral';
+import { Pasegl, PaseglService } from '../pasegl';
+import { Datlab, DatlabService } from '../datlab';
 import { Empleador, EmpleadorService } from '../empleador';
 import { Oficina, OficinaService } from '../oficina';
 import { Tipatencion, TipatencionService } from '../tipatencion';
@@ -26,9 +26,9 @@ export class AtencionDialogComponent implements OnInit {
     atencion: Atencion;
     isSaving: boolean;
 
-    pases: Pase[];
+    pasegls: Pasegl[];
 
-    datlaborals: Datlaboral[];
+    datlabs: Datlab[];
 
     empleadors: Empleador[];
 
@@ -42,8 +42,8 @@ export class AtencionDialogComponent implements OnInit {
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private atencionService: AtencionService,
-        private paseService: PaseService,
-        private datlaboralService: DatlaboralService,
+        private paseglService: PaseglService,
+        private datlabService: DatlabService,
         private empleadorService: EmpleadorService,
         private oficinaService: OficinaService,
         private tipatencionService: TipatencionService,
@@ -54,21 +54,21 @@ export class AtencionDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.paseService
+        this.paseglService
             .query({filter: 'atencion-is-null'})
             .subscribe((res: ResponseWrapper) => {
-                if (!this.atencion.pase || !this.atencion.pase.id) {
-                    this.pases = res.json;
+                if (!this.atencion.pasegl || !this.atencion.pasegl.id) {
+                    this.pasegls = res.json;
                 } else {
-                    this.paseService
-                        .find(this.atencion.pase.id)
-                        .subscribe((subRes: Pase) => {
-                            this.pases = [subRes].concat(res.json);
+                    this.paseglService
+                        .find(this.atencion.pasegl.id)
+                        .subscribe((subRes: Pasegl) => {
+                            this.pasegls = [subRes].concat(res.json);
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
-        this.datlaboralService.query()
-            .subscribe((res: ResponseWrapper) => { this.datlaborals = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.datlabService.query()
+            .subscribe((res: ResponseWrapper) => { this.datlabs = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.empleadorService.query()
             .subscribe((res: ResponseWrapper) => { this.empleadors = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.oficinaService.query()
@@ -113,11 +113,11 @@ export class AtencionDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackPaseById(index: number, item: Pase) {
+    trackPaseglById(index: number, item: Pasegl) {
         return item.id;
     }
 
-    trackDatlaboralById(index: number, item: Datlaboral) {
+    trackDatlabById(index: number, item: Datlab) {
         return item.id;
     }
 

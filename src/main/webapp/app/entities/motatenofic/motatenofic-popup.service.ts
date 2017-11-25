@@ -28,10 +28,10 @@ export class MotatenoficPopupService {
 
             if (id) {
                 this.motatenoficService.find(id).subscribe((motatenofic) => {
-                    motatenofic.dFechareg = this.datePipe
-                        .transform(motatenofic.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    motatenofic.dFechaupd = this.datePipe
-                        .transform(motatenofic.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    motatenofic.tFecreg = this.datePipe
+                        .transform(motatenofic.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    motatenofic.tFecupd = this.datePipe
+                        .transform(motatenofic.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.motatenoficModalRef(component, motatenofic);
                     resolve(this.ngbModalRef);
                 });

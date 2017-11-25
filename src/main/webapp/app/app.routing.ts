@@ -27,6 +27,11 @@ export const sindicatosRoute: Route = {
     loadChildren: './applications/sindicatos/sindicatos.module#GatewaySindicatosModule'
 };
 
+ export const denunciasRoute: Route = {
+     path: 'denuncias',
+     loadChildren: './applications/denuncias/denuncias.module#GatewayDenunciasModule'
+ };
+
 export const defensaRoute: Route = {
     path: 'defensa',
     loadChildren: './applications/defensa/defensa.module#GatewayDefensaModule'

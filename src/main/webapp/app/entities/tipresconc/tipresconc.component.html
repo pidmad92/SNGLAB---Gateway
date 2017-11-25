@@ -1,13 +1,13 @@
 <div>
-    <h4 class="title my-3">
+    <h2>
         <span jhiTranslate="gatewayApp.tipresconc.home.title">Tipresconcs</span>
-        <button class="btn btn-primary float-right jh-create-entity create-tipresconc" [routerLink]="['/defensa', { outlets: { popup: ['tipresconc-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-tipresconc" [routerLink]="['/', { outlets: { popup: ['tipresconc-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.tipresconc.home.createLabel">
             Create new Tipresconc
             </span>
         </button>
-    </h4>
+    </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -30,13 +30,13 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.tipresconc.vDescripcion">V Descripcion</span></th>
-            <th><span jhiTranslate="gatewayApp.tipresconc.vUsuarioreg">V Usuarioreg</span></th>
-            <th><span jhiTranslate="gatewayApp.tipresconc.dFechareg">D Fechareg</span></th>
-            <th><span jhiTranslate="gatewayApp.tipresconc.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.tipresconc.vDescrip">V Descrip</span></th>
+            <th><span jhiTranslate="gatewayApp.tipresconc.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipresconc.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipresconc.nFlgactivo">N Flgactivo</span></th>
             <th><span jhiTranslate="gatewayApp.tipresconc.nSedereg">N Sedereg</span></th>
-            <th><span jhiTranslate="gatewayApp.tipresconc.vUsuarioupd">V Usuarioupd</span></th>
-            <th><span jhiTranslate="gatewayApp.tipresconc.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipresconc.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipresconc.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.tipresconc.nSedeupd">N Sedeupd</span></th>
             <th></th>
             </tr>
@@ -44,13 +44,13 @@
             <tbody>
             <tr *ngFor="let tipresconc of tipresconcs ;trackBy: trackId">
                 <td><a [routerLink]="['../tipresconc', tipresconc.id ]">{{tipresconc.id}}</a></td>
-                <td>{{tipresconc.vDescripcion}}</td>
-                <td>{{tipresconc.vUsuarioreg}}</td>
-                <td>{{tipresconc.dFechareg | date:'medium'}}</td>
-                <td>{{tipresconc.nEliminar}}</td>
+                <td>{{tipresconc.vDescrip}}</td>
+                <td>{{tipresconc.nUsuareg}}</td>
+                <td>{{tipresconc.tFecreg | date:'medium'}}</td>
+                <td>{{tipresconc.nFlgactivo}}</td>
                 <td>{{tipresconc.nSedereg}}</td>
-                <td>{{tipresconc.vUsuarioupd}}</td>
-                <td>{{tipresconc.dFechaupd | date:'medium'}}</td>
+                <td>{{tipresconc.nUsuaupd}}</td>
+                <td>{{tipresconc.tFecupd | date:'medium'}}</td>
                 <td>{{tipresconc.nSedeupd}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">

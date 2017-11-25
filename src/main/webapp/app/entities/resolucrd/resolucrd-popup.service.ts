@@ -28,16 +28,31 @@ export class ResolucrdPopupService {
 
             if (id) {
                 this.resolucrdService.find(id).subscribe((resolucrd) => {
-                    resolucrd.dFecresolucionsd = this.datePipe
-                        .transform(resolucrd.dFecresolucionsd, 'yyyy-MM-ddTHH:mm:ss');
-                    resolucrd.dFechaconciliacion = this.datePipe
-                        .transform(resolucrd.dFechaconciliacion, 'yyyy-MM-ddTHH:mm:ss');
-                    resolucrd.dFechanotificacion = this.datePipe
-                        .transform(resolucrd.dFechanotificacion, 'yyyy-MM-ddTHH:mm:ss');
-                    resolucrd.dFechareg = this.datePipe
-                        .transform(resolucrd.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    resolucrd.dFechaupd = this.datePipe
-                        .transform(resolucrd.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    if (resolucrd.dFecresosd) {
+                        resolucrd.dFecresosd = {
+                            year: resolucrd.dFecresosd.getFullYear(),
+                            month: resolucrd.dFecresosd.getMonth() + 1,
+                            day: resolucrd.dFecresosd.getDate()
+                        };
+                    }
+                    if (resolucrd.dFecconcil) {
+                        resolucrd.dFecconcil = {
+                            year: resolucrd.dFecconcil.getFullYear(),
+                            month: resolucrd.dFecconcil.getMonth() + 1,
+                            day: resolucrd.dFecconcil.getDate()
+                        };
+                    }
+                    if (resolucrd.dFechanoti) {
+                        resolucrd.dFechanoti = {
+                            year: resolucrd.dFechanoti.getFullYear(),
+                            month: resolucrd.dFechanoti.getMonth() + 1,
+                            day: resolucrd.dFechanoti.getDate()
+                        };
+                    }
+                    resolucrd.tFecreg = this.datePipe
+                        .transform(resolucrd.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    resolucrd.tFecupd = this.datePipe
+                        .transform(resolucrd.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.resolucrdModalRef(component, resolucrd);
                     resolve(this.ngbModalRef);
                 });

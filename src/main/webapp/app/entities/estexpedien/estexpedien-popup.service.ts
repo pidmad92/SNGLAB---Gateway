@@ -28,10 +28,10 @@ export class EstexpedienPopupService {
 
             if (id) {
                 this.estexpedienService.find(id).subscribe((estexpedien) => {
-                    estexpedien.dFechareg = this.datePipe
-                        .transform(estexpedien.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    estexpedien.dFechaupd = this.datePipe
-                        .transform(estexpedien.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    estexpedien.tFecreg = this.datePipe
+                        .transform(estexpedien.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    estexpedien.tFecupd = this.datePipe
+                        .transform(estexpedien.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.estexpedienModalRef(component, estexpedien);
                     resolve(this.ngbModalRef);
                 });

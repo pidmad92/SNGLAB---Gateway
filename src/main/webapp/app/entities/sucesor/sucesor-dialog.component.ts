@@ -9,7 +9,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Sucesor } from './sucesor.model';
 import { SucesorPopupService } from './sucesor-popup.service';
 import { SucesorService } from './sucesor.service';
-import { Personanatur, PersonanaturService } from '../personanatur';
+import { Pernatural, PernaturalService } from '../pernatural';
 import { Trabajador, TrabajadorService } from '../trabajador';
 import { ResponseWrapper } from '../../shared';
 
@@ -22,7 +22,7 @@ export class SucesorDialogComponent implements OnInit {
     sucesor: Sucesor;
     isSaving: boolean;
 
-    personanaturs: Personanatur[];
+    pernaturals: Pernatural[];
 
     trabajadors: Trabajador[];
 
@@ -30,7 +30,7 @@ export class SucesorDialogComponent implements OnInit {
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private sucesorService: SucesorService,
-        private personanaturService: PersonanaturService,
+        private pernaturalService: PernaturalService,
         private trabajadorService: TrabajadorService,
         private eventManager: JhiEventManager
     ) {
@@ -38,8 +38,8 @@ export class SucesorDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.personanaturService.query()
-            .subscribe((res: ResponseWrapper) => { this.personanaturs = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.pernaturalService.query()
+            .subscribe((res: ResponseWrapper) => { this.pernaturals = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.trabajadorService.query()
             .subscribe((res: ResponseWrapper) => { this.trabajadors = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
@@ -78,7 +78,7 @@ export class SucesorDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackPersonanaturById(index: number, item: Personanatur) {
+    trackPernaturalById(index: number, item: Pernatural) {
         return item.id;
     }
 

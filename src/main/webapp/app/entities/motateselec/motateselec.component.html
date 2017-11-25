@@ -1,0 +1,101 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.motateselec.home.title">Motateselecs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-motateselec" [routerLink]="['/', { outlets: { popup: ['motateselec-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.motateselec.home.createLabel">
+            Create new Motateselec
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.motateselec.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="motateselecs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.motateselec.vObsmoseat">V Obsmoseat</span></th>
+            <th><span jhiTranslate="gatewayApp.motateselec.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.motateselec.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.motateselec.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.motateselec.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.motateselec.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.motateselec.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.motateselec.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.motateselec.atencion">Atencion</span></th>
+            <th><span jhiTranslate="gatewayApp.motateselec.direcalter">Direcalter</span></th>
+            <th><span jhiTranslate="gatewayApp.motateselec.motatenofic">Motatenofic</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let motateselec of motateselecs ;trackBy: trackId">
+                <td><a [routerLink]="['../motateselec', motateselec.id ]">{{motateselec.id}}</a></td>
+                <td>{{motateselec.vObsmoseat}}</td>
+                <td>{{motateselec.nUsuareg}}</td>
+                <td>{{motateselec.tFecreg | date:'medium'}}</td>
+                <td>{{motateselec.nFlgactivo}}</td>
+                <td>{{motateselec.nSedereg}}</td>
+                <td>{{motateselec.nUsuaupd}}</td>
+                <td>{{motateselec.tFecupd | date:'medium'}}</td>
+                <td>{{motateselec.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="motateselec.atencion">
+                        <a [routerLink]="['../atencion', motateselec.atencion?.id ]" >{{motateselec.atencion?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="motateselec.direcalter">
+                        <a [routerLink]="['../direcalter', motateselec.direcalter?.id ]" >{{motateselec.direcalter?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="motateselec.motatenofic">
+                        <a [routerLink]="['../motatenofic', motateselec.motatenofic?.id ]" >{{motateselec.motatenofic?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../motateselec', motateselec.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'motateselec/'+ motateselec.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'motateselec/'+ motateselec.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

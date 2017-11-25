@@ -1,0 +1,37 @@
+{
+    "gatewayApp": {
+        "multaconci" : {
+            "home": {
+                "title": "Multaconcis",
+                "createLabel": "Crear nuevo Multaconci",
+                "createOrEditLabel": "Crear o editar Multaconci",
+                "search": "Search for Multaconci"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Multaconci {{ id }}?"
+            },
+            "detail": {
+                "title": "Multaconci"
+            },
+            "fMonmulta": "F Monmulta",
+            "vNumresosd": "V Numresosd",
+            "dFecresosd": "D Fecresosd",
+            "vcodigo": "Vcodigo",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "resolucrd": "Resolucrd"
+        }
+    },
+    "defensaApp": {
+        "multaconci" : {
+            "created": "Un nuevo Multaconci ha sido creado con el identificador {{ param }}",
+            "updated": "Un Multaconci ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Multaconci ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

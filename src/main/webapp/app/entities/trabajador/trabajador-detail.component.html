@@ -1,51 +1,51 @@
 
 <div *ngIf="trabajador">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.trabajador.detail.title">Trabajador</span> {{trabajador.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.trabajador.detail.title">Trabajador</span> {{trabajador.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.trabajador.vFlgsucesor">V Flgsucesor</span></dt>
+        <dt><span jhiTranslate="gatewayApp.trabajador.nFlgsuces">N Flgsuces</span></dt>
         <dd>
-            <span>{{trabajador.vFlgsucesor}}</span>
+            <span>{{trabajador.nFlgsuces}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.trabajador.vUsuarioreg">V Usuarioreg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.trabajador.nUsuareg">N Usuareg</span></dt>
         <dd>
-            <span>{{trabajador.vUsuarioreg}}</span>
+            <span>{{trabajador.nUsuareg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.trabajador.dFechareg">D Fechareg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.trabajador.tFecreg">T Fecreg</span></dt>
         <dd>
-            <span>{{trabajador.dFechareg | date:'medium'}}</span>
+            <span>{{trabajador.tFecreg | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.trabajador.nEliminar">N Eliminar</span></dt>
+        <dt><span jhiTranslate="gatewayApp.trabajador.nFlgactivo">N Flgactivo</span></dt>
         <dd>
-            <span>{{trabajador.nEliminar}}</span>
+            <span>{{trabajador.nFlgactivo}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.trabajador.nSedereg">N Sedereg</span></dt>
         <dd>
             <span>{{trabajador.nSedereg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.trabajador.vUsuarioupd">V Usuarioupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.trabajador.nUsuaupd">N Usuaupd</span></dt>
         <dd>
-            <span>{{trabajador.vUsuarioupd}}</span>
+            <span>{{trabajador.nUsuaupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.trabajador.dFechaupd">D Fechaupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.trabajador.tFecupd">T Fecupd</span></dt>
         <dd>
-            <span>{{trabajador.dFechaupd | date:'medium'}}</span>
+            <span>{{trabajador.tFecupd | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.trabajador.nSedeupd">N Sedeupd</span></dt>
         <dd>
             <span>{{trabajador.nSedeupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.trabajador.cargotrabaja">Cargotrabaja</span></dt>
+        <dt><span jhiTranslate="gatewayApp.trabajador.cartrab">Cartrab</span></dt>
         <dd>
-            <div *ngIf="trabajador.cargotrabaja">
-                <a [routerLink]="['/cargotrabaja', trabajador.cargotrabaja?.id]">{{trabajador.cargotrabaja?.id}}</a>
+            <div *ngIf="trabajador.cartrab">
+                <a [routerLink]="['/cartrab', trabajador.cartrab?.id]">{{trabajador.cartrab?.id}}</a>
             </div>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.trabajador.personanatur">Personanatur</span></dt>
+        <dt><span jhiTranslate="gatewayApp.trabajador.pernatural">Pernatural</span></dt>
         <dd>
-            <div *ngIf="trabajador.personanatur">
-                <a [routerLink]="['/personanatur', trabajador.personanatur?.id]">{{trabajador.personanatur?.id}}</a>
+            <div *ngIf="trabajador.pernatural">
+                <a [routerLink]="['/pernatural', trabajador.pernatural?.id]">{{trabajador.pernatural?.id}}</a>
             </div>
         </dd>
     </dl>

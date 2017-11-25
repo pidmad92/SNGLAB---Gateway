@@ -1,13 +1,13 @@
 <div>
-    <h4 class="title my-3">
+    <h2>
         <span jhiTranslate="gatewayApp.atencion.home.title">Atencions</span>
-        <button class="btn btn-primary float-right jh-create-entity create-atencion" [routerLink]="['/consultas', { outlets: { popup: ['atencion-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-atencion" [routerLink]="['/', { outlets: { popup: ['atencion-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.atencion.home.createLabel">
             Create new Atencion
             </span>
         </button>
-    </h4>
+    </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -30,20 +30,20 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.atencion.vObservacion">V Observacion</span></th>
-            <th><span jhiTranslate="gatewayApp.atencion.cFlgpresentaembarazo">C Flgpresentaembarazo</span></th>
-            <th><span jhiTranslate="gatewayApp.atencion.cFlgestado">C Flgestado</span></th>
-            <th><span jhiTranslate="gatewayApp.atencion.vNumeroticket">V Numeroticket</span></th>
-            <th><span jhiTranslate="gatewayApp.atencion.nCodtrabrepresentante">N Codtrabrepresentante</span></th>
-            <th><span jhiTranslate="gatewayApp.atencion.vUsuarioreg">V Usuarioreg</span></th>
-            <th><span jhiTranslate="gatewayApp.atencion.dFechareg">D Fechareg</span></th>
-            <th><span jhiTranslate="gatewayApp.atencion.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.atencion.vObsatenci">V Obsatenci</span></th>
+            <th><span jhiTranslate="gatewayApp.atencion.nFlgembara">N Flgembara</span></th>
+            <th><span jhiTranslate="gatewayApp.atencion.vEstado">V Estado</span></th>
+            <th><span jhiTranslate="gatewayApp.atencion.vNumticket">V Numticket</span></th>
+            <th><span jhiTranslate="gatewayApp.atencion.nCodtrabre">N Codtrabre</span></th>
+            <th><span jhiTranslate="gatewayApp.atencion.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.atencion.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.atencion.nFlgactivo">N Flgactivo</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.nSedereg">N Sedereg</span></th>
-            <th><span jhiTranslate="gatewayApp.atencion.vUsuarioupd">V Usuarioupd</span></th>
-            <th><span jhiTranslate="gatewayApp.atencion.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.atencion.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.atencion.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.nSedeupd">N Sedeupd</span></th>
-            <th><span jhiTranslate="gatewayApp.atencion.pase">Pase</span></th>
-            <th><span jhiTranslate="gatewayApp.atencion.datlaboral">Datlaboral</span></th>
+            <th><span jhiTranslate="gatewayApp.atencion.pasegl">Pasegl</span></th>
+            <th><span jhiTranslate="gatewayApp.atencion.datlab">Datlab</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.empleador">Empleador</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.oficina">Oficina</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.tipatencion">Tipatencion</span></th>
@@ -54,26 +54,26 @@
             <tbody>
             <tr *ngFor="let atencion of atencions ;trackBy: trackId">
                 <td><a [routerLink]="['../atencion', atencion.id ]">{{atencion.id}}</a></td>
-                <td>{{atencion.vObservacion}}</td>
-                <td>{{atencion.cFlgpresentaembarazo}}</td>
-                <td>{{atencion.cFlgestado}}</td>
-                <td>{{atencion.vNumeroticket}}</td>
-                <td>{{atencion.nCodtrabrepresentante}}</td>
-                <td>{{atencion.vUsuarioreg}}</td>
-                <td>{{atencion.dFechareg | date:'medium'}}</td>
-                <td>{{atencion.nEliminar}}</td>
+                <td>{{atencion.vObsatenci}}</td>
+                <td>{{atencion.nFlgembara}}</td>
+                <td>{{atencion.vEstado}}</td>
+                <td>{{atencion.vNumticket}}</td>
+                <td>{{atencion.nCodtrabre}}</td>
+                <td>{{atencion.nUsuareg}}</td>
+                <td>{{atencion.tFecreg | date:'medium'}}</td>
+                <td>{{atencion.nFlgactivo}}</td>
                 <td>{{atencion.nSedereg}}</td>
-                <td>{{atencion.vUsuarioupd}}</td>
-                <td>{{atencion.dFechaupd | date:'medium'}}</td>
+                <td>{{atencion.nUsuaupd}}</td>
+                <td>{{atencion.tFecupd | date:'medium'}}</td>
                 <td>{{atencion.nSedeupd}}</td>
                 <td>
-                    <div *ngIf="atencion.pase">
-                        <a [routerLink]="['../pase', atencion.pase?.id ]" >{{atencion.pase?.id}}</a>
+                    <div *ngIf="atencion.pasegl">
+                        <a [routerLink]="['../pasegl', atencion.pasegl?.id ]" >{{atencion.pasegl?.id}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="atencion.datlaboral">
-                        <a [routerLink]="['../datlaboral', atencion.datlaboral?.id ]" >{{atencion.datlaboral?.id}}</a>
+                    <div *ngIf="atencion.datlab">
+                        <a [routerLink]="['../datlab', atencion.datlab?.id ]" >{{atencion.datlab?.id}}</a>
                     </div>
                 </td>
                 <td>
@@ -105,14 +105,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/consultas', { outlets: { popup: 'atencion/'+ atencion.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'atencion/'+ atencion.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/consultas', { outlets: { popup: 'atencion/'+ atencion.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'atencion/'+ atencion.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

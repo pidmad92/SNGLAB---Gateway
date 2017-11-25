@@ -1,0 +1,103 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.notifica.home.title">Notificas</span>
+        <button class="btn btn-primary float-right jh-create-entity create-notifica" [routerLink]="['/', { outlets: { popup: ['notifica-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.notifica.home.createLabel">
+            Create new Notifica
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.notifica.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="notificas">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.notifica.nNumfolios">N Numfolios</span></th>
+            <th><span jhiTranslate="gatewayApp.notifica.vHojaenvio">V Hojaenvio</span></th>
+            <th><span jhiTranslate="gatewayApp.notifica.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.notifica.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.notifica.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.notifica.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.notifica.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.notifica.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.notifica.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.notifica.expediente">Expediente</span></th>
+            <th><span jhiTranslate="gatewayApp.notifica.tipenvnot">Tipenvnot</span></th>
+            <th><span jhiTranslate="gatewayApp.notifica.tipnotif">Tipnotif</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let notifica of notificas ;trackBy: trackId">
+                <td><a [routerLink]="['../notifica', notifica.id ]">{{notifica.id}}</a></td>
+                <td>{{notifica.nNumfolios}}</td>
+                <td>{{notifica.vHojaenvio}}</td>
+                <td>{{notifica.nUsuareg}}</td>
+                <td>{{notifica.tFecreg | date:'medium'}}</td>
+                <td>{{notifica.nFlgactivo}}</td>
+                <td>{{notifica.nSedereg}}</td>
+                <td>{{notifica.nUsuaupd}}</td>
+                <td>{{notifica.tFecupd | date:'medium'}}</td>
+                <td>{{notifica.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="notifica.expediente">
+                        <a [routerLink]="['../expediente', notifica.expediente?.id ]" >{{notifica.expediente?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="notifica.tipenvnot">
+                        <a [routerLink]="['../tipenvnot', notifica.tipenvnot?.id ]" >{{notifica.tipenvnot?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="notifica.tipnotif">
+                        <a [routerLink]="['../tipnotif', notifica.tipnotif?.id ]" >{{notifica.tipnotif?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../notifica', notifica.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'notifica/'+ notifica.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'notifica/'+ notifica.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

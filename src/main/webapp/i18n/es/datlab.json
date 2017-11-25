@@ -1,0 +1,44 @@
+{
+    "gatewayApp": {
+        "datlab" : {
+            "home": {
+                "title": "Datlabs",
+                "createLabel": "Crear nuevo Datlab",
+                "createOrEditLabel": "Crear o editar Datlab",
+                "search": "Search for Datlab"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Datlab {{ id }}?"
+            },
+            "detail": {
+                "title": "Datlab"
+            },
+            "nFlgsitlab": "N Flgsitlab",
+            "dFecvincul": "D Fecvincul",
+            "dFeccese": "D Feccese",
+            "dFecfincon": "D Fecfincon",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "docinperdlb": "Docinperdlb",
+            "atencion": "Atencion",
+            "empleador": "Empleador",
+            "modcontrato": "Modcontrato",
+            "motcese": "Motcese",
+            "regimenlab": "Regimenlab",
+            "trabajador": "Trabajador",
+            "tipvinculo": "Tipvinculo"
+        }
+    },
+    "consultasApp": {
+        "datlab" : {
+            "created": "Un nuevo Datlab ha sido creado con el identificador {{ param }}",
+            "updated": "Un Datlab ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Datlab ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -3,20 +3,22 @@ import { BaseEntity } from './../../shared';
 export class Trabajador implements BaseEntity {
     constructor(
         public id?: number,
-        public vFlgsucesor?: string,
-        public vUsuarioreg?: string,
-        public dFechareg?: any,
-        public nEliminar?: number,
+        public nFlgsuces?: boolean,
+        public nUsuareg?: number,
+        public tFecreg?: any,
+        public nFlgactivo?: boolean,
         public nSedereg?: number,
-        public vUsuarioupd?: string,
-        public dFechaupd?: any,
+        public nUsuaupd?: number,
+        public tFecupd?: any,
         public nSedeupd?: number,
-        public cargotrabaja?: BaseEntity,
-        public personanatur?: BaseEntity,
+        public cartrab?: BaseEntity,
+        public pernatural?: BaseEntity,
         public expedientes?: BaseEntity[],
-        public datlaborals?: BaseEntity[],
+        public datlabs?: BaseEntity[],
         public atencions?: BaseEntity[],
         public sucesors?: BaseEntity[],
     ) {
+        this.nFlgsuces = false;
+        this.nFlgactivo = false;
     }
 }

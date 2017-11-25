@@ -1,0 +1,95 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.multaconci.home.title">Multaconcis</span>
+        <button class="btn btn-primary float-right jh-create-entity create-multaconci" [routerLink]="['/', { outlets: { popup: ['multaconci-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.multaconci.home.createLabel">
+            Create new Multaconci
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.multaconci.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="multaconcis">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.multaconci.fMonmulta">F Monmulta</span></th>
+            <th><span jhiTranslate="gatewayApp.multaconci.vNumresosd">V Numresosd</span></th>
+            <th><span jhiTranslate="gatewayApp.multaconci.dFecresosd">D Fecresosd</span></th>
+            <th><span jhiTranslate="gatewayApp.multaconci.vcodigo">Vcodigo</span></th>
+            <th><span jhiTranslate="gatewayApp.multaconci.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.multaconci.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.multaconci.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.multaconci.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.multaconci.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.multaconci.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.multaconci.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.multaconci.resolucrd">Resolucrd</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let multaconci of multaconcis ;trackBy: trackId">
+                <td><a [routerLink]="['../multaconci', multaconci.id ]">{{multaconci.id}}</a></td>
+                <td>{{multaconci.fMonmulta}}</td>
+                <td>{{multaconci.vNumresosd}}</td>
+                <td>{{multaconci.dFecresosd | date:'mediumDate'}}</td>
+                <td>{{multaconci.vcodigo}}</td>
+                <td>{{multaconci.nUsuareg}}</td>
+                <td>{{multaconci.tFecreg | date:'medium'}}</td>
+                <td>{{multaconci.nFlgactivo}}</td>
+                <td>{{multaconci.nSedereg}}</td>
+                <td>{{multaconci.nUsuaupd}}</td>
+                <td>{{multaconci.tFecupd | date:'medium'}}</td>
+                <td>{{multaconci.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="multaconci.resolucrd">
+                        <a [routerLink]="['../resolucrd', multaconci.resolucrd?.id ]" >{{multaconci.resolucrd?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../multaconci', multaconci.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'multaconci/'+ multaconci.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'multaconci/'+ multaconci.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

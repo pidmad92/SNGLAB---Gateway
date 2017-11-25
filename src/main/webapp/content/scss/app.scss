@@ -751,6 +751,69 @@ body .ui-datatable .ui-datatable-data>tr>td, .ui-datatable .ui-datatable-tfoot>t
   border-style: solid;
 }
 
+
+ngb-accordion#accordion{
+
+  // div.level-two li:after{
+  //   border-left: 1px solid #ff0000;
+  //   bottom: 0;
+  //   content: "";
+  //   left: 27px;
+  //   position: absolute;
+  //   top: 0;
+  // }
+
+  .card{
+    border-top: 0px solid grey;
+    background: #4d4d4d;
+    color: #4d4d4d;
+    text-decoration: none;
+    > .card-header{
+      padding: 1px;
+      a{
+        text-decoration: none;
+      }
+      li{
+        list-style:none;
+        color:white;
+      }
+      &.active{
+        padding: 1px;
+        background: linear-gradient(#b90b0b, #c50909), #dc411e;
+        color: #b90b0b;
+      }
+    }
+    > .card-body {
+
+      li{
+        list-style:none;
+        
+        &:before {
+          background: #ff0000;
+          bottom: auto;
+          content: "";
+          height: 8px;
+          left: 20px;
+          margin-top: 13px;
+          position: absolute;
+          right: auto;
+          width: 8px;
+          z-index: 1;
+          border-radius: 50%;
+        }
+        &:hover{
+          background: #656060;
+        }
+        a{
+          color:white;
+          text-decoration: none;
+          padding: 6px 0px 6px 30px;;
+        }
+      }    
+    }
+  }
+}
+
 ngb-accordion{
   .card{
       border-top: 0px solid grey;

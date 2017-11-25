@@ -1,0 +1,85 @@
+
+<div *ngIf="concilia">
+    <h2><span jhiTranslate="gatewayApp.concilia.detail.title">Concilia</span> {{concilia.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.concilia.dFecConci">D Fec Conci</span></dt>
+        <dd>
+            <span>{{concilia.dFecConci | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.concilia.nFlgaudres">N Flgaudres</span></dt>
+        <dd>
+            <span>{{concilia.nFlgaudres}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.concilia.nFlgreprog">N Flgreprog</span></dt>
+        <dd>
+            <span>{{concilia.nFlgreprog}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.concilia.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{concilia.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.concilia.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{concilia.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.concilia.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{concilia.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.concilia.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{concilia.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.concilia.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{concilia.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.concilia.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{concilia.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.concilia.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{concilia.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.concilia.expediente">Expediente</span></dt>
+        <dd>
+            <div *ngIf="concilia.expediente">
+                <a [routerLink]="['/expediente', concilia.expediente?.id]">{{concilia.expediente?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.concilia.abogado">Abogado</span></dt>
+        <dd>
+            <div *ngIf="concilia.abogado">
+                <a [routerLink]="['/abogado', concilia.abogado?.id]">{{concilia.abogado?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.concilia.horacon">Horacon</span></dt>
+        <dd>
+            <div *ngIf="concilia.horacon">
+                <a [routerLink]="['/horacon', concilia.horacon?.id]">{{concilia.horacon?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.concilia.resulconci">Resulconci</span></dt>
+        <dd>
+            <div *ngIf="concilia.resulconci">
+                <a [routerLink]="['/resulconci', concilia.resulconci?.id]">{{concilia.resulconci?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'concilia/'+ concilia.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

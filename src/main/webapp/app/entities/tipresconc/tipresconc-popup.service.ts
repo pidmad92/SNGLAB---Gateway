@@ -28,10 +28,10 @@ export class TipresconcPopupService {
 
             if (id) {
                 this.tipresconcService.find(id).subscribe((tipresconc) => {
-                    tipresconc.dFechareg = this.datePipe
-                        .transform(tipresconc.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    tipresconc.dFechaupd = this.datePipe
-                        .transform(tipresconc.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    tipresconc.tFecreg = this.datePipe
+                        .transform(tipresconc.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    tipresconc.tFecupd = this.datePipe
+                        .transform(tipresconc.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.tipresconcModalRef(component, tipresconc);
                     resolve(this.ngbModalRef);
                 });

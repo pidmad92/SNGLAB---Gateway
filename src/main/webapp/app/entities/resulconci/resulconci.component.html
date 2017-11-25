@@ -1,5 +1,5 @@
 <div>
-    <h4 class="title my-3">
+    <h2>
         <span jhiTranslate="gatewayApp.resulconci.home.title">Resulconcis</span>
         <button class="btn btn-primary float-right jh-create-entity create-resulconci" [routerLink]="['/', { outlets: { popup: ['resulconci-new'] } }]">
             <span class="fa fa-plus"></span>
@@ -7,7 +7,7 @@
             Create new Resulconci
             </span>
         </button>
-    </h4>
+    </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -30,13 +30,13 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.resulconci.vDescripcion">V Descripcion</span></th>
-            <th><span jhiTranslate="gatewayApp.resulconci.vUsuarioreg">V Usuarioreg</span></th>
-            <th><span jhiTranslate="gatewayApp.resulconci.dFechareg">D Fechareg</span></th>
-            <th><span jhiTranslate="gatewayApp.resulconci.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.resulconci.vDescrip">V Descrip</span></th>
+            <th><span jhiTranslate="gatewayApp.resulconci.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.resulconci.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.resulconci.nFlgactivo">N Flgactivo</span></th>
             <th><span jhiTranslate="gatewayApp.resulconci.nSedereg">N Sedereg</span></th>
-            <th><span jhiTranslate="gatewayApp.resulconci.vUsuarioupd">V Usuarioupd</span></th>
-            <th><span jhiTranslate="gatewayApp.resulconci.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.resulconci.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.resulconci.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.resulconci.nSedeupd">N Sedeupd</span></th>
             <th><span jhiTranslate="gatewayApp.resulconci.tipresconc">Tipresconc</span></th>
             <th></th>
@@ -45,13 +45,13 @@
             <tbody>
             <tr *ngFor="let resulconci of resulconcis ;trackBy: trackId">
                 <td><a [routerLink]="['../resulconci', resulconci.id ]">{{resulconci.id}}</a></td>
-                <td>{{resulconci.vDescripcion}}</td>
-                <td>{{resulconci.vUsuarioreg}}</td>
-                <td>{{resulconci.dFechareg | date:'medium'}}</td>
-                <td>{{resulconci.nEliminar}}</td>
+                <td>{{resulconci.vDescrip}}</td>
+                <td>{{resulconci.nUsuareg}}</td>
+                <td>{{resulconci.tFecreg | date:'medium'}}</td>
+                <td>{{resulconci.nFlgactivo}}</td>
                 <td>{{resulconci.nSedereg}}</td>
-                <td>{{resulconci.vUsuarioupd}}</td>
-                <td>{{resulconci.dFechaupd | date:'medium'}}</td>
+                <td>{{resulconci.nUsuaupd}}</td>
+                <td>{{resulconci.tFecupd | date:'medium'}}</td>
                 <td>{{resulconci.nSedeupd}}</td>
                 <td>
                     <div *ngIf="resulconci.tipresconc">

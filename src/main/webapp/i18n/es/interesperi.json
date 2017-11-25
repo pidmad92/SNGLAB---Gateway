@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "interesperi" : {
+            "home": {
+                "title": "Interesperis",
+                "createLabel": "Crear nuevo Interesperi",
+                "createOrEditLabel": "Crear o editar Interesperi",
+                "search": "Search for Interesperi"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Interesperi {{ id }}?"
+            },
+            "detail": {
+                "title": "Interesperi"
+            },
+            "nValintper": "N Valintper",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "tipinteres": "Tipinteres"
+        }
+    },
+    "liquidacionesApp": {
+        "interesperi" : {
+            "created": "Un nuevo Interesperi ha sido creado con el identificador {{ param }}",
+            "updated": "Un Interesperi ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Interesperi ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

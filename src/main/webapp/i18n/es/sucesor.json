@@ -13,16 +13,16 @@
             "detail": {
                 "title": "Sucesor"
             },
-            "cFlgestado": "C Flgestado",
-            "vCodpartida": "V Codpartida",
-            "vUsuarioreg": "V Usuarioreg",
-            "dFechareg": "D Fechareg",
-            "nEliminar": "N Eliminar",
+            "vEstado": "V Estado",
+            "vCodpartid": "V Codpartid",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
             "nSedereg": "N Sedereg",
-            "vUsuarioupd": "V Usuarioupd",
-            "dFechaupd": "D Fechaupd",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
             "nSedeupd": "N Sedeupd",
-            "personanatur": "Personanatur",
+            "pernatural": "Pernatural",
             "trabajador": "Trabajador"
         }
     },

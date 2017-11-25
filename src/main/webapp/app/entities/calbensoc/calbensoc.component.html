@@ -1,0 +1,97 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.calbensoc.home.title">Calbensocs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-calbensoc" [routerLink]="['/', { outlets: { popup: ['calbensoc-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.calbensoc.home.createLabel">
+            Create new Calbensoc
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.calbensoc.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="calbensocs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.calbensoc.nCalbens">N Calbens</span></th>
+            <th><span jhiTranslate="gatewayApp.calbensoc.nCalbens2">N Calbens 2</span></th>
+            <th><span jhiTranslate="gatewayApp.calbensoc.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.calbensoc.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.calbensoc.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.calbensoc.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.calbensoc.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.calbensoc.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.calbensoc.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.calbensoc.bensocial">Bensocial</span></th>
+            <th><span jhiTranslate="gatewayApp.calbensoc.liquidacion">Liquidacion</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let calbensoc of calbensocs ;trackBy: trackId">
+                <td><a [routerLink]="['../calbensoc', calbensoc.id ]">{{calbensoc.id}}</a></td>
+                <td>{{calbensoc.nCalbens}}</td>
+                <td>{{calbensoc.nCalbens2}}</td>
+                <td>{{calbensoc.nUsuareg}}</td>
+                <td>{{calbensoc.tFecreg | date:'medium'}}</td>
+                <td>{{calbensoc.nFlgactivo}}</td>
+                <td>{{calbensoc.nSedereg}}</td>
+                <td>{{calbensoc.nUsuaupd}}</td>
+                <td>{{calbensoc.tFecupd | date:'medium'}}</td>
+                <td>{{calbensoc.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="calbensoc.bensocial">
+                        <a [routerLink]="['../bensocial', calbensoc.bensocial?.id ]" >{{calbensoc.bensocial?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="calbensoc.liquidacion">
+                        <a [routerLink]="['../liquidacion', calbensoc.liquidacion?.id ]" >{{calbensoc.liquidacion?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../calbensoc', calbensoc.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'calbensoc/'+ calbensoc.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'calbensoc/'+ calbensoc.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

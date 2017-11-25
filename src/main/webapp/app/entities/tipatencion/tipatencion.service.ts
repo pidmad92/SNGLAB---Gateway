@@ -68,10 +68,10 @@ export class TipatencionService {
      */
     private convertItemFromServer(json: any): Tipatencion {
         const entity: Tipatencion = Object.assign(new Tipatencion(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -81,9 +81,9 @@ export class TipatencionService {
     private convert(tipatencion: Tipatencion): Tipatencion {
         const copy: Tipatencion = Object.assign({}, tipatencion);
 
-        copy.dFechareg = this.dateUtils.toDate(tipatencion.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(tipatencion.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(tipatencion.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(tipatencion.tFecupd);
         return copy;
     }
 }

@@ -1,0 +1,148 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myConcepremLabel" jhiTranslate="gatewayApp.conceprem.home.createOrEditLabel">Create or edit a Conceprem</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!conceprem.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="conceprem.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.conceprem.vNomconrem" for="field_vNomconrem">V Nomconrem</label>
+            <input type="text" class="form-control" name="vNomconrem" id="field_vNomconrem"
+                [(ngModel)]="conceprem.vNomconrem" required maxlength="100" />
+            <div [hidden]="!(editForm.controls.vNomconrem?.dirty && editForm.controls.vNomconrem?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNomconrem?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNomconrem?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.conceprem.nValconrem" for="field_nValconrem">N Valconrem</label>
+            <input type="number" class="form-control" name="nValconrem" id="field_nValconrem"
+                [(ngModel)]="conceprem.nValconrem"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.conceprem.nUsuareg" for="field_nUsuareg">N Usuareg</label>
+            <input type="number" class="form-control" name="nUsuareg" id="field_nUsuareg"
+                [(ngModel)]="conceprem.nUsuareg" required />
+            <div [hidden]="!(editForm.controls.nUsuareg?.dirty && editForm.controls.nUsuareg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nUsuareg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nUsuareg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.conceprem.tFecreg" for="field_tFecreg">T Fecreg</label>
+            <div class="d-flex">
+                <input id="field_tFecreg" type="datetime-local" class="form-control" name="tFecreg" [(ngModel)]="conceprem.tFecreg"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.tFecreg?.dirty && editForm.controls.tFecreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tFecreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.tFecreg?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.conceprem.nFlgactivo" for="field_nFlgactivo">N Flgactivo</label>
+            <input type="checkbox" class="form-control" name="nFlgactivo" id="field_nFlgactivo"
+                [(ngModel)]="conceprem.nFlgactivo"  />
+            <div [hidden]="!(editForm.controls.nFlgactivo?.dirty && editForm.controls.nFlgactivo?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nFlgactivo?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.conceprem.nSedereg" for="field_nSedereg">N Sedereg</label>
+            <input type="number" class="form-control" name="nSedereg" id="field_nSedereg"
+                [(ngModel)]="conceprem.nSedereg" required />
+            <div [hidden]="!(editForm.controls.nSedereg?.dirty && editForm.controls.nSedereg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nSedereg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nSedereg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.conceprem.nUsuaupd" for="field_nUsuaupd">N Usuaupd</label>
+            <input type="number" class="form-control" name="nUsuaupd" id="field_nUsuaupd"
+                [(ngModel)]="conceprem.nUsuaupd"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.conceprem.tFecupd" for="field_tFecupd">T Fecupd</label>
+            <div class="d-flex">
+                <input id="field_tFecupd" type="datetime-local" class="form-control" name="tFecupd" [(ngModel)]="conceprem.tFecupd"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.conceprem.nSedeupd" for="field_nSedeupd">N Sedeupd</label>
+            <input type="number" class="form-control" name="nSedeupd" id="field_nSedeupd"
+                [(ngModel)]="conceprem.nSedeupd"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.conceprem.calrcmperi" for="field_calrcmperi">Calrcmperi</label>
+            <select class="form-control" id="field_calrcmperi" name="calrcmperi" [(ngModel)]="conceprem.calrcmperi" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="calrcmperiOption.id === conceprem.calrcmperi?.id ? conceprem.calrcmperi : calrcmperiOption" *ngFor="let calrcmperiOption of calrcmperis; trackBy: trackCalrcmperiById">{{calrcmperiOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.conceprem.conceprem" for="field_conceprem">Conceprem</label>
+            <select class="form-control" id="field_conceprem" name="conceprem" [(ngModel)]="conceprem.conceprem" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="concepremOption.id === conceprem.conceprem?.id ? conceprem.conceprem : concepremOption" *ngFor="let concepremOption of conceprems; trackBy: trackConcepremById">{{concepremOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.conceprem.tipcalconre" for="field_tipcalconre">Tipcalconre</label>
+            <select class="form-control" id="field_tipcalconre" name="tipcalconre" [(ngModel)]="conceprem.tipcalconre" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="tipcalconreOption.id === conceprem.tipcalconre?.id ? conceprem.tipcalconre : tipcalconreOption" *ngFor="let tipcalconreOption of tipcalconres; trackBy: trackTipcalconreById">{{tipcalconreOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.conceprem.tipconrem" for="field_tipconrem">Tipconrem</label>
+            <select class="form-control" id="field_tipconrem" name="tipconrem" [(ngModel)]="conceprem.tipconrem" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="tipconremOption.id === conceprem.tipconrem?.id ? conceprem.tipconrem : tipconremOption" *ngFor="let tipconremOption of tipconrems; trackBy: trackTipconremById">{{tipconremOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

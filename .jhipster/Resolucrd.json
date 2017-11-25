@@ -15,14 +15,14 @@
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "multa",
-            "otherEntityName": "multa",
+            "relationshipName": "multaconci",
+            "otherEntityName": "multaconci",
             "otherEntityRelationshipName": "resolucrd"
         }
     ],
     "fields": [
         {
-            "fieldName": "vNumresolucionsd",
+            "fieldName": "vNumresosd",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -30,27 +30,11 @@
             "fieldValidateRulesMaxlength": 20
         },
         {
-            "fieldName": "dFecresolucionsd",
-            "fieldType": "Instant"
+            "fieldName": "dFecresosd",
+            "fieldType": "LocalDate"
         },
         {
-            "fieldName": "vTipodocempleador",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 50
-        },
-        {
-            "fieldName": "vDocempleador",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 20
-        },
-        {
-            "fieldName": "vNomempleador",
+            "fieldName": "vNomemplea",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -58,23 +42,7 @@
             "fieldValidateRulesMaxlength": 250
         },
         {
-            "fieldName": "vTipodoctrabajador",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 50
-        },
-        {
-            "fieldName": "vDoctrabajador",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 20
-        },
-        {
-            "fieldName": "vNomtrabajador",
+            "fieldName": "vNomtrabaj",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -98,11 +66,11 @@
             "fieldValidateRulesMaxlength": 250
         },
         {
-            "fieldName": "dFechaconciliacion",
-            "fieldType": "Instant"
+            "fieldName": "dFecconcil",
+            "fieldType": "LocalDate"
         },
         {
-            "fieldName": "vHoraconciliacion",
+            "fieldName": "vHorconcil",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -110,11 +78,11 @@
             "fieldValidateRulesMaxlength": 20
         },
         {
-            "fieldName": "dFechanotificacion",
-            "fieldType": "Instant"
+            "fieldName": "dFechanoti",
+            "fieldType": "LocalDate"
         },
         {
-            "fieldName": "vNumnotificacion",
+            "fieldName": "vNumnotifi",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -126,31 +94,25 @@
             "fieldType": "Float"
         },
         {
-            "fieldName": "vUsuarioreg",
-            "fieldType": "String",
+            "fieldName": "nUsuareg",
+            "fieldType": "Integer",
             "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 20
+                "required"
+            ]
         },
         {
-            "fieldName": "dFechareg",
+            "fieldName": "tFecreg",
             "fieldType": "Instant",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
-            "fieldName": "nEliminar",
-            "fieldType": "Integer",
+            "fieldName": "nFlgactivo",
+            "fieldType": "Boolean",
             "fieldValidateRules": [
-                "required",
-                "min",
-                "max"
-            ],
-            "fieldValidateRulesMin": 0,
-            "fieldValidateRulesMax": 1
+                "required"
+            ]
         },
         {
             "fieldName": "nSedereg",
@@ -160,15 +122,11 @@
             ]
         },
         {
-            "fieldName": "vUsuarioupd",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 20
+            "fieldName": "nUsuaupd",
+            "fieldType": "Integer"
         },
         {
-            "fieldName": "dFechaupd",
+            "fieldName": "tFecupd",
             "fieldType": "Instant"
         },
         {

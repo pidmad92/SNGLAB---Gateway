@@ -68,10 +68,10 @@ export class AccionadopService {
      */
     private convertItemFromServer(json: any): Accionadop {
         const entity: Accionadop = Object.assign(new Accionadop(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -81,9 +81,9 @@ export class AccionadopService {
     private convert(accionadop: Accionadop): Accionadop {
         const copy: Accionadop = Object.assign({}, accionadop);
 
-        copy.dFechareg = this.dateUtils.toDate(accionadop.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(accionadop.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(accionadop.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(accionadop.tFecupd);
         return copy;
     }
 }

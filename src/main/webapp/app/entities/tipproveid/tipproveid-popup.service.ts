@@ -28,10 +28,10 @@ export class TipproveidPopupService {
 
             if (id) {
                 this.tipproveidService.find(id).subscribe((tipproveid) => {
-                    tipproveid.dFechareg = this.datePipe
-                        .transform(tipproveid.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    tipproveid.dFechaupd = this.datePipe
-                        .transform(tipproveid.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    tipproveid.tFecreg = this.datePipe
+                        .transform(tipproveid.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    tipproveid.tFecupd = this.datePipe
+                        .transform(tipproveid.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.tipproveidModalRef(component, tipproveid);
                     resolve(this.ngbModalRef);
                 });

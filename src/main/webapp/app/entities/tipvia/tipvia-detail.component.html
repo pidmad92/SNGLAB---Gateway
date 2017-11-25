@@ -1,0 +1,57 @@
+
+<div *ngIf="tipvia">
+    <h2><span jhiTranslate="gatewayApp.tipvia.detail.title">Tipvia</span> {{tipvia.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.tipvia.vDescrip">V Descrip</span></dt>
+        <dd>
+            <span>{{tipvia.vDescrip}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipvia.vDesccorta">V Desccorta</span></dt>
+        <dd>
+            <span>{{tipvia.vDesccorta}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipvia.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{tipvia.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipvia.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{tipvia.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipvia.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{tipvia.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipvia.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{tipvia.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipvia.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{tipvia.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipvia.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{tipvia.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipvia.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{tipvia.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'tipvia/'+ tipvia.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

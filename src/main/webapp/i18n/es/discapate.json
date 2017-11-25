@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "discapate" : {
+            "home": {
+                "title": "Discapates",
+                "createLabel": "Crear nuevo Discapate",
+                "createOrEditLabel": "Crear o editar Discapate",
+                "search": "Search for Discapate"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Discapate {{ id }}?"
+            },
+            "detail": {
+                "title": "Discapate"
+            },
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "atencion": "Atencion",
+            "discap": "Discap"
+        }
+    },
+    "consultasApp": {
+        "discapate" : {
+            "created": "Un nuevo Discapate ha sido creado con el identificador {{ param }}",
+            "updated": "Un Discapate ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Discapate ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

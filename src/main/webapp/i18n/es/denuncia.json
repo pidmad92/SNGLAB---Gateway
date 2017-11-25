@@ -1,0 +1,69 @@
+{
+    "gatewayApp": {
+        "denuncia" : {
+            "home": {
+                "title": "Denuncias",
+                "createLabel": "Crear nuevo Denuncia",
+                "createOrEditLabel": "Crear o editar Denuncia",
+                "search": "Search for Denuncia"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Denuncia {{ id }}?"
+            },
+            "detail": {
+                "title": "Denuncia"
+            },
+            "vCoddenu": "V Coddenu",
+            "vCodsececo": "V Codsececo",
+            "vCodciu": "V Codciu",
+            "vDesremipe": "V Desremipe",
+            "vCoddepart": "V Coddepart",
+            "vCodprovin": "V Codprovin",
+            "vCoddistri": "V Coddistri",
+            "vDesvia": "V Desvia",
+            "vDeszona": "V Deszona",
+            "vDircomp": "V Dircomp",
+            "vDirdenu": "V Dirdenu",
+            "tFecinitra": "T Fecinitra",
+            "nFlaglun": "N Flaglun",
+            "nFlagmar": "N Flagmar",
+            "nFlagmie": "N Flagmie",
+            "nFlagjue": "N Flagjue",
+            "nFlagvie": "N Flagvie",
+            "nFlagsab": "N Flagsab",
+            "nFlagdom": "N Flagdom",
+            "tHorainit": "T Horainit",
+            "tHorafint": "T Horafint",
+            "vFlgtraba": "V Flgtraba",
+            "vFlgrepre": "V Flgrepre",
+            "tFeccese": "T Feccese",
+            "vDesrepre": "V Desrepre",
+            "vObscalifi": "V Obscalifi",
+            "vObsfin": "V Obsfin",
+            "vFlgestado": "V Flgestado",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "perjuridica": "Perjuridica",
+            "denunte": "Denunte",
+            "tipzona": "Tipzona",
+            "tipvia": "Tipvia",
+            "motfin": "Motfin",
+            "infosoli": "Infosoli",
+            "calidenu": "Calidenu",
+            "oridenu": "Oridenu",
+            "datdenu": "Datdenu"
+        }
+    },
+    "denunciasApp": {
+        "denuncia" : {
+            "created": "Un nuevo Denuncia ha sido creado con el identificador {{ param }}",
+            "updated": "Un Denuncia ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Denuncia ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

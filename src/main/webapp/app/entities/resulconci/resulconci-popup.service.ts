@@ -28,10 +28,10 @@ export class ResulconciPopupService {
 
             if (id) {
                 this.resulconciService.find(id).subscribe((resulconci) => {
-                    resulconci.dFechareg = this.datePipe
-                        .transform(resulconci.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    resulconci.dFechaupd = this.datePipe
-                        .transform(resulconci.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    resulconci.tFecreg = this.datePipe
+                        .transform(resulconci.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    resulconci.tFecupd = this.datePipe
+                        .transform(resulconci.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.resulconciModalRef(component, resulconci);
                     resolve(this.ngbModalRef);
                 });

@@ -3,17 +3,18 @@ import { BaseEntity } from './../../shared';
 export class Sucesor implements BaseEntity {
     constructor(
         public id?: number,
-        public cFlgestado?: string,
-        public vCodpartida?: string,
-        public vUsuarioreg?: string,
-        public dFechareg?: any,
-        public nEliminar?: number,
+        public vEstado?: string,
+        public vCodpartid?: string,
+        public nUsuareg?: number,
+        public tFecreg?: any,
+        public nFlgactivo?: boolean,
         public nSedereg?: number,
-        public vUsuarioupd?: string,
-        public dFechaupd?: any,
+        public nUsuaupd?: number,
+        public tFecupd?: any,
         public nSedeupd?: number,
-        public personanatur?: BaseEntity,
+        public pernatural?: BaseEntity,
         public trabajador?: BaseEntity,
     ) {
+        this.nFlgactivo = false;
     }
 }

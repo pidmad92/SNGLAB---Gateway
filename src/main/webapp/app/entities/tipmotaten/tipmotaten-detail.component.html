@@ -1,36 +1,36 @@
 
 <div *ngIf="tipmotaten">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.tipmotaten.detail.title">Tipmotaten</span> {{tipmotaten.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.tipmotaten.detail.title">Tipmotaten</span> {{tipmotaten.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.tipmotaten.vDescripcion">V Descripcion</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipmotaten.vDestipmot">V Destipmot</span></dt>
         <dd>
-            <span>{{tipmotaten.vDescripcion}}</span>
+            <span>{{tipmotaten.vDestipmot}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipmotaten.vUsuarioreg">V Usuarioreg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipmotaten.nUsuareg">N Usuareg</span></dt>
         <dd>
-            <span>{{tipmotaten.vUsuarioreg}}</span>
+            <span>{{tipmotaten.nUsuareg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipmotaten.dFechareg">D Fechareg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipmotaten.tFecreg">T Fecreg</span></dt>
         <dd>
-            <span>{{tipmotaten.dFechareg | date:'medium'}}</span>
+            <span>{{tipmotaten.tFecreg | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipmotaten.nEliminar">N Eliminar</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipmotaten.nFlgactivo">N Flgactivo</span></dt>
         <dd>
-            <span>{{tipmotaten.nEliminar}}</span>
+            <span>{{tipmotaten.nFlgactivo}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.tipmotaten.nSedereg">N Sedereg</span></dt>
         <dd>
             <span>{{tipmotaten.nSedereg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipmotaten.vUsuarioupd">V Usuarioupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipmotaten.nUsuaupd">N Usuaupd</span></dt>
         <dd>
-            <span>{{tipmotaten.vUsuarioupd}}</span>
+            <span>{{tipmotaten.nUsuaupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipmotaten.dFechaupd">D Fechaupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipmotaten.tFecupd">T Fecupd</span></dt>
         <dd>
-            <span>{{tipmotaten.dFechaupd | date:'medium'}}</span>
+            <span>{{tipmotaten.tFecupd | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.tipmotaten.nSedeupd">N Sedeupd</span></dt>
         <dd>
@@ -45,7 +45,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/consultas', { outlets: { popup: 'tipmotaten/'+ tipmotaten.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'tipmotaten/'+ tipmotaten.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

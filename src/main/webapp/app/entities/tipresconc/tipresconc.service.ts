@@ -68,10 +68,10 @@ export class TipresconcService {
      */
     private convertItemFromServer(json: any): Tipresconc {
         const entity: Tipresconc = Object.assign(new Tipresconc(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -81,9 +81,9 @@ export class TipresconcService {
     private convert(tipresconc: Tipresconc): Tipresconc {
         const copy: Tipresconc = Object.assign({}, tipresconc);
 
-        copy.dFechareg = this.dateUtils.toDate(tipresconc.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(tipresconc.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(tipresconc.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(tipresconc.tFecupd);
         return copy;
     }
 }

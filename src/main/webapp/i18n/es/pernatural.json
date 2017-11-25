@@ -1,0 +1,48 @@
+{
+    "gatewayApp": {
+        "pernatural" : {
+            "home": {
+                "title": "Pernaturals",
+                "createLabel": "Crear nuevo Pernatural",
+                "createOrEditLabel": "Crear o editar Pernatural",
+                "search": "Search for Pernatural"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Pernatural {{ id }}?"
+            },
+            "detail": {
+                "title": "Pernatural"
+            },
+            "vNombres": "V Nombres",
+            "vApepat": "V Apepat",
+            "vApemat": "V Apemat",
+            "vNumdoc": "V Numdoc",
+            "vTelefono": "V Telefono",
+            "vCelular": "V Celular",
+            "vEmailper": "V Emailper",
+            "dFecnac": "D Fecnac",
+            "vsexoper": "Vsexoper",
+            "vEstado": "V Estado",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "denunte": "Denunte",
+            "dirpernat": "Dirpernat",
+            "empleador": "Empleador",
+            "trabajador": "Trabajador",
+            "sucesor": "Sucesor",
+            "tipdocident": "Tipdocident"
+        }
+    },
+    "consultasApp": {
+        "pernatural" : {
+            "created": "Un nuevo Pernatural ha sido creado con el identificador {{ param }}",
+            "updated": "Un Pernatural ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Pernatural ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

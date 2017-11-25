@@ -68,10 +68,10 @@ export class AbogadoService {
      */
     private convertItemFromServer(json: any): Abogado {
         const entity: Abogado = Object.assign(new Abogado(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -81,9 +81,9 @@ export class AbogadoService {
     private convert(abogado: Abogado): Abogado {
         const copy: Abogado = Object.assign({}, abogado);
 
-        copy.dFechareg = this.dateUtils.toDate(abogado.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(abogado.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(abogado.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(abogado.tFecupd);
         return copy;
     }
 }

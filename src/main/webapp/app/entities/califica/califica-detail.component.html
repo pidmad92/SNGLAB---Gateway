@@ -1,0 +1,53 @@
+
+<div *ngIf="califica">
+    <h2><span jhiTranslate="gatewayApp.califica.detail.title">Califica</span> {{califica.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.califica.vDescripcion">V Descripcion</span></dt>
+        <dd>
+            <span>{{califica.vDescripcion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.califica.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{califica.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.califica.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{califica.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.califica.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{califica.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.califica.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{califica.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.califica.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{califica.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.califica.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{califica.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.califica.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{califica.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'califica/'+ califica.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

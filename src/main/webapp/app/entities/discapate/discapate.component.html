@@ -1,0 +1,93 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.discapate.home.title">Discapates</span>
+        <button class="btn btn-primary float-right jh-create-entity create-discapate" [routerLink]="['/', { outlets: { popup: ['discapate-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.discapate.home.createLabel">
+            Create new Discapate
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.discapate.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="discapates">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.discapate.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.discapate.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.discapate.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.discapate.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.discapate.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.discapate.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.discapate.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.discapate.atencion">Atencion</span></th>
+            <th><span jhiTranslate="gatewayApp.discapate.discap">Discap</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let discapate of discapates ;trackBy: trackId">
+                <td><a [routerLink]="['../discapate', discapate.id ]">{{discapate.id}}</a></td>
+                <td>{{discapate.nUsuareg}}</td>
+                <td>{{discapate.tFecreg | date:'medium'}}</td>
+                <td>{{discapate.nFlgactivo}}</td>
+                <td>{{discapate.nSedereg}}</td>
+                <td>{{discapate.nUsuaupd}}</td>
+                <td>{{discapate.tFecupd | date:'medium'}}</td>
+                <td>{{discapate.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="discapate.atencion">
+                        <a [routerLink]="['../atencion', discapate.atencion?.id ]" >{{discapate.atencion?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="discapate.discap">
+                        <a [routerLink]="['../discap', discapate.discap?.id ]" >{{discapate.discap?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../discapate', discapate.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'discapate/'+ discapate.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'discapate/'+ discapate.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

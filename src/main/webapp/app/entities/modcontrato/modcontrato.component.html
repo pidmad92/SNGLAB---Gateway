@@ -1,0 +1,83 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.modcontrato.home.title">Modcontratoes</span>
+        <button class="btn btn-primary float-right jh-create-entity create-modcontrato" [routerLink]="['/', { outlets: { popup: ['modcontrato-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.modcontrato.home.createLabel">
+            Create new Modcontrato
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.modcontrato.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="modcontratoes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.modcontrato.vDesmodcon">V Desmodcon</span></th>
+            <th><span jhiTranslate="gatewayApp.modcontrato.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.modcontrato.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.modcontrato.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.modcontrato.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.modcontrato.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.modcontrato.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.modcontrato.nSedeupd">N Sedeupd</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let modcontrato of modcontratoes ;trackBy: trackId">
+                <td><a [routerLink]="['../modcontrato', modcontrato.id ]">{{modcontrato.id}}</a></td>
+                <td>{{modcontrato.vDesmodcon}}</td>
+                <td>{{modcontrato.nUsuareg}}</td>
+                <td>{{modcontrato.tFecreg | date:'medium'}}</td>
+                <td>{{modcontrato.nFlgactivo}}</td>
+                <td>{{modcontrato.nSedereg}}</td>
+                <td>{{modcontrato.nUsuaupd}}</td>
+                <td>{{modcontrato.tFecupd | date:'medium'}}</td>
+                <td>{{modcontrato.nSedeupd}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../modcontrato', modcontrato.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'modcontrato/'+ modcontrato.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'modcontrato/'+ modcontrato.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

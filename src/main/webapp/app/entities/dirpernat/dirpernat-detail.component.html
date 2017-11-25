@@ -1,0 +1,79 @@
+
+<div *ngIf="dirpernat">
+    <h2><span jhiTranslate="gatewayApp.dirpernat.detail.title">Dirpernat</span> {{dirpernat.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.dirpernat.nCoddepto">N Coddepto</span></dt>
+        <dd>
+            <span>{{dirpernat.nCoddepto}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirpernat.nCodprov">N Codprov</span></dt>
+        <dd>
+            <span>{{dirpernat.nCodprov}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirpernat.nCoddist">N Coddist</span></dt>
+        <dd>
+            <span>{{dirpernat.nCoddist}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirpernat.vDircomple">V Dircomple</span></dt>
+        <dd>
+            <span>{{dirpernat.vDircomple}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirpernat.vRefer">V Refer</span></dt>
+        <dd>
+            <span>{{dirpernat.vRefer}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirpernat.nFlgnotifi">N Flgnotifi</span></dt>
+        <dd>
+            <span>{{dirpernat.nFlgnotifi}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirpernat.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{dirpernat.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirpernat.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{dirpernat.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirpernat.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{dirpernat.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirpernat.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{dirpernat.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirpernat.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{dirpernat.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirpernat.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{dirpernat.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirpernat.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{dirpernat.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirpernat.pernatural">Pernatural</span></dt>
+        <dd>
+            <div *ngIf="dirpernat.pernatural">
+                <a [routerLink]="['/pernatural', dirpernat.pernatural?.id]">{{dirpernat.pernatural?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'dirpernat/'+ dirpernat.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

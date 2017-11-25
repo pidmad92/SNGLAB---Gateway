@@ -1,40 +1,24 @@
 
 <div *ngIf="resolucrd">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.resolucrd.detail.title">Resolucrd</span> {{resolucrd.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.resolucrd.detail.title">Resolucrd</span> {{resolucrd.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.resolucrd.vNumresolucionsd">V Numresolucionsd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.vNumresosd">V Numresosd</span></dt>
         <dd>
-            <span>{{resolucrd.vNumresolucionsd}}</span>
+            <span>{{resolucrd.vNumresosd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.resolucrd.dFecresolucionsd">D Fecresolucionsd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.dFecresosd">D Fecresosd</span></dt>
         <dd>
-            <span>{{resolucrd.dFecresolucionsd | date:'medium'}}</span>
+            <span>{{resolucrd.dFecresosd | date:'mediumDate'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.resolucrd.vTipodocempleador">V Tipodocempleador</span></dt>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.vNomemplea">V Nomemplea</span></dt>
         <dd>
-            <span>{{resolucrd.vTipodocempleador}}</span>
+            <span>{{resolucrd.vNomemplea}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.resolucrd.vDocempleador">V Docempleador</span></dt>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.vNomtrabaj">V Nomtrabaj</span></dt>
         <dd>
-            <span>{{resolucrd.vDocempleador}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.resolucrd.vNomempleador">V Nomempleador</span></dt>
-        <dd>
-            <span>{{resolucrd.vNomempleador}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.resolucrd.vTipodoctrabajador">V Tipodoctrabajador</span></dt>
-        <dd>
-            <span>{{resolucrd.vTipodoctrabajador}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.resolucrd.vDoctrabajador">V Doctrabajador</span></dt>
-        <dd>
-            <span>{{resolucrd.vDoctrabajador}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.resolucrd.vNomtrabajador">V Nomtrabajador</span></dt>
-        <dd>
-            <span>{{resolucrd.vNomtrabajador}}</span>
+            <span>{{resolucrd.vNomtrabaj}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.resolucrd.vDireccion">V Direccion</span></dt>
         <dd>
@@ -44,49 +28,49 @@
         <dd>
             <span>{{resolucrd.vTelefono}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.resolucrd.dFechaconciliacion">D Fechaconciliacion</span></dt>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.dFecconcil">D Fecconcil</span></dt>
         <dd>
-            <span>{{resolucrd.dFechaconciliacion | date:'medium'}}</span>
+            <span>{{resolucrd.dFecconcil | date:'mediumDate'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.resolucrd.vHoraconciliacion">V Horaconciliacion</span></dt>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.vHorconcil">V Horconcil</span></dt>
         <dd>
-            <span>{{resolucrd.vHoraconciliacion}}</span>
+            <span>{{resolucrd.vHorconcil}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.resolucrd.dFechanotificacion">D Fechanotificacion</span></dt>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.dFechanoti">D Fechanoti</span></dt>
         <dd>
-            <span>{{resolucrd.dFechanotificacion | date:'medium'}}</span>
+            <span>{{resolucrd.dFechanoti | date:'mediumDate'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.resolucrd.vNumnotificacion">V Numnotificacion</span></dt>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.vNumnotifi">V Numnotifi</span></dt>
         <dd>
-            <span>{{resolucrd.vNumnotificacion}}</span>
+            <span>{{resolucrd.vNumnotifi}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.resolucrd.fMonMulta">F Mon Multa</span></dt>
         <dd>
             <span>{{resolucrd.fMonMulta}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.resolucrd.vUsuarioreg">V Usuarioreg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.nUsuareg">N Usuareg</span></dt>
         <dd>
-            <span>{{resolucrd.vUsuarioreg}}</span>
+            <span>{{resolucrd.nUsuareg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.resolucrd.dFechareg">D Fechareg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.tFecreg">T Fecreg</span></dt>
         <dd>
-            <span>{{resolucrd.dFechareg | date:'medium'}}</span>
+            <span>{{resolucrd.tFecreg | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.resolucrd.nEliminar">N Eliminar</span></dt>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.nFlgactivo">N Flgactivo</span></dt>
         <dd>
-            <span>{{resolucrd.nEliminar}}</span>
+            <span>{{resolucrd.nFlgactivo}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.resolucrd.nSedereg">N Sedereg</span></dt>
         <dd>
             <span>{{resolucrd.nSedereg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.resolucrd.vUsuarioupd">V Usuarioupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.nUsuaupd">N Usuaupd</span></dt>
         <dd>
-            <span>{{resolucrd.vUsuarioupd}}</span>
+            <span>{{resolucrd.nUsuaupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.resolucrd.dFechaupd">D Fechaupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.resolucrd.tFecupd">T Fecupd</span></dt>
         <dd>
-            <span>{{resolucrd.dFechaupd | date:'medium'}}</span>
+            <span>{{resolucrd.tFecupd | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.resolucrd.nSedeupd">N Sedeupd</span></dt>
         <dd>
@@ -113,7 +97,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/defensa', { outlets: { popup: 'resolucrd/'+ resolucrd.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'resolucrd/'+ resolucrd.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

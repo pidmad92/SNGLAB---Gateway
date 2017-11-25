@@ -9,8 +9,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Empleador } from './empleador.model';
 import { EmpleadorPopupService } from './empleador-popup.service';
 import { EmpleadorService } from './empleador.service';
-import { Personajurid, PersonajuridService } from '../personajurid';
-import { Personanatur, PersonanaturService } from '../personanatur';
+import { Perjuridica, PerjuridicaService } from '../perjuridica';
+import { Pernatural, PernaturalService } from '../pernatural';
 import { Tippersona, TippersonaService } from '../tippersona';
 import { ResponseWrapper } from '../../shared';
 
@@ -23,9 +23,9 @@ export class EmpleadorDialogComponent implements OnInit {
     empleador: Empleador;
     isSaving: boolean;
 
-    personajurids: Personajurid[];
+    perjuridicas: Perjuridica[];
 
-    personanaturs: Personanatur[];
+    pernaturals: Pernatural[];
 
     tippersonas: Tippersona[];
 
@@ -33,8 +33,8 @@ export class EmpleadorDialogComponent implements OnInit {
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private empleadorService: EmpleadorService,
-        private personajuridService: PersonajuridService,
-        private personanaturService: PersonanaturService,
+        private perjuridicaService: PerjuridicaService,
+        private pernaturalService: PernaturalService,
         private tippersonaService: TippersonaService,
         private eventManager: JhiEventManager
     ) {
@@ -42,10 +42,10 @@ export class EmpleadorDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.personajuridService.query()
-            .subscribe((res: ResponseWrapper) => { this.personajurids = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.personanaturService.query()
-            .subscribe((res: ResponseWrapper) => { this.personanaturs = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.perjuridicaService.query()
+            .subscribe((res: ResponseWrapper) => { this.perjuridicas = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.pernaturalService.query()
+            .subscribe((res: ResponseWrapper) => { this.pernaturals = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.tippersonaService.query()
             .subscribe((res: ResponseWrapper) => { this.tippersonas = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
@@ -84,11 +84,11 @@ export class EmpleadorDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackPersonajuridById(index: number, item: Personajurid) {
+    trackPerjuridicaById(index: number, item: Perjuridica) {
         return item.id;
     }
 
-    trackPersonanaturById(index: number, item: Personanatur) {
+    trackPernaturalById(index: number, item: Pernatural) {
         return item.id;
     }
 

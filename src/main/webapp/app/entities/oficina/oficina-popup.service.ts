@@ -28,10 +28,10 @@ export class OficinaPopupService {
 
             if (id) {
                 this.oficinaService.find(id).subscribe((oficina) => {
-                    oficina.dFechareg = this.datePipe
-                        .transform(oficina.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    oficina.dFechaupd = this.datePipe
-                        .transform(oficina.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    oficina.tFecreg = this.datePipe
+                        .transform(oficina.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    oficina.tFecupd = this.datePipe
+                        .transform(oficina.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.oficinaModalRef(component, oficina);
                     resolve(this.ngbModalRef);
                 });

@@ -68,10 +68,10 @@ export class EstexpedienService {
      */
     private convertItemFromServer(json: any): Estexpedien {
         const entity: Estexpedien = Object.assign(new Estexpedien(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -81,9 +81,9 @@ export class EstexpedienService {
     private convert(estexpedien: Estexpedien): Estexpedien {
         const copy: Estexpedien = Object.assign({}, estexpedien);
 
-        copy.dFechareg = this.dateUtils.toDate(estexpedien.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(estexpedien.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(estexpedien.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(estexpedien.tFecupd);
         return copy;
     }
 }

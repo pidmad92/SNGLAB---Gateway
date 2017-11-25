@@ -69,15 +69,15 @@ export class ExpedienteService {
     private convertItemFromServer(json: any): Expediente {
         const entity: Expediente = Object.assign(new Expediente(), json);
         entity.dFecregexp = this.dateUtils
-            .convertDateTimeFromServer(json.dFecregexp);
-        entity.dFecmesapartes = this.dateUtils
-            .convertDateTimeFromServer(json.dFecmesapartes);
-        entity.dFecArchivo = this.dateUtils
-            .convertDateTimeFromServer(json.dFecArchivo);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+            .convertLocalDateFromServer(json.dFecregexp);
+        entity.dFecmespar = this.dateUtils
+            .convertLocalDateFromServer(json.dFecmespar);
+        entity.dFecArchiv = this.dateUtils
+            .convertLocalDateFromServer(json.dFecArchiv);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -86,16 +86,16 @@ export class ExpedienteService {
      */
     private convert(expediente: Expediente): Expediente {
         const copy: Expediente = Object.assign({}, expediente);
+        copy.dFecregexp = this.dateUtils
+            .convertLocalDateToServer(expediente.dFecregexp);
+        copy.dFecmespar = this.dateUtils
+            .convertLocalDateToServer(expediente.dFecmespar);
+        copy.dFecArchiv = this.dateUtils
+            .convertLocalDateToServer(expediente.dFecArchiv);
 
-        copy.dFecregexp = this.dateUtils.toDate(expediente.dFecregexp);
+        copy.tFecreg = this.dateUtils.toDate(expediente.tFecreg);
 
-        copy.dFecmesapartes = this.dateUtils.toDate(expediente.dFecmesapartes);
-
-        copy.dFecArchivo = this.dateUtils.toDate(expediente.dFecArchivo);
-
-        copy.dFechareg = this.dateUtils.toDate(expediente.dFechareg);
-
-        copy.dFechaupd = this.dateUtils.toDate(expediente.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(expediente.tFecupd);
         return copy;
     }
 }

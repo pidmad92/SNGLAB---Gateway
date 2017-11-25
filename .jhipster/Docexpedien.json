@@ -36,43 +36,41 @@
             "fieldValidateRulesMaxlength": 20
         },
         {
-            "fieldName": "dFecha",
-            "fieldType": "Instant"
+            "fieldName": "dFechadoc",
+            "fieldType": "LocalDate"
         },
         {
             "fieldName": "nFolios",
             "fieldType": "Integer"
         },
         {
-            "fieldName": "nNunresolucionrd",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "vUsuarioreg",
+            "fieldName": "vNumresord",
             "fieldType": "String",
             "fieldValidateRules": [
-                "required",
                 "maxlength"
             ],
             "fieldValidateRulesMaxlength": 20
         },
         {
-            "fieldName": "dFechareg",
+            "fieldName": "nUsuareg",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tFecreg",
             "fieldType": "Instant",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
-            "fieldName": "nEliminar",
-            "fieldType": "Integer",
+            "fieldName": "nFlgactivo",
+            "fieldType": "Boolean",
             "fieldValidateRules": [
-                "required",
-                "min",
-                "max"
-            ],
-            "fieldValidateRulesMin": 0,
-            "fieldValidateRulesMax": 1
+                "required"
+            ]
         },
         {
             "fieldName": "nSedereg",
@@ -82,15 +80,11 @@
             ]
         },
         {
-            "fieldName": "vUsuarioupd",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 20
+            "fieldName": "nUsuaupd",
+            "fieldType": "Integer"
         },
         {
-            "fieldName": "dFechaupd",
+            "fieldName": "tFecupd",
             "fieldType": "Instant"
         },
         {

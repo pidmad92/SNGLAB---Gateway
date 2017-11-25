@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "modcontrato" : {
+            "home": {
+                "title": "Modcontratoes",
+                "createLabel": "Crear nuevo Modcontrato",
+                "createOrEditLabel": "Crear o editar Modcontrato",
+                "search": "Search for Modcontrato"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Modcontrato {{ id }}?"
+            },
+            "detail": {
+                "title": "Modcontrato"
+            },
+            "vDesmodcon": "V Desmodcon",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "datlab": "Datlab"
+        }
+    },
+    "consultasApp": {
+        "modcontrato" : {
+            "created": "Un nuevo Modcontrato ha sido creado con el identificador {{ param }}",
+            "updated": "Un Modcontrato ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Modcontrato ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

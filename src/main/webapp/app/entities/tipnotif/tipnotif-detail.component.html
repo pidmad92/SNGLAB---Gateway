@@ -1,36 +1,36 @@
 
 <div *ngIf="tipnotif">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.tipnotif.detail.title">Tipnotif</span> {{tipnotif.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.tipnotif.detail.title">Tipnotif</span> {{tipnotif.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.tipnotif.vDescripcion">V Descripcion</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipnotif.vDescrip">V Descrip</span></dt>
         <dd>
-            <span>{{tipnotif.vDescripcion}}</span>
+            <span>{{tipnotif.vDescrip}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipnotif.vUsuarioreg">V Usuarioreg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipnotif.nUsuareg">N Usuareg</span></dt>
         <dd>
-            <span>{{tipnotif.vUsuarioreg}}</span>
+            <span>{{tipnotif.nUsuareg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipnotif.dFechareg">D Fechareg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipnotif.tFecreg">T Fecreg</span></dt>
         <dd>
-            <span>{{tipnotif.dFechareg | date:'medium'}}</span>
+            <span>{{tipnotif.tFecreg | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipnotif.nEliminar">N Eliminar</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipnotif.nFlgactivo">N Flgactivo</span></dt>
         <dd>
-            <span>{{tipnotif.nEliminar}}</span>
+            <span>{{tipnotif.nFlgactivo}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.tipnotif.nSedereg">N Sedereg</span></dt>
         <dd>
             <span>{{tipnotif.nSedereg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipnotif.vUsuarioupd">V Usuarioupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipnotif.nUsuaupd">N Usuaupd</span></dt>
         <dd>
-            <span>{{tipnotif.vUsuarioupd}}</span>
+            <span>{{tipnotif.nUsuaupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipnotif.dFechaupd">D Fechaupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipnotif.tFecupd">T Fecupd</span></dt>
         <dd>
-            <span>{{tipnotif.dFechaupd | date:'medium'}}</span>
+            <span>{{tipnotif.tFecupd | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.tipnotif.nSedeupd">N Sedeupd</span></dt>
         <dd>
@@ -45,7 +45,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/defensa', { outlets: { popup: 'tipnotif/'+ tipnotif.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'tipnotif/'+ tipnotif.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

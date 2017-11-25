@@ -1,0 +1,53 @@
+
+<div *ngIf="modcontrato">
+    <h2><span jhiTranslate="gatewayApp.modcontrato.detail.title">Modcontrato</span> {{modcontrato.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.modcontrato.vDesmodcon">V Desmodcon</span></dt>
+        <dd>
+            <span>{{modcontrato.vDesmodcon}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.modcontrato.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{modcontrato.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.modcontrato.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{modcontrato.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.modcontrato.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{modcontrato.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.modcontrato.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{modcontrato.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.modcontrato.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{modcontrato.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.modcontrato.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{modcontrato.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.modcontrato.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{modcontrato.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'modcontrato/'+ modcontrato.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

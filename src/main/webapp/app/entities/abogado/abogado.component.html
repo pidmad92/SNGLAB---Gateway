@@ -1,13 +1,13 @@
 <div>
-    <h4 class="title my-3">
+    <h2>
         <span jhiTranslate="gatewayApp.abogado.home.title">Abogados</span>
-        <button class="btn btn-primary float-right jh-create-entity create-abogado" [routerLink]="['/consultas', { outlets: { popup: ['abogado-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-abogado" [routerLink]="['/', { outlets: { popup: ['abogado-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.abogado.home.createLabel">
             Create new Abogado
             </span>
         </button>
-    </h4>
+    </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -30,14 +30,14 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.abogado.vNomabogado">V Nomabogado</span></th>
-            <th><span jhiTranslate="gatewayApp.abogado.nCodabogadousuario">N Codabogadousuario</span></th>
-            <th><span jhiTranslate="gatewayApp.abogado.vUsuarioreg">V Usuarioreg</span></th>
-            <th><span jhiTranslate="gatewayApp.abogado.dFechareg">D Fechareg</span></th>
-            <th><span jhiTranslate="gatewayApp.abogado.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.abogado.vNomabogad">V Nomabogad</span></th>
+            <th><span jhiTranslate="gatewayApp.abogado.nCodabousu">N Codabousu</span></th>
+            <th><span jhiTranslate="gatewayApp.abogado.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.abogado.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.abogado.nFlgactivo">N Flgactivo</span></th>
             <th><span jhiTranslate="gatewayApp.abogado.nSedereg">N Sedereg</span></th>
-            <th><span jhiTranslate="gatewayApp.abogado.vUsuarioupd">V Usuarioupd</span></th>
-            <th><span jhiTranslate="gatewayApp.abogado.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.abogado.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.abogado.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.abogado.nSedeupd">N Sedeupd</span></th>
             <th><span jhiTranslate="gatewayApp.abogado.oficina">Oficina</span></th>
             <th></th>
@@ -46,14 +46,14 @@
             <tbody>
             <tr *ngFor="let abogado of abogados ;trackBy: trackId">
                 <td><a [routerLink]="['../abogado', abogado.id ]">{{abogado.id}}</a></td>
-                <td>{{abogado.vNomabogado}}</td>
-                <td>{{abogado.nCodabogadousuario}}</td>
-                <td>{{abogado.vUsuarioreg}}</td>
-                <td>{{abogado.dFechareg | date:'medium'}}</td>
-                <td>{{abogado.nEliminar}}</td>
+                <td>{{abogado.vNomabogad}}</td>
+                <td>{{abogado.nCodabousu}}</td>
+                <td>{{abogado.nUsuareg}}</td>
+                <td>{{abogado.tFecreg | date:'medium'}}</td>
+                <td>{{abogado.nFlgactivo}}</td>
                 <td>{{abogado.nSedereg}}</td>
-                <td>{{abogado.vUsuarioupd}}</td>
-                <td>{{abogado.dFechaupd | date:'medium'}}</td>
+                <td>{{abogado.nUsuaupd}}</td>
+                <td>{{abogado.tFecupd | date:'medium'}}</td>
                 <td>{{abogado.nSedeupd}}</td>
                 <td>
                     <div *ngIf="abogado.oficina">
@@ -69,14 +69,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/consulta', { outlets: { popup: 'abogado/'+ abogado.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'abogado/'+ abogado.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/consulta', { outlets: { popup: 'abogado/'+ abogado.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'abogado/'+ abogado.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

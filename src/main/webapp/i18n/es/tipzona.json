@@ -1,0 +1,36 @@
+{
+    "gatewayApp": {
+        "tipzona" : {
+            "home": {
+                "title": "Tipzonas",
+                "createLabel": "Crear nuevo Tipzona",
+                "createOrEditLabel": "Crear o editar Tipzona",
+                "search": "Search for Tipzona"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipzona {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipzona"
+            },
+            "vDescrip": "V Descrip",
+            "vDesccorta": "V Desccorta",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "dirdenun": "Dirdenun",
+            "denuncia": "Denuncia"
+        }
+    },
+    "denunciasApp": {
+        "tipzona" : {
+            "created": "Un nuevo Tipzona ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipzona ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipzona ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

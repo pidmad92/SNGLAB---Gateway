@@ -1,0 +1,53 @@
+
+<div *ngIf="tipconrem">
+    <h2><span jhiTranslate="gatewayApp.tipconrem.detail.title">Tipconrem</span> {{tipconrem.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.tipconrem.vNomtipcr">V Nomtipcr</span></dt>
+        <dd>
+            <span>{{tipconrem.vNomtipcr}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipconrem.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{tipconrem.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipconrem.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{tipconrem.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipconrem.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{tipconrem.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipconrem.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{tipconrem.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipconrem.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{tipconrem.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipconrem.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{tipconrem.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipconrem.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{tipconrem.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'tipconrem/'+ tipconrem.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,36 +1,36 @@
 
 <div *ngIf="tipdocexp">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.tipdocexp.detail.title">Tipdocexp</span> {{tipdocexp.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.tipdocexp.detail.title">Tipdocexp</span> {{tipdocexp.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.tipdocexp.vDescripcion">V Descripcion</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipdocexp.vDescrip">V Descrip</span></dt>
         <dd>
-            <span>{{tipdocexp.vDescripcion}}</span>
+            <span>{{tipdocexp.vDescrip}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipdocexp.vUsuarioreg">V Usuarioreg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipdocexp.nUsuareg">N Usuareg</span></dt>
         <dd>
-            <span>{{tipdocexp.vUsuarioreg}}</span>
+            <span>{{tipdocexp.nUsuareg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipdocexp.dFechareg">D Fechareg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipdocexp.tFecreg">T Fecreg</span></dt>
         <dd>
-            <span>{{tipdocexp.dFechareg | date:'medium'}}</span>
+            <span>{{tipdocexp.tFecreg | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipdocexp.nEliminar">N Eliminar</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipdocexp.nFlgactivo">N Flgactivo</span></dt>
         <dd>
-            <span>{{tipdocexp.nEliminar}}</span>
+            <span>{{tipdocexp.nFlgactivo}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.tipdocexp.nSedereg">N Sedereg</span></dt>
         <dd>
             <span>{{tipdocexp.nSedereg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipdocexp.vUsuarioupd">V Usuarioupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipdocexp.nUsuaupd">N Usuaupd</span></dt>
         <dd>
-            <span>{{tipdocexp.vUsuarioupd}}</span>
+            <span>{{tipdocexp.nUsuaupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipdocexp.dFechaupd">D Fechaupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipdocexp.tFecupd">T Fecupd</span></dt>
         <dd>
-            <span>{{tipdocexp.dFechaupd | date:'medium'}}</span>
+            <span>{{tipdocexp.tFecupd | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.tipdocexp.nSedeupd">N Sedeupd</span></dt>
         <dd>
@@ -45,7 +45,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/defensa', { outlets: { popup: 'tipdocexp/'+ tipdocexp.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'tipdocexp/'+ tipdocexp.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

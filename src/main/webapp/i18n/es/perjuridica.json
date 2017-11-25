@@ -1,0 +1,44 @@
+{
+    "gatewayApp": {
+        "perjuridica" : {
+            "home": {
+                "title": "Perjuridicas",
+                "createLabel": "Crear nuevo Perjuridica",
+                "createOrEditLabel": "Crear o editar Perjuridica",
+                "search": "Search for Perjuridica"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Perjuridica {{ id }}?"
+            },
+            "detail": {
+                "title": "Perjuridica"
+            },
+            "vRazsocial": "V Razsocial",
+            "vNomalter": "V Nomalter",
+            "vNumdoc": "V Numdoc",
+            "vEmail": "V Email",
+            "vTelefono": "V Telefono",
+            "vFaxperju": "V Faxperju",
+            "vEstado": "V Estado",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "actiecon": "Actiecon",
+            "denuncia": "Denuncia",
+            "dirperjuri": "Dirperjuri",
+            "empleador": "Empleador",
+            "tipdocident": "Tipdocident"
+        }
+    },
+    "consultasApp": {
+        "perjuridica" : {
+            "created": "Un nuevo Perjuridica ha sido creado con el identificador {{ param }}",
+            "updated": "Un Perjuridica ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Perjuridica ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

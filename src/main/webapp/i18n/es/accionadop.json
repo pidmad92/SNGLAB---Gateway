@@ -13,15 +13,15 @@
             "detail": {
                 "title": "Accionadop"
             },
-            "vDescripcion": "V Descripcion",
-            "vUsuarioreg": "V Usuarioreg",
-            "dFechareg": "D Fechareg",
-            "nEliminar": "N Eliminar",
+            "vDesaccdop": "V Desaccdop",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
             "nSedereg": "N Sedereg",
-            "vUsuarioupd": "V Usuarioupd",
-            "dFechaupd": "D Fechaupd",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
             "nSedeupd": "N Sedeupd",
-            "atenaccadop": "Atenaccadop"
+            "accadoate": "Accadoate"
         }
     },
     "consultasApp": {

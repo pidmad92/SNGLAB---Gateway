@@ -1,0 +1,71 @@
+
+<div *ngIf="motateselec">
+    <h2><span jhiTranslate="gatewayApp.motateselec.detail.title">Motateselec</span> {{motateselec.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.motateselec.vObsmoseat">V Obsmoseat</span></dt>
+        <dd>
+            <span>{{motateselec.vObsmoseat}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motateselec.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{motateselec.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motateselec.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{motateselec.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motateselec.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{motateselec.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motateselec.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{motateselec.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motateselec.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{motateselec.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motateselec.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{motateselec.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motateselec.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{motateselec.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motateselec.atencion">Atencion</span></dt>
+        <dd>
+            <div *ngIf="motateselec.atencion">
+                <a [routerLink]="['/atencion', motateselec.atencion?.id]">{{motateselec.atencion?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motateselec.direcalter">Direcalter</span></dt>
+        <dd>
+            <div *ngIf="motateselec.direcalter">
+                <a [routerLink]="['/direcalter', motateselec.direcalter?.id]">{{motateselec.direcalter?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motateselec.motatenofic">Motatenofic</span></dt>
+        <dd>
+            <div *ngIf="motateselec.motatenofic">
+                <a [routerLink]="['/motatenofic', motateselec.motatenofic?.id]">{{motateselec.motatenofic?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'motateselec/'+ motateselec.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

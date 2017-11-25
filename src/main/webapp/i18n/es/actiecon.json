@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "actiecon" : {
+            "home": {
+                "title": "Actiecons",
+                "createLabel": "Crear nuevo Actiecon",
+                "createOrEditLabel": "Crear o editar Actiecon",
+                "search": "Search for Actiecon"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Actiecon {{ id }}?"
+            },
+            "detail": {
+                "title": "Actiecon"
+            },
+            "vCiuuaceco": "V Ciuuaceco",
+            "vDesacteco": "V Desacteco",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "perjuridica": "Perjuridica"
+        }
+    },
+    "consultasApp": {
+        "actiecon" : {
+            "created": "Un nuevo Actiecon ha sido creado con el identificador {{ param }}",
+            "updated": "Un Actiecon ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Actiecon ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

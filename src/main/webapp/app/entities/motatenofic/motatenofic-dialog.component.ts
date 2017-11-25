@@ -9,7 +9,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Motatenofic } from './motatenofic.model';
 import { MotatenoficPopupService } from './motatenofic-popup.service';
 import { MotatenoficService } from './motatenofic.service';
-import { Motivoatenci, MotivoatenciService } from '../motivoatenci';
+import { Motate, MotateService } from '../motate';
 import { Oficina, OficinaService } from '../oficina';
 import { ResponseWrapper } from '../../shared';
 
@@ -22,7 +22,7 @@ export class MotatenoficDialogComponent implements OnInit {
     motatenofic: Motatenofic;
     isSaving: boolean;
 
-    motivoatencis: Motivoatenci[];
+    motates: Motate[];
 
     oficinas: Oficina[];
 
@@ -30,7 +30,7 @@ export class MotatenoficDialogComponent implements OnInit {
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private motatenoficService: MotatenoficService,
-        private motivoatenciService: MotivoatenciService,
+        private motateService: MotateService,
         private oficinaService: OficinaService,
         private eventManager: JhiEventManager
     ) {
@@ -38,8 +38,8 @@ export class MotatenoficDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.motivoatenciService.query()
-            .subscribe((res: ResponseWrapper) => { this.motivoatencis = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.motateService.query()
+            .subscribe((res: ResponseWrapper) => { this.motates = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.oficinaService.query()
             .subscribe((res: ResponseWrapper) => { this.oficinas = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
@@ -78,7 +78,7 @@ export class MotatenoficDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackMotivoatenciById(index: number, item: Motivoatenci) {
+    trackMotateById(index: number, item: Motate) {
         return item.id;
     }
 

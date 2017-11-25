@@ -1,0 +1,36 @@
+{
+    "gatewayApp": {
+        "motateselec" : {
+            "home": {
+                "title": "Motateselecs",
+                "createLabel": "Crear nuevo Motateselec",
+                "createOrEditLabel": "Crear o editar Motateselec",
+                "search": "Search for Motateselec"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Motateselec {{ id }}?"
+            },
+            "detail": {
+                "title": "Motateselec"
+            },
+            "vObsmoseat": "V Obsmoseat",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "atencion": "Atencion",
+            "direcalter": "Direcalter",
+            "motatenofic": "Motatenofic"
+        }
+    },
+    "consultasApp": {
+        "motateselec" : {
+            "created": "Un nuevo Motateselec ha sido creado con el identificador {{ param }}",
+            "updated": "Un Motateselec ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Motateselec ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

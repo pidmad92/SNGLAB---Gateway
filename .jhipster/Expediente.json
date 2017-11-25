@@ -21,8 +21,8 @@
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "conciliacion",
-            "otherEntityName": "conciliacion",
+            "relationshipName": "concilia",
+            "otherEntityName": "concilia",
             "otherEntityRelationshipName": "expediente"
         },
         {
@@ -39,14 +39,14 @@
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "notificacion",
-            "otherEntityName": "notificacion",
+            "relationshipName": "notifica",
+            "otherEntityName": "notifica",
             "otherEntityRelationshipName": "expediente"
         },
         {
             "relationshipType": "one-to-one",
-            "relationshipName": "pase",
-            "otherEntityName": "pase",
+            "relationshipName": "pasegl",
+            "otherEntityName": "pasegl",
             "ownerSide": false,
             "otherEntityRelationshipName": "expediente"
         },
@@ -65,7 +65,7 @@
     ],
     "fields": [
         {
-            "fieldName": "vNumExpediente",
+            "fieldName": "vNumexp",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -74,7 +74,7 @@
             "fieldValidateRulesMaxlength": 20
         },
         {
-            "fieldName": "nAnio",
+            "fieldName": "nAnioexp",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "required"
@@ -82,26 +82,10 @@
         },
         {
             "fieldName": "dFecregexp",
-            "fieldType": "Instant"
+            "fieldType": "LocalDate"
         },
         {
-            "fieldName": "vTipodocempleador",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 50
-        },
-        {
-            "fieldName": "vDocempleador",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 20
-        },
-        {
-            "fieldName": "vNomempleador",
+            "fieldName": "vNomemplea",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -109,23 +93,7 @@
             "fieldValidateRulesMaxlength": 250
         },
         {
-            "fieldName": "vTipodoctrabajador",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 50
-        },
-        {
-            "fieldName": "vDoctrabajador",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 20
-        },
-        {
-            "fieldName": "vNomtrabajador",
+            "fieldName": "vNomtrabaj",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -133,15 +101,11 @@
             "fieldValidateRulesMaxlength": 250
         },
         {
-            "fieldName": "cFlgexpobservado",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 1
+            "fieldName": "nFlgexpobs",
+            "fieldType": "Boolean"
         },
         {
-            "fieldName": "vRegmesapartes",
+            "fieldName": "vRegmespar",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -149,11 +113,11 @@
             "fieldValidateRulesMaxlength": 50
         },
         {
-            "fieldName": "dFecmesapartes",
-            "fieldType": "Instant"
+            "fieldName": "dFecmespar",
+            "fieldType": "LocalDate"
         },
         {
-            "fieldName": "vObservacion",
+            "fieldName": "vObservac",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -161,19 +125,15 @@
             "fieldValidateRulesMaxlength": 500
         },
         {
-            "fieldName": "cFlgarchivo",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 1
+            "fieldName": "nFlgarchiv",
+            "fieldType": "Boolean"
         },
         {
-            "fieldName": "dFecArchivo",
-            "fieldType": "Instant"
+            "fieldName": "dFecArchiv",
+            "fieldType": "LocalDate"
         },
         {
-            "fieldName": "vObservacionarchivo",
+            "fieldName": "vObsarchiv",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -181,11 +141,11 @@
             "fieldValidateRulesMaxlength": 500
         },
         {
-            "fieldName": "nCodusuarioarchivo",
+            "fieldName": "nCodusuarc",
             "fieldType": "Integer"
         },
         {
-            "fieldName": "vNuminformearchivo",
+            "fieldName": "vNuminfarc",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -193,31 +153,25 @@
             "fieldValidateRulesMaxlength": 50
         },
         {
-            "fieldName": "vUsuarioreg",
-            "fieldType": "String",
+            "fieldName": "nUsuareg",
+            "fieldType": "Integer",
             "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 20
+                "required"
+            ]
         },
         {
-            "fieldName": "dFechareg",
+            "fieldName": "tFecreg",
             "fieldType": "Instant",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
-            "fieldName": "nEliminar",
-            "fieldType": "Integer",
+            "fieldName": "nFlgactivo",
+            "fieldType": "Boolean",
             "fieldValidateRules": [
-                "required",
-                "min",
-                "max"
-            ],
-            "fieldValidateRulesMin": 0,
-            "fieldValidateRulesMax": 1
+                "required"
+            ]
         },
         {
             "fieldName": "nSedereg",
@@ -227,15 +181,11 @@
             ]
         },
         {
-            "fieldName": "vUsuarioupd",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 20
+            "fieldName": "nUsuaupd",
+            "fieldType": "Integer"
         },
         {
-            "fieldName": "dFechaupd",
+            "fieldName": "tFecupd",
             "fieldType": "Instant"
         },
         {

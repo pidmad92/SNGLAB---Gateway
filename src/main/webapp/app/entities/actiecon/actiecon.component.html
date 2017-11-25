@@ -1,0 +1,85 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.actiecon.home.title">Actiecons</span>
+        <button class="btn btn-primary float-right jh-create-entity create-actiecon" [routerLink]="['/', { outlets: { popup: ['actiecon-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.actiecon.home.createLabel">
+            Create new Actiecon
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.actiecon.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="actiecons">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.actiecon.vCiuuaceco">V Ciuuaceco</span></th>
+            <th><span jhiTranslate="gatewayApp.actiecon.vDesacteco">V Desacteco</span></th>
+            <th><span jhiTranslate="gatewayApp.actiecon.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.actiecon.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.actiecon.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.actiecon.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.actiecon.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.actiecon.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.actiecon.nSedeupd">N Sedeupd</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let actiecon of actiecons ;trackBy: trackId">
+                <td><a [routerLink]="['../actiecon', actiecon.id ]">{{actiecon.id}}</a></td>
+                <td>{{actiecon.vCiuuaceco}}</td>
+                <td>{{actiecon.vDesacteco}}</td>
+                <td>{{actiecon.nUsuareg}}</td>
+                <td>{{actiecon.tFecreg | date:'medium'}}</td>
+                <td>{{actiecon.nFlgactivo}}</td>
+                <td>{{actiecon.nSedereg}}</td>
+                <td>{{actiecon.nUsuaupd}}</td>
+                <td>{{actiecon.tFecupd | date:'medium'}}</td>
+                <td>{{actiecon.nSedeupd}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../actiecon', actiecon.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'actiecon/'+ actiecon.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'actiecon/'+ actiecon.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
