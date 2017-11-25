@@ -2,9 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } from 'ng-jhipster';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal/modal';
 
 import { RegistroDelegadosService } from './registro-delegados.service';
+import { RegistroDelegadosComponent } from './registro-delegados.component';
 import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../shared';
+
+// import { RegistroDelegadosComponent } from './index';
 
 @Component({
     selector: 'jhi-consulta-delegados',
@@ -14,9 +18,11 @@ export class ConsultaDelegadosComponent implements OnInit {
     currentAccount: any;
     eventSubscriber: Subscription;
     currentSearch: string;
+    closeResult: string;
 
     constructor(
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private modalService: NgbModal,
     ) {
     }
 
@@ -43,6 +49,15 @@ export class ConsultaDelegadosComponent implements OnInit {
         /*this.currentSearch = '';
         this.loadAll();*/
     }
+
+    open() {
+        this.modalService.open(RegistroDelegadosComponent);
+    }
+
+    close() {
+        this.close();
+    }
+
     ngOnInit() {
         /*this.loadAll();
         this.principal.identity().then((account) => {

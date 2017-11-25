@@ -9,7 +9,7 @@ import {
     ConsultaExpedienteComponent,
     ConsultaExpedientePopupComponent,
     consultaExpedienteRoute } from './';
-import { TabViewModule, DataTableModule } from 'primeng/primeng';
+import { TabViewModule, DataTableModule, CheckboxModule, DropdownModule, CalendarModule } from 'primeng/primeng';
 
 const ENTITY_STATES = [
     ...consultaExpedienteRoute
@@ -20,6 +20,9 @@ const ENTITY_STATES = [
         GatewaySharedModule,
         TabViewModule,
         DataTableModule,
+        CheckboxModule,
+        DropdownModule,
+        CalendarModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [

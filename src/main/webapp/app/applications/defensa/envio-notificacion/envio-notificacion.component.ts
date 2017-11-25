@@ -64,7 +64,6 @@ export class EnvioNotificacionComponent implements OnInit, OnChanges {
     getStepCurrent(url) {
         let ct = 0;
         for (const r of this.routes) {
-            console.log(r);
             if ( url.indexOf(r) !== -1 ) {
                 return ct;
             }

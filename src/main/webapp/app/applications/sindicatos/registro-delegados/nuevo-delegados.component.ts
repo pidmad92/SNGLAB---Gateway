@@ -2,28 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } from 'ng-jhipster';
-
-import { RevisarSolicitudesService } from './revisar-solicitudes.service';
-import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../shared';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal/modal';
-import { EvaluarSolicitudesComponent } from './evaluar-solicitudes.component';
+
+import { RegistroDelegadosService } from './registro-delegados.service';
+import { IngresoDelegadosComponent } from './ingreso-delegados.component';
+import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../shared';
 
 @Component({
-    selector: 'jhi-revisar-solicitudes',
-    templateUrl: './revisar-solicitudes.component.html'
+    selector: 'jhi-nuevo-delegados',
+    templateUrl: './nuevo-delegados.component.html'
 })
-export class RevisarSolicitudesComponent implements OnInit {
+export class NuevoDelegadosComponent implements OnInit {
     currentAccount: any;
     eventSubscriber: Subscription;
     currentSearch: string;
-    routeSub: any;
 
     constructor(
         private eventManager: JhiEventManager,
         private modalService: NgbModal,
-        private route: ActivatedRoute
     ) {
-
     }
 
     loadAll() {
@@ -49,9 +46,9 @@ export class RevisarSolicitudesComponent implements OnInit {
         /*this.currentSearch = '';
         this.loadAll();*/
     }
-    open(texto) {
-        console.log('texto: ' + texto);
-        this.modalService.open(EvaluarSolicitudesComponent);
+
+    open() {
+        this.modalService.open(IngresoDelegadosComponent);
     }
 
     ngOnInit() {

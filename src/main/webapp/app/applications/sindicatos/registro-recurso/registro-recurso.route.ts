@@ -7,6 +7,8 @@ import { JhiPaginationUtil } from 'ng-jhipster';
 import { RegistroRecursoComponent } from './registro-recurso.component';
 import { ConsultaRecursoComponent } from './consulta-recurso.component';
 import { RegistroObservacionComponent } from './registro-observacion.component';
+import { PrincipalComponent } from './principal.component';
+import { NuevoRecursoComponent } from './nuevo-recurso.component';
 // import { AccionadopDetailComponent } from './accionadop-detail.component';
 // import { AccionadopPopupComponent } from './accionadop-dialog.component';
 // import { AccionadopDeletePopupComponent } from './accionadop-delete-dialog.component';
@@ -38,6 +40,44 @@ export const RegistroRecursoRoute: Routes = [
             pageTitle: 'gatewayApp.accionadop.home.title'
         },*/
         canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'principal',
+        component: PrincipalComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'Consulta Recurso'
+        },
+        canActivate: [UserRouteAccessService],
+        children: [
+            {
+                path: 'consulta-recurso',
+                component: ConsultaRecursoComponent,
+                /*data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'gatewayApp.accionadop.home.title'
+                },*/
+                outlet: 'wizard'
+            },
+            {
+                path: 'nuevo-recurso',
+                component: NuevoRecursoComponent,
+                /*data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'gatewayApp.accionadop.home.title'
+                },*/
+                outlet: 'wizard'
+            },
+            {
+                path: 'registro-recurso',
+                component: RegistroRecursoComponent,
+                /*data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'gatewayApp.accionadop.home.title'
+                },*/
+                outlet: 'wizard'
+            }
+        ]
     }
     // {
     //     path: 'accionadop/:id',

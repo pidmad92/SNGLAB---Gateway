@@ -15,37 +15,54 @@
     <div align="center">
     <div style="border: 1px solid black; width: 300px;">
     <br/>
-    <table align="center" style="text-align: center" border="0">
-    <tr>
-        <td colspan="3">¿A qué sector pertenece?</td>
-    </tr>
-    <tr><td colspan="3"><br/></td></tr>
-    <tr>
-        <td></td>
-        <td align="center">
-            <select>
-                <option>Seleccione</option>
-                <option>Privado</option>
-                <option>Público</option>
-            </select>
-        </td>
-        <td></td>
-    </tr>
-    <tr>
-        <td colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="radioo"/>Empresa</td>
-    </tr>
-    <tr>
-        <td colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="radioo"/>Grémio</td>
-    </tr>
-    <tr>
-        <td colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="radioo"/>Actividad</td>
-    </tr>
-    <tr>
-        <td colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="radioo"/>Oficio varios</td>
-    </tr>
-    </table>
+    <div>
+        <table align="center" style="text-align: center" border="0">
+            <tr>
+                <td colspan="3">¿A qué sector pertenece?</td>
+            </tr>
+            <tr><td colspan="3"><br/></td></tr>
+            <tr>
+                <td></td>
+                <td align="center">
+                    <select id="cbSector" (change)="verAmbito($event.target.value);">
+                        <option [value]="0">Seleccione</option>
+                        <option [value]="1">Privado</option>
+                        <option [value]="2">Público</option>
+                    </select>
+                </td>
+                <td></td>
+            </tr>
+            <tr *ngIf="hideElement">
+                <td colspan="3 ">
+                    <table align="center" style="text-align: left" border="0">
+                        <tr>
+                            <td><input type="radio" name="radioo" (change)="verAmbito(4);"/>Empresa</td>
+                            <td><span placement="right" ngbPopover="Empresa" triggers="mouseenter:mouseleave">?</span></td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="radioo" (change)="verAmbito(4);"/>Grémio</td>
+                            <td><span placement="right" ngbPopover="Grémio" triggers="mouseenter:mouseleave">?</span></td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="radioo" (change)="verAmbito(4);"/>Actividad</td>
+                            <td><span placement="right" ngbPopover="Actividad" triggers="mouseenter:mouseleave">?</span></td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="radioo" (change)="verAmbito(4);"/>Oficio varios</td>
+                            <td><span placement="right" ngbPopover="Oficio varios" triggers="mouseenter:mouseleave">?</span></td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="radioo" (change)="verAmbito(3);"/>Otros</td>
+                            <td id="divTbOt" style="display: none;"><input type="text" /></td>
+                            <td><span placement="right" ngbPopover="Otros" triggers="mouseenter:mouseleave">?</span></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>   
     <br/>
-    <div align="center">
+    <div align="center">     
         <button class="btn mx-1 btn-dark float-center">Ingresar</button>
     </div>
     <br/>

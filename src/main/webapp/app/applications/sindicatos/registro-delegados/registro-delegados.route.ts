@@ -7,47 +7,44 @@ import { JhiPaginationUtil } from 'ng-jhipster';
 import { RegistroDelegadosComponent } from './registro-delegados.component';
 import { ConsultaDelegadosComponent } from './consulta-delegados.component';
 import { IngresoDelegadosComponent } from './ingreso-delegados.component';
+import { NuevoDelegadosComponent } from './nuevo-delegados.component';
+import { PrincipalComponent } from './principal.component';
+
 // import { AccionadopDetailComponent } from './accionadop-detail.component';
 // import { AccionadopPopupComponent } from './accionadop-dialog.component';
 // import { AccionadopDeletePopupComponent } from './accionadop-delete-dialog.component';
 
 export const RegistroDelegadosRoute: Routes = [
     {
-        path: 'registro-delegados',
-        component: RegistroDelegadosComponent,
-        /*data: {
+        path: 'principal',
+        component: PrincipalComponent,
+        data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
-        },*/
-        canActivate: [UserRouteAccessService]
+            pageTitle: 'Consulta Delegados'
+        },
+        canActivate: [UserRouteAccessService],
+        children: [
+            {
+                path: 'nuevo-delegados',
+                component: NuevoDelegadosComponent,
+                /*data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'gatewayApp.accionadop.home.title'
+                },*/
+                outlet: 'wizard'
+            },
+            {
+                path: 'consulta-delegados',
+                component: ConsultaDelegadosComponent,
+                outlet: 'wizard'
+            }
+        ]
     },
     {
         path: 'consulta-delegados',
-        component: ConsultaDelegadosComponent,
-        /*data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
-        },*/
-        canActivate: [UserRouteAccessService]
-    },
-    {
-        path: 'ingreso-delegados',
-        component: IngresoDelegadosComponent,
-        /*data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
-        },*/
-        canActivate: [UserRouteAccessService]
+        component: ConsultaDelegadosComponent
     }
-    // {
-    //     path: 'accionadop/:id',
-    //     component: AccionadopDetailComponent,
-    //     data: {
-    //         authorities: ['ROLE_USER'],
-    //         pageTitle: 'gatewayApp.accionadop.home.title'
-    //     },
-    //     canActivate: [UserRouteAccessService]
-    // }
+
 ];
 
 // export const accionadopPopupRoute: Routes = [
