@@ -1,0 +1,39 @@
+{
+    "gatewayApp": {
+        "formfinanc" : {
+            "home": {
+                "title": "Formfinancs",
+                "createLabel": "Crear nuevo Formfinanc",
+                "createOrEditLabel": "Crear o editar Formfinanc",
+                "search": "Search for Formfinanc"
+            },
+            "created": "Un nuevo Formfinanc ha sido creado con el identificador {{ param }}",
+            "updated": "Un Formfinanc ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Formfinanc ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Formfinanc {{ id }}?"
+            },
+            "detail": {
+                "title": "Formfinanc"
+            },
+            "nCodffina": "N Codffina",
+            "vCodform": "V Codform",
+            "vDesffina": "V Desffina",
+            "vUndffina": "V Undffina",
+            "nMonffina": "N Monffina",
+            "nPorcffin": "N Porcffin",
+            "nAnioform": "N Anioform",
+            "nMesform": "N Mesform",
+            "vCodfila": "V Codfila",
+            "vCodcolum": "V Codcolum",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "solFormulario": "Sol Formulario"
+        }
+    }
+}

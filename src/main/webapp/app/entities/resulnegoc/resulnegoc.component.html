@@ -1,0 +1,103 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.resulnegoc.home.title">Resulnegocs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-resulnegoc" [routerLink]="['/', { outlets: { popup: ['resulnegoc-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.resulnegoc.home.createLabel">
+            Create new Resulnegoc
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.resulnegoc.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="resulnegocs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.resulnegoc.nCodreneg">N Codreneg</span></th>
+            <th><span jhiTranslate="gatewayApp.resulnegoc.nCodfperf">N Codfperf</span></th>
+            <th><span jhiTranslate="gatewayApp.resulnegoc.tFecreneg">T Fecreneg</span></th>
+            <th><span jhiTranslate="gatewayApp.resulnegoc.nAumento">N Aumento</span></th>
+            <th><span jhiTranslate="gatewayApp.resulnegoc.nClausula">N Clausula</span></th>
+            <th><span jhiTranslate="gatewayApp.resulnegoc.nGratifica">N Gratifica</span></th>
+            <th><span jhiTranslate="gatewayApp.resulnegoc.nAlimentac">N Alimentac</span></th>
+            <th><span jhiTranslate="gatewayApp.resulnegoc.nMovilidad">N Movilidad</span></th>
+            <th><span jhiTranslate="gatewayApp.resulnegoc.vUsuareg">V Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.resulnegoc.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.resulnegoc.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.resulnegoc.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.resulnegoc.vUsuaupd">V Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.resulnegoc.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.resulnegoc.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.resulnegoc.formperfil">Formperfil</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let resulnegoc of resulnegocs ;trackBy: trackId">
+                <td><a [routerLink]="['../resulnegoc', resulnegoc.id ]">{{resulnegoc.id}}</a></td>
+                <td>{{resulnegoc.nCodreneg}}</td>
+                <td>{{resulnegoc.nCodfperf}}</td>
+                <td>{{resulnegoc.tFecreneg | date:'medium'}}</td>
+                <td>{{resulnegoc.nAumento}}</td>
+                <td>{{resulnegoc.nClausula}}</td>
+                <td>{{resulnegoc.nGratifica}}</td>
+                <td>{{resulnegoc.nAlimentac}}</td>
+                <td>{{resulnegoc.nMovilidad}}</td>
+                <td>{{resulnegoc.vUsuareg}}</td>
+                <td>{{resulnegoc.tFecreg | date:'medium'}}</td>
+                <td>{{resulnegoc.nFlgactivo}}</td>
+                <td>{{resulnegoc.nSedereg}}</td>
+                <td>{{resulnegoc.vUsuaupd}}</td>
+                <td>{{resulnegoc.tFecupd | date:'medium'}}</td>
+                <td>{{resulnegoc.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="resulnegoc.formperfil">
+                        <a [routerLink]="['../formperfil', resulnegoc.formperfil?.id ]" >{{resulnegoc.formperfil?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../resulnegoc', resulnegoc.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'resulnegoc/'+ resulnegoc.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'resulnegoc/'+ resulnegoc.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

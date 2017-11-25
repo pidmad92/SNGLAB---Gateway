@@ -1,0 +1,192 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myParticipaLabel" jhiTranslate="gatewayApp.participa.home.createOrEditLabel">Create or edit a Participa</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!participa.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="participa.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.participa.nCodparti" for="field_nCodparti">N Codparti</label>
+            <input type="number" class="form-control" name="nCodparti" id="field_nCodparti"
+                [(ngModel)]="participa.nCodparti" required />
+            <div [hidden]="!(editForm.controls.nCodparti?.dirty && editForm.controls.nCodparti?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nCodparti?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nCodparti?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.participa.nCodfperf" for="field_nCodfperf">N Codfperf</label>
+            <input type="number" class="form-control" name="nCodfperf" id="field_nCodfperf"
+                [(ngModel)]="participa.nCodfperf" required />
+            <div [hidden]="!(editForm.controls.nCodfperf?.dirty && editForm.controls.nCodfperf?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nCodfperf?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nCodfperf?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.participa.vNumdocum" for="field_vNumdocum">V Numdocum</label>
+            <input type="text" class="form-control" name="vNumdocum" id="field_vNumdocum"
+                [(ngModel)]="participa.vNumdocum" maxlength="15" />
+            <div [hidden]="!(editForm.controls.vNumdocum?.dirty && editForm.controls.vNumdocum?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNumdocum?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                   This field cannot be longer than 15 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.participa.vRazonsoc" for="field_vRazonsoc">V Razonsoc</label>
+            <input type="text" class="form-control" name="vRazonsoc" id="field_vRazonsoc"
+                [(ngModel)]="participa.vRazonsoc" maxlength="200" />
+            <div [hidden]="!(editForm.controls.vRazonsoc?.dirty && editForm.controls.vRazonsoc?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vRazonsoc?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                   This field cannot be longer than 200 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.participa.vTipodoc" for="field_vTipodoc">V Tipodoc</label>
+            <input type="text" class="form-control" name="vTipodoc" id="field_vTipodoc"
+                [(ngModel)]="participa.vTipodoc" maxlength="1" />
+            <div [hidden]="!(editForm.controls.vTipodoc?.dirty && editForm.controls.vTipodoc?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vTipodoc?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
+                   This field cannot be longer than 1 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.participa.vTipopart" for="field_vTipopart">V Tipopart</label>
+            <input type="text" class="form-control" name="vTipopart" id="field_vTipopart"
+                [(ngModel)]="participa.vTipopart" maxlength="1" />
+            <div [hidden]="!(editForm.controls.vTipopart?.dirty && editForm.controls.vTipopart?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vTipopart?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
+                   This field cannot be longer than 1 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.participa.nPorcasig" for="field_nPorcasig">N Porcasig</label>
+            <input type="number" class="form-control" name="nPorcasig" id="field_nPorcasig"
+                [(ngModel)]="participa.nPorcasig"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.participa.vUsuareg" for="field_vUsuareg">V Usuareg</label>
+            <input type="text" class="form-control" name="vUsuareg" id="field_vUsuareg"
+                [(ngModel)]="participa.vUsuareg" required maxlength="20" />
+            <div [hidden]="!(editForm.controls.vUsuareg?.dirty && editForm.controls.vUsuareg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vUsuareg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vUsuareg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.participa.tFecreg" for="field_tFecreg">T Fecreg</label>
+            <div class="d-flex">
+                <input id="field_tFecreg" type="datetime-local" class="form-control" name="tFecreg" [(ngModel)]="participa.tFecreg"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.tFecreg?.dirty && editForm.controls.tFecreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tFecreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.tFecreg?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.participa.nFlgactivo" for="field_nFlgactivo">N Flgactivo</label>
+            <input type="checkbox" class="form-control" name="nFlgactivo" id="field_nFlgactivo"
+                [(ngModel)]="participa.nFlgactivo"  />
+            <div [hidden]="!(editForm.controls.nFlgactivo?.dirty && editForm.controls.nFlgactivo?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nFlgactivo?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.participa.nSedereg" for="field_nSedereg">N Sedereg</label>
+            <input type="number" class="form-control" name="nSedereg" id="field_nSedereg"
+                [(ngModel)]="participa.nSedereg" required />
+            <div [hidden]="!(editForm.controls.nSedereg?.dirty && editForm.controls.nSedereg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nSedereg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nSedereg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.participa.vUsuaupd" for="field_vUsuaupd">V Usuaupd</label>
+            <input type="text" class="form-control" name="vUsuaupd" id="field_vUsuaupd"
+                [(ngModel)]="participa.vUsuaupd" maxlength="20" />
+            <div [hidden]="!(editForm.controls.vUsuaupd?.dirty && editForm.controls.vUsuaupd?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vUsuaupd?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.participa.tFecupd" for="field_tFecupd">T Fecupd</label>
+            <div class="d-flex">
+                <input id="field_tFecupd" type="datetime-local" class="form-control" name="tFecupd" [(ngModel)]="participa.tFecupd"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.participa.nSedeupd" for="field_nSedeupd">N Sedeupd</label>
+            <input type="number" class="form-control" name="nSedeupd" id="field_nSedeupd"
+                [(ngModel)]="participa.nSedeupd"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.participa.formperfil" for="field_formperfil">Formperfil</label>
+            <select class="form-control" id="field_formperfil" name="formperfil" [(ngModel)]="participa.formperfil" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="formperfilOption.id === participa.formperfil?.id ? participa.formperfil : formperfilOption" *ngFor="let formperfilOption of formperfils; trackBy: trackFormperfilById">{{formperfilOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

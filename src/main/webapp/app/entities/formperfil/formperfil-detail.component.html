@@ -1,0 +1,85 @@
+
+<div *ngIf="formperfil">
+    <h2><span jhiTranslate="gatewayApp.formperfil.detail.title">Formperfil</span> {{formperfil.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.formperfil.nCodfperf">N Codfperf</span></dt>
+        <dd>
+            <span>{{formperfil.nCodfperf}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formperfil.vNomcomer">V Nomcomer</span></dt>
+        <dd>
+            <span>{{formperfil.vNomcomer}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formperfil.vDesemple">V Desemple</span></dt>
+        <dd>
+            <span>{{formperfil.vDesemple}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formperfil.vCodciiu">V Codciiu</span></dt>
+        <dd>
+            <span>{{formperfil.vCodciiu}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formperfil.vPartreg">V Partreg</span></dt>
+        <dd>
+            <span>{{formperfil.vPartreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formperfil.vGruecono">V Gruecono</span></dt>
+        <dd>
+            <span>{{formperfil.vGruecono}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formperfil.vSector">V Sector</span></dt>
+        <dd>
+            <span>{{formperfil.vSector}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formperfil.vPlancont">V Plancont</span></dt>
+        <dd>
+            <span>{{formperfil.vPlancont}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formperfil.vReglabo">V Reglabo</span></dt>
+        <dd>
+            <span>{{formperfil.vReglabo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formperfil.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{formperfil.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formperfil.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{formperfil.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formperfil.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{formperfil.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formperfil.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{formperfil.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formperfil.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{formperfil.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formperfil.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{formperfil.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formperfil.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{formperfil.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'formperfil/'+ formperfil.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

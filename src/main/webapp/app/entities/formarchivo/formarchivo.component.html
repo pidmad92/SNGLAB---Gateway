@@ -1,0 +1,92 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.formarchivo.home.title">Formarchivos</span>
+        <button class="btn btn-primary float-right jh-create-entity create-formarchivo" [routerLink]="['/', { outlets: { popup: ['formarchivo-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.formarchivo.home.createLabel">
+            Create new Formarchivo
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.formarchivo.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="formarchivos">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.formarchivo.nCodfarch">N Codfarch</span></th>
+            <th><span jhiTranslate="gatewayApp.formarchivo.vDesform">V Desform</span></th>
+            <th><span jhiTranslate="gatewayApp.formarchivo.bArchivo">B Archivo</span></th>
+            <th><span jhiTranslate="gatewayApp.formarchivo.vContype">V Contype</span></th>
+            <th><span jhiTranslate="gatewayApp.formarchivo.vUsuareg">V Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.formarchivo.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.formarchivo.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.formarchivo.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.formarchivo.vUsuaupd">V Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.formarchivo.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.formarchivo.nSedeupd">N Sedeupd</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let formarchivo of formarchivos ;trackBy: trackId">
+                <td><a [routerLink]="['../formarchivo', formarchivo.id ]">{{formarchivo.id}}</a></td>
+                <td>{{formarchivo.nCodfarch}}</td>
+                <td>{{formarchivo.vDesform}}</td>
+                <td>
+                    <a *ngIf="formarchivo.bArchivo" (click)="openFile(formarchivo.bArchivoContentType, formarchivo.bArchivo)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="formarchivo.bArchivo">{{formarchivo.bArchivoContentType}}, {{byteSize(formarchivo.bArchivo)}}</span>
+                </td>
+                <td>{{formarchivo.vContype}}</td>
+                <td>{{formarchivo.vUsuareg}}</td>
+                <td>{{formarchivo.tFecreg | date:'medium'}}</td>
+                <td>{{formarchivo.nFlgactivo}}</td>
+                <td>{{formarchivo.nSedereg}}</td>
+                <td>{{formarchivo.vUsuaupd}}</td>
+                <td>{{formarchivo.tFecupd | date:'medium'}}</td>
+                <td>{{formarchivo.nSedeupd}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../formarchivo', formarchivo.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'formarchivo/'+ formarchivo.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'formarchivo/'+ formarchivo.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

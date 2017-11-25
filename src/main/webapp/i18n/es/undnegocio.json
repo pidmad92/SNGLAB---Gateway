@@ -1,0 +1,32 @@
+{
+    "gatewayApp": {
+        "undnegocio" : {
+            "home": {
+                "title": "Undnegocios",
+                "createLabel": "Crear nuevo Undnegocio",
+                "createOrEditLabel": "Crear o editar Undnegocio",
+                "search": "Search for Undnegocio"
+            },
+            "created": "Un nuevo Undnegocio ha sido creado con el identificador {{ param }}",
+            "updated": "Un Undnegocio ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Undnegocio ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Undnegocio {{ id }}?"
+            },
+            "detail": {
+                "title": "Undnegocio"
+            },
+            "nCodundng": "N Codundng",
+            "nCodfperf": "N Codfperf",
+            "vDesundng": "V Desundng",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "formperfil": "Formperfil"
+        }
+    }
+}

@@ -1,0 +1,99 @@
+
+<div *ngIf="negocolect">
+    <h2><span jhiTranslate="gatewayApp.negocolect.detail.title">Negocolect</span> {{negocolect.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.negocolect.nCodngcol">N Codngcol</span></dt>
+        <dd>
+            <span>{{negocolect.nCodngcol}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.negocolect.nCodfperf">N Codfperf</span></dt>
+        <dd>
+            <span>{{negocolect.nCodfperf}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.negocolect.vAmbsubje">V Ambsubje</span></dt>
+        <dd>
+            <span>{{negocolect.vAmbsubje}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.negocolect.vTipongco">V Tipongco</span></dt>
+        <dd>
+            <span>{{negocolect.vTipongco}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.negocolect.vEtapaneg">V Etapaneg</span></dt>
+        <dd>
+            <span>{{negocolect.vEtapaneg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.negocolect.tFecvigde">T Fecvigde</span></dt>
+        <dd>
+            <span>{{negocolect.tFecvigde | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.negocolect.tFecvigha">T Fecvigha</span></dt>
+        <dd>
+            <span>{{negocolect.tFecvigha | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.negocolect.vNumexpe">V Numexpe</span></dt>
+        <dd>
+            <span>{{negocolect.vNumexpe}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.negocolect.vAuttrab">V Auttrab</span></dt>
+        <dd>
+            <span>{{negocolect.vAuttrab}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.negocolect.vRucneg">V Rucneg</span></dt>
+        <dd>
+            <span>{{negocolect.vRucneg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.negocolect.vRegistro">V Registro</span></dt>
+        <dd>
+            <span>{{negocolect.vRegistro}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.negocolect.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{negocolect.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.negocolect.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{negocolect.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.negocolect.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{negocolect.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.negocolect.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{negocolect.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.negocolect.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{negocolect.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.negocolect.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{negocolect.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.negocolect.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{negocolect.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.negocolect.formperfil">Formperfil</span></dt>
+        <dd>
+            <div *ngIf="negocolect.formperfil">
+                <a [routerLink]="['/formperfil', negocolect.formperfil?.id]">{{negocolect.formperfil?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'negocolect/'+ negocolect.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

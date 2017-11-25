@@ -37,6 +37,8 @@ export class TopbarComponent implements OnInit {
             this.router.navigate(['/seguridad/aplicacion']);
         } else if (ruta === '2') {
             this.router.navigate(['/consultas/atencion']);
+        } else if (ruta === '8') {
+            this.router.navigate(['/dictamenes/listado-solicitudes']);
         }
     }
 

@@ -1,0 +1,33 @@
+{
+    "gatewayApp": {
+        "reporteres" : {
+            "home": {
+                "title": "Reporteres",
+                "createLabel": "Crear nuevo Reporteres",
+                "createOrEditLabel": "Crear o editar Reporteres",
+                "search": "Search for Reporteres"
+            },
+            "created": "Un nuevo Reporteres ha sido creado con el identificador {{ param }}",
+            "updated": "Un Reporteres ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Reporteres ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Reporteres {{ id }}?"
+            },
+            "detail": {
+                "title": "Reporteres"
+            },
+            "nCodrepre": "N Codrepre",
+            "vTiporep": "V Tiporep",
+            "vNombre": "V Nombre",
+            "bArchivo": "B Archivo",
+            "vContype": "V Contype",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd"
+        }
+    }
+}

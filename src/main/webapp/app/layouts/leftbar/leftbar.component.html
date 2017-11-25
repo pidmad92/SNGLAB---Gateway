@@ -140,4 +140,33 @@
 
     
     <!-- JROMERO SINDICATOS -->
+
+    <!-- GGALARZA DICTAMEN ECONOMICO LABORAL -->
+    <div class="my-2" *ngIf="aplicacion == 'dictamenes'">
+      <ul class="level-one mt-2 p-0" id="accordion">
+          <li routerLinkActive="active">
+              <ngb-accordion [closeOthers]="true" activeIds="static-1">
+                  <ngb-panel id="static-1">
+                    <ng-template ngbPanelTitle>
+                        <li routerLinkActive="active">
+                            <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                              <i class="fa fa-cubes px-2" aria-hidden="true"></i> <span>Dictamen Econ&oacute;mico Laboral</span>
+                              <span class="fa fa-chevron-down ml-auto"></span>
+                            </a>
+                        </li>
+                    </ng-template>
+                    <ng-template ngbPanelContent>
+                    <div class="level-two p-0">
+                      <li><a routerLink="dictamenes/listado-solicitudes" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Listado de Solicitudes</span></a></li>
+                      <li><a routerLink="dictamenes/registro-solicitudes" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Registro de Solicitudes</span></a></li>
+                      <li><a routerLink="dictamenes/formulario-perfil" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Formulario Perfil</span></a></li>
+                    </div>
+                </ng-template>
+            </ngb-panel>
+            </ngb-accordion>
+          </li> 
+      </ul>
+  </div>
+    <!-- GGALARZA DICTAMEN ECONOMICO LABORAL -->
+
   </nav>

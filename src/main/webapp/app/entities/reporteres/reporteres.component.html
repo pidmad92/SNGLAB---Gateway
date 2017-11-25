@@ -1,0 +1,94 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.reporteres.home.title">Reporteres</span>
+        <button class="btn btn-primary float-right jh-create-entity create-reporteres" [routerLink]="['/', { outlets: { popup: ['reporteres-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.reporteres.home.createLabel">
+            Create new Reporteres
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.reporteres.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="reporteres">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.reporteres.nCodrepre">N Codrepre</span></th>
+            <th><span jhiTranslate="gatewayApp.reporteres.vTiporep">V Tiporep</span></th>
+            <th><span jhiTranslate="gatewayApp.reporteres.vNombre">V Nombre</span></th>
+            <th><span jhiTranslate="gatewayApp.reporteres.bArchivo">B Archivo</span></th>
+            <th><span jhiTranslate="gatewayApp.reporteres.vContype">V Contype</span></th>
+            <th><span jhiTranslate="gatewayApp.reporteres.vUsuareg">V Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.reporteres.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.reporteres.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.reporteres.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.reporteres.vUsuaupd">V Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.reporteres.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.reporteres.nSedeupd">N Sedeupd</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let reporteres of reporteres ;trackBy: trackId">
+                <td><a [routerLink]="['../reporteres', reporteres.id ]">{{reporteres.id}}</a></td>
+                <td>{{reporteres.nCodrepre}}</td>
+                <td>{{reporteres.vTiporep}}</td>
+                <td>{{reporteres.vNombre}}</td>
+                <td>
+                    <a *ngIf="reporteres.bArchivo" (click)="openFile(reporteres.bArchivoContentType, reporteres.bArchivo)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="reporteres.bArchivo">{{reporteres.bArchivoContentType}}, {{byteSize(reporteres.bArchivo)}}</span>
+                </td>
+                <td>{{reporteres.vContype}}</td>
+                <td>{{reporteres.vUsuareg}}</td>
+                <td>{{reporteres.tFecreg | date:'medium'}}</td>
+                <td>{{reporteres.nFlgactivo}}</td>
+                <td>{{reporteres.nSedereg}}</td>
+                <td>{{reporteres.vUsuaupd}}</td>
+                <td>{{reporteres.tFecupd | date:'medium'}}</td>
+                <td>{{reporteres.nSedeupd}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../reporteres', reporteres.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'reporteres/'+ reporteres.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'reporteres/'+ reporteres.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

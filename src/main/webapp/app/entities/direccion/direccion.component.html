@@ -1,0 +1,103 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.direccion.home.title">Direccions</span>
+        <button class="btn btn-primary float-right jh-create-entity create-direccion" [routerLink]="['/', { outlets: { popup: ['direccion-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.direccion.home.createLabel">
+            Create new Direccion
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.direccion.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="direccions">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.direccion.nCoddirec">N Coddirec</span></th>
+            <th><span jhiTranslate="gatewayApp.direccion.nCodfperf">N Codfperf</span></th>
+            <th><span jhiTranslate="gatewayApp.direccion.vDepart">V Depart</span></th>
+            <th><span jhiTranslate="gatewayApp.direccion.vProvincia">V Provincia</span></th>
+            <th><span jhiTranslate="gatewayApp.direccion.vDistrito">V Distrito</span></th>
+            <th><span jhiTranslate="gatewayApp.direccion.vDireccion">V Direccion</span></th>
+            <th><span jhiTranslate="gatewayApp.direccion.vReferen">V Referen</span></th>
+            <th><span jhiTranslate="gatewayApp.direccion.nNotifica">N Notifica</span></th>
+            <th><span jhiTranslate="gatewayApp.direccion.vUsuareg">V Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.direccion.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.direccion.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.direccion.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.direccion.vUsuaupd">V Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.direccion.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.direccion.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.direccion.formperfil">Formperfil</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let direccion of direccions ;trackBy: trackId">
+                <td><a [routerLink]="['../direccion', direccion.id ]">{{direccion.id}}</a></td>
+                <td>{{direccion.nCoddirec}}</td>
+                <td>{{direccion.nCodfperf}}</td>
+                <td>{{direccion.vDepart}}</td>
+                <td>{{direccion.vProvincia}}</td>
+                <td>{{direccion.vDistrito}}</td>
+                <td>{{direccion.vDireccion}}</td>
+                <td>{{direccion.vReferen}}</td>
+                <td>{{direccion.nNotifica}}</td>
+                <td>{{direccion.vUsuareg}}</td>
+                <td>{{direccion.tFecreg | date:'medium'}}</td>
+                <td>{{direccion.nFlgactivo}}</td>
+                <td>{{direccion.nSedereg}}</td>
+                <td>{{direccion.vUsuaupd}}</td>
+                <td>{{direccion.tFecupd | date:'medium'}}</td>
+                <td>{{direccion.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="direccion.formperfil">
+                        <a [routerLink]="['../formperfil', direccion.formperfil?.id ]" >{{direccion.formperfil?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../direccion', direccion.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'direccion/'+ direccion.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'direccion/'+ direccion.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

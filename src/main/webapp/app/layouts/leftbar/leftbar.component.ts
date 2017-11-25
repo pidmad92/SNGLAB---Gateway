@@ -33,14 +33,18 @@ export class LeftbarComponent implements OnInit {
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
+
         if (router.url.indexOf('defensa') === 1) {
             this.aplicacion = 'defensa';
         } else if (router.url.indexOf('consultas') === 1) {
             this.aplicacion = 'consultas';
         } else if (router.url.indexOf('sindicatos') === 1) {
             this.aplicacion = 'sindicatos';
+        } else if (router.url.indexOf('dictamenes') === 1) {
+            this.aplicacion = 'dictamenes';
         } else {
-            this.aplicacion = 'seguridad';
+            // this.aplicacion = 'seguridad';
+            this.aplicacion = 'dictamenes';
         }
     }
 

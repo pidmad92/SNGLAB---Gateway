@@ -71,6 +71,21 @@ import { GatewayTipresconcModule } from './tipresconc/tipresconc.module';
 import { GatewayDlabingrpercModule } from './dlabingrperc/dlabingrperc.module';
 import { GatewayTipmotatenModule } from './tipmotaten/tipmotaten.module';
 import { GatewayTipvinculoModule } from './tipvinculo/tipvinculo.module';
+import { GatewayAnexlaboralModule } from './anexlaboral/anexlaboral.module';
+import { GatewayDireccionModule } from './direccion/direccion.module';
+import { GatewayFormarchivoModule } from './formarchivo/formarchivo.module';
+import { GatewayFormfinancModule } from './formfinanc/formfinanc.module';
+import { GatewayFormperfilModule } from './formperfil/formperfil.module';
+import { GatewayHechoinverModule } from './hechoinver/hechoinver.module';
+import { GatewayNegocolectModule } from './negocolect/negocolect.module';
+import { GatewayParticipaModule } from './participa/participa.module';
+import { GatewayReporteresModule } from './reporteres/reporteres.module';
+import { GatewayRespinformaModule } from './respinforma/respinforma.module';
+import { GatewayResulnegocModule } from './resulnegoc/resulnegoc.module';
+import { GatewaySolicformModule } from './solicform/solicform.module';
+import { GatewaySolicitudModule } from './solicitud/solicitud.module';
+import { GatewayUndnegocioModule } from './undnegocio/undnegocio.module';
+
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -145,6 +160,20 @@ import { GatewayTipvinculoModule } from './tipvinculo/tipvinculo.module';
         GatewayDlabingrpercModule,
         GatewayTipmotatenModule,
         GatewayTipvinculoModule,
+        GatewayAnexlaboralModule,
+        GatewayDireccionModule,
+        GatewayFormarchivoModule,
+        GatewayFormfinancModule,
+        GatewayFormperfilModule,
+        GatewayHechoinverModule,
+        GatewayNegocolectModule,
+        GatewayParticipaModule,
+        GatewayReporteresModule,
+        GatewayRespinformaModule,
+        GatewayResulnegocModule,
+        GatewaySolicformModule,
+        GatewaySolicitudModule,
+        GatewayUndnegocioModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],
