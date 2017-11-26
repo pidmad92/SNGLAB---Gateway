@@ -3,11 +3,16 @@ import { RouterModule } from '@angular/router';
 
 import { GatewaySharedModule } from '../../../shared';
 import {
-    ConsultaExpedientePopupService,
-    ConsultaExpedienteEmpleadorComponent,
-    ConsultaExpedienteDialogComponent,
     ConsultaExpedienteComponent,
+    ConsultaExpedienteDialogComponent,
     ConsultaExpedientePopupComponent,
+    ConsultaExpedientePopupService,
+    ConsultaExpedienteArchivarDialogComponent,
+    ConsultaExpedienteArchivarPopupComponent,
+    ConsultaExpedienteArchivarPopupService,
+    ConsultaExpedienteObservarDialogComponent,
+    ConsultaExpedienteObservarPopupComponent,
+    ConsultaExpedienteObservarPopupService,
     consultaExpedienteRoute } from './';
 import { TabViewModule, DataTableModule, CheckboxModule, DropdownModule, CalendarModule } from 'primeng/primeng';
 
@@ -27,17 +32,27 @@ const ENTITY_STATES = [
     ],
     declarations: [
         ConsultaExpedienteComponent,
-        ConsultaExpedienteEmpleadorComponent,
         ConsultaExpedientePopupComponent,
-        ConsultaExpedienteDialogComponent
+        ConsultaExpedienteDialogComponent,
+        ConsultaExpedienteArchivarDialogComponent,
+        ConsultaExpedienteArchivarPopupComponent,
+        ConsultaExpedienteObservarDialogComponent,
+        ConsultaExpedienteObservarPopupComponent
+
     ],
     entryComponents: [
         ConsultaExpedienteComponent,
         ConsultaExpedientePopupComponent,
-        ConsultaExpedienteDialogComponent
+        ConsultaExpedienteDialogComponent,
+        ConsultaExpedienteArchivarDialogComponent,
+        ConsultaExpedienteArchivarPopupComponent,
+        ConsultaExpedienteObservarDialogComponent,
+        ConsultaExpedienteObservarPopupComponent
     ],
     providers: [
         ConsultaExpedientePopupService,
+        ConsultaExpedienteArchivarPopupService,
+        ConsultaExpedienteObservarPopupService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

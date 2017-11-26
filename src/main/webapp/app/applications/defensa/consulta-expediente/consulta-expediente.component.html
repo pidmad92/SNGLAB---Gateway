@@ -46,10 +46,10 @@
                         </fieldset>
                         <div class="row my-2">
                             <div class="col-md-2 text-center">
-                                <button href="#" class="btn btn-success "><i class="fa fa-archive" aria-hidden="true"></i> Enviar al archivo</button>
+                                <button [routerLink]="['/defensa/consulta-expediente', { outlets: { popupexp: 'archivar-expediente/'+ id } }]" class="btn btn-success "><i class="fa fa-archive" aria-hidden="true"></i> Enviar al archivo</button>
                             </div>
                             <div class="col-md-2 text-center">
-                                <button href="#" class="btn btn-warning px-4"><i class="fa fa-sticky-note" aria-hidden="true"></i> Observar</button>
+                                <button [routerLink]="['/defensa/consulta-expediente', { outlets: { popupexp: 'observar-expediente/'+ id } }]" class="btn btn-warning px-4"><i class="fa fa-sticky-note" aria-hidden="true"></i> Observar</button>
                             </div>
                             <div class="col-md-2 text-center">
                                 <button [routerLink]="['/defensa/consulta-expediente', { outlets: { popupexp: 'expediente/'+ id } }]" class="btn btn-info"><i class="fa fa-sticky-note" aria-hidden="true"></i> Ver datos del Exp.</button>
