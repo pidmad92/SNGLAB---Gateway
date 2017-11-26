@@ -20,6 +20,7 @@ import javax.xml.soap.SOAPMessage;
 import javax.xml.soap.SOAPPart;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Node;
+import pe.gob.trabajo.service.ws.bean.PersonaBean;
 
 public final class ReniecClient
   extends Client
