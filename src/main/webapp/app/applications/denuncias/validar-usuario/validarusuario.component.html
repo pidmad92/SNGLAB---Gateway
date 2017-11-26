@@ -39,32 +39,79 @@
             </div>
     </p-panel>
 </form>
-<p-dialog header="Nuevo Usuario" [(visible)]="displayNuevoUsuario" modal="modal" width="600" [responsive]="true">
+<p-dialog header="Nuevo Usuario" [(visible)]="displayNuevoUsuario" modal="modal" width="600" height="600" [responsive]="true">
+    <form name="pernatural" role="form" novalidate (ngSubmit)="submitNuevoUsuario()" #pernatural="ngForm">
+        <p-tabView>
+            <p-tabPanel header="Datos Generales" style="height: 500" leftIcon="fa-id-card">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label>Tipo Doc.</label>
+                    </div>
+                    <div class="col-md-4">
+                        <p-dropdown [options]="tipodocs" name="selectedTipodoc" [(ngModel)]="selectedTipodoc" placeholder="Seleccione un tipo doc."
+                            optionLabel="name"></p-dropdown>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" placeholder="Numero de documento" [(ngModel)]="pernatural.vNumdoc" name="vNumdoc" type="text"
+                        />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Ape. Paterno</label>
+                    </div>
+                    <div class="col-md-12">
+                        <input class="form-control" placeholder="" [(ngModel)]="pernatural.vApepat" name="vApepat" type="text" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Ape. Materno</label>
+                    </div>
+                    <div class="col-md-12">
+                        <input class="form-control" placeholder="" [(ngModel)]="pernatural.vApemat" name="vApemat" type="text" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Nombres</label>
+                    </div>
+                    <div class="col-md-12">
+                        <input class="form-control" placeholder="" [(ngModel)]="pernatural.vNombres" name="vNombres" type="text" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Correo electronico</label>
+                    </div>
+                    <div class="col-md-12">
+                        <input class="form-control" placeholder="" [(ngModel)]="pernatural.vEmailper" name="vEmailper" type="text" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Telefono casa</label>
+                        <input class="form-control" placeholder="Numero de documento" [(ngModel)]="pernatural.vTelefono" name="vTelefono" type="text"
+                        />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Telefono celular</label>
+                        <input class="form-control" placeholder="Numero de documento" [(ngModel)]="pernatural.vCelular" name="vCelular" type="text"
+                        />
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-md-12">
+                        <button type="button" (click)="displayNuevoUsuario=false" class="btn btn-primary" label="Cancelar">Cancelar</button>
+                        <button type="button" (click)="displayNuevoUsuario=false" class="btn btn-secondary" label="Siguiente">Siguiente</button>
+                    </div>
+                </div>
 
-    <p-tabView>
-        <p-tabPanel header="Datos Generales" leftIcon="fa-id-card">
-            <div class="row">
-                <div class="col-md-12">
-                    <label>Ingresar el RUC de la empresa</label>
-                </div>
-                <div class="col-md-2">
-                    <label>Tipo Doc.</label>
-                </div>
-                <div class="col-md-4">
-                    <p-dropdown [options]="tipodocs" [(ngModel)]="selectedTipodoc" placeholder="Select a City" optionLabel="name"></p-dropdown>
-                </div>
-                <div class="col-md-6">
-                    <input type="text" name="" id="" value="" />
-                </div>
-            </div>
-        </p-tabPanel>
-        <p-tabPanel header="Dirección" leftIcon="fa-podcast">
+            </p-tabPanel>
+            <p-tabPanel header="Dirección" leftIcon="fa-podcast" [disabled]="true">
 
-        </p-tabPanel>
-    </p-tabView>
+            </p-tabPanel>
+        </p-tabView>
 
-    <p-footer>
-        <button type="button" pButton icon="fa-check" (click)="displayNuevoUsuario=false" label="Yes"></button>
-        <button type="button" pButton icon="fa-close" (click)="displayNuevoUsuario=false" label="No"></button>
-    </p-footer>
+    </form>
 </p-dialog>

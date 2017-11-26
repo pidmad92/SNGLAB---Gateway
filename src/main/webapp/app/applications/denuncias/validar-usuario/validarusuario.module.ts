@@ -12,6 +12,8 @@ import { PanelModule } from 'primeng/primeng';
 import { TabViewModule } from 'primeng/primeng';
 import { DropdownModule } from 'primeng/primeng';
 import {BlockUIModule} from 'primeng/primeng';
+import {ButtonModule} from 'primeng/primeng';
+import { ValidarUsuarioService } from './validarusuario.service';
 
 const ENTITY_STATES = [
     ...ValidarUsuarioRoute
@@ -27,6 +29,7 @@ const ENTITY_STATES = [
         TabViewModule,
         DropdownModule,
         BlockUIModule,
+        ButtonModule,
         GatewaySharedModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
@@ -38,7 +41,8 @@ const ENTITY_STATES = [
     ],
     providers: [
         LoginService,
-        MessageService
+        MessageService,
+        ValidarUsuarioService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

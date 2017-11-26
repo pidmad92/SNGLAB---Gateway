@@ -12,8 +12,10 @@ import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../shared';
 
 import {Message} from 'primeng/components/common/api';
 import {MessageService} from 'primeng/components/common/messageservice';
+import { ValidarUsuarioService } from './validarusuario.service';
 
 import {ComboModel} from '../../general/combobox.model';
+import {Pernatural} from '../../../entities/pernatural';
 
 @Component({
     selector: 'jhi-validarruc',
@@ -31,15 +33,24 @@ export class ValidarUsuarioComponent implements OnInit {
     tipodocs: ComboModel[];
     block: boolean;
     selectedTipodoc: ComboModel;
+    pernatural: Pernatural;
 
     constructor(
         private eventManager: JhiEventManager,
         private loginService: LoginService,
-        private messageService: MessageService
+        private messageService: MessageService,
+        private validarUsuarioService: ValidarUsuarioService
     ) {
     }
 
     loadAll() {
+        this.validarUsuarioService.consultaTipoDocIdentidad().subscribe(
+            (res: ResponseWrapper) => {
+                this.tipodocs = res.json;
+                this.currentSearch = '';
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
     clear() {
@@ -51,6 +62,7 @@ export class ValidarUsuarioComponent implements OnInit {
         this.validarUsuario = new ValidarUsuarioModel(false, '', false, '', '');
         this.displayNuevoUsuario = false;
         this.block = false;
+        // this.pernatural = new Pernatural(0, '', '', '', '', '', '', '', '', '', '', )
     }
 
     validar() {
@@ -63,7 +75,11 @@ export class ValidarUsuarioComponent implements OnInit {
     onSubmit() {
     }
 
+    submitNuevoUsuario() {
+    }
+
     showNuevoUsuario() {
+        this.loadAll();
         this.displayNuevoUsuario = true;
     }
 

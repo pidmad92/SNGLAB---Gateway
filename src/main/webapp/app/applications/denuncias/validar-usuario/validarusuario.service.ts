@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-
 import { JhiDateUtils } from 'ng-jhipster';
-
 import { ResponseWrapper, createRequestOption } from '../../../shared';
+import { Tipdocident } from '../../../entities/tipdocident';
+import {ComboModel} from '../../general/combobox.model';
 
 @Injectable()
 export class ValidarUsuarioService {
@@ -15,24 +15,23 @@ export class ValidarUsuarioService {
 
     consultaTipoDocIdentidad(): Observable<ResponseWrapper> {
         return this.http.get(this.resourceTipoDoc, null)
-            .map((res: Response) => this.convertResponse(res));
+            .map((res: Response) => this.convertResponseTipoDocIdentidad(res));
     }
 
-    private convertResponse(res: Response): ResponseWrapper {
+    private convertResponseTipoDocIdentidad(res: Response): ResponseWrapper {
         const jsonResponse = res.json();
         const result = [];
+
         for (let i = 0; i < jsonResponse.length; i++) {
-            // result.push(this.convertItemFromServer(jsonResponse[i]));
+
+            const cm: Tipdocident = this.convertItemFromServer(jsonResponse[i]);
+            result.push(new ComboModel(cm.vDescorta, cm.id.toString(), cm.nNumdigi));
         }
         return new ResponseWrapper(res.headers, result, res.status);
     }
 
-    /* private convertItemFromServer(json: any): Discap {
-        const entity: Discap = Object.assign(new Discap(), json);
-        entity.tFecreg = this.dateUtils
-            .convertDateTimeFromServer(json.tFecreg);
-        entity.tFecupd = this.dateUtils
-            .convertDateTimeFromServer(json.tFecupd);
+    private convertItemFromServer(json: any): Tipdocident {
+        const entity: Tipdocident = Object.assign(new Tipdocident(), json);
         return entity;
-    } */
+    }
 }
