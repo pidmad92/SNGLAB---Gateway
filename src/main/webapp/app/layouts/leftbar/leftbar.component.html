@@ -1,156 +1,156 @@
- <nav class="row d-flex justify-content-center flex-column">
+<nav class="row d-flex justify-content-center flex-column">
     <div class="welcome">
-      <div class="d-flex align-items-center my-3">
-        <div class="perfil-img col-md-3 pr-0">
-          <img src="../../../content/images/img.jpg" class="img-fluid img-thumbnail mr-2" alt=""> 
+        <div class="d-flex align-items-center my-3">
+            <div class="perfil-img col-md-3 pr-0">
+                <img src="../../../content/images/img.jpg" class="img-fluid img-thumbnail mr-2" alt="">
+            </div>
+            <div class="perfil-info col-md-9">
+                <span class="text-muted"><small>Bienvenido</small></span><br>
+                <span class="text-white">Jhon Lee</span>
+            </div>
         </div>
-        <div class="perfil-info col-md-9">
-          <span class="text-muted"><small>Bienvenido</small></span><br>
-          <span class="text-white">Jhon Lee</span>
-        </div>
-      </div>
     </div>
 
     <div class="my-2" *ngIf="aplicacion == 'consultas'">
         <h3>Consultas Trabajador</h3>
         <ul class="level-one p-0" id="accordion">
-          <li routerLinkActive="active">
-            <a routerLink="consultas/atencion-trabajador" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
-              <i class="fa fa-cubes px-2" aria-hidden="true"></i> <span>Registro de Atención Trabajador</span>
-            </a>
-          </li>
+            <li routerLinkActive="active">
+                <a routerLink="consultas/atencion-trabajador" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                    <i class="fa fa-cubes px-2" aria-hidden="true"></i> <span>Registro de Atención Trabajador</span>
+                </a>
+            </li>
         </ul>
         <h3>Consultas Empleador</h3>
         <ul class="level-one p-0" id="accordion">
-          <li routerLinkActive="active">
-            <a routerLink="consultas/atencion-empleador" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
-              <i class="fa fa-cubes px-2" aria-hidden="true"></i> <span>Registro de Atención Empleador</span>
-            </a>
-          </li>
+            <li routerLinkActive="active">
+                <a routerLink="consultas/atencion-empleador" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                    <i class="fa fa-cubes px-2" aria-hidden="true"></i> <span>Registro de Atención Empleador</span>
+                </a>
+            </li>
         </ul>
     </div>
 
     <div class="my-2" *ngIf="aplicacion == 'defensa'">
-      <ngb-accordion class="level-one mt-2 p-0" id="accordion" activeIds="defensa-1" [closeOthers]="true" >
-        <ngb-panel id="defensa-1">
-          <ng-template ngbPanelTitle>
-            <li routerLinkActive="active">
-              <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
-                <i class="fa fa-address-book-o px-2" aria-hidden="true"></i> <span>Expedientes</span>
-                <span class="fa fa-chevron-down ml-auto"></span>
-              </a>
-            </li>
-          </ng-template>
-          <ng-template ngbPanelContent>
-            <div class="level-two p-0">
-              <li><a [routerLink]="['/defensa/registro-expediente' , { outlets: { wizard: ['datos-pase'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro Expedientes</span></a></li>
-              <li><a [routerLink]="['/defensa/envio-notificacion' , { outlets: { wizard: ['seleccion-expediente'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro de Notificaciones</span></a></li>
-              <li><a routerLink="defensa/consulta-expediente" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Expedientes</span></a></li>
-              <li><a routerLink="sindicatos/evaluar-solicitudes" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Notificaciones</span></a></li>
-            </div>
-          </ng-template>
-        </ngb-panel>
-        <ngb-panel id="defensa-2">
-          <ng-template ngbPanelTitle>
-            <li routerLinkActive="active">
-                <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
-                  <i class="fa fa-group px-2" aria-hidden="true"></i> <span>Audiencias</span>
-                  <span class="fa fa-chevron-down ml-auto"></span>
-                </a>
-            </li>
-          </ng-template>
-          <ng-template ngbPanelContent>
-            <div class="level-two p-0">
-              <li><a routerLink="sindicatos/consulta-organizacion" class="a-menu d-sm-flex align-items-sm-center "><span>Asignación de Abogados</span></a></li>
-              <li><a routerLink="sindicatos/registro-observacion" class="a-menu d-sm-flex align-items-sm-center "><span>Resultado de Audiencia</span></a></li>
-              <li><a routerLink="sindicatos/registro-delegados" class="a-menu d-sm-flex align-items-sm-center "><span>Reprog. de Audiencia</span></a></li>
-              <li><a routerLink="sindicatos/evaluar-solicitudes" class="a-menu d-sm-flex align-items-sm-center "><span>Registrar Escrito</span></a></li>
-              <li><a routerLink="sindicatos/evaluar-solicitudes" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Audiencias</span></a></li>
-            </div>
-          </ng-template>
-        </ngb-panel>
-      </ngb-accordion>
+        <ngb-accordion class="level-one mt-2 p-0" id="accordion" activeIds="defensa-1" [closeOthers]="true">
+            <ngb-panel id="defensa-1">
+                <ng-template ngbPanelTitle>
+                    <li routerLinkActive="active">
+                        <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                            <i class="fa fa-address-book-o px-2" aria-hidden="true"></i> <span>Expedientes</span>
+                            <span class="fa fa-chevron-down ml-auto"></span>
+                        </a>
+                    </li>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <div class="level-two p-0">
+                        <li><a [routerLink]="['/defensa/registro-expediente' , { outlets: { wizard: ['datos-pase'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro Expedientes</span></a></li>
+                        <li><a [routerLink]="['/defensa/envio-notificacion' , { outlets: { wizard: ['seleccion-expediente'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro de Notificaciones</span></a></li>
+                        <li><a routerLink="defensa/consulta-expediente" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Expedientes</span></a></li>
+                        <li><a routerLink="sindicatos/evaluar-solicitudes" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Notificaciones</span></a></li>
+                    </div>
+                </ng-template>
+            </ngb-panel>
+            <ngb-panel id="defensa-2">
+                <ng-template ngbPanelTitle>
+                    <li routerLinkActive="active">
+                        <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                            <i class="fa fa-group px-2" aria-hidden="true"></i> <span>Audiencias</span>
+                            <span class="fa fa-chevron-down ml-auto"></span>
+                        </a>
+                    </li>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <div class="level-two p-0">
+                        <li><a routerLink="sindicatos/consulta-organizacion" class="a-menu d-sm-flex align-items-sm-center "><span>Asignación de Abogados</span></a></li>
+                        <li><a routerLink="sindicatos/registro-observacion" class="a-menu d-sm-flex align-items-sm-center "><span>Resultado de Audiencia</span></a></li>
+                        <li><a routerLink="sindicatos/registro-delegados" class="a-menu d-sm-flex align-items-sm-center "><span>Reprog. de Audiencia</span></a></li>
+                        <li><a routerLink="sindicatos/evaluar-solicitudes" class="a-menu d-sm-flex align-items-sm-center "><span>Registrar Escrito</span></a></li>
+                        <li><a routerLink="sindicatos/evaluar-solicitudes" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Audiencias</span></a></li>
+                    </div>
+                </ng-template>
+            </ngb-panel>
+        </ngb-accordion>
     </div>
 
-   
+
     <div class="my-2" *ngIf="aplicacion == 'seguridad'">
-      <!-- <h3 class="pl-3 text-uppercase h3coll">MANTENIMIENTO DE MÓDULO DE SEGURIDAD</h3> -->
-      <ul class="level-one mt-2 p-0" id="accordion" >
-        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
-          <a routerLink="/" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
-            <i class="fa fa-dashboard px-2" aria-hidden="true"></i> <span>Dashboard</span>
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="aplicacion"  class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
-            <i class="fa fa-institution px-2" aria-hidden="true"></i> <span>Gestión de Aplicaciones</span>
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="modulo"  class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
-            <i class="fa fa-server px-2" aria-hidden="true"></i> <span>Gestión de Modulos</span>
-          </a>
-        </li>
-        <li routerLinkActive="active" >
-          <a routerLink="entidad" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
-            <i class="fa fa-building px-2" aria-hidden="true"></i> <span>Gestión de Entidades</span>
-          </a>
-        </li>
-        <li routerLinkActive="active">
-            <a routerLink="usuario"  class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
-              <i class="fa fa-user px-2" aria-hidden="true"></i> <span>Gestión de Usuarios</span>
-            </a>
-        </li>
-        <li routerLinkActive="active" >
-            <a routerLink="perfil" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
-              <i class="fa fa-user-circle px-2" aria-hidden="true"></i> <span>Gestión de Perfil</span>
-            </a>
-        </li>
-        <li routerLinkActive="active" >
-            <a routerLink="menu" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
-              <i class="fa fa-shield px-2" aria-hidden="true"></i> <span>Gestión de Menu</span>
-            </a>
-        </li>
-        <li routerLinkActive="active"  >
-            <a routerLink="grupo" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
-              <i class="fa fa-users px-2" aria-hidden="true"></i> <span>Gestión de Grupo</span>
-            </a>
-        </li>
-      </ul>
+        <!-- <h3 class="pl-3 text-uppercase h3coll">MANTENIMIENTO DE MÓDULO DE SEGURIDAD</h3> -->
+        <ul class="level-one mt-2 p-0" id="accordion">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a routerLink="/" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+                    <i class="fa fa-dashboard px-2" aria-hidden="true"></i> <span>Dashboard</span>
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="aplicacion" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+                    <i class="fa fa-institution px-2" aria-hidden="true"></i> <span>Gestión de Aplicaciones</span>
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="modulo" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+                    <i class="fa fa-server px-2" aria-hidden="true"></i> <span>Gestión de Modulos</span>
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="entidad" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+                    <i class="fa fa-building px-2" aria-hidden="true"></i> <span>Gestión de Entidades</span>
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="usuario" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+                    <i class="fa fa-user px-2" aria-hidden="true"></i> <span>Gestión de Usuarios</span>
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="perfil" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+                    <i class="fa fa-user-circle px-2" aria-hidden="true"></i> <span>Gestión de Perfil</span>
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="menu" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+                    <i class="fa fa-shield px-2" aria-hidden="true"></i> <span>Gestión de Menu</span>
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="grupo" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+                    <i class="fa fa-users px-2" aria-hidden="true"></i> <span>Gestión de Grupo</span>
+                </a>
+            </li>
+        </ul>
     </div>
-    
+
     <div class="my-2" *ngIf="aplicacion == 'conciliacion'">
         <li routerLinkActive="active">
-          <a href="index.html" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
-            <i class="fa fa-tachometer px-2" aria-hidden="true"></i> <span>Dashboard</span>
-          </a>
+            <a href="index.html" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+                <i class="fa fa-tachometer px-2" aria-hidden="true"></i> <span>Dashboard</span>
+            </a>
         </li>
         <li routerLinkActive="active">
-          <a href="#" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
-            <i class="fa fa-commenting-o px-2" aria-hidden="true"></i> <span>Forms</span> <span class="fa fa-chevron-down ml-auto"></span>
-          </a>
-          <ul class="level-two p-0">
-            <li><a href="general.html"><span>General Elements</span></a></li>
-            <li class="active-submenu"><a href="advanced.html"><span>Advanced Elements</span></a></li>
-            <li><a href="editors.html"><span>Editors</span></a></li>
-          </ul>
+            <a href="#" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+                <i class="fa fa-commenting-o px-2" aria-hidden="true"></i> <span>Forms</span> <span class="fa fa-chevron-down ml-auto"></span>
+            </a>
+            <ul class="level-two p-0">
+                <li><a href="general.html"><span>General Elements</span></a></li>
+                <li class="active-submenu"><a href="advanced.html"><span>Advanced Elements</span></a></li>
+                <li><a href="editors.html"><span>Editors</span></a></li>
+            </ul>
         </li>
         <li routerLinkActive="active">
-          <a href="widgets.html" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
-            <i class="fa fa-th-large px-2" aria-hidden="true"></i> <span>Widgets</span>
-          </a>
+            <a href="widgets.html" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+                <i class="fa fa-th-large px-2" aria-hidden="true"></i> <span>Widgets</span>
+            </a>
         </li>
         <li>
-          <a href="#" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
-            <i class="fa fa-commenting-o px-2" aria-hidden="true"></i> <span>Validaciones</span> <span class="fa fa-chevron-down ml-auto"></span>
-          </a>
-          <ul class="level-two p-0">
-            <li><a href="validacion.html"><span>Validación</span></a></li>
-            <li><a href="#"><span>Seccion2</span></a></li>
-            <li><a href="#"><span>Seccion3</span></a></li>                    
-          </ul>
+            <a href="#" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
+                <i class="fa fa-commenting-o px-2" aria-hidden="true"></i> <span>Validaciones</span> <span class="fa fa-chevron-down ml-auto"></span>
+            </a>
+            <ul class="level-two p-0">
+                <li><a href="validacion.html"><span>Validación</span></a></li>
+                <li><a href="#"><span>Seccion2</span></a></li>
+                <li><a href="#"><span>Seccion3</span></a></li>
+            </ul>
         </li>
-      </ul>
+        </ul>
     </div>
 
     <!-- JROMERO SINDICATOS -->
@@ -159,52 +159,72 @@
             <li routerLinkActive="active">
                 <ngb-accordion [closeOthers]="true" activeIds="static-1">
                     <ngb-panel id="static-1">
-                      <ng-template ngbPanelTitle>
-                          <li routerLinkActive="active">
-                              <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
-                                <i class="fa fa-cubes px-2" aria-hidden="true"></i> <span>Sindicatos</span>
-                                <span class="fa fa-chevron-down ml-auto"></span>
-                              </a>
-                          </li>
-                      </ng-template>
-                      <ng-template ngbPanelContent>
-                      <div class="level-two p-0">
-                        <li><a routerLink="sindicatos/consulta-organizacion" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Registro Organización</span></a></li>
-                        <li><a routerLink="sindicatos/consulta-recurso" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Registro de Recursos</span></a></li>
-                        <li><a routerLink="sindicatos/consulta-delegados" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Registro de Delegados</span></a></li>
-                        <li><a routerLink="sindicatos/revisar-solicitudes" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Revisar Solicitudes</span></a></li>
-                        <li><a routerLink="sindicatos/bienvenida" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Bienvenida</span></a></li>
-                      </div>
-                  </ng-template>
-              </ngb-panel>
-              </ngb-accordion>
-            </li> 
-        </ul>        
+                        <ng-template ngbPanelTitle>
+                            <li routerLinkActive="active">
+                                <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                                    <i class="fa fa-cubes px-2" aria-hidden="true"></i> <span>Sindicatos</span>
+                                    <span class="fa fa-chevron-down ml-auto"></span>
+                                </a>
+                            </li>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            <div class="level-two p-0">
+                                <li><a routerLink="sindicatos/consulta-organizacion" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Registro Organización</span></a></li>
+                                <li><a routerLink="sindicatos/consulta-recurso" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Registro de Recursos</span></a></li>
+                                <li><a routerLink="sindicatos/consulta-delegados" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Registro de Delegados</span></a></li>
+                                <li><a routerLink="sindicatos/revisar-solicitudes" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Revisar Solicitudes</span></a></li>
+                                <li><a routerLink="sindicatos/bienvenida" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Bienvenida</span></a></li>
+                            </div>
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+            </li>
+        </ul>
     </div>
     <!-- JROMERO SINDICATOS -->
 
     <div class="my-2" *ngIf="aplicacion == 'denuncias'">
-      <ul class="level-one mt-2 p-0" id="accordion">
-          <li routerLinkActive="active">
-              <ngb-accordion [closeOthers]="true" activeIds="static-1">
-                  <ngb-panel id="static-1">
-                    <ng-template ngbPanelTitle>
-                        <li routerLinkActive="active">
-                            <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
-                              <i class="fa fa-cubes px-2" aria-hidden="true"></i> <span>Denuncias Laborales</span>
-                              <span class="fa fa-chevron-down ml-auto"></span>
-                            </a>
-                        </li>
-                    </ng-template>
-                    <ng-template ngbPanelContent>
-                    <div class="level-two p-0">
-                      <li><a routerLink="denuncias/validarruc" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Validar RUC</span></a></li>
-                    </div>
-                </ng-template>
-            </ngb-panel>
-            </ngb-accordion>
-          </li> 
-      </ul>        
-  </div>
-  
+        <ul class="level-one mt-2 p-0" id="accordion">
+            <li routerLinkActive="active">
+                <ngb-accordion [closeOthers]="true" activeIds="static-1">
+                    <ngb-panel id="static-1">
+                        <ng-template ngbPanelTitle>
+                            <li routerLinkActive="active">
+                                <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                                    <i class="fa fa-cubes px-2" aria-hidden="true"></i> <span>Denuncias Laborales</span>
+                                    <span class="fa fa-chevron-down ml-auto"></span>
+                                </a>
+                            </li>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            <div class="level-two p-0">
+                                <li><a routerLink="denuncias/validarruc" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Validar RUC</span></a></li>
+                            </div>
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+            </li>
+        </ul>
+    </div>
+    <!-- LIQUIDACIONES - LEFTBAR - PIERRE DAVID MALDONADO DIAZ -->
+    <div class="my-2" *ngIf="aplicacion == 'liquidaciones'">
+        <ul class="level-one p-0" id="accordion">
+            <li routerLinkActive="active">
+                <a routerLink="liquidaciones/registro-atencion" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                    <i class="fa fa-user-plus px-2" aria-hidden="true"></i> <span>Registro de Atención</span>
+                </a>
+            </li>
+            <li>
+                <a role="button" data-role="disabled" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                    <i class="fa fa-percent px-2" aria-hidden="true"></i> <span>Cálculo de Beneficios Sociales & Liquidaciones</span>
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="liquidaciones/consulta-liquidacion" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                    <i class="fa fa-eye px-2" aria-hidden="true"></i> <span>Consulta de Liquidaciones</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- ===================================================== -->
 </nav>
