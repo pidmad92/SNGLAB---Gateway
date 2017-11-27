@@ -40,7 +40,7 @@
     </p-panel>
 </form>
 <p-dialog header="Nuevo Usuario" [(visible)]="displayNuevoUsuario" modal="modal" width="600" height="600" [responsive]="true">
-    <form name="pernatural" role="form" novalidate (ngSubmit)="submitNuevoUsuario()" #pernatural="ngForm">
+    <form name="editForm" role="form" novalidate (ngSubmit)="submitNuevoUsuario()" #editForm="ngForm">
         <p-tabView [activeIndex]="indexTab">
             <p-tabPanel [disabled]="disableTab1" header="Datos Generales" style="height: 500" leftIcon="fa-id-card">
                 <div class="row">
@@ -48,11 +48,11 @@
                         <label>Tipo Doc.</label>
                     </div>
                     <div class="col-md-4">
-                        <p-dropdown [options]="tipodocs" name="selectedTipodoc" [(ngModel)]="selectedTipodoc" placeholder="Seleccione un tipo doc."
+                        <p-dropdown [options]="tipodocs" name="selectedTipodoc" [(ngModel)]="selectedTipodoc" [style]="{'width':'140px'}" placeholder="Seleccione un tipo doc."
                             optionLabel="name"></p-dropdown>
                     </div>
                     <div class="col-md-6">
-                        <input type="text" [(ngModel)]="pernatural.vNumdoc" [value]="pernatural.vNumdoc" name="pernatural.vNumdoc" />
+                        <input type="text" [(ngModel)]="pernatural.vNumdoc" name="pernatural.vNumdoc" />
                     </div>
                 </div>
                 <div class="row">

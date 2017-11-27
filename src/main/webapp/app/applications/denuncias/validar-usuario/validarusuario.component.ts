@@ -45,8 +45,9 @@ export class ValidarUsuarioComponent implements OnInit {
         private eventManager: JhiEventManager,
         private loginService: LoginService,
         private messageService: MessageService,
-        private validarUsuarioService: ValidarUsuarioService
+        private validarUsuarioService: ValidarUsuarioService,
     ) {
+        this.pernatural = new Pernatural();
     }
 
     loadAll() {
@@ -71,24 +72,7 @@ export class ValidarUsuarioComponent implements OnInit {
         this.indexTab = 0;
         this.disableTab1 = false;
         this.disableTab2 = true;
-        this.pernatural = new Pernatural(0,
-            '',
-            '',
-            '',
-            '',
-            '',
-            '',
-            '',
-            '',
-            '',
-            '',
-            0,
-            '',
-            false,
-            0,
-            0,
-            '',
-            1);
+
     }
 
     validarDatoPersona() {
@@ -102,6 +86,7 @@ export class ValidarUsuarioComponent implements OnInit {
             this.messageList.push({severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar el número de documento.'});
         } else if (this.selectedTipodoc !== undefined) {
             if (!(this.selectedTipodoc.totaldig === this.pernatural.vNumdoc.trim().length)) {
+                console.log('NUMERODOC' + this.selectedTipodoc.totaldig);
                 this.messageList.push({severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar un numero de documento valido.'});
             }
         } else if (this.pernatural.vApepat === '') {
