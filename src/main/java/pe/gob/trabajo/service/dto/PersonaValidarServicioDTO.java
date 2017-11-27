@@ -2,13 +2,13 @@ package pe.gob.trabajo.service.dto;
 
 public class PersonaValidarServicioDTO {
 
-    private String NumeroDoc;
-    private String ApePaterno;
-    private String ApeMaterno;
+    private String vNumdoc;
+    private String vApepat;
+    private String vApemat;
     private String TipoDoc;  
     private boolean Resultado;
-    private String nombres;
-    private String fechaNacimiento;
+    private String vNombres;
+    private String dFecnac;
     private String genero;
     private String estadoCivil;
     private String codigo;
@@ -26,12 +26,12 @@ public class PersonaValidarServicioDTO {
 
     public String getNombres()
     {
-      return this.nombres;
+      return this.vNombres;
     }
     
     public void setNombres(String nombres)
     {
-      this.nombres = nombres;
+      this.vNombres = nombres;
     }
 
     /**
@@ -42,42 +42,42 @@ public class PersonaValidarServicioDTO {
     }
 
     public String getNumeroDoc() {
-        return NumeroDoc;
+        return vNumdoc;
     }
 
     /**
      * @param NumeroDoc the NumeroDoc to set
      */
     public void setNumeroDoc(String NumeroDoc) {
-        this.NumeroDoc = NumeroDoc;
+        this.vNumdoc = NumeroDoc;
     }
 
     /**
      * @return the ApePaterno
      */
     public String getApePaterno() {
-        return ApePaterno;
+        return vApepat;
     }
 
     /**
      * @param ApePaterno the ApePaterno to set
      */
     public void setApePaterno(String ApePaterno) {
-        this.ApePaterno = ApePaterno;
+        this.vApepat = ApePaterno;
     }
 
     /**
      * @return the ApeMaterno
      */
     public String getApeMaterno() {
-        return ApeMaterno;
+        return vApemat;
     }
 
     /**
      * @param ApeMaterno the ApeMaterno to set
      */
     public void setApeMaterno(String ApeMaterno) {
-        this.ApeMaterno = ApeMaterno;
+        this.vApemat = ApeMaterno;
     }
 
     /**
@@ -96,12 +96,12 @@ public class PersonaValidarServicioDTO {
 
     public String getFechaNacimiento()
     {
-      return this.fechaNacimiento;
+      return this.dFecnac;
     }
     
     public void setFechaNacimiento(String fechaNacimiento)
     {
-      this.fechaNacimiento = fechaNacimiento;
+      this.dFecnac = fechaNacimiento;
     }
     
     public String getGenero()

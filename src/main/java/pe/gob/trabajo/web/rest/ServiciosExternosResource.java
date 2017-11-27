@@ -47,13 +47,7 @@ public class ServiciosExternosResource {
             throws SOAPException, IOException {
         switch (personaNatural.getTipoDoc()) {
         case "DNI":
-            System.out.println("===========>");
-            System.out.println(personaNatural.getNumeroDoc());
-            System.out.println("===========>");
             PersonaBean personaBean = ReniecClient.getConsolidada(personaNatural.getNumeroDoc());
-            System.out.println("===========>");
-            System.out.println(personaBean);
-            System.out.println("===========>");
             this.ValidarConvertirObjetoReniec(personaNatural,personaBean);
         }
         
