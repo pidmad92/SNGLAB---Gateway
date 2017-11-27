@@ -40,20 +40,19 @@
     </p-panel>
 </form>
 <p-dialog header="Nuevo Usuario" [(visible)]="displayNuevoUsuario" modal="modal" width="600" height="600" [responsive]="true">
-    <form name="pernatural" role="form" novalidate (ngSubmit)="submitNuevoUsuario()" #pernatural="ngForm">
-        <p-tabView>
-            <p-tabPanel header="Datos Generales" style="height: 500" leftIcon="fa-id-card">
+    <form name="editForm" role="form" novalidate (ngSubmit)="submitNuevoUsuario()" #editForm="ngForm">
+        <p-tabView [activeIndex]="indexTab">
+            <p-tabPanel [disabled]="disableTab1" header="Datos Generales" style="height: 500" leftIcon="fa-id-card">
                 <div class="row">
                     <div class="col-md-2">
                         <label>Tipo Doc.</label>
                     </div>
                     <div class="col-md-4">
-                        <p-dropdown [options]="tipodocs" name="selectedTipodoc" [(ngModel)]="selectedTipodoc" placeholder="Seleccione un tipo doc."
+                        <p-dropdown [options]="tipodocs" name="selectedTipodoc" [(ngModel)]="selectedTipodoc" [style]="{'width':'140px'}" placeholder="Seleccione un tipo doc."
                             optionLabel="name"></p-dropdown>
                     </div>
                     <div class="col-md-6">
-                        <input class="form-control" placeholder="Numero de documento" [(ngModel)]="pernatural.vNumdoc" name="vNumdoc" type="text"
-                        />
+                        <input class="form-control" type="text" [(ngModel)]="pernatural.vNumdoc" name="pernatural.vNumdoc" />
                     </div>
                 </div>
                 <div class="row">
@@ -103,15 +102,20 @@
                 <div class="ui-g">
                     <div class="ui-md-12">
                         <button type="button" (click)="displayNuevoUsuario=false" class="btn btn-primary" label="Cancelar">Cancelar</button>
-                        <button type="button" (click)="displayNuevoUsuario=false" class="btn btn-secondary" label="Siguiente">Siguiente</button>
+                        <button type="button" (click)="validarDatoPersona()" class="btn btn-secondary" label="Siguiente">Siguiente</button>
                     </div>
                 </div>
-
             </p-tabPanel>
-            <p-tabPanel header="Dirección" leftIcon="fa-podcast" [disabled]="true">
+            <p-tabPanel header="Dirección" leftIcon="fa-podcast" [disabled]="disableTab2">
 
+                <div class="ui-g">
+                    <div class="ui-md-12">
+                        <button type="button" (click)="retrocederVentada()" class="btn btn-primary" label="Atras">Atras</button>
+                        <button type="submit" (click)="validarDatoPersona()" class="btn btn-secondary" label="Guardar">Guardar</button>
+                    </div>
+                </div>
             </p-tabPanel>
         </p-tabView>
-
+        <p-messages [(value)]="messagesForm"></p-messages>
     </form>
 </p-dialog>

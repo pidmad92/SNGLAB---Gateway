@@ -26,6 +26,14 @@ export class Pernatural implements BaseEntity {
         public trabajadors?: BaseEntity[],
         public sucesors?: BaseEntity[],
         public tipdocident?: BaseEntity,
+        // Agregado para validacion de denuncias
+        public Resultado?: Boolean,
+        public genero?: string,
+        public estadoCivil?: string,
+        public coddep?: string,
+        public codpro?: string,
+        public coddist?: string,
+        public direccion?: string
     ) {
         this.nFlgactivo = false;
     }
