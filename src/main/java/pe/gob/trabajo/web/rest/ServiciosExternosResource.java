@@ -45,24 +45,48 @@ public class ServiciosExternosResource {
     @Timed
     public PersonaValidarServicioDTO ValidarPersonaNatural(@RequestBody PersonaValidarServicioDTO personaNatural)
             throws SOAPException, IOException {
-
-        PersonaValidarServicioDTO dto = new PersonaValidarServicioDTO();
-        System.out.println("======================>ENTROOOOOO");
-        System.out.println(personaNatural.getTipoDoc());
-        System.out.println("======================>");
-
         switch (personaNatural.getTipoDoc()) {
         case "DNI":
+            System.out.println("===========>");
+            System.out.println(personaNatural.getNumeroDoc());
+            System.out.println("===========>");
             PersonaBean personaBean = ReniecClient.getConsolidada(personaNatural.getNumeroDoc());
-            
+            System.out.println("===========>");
+            System.out.println(personaBean);
+            System.out.println("===========>");
+            this.ValidarConvertirObjetoReniec(personaNatural,personaBean);
         }
         
-
-        return dto;
+        return personaNatural;
     }
 
     private PersonaValidarServicioDTO ValidarConvertirObjetoReniec(PersonaValidarServicioDTO dto, PersonaBean persona) {
-
+        
+        if(persona == null){
+            dto.setResultado(false);
+        } else {
+            if(dto.getApePaterno().trim().toUpperCase().equals(persona.getApellidoPaterno())
+                && dto.getApeMaterno().trim().toUpperCase().equals(persona.getApellidoMaterno())
+                && dto.getNombres().trim().toUpperCase().equals(persona.getNombres())
+            ) {
+ 
+            dto.setResultado(true);
+            dto.setApeMaterno(persona.getApellidoMaterno());
+            dto.setApePaterno(persona.getApellidoPaterno());
+            dto.setNombres(persona.getNombres());
+            dto.setFechaNacimiento(persona.getFechaNacimiento());
+            dto.setGenero(persona.getGenero());
+            dto.setEstadoCivil(persona.getEstadoCivil());
+            dto.setCodigo(persona.getCodigo());
+            dto.setCoddep(persona.getCoddep());
+            dto.setCodpro(persona.getCodpro());
+            dto.setCoddist(persona.getCoddist());
+            dto.setDireccion(persona.getDireccion());
+            }
+            else{
+                dto.setResultado(false);
+            }
+        }
         return dto;
     }
 }

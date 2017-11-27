@@ -41,8 +41,8 @@
 </form>
 <p-dialog header="Nuevo Usuario" [(visible)]="displayNuevoUsuario" modal="modal" width="600" height="600" [responsive]="true">
     <form name="pernatural" role="form" novalidate (ngSubmit)="submitNuevoUsuario()" #pernatural="ngForm">
-        <p-tabView>
-            <p-tabPanel header="Datos Generales" style="height: 500" leftIcon="fa-id-card">
+        <p-tabView [activeIndex]="indexTab">
+            <p-tabPanel [disabled]="disableTab1" header="Datos Generales" style="height: 500" leftIcon="fa-id-card">
                 <div class="row">
                     <div class="col-md-2">
                         <label>Tipo Doc.</label>
@@ -52,13 +52,12 @@
                             optionLabel="name"></p-dropdown>
                     </div>
                     <div class="col-md-6">
-                        <input class="form-control" placeholder="Numero de documento" [(ngModel)]="pernatural.vNumdoc" name="vNumdoc" type="text"
-                        />
+                        <input type="text" [(ngModel)]="pernatural.vNumdoc" [value]="pernatural.vNumdoc" name="pernatural.vNumdoc" />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <label>Ape. Paterno</label>
+                        <label>Ape. Paterno {{pernatural.vNumdoc}}</label>
                     </div>
                     <div class="col-md-12">
                         <input class="form-control" placeholder="" [(ngModel)]="pernatural.vApepat" name="vApepat" type="text" />
@@ -103,15 +102,14 @@
                 <div class="ui-g">
                     <div class="ui-md-12">
                         <button type="button" (click)="displayNuevoUsuario=false" class="btn btn-primary" label="Cancelar">Cancelar</button>
-                        <button type="button" (click)="displayNuevoUsuario=false" class="btn btn-secondary" label="Siguiente">Siguiente</button>
+                        <button type="button" (click)="validarDatoPersona()" class="btn btn-secondary" label="Siguiente">Siguiente</button>
                     </div>
                 </div>
-
             </p-tabPanel>
-            <p-tabPanel header="Dirección" leftIcon="fa-podcast" [disabled]="true">
+            <p-tabPanel header="Dirección" leftIcon="fa-podcast" [disabled]="disableTab2">
 
             </p-tabPanel>
         </p-tabView>
-
+        <p-messages [(value)]="messagesForm"></p-messages>
     </form>
 </p-dialog>
