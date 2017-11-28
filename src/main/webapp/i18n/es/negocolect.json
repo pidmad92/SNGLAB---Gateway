@@ -1,0 +1,40 @@
+{
+    "gatewayApp": {
+        "negocolect" : {
+            "home": {
+                "title": "Negocolects",
+                "createLabel": "Crear nuevo Negocolect",
+                "createOrEditLabel": "Crear o editar Negocolect",
+                "search": "Search for Negocolect"
+            },
+            "created": "Un nuevo Negocolect ha sido creado con el identificador {{ param }}",
+            "updated": "Un Negocolect ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Negocolect ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Negocolect {{ id }}?"
+            },
+            "detail": {
+                "title": "Negocolect"
+            },
+            "nCodngcol": "N Codngcol",
+            "nCodfperf": "N Codfperf",
+            "vAmbsubje": "V Ambsubje",
+            "vTipongco": "V Tipongco",
+            "vEtapaneg": "V Etapaneg",
+            "tFecvigde": "T Fecvigde",
+            "tFecvigha": "T Fecvigha",
+            "vNumexpe": "V Numexpe",
+            "vAuttrab": "V Auttrab",
+            "vRucneg": "V Rucneg",
+            "vRegistro": "V Registro",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "formperfil": "Formperfil"
+        }
+    }
+}

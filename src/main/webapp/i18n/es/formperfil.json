@@ -1,0 +1,45 @@
+{
+    "gatewayApp": {
+        "formperfil" : {
+            "home": {
+                "title": "Formperfils",
+                "createLabel": "Crear nuevo Formperfil",
+                "createOrEditLabel": "Crear o editar Formperfil",
+                "search": "Search for Formperfil"
+            },
+            "created": "Un nuevo Formperfil ha sido creado con el identificador {{ param }}",
+            "updated": "Un Formperfil ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Formperfil ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Formperfil {{ id }}?"
+            },
+            "detail": {
+                "title": "Formperfil"
+            },
+            "nCodfperf": "N Codfperf",
+            "vNomcomer": "V Nomcomer",
+            "vDesemple": "V Desemple",
+            "vCodciiu": "V Codciiu",
+            "vPartreg": "V Partreg",
+            "vGruecono": "V Gruecono",
+            "vSector": "V Sector",
+            "vPlancont": "V Plancont",
+            "vReglabo": "V Reglabo",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "direccion": "Direccion",
+            "hechoInversion": "Hecho Inversion",
+            "anexoLaboral": "Anexo Laboral",
+            "unidadNegocio": "Unidad Negocio",
+            "respInfo": "Resp Info",
+            "resulNegociacion": "Resul Negociacion",
+            "participacion": "Participacion",
+            "negColectiva": "Neg Colectiva"
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "gatewayApp": {
+        "formarchivo" : {
+            "home": {
+                "title": "Formarchivos",
+                "createLabel": "Crear nuevo Formarchivo",
+                "createOrEditLabel": "Crear o editar Formarchivo",
+                "search": "Search for Formarchivo"
+            },
+            "created": "Un nuevo Formarchivo ha sido creado con el identificador {{ param }}",
+            "updated": "Un Formarchivo ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Formarchivo ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Formarchivo {{ id }}?"
+            },
+            "detail": {
+                "title": "Formarchivo"
+            },
+            "nCodfarch": "N Codfarch",
+            "vDesform": "V Desform",
+            "bArchivo": "B Archivo",
+            "vContype": "V Contype",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "solFormulario": "Sol Formulario"
+        }
+    }
+}

@@ -1,0 +1,67 @@
+
+<div *ngIf="undnegocio">
+    <h2><span jhiTranslate="gatewayApp.undnegocio.detail.title">Undnegocio</span> {{undnegocio.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.undnegocio.nCodundng">N Codundng</span></dt>
+        <dd>
+            <span>{{undnegocio.nCodundng}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.undnegocio.nCodfperf">N Codfperf</span></dt>
+        <dd>
+            <span>{{undnegocio.nCodfperf}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.undnegocio.vDesundng">V Desundng</span></dt>
+        <dd>
+            <span>{{undnegocio.vDesundng}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.undnegocio.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{undnegocio.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.undnegocio.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{undnegocio.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.undnegocio.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{undnegocio.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.undnegocio.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{undnegocio.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.undnegocio.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{undnegocio.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.undnegocio.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{undnegocio.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.undnegocio.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{undnegocio.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.undnegocio.formperfil">Formperfil</span></dt>
+        <dd>
+            <div *ngIf="undnegocio.formperfil">
+                <a [routerLink]="['/formperfil', undnegocio.formperfil?.id]">{{undnegocio.formperfil?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'undnegocio/'+ undnegocio.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

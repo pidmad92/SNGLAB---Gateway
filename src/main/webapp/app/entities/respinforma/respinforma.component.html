@@ -1,0 +1,105 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.respinforma.home.title">Respinformas</span>
+        <button class="btn btn-primary float-right jh-create-entity create-respinforma" [routerLink]="['/', { outlets: { popup: ['respinforma-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.respinforma.home.createLabel">
+            Create new Respinforma
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.respinforma.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="respinformas">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.respinforma.nCodrinfo">N Codrinfo</span></th>
+            <th><span jhiTranslate="gatewayApp.respinforma.nCodfperf">N Codfperf</span></th>
+            <th><span jhiTranslate="gatewayApp.respinforma.vTipores">V Tipores</span></th>
+            <th><span jhiTranslate="gatewayApp.respinforma.vNumdocum">V Numdocum</span></th>
+            <th><span jhiTranslate="gatewayApp.respinforma.vNombre">V Nombre</span></th>
+            <th><span jhiTranslate="gatewayApp.respinforma.vCargores">V Cargores</span></th>
+            <th><span jhiTranslate="gatewayApp.respinforma.vEmailres">V Emailres</span></th>
+            <th><span jhiTranslate="gatewayApp.respinforma.vTelefono">V Telefono</span></th>
+            <th><span jhiTranslate="gatewayApp.respinforma.vCelular">V Celular</span></th>
+            <th><span jhiTranslate="gatewayApp.respinforma.vUsuareg">V Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.respinforma.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.respinforma.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.respinforma.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.respinforma.vUsuaupd">V Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.respinforma.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.respinforma.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.respinforma.formperfil">Formperfil</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let respinforma of respinformas ;trackBy: trackId">
+                <td><a [routerLink]="['../respinforma', respinforma.id ]">{{respinforma.id}}</a></td>
+                <td>{{respinforma.nCodrinfo}}</td>
+                <td>{{respinforma.nCodfperf}}</td>
+                <td>{{respinforma.vTipores}}</td>
+                <td>{{respinforma.vNumdocum}}</td>
+                <td>{{respinforma.vNombre}}</td>
+                <td>{{respinforma.vCargores}}</td>
+                <td>{{respinforma.vEmailres}}</td>
+                <td>{{respinforma.vTelefono}}</td>
+                <td>{{respinforma.vCelular}}</td>
+                <td>{{respinforma.vUsuareg}}</td>
+                <td>{{respinforma.tFecreg | date:'medium'}}</td>
+                <td>{{respinforma.nFlgactivo}}</td>
+                <td>{{respinforma.nSedereg}}</td>
+                <td>{{respinforma.vUsuaupd}}</td>
+                <td>{{respinforma.tFecupd | date:'medium'}}</td>
+                <td>{{respinforma.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="respinforma.formperfil">
+                        <a [routerLink]="['../formperfil', respinforma.formperfil?.id ]" >{{respinforma.formperfil?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../respinforma', respinforma.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'respinforma/'+ respinforma.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'respinforma/'+ respinforma.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

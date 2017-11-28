@@ -1,0 +1,33 @@
+{
+    "gatewayApp": {
+        "hechoinver" : {
+            "home": {
+                "title": "Hechoinvers",
+                "createLabel": "Crear nuevo Hechoinver",
+                "createOrEditLabel": "Crear o editar Hechoinver",
+                "search": "Search for Hechoinver"
+            },
+            "created": "Un nuevo Hechoinver ha sido creado con el identificador {{ param }}",
+            "updated": "Un Hechoinver ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Hechoinver ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Hechoinver {{ id }}?"
+            },
+            "detail": {
+                "title": "Hechoinver"
+            },
+            "nCodhinve": "N Codhinve",
+            "nCodfperf": "N Codfperf",
+            "vDeshinve": "V Deshinve",
+            "vTipohinv": "V Tipohinv",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "formperfil": "Formperfil"
+        }
+    }
+}

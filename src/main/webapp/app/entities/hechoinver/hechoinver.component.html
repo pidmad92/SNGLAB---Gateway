@@ -1,0 +1,95 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.hechoinver.home.title">Hechoinvers</span>
+        <button class="btn btn-primary float-right jh-create-entity create-hechoinver" [routerLink]="['/', { outlets: { popup: ['hechoinver-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.hechoinver.home.createLabel">
+            Create new Hechoinver
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.hechoinver.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="hechoinvers">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.hechoinver.nCodhinve">N Codhinve</span></th>
+            <th><span jhiTranslate="gatewayApp.hechoinver.nCodfperf">N Codfperf</span></th>
+            <th><span jhiTranslate="gatewayApp.hechoinver.vDeshinve">V Deshinve</span></th>
+            <th><span jhiTranslate="gatewayApp.hechoinver.vTipohinv">V Tipohinv</span></th>
+            <th><span jhiTranslate="gatewayApp.hechoinver.vUsuareg">V Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.hechoinver.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.hechoinver.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.hechoinver.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.hechoinver.vUsuaupd">V Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.hechoinver.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.hechoinver.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.hechoinver.formperfil">Formperfil</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let hechoinver of hechoinvers ;trackBy: trackId">
+                <td><a [routerLink]="['../hechoinver', hechoinver.id ]">{{hechoinver.id}}</a></td>
+                <td>{{hechoinver.nCodhinve}}</td>
+                <td>{{hechoinver.nCodfperf}}</td>
+                <td>{{hechoinver.vDeshinve}}</td>
+                <td>{{hechoinver.vTipohinv}}</td>
+                <td>{{hechoinver.vUsuareg}}</td>
+                <td>{{hechoinver.tFecreg | date:'medium'}}</td>
+                <td>{{hechoinver.nFlgactivo}}</td>
+                <td>{{hechoinver.nSedereg}}</td>
+                <td>{{hechoinver.vUsuaupd}}</td>
+                <td>{{hechoinver.tFecupd | date:'medium'}}</td>
+                <td>{{hechoinver.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="hechoinver.formperfil">
+                        <a [routerLink]="['../formperfil', hechoinver.formperfil?.id ]" >{{hechoinver.formperfil?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../hechoinver', hechoinver.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'hechoinver/'+ hechoinver.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'hechoinver/'+ hechoinver.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,178 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "direccion",
+            "otherEntityName": "direccion",
+            "otherEntityRelationshipName": "formperfil"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "hechoInversion",
+            "otherEntityName": "hechoinver",
+            "otherEntityRelationshipName": "formperfil"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "anexoLaboral",
+            "otherEntityName": "anexlaboral",
+            "otherEntityRelationshipName": "formperfil"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "unidadNegocio",
+            "otherEntityName": "undnegocio",
+            "otherEntityRelationshipName": "formperfil"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "respInfo",
+            "otherEntityName": "respinforma",
+            "otherEntityRelationshipName": "formperfil"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "resulNegociacion",
+            "otherEntityName": "resulnegoc",
+            "otherEntityRelationshipName": "formperfil"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "participacion",
+            "otherEntityName": "participa",
+            "otherEntityRelationshipName": "formperfil"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "negColectiva",
+            "otherEntityName": "negocolect",
+            "otherEntityRelationshipName": "formperfil"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nCodfperf",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "vNomcomer",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "vDesemple",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "vCodciiu",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 10
+        },
+        {
+            "fieldName": "vPartreg",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "vGruecono",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "vSector",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "vPlancont",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 10
+        },
+        {
+            "fieldName": "vReglabo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 10
+        },
+        {
+            "fieldName": "vUsuareg",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "tFecreg",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nFlgactivo",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nSedereg",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "vUsuaupd",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "tFecupd",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "nSedeupd",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171122194113",
+    "entityTableName": "formperfil",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

@@ -33,7 +33,8 @@ export class Pernatural implements BaseEntity {
         public coddep?: string,
         public codpro?: string,
         public coddist?: string,
-        public direccion?: string
+        public direccion?: string,
+        public dirdenun?: BaseEntity
     ) {
         this.nFlgactivo = false;
     }

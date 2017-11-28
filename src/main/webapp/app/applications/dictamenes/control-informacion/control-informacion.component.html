@@ -1,0 +1,131 @@
+<div *ngIf="solicitud" class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
+    <div class="row">
+        <div class="col">
+            <h4 class="title">Consulta solicitud</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card card-mtpe mb-3">
+                <div class="card-header bg-light d-sm-flex justify-content-between p-2">
+                    <h5 class="mb-0">
+                        <small>
+                            <i class="fa fa-percent" aria-hidden="true"></i> Control de Información</small>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p>Vigencia Desde {{solicitud.tFecvigde | date:'dd/MM/yyyy'}} &nbsp; Vigencia Hasta {{solicitud.tFecvigha | date:'dd/MM/yyyy'}}</p>
+                    <button style="display:inline" (click)='listarSolicitudes()'>Volver</button>
+                    <div class="card">
+                        <div class="card-header bg-secondary text-white d-sm-flex justify-content-between p-1">
+                            <h5 class="mb-0">
+                                <small>
+                                    <i class="fa fa-calendar-times-o" aria-hidden="true"></i> Documentos Obligatorios</small>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>N°</th>
+                                        <th>Tipo</th>
+                                        <th>Documento</th>
+                                        <th>Accion</th>
+                                        <th>Estado</th>
+                                        <th>Observación</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ng-container *ngFor="let solicForm of solicFormsObligatorio; let i = index">
+                                        <tr>
+                                            <td>
+                                                <span>{{i+1}}</span>
+                                            </td>
+                                            <td>
+                                                <span *ngIf="solicForm.vTipoform == 'G'">GENERAL</span>
+                                                <span *ngIf="solicForm.vTipoform == 'F'">FINANCIERO</span>
+                                                <span *ngIf="solicForm.vTipoform == 'L'">LABORAL</span>
+                                                <span *ngIf="solicForm.vTipoform == 'A'">ARCHIVO</span>
+                                            </td>
+                                            <td>
+                                                <span>{{solicForm.vNomform}}</span>
+                                            </td>
+                                            <td>
+                                                <span *ngIf="solicForm.vTipoform != 'A'"><button class="fa fa-pencil"></button></span>
+                                                <span *ngIf="solicForm.vTipoform == 'A'"><button class="fa fa fa-upload"></button></span>
+                                                
+                                            </td>
+                                            <td>
+                                                <span *ngIf="solicForm.vFlgest == 'P'">PENDIENTE</span>
+                                                <span *ngIf="solicForm.vFlgest == 'E'">ENVIADO</span>
+                                                <span *ngIf="solicForm.vFlgest == 'O'">OBSERVADO</span>
+                                                <span *ngIf="solicForm.vFlgest == 'C'">CONFORME</span>
+                                            </td>
+                                            <td>
+                                                <span *ngIf="solicForm.vObserva != null"><button class="fa fa-eye"></button></span>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header bg-secondary text-white d-sm-flex justify-content-between p-1">
+                            <h5 class="mb-0">
+                                <small>
+                                    <i class="fa fa-calendar-times-o" aria-hidden="true"></i> Documentos Opcionales</small>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>N°</th>
+                                        <th>Tipo</th>
+                                        <th>Documento</th>
+                                        <th>Accion</th>
+                                        <th>Estado</th>
+                                        <th>Observación</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ng-container *ngFor="let solicForm of solicFormsOpcional; let i = index">
+                                        <tr>
+                                            <td>
+                                                <span>{{i+1}}</span>
+                                            </td>
+                                            <td>
+                                                <span *ngIf="solicForm.vTipoform == 'G'">GENERAL</span>
+                                                <span *ngIf="solicForm.vTipoform == 'F'">FINANCIERO</span>
+                                                <span *ngIf="solicForm.vTipoform == 'L'">LABORAL</span>
+                                                <span *ngIf="solicForm.vTipoform == 'A'">ARCHIVO</span>
+                                            </td>
+                                            <td>
+                                                <span>{{solicForm.vNomform}}</span>
+                                            </td>
+                                            <td>
+                                                <span *ngIf="solicForm.vTipoform != 'A'"><button type="button" class="fa fa-pencil" (click)="abrirFormulario(solicForm)"></button></span>
+                                                <span *ngIf="solicForm.vTipoform == 'A'"><button type="button" class="fa fa-upload" (click)="subirArchivo(solicForm)"></button></span>
+                                                
+                                            </td>
+                                            <td>
+                                                <span *ngIf="solicForm.vFlgest == 'P'">PENDIENTE</span>
+                                                <span *ngIf="solicForm.vFlgest == 'E'">ENVIADO</span>
+                                                <span *ngIf="solicForm.vFlgest == 'O'">OBSERVADO</span>
+                                                <span *ngIf="solicForm.vFlgest == 'C'">CONFORME</span>
+                                            </td>
+                                            <td>
+                                                <span *ngIf="solicForm.vObserva != null"><button class="fa fa-eye"></button></span>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

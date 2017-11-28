@@ -1,0 +1,87 @@
+
+<div *ngIf="direccion">
+    <h2><span jhiTranslate="gatewayApp.direccion.detail.title">Direccion</span> {{direccion.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.direccion.nCoddirec">N Coddirec</span></dt>
+        <dd>
+            <span>{{direccion.nCoddirec}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direccion.nCodfperf">N Codfperf</span></dt>
+        <dd>
+            <span>{{direccion.nCodfperf}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direccion.vDepart">V Depart</span></dt>
+        <dd>
+            <span>{{direccion.vDepart}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direccion.vProvincia">V Provincia</span></dt>
+        <dd>
+            <span>{{direccion.vProvincia}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direccion.vDistrito">V Distrito</span></dt>
+        <dd>
+            <span>{{direccion.vDistrito}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direccion.vDireccion">V Direccion</span></dt>
+        <dd>
+            <span>{{direccion.vDireccion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direccion.vReferen">V Referen</span></dt>
+        <dd>
+            <span>{{direccion.vReferen}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direccion.nNotifica">N Notifica</span></dt>
+        <dd>
+            <span>{{direccion.nNotifica}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direccion.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{direccion.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direccion.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{direccion.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direccion.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{direccion.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direccion.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{direccion.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direccion.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{direccion.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direccion.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{direccion.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direccion.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{direccion.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.direccion.formperfil">Formperfil</span></dt>
+        <dd>
+            <div *ngIf="direccion.formperfil">
+                <a [routerLink]="['/formperfil', direccion.formperfil?.id]">{{direccion.formperfil?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'direccion/'+ direccion.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

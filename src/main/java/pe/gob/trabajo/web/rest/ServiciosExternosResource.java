@@ -45,9 +45,15 @@ public class ServiciosExternosResource {
     @Timed
     public PersonaValidarServicioDTO ValidarPersonaNatural(@RequestBody PersonaValidarServicioDTO personaNatural)
             throws SOAPException, IOException {
+
+        System.out.println("========>");
+        System.out.println(personaNatural.getTipoDoc());
+        System.out.println(personaNatural.getvNombres());
+        System.out.println("========>");
+        System.out.println("========>");
         switch (personaNatural.getTipoDoc()) {
         case "DNI":
-            PersonaBean personaBean = ReniecClient.getConsolidada(personaNatural.getNumeroDoc());
+            PersonaBean personaBean = ReniecClient.getConsolidada(personaNatural.getvNumdoc());
             this.ValidarConvertirObjetoReniec(personaNatural,personaBean);
         }
         
@@ -59,16 +65,16 @@ public class ServiciosExternosResource {
         if(persona == null){
             dto.setResultado(false);
         } else {
-            if(dto.getApePaterno().trim().toUpperCase().equals(persona.getApellidoPaterno())
-                && dto.getApeMaterno().trim().toUpperCase().equals(persona.getApellidoMaterno())
-                && dto.getNombres().trim().toUpperCase().equals(persona.getNombres())
+            if(dto.getvApepat().trim().toUpperCase().equals(persona.getApellidoPaterno())
+                && dto.getvApemat().trim().toUpperCase().equals(persona.getApellidoMaterno())
+                && dto.getvNombres().trim().toUpperCase().equals(persona.getNombres())
             ) {
  
             dto.setResultado(true);
-            dto.setApeMaterno(persona.getApellidoMaterno());
-            dto.setApePaterno(persona.getApellidoPaterno());
-            dto.setNombres(persona.getNombres());
-            dto.setFechaNacimiento(persona.getFechaNacimiento());
+            dto.setvApemat(persona.getApellidoMaterno());
+            dto.setvApepat(persona.getApellidoPaterno());
+            dto.setvNombres(persona.getNombres());
+            dto.setdFecnac(persona.getFechaNacimiento());
             dto.setGenero(persona.getGenero());
             dto.setEstadoCivil(persona.getEstadoCivil());
             dto.setCodigo(persona.getCodigo());

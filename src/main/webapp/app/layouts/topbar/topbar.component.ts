@@ -56,6 +56,8 @@ export class TopbarComponent implements OnInit {
             this.router.navigate(['/liquidaciones/registro-atencion']);
         } else if (this.ruta === '2') {
             this.router.navigate(['/consultas/atencion']);
+        } else if (this.ruta === '8') {
+            this.router.navigate(['/dictamenes/listado-solicitudes']);
         } else if (this.ruta === '3') {
             this.router.navigate(['/defensa/registro-expediente' , { outlets: { wizard: ['datos-pase'] } }]);
         } else if (this.ruta === '4') {

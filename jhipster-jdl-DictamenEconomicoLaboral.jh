@@ -1,0 +1,273 @@
+entity Anexlaboral {
+	nCodanexo Integer required,
+    nCodfperf Integer required,
+    nAnioanex Integer,
+    vTipocont String maxlength(1),
+    vDeclegal String maxlength(50),
+    vDesanexo String maxlength(200),
+    nCantlabo Integer,
+    vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Direccion{
+	nCoddirec Integer required,
+    nCodfperf Integer required,
+    vDepart String maxlength(100),
+    vProvincia String maxlength(100),
+    vDistrito String maxlength(100),
+    vDireccion String maxlength(200),
+    vReferen String maxlength(100),
+    nNotifica Integer,
+    vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Formarchivo {
+	nCodfarch Integer required,
+    vDesform String maxlength(200),
+    bArchivo Blob,
+    vContype String maxlength(20),
+    vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Formfinanc{
+	nCodffina Integer required,
+    vCodform String maxlength(20),
+    vDesffina String maxlength(200),
+    vUndffina String maxlength(50),
+    nMonffina Double,
+    nPorcffin Double,
+    nAnioform Integer,
+    nMesform Integer,
+    vCodfila String maxlength(10),
+    vCodcolum String maxlength(10),
+    vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+    
+}
+
+entity Formperfil{
+	nCodfperf Integer required,
+    vNomcomer String maxlength(200),
+    vDesemple String maxlength(200),
+    vCodciiu String maxlength(10),
+    vPartreg String maxlength(50),
+    vGruecono String maxlength(100),
+    vSector String maxlength(50),
+    vPlancont String maxlength(10),
+    vReglabo String maxlength(10),    
+    vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Hechoinver{
+	nCodhinve Integer required,
+    nCodfperf Integer required,
+    vDeshinve String maxlength(100),
+    vTipohinv String maxlength(1),
+    vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Negocolect{
+	nCodngcol Integer required,
+    nCodfperf Integer required,
+    vAmbsubje String maxlength(50),
+    vTipongco String maxlength(1),
+    vEtapaneg String maxlength(50),
+    tFecvigde Instant,
+    tFecvigha Instant,
+    vNumexpe String maxlength(50),
+    vAuttrab String maxlength(50),
+    vRucneg String maxlength(20),
+    vRegistro String maxlength(50),
+    vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Participa{
+	nCodparti Integer required,
+    nCodfperf Integer required,
+    vNumdocum String maxlength(15),
+    vRazonsoc String maxlength(200),
+    vTipodoc String maxlength(1),
+    vTipopart String maxlength(1),
+    nPorcasig Double,
+    vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Reporteres{
+	nCodrepre Integer required,
+    vTiporep String maxlength(2),
+    vNombre String maxlength(50),
+    bArchivo Blob,
+    vContype String maxlength(20),
+    vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Respinforma{
+	nCodrinfo Integer required,
+    nCodfperf Integer required,
+    vTipores String maxlength(1),
+    vNumdocum String maxlength(15),
+    vNombre String maxlength(100),
+    vCargores String maxlength(100),
+    vEmailres String maxlength(100),
+    vTelefono String maxlength(15),
+    vCelular String maxlength(15),
+    vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Resulnegoc{
+	nCodreneg Integer required,
+    nCodfperf Integer required,
+    tFecreneg Instant,
+    nAumento Double,
+    nClausula Double,
+    nGratifica Double,
+    nAlimentac Double,
+    nMovilidad Double,
+    vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Solicform{
+	nCodsform Integer required,
+    nCodsolic Integer required,
+    nCodffina Integer,
+    nCodfarch Integer,
+    nCodfperf Integer,
+    vNomform String maxlength(100),
+    vTipoform String maxlength(1),
+    nFlgoblig Boolean,
+    vFlgest String maxlength(1),
+    vObserva String maxlength(200),
+    vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Solicitud{
+	nCodsolic Integer required,
+    nCodrepre Integer,
+    tFecsolic Instant,
+    tFecenvio Instant,
+    vFlgest String maxlength(1),
+    vSolicita String maxlength(100),
+    vEmpleador String maxlength(100),
+    vSindicato String maxlength(100),
+    vArbitro String maxlength(100),
+    vCodsolic String maxlength(20),
+    vCodemple String maxlength(20),
+    vCodsindi String maxlength(20),
+    vCodarbit String maxlength(20),
+    tFecvigde Instant,
+    tFecvigha Instant,
+    vVoucher String maxlength(50),
+    vRegistro String maxlength(50),
+    vRucsol String maxlength(50),
+    vCodusu String maxlength(20),
+    vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Undnegocio{
+	nCodundng Integer required,
+    nCodfperf Integer required,
+    vDesundng String maxlength(100),
+    vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+relationship OneToOne {
+    Solicitud{reporteRes} to Reporteres,
+    Solicform{formPerfil} to Formperfil
+}
+
+relationship OneToMany {
+	Formperfil{direccion} to Direccion,
+	Formperfil{hechoInversion} to Hechoinver,
+	Formperfil{anexoLaboral} to Anexlaboral,
+	Formperfil{unidadNegocio} to Undnegocio,
+	Formperfil{respInfo} to Respinforma,
+	Formperfil{resulNegociacion} to Resulnegoc,
+	Formperfil{participacion} to Participa,
+	Formperfil{negColectiva} to Negocolect,
+	Solicitud{solFormulario} to Solicform,
+	Formarchivo{solFormulario} to Solicform,
+    Formfinanc{solFormulario} to Solicform
+}

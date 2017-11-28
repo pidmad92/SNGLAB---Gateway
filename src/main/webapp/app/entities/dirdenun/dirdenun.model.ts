@@ -22,6 +22,10 @@ export class Dirdenun implements BaseEntity {
         public denunte?: BaseEntity,
         public tipzona?: BaseEntity,
         public tipvia?: BaseEntity,
+        // Agregado para denuncias en linea
+        public vCoddepartDes?: string,
+        public vCodprovinDes?: string,
+        public vCoddistriDes?: string,
     ) {
         this.nFlgactivo = false;
     }

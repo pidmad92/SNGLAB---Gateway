@@ -1,0 +1,99 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.formperfil.home.title">Formperfils</span>
+        <button class="btn btn-primary float-right jh-create-entity create-formperfil" [routerLink]="['/', { outlets: { popup: ['formperfil-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.formperfil.home.createLabel">
+            Create new Formperfil
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.formperfil.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="formperfils">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.formperfil.nCodfperf">N Codfperf</span></th>
+            <th><span jhiTranslate="gatewayApp.formperfil.vNomcomer">V Nomcomer</span></th>
+            <th><span jhiTranslate="gatewayApp.formperfil.vDesemple">V Desemple</span></th>
+            <th><span jhiTranslate="gatewayApp.formperfil.vCodciiu">V Codciiu</span></th>
+            <th><span jhiTranslate="gatewayApp.formperfil.vPartreg">V Partreg</span></th>
+            <th><span jhiTranslate="gatewayApp.formperfil.vGruecono">V Gruecono</span></th>
+            <th><span jhiTranslate="gatewayApp.formperfil.vSector">V Sector</span></th>
+            <th><span jhiTranslate="gatewayApp.formperfil.vPlancont">V Plancont</span></th>
+            <th><span jhiTranslate="gatewayApp.formperfil.vReglabo">V Reglabo</span></th>
+            <th><span jhiTranslate="gatewayApp.formperfil.vUsuareg">V Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.formperfil.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.formperfil.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.formperfil.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.formperfil.vUsuaupd">V Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.formperfil.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.formperfil.nSedeupd">N Sedeupd</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let formperfil of formperfils ;trackBy: trackId">
+                <td><a [routerLink]="['../formperfil', formperfil.id ]">{{formperfil.id}}</a></td>
+                <td>{{formperfil.nCodfperf}}</td>
+                <td>{{formperfil.vNomcomer}}</td>
+                <td>{{formperfil.vDesemple}}</td>
+                <td>{{formperfil.vCodciiu}}</td>
+                <td>{{formperfil.vPartreg}}</td>
+                <td>{{formperfil.vGruecono}}</td>
+                <td>{{formperfil.vSector}}</td>
+                <td>{{formperfil.vPlancont}}</td>
+                <td>{{formperfil.vReglabo}}</td>
+                <td>{{formperfil.vUsuareg}}</td>
+                <td>{{formperfil.tFecreg | date:'medium'}}</td>
+                <td>{{formperfil.nFlgactivo}}</td>
+                <td>{{formperfil.nSedereg}}</td>
+                <td>{{formperfil.vUsuaupd}}</td>
+                <td>{{formperfil.tFecupd | date:'medium'}}</td>
+                <td>{{formperfil.nSedeupd}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../formperfil', formperfil.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'formperfil/'+ formperfil.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'formperfil/'+ formperfil.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

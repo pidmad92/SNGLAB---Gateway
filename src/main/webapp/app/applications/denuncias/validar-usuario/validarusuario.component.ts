@@ -15,7 +15,11 @@ import { MessageService } from 'primeng/components/common/messageservice';
 import { ValidarUsuarioService } from './validarusuario.service';
 
 import { ComboModel } from '../../general/combobox.model';
+import { UbigeodepaModel } from '../../general/ubigeodepa.model';
+import { UbigeoprovModel } from '../../general/ubigeoprov.model';
+import { UbigeodistModel } from '../../general/ubigeodist.model';
 import { Pernatural } from '../../../entities/pernatural';
+import { Dirdenun } from '../../../entities/dirdenun';
 import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
@@ -40,6 +44,14 @@ export class ValidarUsuarioComponent implements OnInit {
     indexTab: number;
     disableTab1: boolean;
     disableTab2: boolean;
+    cambiaDir: boolean;
+    departs: ComboModel[];
+    provins: ComboModel[];
+    distris: ComboModel[];
+    dirdenunDirec: Dirdenun;
+    selectedDeparts: string;
+    selectedProvins: string;
+    selectedDistris: string;
 
     constructor(
         private eventManager: JhiEventManager,
@@ -51,12 +63,14 @@ export class ValidarUsuarioComponent implements OnInit {
     }
 
     loadAll() {
+        this.block = true;
         this.validarUsuarioService.consultaTipoDocIdentidad().subscribe(
             (res: ResponseWrapper) => {
                 this.tipodocs = res.json;
                 this.currentSearch = '';
+                this.block = false;
             },
-            (res: ResponseWrapper) => this.onError(res.json)
+            (res: ResponseWrapper) => { this.onError(res.json); this.block = false; }
         );
     }
 
@@ -72,13 +86,14 @@ export class ValidarUsuarioComponent implements OnInit {
         this.indexTab = 0;
         this.disableTab1 = true;
         this.disableTab2 = false;
-
+        this.cambiaDir = false;
+        this.pernatural = new Pernatural();
+        this.dirdenunDirec = new Dirdenun();
     }
 
     validarDatoPersona() {
+        this.block = true;
         this.messageList = [];
-        console.log(this.selectedTipodoc);
-        console.log(this.pernatural);
 
         if (this.selectedTipodoc === undefined) {
             this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar un tipo de documento.' });
@@ -99,28 +114,78 @@ export class ValidarUsuarioComponent implements OnInit {
         } else if (this.pernatural.vCelular === '') {
             this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar su celular.' });
         } else {
-            this.validarUsuarioService.consultaPersonaValidaServicio({TipoDoc: this.selectedTipodoc.name,
-                vApepat: this.pernatural.vApepat,
-                vApemat: this.pernatural.vApemat,
-                vNombres: this.pernatural.vNombres,
-                vNumdoc: this.pernatural.vNumdoc
-            }).subscribe(
+            this.messageList = [];
+            this.validarUsuarioService.consultaPersonaValidaServicio(
+                {
+                    TipoDoc: this.selectedTipodoc.name,
+                    vApepat: this.pernatural.vApepat,
+                    vApemat: this.pernatural.vApemat,
+                    vNombres: this.pernatural.vNombres,
+                    vNumdoc: this.pernatural.vNumdoc,
+                    vTelefono: this.pernatural.vTelefono,
+                    vCelular: this.pernatural.vCelular
+                }).subscribe(
                 (res: Pernatural) => {
                     this.pernatural = res;
-                    this.indexTab = 1;
-                    this.disableTab1 = true;
-                    this.disableTab2 = false;
+                    if (this.pernatural.Resultado) {
+                        this.validarUsuarioService.consultaDepa(this.pernatural.coddep).subscribe(
+                            (dep: any) => {
+                                this.validarUsuarioService.consultaProv(this.pernatural.coddep, this.pernatural.codpro).subscribe(
+                                    (prov: any) => {
+                                        this.validarUsuarioService.consultaDist(this.pernatural.coddep, this.pernatural.codpro, this.pernatural.coddist).subscribe(
+                                            (dist: any) => {
+                                                this.dirdenunDirec.vCoddepartDes = (dep.length > 0) ? dep[0].vDesdep : '';
+                                                this.dirdenunDirec.vCodprovinDes = (prov.length > 0) ? prov[0].vDespro : '';
+                                                this.dirdenunDirec.vCoddistriDes = (dist.length > 0) ? dist[0].vDesdis : '';
+                                                this.avanzarVentana();
+                                                this.block = false;
+                                            },
+                                            (dist: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: prov }]);
+                                            this.block = false; });
+                                    },
+                                    (prov: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: prov }]); this.block = false; });
+                            },
+                            (dep: ResponseWrapper) => this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: res }]));
+                    } else {
+                        this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: 'Los datos del documento de identidad no corresponden a los ingresados.' }])
+                        this.block = false;
+                    }
                 },
-                (res: ResponseWrapper) => this.onError(res.json)
-            );
+                (res: ResponseWrapper) => {this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: res.json }]); this.block = false; }
+                );
         }
         this.onErrorMultiple(this.messageList);
+    }
+
+    cambiaDireccion() {
+        this.block = true;
+        this.validarUsuarioService.consultaDepas().subscribe(
+            (deps: any) => {
+
+            },
+            (res: ResponseWrapper) => {this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: res.json }]); this.block = false; }
+        );
+
+        /* this.validarUsuarioService.consultaTipoDocIdentidad().subscribe(
+            (res: ResponseWrapper) => {
+                this.tipodocs = res.json;
+                this.currentSearch = '';
+                this.block = false;
+            },
+            (res: ResponseWrapper) => { this.onError(res.json); this.block = false; }
+        ); */
     }
 
     retrocederVentada() {
         this.indexTab = 0;
         this.disableTab1 = false;
         this.disableTab2 = true;
+    }
+
+    avanzarVentana() {
+        this.indexTab = 1;
+        this.disableTab1 = true;
+        this.disableTab2 = false;
     }
 
     cerrarNuevoUsuario() {
