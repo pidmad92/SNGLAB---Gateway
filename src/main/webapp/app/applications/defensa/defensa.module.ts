@@ -23,6 +23,8 @@ import { GatewayTipresconcModule } from '../../entities/tipresconc/tipresconc.mo
 import { RegistroExpedienteModule } from './registro-expediente/registro-expediente.module';
 import { EnvioNotificacionModule } from './envio-notificacion/envio-notificacion.module';
 import { ConsultaExpedienteModule } from './consulta-expediente/consulta-expediente.module';
+import { ConsultaNotificacionesModule } from './consulta-notificaciones/consulta-notificaciones.module';
+import { AudienciaModule } from './audiencia/audiencia.module';
 
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
@@ -47,7 +49,9 @@ import { ConsultaExpedienteModule } from './consulta-expediente/consulta-expedie
         // GatewayTipresconcModule,
         RegistroExpedienteModule,
         EnvioNotificacionModule,
-        ConsultaExpedienteModule
+        ConsultaExpedienteModule,
+        ConsultaNotificacionesModule,
+        AudienciaModule
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

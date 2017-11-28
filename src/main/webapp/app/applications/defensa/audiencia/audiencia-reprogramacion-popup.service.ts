@@ -6,7 +6,7 @@ import { Expediente } from './../../../entities/expediente/expediente.model';
 // import { AbogadoService } from './abogado.service';
 
 @Injectable()
-export class ConsultaExpedienteArchivarPopupService {
+export class AudienciaReprogramacionPopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
@@ -49,11 +49,11 @@ export class ConsultaExpedienteArchivarPopupService {
         const modalRef = this.modalService.open(component, {  backdrop: 'static'});
         modalRef.componentInstance.expediente = expediente;
         modalRef.result.then((result) => {
-            this.router.navigate(['defensa/consulta-expediente'], { replaceUrl: true });
+            this.router.navigate(['defensa/audiencia'], { replaceUrl: true });
             console.log('Cc-A');
             this.ngbModalRef = null;
         }, (reason) => {
-            this.router.navigate(['defensa/consulta-expediente'], { replaceUrl: true });
+            this.router.navigate(['defensa/audiencia'], { replaceUrl: true });
             console.log('Cc-B');
             this.ngbModalRef = null;
         });
