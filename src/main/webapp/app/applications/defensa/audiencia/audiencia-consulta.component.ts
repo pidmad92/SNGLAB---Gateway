@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ES } from './../../applications.constant';
 
 @Component({
     selector: 'jhi-audiencia-consulta',
@@ -10,11 +11,14 @@ export class AudienciaConsultaComponent implements OnInit {
     expedientes: any;
     id = '14';
     currentUrl: String;
+    rangeDates: Date[];
+    es: any;
 
     constructor(private router: Router) {
     }
 
     ngOnInit() {
+        this.es = ES;
         this.currentUrl = this.router.url;
         console.log(this.currentUrl);
         this.expedientes = [

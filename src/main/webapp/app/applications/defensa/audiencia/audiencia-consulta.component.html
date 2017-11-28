@@ -6,35 +6,20 @@
             </div>
             <div class="card-body">
                 <p-tabView>
-                    <p-tabPanel header="Por Datos Generales" [selected]="true">
+                    <p-tabPanel header="Por Fecha" [selected]="true">
                         <fieldset class="col">     
                             <legend>Búsqueda</legend>
                             <form>
                                 <div class="form-row">
                                     <div class="col-md-9">
                                         <div class="form-group row">
-                                            <label for="inpTipo" class="col-sm-3 col-form-label">Ubicación:</label>
+                                            <label for="inpTipo" class="col-sm-2 col-form-label">Fechas:</label>
                                             <div class="col-sm-3 pl-0">
-                                                <select class="form-control form-control-sm" id="inpTipo">
-                                                    <option>DNI</option>
-                                                    <option>RUC</option>
-                                                </select>
+                                                <p-calendar name="rangeDates" [(ngModel)]="rangeDates" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" selectionMode="range" readonlyInput="true"></p-calendar>
                                             </div>
-                                            <label for="inpNumero" class="col-sm-2 col-form-label">Conciliador:</label>
+                                            <label for="inpNumero" class="col-sm-2 col-form-label">N° Expediente:</label>
                                             <div class="col-sm-4">
-                                                <select class="form-control form-control-sm" id="inpTipo">
-                                                    <option>DNI</option>
-                                                    <option>RUC</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="inpTipo" class="col-sm-3 col-form-label">Resultado de Aud.:</label>
-                                            <div class="col-sm-9 pl-0">
-                                                <select class="form-control form-control-sm" id="inpTipo">
-                                                    <option>DNI</option>
-                                                    <option>RUC</option>
-                                                </select>
+                                                <input type="text" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -85,14 +70,14 @@
                             </div>
                         </form>
                     </p-tabPanel>
-                    <p-tabPanel header="Por Trabajadores">
+                    <p-tabPanel header="Por Conciliador">
                         <fieldset class="col">     
                             <legend>Búsqueda</legend>
                             <form>
                                 <div class="form-row">
                                     <div class="col-md-9">
                                         <div class="form-group row">
-                                            <label for="inpTipo" class="col-sm-3 col-form-label">Trabajador:</label>
+                                            <label for="inpTipo" class="col-sm-3 col-form-label">Conciliador:</label>
                                             <div class="col-sm-9 pl-0">
                                                 <select class="form-control form-control-sm" id="inpTipo">
                                                 </select>
@@ -107,13 +92,7 @@
                         </fieldset>
                         <div class="row my-2">
                             <div class="col-md-2 text-center">
-                                <a href="#" class="btn btn-success "><i class="fa fa-archive" aria-hidden="true"></i> Enviar al archivo</a>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <a href="#" class="btn btn-warning px-5"><i class="fa fa-sticky-note" aria-hidden="true"></i> Observar</a>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <button [routerLink]="['/defensa/consulta-expediente', { outlets: { popupexp: 'expediente/'+ id } }]" class="btn btn-info"><i class="fa fa-sticky-note" aria-hidden="true"></i> Ver datos del Exp.</button>
+                                <a [routerLink]="['/defensa/consulta-audiencia', { outlets: { popupexp: id } }]" class="btn btn-success "><i class="fa fa-archive" aria-hidden="true"></i> Ver Audiencia</a>
                             </div>
                         </div>
                         <form>
