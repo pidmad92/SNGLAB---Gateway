@@ -1,0 +1,83 @@
+
+<div *ngIf="participa">
+    <h2><span jhiTranslate="gatewayApp.participa.detail.title">Participa</span> {{participa.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.participa.nCodparti">N Codparti</span></dt>
+        <dd>
+            <span>{{participa.nCodparti}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.participa.nCodfperf">N Codfperf</span></dt>
+        <dd>
+            <span>{{participa.nCodfperf}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.participa.vNumdocum">V Numdocum</span></dt>
+        <dd>
+            <span>{{participa.vNumdocum}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.participa.vRazonsoc">V Razonsoc</span></dt>
+        <dd>
+            <span>{{participa.vRazonsoc}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.participa.vTipodoc">V Tipodoc</span></dt>
+        <dd>
+            <span>{{participa.vTipodoc}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.participa.vTipopart">V Tipopart</span></dt>
+        <dd>
+            <span>{{participa.vTipopart}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.participa.nPorcasig">N Porcasig</span></dt>
+        <dd>
+            <span>{{participa.nPorcasig}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.participa.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{participa.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.participa.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{participa.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.participa.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{participa.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.participa.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{participa.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.participa.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{participa.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.participa.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{participa.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.participa.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{participa.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.participa.formperfil">Formperfil</span></dt>
+        <dd>
+            <div *ngIf="participa.formperfil">
+                <a [routerLink]="['/formperfil', participa.formperfil?.id]">{{participa.formperfil?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'participa/'+ participa.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,49 @@
+{
+    "gatewayApp": {
+        "solicitud" : {
+            "home": {
+                "title": "Solicituds",
+                "createLabel": "Crear nuevo Solicitud",
+                "createOrEditLabel": "Crear o editar Solicitud",
+                "search": "Search for Solicitud"
+            },
+            "created": "Un nuevo Solicitud ha sido creado con el identificador {{ param }}",
+            "updated": "Un Solicitud ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Solicitud ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Solicitud {{ id }}?"
+            },
+            "detail": {
+                "title": "Solicitud"
+            },
+            "nCodsolic": "N Codsolic",
+            "nCodrepre": "N Codrepre",
+            "tFecsolic": "T Fecsolic",
+            "tFecenvio": "T Fecenvio",
+            "vFlgest": "V Flgest",
+            "vSolicita": "V Solicita",
+            "vEmpleador": "V Empleador",
+            "vSindicato": "V Sindicato",
+            "vArbitro": "V Arbitro",
+            "vCodsolic": "V Codsolic",
+            "vCodemple": "V Codemple",
+            "vCodaindi": "V Codaindi",
+            "vCodarbit": "V Codarbit",
+            "tFecvigde": "T Fecvigde",
+            "tFecvigha": "T Fecvigha",
+            "vVoucher": "V Voucher",
+            "vRegistro": "V Registro",
+            "vRucsol": "V Rucsol",
+            "vCodusu": "V Codusu",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "reporteRes": "Reporte Res",
+            "solFormulario": "Sol Formulario"
+        }
+    }
+}

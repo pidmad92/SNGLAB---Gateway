@@ -1,0 +1,113 @@
+
+<div *ngIf="solicform">
+    <h2><span jhiTranslate="gatewayApp.solicform.detail.title">Solicform</span> {{solicform.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.solicform.nCodsform">N Codsform</span></dt>
+        <dd>
+            <span>{{solicform.nCodsform}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.nCodsolic">N Codsolic</span></dt>
+        <dd>
+            <span>{{solicform.nCodsolic}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.nCodffina">N Codffina</span></dt>
+        <dd>
+            <span>{{solicform.nCodffina}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.nCodfarch">N Codfarch</span></dt>
+        <dd>
+            <span>{{solicform.nCodfarch}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.nCodfperf">N Codfperf</span></dt>
+        <dd>
+            <span>{{solicform.nCodfperf}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.vNomform">V Nomform</span></dt>
+        <dd>
+            <span>{{solicform.vNomform}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.vTipoform">V Tipoform</span></dt>
+        <dd>
+            <span>{{solicform.vTipoform}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.nFlgoblig">N Flgoblig</span></dt>
+        <dd>
+            <span>{{solicform.nFlgoblig}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.vFlgest">V Flgest</span></dt>
+        <dd>
+            <span>{{solicform.vFlgest}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.vObserva">V Observa</span></dt>
+        <dd>
+            <span>{{solicform.vObserva}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{solicform.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{solicform.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{solicform.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{solicform.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{solicform.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{solicform.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{solicform.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.formarchivo">Formarchivo</span></dt>
+        <dd>
+            <div *ngIf="solicform.formarchivo">
+                <a [routerLink]="['/formarchivo', solicform.formarchivo?.id]">{{solicform.formarchivo?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.formfinanc">Formfinanc</span></dt>
+        <dd>
+            <div *ngIf="solicform.formfinanc">
+                <a [routerLink]="['/formfinanc', solicform.formfinanc?.id]">{{solicform.formfinanc?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.formPerfil">Form Perfil</span></dt>
+        <dd>
+            <div *ngIf="solicform.formPerfil">
+                <a [routerLink]="['/formperfil', solicform.formPerfil?.id]">{{solicform.formPerfil?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicform.solicitud">Solicitud</span></dt>
+        <dd>
+            <div *ngIf="solicform.solicitud">
+                <a [routerLink]="['/solicitud', solicform.solicitud?.id]">{{solicform.solicitud?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'solicform/'+ solicform.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

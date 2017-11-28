@@ -1,0 +1,36 @@
+{
+    "gatewayApp": {
+        "participa" : {
+            "home": {
+                "title": "Participas",
+                "createLabel": "Crear nuevo Participa",
+                "createOrEditLabel": "Crear o editar Participa",
+                "search": "Search for Participa"
+            },
+            "created": "Un nuevo Participa ha sido creado con el identificador {{ param }}",
+            "updated": "Un Participa ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Participa ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Participa {{ id }}?"
+            },
+            "detail": {
+                "title": "Participa"
+            },
+            "nCodparti": "N Codparti",
+            "nCodfperf": "N Codfperf",
+            "vNumdocum": "V Numdocum",
+            "vRazonsoc": "V Razonsoc",
+            "vTipodoc": "V Tipodoc",
+            "vTipopart": "V Tipopart",
+            "nPorcasig": "N Porcasig",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "formperfil": "Formperfil"
+        }
+    }
+}

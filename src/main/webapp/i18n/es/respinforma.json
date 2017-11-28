@@ -1,0 +1,38 @@
+{
+    "gatewayApp": {
+        "respinforma" : {
+            "home": {
+                "title": "Respinformas",
+                "createLabel": "Crear nuevo Respinforma",
+                "createOrEditLabel": "Crear o editar Respinforma",
+                "search": "Search for Respinforma"
+            },
+            "created": "Un nuevo Respinforma ha sido creado con el identificador {{ param }}",
+            "updated": "Un Respinforma ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Respinforma ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Respinforma {{ id }}?"
+            },
+            "detail": {
+                "title": "Respinforma"
+            },
+            "nCodrinfo": "N Codrinfo",
+            "nCodfperf": "N Codfperf",
+            "vTipores": "V Tipores",
+            "vNumdocum": "V Numdocum",
+            "vNombre": "V Nombre",
+            "vCargores": "V Cargores",
+            "vEmailres": "V Emailres",
+            "vTelefono": "V Telefono",
+            "vCelular": "V Celular",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "formperfil": "Formperfil"
+        }
+    }
+}

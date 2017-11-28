@@ -1,0 +1,131 @@
+
+<div *ngIf="solicitud">
+    <h2><span jhiTranslate="gatewayApp.solicitud.detail.title">Solicitud</span> {{solicitud.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.solicitud.nCodsolic">N Codsolic</span></dt>
+        <dd>
+            <span>{{solicitud.nCodsolic}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.nCodrepre">N Codrepre</span></dt>
+        <dd>
+            <span>{{solicitud.nCodrepre}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.tFecsolic">T Fecsolic</span></dt>
+        <dd>
+            <span>{{solicitud.tFecsolic | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.tFecenvio">T Fecenvio</span></dt>
+        <dd>
+            <span>{{solicitud.tFecenvio | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.vFlgest">V Flgest</span></dt>
+        <dd>
+            <span>{{solicitud.vFlgest}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.vSolicita">V Solicita</span></dt>
+        <dd>
+            <span>{{solicitud.vSolicita}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.vEmpleador">V Empleador</span></dt>
+        <dd>
+            <span>{{solicitud.vEmpleador}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.vSindicato">V Sindicato</span></dt>
+        <dd>
+            <span>{{solicitud.vSindicato}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.vArbitro">V Arbitro</span></dt>
+        <dd>
+            <span>{{solicitud.vArbitro}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.vCodsolic">V Codsolic</span></dt>
+        <dd>
+            <span>{{solicitud.vCodsolic}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.vCodemple">V Codemple</span></dt>
+        <dd>
+            <span>{{solicitud.vCodemple}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.vCodaindi">V Codaindi</span></dt>
+        <dd>
+            <span>{{solicitud.vCodaindi}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.vCodarbit">V Codarbit</span></dt>
+        <dd>
+            <span>{{solicitud.vCodarbit}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.tFecvigde">T Fecvigde</span></dt>
+        <dd>
+            <span>{{solicitud.tFecvigde | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.tFecvigha">T Fecvigha</span></dt>
+        <dd>
+            <span>{{solicitud.tFecvigha | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.vVoucher">V Voucher</span></dt>
+        <dd>
+            <span>{{solicitud.vVoucher}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.vRegistro">V Registro</span></dt>
+        <dd>
+            <span>{{solicitud.vRegistro}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.vRucsol">V Rucsol</span></dt>
+        <dd>
+            <span>{{solicitud.vRucsol}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.vCodusu">V Codusu</span></dt>
+        <dd>
+            <span>{{solicitud.vCodusu}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{solicitud.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{solicitud.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{solicitud.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{solicitud.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{solicitud.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{solicitud.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{solicitud.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.solicitud.reporteRes">Reporte Res</span></dt>
+        <dd>
+            <div *ngIf="solicitud.reporteRes">
+                <a [routerLink]="['/reporteres', solicitud.reporteRes?.id]">{{solicitud.reporteRes?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'solicitud/'+ solicitud.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

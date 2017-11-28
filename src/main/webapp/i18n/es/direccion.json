@@ -1,0 +1,37 @@
+{
+    "gatewayApp": {
+        "direccion" : {
+            "home": {
+                "title": "Direccions",
+                "createLabel": "Crear nuevo Direccion",
+                "createOrEditLabel": "Crear o editar Direccion",
+                "search": "Search for Direccion"
+            },
+            "created": "Un nuevo Direccion ha sido creado con el identificador {{ param }}",
+            "updated": "Un Direccion ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Direccion ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Direccion {{ id }}?"
+            },
+            "detail": {
+                "title": "Direccion"
+            },
+            "nCoddirec": "N Coddirec",
+            "nCodfperf": "N Codfperf",
+            "vDepart": "V Depart",
+            "vProvincia": "V Provincia",
+            "vDistrito": "V Distrito",
+            "vDireccion": "V Direccion",
+            "vReferen": "V Referen",
+            "nNotifica": "N Notifica",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "formperfil": "Formperfil"
+        }
+    }
+}

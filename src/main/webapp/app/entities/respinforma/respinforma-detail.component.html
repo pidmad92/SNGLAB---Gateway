@@ -1,0 +1,91 @@
+
+<div *ngIf="respinforma">
+    <h2><span jhiTranslate="gatewayApp.respinforma.detail.title">Respinforma</span> {{respinforma.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.respinforma.nCodrinfo">N Codrinfo</span></dt>
+        <dd>
+            <span>{{respinforma.nCodrinfo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.respinforma.nCodfperf">N Codfperf</span></dt>
+        <dd>
+            <span>{{respinforma.nCodfperf}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.respinforma.vTipores">V Tipores</span></dt>
+        <dd>
+            <span>{{respinforma.vTipores}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.respinforma.vNumdocum">V Numdocum</span></dt>
+        <dd>
+            <span>{{respinforma.vNumdocum}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.respinforma.vNombre">V Nombre</span></dt>
+        <dd>
+            <span>{{respinforma.vNombre}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.respinforma.vCargores">V Cargores</span></dt>
+        <dd>
+            <span>{{respinforma.vCargores}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.respinforma.vEmailres">V Emailres</span></dt>
+        <dd>
+            <span>{{respinforma.vEmailres}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.respinforma.vTelefono">V Telefono</span></dt>
+        <dd>
+            <span>{{respinforma.vTelefono}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.respinforma.vCelular">V Celular</span></dt>
+        <dd>
+            <span>{{respinforma.vCelular}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.respinforma.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{respinforma.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.respinforma.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{respinforma.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.respinforma.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{respinforma.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.respinforma.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{respinforma.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.respinforma.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{respinforma.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.respinforma.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{respinforma.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.respinforma.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{respinforma.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.respinforma.formperfil">Formperfil</span></dt>
+        <dd>
+            <div *ngIf="respinforma.formperfil">
+                <a [routerLink]="['/formperfil', respinforma.formperfil?.id]">{{respinforma.formperfil?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'respinforma/'+ respinforma.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

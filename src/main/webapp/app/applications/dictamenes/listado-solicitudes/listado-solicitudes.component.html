@@ -1,0 +1,195 @@
+<div class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
+    <div class="row">
+        <div class="col">
+            <h4 class="title">Consulta solicitud</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card card-mtpe mb-3">
+                <div class="card-header bg-light d-sm-flex justify-content-between p-2">
+                    <h5 class="mb-0">
+                        <small>
+                            <i class="fa fa-percent" aria-hidden="true"></i>Listado de solicitud</small>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-right">
+                        <strong>Empleador: </strong>Empresa</p>
+                    <table class="table table-responsive" id="Csolicitud">
+                        <thead style="text-align: center;">
+                            <tr>
+                                <th>N°</th>
+                                <th>Fecha</th>
+                                <th>Solicitante</th>
+                                <th>Empleador</th>
+                                <th>Sindicato</th>
+                                <th>Árbitro</th>
+                                <th>Vigencia Desde</th>
+                                <th>Vigencia Hasta</th>
+                                <th>Voucher</th>
+                                <th>Estado</th>
+                                <th>Documento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let solicitud of solicituds; let i = index">
+                                <tr [ngClass]="{ enviado: solicitud.vFlgest == 'E', observado: solicitud.vFlgest == 'O', conforme: solicitud.vFlgest == 'C' }">
+                                    <td>
+                                        <span>{{i+1}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{solicitud.tFecsolic | date:'dd/MM/yyyy'}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{solicitud.vSolicita}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{solicitud.vEmpleador}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{solicitud.vSindicato}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{solicitud.vArbitro}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{solicitud.tFecvigde | date:'dd/MM/yyyy'}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{solicitud.tFecvigha | date:'dd/MM/yyyy'}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{solicitud.vVoucher}}</span>
+                                    </td>
+                                    <td>
+                                        <span *ngIf="solicitud.vFlgest == 'P' && solicitud.vVoucher == null">
+                                            <a (click)="showDialog(solicitud)" [routerLink]="">PENDIENTE</a>
+                                        </span>
+                                        <span *ngIf="solicitud.vFlgest == 'E'">
+                                            <a (click)="showDialog(solicitud)" [routerLink]="">ENVIADO</a>
+                                        </span>
+                                        <span *ngIf="solicitud.vFlgest == 'O' && solicitud.vVoucher == null">
+                                            <a (click)="showDialog(solicitud)" [routerLink]="">OBSERVADO</a>
+                                        </span>
+                                        <span *ngIf="solicitud.vFlgest == 'C'">
+                                            <a (click)="showDialog(solicitud)" [routerLink]="">CONFORME</a>
+                                        </span>
+                                        <span *ngIf="solicitud.vFlgest == 'P' && solicitud.vVoucher != null">
+                                            <a (click)="verControlInformacion(solicitud)" [routerLink]="">PENDIENTE</a>
+                                        </span>
+                                        <span *ngIf="solicitud.vFlgest == 'O' && solicitud.vVoucher != null">
+                                            <a (click)="verControlInformacion(solicitud)" [routerLink]="">OBSERVADO</a>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div *ngIf="solicitud.reporteRes">
+                                            <a [routerLink]="['../reporteres', solicitud.reporteRes?.id ]">{{solicitud.reporteRes?.vNombre}}</a>
+                                        </div>
+                                    </td>
+
+                                    <!--<td class="text-right">
+                              <div class="btn-group flex-btn-group-container">
+                                  <button type="submit"
+                                          [routerLink]="['../solicitud', solicitud.id ]"
+                                          class="btn btn-info btn-sm">
+                                      <span class="fa fa-eye"></span>
+                                      <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                                  </button>
+                                  <button type="submit"
+                                          [routerLink]="['/', { outlets: { popup: 'solicitud/'+ solicitud.id + '/edit'} }]"
+                                          replaceUrl="true"
+                                          class="btn btn-primary btn-sm">
+                                      <span class="fa fa-pencil"></span>
+                                      <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                                  </button>
+                                  <button type="submit"
+                                          [routerLink]="['/', { outlets: { popup: 'solicitud/'+ solicitud.id + '/delete'} }]"
+                                          replaceUrl="true"
+                                          class="btn btn-danger btn-sm">
+                                      <span class="fa fa-remove"></span>
+                                      <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                                  </button>
+                              </div>
+                          </td>-->
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+                    <p-dialog *ngIf="solicitud" [(visible)]="display" modal="modal" width="600" [responsive]="true">
+                        <p-header>
+                            Verificación de Voucher de Pago - Fecha de Solicitud: {{solicitud.tFecsolic | date:'dd/MM/yyyy'}}
+                        </p-header>
+                        <p>
+
+                            <div class="col-md-10 bg-light m-auto">
+                                <p class="mb-0 small">BANCO DE LA NACIÓN</p>
+                                <p class="text-right small mb-0">COMPROBANTE DE PAGO</p>
+                                <p class="text-right small mb-0">SISTEMA ELECTORAL RENIEC</p>
+                                <div class="form-group row mb-2">
+                                    <span for="inpNumero" class="col-sm-2">CÓDIGO:</span>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control form-control-sm" [(ngModel)]="vCodigo">
+                                    </div>
+                                </div>
+                                <p class="small mb-0">DUPLICADO DE DNI / DNIe (MAYOR DE 17 AÑOS DE EDAD)</p>
+                                <p class="small mb-0">DOCUMENTO: 1 D.N.I. NRO:</p>
+                                <p class="small mb-0">CANT.DOC. :0001</p>
+                                <p class="small mb-0">MONTO S/. :******20.20/34.00</p>
+                                <br/>
+                                <table style="text-align: center">
+                                    <tbody>
+                                        <tr>
+                                            <td>049257</td>
+                                            <td>-</td>
+                                            <td>7</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td>21</td>
+                                            <td>OCT</td>
+                                            <td>2017</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td>9650</td>
+                                            <td>0133</td>
+                                            <td>0002</td>
+                                            <td>09:04:14</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="text" class="form-control form-control-sm" [(ngModel)]="vNumRecibo1">
+                                            </td>
+                                            <td>-</td>
+                                            <td>
+                                                <input type="text" class="form-control form-control-sm" [(ngModel)]="vNumRecibo2">
+                                            </td>
+                                            <td> </td>
+                                            <td colspan="3">
+                                                <input type="date" class="form-control form-control-sm" [(ngModel)]="tFecPago">
+                                            </td>
+                                            <td>&nbsp;&nbsp;</td>
+                                            <td>
+                                                <input type="text" class="form-control form-control-sm" [(ngModel)]="vNumRecibo3">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control form-control-sm" [(ngModel)]="vNumRecibo4">
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </br>
+                                <p class="small mb-0 text-md-right">********************* CLIENTE</p>
+                                <p class="small mb-0">013300045</p>
+                            </div>
+                        </p>
+                        <p-footer>
+                            <button type="button" icon="fa-check" (click)="verificarVoucher()" label="Yes">Enviar</button>
+                            <button type="button" icon="fa-close" (click)="display=false" label="No">Cancelar</button>
+                        </p-footer>
+                    </p-dialog>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

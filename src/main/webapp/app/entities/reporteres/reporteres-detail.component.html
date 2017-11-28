@@ -1,0 +1,72 @@
+
+<div *ngIf="reporteres">
+    <h2><span jhiTranslate="gatewayApp.reporteres.detail.title">Reporteres</span> {{reporteres.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.reporteres.nCodrepre">N Codrepre</span></dt>
+        <dd>
+            <span>{{reporteres.nCodrepre}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.reporteres.vTiporep">V Tiporep</span></dt>
+        <dd>
+            <span>{{reporteres.vTiporep}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.reporteres.vNombre">V Nombre</span></dt>
+        <dd>
+            <span>{{reporteres.vNombre}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.reporteres.bArchivo">B Archivo</span></dt>
+        <dd>
+            <div *ngIf="reporteres.bArchivo">
+                <a (click)="openFile(reporteres.bArchivoContentType, reporteres.bArchivo)" jhiTranslate="entity.action.open">open</a>
+                {{reporteres.bArchivoContentType}}, {{byteSize(reporteres.bArchivo)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.reporteres.vContype">V Contype</span></dt>
+        <dd>
+            <span>{{reporteres.vContype}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.reporteres.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{reporteres.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.reporteres.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{reporteres.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.reporteres.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{reporteres.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.reporteres.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{reporteres.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.reporteres.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{reporteres.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.reporteres.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{reporteres.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.reporteres.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{reporteres.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'reporteres/'+ reporteres.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

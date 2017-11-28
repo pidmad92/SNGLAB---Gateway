@@ -1,0 +1,89 @@
+
+<div *ngIf="formfinanc">
+    <h2><span jhiTranslate="gatewayApp.formfinanc.detail.title">Formfinanc</span> {{formfinanc.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.formfinanc.nCodffina">N Codffina</span></dt>
+        <dd>
+            <span>{{formfinanc.nCodffina}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formfinanc.vCodform">V Codform</span></dt>
+        <dd>
+            <span>{{formfinanc.vCodform}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formfinanc.vDesffina">V Desffina</span></dt>
+        <dd>
+            <span>{{formfinanc.vDesffina}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formfinanc.vUndffina">V Undffina</span></dt>
+        <dd>
+            <span>{{formfinanc.vUndffina}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formfinanc.nMonffina">N Monffina</span></dt>
+        <dd>
+            <span>{{formfinanc.nMonffina}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formfinanc.nPorcffin">N Porcffin</span></dt>
+        <dd>
+            <span>{{formfinanc.nPorcffin}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formfinanc.nAnioform">N Anioform</span></dt>
+        <dd>
+            <span>{{formfinanc.nAnioform}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formfinanc.nMesform">N Mesform</span></dt>
+        <dd>
+            <span>{{formfinanc.nMesform}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formfinanc.vCodfila">V Codfila</span></dt>
+        <dd>
+            <span>{{formfinanc.vCodfila}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formfinanc.vCodcolum">V Codcolum</span></dt>
+        <dd>
+            <span>{{formfinanc.vCodcolum}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formfinanc.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{formfinanc.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formfinanc.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{formfinanc.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formfinanc.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{formfinanc.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formfinanc.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{formfinanc.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formfinanc.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{formfinanc.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formfinanc.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{formfinanc.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formfinanc.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{formfinanc.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'formfinanc/'+ formfinanc.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

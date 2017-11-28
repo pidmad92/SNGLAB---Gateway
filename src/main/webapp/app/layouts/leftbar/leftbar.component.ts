@@ -37,6 +37,7 @@ export class LeftbarComponent implements OnInit {
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
+
         this.getRoute(router);
     }
 
@@ -45,12 +46,16 @@ export class LeftbarComponent implements OnInit {
             this.aplicacion = 'defensa';
         } else if (router.url.indexOf('consultas') === 1) {
             this.aplicacion = 'consultas';
+        } else if (router.url.indexOf('liquidaciones') === 1) {
+            this.aplicacion = 'liquidaciones';
         } else if (router.url.indexOf('sindicatos') === 1) {
             this.aplicacion = 'sindicatos';
+        } else if (router.url.indexOf('dictamenes') === 1) {
+            this.aplicacion = 'dictamenes';
         } else if (router.url.indexOf('denuncias') === 1) {
             this.aplicacion = 'denuncias';
         } else {
-            this.aplicacion = 'seguridad';
+            this.aplicacion = 'dictamenes';
         }
     }
 
