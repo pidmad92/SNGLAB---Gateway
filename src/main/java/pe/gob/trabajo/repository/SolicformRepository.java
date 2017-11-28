@@ -14,4 +14,10 @@ import org.springframework.data.repository.query.Param;
 @Repository
 public interface SolicformRepository extends JpaRepository<Solicform, Integer> {
 
+    //Obtener los datos de control de informacion de los formularios
+    @Query("select a " +
+    "from Solicform a where a.nFlgactivo = 1 and a.nFlgoblig = :flgObligatorio and a.nCodsolic = :codSolicitud")
+    public List<Solicform> obtenerDatosFormulario(@Param("flgObligatorio") Boolean flgObligatorio, @Param("codSolicitud") Integer codSolicitud);
+
+
 }

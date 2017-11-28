@@ -144,5 +144,17 @@ public class SolicformResource {
             .stream(solicformSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
+    
+/**
+     * GET  /obtenerDatosFormulario : Obtener los datos de uno o varios formularios.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of obtenerDatosFormulario in body
+     */
+    @GetMapping("/obtenerDatosFormulario")
+    @Timed
+    public List<Solicform> obtenerDatosFormulario(@RequestParam Boolean flgObligatorio,@RequestParam Integer codSolicitud) {
+        log.debug("REST Obtener los datos de uno o varios formularios");
+        return solicformRepository.obtenerDatosFormulario(flgObligatorio,codSolicitud);
+    }
 
 }

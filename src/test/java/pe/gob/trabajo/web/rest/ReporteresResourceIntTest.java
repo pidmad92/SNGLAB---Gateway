@@ -125,7 +125,7 @@ public class ReporteresResourceIntTest {
             .vTiporep(DEFAULT_V_TIPOREP)
             .vNombre(DEFAULT_V_NOMBRE)
             .bArchivo(DEFAULT_B_ARCHIVO)
-            .bArchivoContentType(DEFAULT_B_ARCHIVO_CONTENT_TYPE)
+            .vContype(DEFAULT_B_ARCHIVO_CONTENT_TYPE)
             .vContype(DEFAULT_V_CONTYPE)
             .vUsuareg(DEFAULT_V_USUAREG)
             .tFecreg(DEFAULT_T_FECREG)
@@ -162,7 +162,7 @@ public class ReporteresResourceIntTest {
         assertThat(testReporteres.getvTiporep()).isEqualTo(DEFAULT_V_TIPOREP);
         assertThat(testReporteres.getvNombre()).isEqualTo(DEFAULT_V_NOMBRE);
         assertThat(testReporteres.getbArchivo()).isEqualTo(DEFAULT_B_ARCHIVO);
-        assertThat(testReporteres.getbArchivoContentType()).isEqualTo(DEFAULT_B_ARCHIVO_CONTENT_TYPE);
+        assertThat(testReporteres.getvContype()).isEqualTo(DEFAULT_B_ARCHIVO_CONTENT_TYPE);
         assertThat(testReporteres.getvContype()).isEqualTo(DEFAULT_V_CONTYPE);
         assertThat(testReporteres.getvUsuareg()).isEqualTo(DEFAULT_V_USUAREG);
         assertThat(testReporteres.gettFecreg()).isEqualTo(DEFAULT_T_FECREG);
@@ -300,7 +300,7 @@ public class ReporteresResourceIntTest {
             .andExpect(jsonPath("$.[*].nCodrepre").value(hasItem(DEFAULT_N_CODREPRE)))
             .andExpect(jsonPath("$.[*].vTiporep").value(hasItem(DEFAULT_V_TIPOREP.toString())))
             .andExpect(jsonPath("$.[*].vNombre").value(hasItem(DEFAULT_V_NOMBRE.toString())))
-            .andExpect(jsonPath("$.[*].bArchivoContentType").value(hasItem(DEFAULT_B_ARCHIVO_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].vContype").value(hasItem(DEFAULT_B_ARCHIVO_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].bArchivo").value(hasItem(Base64Utils.encodeToString(DEFAULT_B_ARCHIVO))))
             .andExpect(jsonPath("$.[*].vContype").value(hasItem(DEFAULT_V_CONTYPE.toString())))
             .andExpect(jsonPath("$.[*].vUsuareg").value(hasItem(DEFAULT_V_USUAREG.toString())))
@@ -326,7 +326,7 @@ public class ReporteresResourceIntTest {
             .andExpect(jsonPath("$.nCodrepre").value(DEFAULT_N_CODREPRE))
             .andExpect(jsonPath("$.vTiporep").value(DEFAULT_V_TIPOREP.toString()))
             .andExpect(jsonPath("$.vNombre").value(DEFAULT_V_NOMBRE.toString()))
-            .andExpect(jsonPath("$.bArchivoContentType").value(DEFAULT_B_ARCHIVO_CONTENT_TYPE))
+            .andExpect(jsonPath("$.vContype").value(DEFAULT_B_ARCHIVO_CONTENT_TYPE))
             .andExpect(jsonPath("$.bArchivo").value(Base64Utils.encodeToString(DEFAULT_B_ARCHIVO)))
             .andExpect(jsonPath("$.vContype").value(DEFAULT_V_CONTYPE.toString()))
             .andExpect(jsonPath("$.vUsuareg").value(DEFAULT_V_USUAREG.toString()))
@@ -361,7 +361,7 @@ public class ReporteresResourceIntTest {
             .vTiporep(UPDATED_V_TIPOREP)
             .vNombre(UPDATED_V_NOMBRE)
             .bArchivo(UPDATED_B_ARCHIVO)
-            .bArchivoContentType(UPDATED_B_ARCHIVO_CONTENT_TYPE)
+            .vContype(UPDATED_B_ARCHIVO_CONTENT_TYPE)
             .vContype(UPDATED_V_CONTYPE)
             .vUsuareg(UPDATED_V_USUAREG)
             .tFecreg(UPDATED_T_FECREG)
@@ -384,7 +384,7 @@ public class ReporteresResourceIntTest {
         assertThat(testReporteres.getvTiporep()).isEqualTo(UPDATED_V_TIPOREP);
         assertThat(testReporteres.getvNombre()).isEqualTo(UPDATED_V_NOMBRE);
         assertThat(testReporteres.getbArchivo()).isEqualTo(UPDATED_B_ARCHIVO);
-        assertThat(testReporteres.getbArchivoContentType()).isEqualTo(UPDATED_B_ARCHIVO_CONTENT_TYPE);
+        assertThat(testReporteres.getvContype()).isEqualTo(UPDATED_B_ARCHIVO_CONTENT_TYPE);
         assertThat(testReporteres.getvContype()).isEqualTo(UPDATED_V_CONTYPE);
         assertThat(testReporteres.getvUsuareg()).isEqualTo(UPDATED_V_USUAREG);
         assertThat(testReporteres.gettFecreg()).isEqualTo(UPDATED_T_FECREG);
@@ -454,7 +454,7 @@ public class ReporteresResourceIntTest {
             .andExpect(jsonPath("$.[*].nCodrepre").value(hasItem(DEFAULT_N_CODREPRE)))
             .andExpect(jsonPath("$.[*].vTiporep").value(hasItem(DEFAULT_V_TIPOREP.toString())))
             .andExpect(jsonPath("$.[*].vNombre").value(hasItem(DEFAULT_V_NOMBRE.toString())))
-            .andExpect(jsonPath("$.[*].bArchivoContentType").value(hasItem(DEFAULT_B_ARCHIVO_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].vContype").value(hasItem(DEFAULT_B_ARCHIVO_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].bArchivo").value(hasItem(Base64Utils.encodeToString(DEFAULT_B_ARCHIVO))))
             .andExpect(jsonPath("$.[*].vContype").value(hasItem(DEFAULT_V_CONTYPE.toString())))
             .andExpect(jsonPath("$.[*].vUsuareg").value(hasItem(DEFAULT_V_USUAREG.toString())))

@@ -1,0 +1,111 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "formperfil",
+            "otherEntityName": "formperfil",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nCodanexo",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nCodfperf",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nAnioanex",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "vTipocont",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 1
+        },
+        {
+            "fieldName": "vDeclegal",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "vDesanexo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "nCantlabo",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "vUsuareg",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "tFecreg",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nFlgactivo",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nSedereg",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "vUsuaupd",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "tFecupd",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "nSedeupd",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171122194109",
+    "entityTableName": "anexlaboral",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

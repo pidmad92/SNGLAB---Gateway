@@ -87,4 +87,11 @@ export class SolicformService {
         copy.tFecupd = this.dateUtils.toDate(solicform.tFecupd);
         return copy;
     }
+
+    obtenerlistaFormulariosObligatorios(flgObligatorio: number, nCodsolic: number): Observable<ResponseWrapper> {
+        const options = createRequestOption();
+        const url = SERVER_API_URL + 'api/obtenerDatosFormulario';
+        return this.http.get(url + '?flgObligatorio=' + flgObligatorio + '&codSolicitud=' + nCodsolic, options)
+            .map((res: Response) => this.convertResponse(res));
+    }
 }

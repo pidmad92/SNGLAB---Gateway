@@ -91,16 +91,19 @@ public class Solicform implements Serializable {
     private Integer nSedeupd;
 
     @ManyToOne
+    @JoinColumn(name="n_codfarch",insertable=false,updatable=false)
     private Formarchivo formarchivo;
 
     @ManyToOne
+    @JoinColumn(name="n_codffina",insertable=false,updatable=false)
     private Formfinanc formfinanc;
 
     @OneToOne
-    @JoinColumn(unique = true)
+    @JoinColumn(name="n_codfperf",insertable=false,updatable=false,unique = true)
     private Formperfil formPerfil;
 
     @ManyToOne
+    @JoinColumn(name="n_codsolic",insertable=false,updatable=false)
     private Solicitud solicitud;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

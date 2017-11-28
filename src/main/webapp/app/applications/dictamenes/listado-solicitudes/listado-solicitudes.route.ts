@@ -5,6 +5,7 @@ import { ListadoSolicitudesComponent } from './listado-solicitudes.component';
 import { UserRouteAccessService } from '../../../shared';
 import { JhiPaginationUtil } from 'ng-jhipster';
 import { SolicitudPopupComponent } from '../../../entities/solicitud/solicitud-dialog.component';
+import { ControlInformacionComponent } from '../control-informacion/index';
 
 export const ListadoSolicitudesRoute: Routes = [
     {
@@ -12,13 +13,14 @@ export const ListadoSolicitudesRoute: Routes = [
         component: ListadoSolicitudesComponent,
         children: []
     }, {
-        path: 'solicitud/:id/voucher',
-        component: SolicitudPopupComponent,
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.solicitud.home.title'
-        },
-        canActivate: [UserRouteAccessService],
-        outlet: 'popup'
-    }
+        path: 'dictamenes/control-informacion',
+        component: ControlInformacionComponent,
+        children: [],
+        }
+
+    , {
+        path: 'dictamenes/control-informacion/:nCodsolic',
+        component: ControlInformacionComponent,
+        children: [],
+        }
 ];
