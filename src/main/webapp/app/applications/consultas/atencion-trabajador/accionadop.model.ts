@@ -1,9 +1,9 @@
 import { BaseEntity } from './../../../shared';
 
-export class Trabajador implements BaseEntity {
+export class Accionadop implements BaseEntity {
     constructor(
         public id?: number,
-        public nFlgsuces?: boolean,
+        public vDesaccdop?: string,
         public nUsuareg?: number,
         public tFecreg?: any,
         public nFlgactivo?: boolean,
@@ -11,14 +11,8 @@ export class Trabajador implements BaseEntity {
         public nUsuaupd?: number,
         public tFecupd?: any,
         public nSedeupd?: number,
-        public cartrab?: BaseEntity,
-        public pernatural?: BaseEntity,
-        public expedientes?: BaseEntity[],
-        public datlabs?: BaseEntity[],
-        public atencions?: BaseEntity[],
-        public sucesors?: BaseEntity[],
+        public accadoates?: BaseEntity[],
     ) {
-        this.nFlgsuces = false;
         this.nFlgactivo = false;
     }
 }

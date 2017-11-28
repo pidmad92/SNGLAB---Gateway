@@ -4,51 +4,47 @@ import { Observable } from 'rxjs/Rx';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
-import { Trabajador } from './trabajador.model';
+import { Cartrab } from './cartrab.model';
 import { ResponseWrapper, createRequestOption } from '../../../shared';
 
-import { Tipdocident } from './tipdocident.model';
-
 @Injectable()
-export class AtencionTrabajadorService {
+export class CartrabService {
 
-    private resourceUrl = '/consultas/api/trabajador';
-    private resourceSearchUrl = '/consultas/api/_search/trabajador';
-    private resource_tipdocident_url = '/consultas/api/tipdocident';
+    private resourceUrl = '/consultas/api/cartrabs';
+    private resourceSearchUrl = '/consultas/api/_search/cartrabs';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
-    create(trabajador: Trabajador): Observable<Trabajador> {
-        const copy = this.convert(trabajador);
+    create(cartrab: Cartrab): Observable<Cartrab> {
+        const copy = this.convert(cartrab);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-    update(trabajador: Trabajador): Observable<Trabajador> {
-        const copy = this.convert(trabajador);
+    update(cartrab: Cartrab): Observable<Cartrab> {
+        const copy = this.convert(cartrab);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-    find(id: number): Observable<Trabajador> {
+    find(id: number): Observable<Cartrab> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-// JH: inicio
-    findTrabajadorByDocIdent(tipodoc: number, numdoc: String): Observable<Trabajador> {
-        return this.http.get(`${this.resourceUrl}/tipdoc/${tipodoc}/numdoc/${numdoc}`).map((res: Response) => {
-            const jsonResponse = res.json();
-            return this.convertItemFromServer(jsonResponse);
-        });
+    /** JH
+     * DEVUELVE UN ARREGLO DE Cargos de Trabajador.
+     */
+    findListaCargoTrabajador(): Observable<ResponseWrapper> {
+        return this.http.get(this.resourceUrl)
+        .map((res: Response) => this.convertResponse(res));
     }
-// JH: final
 
     query(req?: any): Observable<ResponseWrapper> {
         const options = createRequestOption(req);
@@ -76,10 +72,10 @@ export class AtencionTrabajadorService {
     }
 
     /**
-     * Convert a returned JSON object to trabajador.
+     * Convert a returned JSON object to Cartrab.
      */
-    private convertItemFromServer(json: any): Trabajador {
-        const entity: Trabajador = Object.assign(new Trabajador(), json);
+    private convertItemFromServer(json: any): Cartrab {
+        const entity: Cartrab = Object.assign(new Cartrab(), json);
         entity.tFecreg = this.dateUtils
             .convertDateTimeFromServer(json.tFecreg);
         entity.tFecupd = this.dateUtils
@@ -88,14 +84,14 @@ export class AtencionTrabajadorService {
     }
 
     /**
-     * Convert a trabajador to a JSON which can be sent to the server.
+     * Convert a Cartrab to a JSON which can be sent to the server.
      */
-    private convert(trabajador: Trabajador): Trabajador {
-        const copy: Trabajador = Object.assign({}, trabajador);
+    private convert(cartrab: Cartrab): Cartrab {
+        const copy: Cartrab = Object.assign({}, cartrab);
 
-        copy.tFecreg = this.dateUtils.toDate(trabajador.tFecreg);
+        copy.tFecreg = this.dateUtils.toDate(cartrab.tFecreg);
 
-        copy.tFecupd = this.dateUtils.toDate(trabajador.tFecupd);
+        copy.tFecupd = this.dateUtils.toDate(cartrab.tFecupd);
         return copy;
     }
 }

@@ -23,7 +23,8 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         GatewaySharedModule,
-        RouterModule.forRoot(ENTITY_STATES, { useHash: true })
+        // RouterModule.forRoot(ENTITY_STATES, { useHash: true })
+        RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
         MotateComponent,
