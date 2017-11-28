@@ -15,18 +15,32 @@ export class ConsultaOrganizacionComponent implements OnInit {
     eventSubscriber: Subscription;
     currentSearch: string;
 
-    placeholder: 'Add a tag';
-    ngModel: string[];
-    delimiterCode: '188';
-
-    public settings = {
-        recipients: [],
-        tags: ['one', 'two', 'three']
-      };
+    txtBuscar: string;
+    val1: string;
+    displayDialog: boolean;
+    newCar: boolean;
+    listaConsulta: any[];
 
     constructor(
         private eventManager: JhiEventManager
     ) {
+    }
+
+    ngOnInit() {
+        this.listaConsulta = [
+            {expediente : '124234-2343', nombre: 'Ministerio de Trabajo Lima', fecha: '11/11/11'},
+            {expediente : '124234-2342', nombre: 'Ministerio de Trabajo Huau', fecha: '11/11/11'},
+            {expediente : '124234-2341', nombre: 'Ministerio de Trabajo Huaa', fecha: '11/11/11'},
+        ]
+        /*this.loadAll();
+        this.principal.identity().then((account) => {
+            this.currentAccount = account;
+        });
+        this.registerChangeInAtencionEmpleador();*/
+    }
+    showDialogToAdd() {
+        this.newCar = true;
+        this.displayDialog = true;
     }
 
     loadAll() {
@@ -51,13 +65,6 @@ export class ConsultaOrganizacionComponent implements OnInit {
     clear() {
         /*this.currentSearch = '';
         this.loadAll();*/
-    }
-    ngOnInit() {
-        /*this.loadAll();
-        this.principal.identity().then((account) => {
-            this.currentAccount = account;
-        });
-        this.registerChangeInAtencionEmpleador();*/
     }
 
     /*ngOnDestroy() {

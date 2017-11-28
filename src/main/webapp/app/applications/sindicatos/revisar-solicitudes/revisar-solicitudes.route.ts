@@ -6,6 +6,7 @@ import { JhiPaginationUtil } from 'ng-jhipster';
 
 import { RevisarSolicitudesComponent } from './revisar-solicitudes.component';
 import { EvaluarSolicitudesComponent } from './evaluar-solicitudes.component';
+import { EvaluarSolicitudesPopupComponent } from './index';
 // import { AccionadopDetailComponent } from './accionadop-detail.component';
 // import { AccionadopPopupComponent } from './accionadop-dialog.component';
 // import { AccionadopDeletePopupComponent } from './accionadop-delete-dialog.component';
@@ -16,17 +17,17 @@ export const RevisarSolicitudesRoute: Routes = [
         component: RevisarSolicitudesComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'Revisar Solicitudes'
+            pageTitle: 'ASD'
         },
 
         canActivate: [UserRouteAccessService],
         children: [
             {
                 path: 'evaluar-solicitudes/:id',
-                component: EvaluarSolicitudesComponent,
+                component: EvaluarSolicitudesPopupComponent,
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Evaluar Solicitudes'
+                    pageTitle: 'ASD'
                 },
                 canActivate: [UserRouteAccessService],
                 outlet: 'popupexp'

@@ -2,7 +2,6 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { ConsultaRecursoComponent } from './consulta-recurso.component';
-import { RegistroObservacionComponent } from './registro-observacion.component';
 import { PrincipalComponent } from './principal.component';
 
 import { GatewaySharedModule } from '../../../shared';
@@ -12,6 +11,9 @@ import { RegistroRecursoService,
     RegistroRecursoRoute,
 } from './';
 
+import { DropdownModule, RadioButtonModule, InputTextModule, TabViewModule, ChipsModule, CalendarModule, DataGridModule, DataTableModule, SharedModule } from 'primeng/primeng';
+import { SelectItem, FieldsetModule, CheckboxModule } from 'primeng/primeng';
+
 const ENTITY_STATES = [
     ...RegistroRecursoRoute,
     // ...accionadopPopupRoute,
@@ -20,12 +22,22 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         GatewaySharedModule,
+        ChipsModule,
+        FieldsetModule,
+        InputTextModule,
+        CheckboxModule,
+        RadioButtonModule,
+        DataTableModule,
+        DropdownModule,
+        TabViewModule,
+        DataGridModule,
+        CalendarModule,
+        SharedModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
         RegistroRecursoComponent,
         ConsultaRecursoComponent,
-        RegistroObservacionComponent,
         PrincipalComponent,
         NuevoRecursoComponent,
         // AccionadopDetailComponent,
@@ -37,7 +49,6 @@ const ENTITY_STATES = [
     entryComponents: [
         RegistroRecursoComponent,
         ConsultaRecursoComponent,
-        RegistroObservacionComponent,
         PrincipalComponent,
         NuevoRecursoComponent,
         // AccionadopDialogComponent,

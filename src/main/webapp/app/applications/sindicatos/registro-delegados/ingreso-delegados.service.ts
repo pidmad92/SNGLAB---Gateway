@@ -8,9 +8,11 @@ import { JhiDateUtils } from 'ng-jhipster';
 import { ResponseWrapper, createRequestOption } from '../../../shared';
 
 @Injectable()
-export class RegistroDelegadosService {
+export class IngresoDelegadosService {
 
     private ngbModalRef: NgbModalRef;
+    private resourceUrl = '/consultas/api/empleador';
+    private resourceSearchUrl = '/consultas/api/_search/empleador';
 
     constructor(
         private modalService: NgbModal,
@@ -48,10 +50,10 @@ export class RegistroDelegadosService {
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
         modalRef.result.then((result) => {
             // this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
-            this.router.navigate(['sindicatos/consulta-delegados'], { replaceUrl: true });
+            this.router.navigate(['sindicatos/principal/(wizard:nuevo-delegados)'], { replaceUrl: true });
             this.ngbModalRef = null;
         }, (reason) => {
-            this.router.navigate(['sindicatos/consulta-delegados'], { replaceUrl: true });
+            this.router.navigate(['sindicatos/principal/(wizard:nuevo-delegados)'], { replaceUrl: true });
             // this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
             this.ngbModalRef = null;
         });

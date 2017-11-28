@@ -12,6 +12,8 @@ import {
     EvaluarSolicitudesPopupComponent,
 } from './';
 
+import { RadioButtonModule, TabViewModule, InputTextModule, ChipsModule, CalendarModule, DataGridModule, DataTableModule, SharedModule } from 'primeng/primeng';
+
 const ENTITY_STATES = [
     ...RevisarSolicitudesRoute,
     // ...accionadopPopupRoute,
@@ -20,6 +22,14 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         GatewaySharedModule,
+        RadioButtonModule,
+        TabViewModule,
+        InputTextModule,
+        ChipsModule,
+        CalendarModule,
+        DataGridModule,
+        DataTableModule,
+        SharedModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [

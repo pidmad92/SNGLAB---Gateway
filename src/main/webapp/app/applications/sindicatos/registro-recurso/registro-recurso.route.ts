@@ -6,7 +6,6 @@ import { JhiPaginationUtil } from 'ng-jhipster';
 
 import { RegistroRecursoComponent } from './registro-recurso.component';
 import { ConsultaRecursoComponent } from './consulta-recurso.component';
-import { RegistroObservacionComponent } from './registro-observacion.component';
 import { PrincipalComponent } from './principal.component';
 import { NuevoRecursoComponent } from './nuevo-recurso.component';
 // import { AccionadopDetailComponent } from './accionadop-detail.component';
@@ -26,15 +25,6 @@ export const RegistroRecursoRoute: Routes = [
     {
         path: 'consulta-recurso',
         component: ConsultaRecursoComponent,
-        /*data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
-        },*/
-        canActivate: [UserRouteAccessService]
-    },
-    {
-        path: 'registro-observacion',
-        component: RegistroObservacionComponent,
         /*data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'gatewayApp.accionadop.home.title'

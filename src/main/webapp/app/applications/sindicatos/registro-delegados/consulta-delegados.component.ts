@@ -20,11 +20,29 @@ export class ConsultaDelegadosComponent implements OnInit {
     currentSearch: string;
     closeResult: string;
 
+    txtBuscar: string;
+    val1: string;
+    displayDialog: boolean;
+    newCar: boolean;
+    listaConsulta: any[];
+
     constructor(
         private eventManager: JhiEventManager,
         private modalService: NgbModal,
     ) {
     }
+        ngOnInit() {
+            this.listaConsulta = [
+                {expediente : '124234-2343', nombre: 'Ministerio de Trabajo Lima', estado: 'Evaluación'},
+                {expediente : '124234-2342', nombre: 'Ministerio de Trabajo Huau', estado: 'Evaluación'},
+                {expediente : '124234-2341', nombre: 'Ministerio de Trabajo Huaa', estado: 'Evaluación'},
+            ]
+            /*this.loadAll();
+            this.principal.identity().then((account) => {
+                this.currentAccount = account;
+            });
+            this.registerChangeInAtencionEmpleador();*/
+        }
 
     loadAll() {
         /*if (this.currentSearch) {
@@ -56,14 +74,6 @@ export class ConsultaDelegadosComponent implements OnInit {
 
     close() {
         this.close();
-    }
-
-    ngOnInit() {
-        /*this.loadAll();
-        this.principal.identity().then((account) => {
-            this.currentAccount = account;
-        });
-        this.registerChangeInAtencionEmpleador();*/
     }
 
     /*ngOnDestroy() {

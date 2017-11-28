@@ -286,5 +286,6 @@
         "emailexists": "Email is already in use!",
         "idexists": "A new {{entityName}} cannot already have an ID"
     },
-    "footer": "pie de página"
+    "footer": "pie de página",
+    "ASD": "ASD"
 }

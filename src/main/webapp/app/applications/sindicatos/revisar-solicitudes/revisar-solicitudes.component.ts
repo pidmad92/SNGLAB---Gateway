@@ -19,6 +19,12 @@ export class RevisarSolicitudesComponent implements OnInit {
     routeSub: any;
     id = '14';
 
+    txtBuscar: string;
+    val1: string;
+    displayDialog: boolean;
+    newCar: boolean;
+    listaConsulta: any[];
+
     constructor(
         private eventManager: JhiEventManager,
         private modalService: NgbModal,
@@ -27,7 +33,21 @@ export class RevisarSolicitudesComponent implements OnInit {
 
     }
 
+    ngOnInit() {
+        this.listaConsulta = [
+            {expediente : '124234-2343', nombre: 'Ministerio de Trabajo Lima', fecha: '11/11/11'},
+            {expediente : '124234-2342', nombre: 'Ministerio de Trabajo Huau', fecha: '11/11/11'},
+            {expediente : '124234-2341', nombre: 'Ministerio de Trabajo Huaa', fecha: '11/11/11'},
+        ]
+        /*this.loadAll();
+        this.principal.identity().then((account) => {
+            this.currentAccount = account;
+        });
+        this.registerChangeInAtencionEmpleador();*/
+    }
+
     loadAll() {
+
         /*if (this.currentSearch) {
             this.atencionEmpleadorService.search({
                 query: this.currentSearch,
@@ -53,14 +73,6 @@ export class RevisarSolicitudesComponent implements OnInit {
     open(texto) {
         console.log('texto: ' + texto);
         this.modalService.open(EvaluarSolicitudesComponent);
-    }
-
-    ngOnInit() {
-        /*this.loadAll();
-        this.principal.identity().then((account) => {
-            this.currentAccount = account;
-        });
-        this.registerChangeInAtencionEmpleador();*/
     }
 
     /*ngOnDestroy() {
