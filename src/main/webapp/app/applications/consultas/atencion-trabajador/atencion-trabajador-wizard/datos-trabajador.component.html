@@ -24,7 +24,7 @@
                         <div class="form-group row">
                             <label for="inpLocal" class="col-sm-3 col-form-label">Local</label>
                             <div class="col-sm-9">
-                            <input type="text" class="form-control form-control-sm" id="inpLocal" placeholder="" value="LIMA CENTRO">
+                            <input type="text" class="form-control form-control-sm" id="inpLocal" value="LIMA CENTRO">
                             </div>
                         </div>
                         </div>
@@ -32,6 +32,7 @@
                         <div class="form-group row">
                             <label for="inpFecha" class="col-sm-3 col-form-label">Fecha</label>
                             <div class="col-sm-9">
+                            <!-- <input type="date" class="form-control form-control-sm" id="inpFecha" [(ngModel)]="fechoy"> -->
                             <input type="date" class="form-control form-control-sm" id="inpFecha">
                             </div>
                         </div>
@@ -49,9 +50,11 @@
                                 <div class="form-group row">
                                 <label for="inpTipo" class="col-sm-5 col-form-label">Tipo de documentos</label>
                                 <div class="col-sm-7">
-                                    <select class="form-control form-control-sm" id="inpTipo">
-                                    <option>DNI</option>
-                                    <option>RUC</option>
+                                    <!-- <select class="form-control form-control-sm" id="inpTipo" name="id_tipdocident" [(ngModel)]="buscatipo"> -->
+                                    <select class="form-control form-control-sm" id="inpTipo" name="id_tipdocident">
+                                    <option value="1">DNI</option>
+                                    <option value="2">RUC</option>
+                                    <!-- <option [ngValue]="tipdocidentOption.id === trabajador.pernatural.tipdocident?.id ? trabajador.pernatural.tipdocident.id : tipdocidentOption.id" *ngFor="let tipdocidentOption of listadocident; trackBy: trackTipoDocumentoIdentidad">{{tipdocidentOption.vDescorta}}</option> -->
                                     </select>
                                 </div>
                                 </div>
@@ -60,14 +63,16 @@
                                 <div class="form-group row">
                                 <label for="inpNumero" class="col-sm-3 col-form-label">Número</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control form-control-sm" id="inpNumero" placeholder="">
+                                    <input type="number" class="form-control form-control-sm" id="inpNumero" name="vNumdocumento" [(ngModel)]="buscanum">
                                 </div>
                                 </div>
                             </div>
                             <div class="col-md">
                                 <div class="form-group row">
                                 <div class="col-sm-9">
-                                    <a href="#" class="btn btn-sm btn-secondary"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" (click)="buscaTrabajadorByDocIdent()">
+                                            <span></span>&nbsp;<span><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</span>
+                                    </button>
                                 </div>
                                 </div>
                             </div>
@@ -77,41 +82,41 @@
                             <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="inpAP">Apellido Paterno:</label>
-                                <input type="text" class="form-control form-control-sm" id="inpAP" placeholder="" value="" required>
+                                <input type="text" class="form-control form-control-sm" id="inpAP"  name="vApepaterno" readonly required [(ngModel)]="trabajador.pernatural.vApepat">
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="inpAM">Apellido Materno:</label>
-                                <input type="text" class="form-control form-control-sm" id="inpAM" placeholder="" value="" required>
+                                <input type="text" class="form-control form-control-sm" id="inpAM"  name="vApematerno" readonly required [(ngModel)]="trabajador.pernatural.vApemat">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="inpN">Nombres:</label>
-                                <input type="text" class="form-control form-control-sm" id="inpN" placeholder="" value="" required>
+                                <input type="text" class="form-control form-control-sm" id="inpN" name="vNombres" readonly required [(ngModel)]="trabajador.pernatural.vNombres">
                             </div>
                             </div>
                             <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="inpFN">Fecha de Nacimiento</label>
-                                <input type="text" class="form-control form-control-sm" id="inpFN" placeholder="" required>
+                                <input type="datetime-local" class="form-control form-control-sm" id="inpFN" name="dFecnacimiento" [(ngModel)]="trabajador.pernatural.dFecnac">
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="selSexo">Sexo:</label>
                                 <select class="form-control form-control-sm" id="selSexo">
-                                <option>Masculino</option>
-                                <option>Femenino</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="inpTelefono">Telefono:</label>
-                                <input type="text" class="form-control form-control-sm" id="inpTelefono" placeholder="">
+                                <input type="text" class="form-control form-control-sm" id="inpTelefono" name="vTelefono" readonly [(ngModel)]="trabajador.pernatural.vTelefono">
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="inpCelular">Celular</label>
-                                <input type="text" class="form-control form-control-sm" id="inpCelular" placeholder="" >
+                                <input type="text" class="form-control form-control-sm" id="inpCelular" name="vCelular"  readonly [(ngModel)]="trabajador.pernatural.vCelular">
                             </div>
                             </div>
                             <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="inpCelular">Direcciones</label>
+                                <label for="inpdiecciones">Direcciones</label>
                                 <p-dataTable [value]="cars">
                                     <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header"></p-column>
                                 </p-dataTable>
@@ -169,16 +174,18 @@
                                 <div class="row">
                                 <div class="col mb-3">
                                     <label for="inpCorreo">Correo Electrónico:</label>
-                                    <input type="text" class="form-control form-control-sm" id="inpCorreo" placeholder="">
+                                    <input type="text" class="form-control form-control-sm" id="inpCorreo" placeholder="" name="vEmail" readonly [(ngModel)]="trabajador.pernatural.vEmailper">
                                 </div>
                                 </div>
                                 <div class="row">
                                 <div class="col mb-3">
                                     <label for="selCargo">Cargo:</label>
-                                    <select class="form-control form-control-sm" id="selCargo">
-                                    <option>Administrador</option>
+                                    <select class="form-control form-control-sm" id="selCargo" name="cargo">
+                                    <!-- <select class="form-control form-control-sm" id="selCargo" name="cargo" [(ngModel)]="trabajador.cartrab.id"> -->
+                                    <!-- <option>Administrador</option>
                                     <option>2</option>
-                                    <option>3</option>
+                                    <option>3</option> -->
+                                    <option [ngValue]="cargoOption.id === trabajador.cartrab?.id ? trabajador.cartrab.id : cargoOption.id" *ngFor="let cargoOption of listacargo; trackBy: trackCargos">{{cargoOption.vDesCartra}}</option>
                                     </select>
                                 </div>
                                 </div>

@@ -4,51 +4,39 @@ import { Observable } from 'rxjs/Rx';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
-import { Trabajador } from './trabajador.model';
+import { Perjuridica } from './perjuridica.model';
 import { ResponseWrapper, createRequestOption } from '../../../shared';
 
-import { Tipdocident } from './tipdocident.model';
-
 @Injectable()
-export class AtencionTrabajadorService {
+export class PerjuridicaService {
 
-    private resourceUrl = '/consultas/api/trabajador';
-    private resourceSearchUrl = '/consultas/api/_search/trabajador';
-    private resource_tipdocident_url = '/consultas/api/tipdocident';
+    private resourceUrl = '/consultas/api/perjuridicas';
+    private resourceSearchUrl = '/consultas/api/_search/perjuridicas';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
-    create(trabajador: Trabajador): Observable<Trabajador> {
-        const copy = this.convert(trabajador);
+    create(perjuridica: Perjuridica): Observable<Perjuridica> {
+        const copy = this.convert(perjuridica);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-    update(trabajador: Trabajador): Observable<Trabajador> {
-        const copy = this.convert(trabajador);
+    update(perjuridica: Perjuridica): Observable<Perjuridica> {
+        const copy = this.convert(perjuridica);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-    find(id: number): Observable<Trabajador> {
+    find(id: number): Observable<Perjuridica> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
-
-// JH: inicio
-    findTrabajadorByDocIdent(tipodoc: number, numdoc: String): Observable<Trabajador> {
-        return this.http.get(`${this.resourceUrl}/tipdoc/${tipodoc}/numdoc/${numdoc}`).map((res: Response) => {
-            const jsonResponse = res.json();
-            return this.convertItemFromServer(jsonResponse);
-        });
-    }
-// JH: final
 
     query(req?: any): Observable<ResponseWrapper> {
         const options = createRequestOption(req);
@@ -76,10 +64,10 @@ export class AtencionTrabajadorService {
     }
 
     /**
-     * Convert a returned JSON object to trabajador.
+     * Convert a returned JSON object to Perjuridica.
      */
-    private convertItemFromServer(json: any): Trabajador {
-        const entity: Trabajador = Object.assign(new Trabajador(), json);
+    private convertItemFromServer(json: any): Perjuridica {
+        const entity: Perjuridica = Object.assign(new Perjuridica(), json);
         entity.tFecreg = this.dateUtils
             .convertDateTimeFromServer(json.tFecreg);
         entity.tFecupd = this.dateUtils
@@ -88,14 +76,14 @@ export class AtencionTrabajadorService {
     }
 
     /**
-     * Convert a trabajador to a JSON which can be sent to the server.
+     * Convert a Perjuridica to a JSON which can be sent to the server.
      */
-    private convert(trabajador: Trabajador): Trabajador {
-        const copy: Trabajador = Object.assign({}, trabajador);
+    private convert(perjuridica: Perjuridica): Perjuridica {
+        const copy: Perjuridica = Object.assign({}, perjuridica);
 
-        copy.tFecreg = this.dateUtils.toDate(trabajador.tFecreg);
+        copy.tFecreg = this.dateUtils.toDate(perjuridica.tFecreg);
 
-        copy.tFecupd = this.dateUtils.toDate(trabajador.tFecupd);
+        copy.tFecupd = this.dateUtils.toDate(perjuridica.tFecupd);
         return copy;
     }
 }
