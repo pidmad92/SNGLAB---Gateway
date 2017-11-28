@@ -2,175 +2,215 @@ package pe.gob.trabajo.service.dto;
 
 public class PersonaValidarServicioDTO {
 
-    private String vNumdoc;
-    private String vApepat;
-    private String vApemat;
-    private String TipoDoc;  
-    private boolean Resultado;
-    private String vNombres;
-    private String dFecnac;
-    private String genero;
-    private String estadoCivil;
-    private String codigo;
-    private String coddep;
-    private String codpro;
-    private String coddist;
-    private String direccion;
-
-    public PersonaValidarServicioDTO(){
-    }
-
-    public boolean getResultado() {
-        return Resultado;
-    }
-
-    public String getNombres()
-    {
-      return this.vNombres;
-    }
-    
-    public void setNombres(String nombres)
-    {
-      this.vNombres = nombres;
-    }
-
+    public String vNumdoc;
+    public String vApepat;
+    public String vApemat;
+    public String TipoDoc;  
+    public boolean Resultado;
+    public String vNombres;
+    public String dFecnac;
+    public String genero;
+    public String estadoCivil;
+    public String codigo;
+    public String coddep;
+    public String codpro;
+    public String coddist;
+    public String direccion;
+    public String vTelefono;
+    public String vCelular;
     /**
-     * @param NumeroDoc the NumeroDoc to set
+     * @return the vNumdoc
      */
-    public void setResultado(Boolean Resultado) {
-        this.Resultado = Resultado;
-    }
+    public String getvNumdoc() {
+      return vNumdoc;
+  }
 
-    public String getNumeroDoc() {
-        return vNumdoc;
-    }
+  /**
+   * @param vNumdoc the vNumdoc to set
+   */
+  public void setvNumdoc(String vNumdoc) {
+      this.vNumdoc = vNumdoc;
+  }
 
-    /**
-     * @param NumeroDoc the NumeroDoc to set
-     */
-    public void setNumeroDoc(String NumeroDoc) {
-        this.vNumdoc = NumeroDoc;
-    }
+  /**
+   * @return the vApepat
+   */
+  public String getvApepat() {
+      return vApepat;
+  }
 
-    /**
-     * @return the ApePaterno
-     */
-    public String getApePaterno() {
-        return vApepat;
-    }
+  /**
+   * @param vApepat the vApepat to set
+   */
+  public void setvApepat(String vApepat) {
+      this.vApepat = vApepat;
+  }
 
-    /**
-     * @param ApePaterno the ApePaterno to set
-     */
-    public void setApePaterno(String ApePaterno) {
-        this.vApepat = ApePaterno;
-    }
+  /**
+   * @return the vApemat
+   */
+  public String getvApemat() {
+      return vApemat;
+  }
 
-    /**
-     * @return the ApeMaterno
-     */
-    public String getApeMaterno() {
-        return vApemat;
-    }
+  /**
+   * @param vApemat the vApemat to set
+   */
+  public void setvApemat(String vApemat) {
+      this.vApemat = vApemat;
+  }
 
-    /**
-     * @param ApeMaterno the ApeMaterno to set
-     */
-    public void setApeMaterno(String ApeMaterno) {
-        this.vApemat = ApeMaterno;
-    }
+  /**
+   * @return the TipoDoc
+   */
+  public String getTipoDoc() {
+      return TipoDoc;
+  }
 
-    /**
-     * @return the TipoDoc
-     */
-    public String getTipoDoc() {
-        return TipoDoc;
-    }
+  /**
+   * @param TipoDoc the TipoDoc to set
+   */
+  public void setTipoDoc(String TipoDoc) {
+      this.TipoDoc = TipoDoc;
+  }
 
-    /**
-     * @param TipoDoc the TipoDoc to set
-     */
-    public void setTipoDoc(String TipoDoc) {
-        this.TipoDoc = TipoDoc;
-    }
+  /**
+   * @return the Resultado
+   */
+  public boolean isResultado() {
+      return Resultado;
+  }
 
-    public String getFechaNacimiento()
-    {
-      return this.dFecnac;
-    }
-    
-    public void setFechaNacimiento(String fechaNacimiento)
-    {
-      this.dFecnac = fechaNacimiento;
-    }
-    
-    public String getGenero()
-    {
-      return this.genero;
-    }
-    
-    public void setGenero(String genero)
-    {
+  /**
+   * @param Resultado the Resultado to set
+   */
+  public void setResultado(boolean Resultado) {
+      this.Resultado = Resultado;
+  }
+
+  /**
+   * @return the vNombres
+   */
+  public String getvNombres() {
+      return vNombres;
+  }
+
+  /**
+   * @param vNombres the vNombres to set
+   */
+  public void setvNombres(String vNombres) {
+      this.vNombres = vNombres;
+  }
+
+  /**
+   * @return the dFecnac
+   */
+  public String getdFecnac() {
+      return dFecnac;
+  }
+
+  /**
+   * @param dFecnac the dFecnac to set
+   */
+  public void setdFecnac(String dFecnac) {
+      this.dFecnac = dFecnac;
+  }
+
+  /**
+   * @return the genero
+   */
+  public String getGenero() {
+      return genero;
+  }
+
+  /**
+   * @param genero the genero to set
+   */
+  public void setGenero(String genero) {
       this.genero = genero;
-    }
-    
-    public String getEstadoCivil()
-    {
-      return this.estadoCivil;
-    }
-    
-    public void setEstadoCivil(String estadoCivil)
-    {
-      this.estadoCivil = estadoCivil;
-    }
+  }
 
-    public String getCodigo()
-    {
-      return this.codigo;
-    }
-    
-    public void setCodigo(String codigo)
-    {
+  /**
+   * @return the estadoCivil
+   */
+  public String getEstadoCivil() {
+      return estadoCivil;
+  }
+
+  /**
+   * @param estadoCivil the estadoCivil to set
+   */
+  public void setEstadoCivil(String estadoCivil) {
+      this.estadoCivil = estadoCivil;
+  }
+
+  /**
+   * @return the codigo
+   */
+  public String getCodigo() {
+      return codigo;
+  }
+
+  /**
+   * @param codigo the codigo to set
+   */
+  public void setCodigo(String codigo) {
       this.codigo = codigo;
-    }
-    
-    public String getCoddep()
-    {
-      return this.coddep;
-    }
-    
-    public void setCoddep(String coddep)
-    {
+  }
+
+  /**
+   * @return the coddep
+   */
+  public String getCoddep() {
+      return coddep;
+  }
+
+  /**
+   * @param coddep the coddep to set
+   */
+  public void setCoddep(String coddep) {
       this.coddep = coddep;
-    }
-    
-    public String getCodpro()
-    {
-      return this.codpro;
-    }
-    
-    public void setCodpro(String codpro)
-    {
+  }
+
+  /**
+   * @return the codpro
+   */
+  public String getCodpro() {
+      return codpro;
+  }
+
+  /**
+   * @param codpro the codpro to set
+   */
+  public void setCodpro(String codpro) {
       this.codpro = codpro;
-    }
-    
-    public String getCoddist()
-    {
-      return this.coddist;
-    }
-    
-    public void setCoddist(String coddist)
-    {
+  }
+
+  /**
+   * @return the coddist
+   */
+  public String getCoddist() {
+      return coddist;
+  }
+
+  /**
+   * @param coddist the coddist to set
+   */
+  public void setCoddist(String coddist) {
       this.coddist = coddist;
-    }
-    
-    public String getDireccion()
-    {
-      return this.direccion;
-    }
-    
-    public void setDireccion(String direccion)
-    {
+  }
+
+  /**
+   * @return the direccion
+   */
+  public String getDireccion() {
+      return direccion;
+  }
+
+  /**
+   * @param direccion the direccion to set
+   */
+  public void setDireccion(String direccion) {
       this.direccion = direccion;
-    }
+  }
 }

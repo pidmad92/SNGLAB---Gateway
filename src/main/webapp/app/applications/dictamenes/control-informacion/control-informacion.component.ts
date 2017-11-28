@@ -14,8 +14,8 @@ import { Solicform, SolicformService } from '../../../entities/solicform/';
 
 export class ControlInformacionComponent implements OnInit, OnDestroy {
     solicitud: Solicitud;
-    solicFormsObligatorio: Solicitud[];
-    solicFormsOpcional: Solicitud[];
+    solicFormsObligatorio: Solicform[];
+    solicFormsOpcional: Solicform[];
     currentAccount: Account;
     eventSubscriber: Subscription;
     private subscription: Subscription;
@@ -72,4 +72,15 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
     listarSolicitudes() {
         this.router.navigate(['./dictamenes/listado-solicitudes'])
     }
+
+    abrirFormulario(obj: Solicform) {
+        if (obj.vTipoform === 'G' && obj.formPerfil != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
+            // Formulario Perfil
+            this.router.navigate(['./dictamenes/formulario-perfil'])
+        }else {
+            this.router.navigate(['./dictamenes/control-informacion/' + obj.nCodsolic])
+        }
+    }
+
+    subirArchivo(obj: Solicform) {}
 }

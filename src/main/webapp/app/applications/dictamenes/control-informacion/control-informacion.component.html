@@ -105,8 +105,8 @@
                                                 <span>{{solicForm.vNomform}}</span>
                                             </td>
                                             <td>
-                                                <span *ngIf="solicForm.vTipoform != 'A'"><button class="fa fa-pencil"></button></span>
-                                                <span *ngIf="solicForm.vTipoform == 'A'"><button class="fa fa-upload"></button></span>
+                                                <span *ngIf="solicForm.vTipoform != 'A'"><button type="button" class="fa fa-pencil" (click)="abrirFormulario(solicForm)"></button></span>
+                                                <span *ngIf="solicForm.vTipoform == 'A'"><button type="button" class="fa fa-upload" (click)="subirArchivo(solicForm)"></button></span>
                                                 
                                             </td>
                                             <td>
