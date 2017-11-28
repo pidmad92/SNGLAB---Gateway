@@ -13,15 +13,15 @@
             "detail": {
                 "title": "Tipnotif"
             },
-            "vDescripcion": "V Descripcion",
-            "vUsuarioreg": "V Usuarioreg",
-            "dFechareg": "D Fechareg",
-            "nEliminar": "N Eliminar",
+            "vDescrip": "V Descrip",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
             "nSedereg": "N Sedereg",
-            "vUsuarioupd": "V Usuarioupd",
-            "dFechaupd": "D Fechaupd",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
             "nSedeupd": "N Sedeupd",
-            "notificacion": "Notificacion"
+            "notifica": "Notifica"
         }
     },
     "defensaApp": {

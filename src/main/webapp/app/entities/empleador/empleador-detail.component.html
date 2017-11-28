@@ -1,47 +1,47 @@
 
 <div *ngIf="empleador">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.empleador.detail.title">Empleador</span> {{empleador.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.empleador.detail.title">Empleador</span> {{empleador.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.empleador.vUsuarioreg">V Usuarioreg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.empleador.nUsuareg">N Usuareg</span></dt>
         <dd>
-            <span>{{empleador.vUsuarioreg}}</span>
+            <span>{{empleador.nUsuareg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.empleador.dFechareg">D Fechareg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.empleador.tFecreg">T Fecreg</span></dt>
         <dd>
-            <span>{{empleador.dFechareg | date:'medium'}}</span>
+            <span>{{empleador.tFecreg | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.empleador.nEliminar">N Eliminar</span></dt>
+        <dt><span jhiTranslate="gatewayApp.empleador.nFlgactivo">N Flgactivo</span></dt>
         <dd>
-            <span>{{empleador.nEliminar}}</span>
+            <span>{{empleador.nFlgactivo}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.empleador.nSedereg">N Sedereg</span></dt>
         <dd>
             <span>{{empleador.nSedereg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.empleador.vUsuarioupd">V Usuarioupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.empleador.nUsuaupd">N Usuaupd</span></dt>
         <dd>
-            <span>{{empleador.vUsuarioupd}}</span>
+            <span>{{empleador.nUsuaupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.empleador.dFechaupd">D Fechaupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.empleador.tFecupd">T Fecupd</span></dt>
         <dd>
-            <span>{{empleador.dFechaupd | date:'medium'}}</span>
+            <span>{{empleador.tFecupd | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.empleador.nSedeupd">N Sedeupd</span></dt>
         <dd>
             <span>{{empleador.nSedeupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.empleador.personajurid">Personajurid</span></dt>
+        <dt><span jhiTranslate="gatewayApp.empleador.perjuridica">Perjuridica</span></dt>
         <dd>
-            <div *ngIf="empleador.personajurid">
-                <a [routerLink]="['/personajurid', empleador.personajurid?.id]">{{empleador.personajurid?.id}}</a>
+            <div *ngIf="empleador.perjuridica">
+                <a [routerLink]="['/perjuridica', empleador.perjuridica?.id]">{{empleador.perjuridica?.id}}</a>
             </div>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.empleador.personanatur">Personanatur</span></dt>
+        <dt><span jhiTranslate="gatewayApp.empleador.pernatural">Pernatural</span></dt>
         <dd>
-            <div *ngIf="empleador.personanatur">
-                <a [routerLink]="['/personanatur', empleador.personanatur?.id]">{{empleador.personanatur?.id}}</a>
+            <div *ngIf="empleador.pernatural">
+                <a [routerLink]="['/pernatural', empleador.pernatural?.id]">{{empleador.pernatural?.id}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="gatewayApp.empleador.tippersona">Tippersona</span></dt>
@@ -59,7 +59,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/consultas', { outlets: { popup: 'empleador/'+ empleador.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'empleador/'+ empleador.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

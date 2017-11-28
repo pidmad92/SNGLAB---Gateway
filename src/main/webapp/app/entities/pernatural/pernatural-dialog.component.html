@@ -1,0 +1,240 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPernaturalLabel" jhiTranslate="gatewayApp.pernatural.home.createOrEditLabel">Create or edit a Pernatural</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!pernatural.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="pernatural.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pernatural.vNombres" for="field_vNombres">V Nombres</label>
+            <input type="text" class="form-control" name="vNombres" id="field_vNombres"
+                [(ngModel)]="pernatural.vNombres" required maxlength="100" />
+            <div [hidden]="!(editForm.controls.vNombres?.dirty && editForm.controls.vNombres?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNombres?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNombres?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pernatural.vApepat" for="field_vApepat">V Apepat</label>
+            <input type="text" class="form-control" name="vApepat" id="field_vApepat"
+                [(ngModel)]="pernatural.vApepat" required maxlength="100" />
+            <div [hidden]="!(editForm.controls.vApepat?.dirty && editForm.controls.vApepat?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vApepat?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vApepat?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pernatural.vApemat" for="field_vApemat">V Apemat</label>
+            <input type="text" class="form-control" name="vApemat" id="field_vApemat"
+                [(ngModel)]="pernatural.vApemat" required maxlength="100" />
+            <div [hidden]="!(editForm.controls.vApemat?.dirty && editForm.controls.vApemat?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vApemat?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vApemat?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pernatural.vNumdoc" for="field_vNumdoc">V Numdoc</label>
+            <input type="text" class="form-control" name="vNumdoc" id="field_vNumdoc"
+                [(ngModel)]="pernatural.vNumdoc" required maxlength="15" />
+            <div [hidden]="!(editForm.controls.vNumdoc?.dirty && editForm.controls.vNumdoc?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNumdoc?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNumdoc?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                   This field cannot be longer than 15 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pernatural.vTelefono" for="field_vTelefono">V Telefono</label>
+            <input type="text" class="form-control" name="vTelefono" id="field_vTelefono"
+                [(ngModel)]="pernatural.vTelefono" maxlength="15" />
+            <div [hidden]="!(editForm.controls.vTelefono?.dirty && editForm.controls.vTelefono?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vTelefono?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                   This field cannot be longer than 15 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pernatural.vCelular" for="field_vCelular">V Celular</label>
+            <input type="text" class="form-control" name="vCelular" id="field_vCelular"
+                [(ngModel)]="pernatural.vCelular" maxlength="15" />
+            <div [hidden]="!(editForm.controls.vCelular?.dirty && editForm.controls.vCelular?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCelular?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                   This field cannot be longer than 15 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pernatural.vEmailper" for="field_vEmailper">V Emailper</label>
+            <input type="text" class="form-control" name="vEmailper" id="field_vEmailper"
+                [(ngModel)]="pernatural.vEmailper" maxlength="100" />
+            <div [hidden]="!(editForm.controls.vEmailper?.dirty && editForm.controls.vEmailper?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vEmailper?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pernatural.dFecnac" for="field_dFecnac">D Fecnac</label>
+            <div class="input-group">
+                <input id="field_dFecnac" type="text" class="form-control" name="dFecnac" ngbDatepicker  #dFecnacDp="ngbDatepicker" [(ngModel)]="pernatural.dFecnac"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dFecnacDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pernatural.vsexoper" for="field_vsexoper">Vsexoper</label>
+            <input type="text" class="form-control" name="vsexoper" id="field_vsexoper"
+                [(ngModel)]="pernatural.vsexoper" required maxlength="1" />
+            <div [hidden]="!(editForm.controls.vsexoper?.dirty && editForm.controls.vsexoper?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vsexoper?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vsexoper?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
+                   This field cannot be longer than 1 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pernatural.vEstado" for="field_vEstado">V Estado</label>
+            <input type="text" class="form-control" name="vEstado" id="field_vEstado"
+                [(ngModel)]="pernatural.vEstado" required maxlength="1" />
+            <div [hidden]="!(editForm.controls.vEstado?.dirty && editForm.controls.vEstado?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vEstado?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vEstado?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
+                   This field cannot be longer than 1 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pernatural.nUsuareg" for="field_nUsuareg">N Usuareg</label>
+            <input type="number" class="form-control" name="nUsuareg" id="field_nUsuareg"
+                [(ngModel)]="pernatural.nUsuareg" required />
+            <div [hidden]="!(editForm.controls.nUsuareg?.dirty && editForm.controls.nUsuareg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nUsuareg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nUsuareg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pernatural.tFecreg" for="field_tFecreg">T Fecreg</label>
+            <div class="d-flex">
+                <input id="field_tFecreg" type="datetime-local" class="form-control" name="tFecreg" [(ngModel)]="pernatural.tFecreg"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.tFecreg?.dirty && editForm.controls.tFecreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tFecreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.tFecreg?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pernatural.nFlgactivo" for="field_nFlgactivo">N Flgactivo</label>
+            <input type="checkbox" class="form-control" name="nFlgactivo" id="field_nFlgactivo"
+                [(ngModel)]="pernatural.nFlgactivo"  />
+            <div [hidden]="!(editForm.controls.nFlgactivo?.dirty && editForm.controls.nFlgactivo?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nFlgactivo?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pernatural.nSedereg" for="field_nSedereg">N Sedereg</label>
+            <input type="number" class="form-control" name="nSedereg" id="field_nSedereg"
+                [(ngModel)]="pernatural.nSedereg" required />
+            <div [hidden]="!(editForm.controls.nSedereg?.dirty && editForm.controls.nSedereg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nSedereg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nSedereg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pernatural.nUsuaupd" for="field_nUsuaupd">N Usuaupd</label>
+            <input type="number" class="form-control" name="nUsuaupd" id="field_nUsuaupd"
+                [(ngModel)]="pernatural.nUsuaupd"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pernatural.tFecupd" for="field_tFecupd">T Fecupd</label>
+            <div class="d-flex">
+                <input id="field_tFecupd" type="datetime-local" class="form-control" name="tFecupd" [(ngModel)]="pernatural.tFecupd"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pernatural.nSedeupd" for="field_nSedeupd">N Sedeupd</label>
+            <input type="number" class="form-control" name="nSedeupd" id="field_nSedeupd"
+                [(ngModel)]="pernatural.nSedeupd"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pernatural.tipdocident" for="field_tipdocident">Tipdocident</label>
+            <select class="form-control" id="field_tipdocident" name="tipdocident" [(ngModel)]="pernatural.tipdocident" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="tipdocidentOption.id === pernatural.tipdocident?.id ? pernatural.tipdocident : tipdocidentOption" *ngFor="let tipdocidentOption of tipdocidents; trackBy: trackTipdocidentById">{{tipdocidentOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

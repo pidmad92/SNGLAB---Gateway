@@ -28,10 +28,10 @@ export class TipenvnotPopupService {
 
             if (id) {
                 this.tipenvnotService.find(id).subscribe((tipenvnot) => {
-                    tipenvnot.dFechareg = this.datePipe
-                        .transform(tipenvnot.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    tipenvnot.dFechaupd = this.datePipe
-                        .transform(tipenvnot.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    tipenvnot.tFecreg = this.datePipe
+                        .transform(tipenvnot.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    tipenvnot.tFecupd = this.datePipe
+                        .transform(tipenvnot.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.tipenvnotModalRef(component, tipenvnot);
                     resolve(this.ngbModalRef);
                 });

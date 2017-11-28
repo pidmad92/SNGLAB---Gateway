@@ -3,17 +3,18 @@ import { BaseEntity } from './../../shared';
 export class Motatenofic implements BaseEntity {
     constructor(
         public id?: number,
-        public vUsuarioreg?: string,
-        public dFechareg?: any,
-        public nEliminar?: number,
+        public nUsuareg?: number,
+        public tFecreg?: any,
+        public nFlgactivo?: boolean,
         public nSedereg?: number,
-        public vUsuarioupd?: string,
-        public dFechaupd?: any,
+        public nUsuaupd?: number,
+        public tFecupd?: any,
         public nSedeupd?: number,
-        public motivoatenci?: BaseEntity,
+        public motate?: BaseEntity,
         public oficina?: BaseEntity,
-        public atenmotiatens?: BaseEntity[],
-        public pasemotiatens?: BaseEntity[],
+        public motateselecs?: BaseEntity[],
+        public motivpases?: BaseEntity[],
     ) {
+        this.nFlgactivo = false;
     }
 }

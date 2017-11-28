@@ -1,0 +1,87 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.calidenu.home.title">Calidenus</span>
+        <button class="btn btn-primary float-right jh-create-entity create-calidenu" [routerLink]="['/', { outlets: { popup: ['calidenu-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.calidenu.home.createLabel">
+            Create new Calidenu
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.calidenu.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="calidenus">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.calidenu.vUsuareg">V Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.calidenu.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.calidenu.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.calidenu.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.calidenu.vUsuaupd">V Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.calidenu.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.calidenu.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.calidenu.califica">Califica</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let calidenu of calidenus ;trackBy: trackId">
+                <td><a [routerLink]="['../calidenu', calidenu.id ]">{{calidenu.id}}</a></td>
+                <td>{{calidenu.vUsuareg}}</td>
+                <td>{{calidenu.tFecreg | date:'medium'}}</td>
+                <td>{{calidenu.nFlgactivo}}</td>
+                <td>{{calidenu.nSedereg}}</td>
+                <td>{{calidenu.vUsuaupd}}</td>
+                <td>{{calidenu.tFecupd | date:'medium'}}</td>
+                <td>{{calidenu.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="calidenu.califica">
+                        <a [routerLink]="['../califica', calidenu.califica?.id ]" >{{calidenu.califica?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../calidenu', calidenu.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'calidenu/'+ calidenu.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'calidenu/'+ calidenu.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

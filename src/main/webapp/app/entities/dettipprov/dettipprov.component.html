@@ -1,13 +1,13 @@
 <div>
-    <h4 class="title my-3">
+    <h2>
         <span jhiTranslate="gatewayApp.dettipprov.home.title">Dettipprovs</span>
-        <button class="btn btn-primary float-right jh-create-entity create-dettipprov" [routerLink]="['/consultas', { outlets: { popup: ['dettipprov-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-dettipprov" [routerLink]="['/', { outlets: { popup: ['dettipprov-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.dettipprov.home.createLabel">
             Create new Dettipprov
             </span>
         </button>
-    </h4>
+    </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -30,13 +30,13 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.dettipprov.vDescripcion">V Descripcion</span></th>
-            <th><span jhiTranslate="gatewayApp.dettipprov.vUsuarioreg">V Usuarioreg</span></th>
-            <th><span jhiTranslate="gatewayApp.dettipprov.dFechareg">D Fechareg</span></th>
-            <th><span jhiTranslate="gatewayApp.dettipprov.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.dettipprov.vDescrip">V Descrip</span></th>
+            <th><span jhiTranslate="gatewayApp.dettipprov.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.dettipprov.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.dettipprov.nFlgactivo">N Flgactivo</span></th>
             <th><span jhiTranslate="gatewayApp.dettipprov.nSedereg">N Sedereg</span></th>
-            <th><span jhiTranslate="gatewayApp.dettipprov.vUsuarioupd">V Usuarioupd</span></th>
-            <th><span jhiTranslate="gatewayApp.dettipprov.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.dettipprov.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.dettipprov.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.dettipprov.nSedeupd">N Sedeupd</span></th>
             <th><span jhiTranslate="gatewayApp.dettipprov.tipproveid">Tipproveid</span></th>
             <th></th>
@@ -45,13 +45,13 @@
             <tbody>
             <tr *ngFor="let dettipprov of dettipprovs ;trackBy: trackId">
                 <td><a [routerLink]="['../dettipprov', dettipprov.id ]">{{dettipprov.id}}</a></td>
-                <td>{{dettipprov.vDescripcion}}</td>
-                <td>{{dettipprov.vUsuarioreg}}</td>
-                <td>{{dettipprov.dFechareg | date:'medium'}}</td>
-                <td>{{dettipprov.nEliminar}}</td>
+                <td>{{dettipprov.vDescrip}}</td>
+                <td>{{dettipprov.nUsuareg}}</td>
+                <td>{{dettipprov.tFecreg | date:'medium'}}</td>
+                <td>{{dettipprov.nFlgactivo}}</td>
                 <td>{{dettipprov.nSedereg}}</td>
-                <td>{{dettipprov.vUsuarioupd}}</td>
-                <td>{{dettipprov.dFechaupd | date:'medium'}}</td>
+                <td>{{dettipprov.nUsuaupd}}</td>
+                <td>{{dettipprov.tFecupd | date:'medium'}}</td>
                 <td>{{dettipprov.nSedeupd}}</td>
                 <td>
                     <div *ngIf="dettipprov.tipproveid">

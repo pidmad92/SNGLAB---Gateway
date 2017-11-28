@@ -12,7 +12,7 @@ import { ExpedienteService } from './expediente.service';
 import { Empleador, EmpleadorService } from '../empleador';
 import { Tippersona, TippersonaService } from '../tippersona';
 import { Trabajador, TrabajadorService } from '../trabajador';
-import { Pase, PaseService } from '../pase';
+import { Pasegl, PaseglService } from '../pasegl';
 import { Estexpedien, EstexpedienService } from '../estexpedien';
 import { Resolutor, ResolutorService } from '../resolutor';
 import { ResponseWrapper } from '../../shared';
@@ -32,11 +32,14 @@ export class ExpedienteDialogComponent implements OnInit {
 
     trabajadors: Trabajador[];
 
-    pases: Pase[];
+    pasegls: Pasegl[];
 
     estexpediens: Estexpedien[];
 
     resolutors: Resolutor[];
+    dFecregexpDp: any;
+    dFecmesparDp: any;
+    dFecArchivDp: any;
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -45,7 +48,7 @@ export class ExpedienteDialogComponent implements OnInit {
         private empleadorService: EmpleadorService,
         private tippersonaService: TippersonaService,
         private trabajadorService: TrabajadorService,
-        private paseService: PaseService,
+        private paseglService: PaseglService,
         private estexpedienService: EstexpedienService,
         private resolutorService: ResolutorService,
         private eventManager: JhiEventManager
@@ -60,8 +63,8 @@ export class ExpedienteDialogComponent implements OnInit {
             .subscribe((res: ResponseWrapper) => { this.tippersonas = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.trabajadorService.query()
             .subscribe((res: ResponseWrapper) => { this.trabajadors = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.paseService.query()
-            .subscribe((res: ResponseWrapper) => { this.pases = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.paseglService.query()
+            .subscribe((res: ResponseWrapper) => { this.pasegls = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.estexpedienService.query()
             .subscribe((res: ResponseWrapper) => { this.estexpediens = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.resolutorService.query()
@@ -114,7 +117,7 @@ export class ExpedienteDialogComponent implements OnInit {
         return item.id;
     }
 
-    trackPaseById(index: number, item: Pase) {
+    trackPaseglById(index: number, item: Pasegl) {
         return item.id;
     }
 

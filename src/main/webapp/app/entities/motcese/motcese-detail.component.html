@@ -1,0 +1,53 @@
+
+<div *ngIf="motcese">
+    <h2><span jhiTranslate="gatewayApp.motcese.detail.title">Motcese</span> {{motcese.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.motcese.vDesmotces">V Desmotces</span></dt>
+        <dd>
+            <span>{{motcese.vDesmotces}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motcese.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{motcese.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motcese.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{motcese.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motcese.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{motcese.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motcese.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{motcese.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motcese.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{motcese.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motcese.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{motcese.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motcese.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{motcese.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'motcese/'+ motcese.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

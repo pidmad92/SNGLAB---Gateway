@@ -1,0 +1,89 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.detmotden.home.title">Detmotdens</span>
+        <button class="btn btn-primary float-right jh-create-entity create-detmotden" [routerLink]="['/', { outlets: { popup: ['detmotden-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.detmotden.home.createLabel">
+            Create new Detmotden
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.detmotden.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="detmotdens">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.detmotden.vDescrip">V Descrip</span></th>
+            <th><span jhiTranslate="gatewayApp.detmotden.vUsuareg">V Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.detmotden.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.detmotden.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.detmotden.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.detmotden.vUsuaupd">V Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.detmotden.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.detmotden.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.detmotden.motidenun">Motidenun</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let detmotden of detmotdens ;trackBy: trackId">
+                <td><a [routerLink]="['../detmotden', detmotden.id ]">{{detmotden.id}}</a></td>
+                <td>{{detmotden.vDescrip}}</td>
+                <td>{{detmotden.vUsuareg}}</td>
+                <td>{{detmotden.tFecreg | date:'medium'}}</td>
+                <td>{{detmotden.nFlgactivo}}</td>
+                <td>{{detmotden.nSedereg}}</td>
+                <td>{{detmotden.vUsuaupd}}</td>
+                <td>{{detmotden.tFecupd | date:'medium'}}</td>
+                <td>{{detmotden.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="detmotden.motidenun">
+                        <a [routerLink]="['../motidenun', detmotden.motidenun?.id ]" >{{detmotden.motidenun?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../detmotden', detmotden.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'detmotden/'+ detmotden.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'detmotden/'+ detmotden.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.motcese.home.title">Motcese</span>
+        <button class="btn btn-primary float-right jh-create-entity create-motcese" [routerLink]="['/', { outlets: { popup: ['motcese-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.motcese.home.createLabel">
+            Create new Motcese
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.motcese.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="motcese">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.motcese.vDesmotces">V Desmotces</span></th>
+            <th><span jhiTranslate="gatewayApp.motcese.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.motcese.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.motcese.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.motcese.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.motcese.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.motcese.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.motcese.nSedeupd">N Sedeupd</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let motcese of motcese ;trackBy: trackId">
+                <td><a [routerLink]="['../motcese', motcese.id ]">{{motcese.id}}</a></td>
+                <td>{{motcese.vDesmotces}}</td>
+                <td>{{motcese.nUsuareg}}</td>
+                <td>{{motcese.tFecreg | date:'medium'}}</td>
+                <td>{{motcese.nFlgactivo}}</td>
+                <td>{{motcese.nSedereg}}</td>
+                <td>{{motcese.nUsuaupd}}</td>
+                <td>{{motcese.tFecupd | date:'medium'}}</td>
+                <td>{{motcese.nSedeupd}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../motcese', motcese.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'motcese/'+ motcese.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'motcese/'+ motcese.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

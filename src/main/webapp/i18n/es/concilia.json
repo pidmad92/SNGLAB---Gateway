@@ -1,0 +1,39 @@
+{
+    "gatewayApp": {
+        "concilia" : {
+            "home": {
+                "title": "Concilias",
+                "createLabel": "Crear nuevo Concilia",
+                "createOrEditLabel": "Crear o editar Concilia",
+                "search": "Search for Concilia"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Concilia {{ id }}?"
+            },
+            "detail": {
+                "title": "Concilia"
+            },
+            "dFecConci": "D Fec Conci",
+            "nFlgaudres": "N Flgaudres",
+            "nFlgreprog": "N Flgreprog",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "expediente": "Expediente",
+            "abogado": "Abogado",
+            "horacon": "Horacon",
+            "resulconci": "Resulconci"
+        }
+    },
+    "defensaApp": {
+        "concilia" : {
+            "created": "Un nuevo Concilia ha sido creado con el identificador {{ param }}",
+            "updated": "Un Concilia ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Concilia ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -28,10 +28,10 @@ export class SucesorPopupService {
 
             if (id) {
                 this.sucesorService.find(id).subscribe((sucesor) => {
-                    sucesor.dFechareg = this.datePipe
-                        .transform(sucesor.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    sucesor.dFechaupd = this.datePipe
-                        .transform(sucesor.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    sucesor.tFecreg = this.datePipe
+                        .transform(sucesor.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    sucesor.tFecupd = this.datePipe
+                        .transform(sucesor.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.sucesorModalRef(component, sucesor);
                     resolve(this.ngbModalRef);
                 });

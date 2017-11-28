@@ -9,7 +9,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Documento } from './documento.model';
 import { DocumentoPopupService } from './documento-popup.service';
 import { DocumentoService } from './documento.service';
-import { Tipdocumento, TipdocumentoService } from '../tipdocumento';
+import { Tipdoc, TipdocService } from '../tipdoc';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -21,21 +21,21 @@ export class DocumentoDialogComponent implements OnInit {
     documento: Documento;
     isSaving: boolean;
 
-    tipdocumentos: Tipdocumento[];
+    tipdocs: Tipdoc[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private documentoService: DocumentoService,
-        private tipdocumentoService: TipdocumentoService,
+        private tipdocService: TipdocService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
-        this.tipdocumentoService.query()
-            .subscribe((res: ResponseWrapper) => { this.tipdocumentos = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.tipdocService.query()
+            .subscribe((res: ResponseWrapper) => { this.tipdocs = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -72,7 +72,7 @@ export class DocumentoDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackTipdocumentoById(index: number, item: Tipdocumento) {
+    trackTipdocById(index: number, item: Tipdoc) {
         return item.id;
     }
 }

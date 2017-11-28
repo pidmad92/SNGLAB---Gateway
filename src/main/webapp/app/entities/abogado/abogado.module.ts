@@ -23,7 +23,7 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         GatewaySharedModule,
-        RouterModule.forChild(ENTITY_STATES)
+        RouterModule.forRoot(ENTITY_STATES, { useHash: true })
     ],
     declarations: [
         AbogadoComponent,

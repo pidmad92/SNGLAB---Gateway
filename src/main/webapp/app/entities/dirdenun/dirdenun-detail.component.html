@@ -1,0 +1,103 @@
+
+<div *ngIf="dirdenun">
+    <h2><span jhiTranslate="gatewayApp.dirdenun.detail.title">Dirdenun</span> {{dirdenun.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.dirdenun.vCoddepart">V Coddepart</span></dt>
+        <dd>
+            <span>{{dirdenun.vCoddepart}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirdenun.vCodprovin">V Codprovin</span></dt>
+        <dd>
+            <span>{{dirdenun.vCodprovin}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirdenun.vCoddistri">V Coddistri</span></dt>
+        <dd>
+            <span>{{dirdenun.vCoddistri}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirdenun.nCodtzona">N Codtzona</span></dt>
+        <dd>
+            <span>{{dirdenun.nCodtzona}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirdenun.vDeszona">V Deszona</span></dt>
+        <dd>
+            <span>{{dirdenun.vDeszona}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirdenun.nCodtipvia">N Codtipvia</span></dt>
+        <dd>
+            <span>{{dirdenun.nCodtipvia}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirdenun.vDesvia">V Desvia</span></dt>
+        <dd>
+            <span>{{dirdenun.vDesvia}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirdenun.vDireccion">V Direccion</span></dt>
+        <dd>
+            <span>{{dirdenun.vDireccion}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirdenun.vDircomple">V Dircomple</span></dt>
+        <dd>
+            <span>{{dirdenun.vDircomple}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirdenun.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{dirdenun.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirdenun.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{dirdenun.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirdenun.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{dirdenun.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirdenun.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{dirdenun.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirdenun.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{dirdenun.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirdenun.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{dirdenun.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirdenun.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{dirdenun.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirdenun.denunte">Denunte</span></dt>
+        <dd>
+            <div *ngIf="dirdenun.denunte">
+                <a [routerLink]="['/denunte', dirdenun.denunte?.id]">{{dirdenun.denunte?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirdenun.tipzona">Tipzona</span></dt>
+        <dd>
+            <div *ngIf="dirdenun.tipzona">
+                <a [routerLink]="['/tipzona', dirdenun.tipzona?.id]">{{dirdenun.tipzona?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.dirdenun.tipvia">Tipvia</span></dt>
+        <dd>
+            <div *ngIf="dirdenun.tipvia">
+                <a [routerLink]="['/tipvia', dirdenun.tipvia?.id]">{{dirdenun.tipvia?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'dirdenun/'+ dirdenun.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

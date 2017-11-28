@@ -1,36 +1,36 @@
 
 <div *ngIf="oficina">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.oficina.detail.title">Oficina</span> {{oficina.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.oficina.detail.title">Oficina</span> {{oficina.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.oficina.vDescripcion">V Descripcion</span></dt>
+        <dt><span jhiTranslate="gatewayApp.oficina.vDesofic">V Desofic</span></dt>
         <dd>
-            <span>{{oficina.vDescripcion}}</span>
+            <span>{{oficina.vDesofic}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.oficina.vUsuarioreg">V Usuarioreg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.oficina.nUsuareg">N Usuareg</span></dt>
         <dd>
-            <span>{{oficina.vUsuarioreg}}</span>
+            <span>{{oficina.nUsuareg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.oficina.dFechareg">D Fechareg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.oficina.tFecreg">T Fecreg</span></dt>
         <dd>
-            <span>{{oficina.dFechareg | date:'medium'}}</span>
+            <span>{{oficina.tFecreg | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.oficina.nEliminar">N Eliminar</span></dt>
+        <dt><span jhiTranslate="gatewayApp.oficina.nFlgactivo">N Flgactivo</span></dt>
         <dd>
-            <span>{{oficina.nEliminar}}</span>
+            <span>{{oficina.nFlgactivo}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.oficina.nSedereg">N Sedereg</span></dt>
         <dd>
             <span>{{oficina.nSedereg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.oficina.vUsuarioupd">V Usuarioupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.oficina.nUsuaupd">N Usuaupd</span></dt>
         <dd>
-            <span>{{oficina.vUsuarioupd}}</span>
+            <span>{{oficina.nUsuaupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.oficina.dFechaupd">D Fechaupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.oficina.tFecupd">T Fecupd</span></dt>
         <dd>
-            <span>{{oficina.dFechaupd | date:'medium'}}</span>
+            <span>{{oficina.tFecupd | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.oficina.nSedeupd">N Sedeupd</span></dt>
         <dd>

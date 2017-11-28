@@ -1,6 +1,6 @@
 
 <div *ngIf="direcnotif">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.direcnotif.detail.title">Direcnotif</span> {{direcnotif.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.direcnotif.detail.title">Direcnotif</span> {{direcnotif.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
@@ -8,46 +8,46 @@
         <dd>
             <span>{{direcnotif.vDireccion}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.direcnotif.cflgtrabajador">Cflgtrabajador</span></dt>
+        <dt><span jhiTranslate="gatewayApp.direcnotif.nflgtrabaj">Nflgtrabaj</span></dt>
         <dd>
-            <span>{{direcnotif.cflgtrabajador}}</span>
+            <span>{{direcnotif.nflgtrabaj}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.direcnotif.vHojaenvio">V Hojaenvio</span></dt>
         <dd>
             <span>{{direcnotif.vHojaenvio}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.direcnotif.vUsuarioreg">V Usuarioreg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.direcnotif.nUsuareg">N Usuareg</span></dt>
         <dd>
-            <span>{{direcnotif.vUsuarioreg}}</span>
+            <span>{{direcnotif.nUsuareg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.direcnotif.dFechareg">D Fechareg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.direcnotif.tFecreg">T Fecreg</span></dt>
         <dd>
-            <span>{{direcnotif.dFechareg | date:'medium'}}</span>
+            <span>{{direcnotif.tFecreg | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.direcnotif.nEliminar">N Eliminar</span></dt>
+        <dt><span jhiTranslate="gatewayApp.direcnotif.nFlgactivo">N Flgactivo</span></dt>
         <dd>
-            <span>{{direcnotif.nEliminar}}</span>
+            <span>{{direcnotif.nFlgactivo}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.direcnotif.nSedereg">N Sedereg</span></dt>
         <dd>
             <span>{{direcnotif.nSedereg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.direcnotif.vUsuarioupd">V Usuarioupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.direcnotif.nUsuaupd">N Usuaupd</span></dt>
         <dd>
-            <span>{{direcnotif.vUsuarioupd}}</span>
+            <span>{{direcnotif.nUsuaupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.direcnotif.dFechaupd">D Fechaupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.direcnotif.tFecupd">T Fecupd</span></dt>
         <dd>
-            <span>{{direcnotif.dFechaupd | date:'medium'}}</span>
+            <span>{{direcnotif.tFecupd | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.direcnotif.nSedeupd">N Sedeupd</span></dt>
         <dd>
             <span>{{direcnotif.nSedeupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.direcnotif.notificacion">Notificacion</span></dt>
+        <dt><span jhiTranslate="gatewayApp.direcnotif.notifica">Notifica</span></dt>
         <dd>
-            <div *ngIf="direcnotif.notificacion">
-                <a [routerLink]="['/notificacion', direcnotif.notificacion?.id]">{{direcnotif.notificacion?.id}}</a>
+            <div *ngIf="direcnotif.notifica">
+                <a [routerLink]="['/notifica', direcnotif.notifica?.id]">{{direcnotif.notifica?.id}}</a>
             </div>
         </dd>
     </dl>
@@ -59,7 +59,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/defensa', { outlets: { popup: 'direcnotif/'+ direcnotif.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'direcnotif/'+ direcnotif.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

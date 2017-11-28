@@ -13,18 +13,18 @@
             "detail": {
                 "title": "Trabajador"
             },
-            "vFlgsucesor": "V Flgsucesor",
-            "vUsuarioreg": "V Usuarioreg",
-            "dFechareg": "D Fechareg",
-            "nEliminar": "N Eliminar",
+            "nFlgsuces": "N Flgsuces",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
             "nSedereg": "N Sedereg",
-            "vUsuarioupd": "V Usuarioupd",
-            "dFechaupd": "D Fechaupd",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
             "nSedeupd": "N Sedeupd",
-            "cargotrabaja": "Cargotrabaja",
-            "personanatur": "Personanatur",
+            "cartrab": "Cartrab",
+            "pernatural": "Pernatural",
             "expediente": "Expediente",
-            "datlaboral": "Datlaboral",
+            "datlab": "Datlab",
             "atencion": "Atencion",
             "sucesor": "Sucesor"
         }

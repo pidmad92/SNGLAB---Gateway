@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "regimenlab" : {
+            "home": {
+                "title": "Regimenlabs",
+                "createLabel": "Crear nuevo Regimenlab",
+                "createOrEditLabel": "Crear o editar Regimenlab",
+                "search": "Search for Regimenlab"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Regimenlab {{ id }}?"
+            },
+            "detail": {
+                "title": "Regimenlab"
+            },
+            "vDesreglab": "V Desreglab",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "datlab": "Datlab"
+        }
+    },
+    "consultasApp": {
+        "regimenlab" : {
+            "created": "Un nuevo Regimenlab ha sido creado con el identificador {{ param }}",
+            "updated": "Un Regimenlab ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Regimenlab ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

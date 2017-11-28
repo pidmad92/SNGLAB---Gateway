@@ -9,14 +9,14 @@
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "conciliacion",
-            "otherEntityName": "conciliacion",
+            "relationshipName": "concilia",
+            "otherEntityName": "concilia",
             "otherEntityRelationshipName": "abogado"
         }
     ],
     "fields": [
         {
-            "fieldName": "vNomabogado",
+            "fieldName": "vNomabogad",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -24,35 +24,29 @@
             "fieldValidateRulesMaxlength": 250
         },
         {
-            "fieldName": "nCodabogadousuario",
+            "fieldName": "nCodabousu",
             "fieldType": "Integer"
         },
         {
-            "fieldName": "vUsuarioreg",
-            "fieldType": "String",
+            "fieldName": "nUsuareg",
+            "fieldType": "Integer",
             "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 20
+                "required"
+            ]
         },
         {
-            "fieldName": "dFechareg",
+            "fieldName": "tFecreg",
             "fieldType": "Instant",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
-            "fieldName": "nEliminar",
-            "fieldType": "Integer",
+            "fieldName": "nFlgactivo",
+            "fieldType": "Boolean",
             "fieldValidateRules": [
-                "required",
-                "min",
-                "max"
-            ],
-            "fieldValidateRulesMin": 0,
-            "fieldValidateRulesMax": 1
+                "required"
+            ]
         },
         {
             "fieldName": "nSedereg",
@@ -62,15 +56,11 @@
             ]
         },
         {
-            "fieldName": "vUsuarioupd",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 20
+            "fieldName": "nUsuaupd",
+            "fieldType": "Integer"
         },
         {
-            "fieldName": "dFechaupd",
+            "fieldName": "tFecupd",
             "fieldType": "Instant"
         },
         {

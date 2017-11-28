@@ -1,0 +1,90 @@
+
+<div *ngIf="datdenu">
+    <h2><span jhiTranslate="gatewayApp.datdenu.detail.title">Datdenu</span> {{datdenu.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.datdenu.nNumtrbafe">N Numtrbafe</span></dt>
+        <dd>
+            <span>{{datdenu.nNumtrbafe}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datdenu.vHoraini">V Horaini</span></dt>
+        <dd>
+            <span>{{datdenu.vHoraini}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datdenu.vHorafin">V Horafin</span></dt>
+        <dd>
+            <span>{{datdenu.vHorafin}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datdenu.vDesmotivo">V Desmotivo</span></dt>
+        <dd>
+            <span>{{datdenu.vDesmotivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datdenu.vDesotro">V Desotro</span></dt>
+        <dd>
+            <span>{{datdenu.vDesotro}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datdenu.bArchivo">B Archivo</span></dt>
+        <dd>
+            <div *ngIf="datdenu.bArchivo">
+                <a (click)="openFile(datdenu.bArchivoContentType, datdenu.bArchivo)" jhiTranslate="entity.action.open">open</a>
+                {{datdenu.bArchivoContentType}}, {{byteSize(datdenu.bArchivo)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datdenu.vArchtipo">V Archtipo</span></dt>
+        <dd>
+            <span>{{datdenu.vArchtipo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datdenu.vFlggreide">V Flggreide</span></dt>
+        <dd>
+            <span>{{datdenu.vFlggreide}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datdenu.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{datdenu.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datdenu.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{datdenu.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datdenu.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{datdenu.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datdenu.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{datdenu.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datdenu.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{datdenu.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datdenu.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{datdenu.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datdenu.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{datdenu.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.datdenu.detmotden">Detmotden</span></dt>
+        <dd>
+            <div *ngIf="datdenu.detmotden">
+                <a [routerLink]="['/detmotden', datdenu.detmotden?.id]">{{datdenu.detmotden?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'datdenu/'+ datdenu.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

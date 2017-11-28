@@ -1,0 +1,46 @@
+{
+    "gatewayApp": {
+        "calperiodo" : {
+            "home": {
+                "title": "Calperiodos",
+                "createLabel": "Crear nuevo Calperiodo",
+                "createOrEditLabel": "Crear o editar Calperiodo",
+                "search": "Search for Calperiodo"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Calperiodo {{ id }}?"
+            },
+            "detail": {
+                "title": "Calperiodo"
+            },
+            "nCalper": "N Calper",
+            "nCalper2": "N Calper 2",
+            "nNumper": "N Numper",
+            "tFecini": "T Fecini",
+            "tFecfin": "T Fecfin",
+            "nTnocomput": "N Tnocomput",
+            "nDgozados": "N Dgozados",
+            "nDadeudos": "N Dadeudos",
+            "nBase": "N Base",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "calbensoc": "Calbensoc",
+            "interesperi": "Interesperi",
+            "calrcmperi": "Calrcmperi",
+            "estperical": "Estperical",
+            "tipcalperi": "Tipcalperi"
+        }
+    },
+    "liquidacionesApp": {
+        "calperiodo" : {
+            "created": "Un nuevo Calperiodo ha sido creado con el identificador {{ param }}",
+            "updated": "Un Calperiodo ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Calperiodo ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

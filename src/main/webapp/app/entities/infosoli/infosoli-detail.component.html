@@ -1,0 +1,65 @@
+
+<div *ngIf="infosoli">
+    <h2><span jhiTranslate="gatewayApp.infosoli.detail.title">Infosoli</span> {{infosoli.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.infosoli.vInfosoli">V Infosoli</span></dt>
+        <dd>
+            <span>{{infosoli.vInfosoli}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.infosoli.tFecsoli">T Fecsoli</span></dt>
+        <dd>
+            <span>{{infosoli.tFecsoli | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.infosoli.vRespuesta">V Respuesta</span></dt>
+        <dd>
+            <span>{{infosoli.vRespuesta}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.infosoli.tFecresp">T Fecresp</span></dt>
+        <dd>
+            <span>{{infosoli.tFecresp | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.infosoli.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{infosoli.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.infosoli.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{infosoli.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.infosoli.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{infosoli.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.infosoli.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{infosoli.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.infosoli.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{infosoli.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.infosoli.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{infosoli.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.infosoli.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{infosoli.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'infosoli/'+ infosoli.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

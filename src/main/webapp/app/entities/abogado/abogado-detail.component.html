@@ -4,37 +4,37 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.abogado.vNomabogado">V Nomabogado</span></dt>
+        <dt><span jhiTranslate="gatewayApp.abogado.vNomabogad">V Nomabogad</span></dt>
         <dd>
-            <span>{{abogado.vNomabogado}}</span>
+            <span>{{abogado.vNomabogad}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.abogado.nCodabogadousuario">N Codabogadousuario</span></dt>
+        <dt><span jhiTranslate="gatewayApp.abogado.nCodabousu">N Codabousu</span></dt>
         <dd>
-            <span>{{abogado.nCodabogadousuario}}</span>
+            <span>{{abogado.nCodabousu}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.abogado.vUsuarioreg">V Usuarioreg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.abogado.nUsuareg">N Usuareg</span></dt>
         <dd>
-            <span>{{abogado.vUsuarioreg}}</span>
+            <span>{{abogado.nUsuareg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.abogado.dFechareg">D Fechareg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.abogado.tFecreg">T Fecreg</span></dt>
         <dd>
-            <span>{{abogado.dFechareg | date:'medium'}}</span>
+            <span>{{abogado.tFecreg | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.abogado.nEliminar">N Eliminar</span></dt>
+        <dt><span jhiTranslate="gatewayApp.abogado.nFlgactivo">N Flgactivo</span></dt>
         <dd>
-            <span>{{abogado.nEliminar}}</span>
+            <span>{{abogado.nFlgactivo}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.abogado.nSedereg">N Sedereg</span></dt>
         <dd>
             <span>{{abogado.nSedereg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.abogado.vUsuarioupd">V Usuarioupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.abogado.nUsuaupd">N Usuaupd</span></dt>
         <dd>
-            <span>{{abogado.vUsuarioupd}}</span>
+            <span>{{abogado.nUsuaupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.abogado.dFechaupd">D Fechaupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.abogado.tFecupd">T Fecupd</span></dt>
         <dd>
-            <span>{{abogado.dFechaupd | date:'medium'}}</span>
+            <span>{{abogado.tFecupd | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.abogado.nSedeupd">N Sedeupd</span></dt>
         <dd>
@@ -55,7 +55,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/defensa', { outlets: { popup: 'abogado/'+ abogado.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'abogado/'+ abogado.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

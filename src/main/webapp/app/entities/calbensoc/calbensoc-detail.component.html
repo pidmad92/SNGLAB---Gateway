@@ -1,0 +1,69 @@
+
+<div *ngIf="calbensoc">
+    <h2><span jhiTranslate="gatewayApp.calbensoc.detail.title">Calbensoc</span> {{calbensoc.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.calbensoc.nCalbens">N Calbens</span></dt>
+        <dd>
+            <span>{{calbensoc.nCalbens}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calbensoc.nCalbens2">N Calbens 2</span></dt>
+        <dd>
+            <span>{{calbensoc.nCalbens2}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calbensoc.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{calbensoc.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calbensoc.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{calbensoc.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calbensoc.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{calbensoc.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calbensoc.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{calbensoc.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calbensoc.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{calbensoc.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calbensoc.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{calbensoc.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calbensoc.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{calbensoc.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calbensoc.bensocial">Bensocial</span></dt>
+        <dd>
+            <div *ngIf="calbensoc.bensocial">
+                <a [routerLink]="['/bensocial', calbensoc.bensocial?.id]">{{calbensoc.bensocial?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calbensoc.liquidacion">Liquidacion</span></dt>
+        <dd>
+            <div *ngIf="calbensoc.liquidacion">
+                <a [routerLink]="['/liquidacion', calbensoc.liquidacion?.id]">{{calbensoc.liquidacion?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'calbensoc/'+ calbensoc.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

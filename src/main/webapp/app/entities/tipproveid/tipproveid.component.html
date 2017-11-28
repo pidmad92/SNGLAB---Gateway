@@ -1,13 +1,13 @@
 <div>
-    <h4 class="title my-3">
+    <h2>
         <span jhiTranslate="gatewayApp.tipproveid.home.title">Tipproveids</span>
-        <button class="btn btn-primary float-right jh-create-entity create-tipproveid" [routerLink]="['/defensa', { outlets: { popup: ['tipproveid-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-tipproveid" [routerLink]="['/', { outlets: { popup: ['tipproveid-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.tipproveid.home.createLabel">
             Create new Tipproveid
             </span>
         </button>
-    </h4>
+    </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -30,13 +30,13 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.tipproveid.vDescripcion">V Descripcion</span></th>
-            <th><span jhiTranslate="gatewayApp.tipproveid.vUsuarioreg">V Usuarioreg</span></th>
-            <th><span jhiTranslate="gatewayApp.tipproveid.dFechareg">D Fechareg</span></th>
-            <th><span jhiTranslate="gatewayApp.tipproveid.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.tipproveid.vDescrip">V Descrip</span></th>
+            <th><span jhiTranslate="gatewayApp.tipproveid.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipproveid.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipproveid.nFlgactivo">N Flgactivo</span></th>
             <th><span jhiTranslate="gatewayApp.tipproveid.nSedereg">N Sedereg</span></th>
-            <th><span jhiTranslate="gatewayApp.tipproveid.vUsuarioupd">V Usuarioupd</span></th>
-            <th><span jhiTranslate="gatewayApp.tipproveid.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipproveid.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipproveid.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.tipproveid.nSedeupd">N Sedeupd</span></th>
             <th><span jhiTranslate="gatewayApp.tipproveid.tipdocexp">Tipdocexp</span></th>
             <th></th>
@@ -45,13 +45,13 @@
             <tbody>
             <tr *ngFor="let tipproveid of tipproveids ;trackBy: trackId">
                 <td><a [routerLink]="['../tipproveid', tipproveid.id ]">{{tipproveid.id}}</a></td>
-                <td>{{tipproveid.vDescripcion}}</td>
-                <td>{{tipproveid.vUsuarioreg}}</td>
-                <td>{{tipproveid.dFechareg | date:'medium'}}</td>
-                <td>{{tipproveid.nEliminar}}</td>
+                <td>{{tipproveid.vDescrip}}</td>
+                <td>{{tipproveid.nUsuareg}}</td>
+                <td>{{tipproveid.tFecreg | date:'medium'}}</td>
+                <td>{{tipproveid.nFlgactivo}}</td>
                 <td>{{tipproveid.nSedereg}}</td>
-                <td>{{tipproveid.vUsuarioupd}}</td>
-                <td>{{tipproveid.dFechaupd | date:'medium'}}</td>
+                <td>{{tipproveid.nUsuaupd}}</td>
+                <td>{{tipproveid.tFecupd | date:'medium'}}</td>
                 <td>{{tipproveid.nSedeupd}}</td>
                 <td>
                     <div *ngIf="tipproveid.tipdocexp">
@@ -67,14 +67,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/defensa', { outlets: { popup: 'tipproveid/'+ tipproveid.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'tipproveid/'+ tipproveid.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/defensa', { outlets: { popup: 'tipproveid/'+ tipproveid.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'tipproveid/'+ tipproveid.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

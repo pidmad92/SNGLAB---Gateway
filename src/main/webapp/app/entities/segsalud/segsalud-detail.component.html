@@ -1,0 +1,53 @@
+
+<div *ngIf="segsalud">
+    <h2><span jhiTranslate="gatewayApp.segsalud.detail.title">Segsalud</span> {{segsalud.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.segsalud.vSegsal">V Segsal</span></dt>
+        <dd>
+            <span>{{segsalud.vSegsal}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.segsalud.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{segsalud.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.segsalud.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{segsalud.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.segsalud.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{segsalud.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.segsalud.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{segsalud.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.segsalud.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{segsalud.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.segsalud.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{segsalud.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.segsalud.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{segsalud.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'segsalud/'+ segsalud.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

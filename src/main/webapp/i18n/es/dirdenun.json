@@ -1,0 +1,44 @@
+{
+    "gatewayApp": {
+        "dirdenun" : {
+            "home": {
+                "title": "Dirdenuns",
+                "createLabel": "Crear nuevo Dirdenun",
+                "createOrEditLabel": "Crear o editar Dirdenun",
+                "search": "Search for Dirdenun"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Dirdenun {{ id }}?"
+            },
+            "detail": {
+                "title": "Dirdenun"
+            },
+            "vCoddepart": "V Coddepart",
+            "vCodprovin": "V Codprovin",
+            "vCoddistri": "V Coddistri",
+            "nCodtzona": "N Codtzona",
+            "vDeszona": "V Deszona",
+            "nCodtipvia": "N Codtipvia",
+            "vDesvia": "V Desvia",
+            "vDireccion": "V Direccion",
+            "vDircomple": "V Dircomple",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "denunte": "Denunte",
+            "tipzona": "Tipzona",
+            "tipvia": "Tipvia"
+        }
+    },
+    "denunciasApp": {
+        "dirdenun" : {
+            "created": "Un nuevo Dirdenun ha sido creado con el identificador {{ param }}",
+            "updated": "Un Dirdenun ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Dirdenun ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

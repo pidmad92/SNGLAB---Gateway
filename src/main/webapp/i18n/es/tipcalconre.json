@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "tipcalconre" : {
+            "home": {
+                "title": "Tipcalconres",
+                "createLabel": "Crear nuevo Tipcalconre",
+                "createOrEditLabel": "Crear o editar Tipcalconre",
+                "search": "Search for Tipcalconre"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipcalconre {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipcalconre"
+            },
+            "vNomtcal": "V Nomtcal",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "conceprem": "Conceprem"
+        }
+    },
+    "liquidacionesApp": {
+        "tipcalconre" : {
+            "created": "Un nuevo Tipcalconre ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipcalconre ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipcalconre ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

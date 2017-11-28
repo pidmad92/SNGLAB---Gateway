@@ -1,0 +1,99 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.dirpernat.home.title">Dirpernats</span>
+        <button class="btn btn-primary float-right jh-create-entity create-dirpernat" [routerLink]="['/', { outlets: { popup: ['dirpernat-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.dirpernat.home.createLabel">
+            Create new Dirpernat
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.dirpernat.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="dirpernats">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.dirpernat.nCoddepto">N Coddepto</span></th>
+            <th><span jhiTranslate="gatewayApp.dirpernat.nCodprov">N Codprov</span></th>
+            <th><span jhiTranslate="gatewayApp.dirpernat.nCoddist">N Coddist</span></th>
+            <th><span jhiTranslate="gatewayApp.dirpernat.vDircomple">V Dircomple</span></th>
+            <th><span jhiTranslate="gatewayApp.dirpernat.vRefer">V Refer</span></th>
+            <th><span jhiTranslate="gatewayApp.dirpernat.nFlgnotifi">N Flgnotifi</span></th>
+            <th><span jhiTranslate="gatewayApp.dirpernat.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.dirpernat.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.dirpernat.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.dirpernat.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.dirpernat.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.dirpernat.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.dirpernat.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.dirpernat.pernatural">Pernatural</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let dirpernat of dirpernats ;trackBy: trackId">
+                <td><a [routerLink]="['../dirpernat', dirpernat.id ]">{{dirpernat.id}}</a></td>
+                <td>{{dirpernat.nCoddepto}}</td>
+                <td>{{dirpernat.nCodprov}}</td>
+                <td>{{dirpernat.nCoddist}}</td>
+                <td>{{dirpernat.vDircomple}}</td>
+                <td>{{dirpernat.vRefer}}</td>
+                <td>{{dirpernat.nFlgnotifi}}</td>
+                <td>{{dirpernat.nUsuareg}}</td>
+                <td>{{dirpernat.tFecreg | date:'medium'}}</td>
+                <td>{{dirpernat.nFlgactivo}}</td>
+                <td>{{dirpernat.nSedereg}}</td>
+                <td>{{dirpernat.nUsuaupd}}</td>
+                <td>{{dirpernat.tFecupd | date:'medium'}}</td>
+                <td>{{dirpernat.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="dirpernat.pernatural">
+                        <a [routerLink]="['../pernatural', dirpernat.pernatural?.id ]" >{{dirpernat.pernatural?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../dirpernat', dirpernat.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'dirpernat/'+ dirpernat.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'dirpernat/'+ dirpernat.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

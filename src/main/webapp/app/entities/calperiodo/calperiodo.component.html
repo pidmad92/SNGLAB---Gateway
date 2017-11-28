@@ -1,0 +1,129 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.calperiodo.home.title">Calperiodos</span>
+        <button class="btn btn-primary float-right jh-create-entity create-calperiodo" [routerLink]="['/', { outlets: { popup: ['calperiodo-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.calperiodo.home.createLabel">
+            Create new Calperiodo
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.calperiodo.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="calperiodos">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.nCalper">N Calper</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.nCalper2">N Calper 2</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.nNumper">N Numper</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.tFecini">T Fecini</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.tFecfin">T Fecfin</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.nTnocomput">N Tnocomput</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.nDgozados">N Dgozados</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.nDadeudos">N Dadeudos</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.nBase">N Base</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.calbensoc">Calbensoc</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.interesperi">Interesperi</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.calrcmperi">Calrcmperi</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.estperical">Estperical</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.tipcalperi">Tipcalperi</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let calperiodo of calperiodos ;trackBy: trackId">
+                <td><a [routerLink]="['../calperiodo', calperiodo.id ]">{{calperiodo.id}}</a></td>
+                <td>{{calperiodo.nCalper}}</td>
+                <td>{{calperiodo.nCalper2}}</td>
+                <td>{{calperiodo.nNumper}}</td>
+                <td>{{calperiodo.tFecini | date:'mediumDate'}}</td>
+                <td>{{calperiodo.tFecfin | date:'mediumDate'}}</td>
+                <td>{{calperiodo.nTnocomput}}</td>
+                <td>{{calperiodo.nDgozados}}</td>
+                <td>{{calperiodo.nDadeudos}}</td>
+                <td>{{calperiodo.nBase}}</td>
+                <td>{{calperiodo.nUsuareg}}</td>
+                <td>{{calperiodo.tFecreg | date:'medium'}}</td>
+                <td>{{calperiodo.nFlgactivo}}</td>
+                <td>{{calperiodo.nSedereg}}</td>
+                <td>{{calperiodo.nUsuaupd}}</td>
+                <td>{{calperiodo.tFecupd | date:'medium'}}</td>
+                <td>{{calperiodo.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="calperiodo.calbensoc">
+                        <a [routerLink]="['../calbensoc', calperiodo.calbensoc?.id ]" >{{calperiodo.calbensoc?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="calperiodo.interesperi">
+                        <a [routerLink]="['../interesperi', calperiodo.interesperi?.id ]" >{{calperiodo.interesperi?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="calperiodo.calrcmperi">
+                        <a [routerLink]="['../calrcmperi', calperiodo.calrcmperi?.id ]" >{{calperiodo.calrcmperi?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="calperiodo.estperical">
+                        <a [routerLink]="['../estperical', calperiodo.estperical?.id ]" >{{calperiodo.estperical?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="calperiodo.tipcalperi">
+                        <a [routerLink]="['../tipcalperi', calperiodo.tipcalperi?.id ]" >{{calperiodo.tipcalperi?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../calperiodo', calperiodo.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'calperiodo/'+ calperiodo.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'calperiodo/'+ calperiodo.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

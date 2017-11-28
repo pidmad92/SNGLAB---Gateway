@@ -1,0 +1,81 @@
+
+<div *ngIf="conceprem">
+    <h2><span jhiTranslate="gatewayApp.conceprem.detail.title">Conceprem</span> {{conceprem.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.conceprem.vNomconrem">V Nomconrem</span></dt>
+        <dd>
+            <span>{{conceprem.vNomconrem}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conceprem.nValconrem">N Valconrem</span></dt>
+        <dd>
+            <span>{{conceprem.nValconrem}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conceprem.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{conceprem.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conceprem.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{conceprem.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conceprem.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{conceprem.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conceprem.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{conceprem.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conceprem.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{conceprem.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conceprem.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{conceprem.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conceprem.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{conceprem.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conceprem.calrcmperi">Calrcmperi</span></dt>
+        <dd>
+            <div *ngIf="conceprem.calrcmperi">
+                <a [routerLink]="['/calrcmperi', conceprem.calrcmperi?.id]">{{conceprem.calrcmperi?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conceprem.conceprem">Conceprem</span></dt>
+        <dd>
+            <div *ngIf="conceprem.conceprem">
+                <a [routerLink]="['/conceprem', conceprem.conceprem?.id]">{{conceprem.conceprem?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conceprem.tipcalconre">Tipcalconre</span></dt>
+        <dd>
+            <div *ngIf="conceprem.tipcalconre">
+                <a [routerLink]="['/tipcalconre', conceprem.tipcalconre?.id]">{{conceprem.tipcalconre?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.conceprem.tipconrem">Tipconrem</span></dt>
+        <dd>
+            <div *ngIf="conceprem.tipconrem">
+                <a [routerLink]="['/tipconrem', conceprem.tipconrem?.id]">{{conceprem.tipconrem?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'conceprem/'+ conceprem.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

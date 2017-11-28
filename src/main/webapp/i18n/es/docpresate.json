@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "docpresate" : {
+            "home": {
+                "title": "Docpresates",
+                "createLabel": "Crear nuevo Docpresate",
+                "createOrEditLabel": "Crear o editar Docpresate",
+                "search": "Search for Docpresate"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Docpresate {{ id }}?"
+            },
+            "detail": {
+                "title": "Docpresate"
+            },
+            "vObsdopate": "V Obsdopate",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "atencion": "Atencion",
+            "documento": "Documento"
+        }
+    },
+    "consultasApp": {
+        "docpresate" : {
+            "created": "Un nuevo Docpresate ha sido creado con el identificador {{ param }}",
+            "updated": "Un Docpresate ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Docpresate ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

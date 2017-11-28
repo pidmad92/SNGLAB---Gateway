@@ -36,10 +36,14 @@ export class TopbarComponent implements OnInit {
         this.isNavbarCollapsed = true;
         if (router.url.indexOf('defensa') === 1) {
             this.ruta = '4';
+        } else if (router.url.indexOf('liquidaciones') === 1) {
+            this.ruta = '1';
         } else if (router.url.indexOf('consultas') === 1) {
             this.ruta = '2';
         } else if (router.url.indexOf('sindicatos') === 1) {
             this.ruta = '6';
+        } else if (router.url.indexOf('denuncias') === 1) {
+            this.ruta = '7';
         } else {
             this.ruta = '0';
         }
@@ -48,6 +52,8 @@ export class TopbarComponent implements OnInit {
         this.ruta = $event.target.value;
         if (this.ruta === '0') {
             this.router.navigate(['/']);
+        } else if (this.ruta === '1') {
+            this.router.navigate(['/liquidaciones/registro-atencion']);
         } else if (this.ruta === '2') {
             this.router.navigate(['/consultas/atencion']);
         } else if (this.ruta === '8') {
@@ -58,6 +64,8 @@ export class TopbarComponent implements OnInit {
             this.router.navigate(['/defensa/registro-expediente' , { outlets: { wizard: ['datos-pase'] } }]);
         } else if (this.ruta === '6') {
             this.router.navigate(['sindicatos/bienvenida']);
+        } else if (this.ruta === '7') {
+            this.router.navigate(['/denuncias/validarruc']);
         }
         this.router.events
             .filter((event) => event instanceof NavigationEnd)

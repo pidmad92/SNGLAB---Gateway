@@ -13,72 +13,56 @@
                    [(ngModel)]="trabajador.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.vFlgsucesor" for="field_vFlgsucesor">V Flgsucesor</label>
-            <input type="text" class="form-control" name="vFlgsucesor" id="field_vFlgsucesor"
-                [(ngModel)]="trabajador.vFlgsucesor" required maxlength="1" />
-            <div [hidden]="!(editForm.controls.vFlgsucesor?.dirty && editForm.controls.vFlgsucesor?.invalid)">
+            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.nFlgsuces" for="field_nFlgsuces">N Flgsuces</label>
+            <input type="checkbox" class="form-control" name="nFlgsuces" id="field_nFlgsuces"
+                [(ngModel)]="trabajador.nFlgsuces"  />
+            <div [hidden]="!(editForm.controls.nFlgsuces?.dirty && editForm.controls.nFlgsuces?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vFlgsucesor?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.nFlgsuces?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
-                </small>
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vFlgsucesor?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
-                   This field cannot be longer than 1 characters.
                 </small>
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.vUsuarioreg" for="field_vUsuarioreg">V Usuarioreg</label>
-            <input type="text" class="form-control" name="vUsuarioreg" id="field_vUsuarioreg"
-                [(ngModel)]="trabajador.vUsuarioreg" required maxlength="20" />
-            <div [hidden]="!(editForm.controls.vUsuarioreg?.dirty && editForm.controls.vUsuarioreg?.invalid)">
+            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.nUsuareg" for="field_nUsuareg">N Usuareg</label>
+            <input type="number" class="form-control" name="nUsuareg" id="field_nUsuareg"
+                [(ngModel)]="trabajador.nUsuareg" required />
+            <div [hidden]="!(editForm.controls.nUsuareg?.dirty && editForm.controls.nUsuareg?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vUsuarioreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.nUsuareg?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vUsuarioreg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
-                   This field cannot be longer than 20 characters.
+                    [hidden]="!editForm.controls.nUsuareg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
                 </small>
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.dFechareg" for="field_dFechareg">D Fechareg</label>
+            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.tFecreg" for="field_tFecreg">T Fecreg</label>
             <div class="d-flex">
-                <input id="field_dFechareg" type="datetime-local" class="form-control" name="dFechareg" [(ngModel)]="trabajador.dFechareg"
+                <input id="field_tFecreg" type="datetime-local" class="form-control" name="tFecreg" [(ngModel)]="trabajador.tFecreg"
                 required  />
             </div>
-            <div [hidden]="!(editForm.controls.dFechareg?.dirty && editForm.controls.dFechareg?.invalid)">
+            <div [hidden]="!(editForm.controls.tFecreg?.dirty && editForm.controls.tFecreg?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.dFechareg?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.tFecreg?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
                 <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.dFechareg?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    [hidden]="!editForm.controls.tFecreg?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
                     This field should be a date and time.
                 </small>
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.nEliminar" for="field_nEliminar">N Eliminar</label>
-            <input type="number" class="form-control" name="nEliminar" id="field_nEliminar"
-                [(ngModel)]="trabajador.nEliminar" required min="0" max="1" />
-            <div [hidden]="!(editForm.controls.nEliminar?.dirty && editForm.controls.nEliminar?.invalid)">
+            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.nFlgactivo" for="field_nFlgactivo">N Flgactivo</label>
+            <input type="checkbox" class="form-control" name="nFlgactivo" id="field_nFlgactivo"
+                [(ngModel)]="trabajador.nFlgactivo"  />
+            <div [hidden]="!(editForm.controls.nFlgactivo?.dirty && editForm.controls.nFlgactivo?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.nEliminar?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.nFlgactivo?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
-                </small>
-                <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.nEliminar?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 0 }">
-                    This field should be at least 0.
-                </small>
-                <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.nEliminar?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 1 }">
-                    This field cannot be more than 1.
-                </small>
-                <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.nEliminar?.errors?.number" jhiTranslate="entity.validation.number">
-                    This field should be a number.
                 </small>
             </div>
         </div>
@@ -98,20 +82,14 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.vUsuarioupd" for="field_vUsuarioupd">V Usuarioupd</label>
-            <input type="text" class="form-control" name="vUsuarioupd" id="field_vUsuarioupd"
-                [(ngModel)]="trabajador.vUsuarioupd" maxlength="20" />
-            <div [hidden]="!(editForm.controls.vUsuarioupd?.dirty && editForm.controls.vUsuarioupd?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vUsuarioupd?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
-                   This field cannot be longer than 20 characters.
-                </small>
-            </div>
+            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.nUsuaupd" for="field_nUsuaupd">N Usuaupd</label>
+            <input type="number" class="form-control" name="nUsuaupd" id="field_nUsuaupd"
+                [(ngModel)]="trabajador.nUsuaupd"  />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.dFechaupd" for="field_dFechaupd">D Fechaupd</label>
+            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.tFecupd" for="field_tFecupd">T Fecupd</label>
             <div class="d-flex">
-                <input id="field_dFechaupd" type="datetime-local" class="form-control" name="dFechaupd" [(ngModel)]="trabajador.dFechaupd"
+                <input id="field_tFecupd" type="datetime-local" class="form-control" name="tFecupd" [(ngModel)]="trabajador.tFecupd"
                   />
             </div>
         </div>
@@ -122,17 +100,17 @@
         </div>
 
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.cargotrabaja" for="field_cargotrabaja">Cargotrabaja</label>
-            <select class="form-control" id="field_cargotrabaja" name="cargotrabaja" [(ngModel)]="trabajador.cargotrabaja" >
+            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.cartrab" for="field_cartrab">Cartrab</label>
+            <select class="form-control" id="field_cartrab" name="cartrab" [(ngModel)]="trabajador.cartrab" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="cargotrabajaOption.id === trabajador.cargotrabaja?.id ? trabajador.cargotrabaja : cargotrabajaOption" *ngFor="let cargotrabajaOption of cargotrabajas; trackBy: trackCargotrabajaById">{{cargotrabajaOption.id}}</option>
+                <option [ngValue]="cartrabOption.id === trabajador.cartrab?.id ? trabajador.cartrab : cartrabOption" *ngFor="let cartrabOption of cartrabs; trackBy: trackCartrabById">{{cartrabOption.id}}</option>
             </select>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.personanatur" for="field_personanatur">Personanatur</label>
-            <select class="form-control" id="field_personanatur" name="personanatur" [(ngModel)]="trabajador.personanatur" >
+            <label class="form-control-label" jhiTranslate="gatewayApp.trabajador.pernatural" for="field_pernatural">Pernatural</label>
+            <select class="form-control" id="field_pernatural" name="pernatural" [(ngModel)]="trabajador.pernatural" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="personanaturOption.id === trabajador.personanatur?.id ? trabajador.personanatur : personanaturOption" *ngFor="let personanaturOption of personanaturs; trackBy: trackPersonanaturById">{{personanaturOption.id}}</option>
+                <option [ngValue]="pernaturalOption.id === trabajador.pernatural?.id ? trabajador.pernatural : pernaturalOption" *ngFor="let pernaturalOption of pernaturals; trackBy: trackPernaturalById">{{pernaturalOption.id}}</option>
             </select>
         </div>
     </div>

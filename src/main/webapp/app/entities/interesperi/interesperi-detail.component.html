@@ -1,0 +1,59 @@
+
+<div *ngIf="interesperi">
+    <h2><span jhiTranslate="gatewayApp.interesperi.detail.title">Interesperi</span> {{interesperi.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.interesperi.nValintper">N Valintper</span></dt>
+        <dd>
+            <span>{{interesperi.nValintper}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.interesperi.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{interesperi.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.interesperi.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{interesperi.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.interesperi.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{interesperi.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.interesperi.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{interesperi.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.interesperi.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{interesperi.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.interesperi.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{interesperi.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.interesperi.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{interesperi.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.interesperi.tipinteres">Tipinteres</span></dt>
+        <dd>
+            <div *ngIf="interesperi.tipinteres">
+                <a [routerLink]="['/tipinteres', interesperi.tipinteres?.id]">{{interesperi.tipinteres?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'interesperi/'+ interesperi.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

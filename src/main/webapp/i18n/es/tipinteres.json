@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "tipinteres" : {
+            "home": {
+                "title": "Tipinteres",
+                "createLabel": "Crear nuevo Tipinteres",
+                "createOrEditLabel": "Crear o editar Tipinteres",
+                "search": "Search for Tipinteres"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipinteres {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipinteres"
+            },
+            "vNomtipint": "V Nomtipint",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "interesperi": "Interesperi"
+        }
+    },
+    "liquidacionesApp": {
+        "tipinteres" : {
+            "created": "Un nuevo Tipinteres ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipinteres ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipinteres ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -68,16 +68,16 @@ export class ResolucrdService {
      */
     private convertItemFromServer(json: any): Resolucrd {
         const entity: Resolucrd = Object.assign(new Resolucrd(), json);
-        entity.dFecresolucionsd = this.dateUtils
-            .convertDateTimeFromServer(json.dFecresolucionsd);
-        entity.dFechaconciliacion = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaconciliacion);
-        entity.dFechanotificacion = this.dateUtils
-            .convertDateTimeFromServer(json.dFechanotificacion);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.dFecresosd = this.dateUtils
+            .convertLocalDateFromServer(json.dFecresosd);
+        entity.dFecconcil = this.dateUtils
+            .convertLocalDateFromServer(json.dFecconcil);
+        entity.dFechanoti = this.dateUtils
+            .convertLocalDateFromServer(json.dFechanoti);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -86,16 +86,16 @@ export class ResolucrdService {
      */
     private convert(resolucrd: Resolucrd): Resolucrd {
         const copy: Resolucrd = Object.assign({}, resolucrd);
+        copy.dFecresosd = this.dateUtils
+            .convertLocalDateToServer(resolucrd.dFecresosd);
+        copy.dFecconcil = this.dateUtils
+            .convertLocalDateToServer(resolucrd.dFecconcil);
+        copy.dFechanoti = this.dateUtils
+            .convertLocalDateToServer(resolucrd.dFechanoti);
 
-        copy.dFecresolucionsd = this.dateUtils.toDate(resolucrd.dFecresolucionsd);
+        copy.tFecreg = this.dateUtils.toDate(resolucrd.tFecreg);
 
-        copy.dFechaconciliacion = this.dateUtils.toDate(resolucrd.dFechaconciliacion);
-
-        copy.dFechanotificacion = this.dateUtils.toDate(resolucrd.dFechanotificacion);
-
-        copy.dFechareg = this.dateUtils.toDate(resolucrd.dFechareg);
-
-        copy.dFechaupd = this.dateUtils.toDate(resolucrd.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(resolucrd.tFecupd);
         return copy;
     }
 }

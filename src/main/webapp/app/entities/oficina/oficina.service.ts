@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { SERVER_API_URL } from '../../app.constants';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
@@ -11,8 +10,8 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class OficinaService {
 
-    private resourceUrl = SERVER_API_URL + 'api/oficinas';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/oficinas';
+    private resourceUrl = '/consultas/api/oficinas';
+    private resourceSearchUrl = '/consultas/api/_search/oficinas';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -69,10 +68,10 @@ export class OficinaService {
      */
     private convertItemFromServer(json: any): Oficina {
         const entity: Oficina = Object.assign(new Oficina(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -82,9 +81,9 @@ export class OficinaService {
     private convert(oficina: Oficina): Oficina {
         const copy: Oficina = Object.assign({}, oficina);
 
-        copy.dFechareg = this.dateUtils.toDate(oficina.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(oficina.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(oficina.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(oficina.tFecupd);
         return copy;
     }
 }

@@ -1,0 +1,53 @@
+
+<div *ngIf="discap">
+    <h2><span jhiTranslate="gatewayApp.discap.detail.title">Discap</span> {{discap.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.discap.vDesdiscap">V Desdiscap</span></dt>
+        <dd>
+            <span>{{discap.vDesdiscap}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.discap.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{discap.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.discap.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{discap.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.discap.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{discap.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.discap.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{discap.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.discap.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{discap.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.discap.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{discap.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.discap.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{discap.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'discap/'+ discap.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

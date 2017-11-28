@@ -1,0 +1,39 @@
+{
+    "gatewayApp": {
+        "dirpernat" : {
+            "home": {
+                "title": "Dirpernats",
+                "createLabel": "Crear nuevo Dirpernat",
+                "createOrEditLabel": "Crear o editar Dirpernat",
+                "search": "Search for Dirpernat"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Dirpernat {{ id }}?"
+            },
+            "detail": {
+                "title": "Dirpernat"
+            },
+            "nCoddepto": "N Coddepto",
+            "nCodprov": "N Codprov",
+            "nCoddist": "N Coddist",
+            "vDircomple": "V Dircomple",
+            "vRefer": "V Refer",
+            "nFlgnotifi": "N Flgnotifi",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "pernatural": "Pernatural"
+        }
+    },
+    "consultasApp": {
+        "dirpernat" : {
+            "created": "Un nuevo Dirpernat ha sido creado con el identificador {{ param }}",
+            "updated": "Un Dirpernat ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Dirpernat ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

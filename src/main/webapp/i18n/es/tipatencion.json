@@ -13,13 +13,13 @@
             "detail": {
                 "title": "Tipatencion"
             },
-            "vDescripcion": "V Descripcion",
-            "vUsuarioreg": "V Usuarioreg",
-            "dFechareg": "D Fechareg",
-            "nEliminar": "N Eliminar",
+            "vDestipate": "V Destipate",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
             "nSedereg": "N Sedereg",
-            "vUsuarioupd": "V Usuarioupd",
-            "dFechaupd": "D Fechaupd",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
             "nSedeupd": "N Sedeupd",
             "atencion": "Atencion"
         }

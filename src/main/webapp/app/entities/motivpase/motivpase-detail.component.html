@@ -1,0 +1,65 @@
+
+<div *ngIf="motivpase">
+    <h2><span jhiTranslate="gatewayApp.motivpase.detail.title">Motivpase</span> {{motivpase.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.motivpase.vObsmotpas">V Obsmotpas</span></dt>
+        <dd>
+            <span>{{motivpase.vObsmotpas}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motivpase.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{motivpase.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motivpase.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{motivpase.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motivpase.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{motivpase.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motivpase.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{motivpase.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motivpase.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{motivpase.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motivpase.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{motivpase.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motivpase.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{motivpase.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motivpase.pasegl">Pasegl</span></dt>
+        <dd>
+            <div *ngIf="motivpase.pasegl">
+                <a [routerLink]="['/pasegl', motivpase.pasegl?.id]">{{motivpase.pasegl?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motivpase.motatenofic">Motatenofic</span></dt>
+        <dd>
+            <div *ngIf="motivpase.motatenofic">
+                <a [routerLink]="['/motatenofic', motivpase.motatenofic?.id]">{{motivpase.motatenofic?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'motivpase/'+ motivpase.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

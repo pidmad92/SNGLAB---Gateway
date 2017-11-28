@@ -1,0 +1,75 @@
+
+<div *ngIf="notifica">
+    <h2><span jhiTranslate="gatewayApp.notifica.detail.title">Notifica</span> {{notifica.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.notifica.nNumfolios">N Numfolios</span></dt>
+        <dd>
+            <span>{{notifica.nNumfolios}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notifica.vHojaenvio">V Hojaenvio</span></dt>
+        <dd>
+            <span>{{notifica.vHojaenvio}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notifica.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{notifica.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notifica.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{notifica.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notifica.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{notifica.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notifica.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{notifica.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notifica.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{notifica.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notifica.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{notifica.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notifica.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{notifica.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notifica.expediente">Expediente</span></dt>
+        <dd>
+            <div *ngIf="notifica.expediente">
+                <a [routerLink]="['/expediente', notifica.expediente?.id]">{{notifica.expediente?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notifica.tipenvnot">Tipenvnot</span></dt>
+        <dd>
+            <div *ngIf="notifica.tipenvnot">
+                <a [routerLink]="['/tipenvnot', notifica.tipenvnot?.id]">{{notifica.tipenvnot?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notifica.tipnotif">Tipnotif</span></dt>
+        <dd>
+            <div *ngIf="notifica.tipnotif">
+                <a [routerLink]="['/tipnotif', notifica.tipnotif?.id]">{{notifica.tipnotif?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'notifica/'+ notifica.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

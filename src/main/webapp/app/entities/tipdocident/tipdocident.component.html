@@ -1,13 +1,13 @@
 <div>
-    <h4 class="title my-3">
+    <h2>
         <span jhiTranslate="gatewayApp.tipdocident.home.title">Tipdocidents</span>
-        <button class="btn btn-primary float-right jh-create-entity create-tipdocident" [routerLink]="['/consultas', { outlets: { popup: ['tipdocident-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-tipdocident" [routerLink]="['/', { outlets: { popup: ['tipdocident-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.tipdocident.home.createLabel">
             Create new Tipdocident
             </span>
         </button>
-    </h4>
+    </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -30,15 +30,15 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.tipdocident.vDescripcion">V Descripcion</span></th>
-            <th><span jhiTranslate="gatewayApp.tipdocident.nNumdigitos">N Numdigitos</span></th>
-            <th><span jhiTranslate="gatewayApp.tipdocident.vDescripcioncorta">V Descripcioncorta</span></th>
-            <th><span jhiTranslate="gatewayApp.tipdocident.vUsuarioreg">V Usuarioreg</span></th>
-            <th><span jhiTranslate="gatewayApp.tipdocident.dFechareg">D Fechareg</span></th>
-            <th><span jhiTranslate="gatewayApp.tipdocident.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdocident.vDesdocide">V Desdocide</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdocident.nNumdigi">N Numdigi</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdocident.vDescorta">V Descorta</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdocident.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdocident.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdocident.nFlgactivo">N Flgactivo</span></th>
             <th><span jhiTranslate="gatewayApp.tipdocident.nSedereg">N Sedereg</span></th>
-            <th><span jhiTranslate="gatewayApp.tipdocident.vUsuarioupd">V Usuarioupd</span></th>
-            <th><span jhiTranslate="gatewayApp.tipdocident.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdocident.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdocident.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.tipdocident.nSedeupd">N Sedeupd</span></th>
             <th></th>
             </tr>
@@ -46,15 +46,15 @@
             <tbody>
             <tr *ngFor="let tipdocident of tipdocidents ;trackBy: trackId">
                 <td><a [routerLink]="['../tipdocident', tipdocident.id ]">{{tipdocident.id}}</a></td>
-                <td>{{tipdocident.vDescripcion}}</td>
-                <td>{{tipdocident.nNumdigitos}}</td>
-                <td>{{tipdocident.vDescripcioncorta}}</td>
-                <td>{{tipdocident.vUsuarioreg}}</td>
-                <td>{{tipdocident.dFechareg | date:'medium'}}</td>
-                <td>{{tipdocident.nEliminar}}</td>
+                <td>{{tipdocident.vDesdocide}}</td>
+                <td>{{tipdocident.nNumdigi}}</td>
+                <td>{{tipdocident.vDescorta}}</td>
+                <td>{{tipdocident.nUsuareg}}</td>
+                <td>{{tipdocident.tFecreg | date:'medium'}}</td>
+                <td>{{tipdocident.nFlgactivo}}</td>
                 <td>{{tipdocident.nSedereg}}</td>
-                <td>{{tipdocident.vUsuarioupd}}</td>
-                <td>{{tipdocident.dFechaupd | date:'medium'}}</td>
+                <td>{{tipdocident.nUsuaupd}}</td>
+                <td>{{tipdocident.tFecupd | date:'medium'}}</td>
                 <td>{{tipdocident.nSedeupd}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
@@ -65,14 +65,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/consultas', { outlets: { popup: 'tipdocident/'+ tipdocident.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'tipdocident/'+ tipdocident.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/consultas', { outlets: { popup: 'tipdocident/'+ tipdocident.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'tipdocident/'+ tipdocident.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

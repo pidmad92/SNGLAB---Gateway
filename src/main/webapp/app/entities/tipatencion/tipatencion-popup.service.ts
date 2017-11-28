@@ -28,10 +28,10 @@ export class TipatencionPopupService {
 
             if (id) {
                 this.tipatencionService.find(id).subscribe((tipatencion) => {
-                    tipatencion.dFechareg = this.datePipe
-                        .transform(tipatencion.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    tipatencion.dFechaupd = this.datePipe
-                        .transform(tipatencion.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    tipatencion.tFecreg = this.datePipe
+                        .transform(tipatencion.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    tipatencion.tFecupd = this.datePipe
+                        .transform(tipatencion.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.tipatencionModalRef(component, tipatencion);
                     resolve(this.ngbModalRef);
                 });

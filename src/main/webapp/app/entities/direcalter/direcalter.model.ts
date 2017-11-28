@@ -3,16 +3,17 @@ import { BaseEntity } from './../../shared';
 export class Direcalter implements BaseEntity {
     constructor(
         public id?: number,
-        public vRazonsocial?: string,
+        public vRazsocial?: string,
         public vDireccion?: string,
-        public vUsuarioreg?: string,
-        public dFechareg?: any,
-        public nEliminar?: number,
+        public nUsuareg?: number,
+        public tFecreg?: any,
+        public nFlgactivo?: boolean,
         public nSedereg?: number,
-        public vUsuarioupd?: string,
-        public dFechaupd?: any,
+        public nUsuaupd?: number,
+        public tFecupd?: any,
         public nSedeupd?: number,
-        public atenmotiatens?: BaseEntity[],
+        public motateselecs?: BaseEntity[],
     ) {
+        this.nFlgactivo = false;
     }
 }

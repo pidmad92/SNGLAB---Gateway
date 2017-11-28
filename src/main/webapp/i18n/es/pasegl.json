@@ -1,0 +1,38 @@
+{
+    "gatewayApp": {
+        "pasegl" : {
+            "home": {
+                "title": "Pasegls",
+                "createLabel": "Crear nuevo Pasegl",
+                "createOrEditLabel": "Crear o editar Pasegl",
+                "search": "Search for Pasegl"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Pasegl {{ id }}?"
+            },
+            "detail": {
+                "title": "Pasegl"
+            },
+            "vObspase": "V Obspase",
+            "vEstado": "V Estado",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "oficina": "Oficina",
+            "expediente": "Expediente",
+            "motivpase": "Motivpase",
+            "atencion": "Atencion"
+        }
+    },
+    "consultasApp": {
+        "pasegl" : {
+            "created": "Un nuevo Pasegl ha sido creado con el identificador {{ param }}",
+            "updated": "Un Pasegl ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Pasegl ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

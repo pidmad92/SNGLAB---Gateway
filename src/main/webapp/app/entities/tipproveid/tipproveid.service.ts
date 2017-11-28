@@ -68,10 +68,10 @@ export class TipproveidService {
      */
     private convertItemFromServer(json: any): Tipproveid {
         const entity: Tipproveid = Object.assign(new Tipproveid(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -81,9 +81,9 @@ export class TipproveidService {
     private convert(tipproveid: Tipproveid): Tipproveid {
         const copy: Tipproveid = Object.assign({}, tipproveid);
 
-        copy.dFechareg = this.dateUtils.toDate(tipproveid.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(tipproveid.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(tipproveid.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(tipproveid.tFecupd);
         return copy;
     }
 }

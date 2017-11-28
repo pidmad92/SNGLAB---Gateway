@@ -1,0 +1,109 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.conceprem.home.title">Conceprems</span>
+        <button class="btn btn-primary float-right jh-create-entity create-conceprem" [routerLink]="['/', { outlets: { popup: ['conceprem-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.conceprem.home.createLabel">
+            Create new Conceprem
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.conceprem.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="conceprems">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.conceprem.vNomconrem">V Nomconrem</span></th>
+            <th><span jhiTranslate="gatewayApp.conceprem.nValconrem">N Valconrem</span></th>
+            <th><span jhiTranslate="gatewayApp.conceprem.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.conceprem.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.conceprem.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.conceprem.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.conceprem.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.conceprem.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.conceprem.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.conceprem.calrcmperi">Calrcmperi</span></th>
+            <th><span jhiTranslate="gatewayApp.conceprem.conceprem">Conceprem</span></th>
+            <th><span jhiTranslate="gatewayApp.conceprem.tipcalconre">Tipcalconre</span></th>
+            <th><span jhiTranslate="gatewayApp.conceprem.tipconrem">Tipconrem</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let conceprem of conceprems ;trackBy: trackId">
+                <td><a [routerLink]="['../conceprem', conceprem.id ]">{{conceprem.id}}</a></td>
+                <td>{{conceprem.vNomconrem}}</td>
+                <td>{{conceprem.nValconrem}}</td>
+                <td>{{conceprem.nUsuareg}}</td>
+                <td>{{conceprem.tFecreg | date:'medium'}}</td>
+                <td>{{conceprem.nFlgactivo}}</td>
+                <td>{{conceprem.nSedereg}}</td>
+                <td>{{conceprem.nUsuaupd}}</td>
+                <td>{{conceprem.tFecupd | date:'medium'}}</td>
+                <td>{{conceprem.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="conceprem.calrcmperi">
+                        <a [routerLink]="['../calrcmperi', conceprem.calrcmperi?.id ]" >{{conceprem.calrcmperi?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="conceprem.conceprem">
+                        <a [routerLink]="['../conceprem', conceprem.conceprem?.id ]" >{{conceprem.conceprem?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="conceprem.tipcalconre">
+                        <a [routerLink]="['../tipcalconre', conceprem.tipcalconre?.id ]" >{{conceprem.tipcalconre?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="conceprem.tipconrem">
+                        <a [routerLink]="['../tipconrem', conceprem.tipconrem?.id ]" >{{conceprem.tipconrem?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../conceprem', conceprem.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'conceprem/'+ conceprem.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'conceprem/'+ conceprem.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

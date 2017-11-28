@@ -1,0 +1,37 @@
+{
+    "gatewayApp": {
+        "denunte" : {
+            "home": {
+                "title": "Denuntes",
+                "createLabel": "Crear nuevo Denunte",
+                "createOrEditLabel": "Crear o editar Denunte",
+                "search": "Search for Denunte"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Denunte {{ id }}?"
+            },
+            "detail": {
+                "title": "Denunte"
+            },
+            "nCodusu": "N Codusu",
+            "vFlgestado": "V Flgestado",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "pernatural": "Pernatural",
+            "dirdenun": "Dirdenun",
+            "denuncia": "Denuncia"
+        }
+    },
+    "denunciasApp": {
+        "denunte" : {
+            "created": "Un nuevo Denunte ha sido creado con el identificador {{ param }}",
+            "updated": "Un Denunte ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Denunte ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

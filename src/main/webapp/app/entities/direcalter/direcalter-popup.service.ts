@@ -28,10 +28,10 @@ export class DirecalterPopupService {
 
             if (id) {
                 this.direcalterService.find(id).subscribe((direcalter) => {
-                    direcalter.dFechareg = this.datePipe
-                        .transform(direcalter.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    direcalter.dFechaupd = this.datePipe
-                        .transform(direcalter.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    direcalter.tFecreg = this.datePipe
+                        .transform(direcalter.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    direcalter.tFecupd = this.datePipe
+                        .transform(direcalter.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.direcalterModalRef(component, direcalter);
                     resolve(this.ngbModalRef);
                 });

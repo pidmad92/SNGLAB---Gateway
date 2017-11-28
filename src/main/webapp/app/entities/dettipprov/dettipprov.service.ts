@@ -68,10 +68,10 @@ export class DettipprovService {
      */
     private convertItemFromServer(json: any): Dettipprov {
         const entity: Dettipprov = Object.assign(new Dettipprov(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -81,9 +81,9 @@ export class DettipprovService {
     private convert(dettipprov: Dettipprov): Dettipprov {
         const copy: Dettipprov = Object.assign({}, dettipprov);
 
-        copy.dFechareg = this.dateUtils.toDate(dettipprov.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(dettipprov.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(dettipprov.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(dettipprov.tFecupd);
         return copy;
     }
 }

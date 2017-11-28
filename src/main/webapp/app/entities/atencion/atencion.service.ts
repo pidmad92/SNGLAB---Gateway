@@ -68,10 +68,10 @@ export class AtencionService {
      */
     private convertItemFromServer(json: any): Atencion {
         const entity: Atencion = Object.assign(new Atencion(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -81,9 +81,9 @@ export class AtencionService {
     private convert(atencion: Atencion): Atencion {
         const copy: Atencion = Object.assign({}, atencion);
 
-        copy.dFechareg = this.dateUtils.toDate(atencion.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(atencion.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(atencion.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(atencion.tFecupd);
         return copy;
     }
 }

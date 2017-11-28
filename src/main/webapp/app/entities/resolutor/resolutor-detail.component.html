@@ -1,6 +1,6 @@
 
 <div *ngIf="resolutor">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.resolutor.detail.title">Resolutor</span> {{resolutor.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.resolutor.detail.title">Resolutor</span> {{resolutor.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
@@ -12,29 +12,29 @@
         <dd>
             <span>{{resolutor.nCodresolutorusuario}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.resolutor.vUsuarioreg">V Usuarioreg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.resolutor.nUsuareg">N Usuareg</span></dt>
         <dd>
-            <span>{{resolutor.vUsuarioreg}}</span>
+            <span>{{resolutor.nUsuareg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.resolutor.dFechareg">D Fechareg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.resolutor.tFecreg">T Fecreg</span></dt>
         <dd>
-            <span>{{resolutor.dFechareg | date:'medium'}}</span>
+            <span>{{resolutor.tFecreg | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.resolutor.nEliminar">N Eliminar</span></dt>
+        <dt><span jhiTranslate="gatewayApp.resolutor.nFlgactivo">N Flgactivo</span></dt>
         <dd>
-            <span>{{resolutor.nEliminar}}</span>
+            <span>{{resolutor.nFlgactivo}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.resolutor.nSedereg">N Sedereg</span></dt>
         <dd>
             <span>{{resolutor.nSedereg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.resolutor.vUsuarioupd">V Usuarioupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.resolutor.nUsuaupd">N Usuaupd</span></dt>
         <dd>
-            <span>{{resolutor.vUsuarioupd}}</span>
+            <span>{{resolutor.nUsuaupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.resolutor.dFechaupd">D Fechaupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.resolutor.tFecupd">T Fecupd</span></dt>
         <dd>
-            <span>{{resolutor.dFechaupd | date:'medium'}}</span>
+            <span>{{resolutor.tFecupd | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.resolutor.nSedeupd">N Sedeupd</span></dt>
         <dd>

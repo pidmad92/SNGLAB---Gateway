@@ -28,10 +28,10 @@ export class TipvinculoPopupService {
 
             if (id) {
                 this.tipvinculoService.find(id).subscribe((tipvinculo) => {
-                    tipvinculo.dFechareg = this.datePipe
-                        .transform(tipvinculo.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    tipvinculo.dFechaupd = this.datePipe
-                        .transform(tipvinculo.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    tipvinculo.tFecreg = this.datePipe
+                        .transform(tipvinculo.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    tipvinculo.tFecupd = this.datePipe
+                        .transform(tipvinculo.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.tipvinculoModalRef(component, tipvinculo);
                     resolve(this.ngbModalRef);
                 });

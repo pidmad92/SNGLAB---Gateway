@@ -1,13 +1,13 @@
 <div>
-    <h4 class="title my-3">
+    <h2>
         <span jhiTranslate="gatewayApp.oficina.home.title">Oficinas</span>
-        <button class="btn btn-primary float-right jh-create-entity create-oficina" [routerLink]="['/consultas', { outlets: { popup: ['oficina-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-oficina" [routerLink]="['/', { outlets: { popup: ['oficina-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.oficina.home.createLabel">
             Create new Oficina
             </span>
         </button>
-    </h4>
+    </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -30,13 +30,13 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.oficina.vDescripcion">V Descripcion</span></th>
-            <th><span jhiTranslate="gatewayApp.oficina.vUsuarioreg">V Usuarioreg</span></th>
-            <th><span jhiTranslate="gatewayApp.oficina.dFechareg">D Fechareg</span></th>
-            <th><span jhiTranslate="gatewayApp.oficina.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.oficina.vDesofic">V Desofic</span></th>
+            <th><span jhiTranslate="gatewayApp.oficina.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.oficina.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.oficina.nFlgactivo">N Flgactivo</span></th>
             <th><span jhiTranslate="gatewayApp.oficina.nSedereg">N Sedereg</span></th>
-            <th><span jhiTranslate="gatewayApp.oficina.vUsuarioupd">V Usuarioupd</span></th>
-            <th><span jhiTranslate="gatewayApp.oficina.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.oficina.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.oficina.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.oficina.nSedeupd">N Sedeupd</span></th>
             <th></th>
             </tr>
@@ -44,13 +44,13 @@
             <tbody>
             <tr *ngFor="let oficina of oficinas ;trackBy: trackId">
                 <td><a [routerLink]="['../oficina', oficina.id ]">{{oficina.id}}</a></td>
-                <td>{{oficina.vDescripcion}}</td>
-                <td>{{oficina.vUsuarioreg}}</td>
-                <td>{{oficina.dFechareg | date:'medium'}}</td>
-                <td>{{oficina.nEliminar}}</td>
+                <td>{{oficina.vDesofic}}</td>
+                <td>{{oficina.nUsuareg}}</td>
+                <td>{{oficina.tFecreg | date:'medium'}}</td>
+                <td>{{oficina.nFlgactivo}}</td>
                 <td>{{oficina.nSedereg}}</td>
-                <td>{{oficina.vUsuarioupd}}</td>
-                <td>{{oficina.dFechaupd | date:'medium'}}</td>
+                <td>{{oficina.nUsuaupd}}</td>
+                <td>{{oficina.tFecupd | date:'medium'}}</td>
                 <td>{{oficina.nSedeupd}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
@@ -61,14 +61,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/consultas', { outlets: { popup: 'oficina/'+ oficina.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'oficina/'+ oficina.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/consultas', { outlets: { popup: 'oficina/'+ oficina.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'oficina/'+ oficina.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

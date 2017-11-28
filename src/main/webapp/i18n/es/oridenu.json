@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "oridenu" : {
+            "home": {
+                "title": "Oridenus",
+                "createLabel": "Crear nuevo Oridenu",
+                "createOrEditLabel": "Crear o editar Oridenu",
+                "search": "Search for Oridenu"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Oridenu {{ id }}?"
+            },
+            "detail": {
+                "title": "Oridenu"
+            },
+            "vDescripcion": "V Descripcion",
+            "vEstado": "V Estado",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "denuncia": "Denuncia"
+        }
+    },
+    "denunciasApp": {
+        "oridenu" : {
+            "created": "Un nuevo Oridenu ha sido creado con el identificador {{ param }}",
+            "updated": "Un Oridenu ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Oridenu ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

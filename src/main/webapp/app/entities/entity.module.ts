@@ -86,6 +86,57 @@ import { GatewaySolicformModule } from './solicform/solicform.module';
 import { GatewaySolicitudModule } from './solicitud/solicitud.module';
 import { GatewayUndnegocioModule } from './undnegocio/undnegocio.module';
 
+import { GatewayActieconModule } from './actiecon/actiecon.module';
+import { GatewayAccadoateModule } from './accadoate/accadoate.module';
+import { GatewayDiscapateModule } from './discapate/discapate.module';
+import { GatewayMotateselecModule } from './motateselec/motateselec.module';
+import { GatewayDocinperdlbModule } from './docinperdlb/docinperdlb.module';
+import { GatewayDocpresateModule } from './docpresate/docpresate.module';
+import { GatewayMotivpaseModule } from './motivpase/motivpase.module';
+import { GatewayDirperjuriModule } from './dirperjuri/dirperjuri.module';
+import { GatewayDirpernatModule } from './dirpernat/dirpernat.module';
+import { GatewayCartrabModule } from './cartrab/cartrab.module';
+import { GatewayDatlabModule } from './datlab/datlab.module';
+import { GatewayDiscapModule } from './discap/discap.module';
+import { GatewayDocingrperModule } from './docingrper/docingrper.module';
+import { GatewayModcontratoModule } from './modcontrato/modcontrato.module';
+import { GatewayMotateModule } from './motate/motate.module';
+import { GatewayMotceseModule } from './motcese/motcese.module';
+import { GatewayPaseglModule } from './pasegl/pasegl.module';
+import { GatewayPerjuridicaModule } from './perjuridica/perjuridica.module';
+import { GatewayPernaturalModule } from './pernatural/pernatural.module';
+import { GatewayRegimenlabModule } from './regimenlab/regimenlab.module';
+import { GatewayTipdocModule } from './tipdoc/tipdoc.module';
+import { GatewayBensocialModule } from './bensocial/bensocial.module';
+import { GatewayCalbensocModule } from './calbensoc/calbensoc.module';
+import { GatewayCalperiodoModule } from './calperiodo/calperiodo.module';
+import { GatewaySegsaludModule } from './segsalud/segsalud.module';
+import { GatewayCalrcmperiModule } from './calrcmperi/calrcmperi.module';
+import { GatewayConcepremModule } from './conceprem/conceprem.module';
+import { GatewayEstpericalModule } from './estperical/estperical.module';
+import { GatewayInteresperiModule } from './interesperi/interesperi.module';
+import { GatewayLiquidacionModule } from './liquidacion/liquidacion.module';
+import { GatewayTipcalconreModule } from './tipcalconre/tipcalconre.module';
+import { GatewayTipcalperiModule } from './tipcalperi/tipcalperi.module';
+import { GatewayTipconremModule } from './tipconrem/tipconrem.module';
+import { GatewayTipinteresModule } from './tipinteres/tipinteres.module';
+import { GatewayConciliaModule } from './concilia/concilia.module';
+import { GatewayMultaconciModule } from './multaconci/multaconci.module';
+import { GatewayNotificaModule } from './notifica/notifica.module';
+import { GatewayHoraconModule } from './horacon/horacon.module';
+import { GatewayDenunteModule } from './denunte/denunte.module';
+import { GatewayDirdenunModule } from './dirdenun/dirdenun.module';
+import { GatewayTipzonaModule } from './tipzona/tipzona.module';
+import { GatewayTipviaModule } from './tipvia/tipvia.module';
+import { GatewayMotidenunModule } from './motidenun/motidenun.module';
+import { GatewayDetmotdenModule } from './detmotden/detmotden.module';
+import { GatewayDatdenuModule } from './datdenu/datdenu.module';
+import { GatewayMotfinModule } from './motfin/motfin.module';
+import { GatewayInfosoliModule } from './infosoli/infosoli.module';
+import { GatewayCalificaModule } from './califica/califica.module';
+import { GatewayCalidenuModule } from './calidenu/calidenu.module';
+import { GatewayOridenuModule } from './oridenu/oridenu.module';
+import { GatewayDenunciaModule } from './denuncia/denuncia.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -174,6 +225,57 @@ import { GatewayUndnegocioModule } from './undnegocio/undnegocio.module';
         GatewaySolicformModule,
         GatewaySolicitudModule,
         GatewayUndnegocioModule,
+        GatewayActieconModule,
+        GatewayAccadoateModule,
+        GatewayDiscapateModule,
+        GatewayMotateselecModule,
+        GatewayDocinperdlbModule,
+        GatewayDocpresateModule,
+        GatewayMotivpaseModule,
+        GatewayDirperjuriModule,
+        GatewayDirpernatModule,
+        GatewayCartrabModule,
+        GatewayDatlabModule,
+        GatewayDiscapModule,
+        GatewayDocingrperModule,
+        GatewayModcontratoModule,
+        GatewayMotateModule,
+        GatewayMotceseModule,
+        GatewayPaseglModule,
+        GatewayPerjuridicaModule,
+        GatewayPernaturalModule,
+        GatewayRegimenlabModule,
+        GatewayTipdocModule,
+        GatewayBensocialModule,
+        GatewayCalbensocModule,
+        GatewayCalperiodoModule,
+        GatewaySegsaludModule,
+        GatewayCalrcmperiModule,
+        GatewayConcepremModule,
+        GatewayEstpericalModule,
+        GatewayInteresperiModule,
+        GatewayLiquidacionModule,
+        GatewayTipcalconreModule,
+        GatewayTipcalperiModule,
+        GatewayTipconremModule,
+        GatewayTipinteresModule,
+        GatewayConciliaModule,
+        GatewayMultaconciModule,
+        GatewayNotificaModule,
+        GatewayHoraconModule,
+        GatewayDenunteModule,
+        GatewayDirdenunModule,
+        GatewayTipzonaModule,
+        GatewayTipviaModule,
+        GatewayMotidenunModule,
+        GatewayDetmotdenModule,
+        GatewayDatdenuModule,
+        GatewayMotfinModule,
+        GatewayInfosoliModule,
+        GatewayCalificaModule,
+        GatewayCalidenuModule,
+        GatewayOridenuModule,
+        GatewayDenunciaModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

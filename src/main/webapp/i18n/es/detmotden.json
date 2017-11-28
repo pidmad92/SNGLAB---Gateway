@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "detmotden" : {
+            "home": {
+                "title": "Detmotdens",
+                "createLabel": "Crear nuevo Detmotden",
+                "createOrEditLabel": "Crear o editar Detmotden",
+                "search": "Search for Detmotden"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Detmotden {{ id }}?"
+            },
+            "detail": {
+                "title": "Detmotden"
+            },
+            "vDescrip": "V Descrip",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "motidenun": "Motidenun",
+            "datdenu": "Datdenu"
+        }
+    },
+    "denunciasApp": {
+        "detmotden" : {
+            "created": "Un nuevo Detmotden ha sido creado con el identificador {{ param }}",
+            "updated": "Un Detmotden ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Detmotden ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

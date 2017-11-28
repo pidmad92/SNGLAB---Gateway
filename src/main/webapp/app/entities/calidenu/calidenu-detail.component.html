@@ -1,0 +1,55 @@
+
+<div *ngIf="calidenu">
+    <h2><span jhiTranslate="gatewayApp.calidenu.detail.title">Calidenu</span> {{calidenu.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.calidenu.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{calidenu.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calidenu.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{calidenu.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calidenu.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{calidenu.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calidenu.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{calidenu.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calidenu.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{calidenu.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calidenu.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{calidenu.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calidenu.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{calidenu.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calidenu.califica">Califica</span></dt>
+        <dd>
+            <div *ngIf="calidenu.califica">
+                <a [routerLink]="['/califica', calidenu.califica?.id]">{{calidenu.califica?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'calidenu/'+ calidenu.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

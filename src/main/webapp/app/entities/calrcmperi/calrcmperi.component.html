@@ -1,0 +1,83 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.calrcmperi.home.title">Calrcmperis</span>
+        <button class="btn btn-primary float-right jh-create-entity create-calrcmperi" [routerLink]="['/', { outlets: { popup: ['calrcmperi-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.calrcmperi.home.createLabel">
+            Create new Calrcmperi
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.calrcmperi.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="calrcmperis">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.calrcmperi.nCalrcmper">N Calrcmper</span></th>
+            <th><span jhiTranslate="gatewayApp.calrcmperi.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.calrcmperi.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.calrcmperi.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.calrcmperi.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.calrcmperi.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.calrcmperi.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.calrcmperi.nSedeupd">N Sedeupd</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let calrcmperi of calrcmperis ;trackBy: trackId">
+                <td><a [routerLink]="['../calrcmperi', calrcmperi.id ]">{{calrcmperi.id}}</a></td>
+                <td>{{calrcmperi.nCalrcmper}}</td>
+                <td>{{calrcmperi.nUsuareg}}</td>
+                <td>{{calrcmperi.tFecreg | date:'medium'}}</td>
+                <td>{{calrcmperi.nFlgactivo}}</td>
+                <td>{{calrcmperi.nSedereg}}</td>
+                <td>{{calrcmperi.nUsuaupd}}</td>
+                <td>{{calrcmperi.tFecupd | date:'medium'}}</td>
+                <td>{{calrcmperi.nSedeupd}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../calrcmperi', calrcmperi.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'calrcmperi/'+ calrcmperi.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'calrcmperi/'+ calrcmperi.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

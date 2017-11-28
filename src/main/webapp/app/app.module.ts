@@ -14,7 +14,16 @@ import { LoginComponent } from './login/login.component';
 import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 
-import { entityRoute, adminRoute, loginRoute, consultasRoute, defensaRoute, sindicatosRoute } from './app.routing';
+import {
+    adminRoute,
+    consultasRoute,
+    defensaRoute,
+    denunciasRoute,
+    entityRoute,
+    liquidacionesRoute,
+    loginRoute,
+    sindicatosRoute,
+} from './app.routing';
 import { GatewayprimengModule } from './primeng/primeng.module';
 
 import { GatewayTipoEntidadModule } from './entities/tipo-entidad/tipo-entidad.module';
@@ -30,8 +39,6 @@ import { GatewayUsuPerModule } from './entities/usu-per/usu-per.module';
 import { GatewayTipoUsuarioModule } from './entities/tipo-usuario/tipo-usuario.module';
 import { GatewayPermisoModule } from './entities/permiso/permiso.module';
 import { GatewayPerfilModule } from './entities/perfil/perfil.module';
-import { GatewayAnexlaboralModule } from './entities/anexlaboral/anexlaboral.module';
-import { GatewayListadoSolicitudesModule } from './applications/dictamenes/listado-solicitudes/listado-solicitudes.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 
 import {
@@ -53,7 +60,9 @@ const LAZY_ROUTES = [
     loginRoute,
     sindicatosRoute,
     consultasRoute,
-    defensaRoute
+    liquidacionesRoute,
+    defensaRoute,
+    denunciasRoute
 ];
 
 @NgModule({
@@ -79,8 +88,6 @@ const LAZY_ROUTES = [
         GatewayTipoEntidadModule,
         GatewayPermisoModule,
         GatewayPerfilModule,
-        GatewayAnexlaboralModule,
-        GatewayListadoSolicitudesModule,
         // GatewayprimengModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],

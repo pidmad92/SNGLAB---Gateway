@@ -1,0 +1,69 @@
+
+<div *ngIf="pasegl">
+    <h2><span jhiTranslate="gatewayApp.pasegl.detail.title">Pasegl</span> {{pasegl.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.pasegl.vObspase">V Obspase</span></dt>
+        <dd>
+            <span>{{pasegl.vObspase}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasegl.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{pasegl.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasegl.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{pasegl.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasegl.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{pasegl.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasegl.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{pasegl.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasegl.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{pasegl.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasegl.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{pasegl.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasegl.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{pasegl.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasegl.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{pasegl.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasegl.oficina">Oficina</span></dt>
+        <dd>
+            <div *ngIf="pasegl.oficina">
+                <a [routerLink]="['/oficina', pasegl.oficina?.id]">{{pasegl.oficina?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasegl.expediente">Expediente</span></dt>
+        <dd>
+            <div *ngIf="pasegl.expediente">
+                <a [routerLink]="['/expediente', pasegl.expediente?.id]">{{pasegl.expediente?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'pasegl/'+ pasegl.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

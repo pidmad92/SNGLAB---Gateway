@@ -1,0 +1,53 @@
+
+<div *ngIf="horacon">
+    <h2><span jhiTranslate="gatewayApp.horacon.detail.title">Horacon</span> {{horacon.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.horacon.vDescrip">V Descrip</span></dt>
+        <dd>
+            <span>{{horacon.vDescrip}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.horacon.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{horacon.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.horacon.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{horacon.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.horacon.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{horacon.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.horacon.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{horacon.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.horacon.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{horacon.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.horacon.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{horacon.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.horacon.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{horacon.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'horacon/'+ horacon.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

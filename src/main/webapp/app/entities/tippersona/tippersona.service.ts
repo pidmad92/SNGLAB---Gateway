@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { SERVER_API_URL } from '../../app.constants';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
@@ -11,8 +10,8 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class TippersonaService {
 
-    private resourceUrl = SERVER_API_URL + 'api/tippersonas';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/tippersonas';
+    private resourceUrl = '/consultas/api/tippersonas';
+    private resourceSearchUrl = '/consultas/api/_search/tippersonas';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -69,10 +68,10 @@ export class TippersonaService {
      */
     private convertItemFromServer(json: any): Tippersona {
         const entity: Tippersona = Object.assign(new Tippersona(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -82,9 +81,9 @@ export class TippersonaService {
     private convert(tippersona: Tippersona): Tippersona {
         const copy: Tippersona = Object.assign({}, tippersona);
 
-        copy.dFechareg = this.dateUtils.toDate(tippersona.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(tippersona.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(tippersona.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(tippersona.tFecupd);
         return copy;
     }
 }

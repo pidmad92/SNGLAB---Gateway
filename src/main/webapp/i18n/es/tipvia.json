@@ -1,0 +1,36 @@
+{
+    "gatewayApp": {
+        "tipvia" : {
+            "home": {
+                "title": "Tipvias",
+                "createLabel": "Crear nuevo Tipvia",
+                "createOrEditLabel": "Crear o editar Tipvia",
+                "search": "Search for Tipvia"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipvia {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipvia"
+            },
+            "vDescrip": "V Descrip",
+            "vDesccorta": "V Desccorta",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "dirdenun": "Dirdenun",
+            "denuncia": "Denuncia"
+        }
+    },
+    "denunciasApp": {
+        "tipvia" : {
+            "created": "Un nuevo Tipvia ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipvia ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipvia ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

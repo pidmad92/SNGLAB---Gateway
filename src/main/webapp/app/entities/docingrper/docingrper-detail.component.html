@@ -1,0 +1,53 @@
+
+<div *ngIf="docingrper">
+    <h2><span jhiTranslate="gatewayApp.docingrper.detail.title">Docingrper</span> {{docingrper.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.docingrper.vDesdocing">V Desdocing</span></dt>
+        <dd>
+            <span>{{docingrper.vDesdocing}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docingrper.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{docingrper.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docingrper.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{docingrper.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docingrper.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{docingrper.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docingrper.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{docingrper.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docingrper.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{docingrper.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docingrper.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{docingrper.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docingrper.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{docingrper.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'docingrper/'+ docingrper.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

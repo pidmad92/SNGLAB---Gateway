@@ -1,0 +1,39 @@
+{
+    "gatewayApp": {
+        "conceprem" : {
+            "home": {
+                "title": "Conceprems",
+                "createLabel": "Crear nuevo Conceprem",
+                "createOrEditLabel": "Crear o editar Conceprem",
+                "search": "Search for Conceprem"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Conceprem {{ id }}?"
+            },
+            "detail": {
+                "title": "Conceprem"
+            },
+            "vNomconrem": "V Nomconrem",
+            "nValconrem": "N Valconrem",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "calrcmperi": "Calrcmperi",
+            "conremsup": "Conremsup",
+            "conceprem": "Conceprem",
+            "tipcalconre": "Tipcalconre",
+            "tipconrem": "Tipconrem"
+        }
+    },
+    "liquidacionesApp": {
+        "conceprem" : {
+            "created": "Un nuevo Conceprem ha sido creado con el identificador {{ param }}",
+            "updated": "Un Conceprem ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Conceprem ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

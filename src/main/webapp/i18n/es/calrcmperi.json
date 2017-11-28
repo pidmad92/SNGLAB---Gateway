@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "calrcmperi" : {
+            "home": {
+                "title": "Calrcmperis",
+                "createLabel": "Crear nuevo Calrcmperi",
+                "createOrEditLabel": "Crear o editar Calrcmperi",
+                "search": "Search for Calrcmperi"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Calrcmperi {{ id }}?"
+            },
+            "detail": {
+                "title": "Calrcmperi"
+            },
+            "nCalrcmper": "N Calrcmper",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "conceprem": "Conceprem"
+        }
+    },
+    "liquidacionesApp": {
+        "calrcmperi" : {
+            "created": "Un nuevo Calrcmperi ha sido creado con el identificador {{ param }}",
+            "updated": "Un Calrcmperi ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Calrcmperi ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}
