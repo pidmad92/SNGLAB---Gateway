@@ -14,16 +14,16 @@
                 "title": "Direcnotif"
             },
             "vDireccion": "V Direccion",
-            "cflgtrabajador": "Cflgtrabajador",
+            "nflgtrabaj": "Nflgtrabaj",
             "vHojaenvio": "V Hojaenvio",
-            "vUsuarioreg": "V Usuarioreg",
-            "dFechareg": "D Fechareg",
-            "nEliminar": "N Eliminar",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
             "nSedereg": "N Sedereg",
-            "vUsuarioupd": "V Usuarioupd",
-            "dFechaupd": "D Fechaupd",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
             "nSedeupd": "N Sedeupd",
-            "notificacion": "Notificacion"
+            "notifica": "Notifica"
         }
     },
     "defensaApp": {

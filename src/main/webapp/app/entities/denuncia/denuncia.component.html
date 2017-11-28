@@ -1,0 +1,191 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.denuncia.home.title">Denuncias</span>
+        <button class="btn btn-primary float-right jh-create-entity create-denuncia" [routerLink]="['/', { outlets: { popup: ['denuncia-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.denuncia.home.createLabel">
+            Create new Denuncia
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.denuncia.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="denuncias">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vCoddenu">V Coddenu</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vCodsececo">V Codsececo</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vCodciu">V Codciu</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vDesremipe">V Desremipe</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vCoddepart">V Coddepart</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vCodprovin">V Codprovin</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vCoddistri">V Coddistri</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vDesvia">V Desvia</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vDeszona">V Deszona</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vDircomp">V Dircomp</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vDirdenu">V Dirdenu</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.tFecinitra">T Fecinitra</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.nFlaglun">N Flaglun</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.nFlagmar">N Flagmar</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.nFlagmie">N Flagmie</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.nFlagjue">N Flagjue</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.nFlagvie">N Flagvie</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.nFlagsab">N Flagsab</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.nFlagdom">N Flagdom</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.tHorainit">T Horainit</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.tHorafint">T Horafint</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vFlgtraba">V Flgtraba</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vFlgrepre">V Flgrepre</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.tFeccese">T Feccese</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vDesrepre">V Desrepre</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vObscalifi">V Obscalifi</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vObsfin">V Obsfin</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vFlgestado">V Flgestado</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vUsuareg">V Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.vUsuaupd">V Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.perjuridica">Perjuridica</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.denunte">Denunte</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.tipzona">Tipzona</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.tipvia">Tipvia</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.motfin">Motfin</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.infosoli">Infosoli</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.calidenu">Calidenu</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.oridenu">Oridenu</span></th>
+            <th><span jhiTranslate="gatewayApp.denuncia.datdenu">Datdenu</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let denuncia of denuncias ;trackBy: trackId">
+                <td><a [routerLink]="['../denuncia', denuncia.id ]">{{denuncia.id}}</a></td>
+                <td>{{denuncia.vCoddenu}}</td>
+                <td>{{denuncia.vCodsececo}}</td>
+                <td>{{denuncia.vCodciu}}</td>
+                <td>{{denuncia.vDesremipe}}</td>
+                <td>{{denuncia.vCoddepart}}</td>
+                <td>{{denuncia.vCodprovin}}</td>
+                <td>{{denuncia.vCoddistri}}</td>
+                <td>{{denuncia.vDesvia}}</td>
+                <td>{{denuncia.vDeszona}}</td>
+                <td>{{denuncia.vDircomp}}</td>
+                <td>{{denuncia.vDirdenu}}</td>
+                <td>{{denuncia.tFecinitra | date:'medium'}}</td>
+                <td>{{denuncia.nFlaglun}}</td>
+                <td>{{denuncia.nFlagmar}}</td>
+                <td>{{denuncia.nFlagmie}}</td>
+                <td>{{denuncia.nFlagjue}}</td>
+                <td>{{denuncia.nFlagvie}}</td>
+                <td>{{denuncia.nFlagsab}}</td>
+                <td>{{denuncia.nFlagdom}}</td>
+                <td>{{denuncia.tHorainit}}</td>
+                <td>{{denuncia.tHorafint}}</td>
+                <td>{{denuncia.vFlgtraba}}</td>
+                <td>{{denuncia.vFlgrepre}}</td>
+                <td>{{denuncia.tFeccese | date:'medium'}}</td>
+                <td>{{denuncia.vDesrepre}}</td>
+                <td>{{denuncia.vObscalifi}}</td>
+                <td>{{denuncia.vObsfin}}</td>
+                <td>{{denuncia.vFlgestado}}</td>
+                <td>{{denuncia.vUsuareg}}</td>
+                <td>{{denuncia.tFecreg | date:'medium'}}</td>
+                <td>{{denuncia.nFlgactivo}}</td>
+                <td>{{denuncia.nSedereg}}</td>
+                <td>{{denuncia.vUsuaupd}}</td>
+                <td>{{denuncia.tFecupd | date:'medium'}}</td>
+                <td>{{denuncia.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="denuncia.perjuridica">
+                        <a [routerLink]="['../perjuridica', denuncia.perjuridica?.id ]" >{{denuncia.perjuridica?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="denuncia.denunte">
+                        <a [routerLink]="['../denunte', denuncia.denunte?.id ]" >{{denuncia.denunte?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="denuncia.tipzona">
+                        <a [routerLink]="['../tipzona', denuncia.tipzona?.id ]" >{{denuncia.tipzona?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="denuncia.tipvia">
+                        <a [routerLink]="['../tipvia', denuncia.tipvia?.id ]" >{{denuncia.tipvia?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="denuncia.motfin">
+                        <a [routerLink]="['../motfin', denuncia.motfin?.id ]" >{{denuncia.motfin?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="denuncia.infosoli">
+                        <a [routerLink]="['../infosoli', denuncia.infosoli?.id ]" >{{denuncia.infosoli?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="denuncia.calidenu">
+                        <a [routerLink]="['../calidenu', denuncia.calidenu?.id ]" >{{denuncia.calidenu?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="denuncia.oridenu">
+                        <a [routerLink]="['../oridenu', denuncia.oridenu?.id ]" >{{denuncia.oridenu?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="denuncia.datdenu">
+                        <a [routerLink]="['../datdenu', denuncia.datdenu?.id ]" >{{denuncia.datdenu?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../denuncia', denuncia.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'denuncia/'+ denuncia.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'denuncia/'+ denuncia.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

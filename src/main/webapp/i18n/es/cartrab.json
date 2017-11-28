@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "cartrab" : {
+            "home": {
+                "title": "Cartrabs",
+                "createLabel": "Crear nuevo Cartrab",
+                "createOrEditLabel": "Crear o editar Cartrab",
+                "search": "Search for Cartrab"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Cartrab {{ id }}?"
+            },
+            "detail": {
+                "title": "Cartrab"
+            },
+            "vDesCartra": "V Des Cartra",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "trabajador": "Trabajador"
+        }
+    },
+    "consultasApp": {
+        "cartrab" : {
+            "created": "Un nuevo Cartrab ha sido creado con el identificador {{ param }}",
+            "updated": "Un Cartrab ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Cartrab ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -1,0 +1,212 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myCalperiodoLabel" jhiTranslate="gatewayApp.calperiodo.home.createOrEditLabel">Create or edit a Calperiodo</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!calperiodo.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="calperiodo.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.nCalper" for="field_nCalper">N Calper</label>
+            <input type="number" class="form-control" name="nCalper" id="field_nCalper"
+                [(ngModel)]="calperiodo.nCalper"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.nCalper2" for="field_nCalper2">N Calper 2</label>
+            <input type="number" class="form-control" name="nCalper2" id="field_nCalper2"
+                [(ngModel)]="calperiodo.nCalper2"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.nNumper" for="field_nNumper">N Numper</label>
+            <input type="number" class="form-control" name="nNumper" id="field_nNumper"
+                [(ngModel)]="calperiodo.nNumper" required />
+            <div [hidden]="!(editForm.controls.nNumper?.dirty && editForm.controls.nNumper?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nNumper?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nNumper?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.tFecini" for="field_tFecini">T Fecini</label>
+            <div class="input-group">
+                <input id="field_tFecini" type="text" class="form-control" name="tFecini" ngbDatepicker  #tFeciniDp="ngbDatepicker" [(ngModel)]="calperiodo.tFecini"
+                required/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="tFeciniDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.tFecini?.dirty && editForm.controls.tFecini?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tFecini?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.tFecfin" for="field_tFecfin">T Fecfin</label>
+            <div class="input-group">
+                <input id="field_tFecfin" type="text" class="form-control" name="tFecfin" ngbDatepicker  #tFecfinDp="ngbDatepicker" [(ngModel)]="calperiodo.tFecfin"
+                required/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="tFecfinDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.tFecfin?.dirty && editForm.controls.tFecfin?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tFecfin?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.nTnocomput" for="field_nTnocomput">N Tnocomput</label>
+            <input type="number" class="form-control" name="nTnocomput" id="field_nTnocomput"
+                [(ngModel)]="calperiodo.nTnocomput"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.nDgozados" for="field_nDgozados">N Dgozados</label>
+            <input type="number" class="form-control" name="nDgozados" id="field_nDgozados"
+                [(ngModel)]="calperiodo.nDgozados"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.nDadeudos" for="field_nDadeudos">N Dadeudos</label>
+            <input type="number" class="form-control" name="nDadeudos" id="field_nDadeudos"
+                [(ngModel)]="calperiodo.nDadeudos"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.nBase" for="field_nBase">N Base</label>
+            <input type="number" class="form-control" name="nBase" id="field_nBase"
+                [(ngModel)]="calperiodo.nBase"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.nUsuareg" for="field_nUsuareg">N Usuareg</label>
+            <input type="number" class="form-control" name="nUsuareg" id="field_nUsuareg"
+                [(ngModel)]="calperiodo.nUsuareg" required />
+            <div [hidden]="!(editForm.controls.nUsuareg?.dirty && editForm.controls.nUsuareg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nUsuareg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nUsuareg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.tFecreg" for="field_tFecreg">T Fecreg</label>
+            <div class="d-flex">
+                <input id="field_tFecreg" type="datetime-local" class="form-control" name="tFecreg" [(ngModel)]="calperiodo.tFecreg"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.tFecreg?.dirty && editForm.controls.tFecreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tFecreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.tFecreg?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.nFlgactivo" for="field_nFlgactivo">N Flgactivo</label>
+            <input type="checkbox" class="form-control" name="nFlgactivo" id="field_nFlgactivo"
+                [(ngModel)]="calperiodo.nFlgactivo"  />
+            <div [hidden]="!(editForm.controls.nFlgactivo?.dirty && editForm.controls.nFlgactivo?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nFlgactivo?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.nSedereg" for="field_nSedereg">N Sedereg</label>
+            <input type="number" class="form-control" name="nSedereg" id="field_nSedereg"
+                [(ngModel)]="calperiodo.nSedereg" required />
+            <div [hidden]="!(editForm.controls.nSedereg?.dirty && editForm.controls.nSedereg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nSedereg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nSedereg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.nUsuaupd" for="field_nUsuaupd">N Usuaupd</label>
+            <input type="number" class="form-control" name="nUsuaupd" id="field_nUsuaupd"
+                [(ngModel)]="calperiodo.nUsuaupd"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.tFecupd" for="field_tFecupd">T Fecupd</label>
+            <div class="d-flex">
+                <input id="field_tFecupd" type="datetime-local" class="form-control" name="tFecupd" [(ngModel)]="calperiodo.tFecupd"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.nSedeupd" for="field_nSedeupd">N Sedeupd</label>
+            <input type="number" class="form-control" name="nSedeupd" id="field_nSedeupd"
+                [(ngModel)]="calperiodo.nSedeupd"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.calbensoc" for="field_calbensoc">Calbensoc</label>
+            <select class="form-control" id="field_calbensoc" name="calbensoc" [(ngModel)]="calperiodo.calbensoc" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="calbensocOption.id === calperiodo.calbensoc?.id ? calperiodo.calbensoc : calbensocOption" *ngFor="let calbensocOption of calbensocs; trackBy: trackCalbensocById">{{calbensocOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.interesperi" for="field_interesperi">Interesperi</label>
+            <select class="form-control" id="field_interesperi" name="interesperi" [(ngModel)]="calperiodo.interesperi">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="interesperiOption.id === calperiodo.interesperi?.id ? calperiodo.interesperi : interesperiOption" *ngFor="let interesperiOption of interesperis; trackBy: trackInteresperiById">{{interesperiOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.calrcmperi" for="field_calrcmperi">Calrcmperi</label>
+            <select class="form-control" id="field_calrcmperi" name="calrcmperi" [(ngModel)]="calperiodo.calrcmperi">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="calrcmperiOption.id === calperiodo.calrcmperi?.id ? calperiodo.calrcmperi : calrcmperiOption" *ngFor="let calrcmperiOption of calrcmperis; trackBy: trackCalrcmperiById">{{calrcmperiOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.estperical" for="field_estperical">Estperical</label>
+            <select class="form-control" id="field_estperical" name="estperical" [(ngModel)]="calperiodo.estperical" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="estpericalOption.id === calperiodo.estperical?.id ? calperiodo.estperical : estpericalOption" *ngFor="let estpericalOption of estpericals; trackBy: trackEstpericalById">{{estpericalOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.tipcalperi" for="field_tipcalperi">Tipcalperi</label>
+            <select class="form-control" id="field_tipcalperi" name="tipcalperi" [(ngModel)]="calperiodo.tipcalperi" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="tipcalperiOption.id === calperiodo.tipcalperi?.id ? calperiodo.tipcalperi : tipcalperiOption" *ngFor="let tipcalperiOption of tipcalperis; trackBy: trackTipcalperiById">{{tipcalperiOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -5,14 +5,15 @@ export class Resolutor implements BaseEntity {
         public id?: number,
         public vNomresolutor?: string,
         public nCodresolutorusuario?: number,
-        public vUsuarioreg?: string,
-        public dFechareg?: any,
-        public nEliminar?: number,
+        public nUsuareg?: number,
+        public tFecreg?: any,
+        public nFlgactivo?: boolean,
         public nSedereg?: number,
-        public vUsuarioupd?: string,
-        public dFechaupd?: any,
+        public nUsuaupd?: number,
+        public tFecupd?: any,
         public nSedeupd?: number,
         public expedientes?: BaseEntity[],
     ) {
+        this.nFlgactivo = false;
     }
 }

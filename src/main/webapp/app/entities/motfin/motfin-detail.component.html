@@ -1,0 +1,53 @@
+
+<div *ngIf="motfin">
+    <h2><span jhiTranslate="gatewayApp.motfin.detail.title">Motfin</span> {{motfin.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.motfin.vDescrip">V Descrip</span></dt>
+        <dd>
+            <span>{{motfin.vDescrip}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motfin.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{motfin.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motfin.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{motfin.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motfin.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{motfin.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motfin.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{motfin.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motfin.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{motfin.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motfin.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{motfin.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motfin.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{motfin.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'motfin/'+ motfin.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

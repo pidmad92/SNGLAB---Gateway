@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "tipconrem" : {
+            "home": {
+                "title": "Tipconrems",
+                "createLabel": "Crear nuevo Tipconrem",
+                "createOrEditLabel": "Crear o editar Tipconrem",
+                "search": "Search for Tipconrem"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipconrem {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipconrem"
+            },
+            "vNomtipcr": "V Nomtipcr",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "conceprem": "Conceprem"
+        }
+    },
+    "liquidacionesApp": {
+        "tipconrem" : {
+            "created": "Un nuevo Tipconrem ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipconrem ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipconrem ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -1,13 +1,13 @@
 <div>
-    <h4 class="title my-3">
+    <h2>
         <span jhiTranslate="gatewayApp.docexpedien.home.title">Docexpediens</span>
-        <button class="btn btn-primary float-right jh-create-entity create-docexpedien" [routerLink]="['/defensa', { outlets: { popup: ['docexpedien-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-docexpedien" [routerLink]="['/', { outlets: { popup: ['docexpedien-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.docexpedien.home.createLabel">
             Create new Docexpedien
             </span>
         </button>
-    </h4>
+    </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -31,15 +31,15 @@
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="gatewayApp.docexpedien.vNumoficio">V Numoficio</span></th>
-            <th><span jhiTranslate="gatewayApp.docexpedien.dFecha">D Fecha</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.dFechadoc">D Fechadoc</span></th>
             <th><span jhiTranslate="gatewayApp.docexpedien.nFolios">N Folios</span></th>
-            <th><span jhiTranslate="gatewayApp.docexpedien.nNunresolucionrd">N Nunresolucionrd</span></th>
-            <th><span jhiTranslate="gatewayApp.docexpedien.vUsuarioreg">V Usuarioreg</span></th>
-            <th><span jhiTranslate="gatewayApp.docexpedien.dFechareg">D Fechareg</span></th>
-            <th><span jhiTranslate="gatewayApp.docexpedien.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.vNumresord">V Numresord</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.nFlgactivo">N Flgactivo</span></th>
             <th><span jhiTranslate="gatewayApp.docexpedien.nSedereg">N Sedereg</span></th>
-            <th><span jhiTranslate="gatewayApp.docexpedien.vUsuarioupd">V Usuarioupd</span></th>
-            <th><span jhiTranslate="gatewayApp.docexpedien.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.docexpedien.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.docexpedien.nSedeupd">N Sedeupd</span></th>
             <th><span jhiTranslate="gatewayApp.docexpedien.expediente">Expediente</span></th>
             <th><span jhiTranslate="gatewayApp.docexpedien.dettipprov">Dettipprov</span></th>
@@ -52,15 +52,15 @@
             <tr *ngFor="let docexpedien of docexpediens ;trackBy: trackId">
                 <td><a [routerLink]="['../docexpedien', docexpedien.id ]">{{docexpedien.id}}</a></td>
                 <td>{{docexpedien.vNumoficio}}</td>
-                <td>{{docexpedien.dFecha | date:'medium'}}</td>
+                <td>{{docexpedien.dFechadoc | date:'mediumDate'}}</td>
                 <td>{{docexpedien.nFolios}}</td>
-                <td>{{docexpedien.nNunresolucionrd}}</td>
-                <td>{{docexpedien.vUsuarioreg}}</td>
-                <td>{{docexpedien.dFechareg | date:'medium'}}</td>
-                <td>{{docexpedien.nEliminar}}</td>
+                <td>{{docexpedien.vNumresord}}</td>
+                <td>{{docexpedien.nUsuareg}}</td>
+                <td>{{docexpedien.tFecreg | date:'medium'}}</td>
+                <td>{{docexpedien.nFlgactivo}}</td>
                 <td>{{docexpedien.nSedereg}}</td>
-                <td>{{docexpedien.vUsuarioupd}}</td>
-                <td>{{docexpedien.dFechaupd | date:'medium'}}</td>
+                <td>{{docexpedien.nUsuaupd}}</td>
+                <td>{{docexpedien.tFecupd | date:'medium'}}</td>
                 <td>{{docexpedien.nSedeupd}}</td>
                 <td>
                     <div *ngIf="docexpedien.expediente">

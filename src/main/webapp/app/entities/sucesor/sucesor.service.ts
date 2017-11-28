@@ -68,10 +68,10 @@ export class SucesorService {
      */
     private convertItemFromServer(json: any): Sucesor {
         const entity: Sucesor = Object.assign(new Sucesor(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -81,9 +81,9 @@ export class SucesorService {
     private convert(sucesor: Sucesor): Sucesor {
         const copy: Sucesor = Object.assign({}, sucesor);
 
-        copy.dFechareg = this.dateUtils.toDate(sucesor.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(sucesor.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(sucesor.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(sucesor.tFecupd);
         return copy;
     }
 }

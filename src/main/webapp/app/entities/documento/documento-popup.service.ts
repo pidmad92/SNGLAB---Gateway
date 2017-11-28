@@ -28,10 +28,10 @@ export class DocumentoPopupService {
 
             if (id) {
                 this.documentoService.find(id).subscribe((documento) => {
-                    documento.dFechareg = this.datePipe
-                        .transform(documento.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    documento.dFechaupd = this.datePipe
-                        .transform(documento.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    documento.tFecreg = this.datePipe
+                        .transform(documento.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    documento.tFecupd = this.datePipe
+                        .transform(documento.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.documentoModalRef(component, documento);
                     resolve(this.ngbModalRef);
                 });

@@ -1,0 +1,89 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.motate.home.title">Motates</span>
+        <button class="btn btn-primary float-right jh-create-entity create-motate" [routerLink]="['/', { outlets: { popup: ['motate-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.motate.home.createLabel">
+            Create new Motate
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.motate.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="motates">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.motate.vDesmotate">V Desmotate</span></th>
+            <th><span jhiTranslate="gatewayApp.motate.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.motate.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.motate.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.motate.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.motate.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.motate.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.motate.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.motate.tipmotaten">Tipmotaten</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let motate of motates ;trackBy: trackId">
+                <td><a [routerLink]="['../motate', motate.id ]">{{motate.id}}</a></td>
+                <td>{{motate.vDesmotate}}</td>
+                <td>{{motate.nUsuareg}}</td>
+                <td>{{motate.tFecreg | date:'medium'}}</td>
+                <td>{{motate.nFlgactivo}}</td>
+                <td>{{motate.nSedereg}}</td>
+                <td>{{motate.nUsuaupd}}</td>
+                <td>{{motate.tFecupd | date:'medium'}}</td>
+                <td>{{motate.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="motate.tipmotaten">
+                        <a [routerLink]="['../tipmotaten', motate.tipmotaten?.id ]" >{{motate.tipmotaten?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../motate', motate.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'motate/'+ motate.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'motate/'+ motate.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

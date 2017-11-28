@@ -3,16 +3,17 @@ import { BaseEntity } from './../../shared';
 export class Documento implements BaseEntity {
     constructor(
         public id?: number,
-        public vDescripcion?: string,
-        public vUsuarioreg?: string,
-        public dFechareg?: any,
-        public nEliminar?: number,
+        public vDesdoc?: string,
+        public nUsuareg?: number,
+        public tFecreg?: any,
+        public nFlgactivo?: boolean,
         public nSedereg?: number,
-        public vUsuarioupd?: string,
-        public dFechaupd?: any,
+        public nUsuaupd?: number,
+        public tFecupd?: any,
         public nSedeupd?: number,
-        public docpresentas?: BaseEntity[],
-        public tipdocumento?: BaseEntity,
+        public docpresates?: BaseEntity[],
+        public tipdoc?: BaseEntity,
     ) {
+        this.nFlgactivo = false;
     }
 }

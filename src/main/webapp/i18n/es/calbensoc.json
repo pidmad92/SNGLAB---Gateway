@@ -1,0 +1,37 @@
+{
+    "gatewayApp": {
+        "calbensoc" : {
+            "home": {
+                "title": "Calbensocs",
+                "createLabel": "Crear nuevo Calbensoc",
+                "createOrEditLabel": "Crear o editar Calbensoc",
+                "search": "Search for Calbensoc"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Calbensoc {{ id }}?"
+            },
+            "detail": {
+                "title": "Calbensoc"
+            },
+            "nCalbens": "N Calbens",
+            "nCalbens2": "N Calbens 2",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "bensocial": "Bensocial",
+            "calperiodo": "Calperiodo",
+            "liquidacion": "Liquidacion"
+        }
+    },
+    "liquidacionesApp": {
+        "calbensoc" : {
+            "created": "Un nuevo Calbensoc ha sido creado con el identificador {{ param }}",
+            "updated": "Un Calbensoc ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Calbensoc ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

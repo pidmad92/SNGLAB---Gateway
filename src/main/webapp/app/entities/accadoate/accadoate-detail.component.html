@@ -1,0 +1,61 @@
+
+<div *ngIf="accadoate">
+    <h2><span jhiTranslate="gatewayApp.accadoate.detail.title">Accadoate</span> {{accadoate.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.accadoate.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{accadoate.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.accadoate.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{accadoate.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.accadoate.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{accadoate.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.accadoate.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{accadoate.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.accadoate.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{accadoate.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.accadoate.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{accadoate.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.accadoate.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{accadoate.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.accadoate.atencion">Atencion</span></dt>
+        <dd>
+            <div *ngIf="accadoate.atencion">
+                <a [routerLink]="['/atencion', accadoate.atencion?.id]">{{accadoate.atencion?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.accadoate.accionadop">Accionadop</span></dt>
+        <dd>
+            <div *ngIf="accadoate.accionadop">
+                <a [routerLink]="['/accionadop', accadoate.accionadop?.id]">{{accadoate.accionadop?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'accadoate/'+ accadoate.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

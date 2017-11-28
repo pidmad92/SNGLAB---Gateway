@@ -1,0 +1,215 @@
+
+<div *ngIf="denuncia">
+    <h2><span jhiTranslate="gatewayApp.denuncia.detail.title">Denuncia</span> {{denuncia.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.denuncia.vCoddenu">V Coddenu</span></dt>
+        <dd>
+            <span>{{denuncia.vCoddenu}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.vCodsececo">V Codsececo</span></dt>
+        <dd>
+            <span>{{denuncia.vCodsececo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.vCodciu">V Codciu</span></dt>
+        <dd>
+            <span>{{denuncia.vCodciu}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.vDesremipe">V Desremipe</span></dt>
+        <dd>
+            <span>{{denuncia.vDesremipe}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.vCoddepart">V Coddepart</span></dt>
+        <dd>
+            <span>{{denuncia.vCoddepart}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.vCodprovin">V Codprovin</span></dt>
+        <dd>
+            <span>{{denuncia.vCodprovin}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.vCoddistri">V Coddistri</span></dt>
+        <dd>
+            <span>{{denuncia.vCoddistri}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.vDesvia">V Desvia</span></dt>
+        <dd>
+            <span>{{denuncia.vDesvia}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.vDeszona">V Deszona</span></dt>
+        <dd>
+            <span>{{denuncia.vDeszona}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.vDircomp">V Dircomp</span></dt>
+        <dd>
+            <span>{{denuncia.vDircomp}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.vDirdenu">V Dirdenu</span></dt>
+        <dd>
+            <span>{{denuncia.vDirdenu}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.tFecinitra">T Fecinitra</span></dt>
+        <dd>
+            <span>{{denuncia.tFecinitra | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.nFlaglun">N Flaglun</span></dt>
+        <dd>
+            <span>{{denuncia.nFlaglun}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.nFlagmar">N Flagmar</span></dt>
+        <dd>
+            <span>{{denuncia.nFlagmar}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.nFlagmie">N Flagmie</span></dt>
+        <dd>
+            <span>{{denuncia.nFlagmie}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.nFlagjue">N Flagjue</span></dt>
+        <dd>
+            <span>{{denuncia.nFlagjue}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.nFlagvie">N Flagvie</span></dt>
+        <dd>
+            <span>{{denuncia.nFlagvie}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.nFlagsab">N Flagsab</span></dt>
+        <dd>
+            <span>{{denuncia.nFlagsab}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.nFlagdom">N Flagdom</span></dt>
+        <dd>
+            <span>{{denuncia.nFlagdom}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.tHorainit">T Horainit</span></dt>
+        <dd>
+            <span>{{denuncia.tHorainit}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.tHorafint">T Horafint</span></dt>
+        <dd>
+            <span>{{denuncia.tHorafint}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.vFlgtraba">V Flgtraba</span></dt>
+        <dd>
+            <span>{{denuncia.vFlgtraba}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.vFlgrepre">V Flgrepre</span></dt>
+        <dd>
+            <span>{{denuncia.vFlgrepre}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.tFeccese">T Feccese</span></dt>
+        <dd>
+            <span>{{denuncia.tFeccese | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.vDesrepre">V Desrepre</span></dt>
+        <dd>
+            <span>{{denuncia.vDesrepre}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.vObscalifi">V Obscalifi</span></dt>
+        <dd>
+            <span>{{denuncia.vObscalifi}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.vObsfin">V Obsfin</span></dt>
+        <dd>
+            <span>{{denuncia.vObsfin}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.vFlgestado">V Flgestado</span></dt>
+        <dd>
+            <span>{{denuncia.vFlgestado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{denuncia.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{denuncia.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{denuncia.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{denuncia.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{denuncia.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{denuncia.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{denuncia.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.perjuridica">Perjuridica</span></dt>
+        <dd>
+            <div *ngIf="denuncia.perjuridica">
+                <a [routerLink]="['/perjuridica', denuncia.perjuridica?.id]">{{denuncia.perjuridica?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.denunte">Denunte</span></dt>
+        <dd>
+            <div *ngIf="denuncia.denunte">
+                <a [routerLink]="['/denunte', denuncia.denunte?.id]">{{denuncia.denunte?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.tipzona">Tipzona</span></dt>
+        <dd>
+            <div *ngIf="denuncia.tipzona">
+                <a [routerLink]="['/tipzona', denuncia.tipzona?.id]">{{denuncia.tipzona?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.tipvia">Tipvia</span></dt>
+        <dd>
+            <div *ngIf="denuncia.tipvia">
+                <a [routerLink]="['/tipvia', denuncia.tipvia?.id]">{{denuncia.tipvia?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.motfin">Motfin</span></dt>
+        <dd>
+            <div *ngIf="denuncia.motfin">
+                <a [routerLink]="['/motfin', denuncia.motfin?.id]">{{denuncia.motfin?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.infosoli">Infosoli</span></dt>
+        <dd>
+            <div *ngIf="denuncia.infosoli">
+                <a [routerLink]="['/infosoli', denuncia.infosoli?.id]">{{denuncia.infosoli?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.calidenu">Calidenu</span></dt>
+        <dd>
+            <div *ngIf="denuncia.calidenu">
+                <a [routerLink]="['/calidenu', denuncia.calidenu?.id]">{{denuncia.calidenu?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.oridenu">Oridenu</span></dt>
+        <dd>
+            <div *ngIf="denuncia.oridenu">
+                <a [routerLink]="['/oridenu', denuncia.oridenu?.id]">{{denuncia.oridenu?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denuncia.datdenu">Datdenu</span></dt>
+        <dd>
+            <div *ngIf="denuncia.datdenu">
+                <a [routerLink]="['/datdenu', denuncia.datdenu?.id]">{{denuncia.datdenu?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'denuncia/'+ denuncia.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

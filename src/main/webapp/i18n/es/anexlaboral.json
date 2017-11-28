@@ -1,0 +1,36 @@
+{
+    "gatewayApp": {
+        "anexlaboral" : {
+            "home": {
+                "title": "Anexlaborals",
+                "createLabel": "Crear nuevo Anexlaboral",
+                "createOrEditLabel": "Crear o editar Anexlaboral",
+                "search": "Search for Anexlaboral"
+            },
+            "created": "Un nuevo Anexlaboral ha sido creado con el identificador {{ param }}",
+            "updated": "Un Anexlaboral ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Anexlaboral ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Anexlaboral {{ id }}?"
+            },
+            "detail": {
+                "title": "Anexlaboral"
+            },
+            "nCodanexo": "N Codanexo",
+            "nCodfperf": "N Codfperf",
+            "nAnioanex": "N Anioanex",
+            "vTipocont": "V Tipocont",
+            "vDeclegal": "V Declegal",
+            "vDesanexo": "V Desanexo",
+            "nCantlabo": "N Cantlabo",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "formperfil": "Formperfil"
+        }
+    }
+}

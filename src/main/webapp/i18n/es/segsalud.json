@@ -1,0 +1,33 @@
+{
+    "gatewayApp": {
+        "segsalud" : {
+            "home": {
+                "title": "Segsaluds",
+                "createLabel": "Crear nuevo Segsalud",
+                "createOrEditLabel": "Crear o editar Segsalud",
+                "search": "Search for Segsalud"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Segsalud {{ id }}?"
+            },
+            "detail": {
+                "title": "Segsalud"
+            },
+            "vSegsal": "V Segsal",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd"
+        }
+    },
+    "liquidacionesApp": {
+        "segsalud" : {
+            "created": "Un nuevo Segsalud ha sido creado con el identificador {{ param }}",
+            "updated": "Un Segsalud ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Segsalud ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

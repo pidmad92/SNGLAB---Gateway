@@ -3,17 +3,19 @@ import { BaseEntity } from './../../shared';
 export class Oficina implements BaseEntity {
     constructor(
         public id?: number,
-        public vDescripcion?: string,
-        public vUsuarioreg?: string,
-        public dFechareg?: any,
-        public nEliminar?: number,
+        public vDesofic?: string,
+        public nUsuareg?: number,
+        public tFecreg?: any,
+        public nFlgactivo?: boolean,
         public nSedereg?: number,
-        public vUsuarioupd?: string,
-        public dFechaupd?: any,
+        public nUsuaupd?: number,
+        public tFecupd?: any,
         public nSedeupd?: number,
         public abogados?: BaseEntity[],
         public atencions?: BaseEntity[],
         public motatenofics?: BaseEntity[],
+        public pasegls?: BaseEntity[],
     ) {
+        this.nFlgactivo = false;
     }
 }

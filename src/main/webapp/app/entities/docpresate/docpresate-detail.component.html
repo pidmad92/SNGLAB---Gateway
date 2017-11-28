@@ -1,0 +1,65 @@
+
+<div *ngIf="docpresate">
+    <h2><span jhiTranslate="gatewayApp.docpresate.detail.title">Docpresate</span> {{docpresate.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.docpresate.vObsdopate">V Obsdopate</span></dt>
+        <dd>
+            <span>{{docpresate.vObsdopate}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docpresate.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{docpresate.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docpresate.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{docpresate.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docpresate.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{docpresate.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docpresate.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{docpresate.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docpresate.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{docpresate.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docpresate.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{docpresate.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docpresate.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{docpresate.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docpresate.atencion">Atencion</span></dt>
+        <dd>
+            <div *ngIf="docpresate.atencion">
+                <a [routerLink]="['/atencion', docpresate.atencion?.id]">{{docpresate.atencion?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.docpresate.documento">Documento</span></dt>
+        <dd>
+            <div *ngIf="docpresate.documento">
+                <a [routerLink]="['/documento', docpresate.documento?.id]">{{docpresate.documento?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'docpresate/'+ docpresate.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

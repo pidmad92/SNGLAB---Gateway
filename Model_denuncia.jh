@@ -1,0 +1,1147 @@
+entity Actiecon {
+    vCiuuaceco String required maxlength(5),
+	vDesacteco String required maxlength(200),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Atencion {
+    vObsatenci String maxlength(500),
+    nFlgembara Boolean required,
+    vEstado String required maxlength(1),
+    vNumticket String required maxlength(10),
+    nCodtrabre Integer,
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Accionadop {
+    vDesaccdop String required maxlength(100),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Accadoate {
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Discapate {
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Motateselec {
+    vObsmoseat String maxlength(500),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Docinperdlb {
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Docpresate {
+    vObsdopate String maxlength(500),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Motivpase {
+    vObsmotpas String maxlength(500),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Dirperjuri {
+    nCoddepto Integer,
+    nCodprov Integer,
+    nCoddist Integer,
+    vDircomple String required maxlength(200),
+    vRefer String maxlength(500),
+	nFlgnotifi Boolean required,
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Dirpernat {
+    nCoddepto Integer,
+    nCodprov Integer,
+    nCoddist Integer,
+    vDircomple String required maxlength(200),
+    vRefer String maxlength(500),
+    nFlgnotifi Boolean required,
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Cartrab {
+    vDesCartra String required maxlength(100),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Datlab {
+    nFlgsitlab Boolean required,
+    dFecvincul LocalDate,
+    dFeccese LocalDate,
+    dFecfincon LocalDate,
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Discap {
+    vDesdiscap String required maxlength(100),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Docingrper {
+    vDesdocing String required maxlength(200),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Documento {
+    vDesdoc String required maxlength(500),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Empleador {
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Modcontrato {
+    vDesmodcon String required maxlength(200),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Motate {
+    vDesmotate String required maxlength(200),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Motcese {
+    vDesmotces String required maxlength(200),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Oficina {
+    vDesofic String required maxlength(200),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Pasegl {
+    vObspase String maxlength(500),
+    vEstado String required maxlength(1),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Perjuridica {
+    vRazsocial String required maxlength(200),
+	vNomalter String maxlength(200),
+    vNumdoc String required maxlength(15),
+    vEmail String maxlength(100),
+    vTelefono String maxlength(15),
+    vFaxperju String maxlength(15),
+    vEstado String required maxlength(1),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Pernatural {
+    vNombres String required maxlength(100),
+    vApepat String required maxlength(100),
+    vApemat String required maxlength(100),
+    vNumdoc String required maxlength(15),
+    vTelefono String maxlength(15),
+    vCelular String maxlength(15),
+    vEmailper String maxlength(100),
+    dFecnac LocalDate,
+    vsexoper String required maxlength(1),
+    vEstado String required maxlength(1),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Direcalter {
+    vRazsocial String required maxlength(100),
+    vDireccion String required maxlength(200),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Regimenlab {
+    vDesreglab String required maxlength(100),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Sucesor {
+    vEstado String required maxlength(1),
+	vCodpartid String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipatencion {
+    vDestipate String required maxlength(100),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipdocident {
+    vDesdocide String required maxlength(100),
+    nNumdigi Integer required,
+    vDescorta String required maxlength(15),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipdoc {
+    vDestipdoc String required maxlength(100),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Tippersona {
+    vDestipper String required maxlength(100),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Trabajador {
+    nFlgsuces Boolean required,
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Motatenofic {
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipmotaten {
+    vDestipmot String required maxlength(100),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipvinculo {
+    vDestipvin String required maxlength(100),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+// 	JDL - CALCULO DE BENEFICIOS SOCIALES Y LIQUIDACIONES
+
+//	ENTIDADES
+
+/** LISTA MAESTRA DE BENEFICIOS SOCIALES */
+entity Bensocial{
+	vBensocial String required maxlength(100) /** NOMBRE DEL BENEFICIO SOCIAL */
+	nUsuareg Integer required /** AUDITORIA USUARIO DE REGISTRO */
+    tFecreg Instant required /** AUDITORIA FECHA DE REGISTRO */
+    nFlgactivo Boolean required /** AUDITORIA FLAG DE ACTIVO */
+    nSedereg Integer required /** AUDITORIA SEDE DE REGISTRO */
+    nUsuaupd Integer /** AUDITORIA USUARIO DE ACTUALIZACION */
+    tFecupd Instant /** AUDITORIA FECHA DE ACTUALIZACION */
+    nSedeupd Integer /** AUDITORIA SEDE DE ACTUALIZACION */
+}
+
+/** LISTA RESUMEN DEL CALCULO DE BENEFICIOS SOCIALES EN UNA LIQUIDACION */
+entity Calbensoc{
+	nCalbens Double /** MONTO TOTAL CALCULADO DEL BENEFICIO SOCIAL */
+	nCalbens2 Double /** MONTO TOTAL2 CALCULADO DEL BENEFICIO SOCIAL */
+	nUsuareg Integer required /** AUDITORIA USUARIO DE REGISTRO */
+    tFecreg Instant required /** AUDITORIA FECHA DE REGISTRO */
+    nFlgactivo Boolean required /** AUDITORIA FLAG DE ACTIVO */
+    nSedereg Integer required /** AUDITORIA SEDE DE REGISTRO */
+    nUsuaupd Integer /** AUDITORIA USUARIO DE ACTUALIZACION */
+    tFecupd Instant /** AUDITORIA FECHA DE ACTUALIZACION */
+    nSedeupd Integer /** AUDITORIA SEDE DE ACTUALIZACION */
+}
+
+/** LISTA RESUMEN DEL CALCULO DE BENEFICIOS SOCIALES EN UN PERIODO */
+entity Calperiodo{
+	nCalper Double /** MONTO TOTAL CALCULADO DEL BENEFICIO SOCIAL EN EL PERIODO */
+	nCalper2 Double /** MONTO TOTAL2 CALCULADO DEL BENEFICIO SOCIAL EN EL PERIODO */
+	nNumper Integer required /** NUMERO DE PERIODO EN LA LISTA PARA CALCULO */
+	tFecini LocalDate required /** FECHA DE INICIO DEL PERIODO */
+	tFecfin LocalDate required /** FECHA FIN DEL PERIODO */
+	nTnocomput Integer /** TIEMPO NO COMPUTABLE */
+	nDgozados Integer /** EN CASO SE TRATASE DE VACACIONES - NUMERO DE DIAS GOZADOS EN EL PERIODO */
+	nDadeudos Integer /** EN CASO SE TRATASE DE REMUNERACIONES INSOLUTAS - NUMERO DE DIAS ADEUDOS EN EL PERIODO */
+	nBase Integer /** AÑO BASE EN CASO SEA DEL TIPO DE PERIODO ANUAL (1) */
+	nUsuareg Integer required /** AUDITORIA USUARIO DE REGISTRO */
+    tFecreg Instant required /** AUDITORIA FECHA DE REGISTRO */
+    nFlgactivo Boolean required /** AUDITORIA FLAG DE ACTIVO */
+    nSedereg Integer required /** AUDITORIA SEDE DE REGISTRO */
+    nUsuaupd Integer /** AUDITORIA USUARIO DE ACTUALIZACION */
+    tFecupd Instant /** AUDITORIA FECHA DE ACTUALIZACION */
+    nSedeupd Integer /** AUDITORIA SEDE DE ACTUALIZACION */
+}
+
+/** LISTA MAESTRA DE SEGUROS DE SALUD */
+entity Segsalud{
+	vSegsal String required maxlength(100) /** NOMBRE DE SEGURO DE SALUD (ESSALUD, EPS) */
+	nUsuareg Integer required /** AUDITORIA USUARIO DE REGISTRO */
+    tFecreg Instant required /** AUDITORIA FECHA DE REGISTRO */
+    nFlgactivo Boolean required /** AUDITORIA FLAG DE ACTIVO */
+    nSedereg Integer required /** AUDITORIA SEDE DE REGISTRO */
+    nUsuaupd Integer /** AUDITORIA USUARIO DE ACTUALIZACION */
+    tFecupd Instant /** AUDITORIA FECHA DE ACTUALIZACION */
+    nSedeupd Integer /** AUDITORIA SEDE DE ACTUALIZACION */
+}
+
+/** LISTA RESUMEN DEL CALCULO DE LA RCM EN UN PERIODO */
+entity Calrcmperi{
+	nCalrcmper Double /** MONTO TOTAL CALCULADO DEL RCM DEL BENEFICIO SOCIAL EN EL PERIODO */
+	nUsuareg Integer required /** AUDITORIA USUARIO DE REGISTRO */
+    tFecreg Instant required /** AUDITORIA FECHA DE REGISTRO */
+    nFlgactivo Boolean required /** AUDITORIA FLAG DE ACTIVO */
+    nSedereg Integer required /** AUDITORIA SEDE DE REGISTRO */
+    nUsuaupd Integer /** AUDITORIA USUARIO DE ACTUALIZACION */
+    tFecupd Instant /** AUDITORIA FECHA DE ACTUALIZACION */
+    nSedeupd Integer /** AUDITORIA SEDE DE ACTUALIZACION */
+}
+
+/** LISTA DE CONCEPTOS REMUNERATIVOS PARA UN CALCULO DE RCM */
+entity Conceprem{
+	vNomconrem String required maxlength(100) /** NOMBRE DEL CONCEPTO REMUNERATIVO */
+	nValconrem Double /** VALOR O MONTO DEL CONCEPTO REMUNERATIVO */
+	nUsuareg Integer required /** AUDITORIA USUARIO DE REGISTRO */
+    tFecreg Instant required /** AUDITORIA FECHA DE REGISTRO */
+    nFlgactivo Boolean required /** AUDITORIA FLAG DE ACTIVO */
+    nSedereg Integer required /** AUDITORIA SEDE DE REGISTRO */
+    nUsuaupd Integer /** AUDITORIA USUARIO DE ACTUALIZACION */
+    tFecupd Instant /** AUDITORIA FECHA DE ACTUALIZACION */
+    nSedeupd Integer /** AUDITORIA SEDE DE ACTUALIZACION */
+}
+
+/** LISTA MAESTRA DE LOS ESTADOS PARA EL PERIODO */
+entity Estperical{
+	vNomestper String required maxlength(100) /** NOMBRE DEL ESTADO DE PERIODO */
+	nUsuareg Integer required /** AUDITORIA USUARIO DE REGISTRO */
+    tFecreg Instant required /** AUDITORIA FECHA DE REGISTRO */
+    nFlgactivo Boolean required /** AUDITORIA FLAG DE ACTIVO */
+    nSedereg Integer required /** AUDITORIA SEDE DE REGISTRO */
+    nUsuaupd Integer /** AUDITORIA USUARIO DE ACTUALIZACION */
+    tFecupd Instant /** AUDITORIA FECHA DE ACTUALIZACION */
+    nSedeupd Integer /** AUDITORIA SEDE DE ACTUALIZACION */
+}
+
+/** LISTA RESUMEN DEL CALCULO DEL INTERES EN UN PERIODO */
+entity Interesperi{
+	nValintper Double /** MONTO TOTAL CALCULADO DEL INTERES DEL BENEFICIO SOCIAL EN EL PERIODO */
+	nUsuareg Integer required /** AUDITORIA USUARIO DE REGISTRO */
+    tFecreg Instant required /** AUDITORIA FECHA DE REGISTRO */
+    nFlgactivo Boolean required /** AUDITORIA FLAG DE ACTIVO */
+    nSedereg Integer required /** AUDITORIA SEDE DE REGISTRO */
+    nUsuaupd Integer /** AUDITORIA USUARIO DE ACTUALIZACION */
+    tFecupd Instant /** AUDITORIA FECHA DE ACTUALIZACION */
+    nSedeupd Integer /** AUDITORIA SEDE DE ACTUALIZACION */	
+}
+
+/** LISTA RESUMEN DE LA LIQUIDACION EN UNA ATENCION */
+entity Liquidacion{
+	nLiquid Double /** MONTO TOTAL CALCULADO DE LA LIQUIDACION */
+	nUsuareg Integer required /** AUDITORIA USUARIO DE REGISTRO */
+    tFecreg Instant required /** AUDITORIA FECHA DE REGISTRO */
+    nFlgactivo Boolean required /** AUDITORIA FLAG DE ACTIVO */
+    nSedereg Integer required /** AUDITORIA SEDE DE REGISTRO */
+    nUsuaupd Integer /** AUDITORIA USUARIO DE ACTUALIZACION */
+    tFecupd Instant /** AUDITORIA FECHA DE ACTUALIZACION */
+    nSedeupd Integer /** AUDITORIA SEDE DE ACTUALIZACION */
+}
+
+/** LISTA MAESTRA DE LOS TIPOS DE CALCULO PARA LOS CONCEPTOS REMUNERATIVOS (FIJO, VARIABLE)*/
+entity Tipcalconre{
+	vNomtcal String required maxlength(100) /** NOMBRE DEL TIPO DE CALCULO DE CONCEPTO REMUNERATIVO */
+	nUsuareg Integer required /** AUDITORIA USUARIO DE REGISTRO */
+    tFecreg Instant required /** AUDITORIA FECHA DE REGISTRO */
+    nFlgactivo Boolean required /** AUDITORIA FLAG DE ACTIVO */
+    nSedereg Integer required /** AUDITORIA SEDE DE REGISTRO */
+    nUsuaupd Integer /** AUDITORIA USUARIO DE ACTUALIZACION */
+    tFecupd Instant /** AUDITORIA FECHA DE ACTUALIZACION */
+    nSedeupd Integer /** AUDITORIA SEDE DE ACTUALIZACION */
+}
+
+/** LISTA MAESTRA DE LOS TIPOS DE CALCULO PARA LOS PERIODOS (MENSUAL, SEMESTRAL, ANUAL) */
+entity Tipcalperi{
+	vNomtipcal String required maxlength(100) /** NOMBRE DEL TIPO DE CALCULO DEL PERIODO */
+	nUsuareg Integer required /** AUDITORIA USUARIO DE REGISTRO */
+    tFecreg Instant required /** AUDITORIA FECHA DE REGISTRO */
+    nFlgactivo Boolean required /** AUDITORIA FLAG DE ACTIVO */
+    nSedereg Integer required /** AUDITORIA SEDE DE REGISTRO */
+    nUsuaupd Integer /** AUDITORIA USUARIO DE ACTUALIZACION */
+    tFecupd Instant /** AUDITORIA FECHA DE ACTUALIZACION */
+    nSedeupd Integer /** AUDITORIA SEDE DE ACTUALIZACION */
+}
+
+/** LISTA MAESTRA DE LOS TIPOS DE CONCEPTOS REMUNERATIVOS (FIJO, VARIABLE) */
+entity Tipconrem{
+	vNomtipcr String required maxlength(100) /** NOMBRE DEL TIPO DE CONCEPTO REMUNERATIVO */
+	nUsuareg Integer required /** AUDITORIA USUARIO DE REGISTRO */
+    tFecreg Instant required /** AUDITORIA FECHA DE REGISTRO */
+    nFlgactivo Boolean required /** AUDITORIA FLAG DE ACTIVO */
+    nSedereg Integer required /** AUDITORIA SEDE DE REGISTRO */
+    nUsuaupd Integer /** AUDITORIA USUARIO DE ACTUALIZACION */
+    tFecupd Instant /** AUDITORIA FECHA DE ACTUALIZACION */
+    nSedeupd Integer /** AUDITORIA SEDE DE ACTUALIZACION */
+}
+
+/** LISTA MAESTRA DE LOS TIPOS DE INTERES (LEGAL O FINANCIERO) */
+entity Tipinteres{
+	vNomtipint String required maxlength(100) /** NOMBRE DEL TIPO DE INTERES */
+	nUsuareg Integer required /** AUDITORIA USUARIO DE REGISTRO */
+    tFecreg Instant required /** AUDITORIA FECHA DE REGISTRO */
+    nFlgactivo Boolean required /** AUDITORIA FLAG DE ACTIVO */
+    nSedereg Integer required /** AUDITORIA SEDE DE REGISTRO */
+    nUsuaupd Integer /** AUDITORIA USUARIO DE ACTUALIZACION */
+    tFecupd Instant /** AUDITORIA FECHA DE ACTUALIZACION */
+    nSedeupd Integer /** AUDITORIA SEDE DE ACTUALIZACION */
+}
+
+/*Defensa Legal*/
+entity Concilia {
+	dFecConci LocalDate,
+    nFlgaudres Boolean,
+    nFlgreprog Boolean,	
+	nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Docexpedien {
+	vNumoficio String maxlength(20),
+    dFechadoc LocalDate,
+    nFolios Integer,
+    vNumresord String maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Expediente {
+	vNumexp String required maxlength(20),
+    nAnioexp Integer required,
+    dFecregexp LocalDate,
+  	vNomemplea String maxlength(250),    
+  	vNomtrabaj String maxlength(250),    
+    nFlgexpobs Boolean,
+    vRegmespar String maxlength(50),
+    dFecmespar LocalDate,
+    vObservac String maxlength(500), 
+    nFlgarchiv Boolean,
+    dFecArchiv LocalDate,
+    vObsarchiv String maxlength(500), 
+    nCodusuarc Integer,
+    vNuminfarc String maxlength(50),     
+	nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Multaconci {
+	fMonmulta Float required,
+    vNumresosd String maxlength(20),
+    dFecresosd LocalDate,
+    vcodigo String maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Notifica {
+	nNumfolios Integer, 
+    vHojaenvio String maxlength(20),	
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Resolucrd {
+	vNumresosd String maxlength(20),
+	dFecresosd LocalDate,
+  	vNomemplea String maxlength(250),    
+  	vNomtrabaj String maxlength(250), 
+    vDireccion String maxlength(250),
+    vTelefono String maxlength(250),
+    dFecconcil LocalDate,
+    vHorconcil String maxlength(20),
+    dFechanoti LocalDate,
+    vNumnotifi String maxlength(20),
+    fMonMulta Float,
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Direcnotif {
+	vDireccion String maxlength(250),
+    nflgtrabaj Boolean,
+    vHojaenvio String maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Abogado {
+	vNomabogad String maxlength(250),
+    nCodabousu Integer,
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Dettipprov {
+	vDescrip String required maxlength(200)
+	nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Estexpedien {
+	vDescrip String required maxlength (200),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Horacon {
+	vDescrip String required maxlength (20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Resolutor {
+	vNomresolutor String required maxlength(250),
+    nCodresolutorusuario Integer,
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Resulconci {
+	vDescrip String required maxlength(100)
+	nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipdocexp {
+	vDescrip String required maxlength(100),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipenvnot {
+	vDescrip String required maxlength(100),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipnotif {
+	vDescrip String required maxlength(100),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipproveid {
+	vDescrip String required maxlength(100),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipresconc {
+	vDescrip String required maxlength(200),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+
+entity Denunte {
+	nCodusu Integer required, 
+	vFlgestado String required maxlength(1),
+	vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Dirdenun {
+    vCoddepart String required maxlength(20),
+    vCodprovin String required maxlength(20),
+    vCoddistri String required maxlength(20),
+	nCodtzona  Integer required,
+	vDeszona   String required maxlength(200),
+	nCodtipvia Integer required,
+	vDesvia    String required maxlength(200),
+    vDireccion String required maxlength(200),
+	vDircomple String required maxlength(200),
+    vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipzona {
+	vDescrip   String required maxlength(200),
+	vDesccorta String required maxlength(50),
+	vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipvia {
+	vDescrip   String required maxlength(200),
+	vDesccorta String required maxlength(50),
+	vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Motidenun {
+	vDescrip   String required maxlength(200),
+	vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Detmotden {
+	vDescrip   String required maxlength(200),
+	vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Datdenu {
+	nNumtrbafe Integer,
+	vHoraini   String required maxlength(10),
+	vHorafin   String required maxlength(10),
+	vDesmotivo String required maxlength(300),
+	vDesotro   String required maxlength(300),
+	bArchivo   Blob,
+	vArchtipo   String required maxlength(50),
+	vFlggreide   Boolean,	
+	vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Motfin {
+	vDescrip String required maxlength(200),
+	vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Infosoli {
+	vInfosoli String required maxlength(300),
+	tFecsoli  Instant required,
+	vRespuesta String maxlength(300),
+	tFecresp  Instant ,
+	vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Califica {
+	vDescripcion String required maxlength(200),
+	vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Calidenu {
+	vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Oridenu {
+	vDescripcion String required maxlength(100),
+	vEstado String required maxlength(1),
+	vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Denuncia {
+	vCoddenu 	String required maxlength(150),
+	vCodsececo	String required maxlength(1),
+	vCodciu		String required maxlength(5),
+	vDesremipe	String required maxlength(200),
+	vCoddepart 	String required maxlength(20),
+    vCodprovin 	String required maxlength(20),
+    vCoddistri 	String required maxlength(20),
+	vDesvia		String required maxlength(200),
+	vDeszona	String required maxlength(200),
+	vDircomp 	String required maxlength(300),
+	vDirdenu 	String required maxlength(700),
+	tFecinitra  Instant required,
+	nFlaglun	Boolean,
+	nFlagmar	Boolean,
+	nFlagmie	Boolean,
+	nFlagjue	Boolean,
+	nFlagvie	Boolean,
+	nFlagsab	Boolean,
+	nFlagdom	Boolean,
+	tHorainit 	String required maxlength(10),
+	tHorafint 	String required maxlength(10),
+	vFlgtraba 	Boolean,
+	vFlgrepre 	Boolean,
+	tFeccese 	Instant required,
+	vDesrepre	String required maxlength(400),
+	vObscalifi	String required maxlength(400),
+	vObsfin 	String required maxlength(400),
+	vFlgestado 	String required maxlength(1),
+	vUsuareg String required maxlength(20),
+    tFecreg Instant required,
+    nFlgactivo Boolean,
+    nSedereg Integer required,
+    vUsuaupd String maxlength(20),
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+
+relationship OneToMany {
+	Pernatural{denunte} to Denunte,
+	Denunte{dirdenun} to Dirdenun,
+	Tipvia{dirdenun} to Dirdenun,
+	Tipzona{dirdenun} to Dirdenun,
+	Motidenun{detmotden} to Detmotden,
+	Detmotden{Datdenu} to Datdenu,
+	Califica{calidenu} to Calidenu,
+	Denunte{denuncia} to Denuncia,
+	Tipvia{denuncia} to Denuncia,
+	Tipzona{denuncia} to Denuncia,	
+	Motfin{denuncia} to Denuncia,
+	Infosoli{denuncia} to Denuncia,
+	Calidenu{denuncia} to Denuncia,
+	Oridenu{denuncia} to Denuncia,
+	Perjuridica{denuncia} to Denuncia
+	
+}
+relationship OneToOne {
+	Denuncia{datdenu} to Datdenu
+}
+
+relationship OneToMany {
+	Trabajador{expediente} to Expediente,
+    Empleador{expediente} to Expediente,
+    Tippersona{expediente} to Expediente,
+    Estexpedien{expediente} to Expediente,
+    Expediente{concilia} to Concilia, 
+    Abogado{concilia} to Concilia,
+    Resulconci{concilia} to Concilia,
+    Tipdocexp{tipproveid} to Tipproveid,
+    Tipproveid{dettipprov} to Dettipprov,
+    Expediente{docexpedien} to Docexpedien,
+    Tipdocexp{docexpedien} to Docexpedien,
+    Tipproveid{docexpedien} to Docexpedien,
+    Dettipprov{docexpedien} to Docexpedien,
+    Expediente{resolucrd} to Resolucrd,
+	Tippersona{resolucrd} to Resolucrd,
+    Horacon{concilia} to Concilia,
+ 	Resolucrd{multaconci} to Multaconci,
+    Expediente{notifica} to Notifica,
+    Tipnotif{notifica} to Notifica,
+    Tipenvnot{notifica} to Notifica,
+    Notifica{direcnotif} to Direcnotif,
+    Oficina{abogado} to Abogado,
+    Resolutor{expediente} to Expediente,
+    Tipresconc{Resulconci} to Resulconci 
+}
+relationship OneToOne {
+	Pasegl{expediente} to Expediente{Pasegl}
+}
+
+relationship OneToMany {
+    Tipmotaten{motate} to Motate,
+    Oficina{atencion} to Atencion,
+    Regimenlab{datlab} to Datlab,
+	Tipvinculo{datlab} to Datlab,
+    Tipdocident{pernatural} to Pernatural,
+    Tipdocident{perjuridica} to Perjuridica,
+    Pernatural{dirpernat} to Dirpernat,
+    Perjuridica{dirperjuri} to Dirperjuri,
+    Datlab{docinperdlb} to Docinperdlb,
+    Docingrper{docinperdlb} to Docinperdlb,
+    Tipdoc{documento} to Documento,
+    Discap{discapate} to Discapate,
+    Atencion{discapate} to Discapate,
+    Documento{docpresate} to Docpresate,
+    Atencion{docpresate} to Docpresate,
+    Atencion{accadoate} to Accadoate,
+    Accionadop{accadoate} to Accadoate,
+    Atencion{motateselec} to Motateselec,
+    Direcalter{motateselec} to Motateselec,
+    Motatenofic{motateselec} to Motateselec,
+    Motate{motatenofic} to Motatenofic,
+    Oficina{motatenofic} to Motatenofic,
+    Motatenofic{motivpase} to Motivpase,
+    Pasegl{motivpase} to Motivpase,
+    Tippersona{empleador} to Empleador,
+    Perjuridica{empleador} to Empleador,
+    Pernatural{empleador} to Empleador,
+    Pernatural{trabajador} to Trabajador,
+    Cartrab{trabajador} to Trabajador,
+    Modcontrato{datlab} to Datlab,
+    Motcese{datlab} to Datlab,
+    Empleador{datlab} to Datlab,
+    Trabajador{datlab} to Datlab,
+    Tipatencion{atencion} to Atencion,
+    Datlab{atencion} to Atencion,
+    Empleador{atencion} to Atencion,
+    Trabajador{atencion} to Atencion,
+    Trabajador{sucesor} to Sucesor,
+    Pernatural{sucesor} to Sucesor,
+    Actiecon{perjuridica} to Perjuridica,
+    Oficina{pasegl} to Pasegl
+}
+
+relationship OneToOne {
+    Atencion{pasegl} to Pasegl{atencion}
+}
+
+relationship OneToOne{
+	Liquidacion{atencion} to Atencion,
+	Calperiodo{interesperi} to Interesperi,
+	Calperiodo{calrcmperi} to Calrcmperi
+}
+
+relationship OneToMany{
+	Liquidacion{calbensoc} to Calbensoc,
+	Bensocial{calbensoc} to Calbensoc,
+	Calbensoc{calperiodo} to Calperiodo,
+	Tipinteres{interesperi} to Interesperi,
+	Estperical{calperiodo} to Calperiodo,
+	Tipcalperi{calperiodo} to Calperiodo,
+	Calrcmperi{conceprem} to Conceprem,
+	Tipconrem{conceprem} to Conceprem,
+	Tipcalconre{conceprem} to Conceprem,
+	Conceprem{conremsup} to Conceprem{conceprem}
+}
+
+
+
+microservice Concilia, Docexpedien, Expediente, Multaconci, Notifica, Resolucrd, Direcnotif, 
+ 			 Abogado, Dettipprov, Estexpedien, Horacon, Resolutor, Resulconci, Tipdocexp, Tipenvnot, Tipnotif, Tipproveid, Tipresconc  with  defensa
+microservice Actiecon, Atencion, Accionadop, Accadoate, Discapate, Motateselec, Docinperdlb, Docpresate, Motivpase, 
+             Dirperjuri, Dirpernat, Cartrab, Datlab, Discap, Docingrper, Documento, Empleador, Modcontrato, 
+             Motate, Motcese, Oficina, Pasegl, Perjuridica, Pernatural, Direcalter, Regimenlab, Sucesor, Tipatencion, 
+             Tipdocident, Tipdoc, Tippersona, Trabajador, Motatenofic, Tipmotaten, Tipvinculo with consultas
+microservice Bensocial, Calbensoc, Calperiodo, Segsalud, Calrcmperi, Conceprem, Estperical, Interesperi, Liquidacion,
+			 Tipcalconre, Tipcalperi, Tipconrem, Tipinteres with liquidaciones
+microservice Denunte, Dirdenun,Tipzona ,Tipvia ,Motidenun ,Detmotden , Datdenu, 
+			 Motfin, Infosoli, Califica, Calidenu, Oridenu, Denuncia with denuncias

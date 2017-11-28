@@ -28,10 +28,10 @@ export class DirecnotifPopupService {
 
             if (id) {
                 this.direcnotifService.find(id).subscribe((direcnotif) => {
-                    direcnotif.dFechareg = this.datePipe
-                        .transform(direcnotif.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    direcnotif.dFechaupd = this.datePipe
-                        .transform(direcnotif.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    direcnotif.tFecreg = this.datePipe
+                        .transform(direcnotif.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    direcnotif.tFecupd = this.datePipe
+                        .transform(direcnotif.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.direcnotifModalRef(component, direcnotif);
                     resolve(this.ngbModalRef);
                 });

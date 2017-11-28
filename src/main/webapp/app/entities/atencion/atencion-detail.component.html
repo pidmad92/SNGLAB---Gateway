@@ -1,67 +1,67 @@
 
 <div *ngIf="atencion">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.atencion.detail.title">Atencion</span> {{atencion.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.atencion.detail.title">Atencion</span> {{atencion.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.atencion.vObservacion">V Observacion</span></dt>
+        <dt><span jhiTranslate="gatewayApp.atencion.vObsatenci">V Obsatenci</span></dt>
         <dd>
-            <span>{{atencion.vObservacion}}</span>
+            <span>{{atencion.vObsatenci}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.atencion.cFlgpresentaembarazo">C Flgpresentaembarazo</span></dt>
+        <dt><span jhiTranslate="gatewayApp.atencion.nFlgembara">N Flgembara</span></dt>
         <dd>
-            <span>{{atencion.cFlgpresentaembarazo}}</span>
+            <span>{{atencion.nFlgembara}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.atencion.cFlgestado">C Flgestado</span></dt>
+        <dt><span jhiTranslate="gatewayApp.atencion.vEstado">V Estado</span></dt>
         <dd>
-            <span>{{atencion.cFlgestado}}</span>
+            <span>{{atencion.vEstado}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.atencion.vNumeroticket">V Numeroticket</span></dt>
+        <dt><span jhiTranslate="gatewayApp.atencion.vNumticket">V Numticket</span></dt>
         <dd>
-            <span>{{atencion.vNumeroticket}}</span>
+            <span>{{atencion.vNumticket}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.atencion.nCodtrabrepresentante">N Codtrabrepresentante</span></dt>
+        <dt><span jhiTranslate="gatewayApp.atencion.nCodtrabre">N Codtrabre</span></dt>
         <dd>
-            <span>{{atencion.nCodtrabrepresentante}}</span>
+            <span>{{atencion.nCodtrabre}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.atencion.vUsuarioreg">V Usuarioreg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.atencion.nUsuareg">N Usuareg</span></dt>
         <dd>
-            <span>{{atencion.vUsuarioreg}}</span>
+            <span>{{atencion.nUsuareg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.atencion.dFechareg">D Fechareg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.atencion.tFecreg">T Fecreg</span></dt>
         <dd>
-            <span>{{atencion.dFechareg | date:'medium'}}</span>
+            <span>{{atencion.tFecreg | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.atencion.nEliminar">N Eliminar</span></dt>
+        <dt><span jhiTranslate="gatewayApp.atencion.nFlgactivo">N Flgactivo</span></dt>
         <dd>
-            <span>{{atencion.nEliminar}}</span>
+            <span>{{atencion.nFlgactivo}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.atencion.nSedereg">N Sedereg</span></dt>
         <dd>
             <span>{{atencion.nSedereg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.atencion.vUsuarioupd">V Usuarioupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.atencion.nUsuaupd">N Usuaupd</span></dt>
         <dd>
-            <span>{{atencion.vUsuarioupd}}</span>
+            <span>{{atencion.nUsuaupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.atencion.dFechaupd">D Fechaupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.atencion.tFecupd">T Fecupd</span></dt>
         <dd>
-            <span>{{atencion.dFechaupd | date:'medium'}}</span>
+            <span>{{atencion.tFecupd | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.atencion.nSedeupd">N Sedeupd</span></dt>
         <dd>
             <span>{{atencion.nSedeupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.atencion.pase">Pase</span></dt>
+        <dt><span jhiTranslate="gatewayApp.atencion.pasegl">Pasegl</span></dt>
         <dd>
-            <div *ngIf="atencion.pase">
-                <a [routerLink]="['/pase', atencion.pase?.id]">{{atencion.pase?.id}}</a>
+            <div *ngIf="atencion.pasegl">
+                <a [routerLink]="['/pasegl', atencion.pasegl?.id]">{{atencion.pasegl?.id}}</a>
             </div>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.atencion.datlaboral">Datlaboral</span></dt>
+        <dt><span jhiTranslate="gatewayApp.atencion.datlab">Datlab</span></dt>
         <dd>
-            <div *ngIf="atencion.datlaboral">
-                <a [routerLink]="['/datlaboral', atencion.datlaboral?.id]">{{atencion.datlaboral?.id}}</a>
+            <div *ngIf="atencion.datlab">
+                <a [routerLink]="['/datlab', atencion.datlab?.id]">{{atencion.datlab?.id}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="gatewayApp.atencion.empleador">Empleador</span></dt>

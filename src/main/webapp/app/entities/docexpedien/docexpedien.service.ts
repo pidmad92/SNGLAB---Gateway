@@ -68,12 +68,12 @@ export class DocexpedienService {
      */
     private convertItemFromServer(json: any): Docexpedien {
         const entity: Docexpedien = Object.assign(new Docexpedien(), json);
-        entity.dFecha = this.dateUtils
-            .convertDateTimeFromServer(json.dFecha);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.dFechadoc = this.dateUtils
+            .convertLocalDateFromServer(json.dFechadoc);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -82,12 +82,12 @@ export class DocexpedienService {
      */
     private convert(docexpedien: Docexpedien): Docexpedien {
         const copy: Docexpedien = Object.assign({}, docexpedien);
+        copy.dFechadoc = this.dateUtils
+            .convertLocalDateToServer(docexpedien.dFechadoc);
 
-        copy.dFecha = this.dateUtils.toDate(docexpedien.dFecha);
+        copy.tFecreg = this.dateUtils.toDate(docexpedien.tFecreg);
 
-        copy.dFechareg = this.dateUtils.toDate(docexpedien.dFechareg);
-
-        copy.dFechaupd = this.dateUtils.toDate(docexpedien.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(docexpedien.tFecupd);
         return copy;
     }
 }

@@ -3,18 +3,19 @@ import { BaseEntity } from './../../shared';
 export class Tipdocident implements BaseEntity {
     constructor(
         public id?: number,
-        public vDescripcion?: string,
-        public nNumdigitos?: number,
-        public vDescripcioncorta?: string,
-        public vUsuarioreg?: string,
-        public dFechareg?: any,
-        public nEliminar?: number,
+        public vDesdocide?: string,
+        public nNumdigi?: number,
+        public vDescorta?: string,
+        public nUsuareg?: number,
+        public tFecreg?: any,
+        public nFlgactivo?: boolean,
         public nSedereg?: number,
-        public vUsuarioupd?: string,
-        public dFechaupd?: any,
+        public nUsuaupd?: number,
+        public tFecupd?: any,
         public nSedeupd?: number,
-        public personanaturs?: BaseEntity[],
-        public personajurids?: BaseEntity[],
+        public pernaturals?: BaseEntity[],
+        public perjuridicas?: BaseEntity[],
     ) {
+        this.nFlgactivo = false;
     }
 }

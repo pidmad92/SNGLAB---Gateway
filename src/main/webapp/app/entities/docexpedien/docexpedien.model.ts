@@ -4,20 +4,21 @@ export class Docexpedien implements BaseEntity {
     constructor(
         public id?: number,
         public vNumoficio?: string,
-        public dFecha?: any,
+        public dFechadoc?: any,
         public nFolios?: number,
-        public nNunresolucionrd?: string,
-        public vUsuarioreg?: string,
-        public dFechareg?: any,
-        public nEliminar?: number,
+        public vNumresord?: string,
+        public nUsuareg?: number,
+        public tFecreg?: any,
+        public nFlgactivo?: boolean,
         public nSedereg?: number,
-        public vUsuarioupd?: string,
-        public dFechaupd?: any,
+        public nUsuaupd?: number,
+        public tFecupd?: any,
         public nSedeupd?: number,
         public expediente?: BaseEntity,
         public dettipprov?: BaseEntity,
         public tipdocexp?: BaseEntity,
         public tipproveid?: BaseEntity,
     ) {
+        this.nFlgactivo = false;
     }
 }

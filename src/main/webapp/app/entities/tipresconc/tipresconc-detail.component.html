@@ -1,36 +1,36 @@
 
 <div *ngIf="tipresconc">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.tipresconc.detail.title">Tipresconc</span> {{tipresconc.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.tipresconc.detail.title">Tipresconc</span> {{tipresconc.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.tipresconc.vDescripcion">V Descripcion</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipresconc.vDescrip">V Descrip</span></dt>
         <dd>
-            <span>{{tipresconc.vDescripcion}}</span>
+            <span>{{tipresconc.vDescrip}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipresconc.vUsuarioreg">V Usuarioreg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipresconc.nUsuareg">N Usuareg</span></dt>
         <dd>
-            <span>{{tipresconc.vUsuarioreg}}</span>
+            <span>{{tipresconc.nUsuareg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipresconc.dFechareg">D Fechareg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipresconc.tFecreg">T Fecreg</span></dt>
         <dd>
-            <span>{{tipresconc.dFechareg | date:'medium'}}</span>
+            <span>{{tipresconc.tFecreg | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipresconc.nEliminar">N Eliminar</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipresconc.nFlgactivo">N Flgactivo</span></dt>
         <dd>
-            <span>{{tipresconc.nEliminar}}</span>
+            <span>{{tipresconc.nFlgactivo}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.tipresconc.nSedereg">N Sedereg</span></dt>
         <dd>
             <span>{{tipresconc.nSedereg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipresconc.vUsuarioupd">V Usuarioupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipresconc.nUsuaupd">N Usuaupd</span></dt>
         <dd>
-            <span>{{tipresconc.vUsuarioupd}}</span>
+            <span>{{tipresconc.nUsuaupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipresconc.dFechaupd">D Fechaupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipresconc.tFecupd">T Fecupd</span></dt>
         <dd>
-            <span>{{tipresconc.dFechaupd | date:'medium'}}</span>
+            <span>{{tipresconc.tFecupd | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.tipresconc.nSedeupd">N Sedeupd</span></dt>
         <dd>
@@ -45,7 +45,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/defensa', { outlets: { popup: 'tipresconc/'+ tipresconc.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'tipresconc/'+ tipresconc.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

@@ -9,8 +9,8 @@
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "datlaboral",
-            "otherEntityName": "datlaboral",
+            "relationshipName": "datlab",
+            "otherEntityName": "datlab",
             "otherEntityRelationshipName": "empleador"
         },
         {
@@ -20,14 +20,14 @@
             "otherEntityRelationshipName": "empleador"
         },
         {
-            "relationshipName": "personajurid",
-            "otherEntityName": "personajurid",
+            "relationshipName": "perjuridica",
+            "otherEntityName": "perjuridica",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         },
         {
-            "relationshipName": "personanatur",
-            "otherEntityName": "personanatur",
+            "relationshipName": "pernatural",
+            "otherEntityName": "pernatural",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         },
@@ -40,31 +40,25 @@
     ],
     "fields": [
         {
-            "fieldName": "vUsuarioreg",
-            "fieldType": "String",
+            "fieldName": "nUsuareg",
+            "fieldType": "Integer",
             "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 20
+                "required"
+            ]
         },
         {
-            "fieldName": "dFechareg",
+            "fieldName": "tFecreg",
             "fieldType": "Instant",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
-            "fieldName": "nEliminar",
-            "fieldType": "Integer",
+            "fieldName": "nFlgactivo",
+            "fieldType": "Boolean",
             "fieldValidateRules": [
-                "required",
-                "min",
-                "max"
-            ],
-            "fieldValidateRulesMin": 0,
-            "fieldValidateRulesMax": 1
+                "required"
+            ]
         },
         {
             "fieldName": "nSedereg",
@@ -74,15 +68,11 @@
             ]
         },
         {
-            "fieldName": "vUsuarioupd",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 20
+            "fieldName": "nUsuaupd",
+            "fieldType": "Integer"
         },
         {
-            "fieldName": "dFechaupd",
+            "fieldName": "tFecupd",
             "fieldType": "Instant"
         },
         {

@@ -68,10 +68,10 @@ export class TipvinculoService {
      */
     private convertItemFromServer(json: any): Tipvinculo {
         const entity: Tipvinculo = Object.assign(new Tipvinculo(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -81,9 +81,9 @@ export class TipvinculoService {
     private convert(tipvinculo: Tipvinculo): Tipvinculo {
         const copy: Tipvinculo = Object.assign({}, tipvinculo);
 
-        copy.dFechareg = this.dateUtils.toDate(tipvinculo.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(tipvinculo.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(tipvinculo.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(tipvinculo.tFecupd);
         return copy;
     }
 }

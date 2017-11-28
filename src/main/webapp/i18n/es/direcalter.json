@@ -13,16 +13,16 @@
             "detail": {
                 "title": "Direcalter"
             },
-            "vRazonsocial": "V Razonsocial",
+            "vRazsocial": "V Razsocial",
             "vDireccion": "V Direccion",
-            "vUsuarioreg": "V Usuarioreg",
-            "dFechareg": "D Fechareg",
-            "nEliminar": "N Eliminar",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
             "nSedereg": "N Sedereg",
-            "vUsuarioupd": "V Usuarioupd",
-            "dFechaupd": "D Fechaupd",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
             "nSedeupd": "N Sedeupd",
-            "atenmotiaten": "Atenmotiaten"
+            "motateselec": "Motateselec"
         }
     },
     "consultasApp": {

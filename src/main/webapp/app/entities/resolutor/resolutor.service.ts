@@ -68,10 +68,10 @@ export class ResolutorService {
      */
     private convertItemFromServer(json: any): Resolutor {
         const entity: Resolutor = Object.assign(new Resolutor(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -81,9 +81,9 @@ export class ResolutorService {
     private convert(resolutor: Resolutor): Resolutor {
         const copy: Resolutor = Object.assign({}, resolutor);
 
-        copy.dFechareg = this.dateUtils.toDate(resolutor.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(resolutor.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(resolutor.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(resolutor.tFecupd);
         return copy;
     }
 }

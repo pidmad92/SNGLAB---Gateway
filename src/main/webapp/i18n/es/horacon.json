@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "horacon" : {
+            "home": {
+                "title": "Horacons",
+                "createLabel": "Crear nuevo Horacon",
+                "createOrEditLabel": "Crear o editar Horacon",
+                "search": "Search for Horacon"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Horacon {{ id }}?"
+            },
+            "detail": {
+                "title": "Horacon"
+            },
+            "vDescrip": "V Descrip",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "concilia": "Concilia"
+        }
+    },
+    "defensaApp": {
+        "horacon" : {
+            "created": "Un nuevo Horacon ha sido creado con el identificador {{ param }}",
+            "updated": "Un Horacon ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Horacon ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

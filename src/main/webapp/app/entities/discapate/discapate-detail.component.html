@@ -1,0 +1,61 @@
+
+<div *ngIf="discapate">
+    <h2><span jhiTranslate="gatewayApp.discapate.detail.title">Discapate</span> {{discapate.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.discapate.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{discapate.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.discapate.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{discapate.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.discapate.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{discapate.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.discapate.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{discapate.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.discapate.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{discapate.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.discapate.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{discapate.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.discapate.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{discapate.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.discapate.atencion">Atencion</span></dt>
+        <dd>
+            <div *ngIf="discapate.atencion">
+                <a [routerLink]="['/atencion', discapate.atencion?.id]">{{discapate.atencion?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.discapate.discap">Discap</span></dt>
+        <dd>
+            <div *ngIf="discapate.discap">
+                <a [routerLink]="['/discap', discapate.discap?.id]">{{discapate.discap?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'discapate/'+ discapate.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

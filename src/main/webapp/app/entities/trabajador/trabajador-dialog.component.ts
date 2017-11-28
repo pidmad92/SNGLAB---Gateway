@@ -9,8 +9,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Trabajador } from './trabajador.model';
 import { TrabajadorPopupService } from './trabajador-popup.service';
 import { TrabajadorService } from './trabajador.service';
-import { Cargotrabaja, CargotrabajaService } from '../cargotrabaja';
-import { Personanatur, PersonanaturService } from '../personanatur';
+import { Cartrab, CartrabService } from '../cartrab';
+import { Pernatural, PernaturalService } from '../pernatural';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -22,26 +22,26 @@ export class TrabajadorDialogComponent implements OnInit {
     trabajador: Trabajador;
     isSaving: boolean;
 
-    cargotrabajas: Cargotrabaja[];
+    cartrabs: Cartrab[];
 
-    personanaturs: Personanatur[];
+    pernaturals: Pernatural[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private trabajadorService: TrabajadorService,
-        private cargotrabajaService: CargotrabajaService,
-        private personanaturService: PersonanaturService,
+        private cartrabService: CartrabService,
+        private pernaturalService: PernaturalService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
-        this.cargotrabajaService.query()
-            .subscribe((res: ResponseWrapper) => { this.cargotrabajas = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.personanaturService.query()
-            .subscribe((res: ResponseWrapper) => { this.personanaturs = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.cartrabService.query()
+            .subscribe((res: ResponseWrapper) => { this.cartrabs = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.pernaturalService.query()
+            .subscribe((res: ResponseWrapper) => { this.pernaturals = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -78,11 +78,11 @@ export class TrabajadorDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackCargotrabajaById(index: number, item: Cargotrabaja) {
+    trackCartrabById(index: number, item: Cartrab) {
         return item.id;
     }
 
-    trackPersonanaturById(index: number, item: Personanatur) {
+    trackPernaturalById(index: number, item: Pernatural) {
         return item.id;
     }
 }

@@ -68,10 +68,10 @@ export class MotatenoficService {
      */
     private convertItemFromServer(json: any): Motatenofic {
         const entity: Motatenofic = Object.assign(new Motatenofic(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -81,9 +81,9 @@ export class MotatenoficService {
     private convert(motatenofic: Motatenofic): Motatenofic {
         const copy: Motatenofic = Object.assign({}, motatenofic);
 
-        copy.dFechareg = this.dateUtils.toDate(motatenofic.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(motatenofic.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(motatenofic.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(motatenofic.tFecupd);
         return copy;
     }
 }

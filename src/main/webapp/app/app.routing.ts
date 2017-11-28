@@ -22,10 +22,20 @@ export const consultasRoute: Route = {
     loadChildren: './applications/consultas/consultas.module#GatewayConsultasModule'
 };
 
+export const liquidacionesRoute: Route = {
+    path: 'liquidaciones',
+    loadChildren: './applications/liquidaciones/liquidaciones.module#GatewayLiquidacionesModule'
+};
+
 export const sindicatosRoute: Route = {
     path: 'sindicatos',
     loadChildren: './applications/sindicatos/sindicatos.module#GatewaySindicatosModule'
 };
+
+ export const denunciasRoute: Route = {
+     path: 'denuncias',
+     loadChildren: './applications/denuncias/denuncias.module#GatewayDenunciasModule'
+ };
 
 export const defensaRoute: Route = {
     path: 'defensa',

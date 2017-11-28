@@ -1,0 +1,37 @@
+{
+    "gatewayApp": {
+        "infosoli" : {
+            "home": {
+                "title": "Infosolis",
+                "createLabel": "Crear nuevo Infosoli",
+                "createOrEditLabel": "Crear o editar Infosoli",
+                "search": "Search for Infosoli"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Infosoli {{ id }}?"
+            },
+            "detail": {
+                "title": "Infosoli"
+            },
+            "vInfosoli": "V Infosoli",
+            "tFecsoli": "T Fecsoli",
+            "vRespuesta": "V Respuesta",
+            "tFecresp": "T Fecresp",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "denuncia": "Denuncia"
+        }
+    },
+    "denunciasApp": {
+        "infosoli" : {
+            "created": "Un nuevo Infosoli ha sido creado con el identificador {{ param }}",
+            "updated": "Un Infosoli ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Infosoli ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

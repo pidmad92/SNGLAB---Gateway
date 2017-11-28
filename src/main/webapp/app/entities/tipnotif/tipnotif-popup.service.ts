@@ -28,10 +28,10 @@ export class TipnotifPopupService {
 
             if (id) {
                 this.tipnotifService.find(id).subscribe((tipnotif) => {
-                    tipnotif.dFechareg = this.datePipe
-                        .transform(tipnotif.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    tipnotif.dFechaupd = this.datePipe
-                        .transform(tipnotif.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    tipnotif.tFecreg = this.datePipe
+                        .transform(tipnotif.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    tipnotif.tFecupd = this.datePipe
+                        .transform(tipnotif.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.tipnotifModalRef(component, tipnotif);
                     resolve(this.ngbModalRef);
                 });

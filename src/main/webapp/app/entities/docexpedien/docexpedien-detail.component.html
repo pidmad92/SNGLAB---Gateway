@@ -1,6 +1,6 @@
 
 <div *ngIf="docexpedien">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.docexpedien.detail.title">Docexpedien</span> {{docexpedien.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.docexpedien.detail.title">Docexpedien</span> {{docexpedien.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
@@ -8,41 +8,41 @@
         <dd>
             <span>{{docexpedien.vNumoficio}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.docexpedien.dFecha">D Fecha</span></dt>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.dFechadoc">D Fechadoc</span></dt>
         <dd>
-            <span>{{docexpedien.dFecha | date:'medium'}}</span>
+            <span>{{docexpedien.dFechadoc | date:'mediumDate'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.docexpedien.nFolios">N Folios</span></dt>
         <dd>
             <span>{{docexpedien.nFolios}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.docexpedien.nNunresolucionrd">N Nunresolucionrd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.vNumresord">V Numresord</span></dt>
         <dd>
-            <span>{{docexpedien.nNunresolucionrd}}</span>
+            <span>{{docexpedien.vNumresord}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.docexpedien.vUsuarioreg">V Usuarioreg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.nUsuareg">N Usuareg</span></dt>
         <dd>
-            <span>{{docexpedien.vUsuarioreg}}</span>
+            <span>{{docexpedien.nUsuareg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.docexpedien.dFechareg">D Fechareg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.tFecreg">T Fecreg</span></dt>
         <dd>
-            <span>{{docexpedien.dFechareg | date:'medium'}}</span>
+            <span>{{docexpedien.tFecreg | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.docexpedien.nEliminar">N Eliminar</span></dt>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.nFlgactivo">N Flgactivo</span></dt>
         <dd>
-            <span>{{docexpedien.nEliminar}}</span>
+            <span>{{docexpedien.nFlgactivo}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.docexpedien.nSedereg">N Sedereg</span></dt>
         <dd>
             <span>{{docexpedien.nSedereg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.docexpedien.vUsuarioupd">V Usuarioupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.nUsuaupd">N Usuaupd</span></dt>
         <dd>
-            <span>{{docexpedien.vUsuarioupd}}</span>
+            <span>{{docexpedien.nUsuaupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.docexpedien.dFechaupd">D Fechaupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.docexpedien.tFecupd">T Fecupd</span></dt>
         <dd>
-            <span>{{docexpedien.dFechaupd | date:'medium'}}</span>
+            <span>{{docexpedien.tFecupd | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.docexpedien.nSedeupd">N Sedeupd</span></dt>
         <dd>
@@ -81,7 +81,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/defensa', { outlets: { popup: 'docexpedien/'+ docexpedien.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'docexpedien/'+ docexpedien.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

@@ -1,0 +1,57 @@
+
+<div *ngIf="actiecon">
+    <h2><span jhiTranslate="gatewayApp.actiecon.detail.title">Actiecon</span> {{actiecon.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.actiecon.vCiuuaceco">V Ciuuaceco</span></dt>
+        <dd>
+            <span>{{actiecon.vCiuuaceco}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.actiecon.vDesacteco">V Desacteco</span></dt>
+        <dd>
+            <span>{{actiecon.vDesacteco}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.actiecon.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{actiecon.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.actiecon.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{actiecon.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.actiecon.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{actiecon.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.actiecon.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{actiecon.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.actiecon.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{actiecon.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.actiecon.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{actiecon.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.actiecon.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{actiecon.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'actiecon/'+ actiecon.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

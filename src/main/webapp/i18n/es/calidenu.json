@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "calidenu" : {
+            "home": {
+                "title": "Calidenus",
+                "createLabel": "Crear nuevo Calidenu",
+                "createOrEditLabel": "Crear o editar Calidenu",
+                "search": "Search for Calidenu"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Calidenu {{ id }}?"
+            },
+            "detail": {
+                "title": "Calidenu"
+            },
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "califica": "Califica",
+            "denuncia": "Denuncia"
+        }
+    },
+    "denunciasApp": {
+        "calidenu" : {
+            "created": "Un nuevo Calidenu ha sido creado con el identificador {{ param }}",
+            "updated": "Un Calidenu ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Calidenu ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

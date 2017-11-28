@@ -1,41 +1,41 @@
 
 <div *ngIf="motatenofic">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.motatenofic.detail.title">Motatenofic</span> {{motatenofic.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.motatenofic.detail.title">Motatenofic</span> {{motatenofic.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.motatenofic.vUsuarioreg">V Usuarioreg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.motatenofic.nUsuareg">N Usuareg</span></dt>
         <dd>
-            <span>{{motatenofic.vUsuarioreg}}</span>
+            <span>{{motatenofic.nUsuareg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.motatenofic.dFechareg">D Fechareg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.motatenofic.tFecreg">T Fecreg</span></dt>
         <dd>
-            <span>{{motatenofic.dFechareg | date:'medium'}}</span>
+            <span>{{motatenofic.tFecreg | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.motatenofic.nEliminar">N Eliminar</span></dt>
+        <dt><span jhiTranslate="gatewayApp.motatenofic.nFlgactivo">N Flgactivo</span></dt>
         <dd>
-            <span>{{motatenofic.nEliminar}}</span>
+            <span>{{motatenofic.nFlgactivo}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.motatenofic.nSedereg">N Sedereg</span></dt>
         <dd>
             <span>{{motatenofic.nSedereg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.motatenofic.vUsuarioupd">V Usuarioupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.motatenofic.nUsuaupd">N Usuaupd</span></dt>
         <dd>
-            <span>{{motatenofic.vUsuarioupd}}</span>
+            <span>{{motatenofic.nUsuaupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.motatenofic.dFechaupd">D Fechaupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.motatenofic.tFecupd">T Fecupd</span></dt>
         <dd>
-            <span>{{motatenofic.dFechaupd | date:'medium'}}</span>
+            <span>{{motatenofic.tFecupd | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.motatenofic.nSedeupd">N Sedeupd</span></dt>
         <dd>
             <span>{{motatenofic.nSedeupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.motatenofic.motivoatenci">Motivoatenci</span></dt>
+        <dt><span jhiTranslate="gatewayApp.motatenofic.motate">Motate</span></dt>
         <dd>
-            <div *ngIf="motatenofic.motivoatenci">
-                <a [routerLink]="['/motivoatenci', motatenofic.motivoatenci?.id]">{{motatenofic.motivoatenci?.id}}</a>
+            <div *ngIf="motatenofic.motate">
+                <a [routerLink]="['/motate', motatenofic.motate?.id]">{{motatenofic.motate?.id}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="gatewayApp.motatenofic.oficina">Oficina</span></dt>
@@ -53,7 +53,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/consultas', { outlets: { popup: 'motatenofic/'+ motatenofic.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'motatenofic/'+ motatenofic.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

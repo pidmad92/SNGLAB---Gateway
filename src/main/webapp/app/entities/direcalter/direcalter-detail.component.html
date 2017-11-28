@@ -1,40 +1,40 @@
 
 <div *ngIf="direcalter">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.direcalter.detail.title">Direcalter</span> {{direcalter.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.direcalter.detail.title">Direcalter</span> {{direcalter.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.direcalter.vRazonsocial">V Razonsocial</span></dt>
+        <dt><span jhiTranslate="gatewayApp.direcalter.vRazsocial">V Razsocial</span></dt>
         <dd>
-            <span>{{direcalter.vRazonsocial}}</span>
+            <span>{{direcalter.vRazsocial}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.direcalter.vDireccion">V Direccion</span></dt>
         <dd>
             <span>{{direcalter.vDireccion}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.direcalter.vUsuarioreg">V Usuarioreg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.direcalter.nUsuareg">N Usuareg</span></dt>
         <dd>
-            <span>{{direcalter.vUsuarioreg}}</span>
+            <span>{{direcalter.nUsuareg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.direcalter.dFechareg">D Fechareg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.direcalter.tFecreg">T Fecreg</span></dt>
         <dd>
-            <span>{{direcalter.dFechareg | date:'medium'}}</span>
+            <span>{{direcalter.tFecreg | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.direcalter.nEliminar">N Eliminar</span></dt>
+        <dt><span jhiTranslate="gatewayApp.direcalter.nFlgactivo">N Flgactivo</span></dt>
         <dd>
-            <span>{{direcalter.nEliminar}}</span>
+            <span>{{direcalter.nFlgactivo}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.direcalter.nSedereg">N Sedereg</span></dt>
         <dd>
             <span>{{direcalter.nSedereg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.direcalter.vUsuarioupd">V Usuarioupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.direcalter.nUsuaupd">N Usuaupd</span></dt>
         <dd>
-            <span>{{direcalter.vUsuarioupd}}</span>
+            <span>{{direcalter.nUsuaupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.direcalter.dFechaupd">D Fechaupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.direcalter.tFecupd">T Fecupd</span></dt>
         <dd>
-            <span>{{direcalter.dFechaupd | date:'medium'}}</span>
+            <span>{{direcalter.tFecupd | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.direcalter.nSedeupd">N Sedeupd</span></dt>
         <dd>
@@ -49,7 +49,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/consultas', { outlets: { popup: 'direcalter/'+ direcalter.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'direcalter/'+ direcalter.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

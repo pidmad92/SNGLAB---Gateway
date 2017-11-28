@@ -14,7 +14,16 @@ import { LoginComponent } from './login/login.component';
 import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 
-import { entityRoute, adminRoute, loginRoute, consultasRoute, defensaRoute, sindicatosRoute } from './app.routing';
+import {
+    adminRoute,
+    consultasRoute,
+    defensaRoute,
+    denunciasRoute,
+    entityRoute,
+    liquidacionesRoute,
+    loginRoute,
+    sindicatosRoute,
+} from './app.routing';
 import { GatewayprimengModule } from './primeng/primeng.module';
 
 import { GatewayTipoEntidadModule } from './entities/tipo-entidad/tipo-entidad.module';
@@ -51,7 +60,9 @@ const LAZY_ROUTES = [
     loginRoute,
     sindicatosRoute,
     consultasRoute,
-    defensaRoute
+    liquidacionesRoute,
+    defensaRoute,
+    denunciasRoute
 ];
 
 @NgModule({

@@ -68,10 +68,10 @@ export class DirecnotifService {
      */
     private convertItemFromServer(json: any): Direcnotif {
         const entity: Direcnotif = Object.assign(new Direcnotif(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -81,9 +81,9 @@ export class DirecnotifService {
     private convert(direcnotif: Direcnotif): Direcnotif {
         const copy: Direcnotif = Object.assign({}, direcnotif);
 
-        copy.dFechareg = this.dateUtils.toDate(direcnotif.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(direcnotif.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(direcnotif.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(direcnotif.tFecupd);
         return copy;
     }
 }

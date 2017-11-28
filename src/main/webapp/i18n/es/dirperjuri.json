@@ -1,0 +1,39 @@
+{
+    "gatewayApp": {
+        "dirperjuri" : {
+            "home": {
+                "title": "Dirperjuris",
+                "createLabel": "Crear nuevo Dirperjuri",
+                "createOrEditLabel": "Crear o editar Dirperjuri",
+                "search": "Search for Dirperjuri"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Dirperjuri {{ id }}?"
+            },
+            "detail": {
+                "title": "Dirperjuri"
+            },
+            "nCoddepto": "N Coddepto",
+            "nCodprov": "N Codprov",
+            "nCoddist": "N Coddist",
+            "vDircomple": "V Dircomple",
+            "vRefer": "V Refer",
+            "nFlgnotifi": "N Flgnotifi",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "perjuridica": "Perjuridica"
+        }
+    },
+    "consultasApp": {
+        "dirperjuri" : {
+            "created": "Un nuevo Dirperjuri ha sido creado con el identificador {{ param }}",
+            "updated": "Un Dirperjuri ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Dirperjuri ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

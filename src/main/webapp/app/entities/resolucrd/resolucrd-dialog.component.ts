@@ -25,6 +25,9 @@ export class ResolucrdDialogComponent implements OnInit {
     tippersonas: Tippersona[];
 
     expedientes: Expediente[];
+    dFecresosdDp: any;
+    dFecconcilDp: any;
+    dFechanotiDp: any;
 
     constructor(
         public activeModal: NgbActiveModal,

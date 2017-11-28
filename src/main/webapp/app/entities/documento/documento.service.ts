@@ -68,10 +68,10 @@ export class DocumentoService {
      */
     private convertItemFromServer(json: any): Documento {
         const entity: Documento = Object.assign(new Documento(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -81,9 +81,9 @@ export class DocumentoService {
     private convert(documento: Documento): Documento {
         const copy: Documento = Object.assign({}, documento);
 
-        copy.dFechareg = this.dateUtils.toDate(documento.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(documento.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(documento.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(documento.tFecupd);
         return copy;
     }
 }

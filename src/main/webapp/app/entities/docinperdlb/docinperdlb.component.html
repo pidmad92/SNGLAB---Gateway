@@ -1,0 +1,93 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.docinperdlb.home.title">Docinperdlbs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-docinperdlb" [routerLink]="['/', { outlets: { popup: ['docinperdlb-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.docinperdlb.home.createLabel">
+            Create new Docinperdlb
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.docinperdlb.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="docinperdlbs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.docinperdlb.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.docinperdlb.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.docinperdlb.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.docinperdlb.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.docinperdlb.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.docinperdlb.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.docinperdlb.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.docinperdlb.datlab">Datlab</span></th>
+            <th><span jhiTranslate="gatewayApp.docinperdlb.docingrper">Docingrper</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let docinperdlb of docinperdlbs ;trackBy: trackId">
+                <td><a [routerLink]="['../docinperdlb', docinperdlb.id ]">{{docinperdlb.id}}</a></td>
+                <td>{{docinperdlb.nUsuareg}}</td>
+                <td>{{docinperdlb.tFecreg | date:'medium'}}</td>
+                <td>{{docinperdlb.nFlgactivo}}</td>
+                <td>{{docinperdlb.nSedereg}}</td>
+                <td>{{docinperdlb.nUsuaupd}}</td>
+                <td>{{docinperdlb.tFecupd | date:'medium'}}</td>
+                <td>{{docinperdlb.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="docinperdlb.datlab">
+                        <a [routerLink]="['../datlab', docinperdlb.datlab?.id ]" >{{docinperdlb.datlab?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="docinperdlb.docingrper">
+                        <a [routerLink]="['../docingrper', docinperdlb.docingrper?.id ]" >{{docinperdlb.docingrper?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../docinperdlb', docinperdlb.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'docinperdlb/'+ docinperdlb.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'docinperdlb/'+ docinperdlb.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

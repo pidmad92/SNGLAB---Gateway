@@ -9,7 +9,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Direcnotif } from './direcnotif.model';
 import { DirecnotifPopupService } from './direcnotif-popup.service';
 import { DirecnotifService } from './direcnotif.service';
-import { Notificacion, NotificacionService } from '../notificacion';
+import { Notifica, NotificaService } from '../notifica';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -21,21 +21,21 @@ export class DirecnotifDialogComponent implements OnInit {
     direcnotif: Direcnotif;
     isSaving: boolean;
 
-    notificacions: Notificacion[];
+    notificas: Notifica[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private direcnotifService: DirecnotifService,
-        private notificacionService: NotificacionService,
+        private notificaService: NotificaService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
-        this.notificacionService.query()
-            .subscribe((res: ResponseWrapper) => { this.notificacions = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.notificaService.query()
+            .subscribe((res: ResponseWrapper) => { this.notificas = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -72,7 +72,7 @@ export class DirecnotifDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackNotificacionById(index: number, item: Notificacion) {
+    trackNotificaById(index: number, item: Notifica) {
         return item.id;
     }
 }

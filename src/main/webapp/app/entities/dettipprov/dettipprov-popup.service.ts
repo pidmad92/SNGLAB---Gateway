@@ -28,10 +28,10 @@ export class DettipprovPopupService {
 
             if (id) {
                 this.dettipprovService.find(id).subscribe((dettipprov) => {
-                    dettipprov.dFechareg = this.datePipe
-                        .transform(dettipprov.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    dettipprov.dFechaupd = this.datePipe
-                        .transform(dettipprov.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    dettipprov.tFecreg = this.datePipe
+                        .transform(dettipprov.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    dettipprov.tFecupd = this.datePipe
+                        .transform(dettipprov.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.dettipprovModalRef(component, dettipprov);
                     resolve(this.ngbModalRef);
                 });

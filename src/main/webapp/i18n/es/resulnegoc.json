@@ -1,0 +1,37 @@
+{
+    "gatewayApp": {
+        "resulnegoc" : {
+            "home": {
+                "title": "Resulnegocs",
+                "createLabel": "Crear nuevo Resulnegoc",
+                "createOrEditLabel": "Crear o editar Resulnegoc",
+                "search": "Search for Resulnegoc"
+            },
+            "created": "Un nuevo Resulnegoc ha sido creado con el identificador {{ param }}",
+            "updated": "Un Resulnegoc ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Resulnegoc ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Resulnegoc {{ id }}?"
+            },
+            "detail": {
+                "title": "Resulnegoc"
+            },
+            "nCodreneg": "N Codreneg",
+            "nCodfperf": "N Codfperf",
+            "tFecreneg": "T Fecreneg",
+            "nAumento": "N Aumento",
+            "nClausula": "N Clausula",
+            "nGratifica": "N Gratifica",
+            "nAlimentac": "N Alimentac",
+            "nMovilidad": "N Movilidad",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "formperfil": "Formperfil"
+        }
+    }
+}

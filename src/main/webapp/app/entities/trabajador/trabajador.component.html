@@ -1,5 +1,5 @@
 <div>
-    <h4 class="title my-3">
+    <h2>
         <span jhiTranslate="gatewayApp.trabajador.home.title">Trabajadors</span>
         <button class="btn btn-primary float-right jh-create-entity create-trabajador" [routerLink]="['/', { outlets: { popup: ['trabajador-new'] } }]">
             <span class="fa fa-plus"></span>
@@ -7,7 +7,7 @@
             Create new Trabajador
             </span>
         </button>
-    </h4>
+    </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -30,38 +30,38 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.trabajador.vFlgsucesor">V Flgsucesor</span></th>
-            <th><span jhiTranslate="gatewayApp.trabajador.vUsuarioreg">V Usuarioreg</span></th>
-            <th><span jhiTranslate="gatewayApp.trabajador.dFechareg">D Fechareg</span></th>
-            <th><span jhiTranslate="gatewayApp.trabajador.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.trabajador.nFlgsuces">N Flgsuces</span></th>
+            <th><span jhiTranslate="gatewayApp.trabajador.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.trabajador.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.trabajador.nFlgactivo">N Flgactivo</span></th>
             <th><span jhiTranslate="gatewayApp.trabajador.nSedereg">N Sedereg</span></th>
-            <th><span jhiTranslate="gatewayApp.trabajador.vUsuarioupd">V Usuarioupd</span></th>
-            <th><span jhiTranslate="gatewayApp.trabajador.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.trabajador.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.trabajador.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.trabajador.nSedeupd">N Sedeupd</span></th>
-            <th><span jhiTranslate="gatewayApp.trabajador.cargotrabaja">Cargotrabaja</span></th>
-            <th><span jhiTranslate="gatewayApp.trabajador.personanatur">Personanatur</span></th>
+            <th><span jhiTranslate="gatewayApp.trabajador.cartrab">Cartrab</span></th>
+            <th><span jhiTranslate="gatewayApp.trabajador.pernatural">Pernatural</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let trabajador of trabajadors ;trackBy: trackId">
                 <td><a [routerLink]="['../trabajador', trabajador.id ]">{{trabajador.id}}</a></td>
-                <td>{{trabajador.vFlgsucesor}}</td>
-                <td>{{trabajador.vUsuarioreg}}</td>
-                <td>{{trabajador.dFechareg | date:'medium'}}</td>
-                <td>{{trabajador.nEliminar}}</td>
+                <td>{{trabajador.nFlgsuces}}</td>
+                <td>{{trabajador.nUsuareg}}</td>
+                <td>{{trabajador.tFecreg | date:'medium'}}</td>
+                <td>{{trabajador.nFlgactivo}}</td>
                 <td>{{trabajador.nSedereg}}</td>
-                <td>{{trabajador.vUsuarioupd}}</td>
-                <td>{{trabajador.dFechaupd | date:'medium'}}</td>
+                <td>{{trabajador.nUsuaupd}}</td>
+                <td>{{trabajador.tFecupd | date:'medium'}}</td>
                 <td>{{trabajador.nSedeupd}}</td>
                 <td>
-                    <div *ngIf="trabajador.cargotrabaja">
-                        <a [routerLink]="['../cargotrabaja', trabajador.cargotrabaja?.id ]" >{{trabajador.cargotrabaja?.id}}</a>
+                    <div *ngIf="trabajador.cartrab">
+                        <a [routerLink]="['../cartrab', trabajador.cartrab?.id ]" >{{trabajador.cartrab?.id}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="trabajador.personanatur">
-                        <a [routerLink]="['../personanatur', trabajador.personanatur?.id ]" >{{trabajador.personanatur?.id}}</a>
+                    <div *ngIf="trabajador.pernatural">
+                        <a [routerLink]="['../pernatural', trabajador.pernatural?.id ]" >{{trabajador.pernatural?.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">

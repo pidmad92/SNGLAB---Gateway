@@ -3,15 +3,16 @@ import { BaseEntity } from './../../shared';
 export class Tipenvnot implements BaseEntity {
     constructor(
         public id?: number,
-        public vDescripcion?: string,
-        public vUsuarioreg?: string,
-        public dFechareg?: any,
-        public nEliminar?: number,
+        public vDescrip?: string,
+        public nUsuareg?: number,
+        public tFecreg?: any,
+        public nFlgactivo?: boolean,
         public nSedereg?: number,
-        public vUsuarioupd?: string,
-        public dFechaupd?: any,
+        public nUsuaupd?: number,
+        public tFecupd?: any,
         public nSedeupd?: number,
-        public notificacions?: BaseEntity[],
+        public notificas?: BaseEntity[],
     ) {
+        this.nFlgactivo = false;
     }
 }

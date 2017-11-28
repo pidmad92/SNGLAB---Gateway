@@ -1,13 +1,13 @@
 <div>
-    <h4 class="title my-3">
+    <h2>
         <span jhiTranslate="gatewayApp.tipdocexp.home.title">Tipdocexps</span>
-        <button class="btn btn-primary float-right jh-create-entity create-tipdocexp" [routerLink]="['/defensa', { outlets: { popup: ['tipdocexp-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-tipdocexp" [routerLink]="['/', { outlets: { popup: ['tipdocexp-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.tipdocexp.home.createLabel">
             Create new Tipdocexp
             </span>
         </button>
-    </h4>
+    </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -30,13 +30,13 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.tipdocexp.vDescripcion">V Descripcion</span></th>
-            <th><span jhiTranslate="gatewayApp.tipdocexp.vUsuarioreg">V Usuarioreg</span></th>
-            <th><span jhiTranslate="gatewayApp.tipdocexp.dFechareg">D Fechareg</span></th>
-            <th><span jhiTranslate="gatewayApp.tipdocexp.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdocexp.vDescrip">V Descrip</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdocexp.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdocexp.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdocexp.nFlgactivo">N Flgactivo</span></th>
             <th><span jhiTranslate="gatewayApp.tipdocexp.nSedereg">N Sedereg</span></th>
-            <th><span jhiTranslate="gatewayApp.tipdocexp.vUsuarioupd">V Usuarioupd</span></th>
-            <th><span jhiTranslate="gatewayApp.tipdocexp.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdocexp.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdocexp.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.tipdocexp.nSedeupd">N Sedeupd</span></th>
             <th></th>
             </tr>
@@ -44,13 +44,13 @@
             <tbody>
             <tr *ngFor="let tipdocexp of tipdocexps ;trackBy: trackId">
                 <td><a [routerLink]="['../tipdocexp', tipdocexp.id ]">{{tipdocexp.id}}</a></td>
-                <td>{{tipdocexp.vDescripcion}}</td>
-                <td>{{tipdocexp.vUsuarioreg}}</td>
-                <td>{{tipdocexp.dFechareg | date:'medium'}}</td>
-                <td>{{tipdocexp.nEliminar}}</td>
+                <td>{{tipdocexp.vDescrip}}</td>
+                <td>{{tipdocexp.nUsuareg}}</td>
+                <td>{{tipdocexp.tFecreg | date:'medium'}}</td>
+                <td>{{tipdocexp.nFlgactivo}}</td>
                 <td>{{tipdocexp.nSedereg}}</td>
-                <td>{{tipdocexp.vUsuarioupd}}</td>
-                <td>{{tipdocexp.dFechaupd | date:'medium'}}</td>
+                <td>{{tipdocexp.nUsuaupd}}</td>
+                <td>{{tipdocexp.tFecupd | date:'medium'}}</td>
                 <td>{{tipdocexp.nSedeupd}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
@@ -61,14 +61,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/defensa', { outlets: { popup: 'tipdocexp/'+ tipdocexp.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'tipdocexp/'+ tipdocexp.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/defensa', { outlets: { popup: 'tipdocexp/'+ tipdocexp.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'tipdocexp/'+ tipdocexp.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

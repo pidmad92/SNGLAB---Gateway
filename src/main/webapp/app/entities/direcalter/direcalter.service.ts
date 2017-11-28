@@ -68,10 +68,10 @@ export class DirecalterService {
      */
     private convertItemFromServer(json: any): Direcalter {
         const entity: Direcalter = Object.assign(new Direcalter(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -81,9 +81,9 @@ export class DirecalterService {
     private convert(direcalter: Direcalter): Direcalter {
         const copy: Direcalter = Object.assign({}, direcalter);
 
-        copy.dFechareg = this.dateUtils.toDate(direcalter.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(direcalter.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(direcalter.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(direcalter.tFecupd);
         return copy;
     }
 }

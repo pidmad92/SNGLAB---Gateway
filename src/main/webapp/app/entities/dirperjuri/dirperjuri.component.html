@@ -1,0 +1,99 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.dirperjuri.home.title">Dirperjuris</span>
+        <button class="btn btn-primary float-right jh-create-entity create-dirperjuri" [routerLink]="['/', { outlets: { popup: ['dirperjuri-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.dirperjuri.home.createLabel">
+            Create new Dirperjuri
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.dirperjuri.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="dirperjuris">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.dirperjuri.nCoddepto">N Coddepto</span></th>
+            <th><span jhiTranslate="gatewayApp.dirperjuri.nCodprov">N Codprov</span></th>
+            <th><span jhiTranslate="gatewayApp.dirperjuri.nCoddist">N Coddist</span></th>
+            <th><span jhiTranslate="gatewayApp.dirperjuri.vDircomple">V Dircomple</span></th>
+            <th><span jhiTranslate="gatewayApp.dirperjuri.vRefer">V Refer</span></th>
+            <th><span jhiTranslate="gatewayApp.dirperjuri.nFlgnotifi">N Flgnotifi</span></th>
+            <th><span jhiTranslate="gatewayApp.dirperjuri.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.dirperjuri.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.dirperjuri.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.dirperjuri.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.dirperjuri.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.dirperjuri.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.dirperjuri.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.dirperjuri.perjuridica">Perjuridica</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let dirperjuri of dirperjuris ;trackBy: trackId">
+                <td><a [routerLink]="['../dirperjuri', dirperjuri.id ]">{{dirperjuri.id}}</a></td>
+                <td>{{dirperjuri.nCoddepto}}</td>
+                <td>{{dirperjuri.nCodprov}}</td>
+                <td>{{dirperjuri.nCoddist}}</td>
+                <td>{{dirperjuri.vDircomple}}</td>
+                <td>{{dirperjuri.vRefer}}</td>
+                <td>{{dirperjuri.nFlgnotifi}}</td>
+                <td>{{dirperjuri.nUsuareg}}</td>
+                <td>{{dirperjuri.tFecreg | date:'medium'}}</td>
+                <td>{{dirperjuri.nFlgactivo}}</td>
+                <td>{{dirperjuri.nSedereg}}</td>
+                <td>{{dirperjuri.nUsuaupd}}</td>
+                <td>{{dirperjuri.tFecupd | date:'medium'}}</td>
+                <td>{{dirperjuri.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="dirperjuri.perjuridica">
+                        <a [routerLink]="['../perjuridica', dirperjuri.perjuridica?.id ]" >{{dirperjuri.perjuridica?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../dirperjuri', dirperjuri.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'dirperjuri/'+ dirperjuri.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'dirperjuri/'+ dirperjuri.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

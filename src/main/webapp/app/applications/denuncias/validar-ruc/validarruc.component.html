@@ -1,0 +1,29 @@
+<div class="card card-panel">
+    <div class="card-header d-sm-flex justify-content-between">
+        <h5>Denuncias en Linea</h5>
+    </div>
+    <div class="card-body">
+        <p-messages [(value)]="messages"></p-messages>
+        <div class="panel">
+            <form name="validarRuc" role="form" novalidate (ngSubmit)="validar()" #validarRuc="ngForm">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Ingresar el RUC de la empresa</label>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" id="field_nRuc" size="11" name="nRuc" [(ngModel)]="validarruc.nRuc" />
+                    </div>
+                    <div class="col-md-12">
+                        <button class="btn btn-sm btn-secondary" [disabled]="validarRuc.form.invalid || isSaving" type="submit">Validar RUC</button>
+                    </div>
+                </div>
+            </form>
+            <p-dialog header="Alerta" [(visible)]="displayRepoSunafil" modal="modal" width="300" [responsive]="true">
+                <p>Debe reportar a SUNAFIL.</p>
+                    <p-footer>
+                        <button type="button" pButton icon="fa-check" (click)="displayRepoSunafil=false" label="Yes">Aceptar</button>
+                    </p-footer>
+            </p-dialog>
+        </div>
+    </div>
+</div>

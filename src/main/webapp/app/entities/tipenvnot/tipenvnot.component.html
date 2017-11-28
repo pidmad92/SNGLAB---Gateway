@@ -1,5 +1,5 @@
 <div>
-    <h4 class="title my-3">
+    <h2>
         <span jhiTranslate="gatewayApp.tipenvnot.home.title">Tipenvnots</span>
         <button class="btn btn-primary float-right jh-create-entity create-tipenvnot" [routerLink]="['/', { outlets: { popup: ['tipenvnot-new'] } }]">
             <span class="fa fa-plus"></span>
@@ -7,7 +7,7 @@
             Create new Tipenvnot
             </span>
         </button>
-    </h4>
+    </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -30,13 +30,13 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.tipenvnot.vDescripcion">V Descripcion</span></th>
-            <th><span jhiTranslate="gatewayApp.tipenvnot.vUsuarioreg">V Usuarioreg</span></th>
-            <th><span jhiTranslate="gatewayApp.tipenvnot.dFechareg">D Fechareg</span></th>
-            <th><span jhiTranslate="gatewayApp.tipenvnot.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.tipenvnot.vDescrip">V Descrip</span></th>
+            <th><span jhiTranslate="gatewayApp.tipenvnot.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipenvnot.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipenvnot.nFlgactivo">N Flgactivo</span></th>
             <th><span jhiTranslate="gatewayApp.tipenvnot.nSedereg">N Sedereg</span></th>
-            <th><span jhiTranslate="gatewayApp.tipenvnot.vUsuarioupd">V Usuarioupd</span></th>
-            <th><span jhiTranslate="gatewayApp.tipenvnot.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipenvnot.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipenvnot.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.tipenvnot.nSedeupd">N Sedeupd</span></th>
             <th></th>
             </tr>
@@ -44,13 +44,13 @@
             <tbody>
             <tr *ngFor="let tipenvnot of tipenvnots ;trackBy: trackId">
                 <td><a [routerLink]="['../tipenvnot', tipenvnot.id ]">{{tipenvnot.id}}</a></td>
-                <td>{{tipenvnot.vDescripcion}}</td>
-                <td>{{tipenvnot.vUsuarioreg}}</td>
-                <td>{{tipenvnot.dFechareg | date:'medium'}}</td>
-                <td>{{tipenvnot.nEliminar}}</td>
+                <td>{{tipenvnot.vDescrip}}</td>
+                <td>{{tipenvnot.nUsuareg}}</td>
+                <td>{{tipenvnot.tFecreg | date:'medium'}}</td>
+                <td>{{tipenvnot.nFlgactivo}}</td>
                 <td>{{tipenvnot.nSedereg}}</td>
-                <td>{{tipenvnot.vUsuarioupd}}</td>
-                <td>{{tipenvnot.dFechaupd | date:'medium'}}</td>
+                <td>{{tipenvnot.nUsuaupd}}</td>
+                <td>{{tipenvnot.tFecupd | date:'medium'}}</td>
                 <td>{{tipenvnot.nSedeupd}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">

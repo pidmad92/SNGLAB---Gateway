@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "motidenun" : {
+            "home": {
+                "title": "Motidenuns",
+                "createLabel": "Crear nuevo Motidenun",
+                "createOrEditLabel": "Crear o editar Motidenun",
+                "search": "Search for Motidenun"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Motidenun {{ id }}?"
+            },
+            "detail": {
+                "title": "Motidenun"
+            },
+            "vDescrip": "V Descrip",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "detmotden": "Detmotden"
+        }
+    },
+    "denunciasApp": {
+        "motidenun" : {
+            "created": "Un nuevo Motidenun ha sido creado con el identificador {{ param }}",
+            "updated": "Un Motidenun ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Motidenun ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

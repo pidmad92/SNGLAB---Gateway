@@ -68,10 +68,10 @@ export class EmpleadorService {
      */
     private convertItemFromServer(json: any): Empleador {
         const entity: Empleador = Object.assign(new Empleador(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -81,9 +81,9 @@ export class EmpleadorService {
     private convert(empleador: Empleador): Empleador {
         const copy: Empleador = Object.assign({}, empleador);
 
-        copy.dFechareg = this.dateUtils.toDate(empleador.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(empleador.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(empleador.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(empleador.tFecupd);
         return copy;
     }
 }

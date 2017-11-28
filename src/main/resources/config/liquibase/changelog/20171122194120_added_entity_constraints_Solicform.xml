@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Solicform.
+    -->
+    <changeSet id="20171122194120-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="formarchivo_id"
+                                 baseTableName="solicform"
+                                 constraintName="fk_solicform_formarchivo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="formarchivo"/>
+
+        <addForeignKeyConstraint baseColumnNames="formfinanc_id"
+                                 baseTableName="solicform"
+                                 constraintName="fk_solicform_formfinanc_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="formfinanc"/>
+
+        <addForeignKeyConstraint baseColumnNames="form_perfil_id"
+                                 baseTableName="solicform"
+                                 constraintName="fk_solicform_form_perfil_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="formperfil"/>
+
+        <addForeignKeyConstraint baseColumnNames="solicitud_id"
+                                 baseTableName="solicform"
+                                 constraintName="fk_solicform_solicitud_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="solicitud"/>
+
+    </changeSet>
+</databaseChangeLog>

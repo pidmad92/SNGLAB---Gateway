@@ -1,0 +1,228 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="mySolicformLabel" jhiTranslate="gatewayApp.solicform.home.createOrEditLabel">Create or edit a Solicform</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!solicform.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="solicform.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.nCodsform" for="field_nCodsform">N Codsform</label>
+            <input type="number" class="form-control" name="nCodsform" id="field_nCodsform"
+                [(ngModel)]="solicform.nCodsform" required />
+            <div [hidden]="!(editForm.controls.nCodsform?.dirty && editForm.controls.nCodsform?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nCodsform?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nCodsform?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.nCodsolic" for="field_nCodsolic">N Codsolic</label>
+            <input type="number" class="form-control" name="nCodsolic" id="field_nCodsolic"
+                [(ngModel)]="solicform.nCodsolic" required />
+            <div [hidden]="!(editForm.controls.nCodsolic?.dirty && editForm.controls.nCodsolic?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nCodsolic?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nCodsolic?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.nCodffina" for="field_nCodffina">N Codffina</label>
+            <input type="number" class="form-control" name="nCodffina" id="field_nCodffina"
+                [(ngModel)]="solicform.nCodffina"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.nCodfarch" for="field_nCodfarch">N Codfarch</label>
+            <input type="number" class="form-control" name="nCodfarch" id="field_nCodfarch"
+                [(ngModel)]="solicform.nCodfarch"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.nCodfperf" for="field_nCodfperf">N Codfperf</label>
+            <input type="number" class="form-control" name="nCodfperf" id="field_nCodfperf"
+                [(ngModel)]="solicform.nCodfperf"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.vNomform" for="field_vNomform">V Nomform</label>
+            <input type="text" class="form-control" name="vNomform" id="field_vNomform"
+                [(ngModel)]="solicform.vNomform" maxlength="100" />
+            <div [hidden]="!(editForm.controls.vNomform?.dirty && editForm.controls.vNomform?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNomform?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.vTipoform" for="field_vTipoform">V Tipoform</label>
+            <input type="text" class="form-control" name="vTipoform" id="field_vTipoform"
+                [(ngModel)]="solicform.vTipoform" maxlength="1" />
+            <div [hidden]="!(editForm.controls.vTipoform?.dirty && editForm.controls.vTipoform?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vTipoform?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
+                   This field cannot be longer than 1 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.nFlgoblig" for="field_nFlgoblig">N Flgoblig</label>
+            <input type="checkbox" class="form-control" name="nFlgoblig" id="field_nFlgoblig"
+                [(ngModel)]="solicform.nFlgoblig"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.vFlgest" for="field_vFlgest">V Flgest</label>
+            <input type="text" class="form-control" name="vFlgest" id="field_vFlgest"
+                [(ngModel)]="solicform.vFlgest" maxlength="1" />
+            <div [hidden]="!(editForm.controls.vFlgest?.dirty && editForm.controls.vFlgest?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vFlgest?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
+                   This field cannot be longer than 1 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.vObserva" for="field_vObserva">V Observa</label>
+            <input type="text" class="form-control" name="vObserva" id="field_vObserva"
+                [(ngModel)]="solicform.vObserva" maxlength="200" />
+            <div [hidden]="!(editForm.controls.vObserva?.dirty && editForm.controls.vObserva?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vObserva?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                   This field cannot be longer than 200 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.vUsuareg" for="field_vUsuareg">V Usuareg</label>
+            <input type="text" class="form-control" name="vUsuareg" id="field_vUsuareg"
+                [(ngModel)]="solicform.vUsuareg" required maxlength="20" />
+            <div [hidden]="!(editForm.controls.vUsuareg?.dirty && editForm.controls.vUsuareg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vUsuareg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vUsuareg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.tFecreg" for="field_tFecreg">T Fecreg</label>
+            <div class="d-flex">
+                <input id="field_tFecreg" type="datetime-local" class="form-control" name="tFecreg" [(ngModel)]="solicform.tFecreg"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.tFecreg?.dirty && editForm.controls.tFecreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tFecreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.tFecreg?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.nFlgactivo" for="field_nFlgactivo">N Flgactivo</label>
+            <input type="checkbox" class="form-control" name="nFlgactivo" id="field_nFlgactivo"
+                [(ngModel)]="solicform.nFlgactivo"  />
+            <div [hidden]="!(editForm.controls.nFlgactivo?.dirty && editForm.controls.nFlgactivo?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nFlgactivo?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.nSedereg" for="field_nSedereg">N Sedereg</label>
+            <input type="number" class="form-control" name="nSedereg" id="field_nSedereg"
+                [(ngModel)]="solicform.nSedereg" required />
+            <div [hidden]="!(editForm.controls.nSedereg?.dirty && editForm.controls.nSedereg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nSedereg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nSedereg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.vUsuaupd" for="field_vUsuaupd">V Usuaupd</label>
+            <input type="text" class="form-control" name="vUsuaupd" id="field_vUsuaupd"
+                [(ngModel)]="solicform.vUsuaupd" maxlength="20" />
+            <div [hidden]="!(editForm.controls.vUsuaupd?.dirty && editForm.controls.vUsuaupd?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vUsuaupd?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.tFecupd" for="field_tFecupd">T Fecupd</label>
+            <div class="d-flex">
+                <input id="field_tFecupd" type="datetime-local" class="form-control" name="tFecupd" [(ngModel)]="solicform.tFecupd"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.nSedeupd" for="field_nSedeupd">N Sedeupd</label>
+            <input type="number" class="form-control" name="nSedeupd" id="field_nSedeupd"
+                [(ngModel)]="solicform.nSedeupd"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.formarchivo" for="field_formarchivo">Formarchivo</label>
+            <select class="form-control" id="field_formarchivo" name="formarchivo" [(ngModel)]="solicform.formarchivo" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="formarchivoOption.id === solicform.formarchivo?.id ? solicform.formarchivo : formarchivoOption" *ngFor="let formarchivoOption of formarchivos; trackBy: trackFormarchivoById">{{formarchivoOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.formfinanc" for="field_formfinanc">Formfinanc</label>
+            <select class="form-control" id="field_formfinanc" name="formfinanc" [(ngModel)]="solicform.formfinanc" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="formfinancOption.id === solicform.formfinanc?.id ? solicform.formfinanc : formfinancOption" *ngFor="let formfinancOption of formfinancs; trackBy: trackFormfinancById">{{formfinancOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.formPerfil" for="field_formPerfil">Form Perfil</label>
+            <select class="form-control" id="field_formPerfil" name="formPerfil" [(ngModel)]="solicform.formPerfil">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="formperfilOption.id === solicform.formPerfil?.id ? solicform.formPerfil : formperfilOption" *ngFor="let formperfilOption of formperfils; trackBy: trackFormperfilById">{{formperfilOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.solicform.solicitud" for="field_solicitud">Solicitud</label>
+            <select class="form-control" id="field_solicitud" name="solicitud" [(ngModel)]="solicform.solicitud" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="solicitudOption.id === solicform.solicitud?.id ? solicform.solicitud : solicitudOption" *ngFor="let solicitudOption of solicituds; trackBy: trackSolicitudById">{{solicitudOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

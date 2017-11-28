@@ -13,18 +13,18 @@
             "detail": {
                 "title": "Tipdocident"
             },
-            "vDescripcion": "V Descripcion",
-            "nNumdigitos": "N Numdigitos",
-            "vDescripcioncorta": "V Descripcioncorta",
-            "vUsuarioreg": "V Usuarioreg",
-            "dFechareg": "D Fechareg",
-            "nEliminar": "N Eliminar",
+            "vDesdocide": "V Desdocide",
+            "nNumdigi": "N Numdigi",
+            "vDescorta": "V Descorta",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
             "nSedereg": "N Sedereg",
-            "vUsuarioupd": "V Usuarioupd",
-            "dFechaupd": "D Fechaupd",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
             "nSedeupd": "N Sedeupd",
-            "personanatur": "Personanatur",
-            "personajurid": "Personajurid"
+            "pernatural": "Pernatural",
+            "perjuridica": "Perjuridica"
         }
     },
     "consultasApp": {

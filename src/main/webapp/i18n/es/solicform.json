@@ -1,0 +1,42 @@
+{
+    "gatewayApp": {
+        "solicform" : {
+            "home": {
+                "title": "Solicforms",
+                "createLabel": "Crear nuevo Solicform",
+                "createOrEditLabel": "Crear o editar Solicform",
+                "search": "Search for Solicform"
+            },
+            "created": "Un nuevo Solicform ha sido creado con el identificador {{ param }}",
+            "updated": "Un Solicform ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Solicform ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Solicform {{ id }}?"
+            },
+            "detail": {
+                "title": "Solicform"
+            },
+            "nCodsform": "N Codsform",
+            "nCodsolic": "N Codsolic",
+            "nCodffina": "N Codffina",
+            "nCodfarch": "N Codfarch",
+            "nCodfperf": "N Codfperf",
+            "vNomform": "V Nomform",
+            "vTipoform": "V Tipoform",
+            "nFlgoblig": "N Flgoblig",
+            "vFlgest": "V Flgest",
+            "vObserva": "V Observa",
+            "vUsuareg": "V Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "vUsuaupd": "V Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "formarchivo": "Formarchivo",
+            "formfinanc": "Formfinanc",
+            "formPerfil": "Form Perfil",
+            "solicitud": "Solicitud"
+        }
+    }
+}

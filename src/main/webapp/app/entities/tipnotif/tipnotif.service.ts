@@ -68,10 +68,10 @@ export class TipnotifService {
      */
     private convertItemFromServer(json: any): Tipnotif {
         const entity: Tipnotif = Object.assign(new Tipnotif(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -81,9 +81,9 @@ export class TipnotifService {
     private convert(tipnotif: Tipnotif): Tipnotif {
         const copy: Tipnotif = Object.assign({}, tipnotif);
 
-        copy.dFechareg = this.dateUtils.toDate(tipnotif.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(tipnotif.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(tipnotif.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(tipnotif.tFecupd);
         return copy;
     }
 }

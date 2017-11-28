@@ -13,17 +13,18 @@
             "detail": {
                 "title": "Oficina"
             },
-            "vDescripcion": "V Descripcion",
-            "vUsuarioreg": "V Usuarioreg",
-            "dFechareg": "D Fechareg",
-            "nEliminar": "N Eliminar",
+            "vDesofic": "V Desofic",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
             "nSedereg": "N Sedereg",
-            "vUsuarioupd": "V Usuarioupd",
-            "dFechaupd": "D Fechaupd",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
             "nSedeupd": "N Sedeupd",
             "abogado": "Abogado",
             "atencion": "Atencion",
-            "motatenofic": "Motatenofic"
+            "motatenofic": "Motatenofic",
+            "pasegl": "Pasegl"
         }
     },
     "consultasApp": {

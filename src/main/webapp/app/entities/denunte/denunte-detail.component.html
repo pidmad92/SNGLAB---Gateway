@@ -1,0 +1,63 @@
+
+<div *ngIf="denunte">
+    <h2><span jhiTranslate="gatewayApp.denunte.detail.title">Denunte</span> {{denunte.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.denunte.nCodusu">N Codusu</span></dt>
+        <dd>
+            <span>{{denunte.nCodusu}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denunte.vFlgestado">V Flgestado</span></dt>
+        <dd>
+            <span>{{denunte.vFlgestado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denunte.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{denunte.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denunte.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{denunte.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denunte.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{denunte.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denunte.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{denunte.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denunte.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{denunte.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denunte.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{denunte.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denunte.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{denunte.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.denunte.pernatural">Pernatural</span></dt>
+        <dd>
+            <div *ngIf="denunte.pernatural">
+                <a [routerLink]="['/pernatural', denunte.pernatural?.id]">{{denunte.pernatural?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'denunte/'+ denunte.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,83 @@
+
+<div *ngIf="anexlaboral">
+    <h2><span jhiTranslate="gatewayApp.anexlaboral.detail.title">Anexlaboral</span> {{anexlaboral.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.anexlaboral.nCodanexo">N Codanexo</span></dt>
+        <dd>
+            <span>{{anexlaboral.nCodanexo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.anexlaboral.nCodfperf">N Codfperf</span></dt>
+        <dd>
+            <span>{{anexlaboral.nCodfperf}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.anexlaboral.nAnioanex">N Anioanex</span></dt>
+        <dd>
+            <span>{{anexlaboral.nAnioanex}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.anexlaboral.vTipocont">V Tipocont</span></dt>
+        <dd>
+            <span>{{anexlaboral.vTipocont}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.anexlaboral.vDeclegal">V Declegal</span></dt>
+        <dd>
+            <span>{{anexlaboral.vDeclegal}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.anexlaboral.vDesanexo">V Desanexo</span></dt>
+        <dd>
+            <span>{{anexlaboral.vDesanexo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.anexlaboral.nCantlabo">N Cantlabo</span></dt>
+        <dd>
+            <span>{{anexlaboral.nCantlabo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.anexlaboral.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{anexlaboral.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.anexlaboral.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{anexlaboral.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.anexlaboral.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{anexlaboral.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.anexlaboral.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{anexlaboral.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.anexlaboral.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{anexlaboral.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.anexlaboral.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{anexlaboral.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.anexlaboral.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{anexlaboral.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.anexlaboral.formperfil">Formperfil</span></dt>
+        <dd>
+            <div *ngIf="anexlaboral.formperfil">
+                <a [routerLink]="['/formperfil', anexlaboral.formperfil?.id]">{{anexlaboral.formperfil?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'anexlaboral/'+ anexlaboral.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

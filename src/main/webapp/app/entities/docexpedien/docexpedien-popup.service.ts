@@ -28,12 +28,17 @@ export class DocexpedienPopupService {
 
             if (id) {
                 this.docexpedienService.find(id).subscribe((docexpedien) => {
-                    docexpedien.dFecha = this.datePipe
-                        .transform(docexpedien.dFecha, 'yyyy-MM-ddTHH:mm:ss');
-                    docexpedien.dFechareg = this.datePipe
-                        .transform(docexpedien.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    docexpedien.dFechaupd = this.datePipe
-                        .transform(docexpedien.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    if (docexpedien.dFechadoc) {
+                        docexpedien.dFechadoc = {
+                            year: docexpedien.dFechadoc.getFullYear(),
+                            month: docexpedien.dFechadoc.getMonth() + 1,
+                            day: docexpedien.dFechadoc.getDate()
+                        };
+                    }
+                    docexpedien.tFecreg = this.datePipe
+                        .transform(docexpedien.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    docexpedien.tFecupd = this.datePipe
+                        .transform(docexpedien.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.docexpedienModalRef(component, docexpedien);
                     resolve(this.ngbModalRef);
                 });

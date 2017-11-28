@@ -1,0 +1,59 @@
+
+<div *ngIf="motate">
+    <h2><span jhiTranslate="gatewayApp.motate.detail.title">Motate</span> {{motate.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.motate.vDesmotate">V Desmotate</span></dt>
+        <dd>
+            <span>{{motate.vDesmotate}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motate.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{motate.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motate.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{motate.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motate.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{motate.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motate.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{motate.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motate.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{motate.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motate.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{motate.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motate.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{motate.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.motate.tipmotaten">Tipmotaten</span></dt>
+        <dd>
+            <div *ngIf="motate.tipmotaten">
+                <a [routerLink]="['/tipmotaten', motate.tipmotaten?.id]">{{motate.tipmotaten?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'motate/'+ motate.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

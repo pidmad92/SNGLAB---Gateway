@@ -1,13 +1,13 @@
 <div>
-    <h4 class="title my-3">
+    <h2>
         <span jhiTranslate="gatewayApp.tipmotaten.home.title">Tipmotatens</span>
-        <button class="btn btn-primary float-right jh-create-entity create-tipmotaten" [routerLink]="['/consultas', { outlets: { popup: ['tipmotaten-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-tipmotaten" [routerLink]="['/', { outlets: { popup: ['tipmotaten-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="gatewayApp.tipmotaten.home.createLabel">
             Create new Tipmotaten
             </span>
         </button>
-    </h4>
+    </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
@@ -30,13 +30,13 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.tipmotaten.vDescripcion">V Descripcion</span></th>
-            <th><span jhiTranslate="gatewayApp.tipmotaten.vUsuarioreg">V Usuarioreg</span></th>
-            <th><span jhiTranslate="gatewayApp.tipmotaten.dFechareg">D Fechareg</span></th>
-            <th><span jhiTranslate="gatewayApp.tipmotaten.nEliminar">N Eliminar</span></th>
+            <th><span jhiTranslate="gatewayApp.tipmotaten.vDestipmot">V Destipmot</span></th>
+            <th><span jhiTranslate="gatewayApp.tipmotaten.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipmotaten.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipmotaten.nFlgactivo">N Flgactivo</span></th>
             <th><span jhiTranslate="gatewayApp.tipmotaten.nSedereg">N Sedereg</span></th>
-            <th><span jhiTranslate="gatewayApp.tipmotaten.vUsuarioupd">V Usuarioupd</span></th>
-            <th><span jhiTranslate="gatewayApp.tipmotaten.dFechaupd">D Fechaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipmotaten.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipmotaten.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.tipmotaten.nSedeupd">N Sedeupd</span></th>
             <th></th>
             </tr>
@@ -44,13 +44,13 @@
             <tbody>
             <tr *ngFor="let tipmotaten of tipmotatens ;trackBy: trackId">
                 <td><a [routerLink]="['../tipmotaten', tipmotaten.id ]">{{tipmotaten.id}}</a></td>
-                <td>{{tipmotaten.vDescripcion}}</td>
-                <td>{{tipmotaten.vUsuarioreg}}</td>
-                <td>{{tipmotaten.dFechareg | date:'medium'}}</td>
-                <td>{{tipmotaten.nEliminar}}</td>
+                <td>{{tipmotaten.vDestipmot}}</td>
+                <td>{{tipmotaten.nUsuareg}}</td>
+                <td>{{tipmotaten.tFecreg | date:'medium'}}</td>
+                <td>{{tipmotaten.nFlgactivo}}</td>
                 <td>{{tipmotaten.nSedereg}}</td>
-                <td>{{tipmotaten.vUsuarioupd}}</td>
-                <td>{{tipmotaten.dFechaupd | date:'medium'}}</td>
+                <td>{{tipmotaten.nUsuaupd}}</td>
+                <td>{{tipmotaten.tFecupd | date:'medium'}}</td>
                 <td>{{tipmotaten.nSedeupd}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
@@ -61,14 +61,14 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/consultas', { outlets: { popup: 'tipmotaten/'+ tipmotaten.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'tipmotaten/'+ tipmotaten.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/consultas', { outlets: { popup: 'tipmotaten/'+ tipmotaten.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'tipmotaten/'+ tipmotaten.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

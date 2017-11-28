@@ -28,10 +28,10 @@ export class AbogadoPopupService {
 
             if (id) {
                 this.abogadoService.find(id).subscribe((abogado) => {
-                    abogado.dFechareg = this.datePipe
-                        .transform(abogado.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    abogado.dFechaupd = this.datePipe
-                        .transform(abogado.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    abogado.tFecreg = this.datePipe
+                        .transform(abogado.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    abogado.tFecupd = this.datePipe
+                        .transform(abogado.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.abogadoModalRef(component, abogado);
                     resolve(this.ngbModalRef);
                 });

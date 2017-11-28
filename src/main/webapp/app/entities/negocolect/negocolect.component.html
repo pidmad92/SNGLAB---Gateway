@@ -1,0 +1,109 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.negocolect.home.title">Negocolects</span>
+        <button class="btn btn-primary float-right jh-create-entity create-negocolect" [routerLink]="['/', { outlets: { popup: ['negocolect-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.negocolect.home.createLabel">
+            Create new Negocolect
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.negocolect.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="negocolects">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.nCodngcol">N Codngcol</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.nCodfperf">N Codfperf</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.vAmbsubje">V Ambsubje</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.vTipongco">V Tipongco</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.vEtapaneg">V Etapaneg</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.tFecvigde">T Fecvigde</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.tFecvigha">T Fecvigha</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.vNumexpe">V Numexpe</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.vAuttrab">V Auttrab</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.vRucneg">V Rucneg</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.vRegistro">V Registro</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.vUsuareg">V Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.vUsuaupd">V Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.negocolect.formperfil">Formperfil</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let negocolect of negocolects ;trackBy: trackId">
+                <td><a [routerLink]="['../negocolect', negocolect.id ]">{{negocolect.id}}</a></td>
+                <td>{{negocolect.nCodngcol}}</td>
+                <td>{{negocolect.nCodfperf}}</td>
+                <td>{{negocolect.vAmbsubje}}</td>
+                <td>{{negocolect.vTipongco}}</td>
+                <td>{{negocolect.vEtapaneg}}</td>
+                <td>{{negocolect.tFecvigde | date:'medium'}}</td>
+                <td>{{negocolect.tFecvigha | date:'medium'}}</td>
+                <td>{{negocolect.vNumexpe}}</td>
+                <td>{{negocolect.vAuttrab}}</td>
+                <td>{{negocolect.vRucneg}}</td>
+                <td>{{negocolect.vRegistro}}</td>
+                <td>{{negocolect.vUsuareg}}</td>
+                <td>{{negocolect.tFecreg | date:'medium'}}</td>
+                <td>{{negocolect.nFlgactivo}}</td>
+                <td>{{negocolect.nSedereg}}</td>
+                <td>{{negocolect.vUsuaupd}}</td>
+                <td>{{negocolect.tFecupd | date:'medium'}}</td>
+                <td>{{negocolect.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="negocolect.formperfil">
+                        <a [routerLink]="['../formperfil', negocolect.formperfil?.id ]" >{{negocolect.formperfil?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../negocolect', negocolect.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'negocolect/'+ negocolect.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'negocolect/'+ negocolect.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -28,10 +28,10 @@ export class EmpleadorPopupService {
 
             if (id) {
                 this.empleadorService.find(id).subscribe((empleador) => {
-                    empleador.dFechareg = this.datePipe
-                        .transform(empleador.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    empleador.dFechaupd = this.datePipe
-                        .transform(empleador.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    empleador.tFecreg = this.datePipe
+                        .transform(empleador.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    empleador.tFecupd = this.datePipe
+                        .transform(empleador.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.empleadorModalRef(component, empleador);
                     resolve(this.ngbModalRef);
                 });

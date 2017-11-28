@@ -1,0 +1,68 @@
+
+<div *ngIf="formarchivo">
+    <h2><span jhiTranslate="gatewayApp.formarchivo.detail.title">Formarchivo</span> {{formarchivo.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.formarchivo.nCodfarch">N Codfarch</span></dt>
+        <dd>
+            <span>{{formarchivo.nCodfarch}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formarchivo.vDesform">V Desform</span></dt>
+        <dd>
+            <span>{{formarchivo.vDesform}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formarchivo.bArchivo">B Archivo</span></dt>
+        <dd>
+            <div *ngIf="formarchivo.bArchivo">
+                <a (click)="openFile(formarchivo.bArchivoContentType, formarchivo.bArchivo)" jhiTranslate="entity.action.open">open</a>
+                {{formarchivo.bArchivoContentType}}, {{byteSize(formarchivo.bArchivo)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formarchivo.vContype">V Contype</span></dt>
+        <dd>
+            <span>{{formarchivo.vContype}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formarchivo.vUsuareg">V Usuareg</span></dt>
+        <dd>
+            <span>{{formarchivo.vUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formarchivo.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{formarchivo.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formarchivo.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{formarchivo.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formarchivo.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{formarchivo.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formarchivo.vUsuaupd">V Usuaupd</span></dt>
+        <dd>
+            <span>{{formarchivo.vUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formarchivo.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{formarchivo.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.formarchivo.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{formarchivo.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'formarchivo/'+ formarchivo.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

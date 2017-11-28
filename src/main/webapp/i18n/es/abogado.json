@@ -13,17 +13,17 @@
             "detail": {
                 "title": "Abogado"
             },
-            "vNomabogado": "V Nomabogado",
-            "nCodabogadousuario": "N Codabogadousuario",
-            "vUsuarioreg": "V Usuarioreg",
-            "dFechareg": "D Fechareg",
-            "nEliminar": "N Eliminar",
+            "vNomabogad": "V Nomabogad",
+            "nCodabousu": "N Codabousu",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
             "nSedereg": "N Sedereg",
-            "vUsuarioupd": "V Usuarioupd",
-            "dFechaupd": "D Fechaupd",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
             "nSedeupd": "N Sedeupd",
             "oficina": "Oficina",
-            "conciliacion": "Conciliacion"
+            "concilia": "Concilia"
         }
     },
     "defensaApp": {

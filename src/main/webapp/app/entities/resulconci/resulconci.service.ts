@@ -68,10 +68,10 @@ export class ResulconciService {
      */
     private convertItemFromServer(json: any): Resulconci {
         const entity: Resulconci = Object.assign(new Resulconci(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -81,9 +81,9 @@ export class ResulconciService {
     private convert(resulconci: Resulconci): Resulconci {
         const copy: Resulconci = Object.assign({}, resulconci);
 
-        copy.dFechareg = this.dateUtils.toDate(resulconci.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(resulconci.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(resulconci.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(resulconci.tFecupd);
         return copy;
     }
 }

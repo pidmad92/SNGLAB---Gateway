@@ -13,17 +13,17 @@
             "detail": {
                 "title": "Motatenofic"
             },
-            "vUsuarioreg": "V Usuarioreg",
-            "dFechareg": "D Fechareg",
-            "nEliminar": "N Eliminar",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
             "nSedereg": "N Sedereg",
-            "vUsuarioupd": "V Usuarioupd",
-            "dFechaupd": "D Fechaupd",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
             "nSedeupd": "N Sedeupd",
-            "motivoatenci": "Motivoatenci",
+            "motate": "Motate",
             "oficina": "Oficina",
-            "atenmotiaten": "Atenmotiaten",
-            "pasemotiaten": "Pasemotiaten"
+            "motateselec": "Motateselec",
+            "motivpase": "Motivpase"
         }
     },
     "consultasApp": {

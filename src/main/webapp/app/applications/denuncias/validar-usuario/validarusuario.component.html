@@ -1,0 +1,121 @@
+<p-blockUI [blocked]="block"></p-blockUI>
+<form name="validarUsuario" role="form" novalidate (ngSubmit)="onSubmit()" #validarUsuario="ngForm">
+    <p-messages [(value)]="messages"></p-messages>
+    <p-panel header="Inicio de Sesión" [toggleable]="false" [style]="{'margin-bottom':'20px','width': '400px'}">
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Correo *:
+                </div>
+                <div class="ui-grid-col-10">
+                    <input type="email" class="form-control" name="username" [(ngModel)]="validarUsuario.username" placeholder="Ingresar su usuario"
+                    />
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Password *:
+                </div>
+                <div class="ui-grid-col-10">
+                    <input type="password" class="form-control" name="password" [(ngModel)]="validarUsuario.password" placeholder="Minimo 6 digitos"
+                    />
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Captcha*:
+                </div>
+                <div class="ui-grid-col-10">
+                </div>
+            </div>
+
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-12">
+                    <p class="center">
+                        <button type="submit" class="btn btn-primary" name="btnIngresar">Ingresar Usuario</button>
+                        <button type="button" (click)="showNuevoUsuario()" class="btn btn-secondary" name="btnNuevo">Nuevo Usuario</button>
+                    </p>
+                </div>
+            </div>
+    </p-panel>
+</form>
+<p-dialog header="Nuevo Usuario" [(visible)]="displayNuevoUsuario" modal="modal" width="600" height="600" [responsive]="true">
+    <form name="editForm" role="form" novalidate (ngSubmit)="submitNuevoUsuario()" #editForm="ngForm">
+        <p-tabView [activeIndex]="indexTab">
+            <p-tabPanel [disabled]="disableTab1" header="Datos Generales" style="height: 500" leftIcon="fa-id-card">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label>Tipo Doc.</label>
+                    </div>
+                    <div class="col-md-4">
+                        <p-dropdown [options]="tipodocs" name="selectedTipodoc" [(ngModel)]="selectedTipodoc" [style]="{'width':'140px'}" placeholder="Seleccione un tipo doc."
+                            optionLabel="name"></p-dropdown>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" [(ngModel)]="pernatural.vNumdoc" name="pernatural.vNumdoc" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Ape. Paterno</label>
+                    </div>
+                    <div class="col-md-12">
+                        <input class="form-control" placeholder="" [(ngModel)]="pernatural.vApepat" name="vApepat" type="text" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Ape. Materno</label>
+                    </div>
+                    <div class="col-md-12">
+                        <input class="form-control" placeholder="" [(ngModel)]="pernatural.vApemat" name="vApemat" type="text" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Nombres</label>
+                    </div>
+                    <div class="col-md-12">
+                        <input class="form-control" placeholder="" [(ngModel)]="pernatural.vNombres" name="vNombres" type="text" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Correo electronico</label>
+                    </div>
+                    <div class="col-md-12">
+                        <input class="form-control" placeholder="" [(ngModel)]="pernatural.vEmailper" name="vEmailper" type="text" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Telefono casa</label>
+                        <input class="form-control" placeholder="Numero de documento" [(ngModel)]="pernatural.vTelefono" name="vTelefono" type="text"
+                        />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Telefono celular</label>
+                        <input class="form-control" placeholder="Numero de documento" [(ngModel)]="pernatural.vCelular" name="vCelular" type="text"
+                        />
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-md-12">
+                        <button type="button" (click)="displayNuevoUsuario=false" class="btn btn-primary" label="Cancelar">Cancelar</button>
+                        <button type="button" (click)="validarDatoPersona()" class="btn btn-secondary" label="Siguiente">Siguiente</button>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="Dirección" leftIcon="fa-podcast" [disabled]="disableTab2">
+
+                <div class="ui-g">
+                    <div class="ui-md-12">
+                        <button type="button" (click)="retrocederVentada()" class="btn btn-primary" label="Atras">Atras</button>
+                        <button type="submit" (click)="validarDatoPersona()" class="btn btn-secondary" label="Guardar">Guardar</button>
+                    </div>
+                </div>
+            </p-tabPanel>
+        </p-tabView>
+        <p-messages [(value)]="messagesForm"></p-messages>
+    </form>
+</p-dialog>

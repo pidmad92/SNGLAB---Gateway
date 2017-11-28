@@ -28,10 +28,10 @@ export class ResolutorPopupService {
 
             if (id) {
                 this.resolutorService.find(id).subscribe((resolutor) => {
-                    resolutor.dFechareg = this.datePipe
-                        .transform(resolutor.dFechareg, 'yyyy-MM-ddTHH:mm:ss');
-                    resolutor.dFechaupd = this.datePipe
-                        .transform(resolutor.dFechaupd, 'yyyy-MM-ddTHH:mm:ss');
+                    resolutor.tFecreg = this.datePipe
+                        .transform(resolutor.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    resolutor.tFecupd = this.datePipe
+                        .transform(resolutor.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.resolutorModalRef(component, resolutor);
                     resolve(this.ngbModalRef);
                 });

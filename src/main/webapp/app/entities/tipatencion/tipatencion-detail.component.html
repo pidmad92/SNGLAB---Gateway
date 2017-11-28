@@ -1,36 +1,36 @@
 
 <div *ngIf="tipatencion">
-    <h4 class="title my-3"><span jhiTranslate="gatewayApp.tipatencion.detail.title">Tipatencion</span> {{tipatencion.id}}</h4>
+    <h2><span jhiTranslate="gatewayApp.tipatencion.detail.title">Tipatencion</span> {{tipatencion.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.tipatencion.vDescripcion">V Descripcion</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipatencion.vDestipate">V Destipate</span></dt>
         <dd>
-            <span>{{tipatencion.vDescripcion}}</span>
+            <span>{{tipatencion.vDestipate}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipatencion.vUsuarioreg">V Usuarioreg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipatencion.nUsuareg">N Usuareg</span></dt>
         <dd>
-            <span>{{tipatencion.vUsuarioreg}}</span>
+            <span>{{tipatencion.nUsuareg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipatencion.dFechareg">D Fechareg</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipatencion.tFecreg">T Fecreg</span></dt>
         <dd>
-            <span>{{tipatencion.dFechareg | date:'medium'}}</span>
+            <span>{{tipatencion.tFecreg | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipatencion.nEliminar">N Eliminar</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipatencion.nFlgactivo">N Flgactivo</span></dt>
         <dd>
-            <span>{{tipatencion.nEliminar}}</span>
+            <span>{{tipatencion.nFlgactivo}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.tipatencion.nSedereg">N Sedereg</span></dt>
         <dd>
             <span>{{tipatencion.nSedereg}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipatencion.vUsuarioupd">V Usuarioupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipatencion.nUsuaupd">N Usuaupd</span></dt>
         <dd>
-            <span>{{tipatencion.vUsuarioupd}}</span>
+            <span>{{tipatencion.nUsuaupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.tipatencion.dFechaupd">D Fechaupd</span></dt>
+        <dt><span jhiTranslate="gatewayApp.tipatencion.tFecupd">T Fecupd</span></dt>
         <dd>
-            <span>{{tipatencion.dFechaupd | date:'medium'}}</span>
+            <span>{{tipatencion.tFecupd | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.tipatencion.nSedeupd">N Sedeupd</span></dt>
         <dd>
@@ -45,7 +45,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/consultas', { outlets: { popup: 'tipatencion/'+ tipatencion.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'tipatencion/'+ tipatencion.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>

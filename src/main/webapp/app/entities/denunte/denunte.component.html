@@ -1,0 +1,91 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.denunte.home.title">Denuntes</span>
+        <button class="btn btn-primary float-right jh-create-entity create-denunte" [routerLink]="['/', { outlets: { popup: ['denunte-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.denunte.home.createLabel">
+            Create new Denunte
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.denunte.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="denuntes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.denunte.nCodusu">N Codusu</span></th>
+            <th><span jhiTranslate="gatewayApp.denunte.vFlgestado">V Flgestado</span></th>
+            <th><span jhiTranslate="gatewayApp.denunte.vUsuareg">V Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.denunte.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.denunte.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.denunte.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.denunte.vUsuaupd">V Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.denunte.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.denunte.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.denunte.pernatural">Pernatural</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let denunte of denuntes ;trackBy: trackId">
+                <td><a [routerLink]="['../denunte', denunte.id ]">{{denunte.id}}</a></td>
+                <td>{{denunte.nCodusu}}</td>
+                <td>{{denunte.vFlgestado}}</td>
+                <td>{{denunte.vUsuareg}}</td>
+                <td>{{denunte.tFecreg | date:'medium'}}</td>
+                <td>{{denunte.nFlgactivo}}</td>
+                <td>{{denunte.nSedereg}}</td>
+                <td>{{denunte.vUsuaupd}}</td>
+                <td>{{denunte.tFecupd | date:'medium'}}</td>
+                <td>{{denunte.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="denunte.pernatural">
+                        <a [routerLink]="['../pernatural', denunte.pernatural?.id ]" >{{denunte.pernatural?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../denunte', denunte.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'denunte/'+ denunte.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'denunte/'+ denunte.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
