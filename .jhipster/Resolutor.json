@@ -10,7 +10,7 @@
     ],
     "fields": [
         {
-            "fieldName": "vNomresolutor",
+            "fieldName": "vNomresol",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -19,7 +19,7 @@
             "fieldValidateRulesMaxlength": 250
         },
         {
-            "fieldName": "nCodresolutorusuario",
+            "fieldName": "nCodresusu",
             "fieldType": "Integer"
         },
         {

@@ -11,7 +11,7 @@ export class Calperiodo implements BaseEntity {
         public nTnocomput?: number,
         public nDgozados?: number,
         public nDadeudos?: number,
-        public nBase?: number,
+        public nAnobase?: number,
         public nUsuareg?: number,
         public tFecreg?: any,
         public nFlgactivo?: boolean,
@@ -20,8 +20,7 @@ export class Calperiodo implements BaseEntity {
         public tFecupd?: any,
         public nSedeupd?: number,
         public calbensoc?: BaseEntity,
-        public interesperi?: BaseEntity,
-        public calrcmperi?: BaseEntity,
+        public segsalud?: BaseEntity,
         public estperical?: BaseEntity,
         public tipcalperi?: BaseEntity,
     ) {

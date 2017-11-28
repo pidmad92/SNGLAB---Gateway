@@ -1,0 +1,61 @@
+{
+    "gatewayApp": {
+        "pasepj" : {
+            "home": {
+                "title": "Pasepjs",
+                "createLabel": "Crear nuevo Pasepj",
+                "createOrEditLabel": "Crear o editar Pasepj",
+                "search": "Search for Pasepj"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Pasepj {{ id }}?"
+            },
+            "detail": {
+                "title": "Pasepj"
+            },
+            "vCodreg": "V Codreg",
+            "vCodzon": "V Codzon",
+            "vCodpas": "V Codpas",
+            "vCodtra": "V Codtra",
+            "vCodtdcide": "V Codtdcide",
+            "nCorrel": "N Correl",
+            "vCodsis": "V Codsis",
+            "vCodemp": "V Codemp",
+            "nCodsuc": "N Codsuc",
+            "vCodcon": "V Codcon",
+            "dFecpas": "D Fecpas",
+            "dFecrecep": "D Fecrecep",
+            "vCodusurec": "V Codusurec",
+            "vCodusureg": "V Codusureg",
+            "vHostreg": "V Hostreg",
+            "vCodusumod": "V Codusumod",
+            "dFecmod": "D Fecmod",
+            "vHostmod": "V Hostmod",
+            "vCodsisdes": "V Codsisdes",
+            "dFecdes": "D Fecdes",
+            "dFeccon": "D Feccon",
+            "vCodtrar": "V Codtrar",
+            "vCodtdcidr": "V Codtdcidr",
+            "nCorrelr": "N Correlr",
+            "vObspas": "V Obspas",
+            "vCodtrac": "V Codtrac",
+            "vCodtdcidi": "V Codtdcidi",
+            "nCorrelc": "N Correlc",
+            "vCodloc": "V Codloc",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd"
+        }
+    },
+    "patrocinioApp": {
+        "pasepj" : {
+            "created": "Un nuevo Pasepj ha sido creado con el identificador {{ param }}",
+            "updated": "Un Pasepj ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Pasepj ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -54,12 +54,12 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.perjuridica.vEmail" for="field_vEmail">V Email</label>
-            <input type="text" class="form-control" name="vEmail" id="field_vEmail"
-                [(ngModel)]="perjuridica.vEmail" maxlength="100" />
-            <div [hidden]="!(editForm.controls.vEmail?.dirty && editForm.controls.vEmail?.invalid)">
+            <label class="form-control-label" jhiTranslate="gatewayApp.perjuridica.vEmailper" for="field_vEmailper">V Emailper</label>
+            <input type="text" class="form-control" name="vEmailper" id="field_vEmailper"
+                [(ngModel)]="perjuridica.vEmailper" maxlength="100" />
+            <div [hidden]="!(editForm.controls.vEmailper?.dirty && editForm.controls.vEmailper?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vEmail?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   [hidden]="!editForm.controls.vEmailper?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
                    This field cannot be longer than 100 characters.
                 </small>
             </div>

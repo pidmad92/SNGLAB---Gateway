@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ES } from './../../applications.constant';
 
 @Component({
     selector: 'jhi-audiencia',
@@ -8,8 +10,17 @@ export class AudienciaComponent implements OnInit {
 
     expedientes: any;
     id = '14';
+    currentUrl: String;
+    es: any;
+    fechaAudiencia: Date;
+
+    constructor(private router: Router) {
+    }
 
     ngOnInit() {
+        this.es = ES;
+        this.currentUrl = this.router.url;
+        console.log(this.currentUrl);
         this.expedientes = [
             {item: '1', codexpediente : '0000002169-10', fecha: '10/03/2010', conciliador: 'SLIZARRAGA',
                 ruc: '20505158343', empleador: 'CONFECCIONES INCA COTTON S.A.C', nrodoc: '56897245', nomdoc: '' },

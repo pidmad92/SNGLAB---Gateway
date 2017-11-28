@@ -29,7 +29,7 @@
             "fieldType": "LocalDate"
         },
         {
-            "fieldName": "vcodigo",
+            "fieldName": "vCodigo",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"

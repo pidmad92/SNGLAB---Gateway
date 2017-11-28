@@ -1,0 +1,37 @@
+{
+    "gatewayApp": {
+        "tipdocpj" : {
+            "home": {
+                "title": "Tipdocpjs",
+                "createLabel": "Crear nuevo Tipdocpj",
+                "createOrEditLabel": "Crear o editar Tipdocpj",
+                "search": "Search for Tipdocpj"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipdocpj {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipdocpj"
+            },
+            "vCodsis": "V Codsis",
+            "vDestdoc": "V Destdoc",
+            "vFlgtip": "V Flgtip",
+            "vFlgres": "V Flgres",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "legtipdoc": "Legtipdoc"
+        }
+    },
+    "patrocinioApp": {
+        "tipdocpj" : {
+            "created": "Un nuevo Tipdocpj ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipdocpj ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipdocpj ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

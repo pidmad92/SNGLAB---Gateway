@@ -8,16 +8,16 @@
             "otherEntityField": "id"
         },
         {
-            "relationshipType": "one-to-many",
-            "relationshipName": "conremsup",
-            "otherEntityName": "conceprem",
-            "otherEntityRelationshipName": "conceprem"
-        },
-        {
-            "relationshipType": "many-to-one",
             "relationshipName": "conceprem",
             "otherEntityName": "conceprem",
+            "relationshipType": "many-to-one",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "conceprem",
+            "otherEntityName": "conceprem",
+            "otherEntityRelationshipName": "conceprem"
         },
         {
             "relationshipName": "tipcalconre",
@@ -46,7 +46,7 @@
         {
             "fieldName": "nValconrem",
             "javadoc": "VALOR O MONTO DEL CONCEPTO REMUNERATIVO",
-            "fieldType": "Double"
+            "fieldType": "BigDecimal"
         },
         {
             "fieldName": "nUsuareg",

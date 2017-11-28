@@ -9,6 +9,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Calrcmperi } from './calrcmperi.model';
 import { CalrcmperiPopupService } from './calrcmperi-popup.service';
 import { CalrcmperiService } from './calrcmperi.service';
+import { Calperiodo, CalperiodoService } from '../calperiodo';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-calrcmperi-dialog',
@@ -19,16 +21,32 @@ export class CalrcmperiDialogComponent implements OnInit {
     calrcmperi: Calrcmperi;
     isSaving: boolean;
 
+    calperiodos: Calperiodo[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private calrcmperiService: CalrcmperiService,
+        private calperiodoService: CalperiodoService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.calperiodoService
+            .query({filter: 'calrcmperi-is-null'})
+            .subscribe((res: ResponseWrapper) => {
+                if (!this.calrcmperi.calperiodo || !this.calrcmperi.calperiodo.id) {
+                    this.calperiodos = res.json;
+                } else {
+                    this.calperiodoService
+                        .find(this.calrcmperi.calperiodo.id)
+                        .subscribe((subRes: Calperiodo) => {
+                            this.calperiodos = [subRes].concat(res.json);
+                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
+                }
+            }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -63,6 +81,10 @@ export class CalrcmperiDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackCalperiodoById(index: number, item: Calperiodo) {
+        return item.id;
     }
 }
 

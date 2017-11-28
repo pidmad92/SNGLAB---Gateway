@@ -30,7 +30,7 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.califica.vDescripcion">V Descripcion</span></th>
+            <th><span jhiTranslate="gatewayApp.califica.vDescrip">V Descrip</span></th>
             <th><span jhiTranslate="gatewayApp.califica.vUsuareg">V Usuareg</span></th>
             <th><span jhiTranslate="gatewayApp.califica.tFecreg">T Fecreg</span></th>
             <th><span jhiTranslate="gatewayApp.califica.nFlgactivo">N Flgactivo</span></th>
@@ -44,7 +44,7 @@
             <tbody>
             <tr *ngFor="let califica of calificas ;trackBy: trackId">
                 <td><a [routerLink]="['../califica', califica.id ]">{{califica.id}}</a></td>
-                <td>{{califica.vDescripcion}}</td>
+                <td>{{califica.vDescrip}}</td>
                 <td>{{califica.vUsuareg}}</td>
                 <td>{{califica.tFecreg | date:'medium'}}</td>
                 <td>{{califica.nFlgactivo}}</td>

@@ -1,0 +1,195 @@
+
+<div *ngIf="legajo">
+    <h2><span jhiTranslate="gatewayApp.legajo.detail.title">Legajo</span> {{legajo.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.legajo.vCodreg">V Codreg</span></dt>
+        <dd>
+            <span>{{legajo.vCodreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vCodzon">V Codzon</span></dt>
+        <dd>
+            <span>{{legajo.vCodzon}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vCodpas">V Codpas</span></dt>
+        <dd>
+            <span>{{legajo.vCodpas}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vCodmat">V Codmat</span></dt>
+        <dd>
+            <span>{{legajo.vCodmat}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vNumexp">V Numexp</span></dt>
+        <dd>
+            <span>{{legajo.vNumexp}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vNomjuzg">V Nomjuzg</span></dt>
+        <dd>
+            <span>{{legajo.vNomjuzg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vNomjuez">V Nomjuez</span></dt>
+        <dd>
+            <span>{{legajo.vNomjuez}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vEstleg">V Estleg</span></dt>
+        <dd>
+            <span>{{legajo.vEstleg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.dFecconc">D Fecconc</span></dt>
+        <dd>
+            <span>{{legajo.dFecconc | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vCodusureg">V Codusureg</span></dt>
+        <dd>
+            <span>{{legajo.vCodusureg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vHostreg">V Hostreg</span></dt>
+        <dd>
+            <span>{{legajo.vHostreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vCodusumod">V Codusumod</span></dt>
+        <dd>
+            <span>{{legajo.vCodusumod}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.dFecmod">D Fecmod</span></dt>
+        <dd>
+            <span>{{legajo.dFecmod | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vHostmod">V Hostmod</span></dt>
+        <dd>
+            <span>{{legajo.vHostmod}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.dFecexp">D Fecexp</span></dt>
+        <dd>
+            <span>{{legajo.dFecexp | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vNumleg">V Numleg</span></dt>
+        <dd>
+            <span>{{legajo.vNumleg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vCodemp">V Codemp</span></dt>
+        <dd>
+            <span>{{legajo.vCodemp}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.nCodsuc">N Codsuc</span></dt>
+        <dd>
+            <span>{{legajo.nCodsuc}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vFlginst">V Flginst</span></dt>
+        <dd>
+            <span>{{legajo.vFlginst}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vNumexpda">V Numexpda</span></dt>
+        <dd>
+            <span>{{legajo.vNumexpda}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.dFecexpda">D Fecexpda</span></dt>
+        <dd>
+            <span>{{legajo.dFecexpda | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vNomjuzda">V Nomjuzda</span></dt>
+        <dd>
+            <span>{{legajo.vNomjuzda}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vNomjuezda">V Nomjuezda</span></dt>
+        <dd>
+            <span>{{legajo.vNomjuezda}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vCodlegrig">V Codlegrig</span></dt>
+        <dd>
+            <span>{{legajo.vCodlegrig}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vTiporig">V Tiporig</span></dt>
+        <dd>
+            <span>{{legajo.vTiporig}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vFlgarch">V Flgarch</span></dt>
+        <dd>
+            <span>{{legajo.vFlgarch}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vFlgcaut">V Flgcaut</span></dt>
+        <dd>
+            <span>{{legajo.vFlgcaut}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vFlganul">V Flganul</span></dt>
+        <dd>
+            <span>{{legajo.vFlganul}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.vCodloc">V Codloc</span></dt>
+        <dd>
+            <span>{{legajo.vCodloc}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{legajo.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{legajo.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{legajo.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{legajo.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{legajo.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{legajo.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{legajo.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.empleador">Empleador</span></dt>
+        <dd>
+            <div *ngIf="legajo.empleador">
+                <a [routerLink]="['/empleador', legajo.empleador?.id]">{{legajo.empleador?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.pasegl">Pasegl</span></dt>
+        <dd>
+            <div *ngIf="legajo.pasegl">
+                <a [routerLink]="['/pasegl', legajo.pasegl?.id]">{{legajo.pasegl?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.trabajador">Trabajador</span></dt>
+        <dd>
+            <div *ngIf="legajo.trabajador">
+                <a [routerLink]="['/trabajador', legajo.trabajador?.id]">{{legajo.trabajador?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.abogado">Abogado</span></dt>
+        <dd>
+            <div *ngIf="legajo.abogado">
+                <a [routerLink]="['/abogado', legajo.abogado?.id]">{{legajo.abogado?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajo.materia">Materia</span></dt>
+        <dd>
+            <div *ngIf="legajo.materia">
+                <a [routerLink]="['/materia', legajo.materia?.id]">{{legajo.materia?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'legajo/'+ legajo.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

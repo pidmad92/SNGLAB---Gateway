@@ -54,6 +54,7 @@
             <th><span jhiTranslate="gatewayApp.expediente.empleador">Empleador</span></th>
             <th><span jhiTranslate="gatewayApp.expediente.tippersona">Tippersona</span></th>
             <th><span jhiTranslate="gatewayApp.expediente.trabajador">Trabajador</span></th>
+            <th><span jhiTranslate="gatewayApp.expediente.pasegl">Pasegl</span></th>
             <th><span jhiTranslate="gatewayApp.expediente.estexpedien">Estexpedien</span></th>
             <th><span jhiTranslate="gatewayApp.expediente.resolutor">Resolutor</span></th>
             <th></th>
@@ -96,6 +97,11 @@
                 <td>
                     <div *ngIf="expediente.trabajador">
                         <a [routerLink]="['../trabajador', expediente.trabajador?.id ]" >{{expediente.trabajador?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="expediente.pasegl">
+                        <a [routerLink]="['../pasegl', expediente.pasegl?.id ]" >{{expediente.pasegl?.id}}</a>
                     </div>
                 </td>
                 <td>

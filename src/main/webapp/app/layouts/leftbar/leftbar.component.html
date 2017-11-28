@@ -43,16 +43,16 @@
                 </ng-template>
                 <ng-template ngbPanelContent>
                     <div class="level-two p-0">
-                        <li><a [routerLink]="['/defensa/registro-expediente' , { outlets: { wizard: ['datos-pase'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro Expedientes</span></a></li>
-                        <li><a [routerLink]="['/defensa/envio-notificacion' , { outlets: { wizard: ['seleccion-expediente'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro de Notificaciones</span></a></li>
-                        <li><a routerLink="defensa/consulta-expediente" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Expedientes</span></a></li>
-                        <li><a routerLink="defensa/consulta-notificaciones" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Notificaciones</span></a></li>
+                        <li routerLinkActive="active"><a [routerLink]="['/defensa/registro-expediente' , { outlets: { wizard: ['datos-pase'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro Expedientes</span></a></li>
+                        <li routerLinkActive="active"><a [routerLink]="['/defensa/envio-notificacion' , { outlets: { wizard: ['seleccion-expediente'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro de Notificaciones</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="defensa/consulta-expediente" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Expedientes</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="defensa/consulta-notificaciones" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Notificaciones</span></a></li>
                     </div>
                 </ng-template>
             </ngb-panel>
             <ngb-panel id="defensa-2">
                 <ng-template ngbPanelTitle>
-                    <li routerLinkActive="active">
+                    <li >
                         <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
                             <i class="fa fa-group px-2" aria-hidden="true"></i> <span>Audiencias</span>
                             <span class="fa fa-chevron-down ml-auto"></span>
@@ -61,11 +61,11 @@
                 </ng-template>
                 <ng-template ngbPanelContent>
                     <div class="level-two p-0">
-                        <li><a routerLink="sindicatos/consulta-organizacion" class="a-menu d-sm-flex align-items-sm-center "><span>Asignación de Abogados</span></a></li>
-                        <li><a routerLink="sindicatos/registro-observacion" class="a-menu d-sm-flex align-items-sm-center "><span>Resultado de Audiencia</span></a></li>
-                        <li><a routerLink="sindicatos/registro-delegados" class="a-menu d-sm-flex align-items-sm-center "><span>Reprog. de Audiencia</span></a></li>
-                        <li><a routerLink="sindicatos/evaluar-solicitudes" class="a-menu d-sm-flex align-items-sm-center "><span>Registrar Escrito</span></a></li>
-                        <li><a routerLink="sindicatos/evaluar-solicitudes" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Audiencias</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="defensa/asignacion-abogado" class="a-menu d-sm-flex align-items-sm-center "><span>Asignación de Abogados</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="defensa/resultado-audiencia" class="a-menu d-sm-flex align-items-sm-center "><span>Resultado de Audiencia</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="defensa/reprogramacion-audiencia" class="a-menu d-sm-flex align-items-sm-center "><span>Reprog. de Audiencia</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="defensa/registrar-escrito" class="a-menu d-sm-flex align-items-sm-center "><span>Registrar Escrito</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="defensa/consulta-audiencia" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Audiencias</span></a></li>
                     </div>
                 </ng-template>
             </ngb-panel>

@@ -13,7 +13,7 @@ export class Resolucrd implements BaseEntity {
         public vHorconcil?: string,
         public dFechanoti?: any,
         public vNumnotifi?: string,
-        public fMonMulta?: number,
+        public fMonmulta?: number,
         public nUsuareg?: number,
         public tFecreg?: any,
         public nFlgactivo?: boolean,

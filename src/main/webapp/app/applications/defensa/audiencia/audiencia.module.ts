@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { GatewaySharedModule } from '../../../shared';
 import {
     AudienciaComponent,
+    AudienciaConsultaComponent,
     AudienciaDialogComponent,
     AudienciaPopupComponent,
     AudienciaPopupService,
@@ -38,6 +39,7 @@ const ENTITY_STATES = [
     ],
     declarations: [
         AudienciaComponent,
+        AudienciaConsultaComponent,
         AudienciaPopupComponent,
         AudienciaDialogComponent,
         AudienciaAsignacionDialogComponent,

@@ -36,9 +36,9 @@
         <dd>
             <span>{{calperiodo.nDadeudos}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.calperiodo.nBase">N Base</span></dt>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.nAnobase">N Anobase</span></dt>
         <dd>
-            <span>{{calperiodo.nBase}}</span>
+            <span>{{calperiodo.nAnobase}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.calperiodo.nUsuareg">N Usuareg</span></dt>
         <dd>
@@ -74,16 +74,10 @@
                 <a [routerLink]="['/calbensoc', calperiodo.calbensoc?.id]">{{calperiodo.calbensoc?.id}}</a>
             </div>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.calperiodo.interesperi">Interesperi</span></dt>
+        <dt><span jhiTranslate="gatewayApp.calperiodo.segsalud">Segsalud</span></dt>
         <dd>
-            <div *ngIf="calperiodo.interesperi">
-                <a [routerLink]="['/interesperi', calperiodo.interesperi?.id]">{{calperiodo.interesperi?.id}}</a>
-            </div>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.calperiodo.calrcmperi">Calrcmperi</span></dt>
-        <dd>
-            <div *ngIf="calperiodo.calrcmperi">
-                <a [routerLink]="['/calrcmperi', calperiodo.calrcmperi?.id]">{{calperiodo.calrcmperi?.id}}</a>
+            <div *ngIf="calperiodo.segsalud">
+                <a [routerLink]="['/segsalud', calperiodo.segsalud?.id]">{{calperiodo.segsalud?.id}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="gatewayApp.calperiodo.estperical">Estperical</span></dt>

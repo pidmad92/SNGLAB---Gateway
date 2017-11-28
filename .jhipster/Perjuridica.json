@@ -35,6 +35,7 @@
     "fields": [
         {
             "fieldName": "vRazsocial",
+            "javadoc": "RAZON SOCIAL DE LA PERSONA JURIDICA.",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -44,6 +45,7 @@
         },
         {
             "fieldName": "vNomalter",
+            "javadoc": "NOMBRE ALTERNATIVO DE LA PERSONA JURIDICA.",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -52,6 +54,7 @@
         },
         {
             "fieldName": "vNumdoc",
+            "javadoc": "NUMERO DE DOCUMENTO DE IDENTIDAD DE LA PERSONA JURIDICA.",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -60,7 +63,8 @@
             "fieldValidateRulesMaxlength": 15
         },
         {
-            "fieldName": "vEmail",
+            "fieldName": "vEmailper",
+            "javadoc": "CORREO ELECTRONICO DE LA PERSONA JURIDICA.",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -69,6 +73,7 @@
         },
         {
             "fieldName": "vTelefono",
+            "javadoc": "TELEFONO DE REFERENCIA DE LA PERSONA JURIDICA",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -77,6 +82,7 @@
         },
         {
             "fieldName": "vFaxperju",
+            "javadoc": "NUMERO DE FAX DE  LA PERSONA JURIDICA.",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -85,6 +91,7 @@
         },
         {
             "fieldName": "vEstado",
+            "javadoc": "ESTADO DE LA PERSONA JURIDICA.",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -94,6 +101,7 @@
         },
         {
             "fieldName": "nUsuareg",
+            "javadoc": "CODIGO DEL USUARIO QUE REGISTRA.",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "required"
@@ -101,6 +109,7 @@
         },
         {
             "fieldName": "tFecreg",
+            "javadoc": "FECHA Y HORA DEL REGISTRO.",
             "fieldType": "Instant",
             "fieldValidateRules": [
                 "required"
@@ -108,6 +117,7 @@
         },
         {
             "fieldName": "nFlgactivo",
+            "javadoc": "ESTADO ACTIVO DEL REGISTRO (1=ACTIVO, 0=INACTIVO)",
             "fieldType": "Boolean",
             "fieldValidateRules": [
                 "required"
@@ -115,6 +125,7 @@
         },
         {
             "fieldName": "nSedereg",
+            "javadoc": "CODIGO DE LA SEDE DONDE SE REGISTRA.",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "required"
@@ -122,18 +133,22 @@
         },
         {
             "fieldName": "nUsuaupd",
+            "javadoc": "CODIGO DEL USUARIO QUE MODIFICA EL REGISTRO.",
             "fieldType": "Integer"
         },
         {
             "fieldName": "tFecupd",
+            "javadoc": "CODIGO DEL USUARIO QUE MODIFICA EL REGISTRO.",
             "fieldType": "Instant"
         },
         {
             "fieldName": "nSedeupd",
+            "javadoc": "CODIGO DE LA SEDE DONDE SE MODIFICA EL REGISTRO.",
             "fieldType": "Integer"
         }
     ],
     "changelogDate": "20171122172618",
+    "javadoc": "LISTA MAESTRA DE PERSONAS JURIDICAS",
     "entityTableName": "perjuridica",
     "dto": "no",
     "pagination": "no",

@@ -13,16 +13,16 @@
                    [(ngModel)]="cartrab.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.cartrab.vDesCartra" for="field_vDesCartra">V Des Cartra</label>
-            <input type="text" class="form-control" name="vDesCartra" id="field_vDesCartra"
-                [(ngModel)]="cartrab.vDesCartra" required maxlength="100" />
-            <div [hidden]="!(editForm.controls.vDesCartra?.dirty && editForm.controls.vDesCartra?.invalid)">
+            <label class="form-control-label" jhiTranslate="gatewayApp.cartrab.vDescartra" for="field_vDescartra">V Descartra</label>
+            <input type="text" class="form-control" name="vDescartra" id="field_vDescartra"
+                [(ngModel)]="cartrab.vDescartra" required maxlength="100" />
+            <div [hidden]="!(editForm.controls.vDescartra?.dirty && editForm.controls.vDescartra?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vDesCartra?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.vDescartra?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vDesCartra?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   [hidden]="!editForm.controls.vDescartra?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
                    This field cannot be longer than 100 characters.
                 </small>
             </div>

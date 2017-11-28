@@ -3,8 +3,8 @@ import { BaseEntity } from './../../shared';
 export class Resolutor implements BaseEntity {
     constructor(
         public id?: number,
-        public vNomresolutor?: string,
-        public nCodresolutorusuario?: number,
+        public vNomresol?: string,
+        public nCodresusu?: number,
         public nUsuareg?: number,
         public tFecreg?: any,
         public nFlgactivo?: boolean,

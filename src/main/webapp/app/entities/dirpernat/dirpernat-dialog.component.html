@@ -43,12 +43,12 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.dirpernat.vRefer" for="field_vRefer">V Refer</label>
-            <input type="text" class="form-control" name="vRefer" id="field_vRefer"
-                [(ngModel)]="dirpernat.vRefer" maxlength="500" />
-            <div [hidden]="!(editForm.controls.vRefer?.dirty && editForm.controls.vRefer?.invalid)">
+            <label class="form-control-label" jhiTranslate="gatewayApp.dirpernat.vReferen" for="field_vReferen">V Referen</label>
+            <input type="text" class="form-control" name="vReferen" id="field_vReferen"
+                [(ngModel)]="dirpernat.vReferen" maxlength="500" />
+            <div [hidden]="!(editForm.controls.vReferen?.dirty && editForm.controls.vReferen?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vRefer?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 500 }">
+                   [hidden]="!editForm.controls.vReferen?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 500 }">
                    This field cannot be longer than 500 characters.
                 </small>
             </div>

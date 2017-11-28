@@ -30,7 +30,7 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.concilia.dFecConci">D Fec Conci</span></th>
+            <th><span jhiTranslate="gatewayApp.concilia.dFecconci">D Fecconci</span></th>
             <th><span jhiTranslate="gatewayApp.concilia.nFlgaudres">N Flgaudres</span></th>
             <th><span jhiTranslate="gatewayApp.concilia.nFlgreprog">N Flgreprog</span></th>
             <th><span jhiTranslate="gatewayApp.concilia.nUsuareg">N Usuareg</span></th>
@@ -50,7 +50,7 @@
             <tbody>
             <tr *ngFor="let concilia of concilias ;trackBy: trackId">
                 <td><a [routerLink]="['../concilia', concilia.id ]">{{concilia.id}}</a></td>
-                <td>{{concilia.dFecConci | date:'mediumDate'}}</td>
+                <td>{{concilia.dFecconci | date:'mediumDate'}}</td>
                 <td>{{concilia.nFlgaudres}}</td>
                 <td>{{concilia.nFlgreprog}}</td>
                 <td>{{concilia.nUsuareg}}</td>

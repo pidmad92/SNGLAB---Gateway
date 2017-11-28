@@ -1,0 +1,510 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPasepjLabel" jhiTranslate="gatewayApp.pasepj.home.createOrEditLabel">Create or edit a Pasepj</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!pasepj.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="pasepj.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vCodreg" for="field_vCodreg">V Codreg</label>
+            <input type="text" class="form-control" name="vCodreg" id="field_vCodreg"
+                [(ngModel)]="pasepj.vCodreg" required maxlength="2" />
+            <div [hidden]="!(editForm.controls.vCodreg?.dirty && editForm.controls.vCodreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodreg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
+                   This field cannot be longer than 2 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vCodzon" for="field_vCodzon">V Codzon</label>
+            <input type="text" class="form-control" name="vCodzon" id="field_vCodzon"
+                [(ngModel)]="pasepj.vCodzon" required maxlength="2" />
+            <div [hidden]="!(editForm.controls.vCodzon?.dirty && editForm.controls.vCodzon?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodzon?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodzon?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
+                   This field cannot be longer than 2 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vCodpas" for="field_vCodpas">V Codpas</label>
+            <input type="text" class="form-control" name="vCodpas" id="field_vCodpas"
+                [(ngModel)]="pasepj.vCodpas" required maxlength="10" />
+            <div [hidden]="!(editForm.controls.vCodpas?.dirty && editForm.controls.vCodpas?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodpas?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodpas?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 10 }">
+                   This field cannot be longer than 10 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vCodtra" for="field_vCodtra">V Codtra</label>
+            <input type="text" class="form-control" name="vCodtra" id="field_vCodtra"
+                [(ngModel)]="pasepj.vCodtra" required maxlength="11" />
+            <div [hidden]="!(editForm.controls.vCodtra?.dirty && editForm.controls.vCodtra?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtra?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtra?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 11 }">
+                   This field cannot be longer than 11 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vCodtdcide" for="field_vCodtdcide">V Codtdcide</label>
+            <input type="text" class="form-control" name="vCodtdcide" id="field_vCodtdcide"
+                [(ngModel)]="pasepj.vCodtdcide" required maxlength="2" />
+            <div [hidden]="!(editForm.controls.vCodtdcide?.dirty && editForm.controls.vCodtdcide?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtdcide?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtdcide?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
+                   This field cannot be longer than 2 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.nCorrel" for="field_nCorrel">N Correl</label>
+            <input type="number" class="form-control" name="nCorrel" id="field_nCorrel"
+                [(ngModel)]="pasepj.nCorrel" required />
+            <div [hidden]="!(editForm.controls.nCorrel?.dirty && editForm.controls.nCorrel?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nCorrel?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nCorrel?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vCodsis" for="field_vCodsis">V Codsis</label>
+            <input type="text" class="form-control" name="vCodsis" id="field_vCodsis"
+                [(ngModel)]="pasepj.vCodsis" required maxlength="3" />
+            <div [hidden]="!(editForm.controls.vCodsis?.dirty && editForm.controls.vCodsis?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodsis?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodsis?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 3 }">
+                   This field cannot be longer than 3 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vCodemp" for="field_vCodemp">V Codemp</label>
+            <input type="text" class="form-control" name="vCodemp" id="field_vCodemp"
+                [(ngModel)]="pasepj.vCodemp" required maxlength="11" />
+            <div [hidden]="!(editForm.controls.vCodemp?.dirty && editForm.controls.vCodemp?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodemp?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodemp?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 11 }">
+                   This field cannot be longer than 11 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.nCodsuc" for="field_nCodsuc">N Codsuc</label>
+            <input type="number" class="form-control" name="nCodsuc" id="field_nCodsuc"
+                [(ngModel)]="pasepj.nCodsuc" required />
+            <div [hidden]="!(editForm.controls.nCodsuc?.dirty && editForm.controls.nCodsuc?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nCodsuc?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nCodsuc?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vCodcon" for="field_vCodcon">V Codcon</label>
+            <input type="text" class="form-control" name="vCodcon" id="field_vCodcon"
+                [(ngModel)]="pasepj.vCodcon" required maxlength="10" />
+            <div [hidden]="!(editForm.controls.vCodcon?.dirty && editForm.controls.vCodcon?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodcon?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodcon?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 10 }">
+                   This field cannot be longer than 10 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.dFecpas" for="field_dFecpas">D Fecpas</label>
+            <div class="input-group">
+                <input id="field_dFecpas" type="text" class="form-control" name="dFecpas" ngbDatepicker  #dFecpasDp="ngbDatepicker" [(ngModel)]="pasepj.dFecpas"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dFecpasDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.dFecrecep" for="field_dFecrecep">D Fecrecep</label>
+            <div class="input-group">
+                <input id="field_dFecrecep" type="text" class="form-control" name="dFecrecep" ngbDatepicker  #dFecrecepDp="ngbDatepicker" [(ngModel)]="pasepj.dFecrecep"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dFecrecepDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vCodusurec" for="field_vCodusurec">V Codusurec</label>
+            <input type="text" class="form-control" name="vCodusurec" id="field_vCodusurec"
+                [(ngModel)]="pasepj.vCodusurec" required maxlength="15" />
+            <div [hidden]="!(editForm.controls.vCodusurec?.dirty && editForm.controls.vCodusurec?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodusurec?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodusurec?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                   This field cannot be longer than 15 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vCodusureg" for="field_vCodusureg">V Codusureg</label>
+            <input type="text" class="form-control" name="vCodusureg" id="field_vCodusureg"
+                [(ngModel)]="pasepj.vCodusureg" required maxlength="15" />
+            <div [hidden]="!(editForm.controls.vCodusureg?.dirty && editForm.controls.vCodusureg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodusureg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodusureg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                   This field cannot be longer than 15 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vHostreg" for="field_vHostreg">V Hostreg</label>
+            <input type="text" class="form-control" name="vHostreg" id="field_vHostreg"
+                [(ngModel)]="pasepj.vHostreg" required maxlength="30" />
+            <div [hidden]="!(editForm.controls.vHostreg?.dirty && editForm.controls.vHostreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vHostreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vHostreg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 30 }">
+                   This field cannot be longer than 30 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vCodusumod" for="field_vCodusumod">V Codusumod</label>
+            <input type="text" class="form-control" name="vCodusumod" id="field_vCodusumod"
+                [(ngModel)]="pasepj.vCodusumod" required maxlength="15" />
+            <div [hidden]="!(editForm.controls.vCodusumod?.dirty && editForm.controls.vCodusumod?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodusumod?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodusumod?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                   This field cannot be longer than 15 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.dFecmod" for="field_dFecmod">D Fecmod</label>
+            <div class="input-group">
+                <input id="field_dFecmod" type="text" class="form-control" name="dFecmod" ngbDatepicker  #dFecmodDp="ngbDatepicker" [(ngModel)]="pasepj.dFecmod"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dFecmodDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vHostmod" for="field_vHostmod">V Hostmod</label>
+            <input type="text" class="form-control" name="vHostmod" id="field_vHostmod"
+                [(ngModel)]="pasepj.vHostmod" required maxlength="30" />
+            <div [hidden]="!(editForm.controls.vHostmod?.dirty && editForm.controls.vHostmod?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vHostmod?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vHostmod?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 30 }">
+                   This field cannot be longer than 30 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vCodsisdes" for="field_vCodsisdes">V Codsisdes</label>
+            <input type="text" class="form-control" name="vCodsisdes" id="field_vCodsisdes"
+                [(ngModel)]="pasepj.vCodsisdes" required maxlength="3" />
+            <div [hidden]="!(editForm.controls.vCodsisdes?.dirty && editForm.controls.vCodsisdes?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodsisdes?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodsisdes?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 3 }">
+                   This field cannot be longer than 3 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.dFecdes" for="field_dFecdes">D Fecdes</label>
+            <div class="input-group">
+                <input id="field_dFecdes" type="text" class="form-control" name="dFecdes" ngbDatepicker  #dFecdesDp="ngbDatepicker" [(ngModel)]="pasepj.dFecdes"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dFecdesDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.dFeccon" for="field_dFeccon">D Feccon</label>
+            <div class="input-group">
+                <input id="field_dFeccon" type="text" class="form-control" name="dFeccon" ngbDatepicker  #dFecconDp="ngbDatepicker" [(ngModel)]="pasepj.dFeccon"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dFecconDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vCodtrar" for="field_vCodtrar">V Codtrar</label>
+            <input type="text" class="form-control" name="vCodtrar" id="field_vCodtrar"
+                [(ngModel)]="pasepj.vCodtrar" required maxlength="11" />
+            <div [hidden]="!(editForm.controls.vCodtrar?.dirty && editForm.controls.vCodtrar?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtrar?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtrar?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 11 }">
+                   This field cannot be longer than 11 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vCodtdcidr" for="field_vCodtdcidr">V Codtdcidr</label>
+            <input type="text" class="form-control" name="vCodtdcidr" id="field_vCodtdcidr"
+                [(ngModel)]="pasepj.vCodtdcidr" required maxlength="2" />
+            <div [hidden]="!(editForm.controls.vCodtdcidr?.dirty && editForm.controls.vCodtdcidr?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtdcidr?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtdcidr?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
+                   This field cannot be longer than 2 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.nCorrelr" for="field_nCorrelr">N Correlr</label>
+            <input type="number" class="form-control" name="nCorrelr" id="field_nCorrelr"
+                [(ngModel)]="pasepj.nCorrelr" required />
+            <div [hidden]="!(editForm.controls.nCorrelr?.dirty && editForm.controls.nCorrelr?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nCorrelr?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nCorrelr?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vObspas" for="field_vObspas">V Obspas</label>
+            <input type="text" class="form-control" name="vObspas" id="field_vObspas"
+                [(ngModel)]="pasepj.vObspas" required maxlength="500" />
+            <div [hidden]="!(editForm.controls.vObspas?.dirty && editForm.controls.vObspas?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vObspas?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vObspas?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 500 }">
+                   This field cannot be longer than 500 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vCodtrac" for="field_vCodtrac">V Codtrac</label>
+            <input type="text" class="form-control" name="vCodtrac" id="field_vCodtrac"
+                [(ngModel)]="pasepj.vCodtrac" required maxlength="11" />
+            <div [hidden]="!(editForm.controls.vCodtrac?.dirty && editForm.controls.vCodtrac?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtrac?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtrac?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 11 }">
+                   This field cannot be longer than 11 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vCodtdcidi" for="field_vCodtdcidi">V Codtdcidi</label>
+            <input type="text" class="form-control" name="vCodtdcidi" id="field_vCodtdcidi"
+                [(ngModel)]="pasepj.vCodtdcidi" required maxlength="2" />
+            <div [hidden]="!(editForm.controls.vCodtdcidi?.dirty && editForm.controls.vCodtdcidi?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtdcidi?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtdcidi?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
+                   This field cannot be longer than 2 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.nCorrelc" for="field_nCorrelc">N Correlc</label>
+            <input type="number" class="form-control" name="nCorrelc" id="field_nCorrelc"
+                [(ngModel)]="pasepj.nCorrelc" required />
+            <div [hidden]="!(editForm.controls.nCorrelc?.dirty && editForm.controls.nCorrelc?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nCorrelc?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nCorrelc?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.vCodloc" for="field_vCodloc">V Codloc</label>
+            <input type="text" class="form-control" name="vCodloc" id="field_vCodloc"
+                [(ngModel)]="pasepj.vCodloc" required maxlength="6" />
+            <div [hidden]="!(editForm.controls.vCodloc?.dirty && editForm.controls.vCodloc?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodloc?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodloc?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 6 }">
+                   This field cannot be longer than 6 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.nUsuareg" for="field_nUsuareg">N Usuareg</label>
+            <input type="number" class="form-control" name="nUsuareg" id="field_nUsuareg"
+                [(ngModel)]="pasepj.nUsuareg" required />
+            <div [hidden]="!(editForm.controls.nUsuareg?.dirty && editForm.controls.nUsuareg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nUsuareg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nUsuareg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.tFecreg" for="field_tFecreg">T Fecreg</label>
+            <div class="d-flex">
+                <input id="field_tFecreg" type="datetime-local" class="form-control" name="tFecreg" [(ngModel)]="pasepj.tFecreg"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.tFecreg?.dirty && editForm.controls.tFecreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tFecreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.tFecreg?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.nFlgactivo" for="field_nFlgactivo">N Flgactivo</label>
+            <input type="checkbox" class="form-control" name="nFlgactivo" id="field_nFlgactivo"
+                [(ngModel)]="pasepj.nFlgactivo"  />
+            <div [hidden]="!(editForm.controls.nFlgactivo?.dirty && editForm.controls.nFlgactivo?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nFlgactivo?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.nSedereg" for="field_nSedereg">N Sedereg</label>
+            <input type="number" class="form-control" name="nSedereg" id="field_nSedereg"
+                [(ngModel)]="pasepj.nSedereg" required />
+            <div [hidden]="!(editForm.controls.nSedereg?.dirty && editForm.controls.nSedereg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nSedereg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nSedereg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.nUsuaupd" for="field_nUsuaupd">N Usuaupd</label>
+            <input type="number" class="form-control" name="nUsuaupd" id="field_nUsuaupd"
+                [(ngModel)]="pasepj.nUsuaupd"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.tFecupd" for="field_tFecupd">T Fecupd</label>
+            <div class="d-flex">
+                <input id="field_tFecupd" type="datetime-local" class="form-control" name="tFecupd" [(ngModel)]="pasepj.tFecupd"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasepj.nSedeupd" for="field_nSedeupd">N Sedeupd</label>
+            <input type="number" class="form-control" name="nSedeupd" id="field_nSedeupd"
+                [(ngModel)]="pasepj.nSedeupd"  />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

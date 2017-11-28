@@ -31,7 +31,7 @@ export class ConciliaDialogComponent implements OnInit {
     horacons: Horacon[];
 
     resulconcis: Resulconci[];
-    dFecConciDp: any;
+    dFecconciDp: any;
 
     constructor(
         public activeModal: NgbActiveModal,

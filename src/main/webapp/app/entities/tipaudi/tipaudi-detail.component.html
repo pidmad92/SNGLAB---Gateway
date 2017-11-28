@@ -1,0 +1,71 @@
+
+<div *ngIf="tipaudi">
+    <h2><span jhiTranslate="gatewayApp.tipaudi.detail.title">Tipaudi</span> {{tipaudi.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.tipaudi.vCodsis">V Codsis</span></dt>
+        <dd>
+            <span>{{tipaudi.vCodsis}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipaudi.vCodtipres">V Codtipres</span></dt>
+        <dd>
+            <span>{{tipaudi.vCodtipres}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipaudi.vCodtipdil">V Codtipdil</span></dt>
+        <dd>
+            <span>{{tipaudi.vCodtipdil}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipaudi.vDestipaud">V Destipaud</span></dt>
+        <dd>
+            <span>{{tipaudi.vDestipaud}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipaudi.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{tipaudi.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipaudi.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{tipaudi.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipaudi.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{tipaudi.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipaudi.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{tipaudi.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipaudi.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{tipaudi.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipaudi.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{tipaudi.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipaudi.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{tipaudi.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipaudi.tipdiligenc">Tipdiligenc</span></dt>
+        <dd>
+            <div *ngIf="tipaudi.tipdiligenc">
+                <a [routerLink]="['/tipdiligenc', tipaudi.tipdiligenc?.id]">{{tipaudi.tipdiligenc?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'tipaudi/'+ tipaudi.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

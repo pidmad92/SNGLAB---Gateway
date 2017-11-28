@@ -3,7 +3,7 @@ import { BaseEntity } from './../../shared';
 export class Concilia implements BaseEntity {
     constructor(
         public id?: number,
-        public dFecConci?: any,
+        public dFecconci?: any,
         public nFlgaudres?: boolean,
         public nFlgreprog?: boolean,
         public nUsuareg?: number,

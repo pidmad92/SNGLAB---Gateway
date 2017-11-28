@@ -816,6 +816,14 @@ ngb-accordion#accordion{
   }
 }
 
+ngb-accordion#accordion .card > .card-body li:hover {
+  background: #656060;
+}
+ngb-accordion .card > .card-body li.active {
+  background: #656060;
+}
+
+
 ngb-accordion{
   .card{
       border-top: 0px solid grey;

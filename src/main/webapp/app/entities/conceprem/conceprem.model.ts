@@ -13,8 +13,8 @@ export class Conceprem implements BaseEntity {
         public tFecupd?: any,
         public nSedeupd?: number,
         public calrcmperi?: BaseEntity,
-        public conremsups?: BaseEntity[],
         public conceprem?: BaseEntity,
+        public conceprems?: BaseEntity[],
         public tipcalconre?: BaseEntity,
         public tipconrem?: BaseEntity,
     ) {

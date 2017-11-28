@@ -1,0 +1,65 @@
+
+<div *ngIf="tipdocpj">
+    <h2><span jhiTranslate="gatewayApp.tipdocpj.detail.title">Tipdocpj</span> {{tipdocpj.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.tipdocpj.vCodsis">V Codsis</span></dt>
+        <dd>
+            <span>{{tipdocpj.vCodsis}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocpj.vDestdoc">V Destdoc</span></dt>
+        <dd>
+            <span>{{tipdocpj.vDestdoc}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocpj.vFlgtip">V Flgtip</span></dt>
+        <dd>
+            <span>{{tipdocpj.vFlgtip}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocpj.vFlgres">V Flgres</span></dt>
+        <dd>
+            <span>{{tipdocpj.vFlgres}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocpj.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{tipdocpj.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocpj.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{tipdocpj.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocpj.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{tipdocpj.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocpj.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{tipdocpj.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocpj.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{tipdocpj.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocpj.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{tipdocpj.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipdocpj.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{tipdocpj.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'tipdocpj/'+ tipdocpj.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

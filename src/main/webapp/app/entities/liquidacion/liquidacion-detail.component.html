@@ -36,12 +36,6 @@
         <dd>
             <span>{{liquidacion.nSedeupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.liquidacion.atencion">Atencion</span></dt>
-        <dd>
-            <div *ngIf="liquidacion.atencion">
-                <a [routerLink]="['/atencion', liquidacion.atencion?.id]">{{liquidacion.atencion?.id}}</a>
-            </div>
-        </dd>
     </dl>
 
     <button type="submit"

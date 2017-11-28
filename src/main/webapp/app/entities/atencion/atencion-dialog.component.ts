@@ -9,7 +9,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Atencion } from './atencion.model';
 import { AtencionPopupService } from './atencion-popup.service';
 import { AtencionService } from './atencion.service';
-import { Pasegl, PaseglService } from '../pasegl';
+import { Liquidacion, LiquidacionService } from '../liquidacion';
 import { Datlab, DatlabService } from '../datlab';
 import { Empleador, EmpleadorService } from '../empleador';
 import { Oficina, OficinaService } from '../oficina';
@@ -26,7 +26,7 @@ export class AtencionDialogComponent implements OnInit {
     atencion: Atencion;
     isSaving: boolean;
 
-    pasegls: Pasegl[];
+    liquidacions: Liquidacion[];
 
     datlabs: Datlab[];
 
@@ -42,7 +42,7 @@ export class AtencionDialogComponent implements OnInit {
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private atencionService: AtencionService,
-        private paseglService: PaseglService,
+        private liquidacionService: LiquidacionService,
         private datlabService: DatlabService,
         private empleadorService: EmpleadorService,
         private oficinaService: OficinaService,
@@ -54,16 +54,16 @@ export class AtencionDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.paseglService
+        this.liquidacionService
             .query({filter: 'atencion-is-null'})
             .subscribe((res: ResponseWrapper) => {
-                if (!this.atencion.pasegl || !this.atencion.pasegl.id) {
-                    this.pasegls = res.json;
+                if (!this.atencion.liquidacion || !this.atencion.liquidacion.id) {
+                    this.liquidacions = res.json;
                 } else {
-                    this.paseglService
-                        .find(this.atencion.pasegl.id)
-                        .subscribe((subRes: Pasegl) => {
-                            this.pasegls = [subRes].concat(res.json);
+                    this.liquidacionService
+                        .find(this.atencion.liquidacion.id)
+                        .subscribe((subRes: Liquidacion) => {
+                            this.liquidacions = [subRes].concat(res.json);
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
@@ -113,7 +113,7 @@ export class AtencionDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackPaseglById(index: number, item: Pasegl) {
+    trackLiquidacionById(index: number, item: Liquidacion) {
         return item.id;
     }
 

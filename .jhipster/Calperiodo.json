@@ -8,20 +8,10 @@
             "otherEntityField": "id"
         },
         {
-            "relationshipType": "one-to-one",
-            "relationshipName": "interesperi",
-            "otherEntityName": "interesperi",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "calperiodo"
-        },
-        {
-            "relationshipType": "one-to-one",
-            "relationshipName": "calrcmperi",
-            "otherEntityName": "calrcmperi",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "calperiodo"
+            "relationshipName": "segsalud",
+            "otherEntityName": "segsalud",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         },
         {
             "relationshipName": "estperical",
@@ -40,12 +30,12 @@
         {
             "fieldName": "nCalper",
             "javadoc": "MONTO TOTAL CALCULADO DEL BENEFICIO SOCIAL EN EL PERIODO",
-            "fieldType": "Double"
+            "fieldType": "BigDecimal"
         },
         {
             "fieldName": "nCalper2",
             "javadoc": "MONTO TOTAL2 CALCULADO DEL BENEFICIO SOCIAL EN EL PERIODO",
-            "fieldType": "Double"
+            "fieldType": "BigDecimal"
         },
         {
             "fieldName": "nNumper",
@@ -87,8 +77,8 @@
             "fieldType": "Integer"
         },
         {
-            "fieldName": "nBase",
-            "javadoc": "A�O BASE EN CASO SEA DEL TIPO DE PERIODO ANUAL (1)",
+            "fieldName": "nAnobase",
+            "javadoc": "Aï¿½O BASE EN CASO SEA DEL TIPO DE PERIODO ANUAL (1)",
             "fieldType": "Integer"
         },
         {
@@ -140,7 +130,7 @@
         }
     ],
     "changelogDate": "20171122172633",
-    "javadoc": "LISTA RESUMEN DEL CALCULO DE BENEFICIOS SOCIALES EN UN PERIODO",
+    "javadoc": "LISTA RESUMEN DEL CALCULO DE UN BENEFICIO SOCIAL EN UN PERIODO",
     "entityTableName": "calperiodo",
     "dto": "no",
     "pagination": "no",
