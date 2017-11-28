@@ -107,7 +107,57 @@
                 </div>
             </p-tabPanel>
             <p-tabPanel header="Dirección" leftIcon="fa-podcast" [disabled]="disableTab2">
-
+                <div class="ui-g">
+                    <div class="ui-md-12">
+                        <p>
+                            La información registrada servirá para la notificación y no esta sujeto a variación
+                        </p>
+                    </div>
+                </div>
+                <div *ngIf="!cambiaDir" class="ui-g"></div>
+                    <div class="ui-md-12">
+                        <label>Domicilio actual:</label>
+                    </div>
+                    <div class="ui-md-12">
+                        <label>{{pernatural.direccion}}</label>
+                    </div>
+                </div>
+                <div *ngIf="!cambiaDir" class="ui-g">
+                    <div class="ui-md-4">
+                        <label>Departamento:</label>
+                        <p>{{dirdenunDirec.vCoddepartDes}}</p>
+                    </div>
+                    <div class="ui-md-4">
+                        <label>Provincia:</label>
+                        <p>{{dirdenunDirec.vCodprovinDes}}</p>
+                    </div>
+                    <div class="ui-md-4">
+                        <label>Distrito:</label>
+                        <p>{{dirdenunDirec.vCoddistriDes}}</p>
+                    </div>
+                </div>
+                <div *ngIf="cambiaDir" class="ui-g">
+                    <div class="ui-md-4">
+                        <label>Departamento:</label>
+                        <p-dropdown [options]="departs" name="selectedDeparts" [(ngModel)]="selectedDeparts" [style]="{'width':'140px'}" placeholder="Seleccione departamento."
+                        optionLabel="name"></p-dropdown>
+                    </div>
+                    <div class="ui-md-4">
+                        <label>Provincia:</label>
+                        <p-dropdown [options]="provins" name="selectedProvins" [(ngModel)]="selectedProvins" [style]="{'width':'140px'}" placeholder="Seleccione provincia."
+                        optionLabel="name"></p-dropdown>
+                    </div>
+                    <div class="ui-md-4">
+                        <label>Distrito:</label>
+                        <p-dropdown [options]="distris" name="selectedDistris" [(ngModel)]="selectedDistris" [style]="{'width':'140px'}" placeholder="Seleccione distrito."
+                        optionLabel="name"></p-dropdown>
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-md-12">
+                        <button type="button" (click)="cambiaDireccion()" class="btn btn-secondary" label="Cambiar la dirección actual">Cambiar la dirección actual</button>
+                    </div>
+                </div>
                 <div class="ui-g">
                     <div class="ui-md-12">
                         <button type="button" (click)="retrocederVentada()" class="btn btn-primary" label="Atras">Atras</button>
