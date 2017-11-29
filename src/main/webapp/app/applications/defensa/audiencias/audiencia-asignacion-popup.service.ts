@@ -6,7 +6,7 @@ import { Expediente } from './../../../entities/expediente/expediente.model';
 // import { AbogadoService } from './abogado.service';
 
 @Injectable()
-export class AudienciaRegistroResultadoPopupService {
+export class AudienciaAsignacionPopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
@@ -32,28 +32,28 @@ export class AudienciaRegistroResultadoPopupService {
                 //     resolve(this.ngbModalRef);
                 // });
                 setTimeout(() => {
-                    this.ngbModalRef = this.audienciaRegistroResultadoModalRef(component, new Expediente());
+                    this.ngbModalRef = this.audienciaAsignacionModalRef(component, new Expediente());
                     resolve(this.ngbModalRef);
                 }, 0);
             } else {
                 // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
                 setTimeout(() => {
-                    this.ngbModalRef = this.audienciaRegistroResultadoModalRef(component, new Expediente());
+                    this.ngbModalRef = this.audienciaAsignacionModalRef(component, new Expediente());
                     resolve(this.ngbModalRef);
                 }, 0);
             }
         });
     }
 
-    audienciaRegistroResultadoModalRef(component: Component, expediente: Expediente): NgbModalRef {
+    audienciaAsignacionModalRef(component: Component, expediente: Expediente): NgbModalRef {
         const modalRef = this.modalService.open(component, {  backdrop: 'static'});
         modalRef.componentInstance.expediente = expediente;
         modalRef.result.then((result) => {
-            this.router.navigate(['defensa/audiencia'], { replaceUrl: true });
+            this.router.navigate(['defensa/audiencia/asignacion-abogado'], { replaceUrl: true });
             console.log('Cc-A');
             this.ngbModalRef = null;
         }, (reason) => {
-            this.router.navigate(['defensa/audiencia'], { replaceUrl: true });
+            this.router.navigate(['defensa/audiencia/asignacion-abogado'], { replaceUrl: true });
             console.log('Cc-B');
             this.ngbModalRef = null;
         });

@@ -14,7 +14,7 @@ import { ResumenNotificacionComponent } from './envio-notificacion-wizard/resume
 
 export const envioNotificacionRoute: Routes = [
     {
-        path: 'envio-notificacion',
+        path: 'expediente/envio-notificacion',
         component: EnvioNotificacionComponent,
         data: {
             authorities: ['ROLE_USER'],

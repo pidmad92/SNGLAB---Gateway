@@ -25,6 +25,9 @@ export class LeftbarComponent implements OnInit {
     modalRef: NgbModalRef;
     version: string;
     aplicacion: string;
+    accordionDefensa = 'expediente';
+    menuDefensa = [ 'expediente', 'audiencia', 'reportes', 'mantenimiento']
+    private modules = ['consultas', 'defensa', 'liquidaciones', 'sindicatos', 'dictamenes', 'denuncias', 'seguridad'];
 
     constructor(
         private loginService: LoginService,
@@ -33,29 +36,21 @@ export class LeftbarComponent implements OnInit {
         private profileService: ProfileService,
         private router: Router,
         private route: ActivatedRoute,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
-
-        this.getRoute(router);
+        this.getRoute(router.url);
     }
 
-    getRoute(router) {
-        if (router.url.indexOf('defensa') === 1) {
-            this.aplicacion = 'defensa';
-        } else if (router.url.indexOf('consultas') === 1) {
-            this.aplicacion = 'consultas';
-        } else if (router.url.indexOf('liquidaciones') === 1) {
-            this.aplicacion = 'liquidaciones';
-        } else if (router.url.indexOf('sindicatos') === 1) {
-            this.aplicacion = 'sindicatos';
-        } else if (router.url.indexOf('dictamenes') === 1) {
-            this.aplicacion = 'dictamenes';
-        } else if (router.url.indexOf('denuncias') === 1) {
-            this.aplicacion = 'denuncias';
-        } else {
-            this.aplicacion = 'dictamenes';
+    getRoute(url) {
+        for (const module of this.modules) {
+            if (url.indexOf(module) === 1) {
+                if (module === 'defensa') {
+                    this.menuDefensaActive(url);
+                }
+                this.aplicacion = module;
+            }
         }
     }
 
@@ -81,5 +76,12 @@ export class LeftbarComponent implements OnInit {
 
     toggleNavbar() {
         this.isNavbarCollapsed = !this.isNavbarCollapsed;
+    }
+    menuDefensaActive(url) {
+        for (const menu of this.menuDefensa) {
+            if (url.indexOf(menu) !== -1) {
+                this.accordionDefensa = menu;
+            }
+        }
     }
 }

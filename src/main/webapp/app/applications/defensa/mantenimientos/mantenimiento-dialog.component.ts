@@ -7,14 +7,14 @@ import { Observable } from 'rxjs/Rx';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
-import { AudienciaPopupService } from './audiencia-popup.service';
+import { MantenimientoPopupService } from './mantenimiento-popup.service';
 import { ResponseWrapper } from './../../../shared';
 
 @Component({
-    selector: 'jhi-audiencia-dialog',
-    templateUrl: './audiencia-dialog.component.html'
+    selector: 'jhi-mantenimiento-dialog',
+    templateUrl: './mantenimiento-dialog.component.html'
 })
-export class AudienciaDialogComponent implements OnInit {
+export class MantenimientoDialogComponent implements OnInit {
 
     es: any;
     fechaAudiencia: Date;
@@ -57,27 +57,27 @@ export class AudienciaDialogComponent implements OnInit {
 }
 
 @Component({
-    selector: 'jhi-audiencia-popup',
+    selector: 'jhi-mantenimiento-popup',
     template: ''
 })
-export class AudienciaPopupComponent implements OnInit, OnDestroy {
+export class MantenimientoPopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 
     constructor(
         private route: ActivatedRoute,
-        private audienciaPopupService: AudienciaPopupService
+        private mantenimientoPopupService: MantenimientoPopupService
     ) { }
 
     ngOnInit() {
         console.log('OpenDialog');
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
-                this.audienciaPopupService
-                    .open(AudienciaDialogComponent as Component, params['id']);
+                this.mantenimientoPopupService
+                    .open(MantenimientoDialogComponent as Component, params['id']);
             } else {
-                this.audienciaPopupService
-                    .open(AudienciaDialogComponent as Component);
+                this.mantenimientoPopupService
+                    .open(MantenimientoDialogComponent as Component);
             }
         });
     }

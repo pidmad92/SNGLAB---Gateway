@@ -31,8 +31,8 @@
     </div>
 
     <div class="my-2" *ngIf="aplicacion == 'defensa'">
-        <ngb-accordion class="level-one mt-2 p-0" id="accordion" activeIds="defensa-1" [closeOthers]="true">
-            <ngb-panel id="defensa-1">
+        <ngb-accordion #leftAcc="ngbAccordion" destroyOnHide="false" class="level-one mt-2 p-0" id="accordion" activeIds="{{accordionDefensa}}" [closeOthers]="true">
+            <ngb-panel id="{{menuDefensa[0]}}">
                 <ng-template ngbPanelTitle>
                     <li routerLinkActive="active">
                         <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
@@ -43,14 +43,14 @@
                 </ng-template>
                 <ng-template ngbPanelContent>
                     <div class="level-two p-0">
-                        <li routerLinkActive="active"><a [routerLink]="['/defensa/registro-expediente' , { outlets: { wizard: ['datos-pase'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro Expedientes</span></a></li>
-                        <li routerLinkActive="active"><a [routerLink]="['/defensa/envio-notificacion' , { outlets: { wizard: ['seleccion-expediente'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro de Notificaciones</span></a></li>
-                        <li routerLinkActive="active"><a routerLink="defensa/consulta-expediente" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Expedientes</span></a></li>
-                        <li routerLinkActive="active"><a routerLink="defensa/consulta-notificaciones" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Notificaciones</span></a></li>
+                        <li routerLinkActive="active"><a [routerLink]="['/defensa/expediente/registro' , { outlets: { wizard: ['datos-pase'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro Expedientes</span></a></li>
+                        <li routerLinkActive="active"><a [routerLink]="['/defensa/expediente/envio-notificacion' , { outlets: { wizard: ['seleccion-expediente'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro de Notificaciones</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="defensa/expediente/consulta" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Expedientes</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="defensa/expediente/consulta-notificaciones" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Notificaciones</span></a></li>
                     </div>
                 </ng-template>
             </ngb-panel>
-            <ngb-panel id="defensa-2">
+            <ngb-panel id="{{menuDefensa[1]}}">
                 <ng-template ngbPanelTitle>
                     <li >
                         <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
@@ -61,18 +61,18 @@
                 </ng-template>
                 <ng-template ngbPanelContent>
                     <div class="level-two p-0">
-                        <li routerLinkActive="active"><a routerLink="defensa/asignacion-abogado" class="a-menu d-sm-flex align-items-sm-center "><span>Asignación de Abogados</span></a></li>
-                        <li routerLinkActive="active"><a routerLink="defensa/resultado-audiencia" class="a-menu d-sm-flex align-items-sm-center "><span>Resultado de Audiencia</span></a></li>
-                        <li routerLinkActive="active"><a routerLink="defensa/reprogramacion-audiencia" class="a-menu d-sm-flex align-items-sm-center "><span>Reprog. de Audiencia</span></a></li>
-                        <li routerLinkActive="active"><a routerLink="defensa/registrar-escrito" class="a-menu d-sm-flex align-items-sm-center "><span>Registrar Escrito</span></a></li>
-                        <li routerLinkActive="active"><a routerLink="defensa/consulta-audiencia" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Audiencias</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="defensa/audiencia/asignacion-abogado" class="a-menu d-sm-flex align-items-sm-center "><span>Asignación de Abogados</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="defensa/audiencia/registrar-resultado" class="a-menu d-sm-flex align-items-sm-center "><span>Resultado de Audiencia</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="defensa/audiencia/reprogramacion" class="a-menu d-sm-flex align-items-sm-center "><span>Reprog. de Audiencia</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="defensa/audiencia/registrar-escrito" class="a-menu d-sm-flex align-items-sm-center "><span>Registrar Escrito</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="defensa/audiencia/consulta" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Audiencias</span></a></li>
                     </div>
                 </ng-template>
             </ngb-panel>
-            <ngb-panel id="defensa-3">
+            <ngb-panel id="{{menuDefensa[2]}}">
                 <ng-template ngbPanelTitle>
                     <li routerLinkActive="active">
-                        <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                        <a routerLink="defensa/reportes/conciliaciones" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
                             <i class="fa fa-print px-2" aria-hidden="true"></i> <span>Reportes</span>
                         </a>
                     </li>
@@ -80,7 +80,7 @@
                 <ng-template ngbPanelContent>
                 </ng-template>
             </ngb-panel>
-            <ngb-panel id="defensa-4">
+            <ngb-panel id="{{menuDefensa[3]}}">
                 <ng-template ngbPanelTitle>
                     <li routerLinkActive="active">
                         <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
@@ -91,8 +91,8 @@
                 </ng-template>
                 <ng-template ngbPanelContent>
                     <div class="level-two p-0">
-                        <li><a routerLink="sindicatos/consulta-organizacion" class="a-menu d-sm-flex align-items-sm-center "><span>Resultados</span></a></li>
-                        <li><a routerLink="sindicatos/registro-observacion" class="a-menu d-sm-flex align-items-sm-center "><span>Audiencias</span></a></li>
+                        <li><a routerLink="defensa/mantenimiento/resultados" class="a-menu d-sm-flex align-items-sm-center "><span>Resultados</span></a></li>
+                        <li><a routerLink="defensa/mantenimiento/audiencias" class="a-menu d-sm-flex align-items-sm-center "><span>Audiencias</span></a></li>
                     </div>
                 </ng-template>
             </ngb-panel>
@@ -235,10 +235,8 @@
             </ngb-accordion>
           </li> 
       </ul>
-  </div>
+    </div>
     <!-- GGALARZA DICTAMEN ECONOMICO LABORAL -->
-
-  </nav>
     <div class="my-2" *ngIf="aplicacion == 'denuncias'">
         <ul class="level-one mt-2 p-0" id="accordion">
             <li routerLinkActive="active">
@@ -262,6 +260,8 @@
             </li>
         </ul>
     </div>
+  </nav>
+    
     <!-- LIQUIDACIONES - LEFTBAR - PIERRE DAVID MALDONADO DIAZ -->
     <div class="my-2" *ngIf="aplicacion == 'liquidaciones'">
         <ul class="level-one p-0" id="accordion">

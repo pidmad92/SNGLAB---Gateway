@@ -4,12 +4,12 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@a
 import { UserRouteAccessService } from '../../../shared';
 import { JhiPaginationUtil } from 'ng-jhipster';
 
-import { ConsultaNotificacionesComponent, ConsultaNotificacionesPopupComponent } from './';
+import { MantenimientoComponent, MantenimientoPopupComponent } from './';
 
-export const consultaNotificacionesRoute: Routes = [
+export const mantenimientoRoute: Routes = [
     {
-        path: 'expediente/consulta-notificaciones',
-        component: ConsultaNotificacionesComponent,
+        path: 'matenimiento/resultados',
+        component: MantenimientoComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'global.menu.entities.consultaExpediente'
@@ -17,14 +17,14 @@ export const consultaNotificacionesRoute: Routes = [
         canActivate: [UserRouteAccessService],
         children: [
             {
-                path: 'notificaciones/:id',
-                component: ConsultaNotificacionesPopupComponent,
+                path: 'expediente/:id',
+                component: MantenimientoPopupComponent,
                 data: {
                     authorities: ['ROLE_USER'],
                     pageTitle: 'global.menu.entities.consultaExpediente'
                 },
                 outlet: 'popupexp'
-            }
+            },
         ]
     }
 

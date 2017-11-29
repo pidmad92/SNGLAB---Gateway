@@ -8,7 +8,7 @@ import { ConsultaExpedienteComponent, ConsultaExpedienteArchivarPopupComponent, 
 
 export const consultaExpedienteRoute: Routes = [
     {
-        path: 'consulta-expediente',
+        path: 'expediente/consulta',
         component: ConsultaExpedienteComponent,
         data: {
             authorities: ['ROLE_USER'],
@@ -17,7 +17,7 @@ export const consultaExpedienteRoute: Routes = [
         canActivate: [UserRouteAccessService],
         children: [
             {
-                path: 'expediente/:id',
+                path: ':id',
                 component: ConsultaExpedientePopupComponent,
                 data: {
                     authorities: ['ROLE_USER'],
@@ -26,7 +26,7 @@ export const consultaExpedienteRoute: Routes = [
                 outlet: 'popupexp'
             },
             {
-                path: 'observar-expediente/:id',
+                path: 'observar/:id',
                 component: ConsultaExpedienteObservarPopupComponent,
                 data: {
                     authorities: ['ROLE_USER'],
@@ -35,7 +35,7 @@ export const consultaExpedienteRoute: Routes = [
                 outlet: 'popupexp'
             },
             {
-                path: 'archivar-expediente/:id',
+                path: 'archivar/:id',
                 component: ConsultaExpedienteArchivarPopupComponent,
                 data: {
                     authorities: ['ROLE_USER'],

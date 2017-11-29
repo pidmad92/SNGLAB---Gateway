@@ -751,7 +751,6 @@ body .ui-datatable .ui-datatable-data>tr>td, .ui-datatable .ui-datatable-tfoot>t
   border-style: solid;
 }
 
-
 ngb-accordion#accordion{
 
   div.level-two li:after{
@@ -760,11 +759,11 @@ ngb-accordion#accordion{
     content: "";
     left: 24px;
     position: absolute;
-    top: 58px;
+    top: 55px;
   }
 
   .card{
-    border-top: 0px solid grey;
+    border:0;
     background: #4d4d4d;
     color: #4d4d4d;
     text-decoration: none;
@@ -772,23 +771,36 @@ ngb-accordion#accordion{
       padding: 1px;
       a{
         text-decoration: none;
+        color: white;
       }
       li{
         list-style:none;
         color:white;
         font-size: 0.9rem;
+        span.fa-chevron-down{
+          padding-right:5px;
+        }
       }
       &.active{
         padding: 1px;
         background: linear-gradient(#b90b0b, #c50909), #dc411e;
+        border-right: 5px solid #f5911e;
+        border-bottom: 0px;
         color: #b90b0b;
+        span.fa-chevron-down {
+          padding-right:0px;
+          -webkit-transform: rotate(180deg);
+          -ms-transform: rotate(180deg);
+          -o-transform: rotate(180deg);
+          transform: rotate(180deg);
+        }
       }
     }
     > .card-body {
-
+      padding: 0;
       li{
         list-style:none;
-        
+        border-right: 5px solid #f5911e;
         &:before {
           background: #ff0000;
           bottom: auto;
@@ -936,7 +948,7 @@ body .ui-tabview .ui-tabview-panel{
 }
 body .ui-tabview.ui-tabview-top .ui-tabview-nav, 
 body .ui-tabview.ui-tabview-bottom .ui-tabview-nav, 
-body .ui-tabview.ui-tabview-left .ui-tabview-nav, 
+//body .ui-tabview.ui-tabview-left .ui-tabview-nav, 
 body .ui-tabview.ui-tabview-right .ui-tabview-nav{
   border-bottom:0px;
   margin-bottom:-2px;
@@ -959,7 +971,7 @@ body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-default a:hover{
 }
 body .ui-tabview.ui-tabview-top .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover, 
 body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover, 
-body .ui-tabview.ui-tabview-left .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover, 
+//body .ui-tabview.ui-tabview-left .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover, 
 body .ui-tabview.ui-tabview-right .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover {
     border-color: white;
     border-bottom: 1px solid #c8c8c8;
@@ -969,7 +981,7 @@ body .ui-tabview.ui-tabview-right .ui-tabview-nav li:not(.ui-state-active):not(.
 
 body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active, 
 body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li.ui-state-active, 
-body .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active, 
+//body .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active, 
 body .ui-tabview.ui-tabview-right .ui-tabview-nav li.ui-state-active {
   background-color: #F4F4F4;
   border-color: #c8c8c8;
@@ -979,13 +991,42 @@ body .ui-tabview.ui-tabview-right .ui-tabview-nav li.ui-state-active {
 }
 body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active a, 
 body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li.ui-state-active a, 
-body .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active a, 
+//body .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active a, 
 body .ui-tabview.ui-tabview-right .ui-tabview-nav li.ui-state-active a{
   cursor: default;
   color: black;
 }
 
-
+body .ui-tabview.ui-tabview-left .ui-tabview-nav {
+  border: 1px solid #C8C8C8;
+  border-top-left-radius: 5px;
+  height:auto;
+}
+body .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active{
+  border-color: #F4F4F4;
+  background-color: #F4F4F4;
+  border:1px solid #dedede;
+  border-right:0;
+  border-bottom-left-radius: 0;
+  
+}
+body .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active a{
+  color:black !important;
+}
+body .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-default a{
+  color: grey;
+}
+body .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-default a:hover{
+  color: black;
+  border:0;
+}
+body .ui-tabview .tableft .ui-tabview-panel{
+  border-left:0px;
+}
+body .ui-tabview.ui-tabview-left .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover{
+  color: black;
+  border:1px solid transparent;
+}
 
 p-inputmask{
   display: inherit;

@@ -5,9 +5,9 @@ import { GatewaySharedModule } from '../../../shared';
 import {
     AudienciaComponent,
     AudienciaConsultaComponent,
-    AudienciaDialogComponent,
-    AudienciaPopupComponent,
-    AudienciaPopupService,
+    AudienciaConsultaDialogComponent,
+    AudienciaConsultaPopupComponent,
+    AudienciaConsultaPopupService,
     AudienciaAsignacionDialogComponent,
     AudienciaAsignacionPopupComponent,
     AudienciaAsignacionPopupService,
@@ -40,8 +40,8 @@ const ENTITY_STATES = [
     declarations: [
         AudienciaComponent,
         AudienciaConsultaComponent,
-        AudienciaPopupComponent,
-        AudienciaDialogComponent,
+        AudienciaConsultaPopupComponent,
+        AudienciaConsultaDialogComponent,
         AudienciaAsignacionDialogComponent,
         AudienciaAsignacionPopupComponent,
         AudienciaRegistroResultadoDialogComponent,
@@ -54,8 +54,8 @@ const ENTITY_STATES = [
     ],
     entryComponents: [
         AudienciaComponent,
-        AudienciaPopupComponent,
-        AudienciaDialogComponent,
+        AudienciaConsultaPopupComponent,
+        AudienciaConsultaDialogComponent,
         AudienciaAsignacionDialogComponent,
         AudienciaAsignacionPopupComponent,
         AudienciaRegistroResultadoDialogComponent,
@@ -66,7 +66,7 @@ const ENTITY_STATES = [
         AudienciaRegistroEscritoPopupComponent
     ],
     providers: [
-        AudienciaPopupService,
+        AudienciaConsultaPopupService,
         AudienciaAsignacionPopupService,
         AudienciaRegistroResultadoPopupService,
         AudienciaRegistroEscritoPopupService,

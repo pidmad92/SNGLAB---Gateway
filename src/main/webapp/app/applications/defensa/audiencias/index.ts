@@ -2,8 +2,8 @@
 export * from './audiencia.component';
 export * from './audiencia-consulta.component';
 
-export * from './audiencia-dialog.component';
-export * from './audiencia-popup.service';
+export * from './audiencia-consulta-dialog.component';
+export * from './audiencia-consulta-popup.service';
 
 export * from './audiencia-asignacion-dialog.component';
 export * from './audiencia-asignacion-popup.service';

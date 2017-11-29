@@ -10,11 +10,11 @@ import { AudienciaComponent,
     AudienciaRegistroResultadoPopupComponent,
     AudienciaRegistroEscritoPopupComponent,
     AudienciaReprogramacionPopupComponent,
-    AudienciaPopupComponent } from './';
+    AudienciaConsultaPopupComponent } from './';
 
 export const audienciaRoute: Routes = [
     {
-        path: 'asignacion-abogado',
+        path: 'audiencia/asignacion-abogado',
         component: AudienciaComponent,
         data: {
             authorities: ['ROLE_USER'],
@@ -23,7 +23,7 @@ export const audienciaRoute: Routes = [
         canActivate: [UserRouteAccessService],
         children: [
             {
-                path: 'audiencia/:id',
+                path: ':id',
                 component: AudienciaAsignacionPopupComponent,
                 data: {
                     authorities: ['ROLE_USER'],
@@ -34,7 +34,7 @@ export const audienciaRoute: Routes = [
         ]
     },
     {
-        path: 'resultado-audiencia',
+        path: 'audiencia/registrar-resultado',
         component: AudienciaComponent,
         data: {
             authorities: ['ROLE_USER'],
@@ -54,7 +54,7 @@ export const audienciaRoute: Routes = [
         ]
     },
     {
-        path: 'reprogramacion-audiencia',
+        path: 'audiencia/reprogramacion',
         component: AudienciaComponent,
         data: {
             authorities: ['ROLE_USER'],
@@ -74,7 +74,7 @@ export const audienciaRoute: Routes = [
         ]
     },
     {
-        path: 'registrar-escrito',
+        path: 'audiencia/registrar-escrito',
         component: AudienciaComponent,
         data: {
             authorities: ['ROLE_USER'],
@@ -94,7 +94,7 @@ export const audienciaRoute: Routes = [
         ]
     },
     {
-        path: 'consulta-audiencia',
+        path: 'audiencia/consulta',
         component: AudienciaConsultaComponent,
         data: {
             authorities: ['ROLE_USER'],
@@ -104,7 +104,7 @@ export const audienciaRoute: Routes = [
         children: [
             {
                 path: ':id',
-                component: AudienciaPopupComponent,
+                component: AudienciaConsultaPopupComponent,
                 data: {
                     authorities: ['ROLE_USER'],
                     pageTitle: 'global.menu.entities.consultaExpediente'

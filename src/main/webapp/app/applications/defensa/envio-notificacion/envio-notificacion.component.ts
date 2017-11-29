@@ -16,7 +16,7 @@ export class EnvioNotificacionComponent implements OnInit, OnChanges {
 
     items: MenuItem[];
     msgs: Message[] = [];
-    private routeExp = '/defensa/envio-notificacion';
+    private routeExp = '/defensa/expediente/envio-notificacion';
     activeIndex: number;
     url: string;
     router: any;

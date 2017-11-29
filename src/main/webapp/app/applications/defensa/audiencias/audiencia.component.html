@@ -33,24 +33,24 @@
                 </fieldset>
                 
                 <span [ngSwitch]="currentUrl">
-                    <div *ngSwitchCase="'/defensa/asignacion-abogado'" class="row my-2">
+                    <div *ngSwitchCase="'/defensa/audiencia/asignacion-abogado'" class="row my-2">
                         <div class="col-md-2 text-center">
-                            <button [routerLink]="['/defensa/consulta-expediente', { outlets: { popupexp: '/'+ id } }]" class="btn btn-sm btn-success "><i class="fa fa-archive" aria-hidden="true"></i> Asignar Expediente</button>
+                            <button [routerLink]="['/defensa/audiencia/asignacion-abogado', { outlets: { popupexp: id } }]" class="btn btn-sm btn-success "><i class="fa fa-archive" aria-hidden="true"></i> Asignar Expediente</button>
                         </div>
                     </div>
-                    <div *ngSwitchCase="'/defensa/resultado-audiencia'" class="row my-2">
+                    <div *ngSwitchCase="'/defensa/audiencia/registrar-resultado'" class="row my-2">
                         <div class="col-md-2 text-center">
-                            <button [routerLink]="['/defensa/consulta-expediente', { outlets: { popupexp: 'observar-expediente/'+ id } }]" class="btn btn-sm btn-warning px-4"><i class="fa fa-sticky-note" aria-hidden="true"></i> Registrar Resultado</button>
+                            <button [routerLink]="['/defensa/audiencia/registrar-resultado', { outlets: { popupexp: id } }]" class="btn btn-sm btn-warning px-4"><i class="fa fa-sticky-note" aria-hidden="true"></i> Registrar Resultado</button>
                         </div>
                     </div>
-                    <div *ngSwitchCase="'/defensa/reprogramacion-audiencia'" class="row my-2">
+                    <div *ngSwitchCase="'/defensa/audiencia/reprogramacion'" class="row my-2">
                         <div class="col-md-2 text-center">
-                            <button [routerLink]="['/defensa/consulta-expediente', { outlets: { popupexp: 'expediente/'+ id } }]" class="btn btn-sm btn-info"><i class="fa fa-sticky-note" aria-hidden="true"></i> Reprogramación de Audiencia</button>
+                            <button [routerLink]="['/defensa/audiencia/reprogramacion', { outlets: { popupexp:  id } }]" class="btn btn-sm btn-info"><i class="fa fa-sticky-note" aria-hidden="true"></i> Reprogramación de Audiencia</button>
                         </div>
                     </div>
-                    <div *ngSwitchCase="'/defensa/registrar-escrito'" class="row my-2">
+                    <div *ngSwitchCase="'/defensa/audiencia/registrar-escrito'" class="row my-2">
                             <div class="col-md-2 text-center">
-                                <button [routerLink]="['/defensa/consulta-expediente', { outlets: { popupexp: 'expediente/'+ id } }]" class="btn btn-sm btn-info"><i class="fa fa-sticky-note" aria-hidden="true"></i> Registrar Escrito</button>
+                                <button [routerLink]="['/defensa/audiencia/registrar-escrito', { outlets: { popupexp: id } }]" class="btn btn-sm btn-info"><i class="fa fa-sticky-note" aria-hidden="true"></i> Registrar Escrito</button>
                             </div>
                     </div>
                 </span>
