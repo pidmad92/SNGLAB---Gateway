@@ -131,7 +131,8 @@ export class ValidarUsuarioComponent implements OnInit {
                     vNombres: this.pernatural.vNombres,
                     vNumdoc: this.pernatural.vNumdoc,
                     vTelefono: this.pernatural.vTelefono,
-                    vCelular: this.pernatural.vCelular
+                    vCelular: this.pernatural.vCelular,
+                    vEmailper: this.pernatural.vEmailper
                 }).subscribe(
                 (res: Pernatural) => {
                     this.pernatural = res;
@@ -167,6 +168,38 @@ export class ValidarUsuarioComponent implements OnInit {
         this.onErrorMultiple(this.messageList);
     }
 
+    validarDatoPersonaDireccion() {
+        this.block = true;
+        this.messageList = [];
+        if (this.cambiaDir === true && this.tviaSelected === undefined) {
+            this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar un tipo de via' });
+            this.block = false;
+        } else if (this.cambiaDir === true && this.dirdenunDirec.vDesvia === '') {
+            this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar la descripción de la via.' });
+            this.block = false;
+        } else if (this.cambiaDir === true && this.tzonaSelected === undefined) {
+            this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar un tipo de zona' });
+            this.block = false;
+        } else if (this.cambiaDir === true && this.dirdenunDirec.vDeszona === '') {
+            this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar la descripción de la zona.' });
+            this.block = false;
+        } else if (this.cambiaDir === true && this.dirdenunDirec.vDireccion === '') {
+            this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar su dirección completa' });
+            this.block = false;
+        }  else if (this.cambiaDir === true && this.selectedDeparts === undefined) {
+            this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar el departamento.' });
+            this.block = false;
+        }  else if (this.cambiaDir === true && this.selectedProvins === undefined) {
+            this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar la provincia' });
+            this.block = false;
+        }  else if (this.cambiaDir === true && this.selectedDistris === undefined) {
+            this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar el distrito' });
+            this.block = false;
+        } else {
+            this.block = false;
+        }
+    }
+
     cambiaDireccion() {
         this.block = true;
         this.messageList = [];
@@ -178,7 +211,6 @@ export class ValidarUsuarioComponent implements OnInit {
                             (tzonas: ResponseWrapper) => {
                                 // tslint:disable-next-line:forin
                                 for (const i in deps) {
-                                    console.log('Entroo for departamento');
                                     this.departs.push(new ComboModel(deps[i].vDesdep, deps[i].vCoddep, 0));
                                 }
                                 this.tviasLista = tvias.json;
@@ -194,15 +226,6 @@ export class ValidarUsuarioComponent implements OnInit {
             },
             (res: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: res.json }]); this.block = false; }
         );
-
-        /* this.validarUsuarioService.consultaTipoDocIdentidad().subscribe(
-            (res: ResponseWrapper) => {
-                this.tipodocs = res.json;
-                this.currentSearch = '';
-                this.block = false;
-            },
-            (res: ResponseWrapper) => { this.onError(res.json); this.block = false; }
-        ); */
     }
 
     retrocederVentada() {
@@ -219,12 +242,6 @@ export class ValidarUsuarioComponent implements OnInit {
 
     cerrarNuevoUsuario() {
         this.displayNuevoUsuario = false;
-    }
-
-    onSubmit() {
-    }
-
-    submitNuevoUsuario() {
     }
 
     showNuevoUsuario() {
