@@ -1,0 +1,39 @@
+{
+    "gatewayApp": {
+        "recurso" : {
+            "home": {
+                "title": "Recursos",
+                "createLabel": "Crear nuevo Recurso",
+                "createOrEditLabel": "Crear o editar Recurso",
+                "search": "Search for Recurso"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Recurso {{ id }}?"
+            },
+            "detail": {
+                "title": "Recurso"
+            },
+            "vNumrecurs": "V Numrecurs",
+            "tFecrecurs": "T Fecrecurs",
+            "vEstado": "V Estado",
+            "tFecprovei": "T Fecprovei",
+            "vObsrecurs": "V Obsrecurs",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "tiporecurso": "Tiporecurso",
+            "organizacio": "Organizacio"
+        }
+    },
+    "sindicatosApp": {
+        "recurso" : {
+            "created": "Un nuevo Recurso ha sido creado con el identificador {{ param }}",
+            "updated": "Un Recurso ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Recurso ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

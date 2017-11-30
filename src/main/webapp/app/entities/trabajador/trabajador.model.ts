@@ -14,6 +14,7 @@ export class Trabajador implements BaseEntity {
         public cartrab?: BaseEntity,
         public pernatural?: BaseEntity,
         public legajos?: BaseEntity[],
+        public falsoexps?: BaseEntity[],
         public expedientes?: BaseEntity[],
         public datlabs?: BaseEntity[],
         public atencions?: BaseEntity[],

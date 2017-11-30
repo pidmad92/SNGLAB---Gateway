@@ -43,21 +43,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vCodleg" for="field_vCodleg">V Codleg</label>
-            <input type="text" class="form-control" name="vCodleg" id="field_vCodleg"
-                [(ngModel)]="legtipdoc.vCodleg" required maxlength="6" />
-            <div [hidden]="!(editForm.controls.vCodleg?.dirty && editForm.controls.vCodleg?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodleg?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodleg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 6 }">
-                   This field cannot be longer than 6 characters.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.nCorrel" for="field_nCorrel">N Correl</label>
             <input type="number" class="form-control" name="nCorrel" id="field_nCorrel"
                 [(ngModel)]="legtipdoc.nCorrel" required />
@@ -73,21 +58,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vCodtdoc" for="field_vCodtdoc">V Codtdoc</label>
-            <input type="text" class="form-control" name="vCodtdoc" id="field_vCodtdoc"
-                [(ngModel)]="legtipdoc.vCodtdoc" required maxlength="2" />
-            <div [hidden]="!(editForm.controls.vCodtdoc?.dirty && editForm.controls.vCodtdoc?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodtdoc?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodtdoc?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
-                   This field cannot be longer than 2 characters.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vCodsis" for="field_vCodsis">V Codsis</label>
             <input type="text" class="form-control" name="vCodsis" id="field_vCodsis"
                 [(ngModel)]="legtipdoc.vCodsis" required maxlength="3" />
@@ -99,21 +69,6 @@
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.vCodsis?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 3 }">
                    This field cannot be longer than 3 characters.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vCodtipres" for="field_vCodtipres">V Codtipres</label>
-            <input type="text" class="form-control" name="vCodtipres" id="field_vCodtipres"
-                [(ngModel)]="legtipdoc.vCodtipres" required maxlength="2" />
-            <div [hidden]="!(editForm.controls.vCodtipres?.dirty && editForm.controls.vCodtipres?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodtipres?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodtipres?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
-                   This field cannot be longer than 2 characters.
                 </small>
             </div>
         </div>
@@ -313,21 +268,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vAboasig" for="field_vAboasig">V Aboasig</label>
-            <input type="text" class="form-control" name="vAboasig" id="field_vAboasig"
-                [(ngModel)]="legtipdoc.vAboasig" required maxlength="15" />
-            <div [hidden]="!(editForm.controls.vAboasig?.dirty && editForm.controls.vAboasig?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vAboasig?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vAboasig?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
-                   This field cannot be longer than 15 characters.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.nMondol" for="field_nMondol">N Mondol</label>
             <input type="number" class="form-control" name="nMondol" id="field_nMondol"
                 [(ngModel)]="legtipdoc.nMondol" required />
@@ -354,36 +294,6 @@
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.vCodloc?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 6 }">
                    This field cannot be longer than 6 characters.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vCodtipdil" for="field_vCodtipdil">V Codtipdil</label>
-            <input type="text" class="form-control" name="vCodtipdil" id="field_vCodtipdil"
-                [(ngModel)]="legtipdoc.vCodtipdil" required maxlength="2" />
-            <div [hidden]="!(editForm.controls.vCodtipdil?.dirty && editForm.controls.vCodtipdil?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodtipdil?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodtipdil?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
-                   This field cannot be longer than 2 characters.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vCodtipaud" for="field_vCodtipaud">V Codtipaud</label>
-            <input type="text" class="form-control" name="vCodtipaud" id="field_vCodtipaud"
-                [(ngModel)]="legtipdoc.vCodtipaud" required maxlength="2" />
-            <div [hidden]="!(editForm.controls.vCodtipaud?.dirty && editForm.controls.vCodtipaud?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodtipaud?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodtipaud?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
-                   This field cannot be longer than 2 characters.
                 </small>
             </div>
         </div>
@@ -503,6 +413,13 @@
                 [(ngModel)]="legtipdoc.nSedeupd"  />
         </div>
 
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.abogado" for="field_abogado">Abogado</label>
+            <select class="form-control" id="field_abogado" name="abogado" [(ngModel)]="legtipdoc.abogado" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="abogadoOption.id === legtipdoc.abogado?.id ? legtipdoc.abogado : abogadoOption" *ngFor="let abogadoOption of abogados; trackBy: trackAbogadoById">{{abogadoOption.id}}</option>
+            </select>
+        </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.legajo" for="field_legajo">Legajo</label>
             <select class="form-control" id="field_legajo" name="legajo" [(ngModel)]="legtipdoc.legajo" >

@@ -21,14 +21,16 @@
             "vDnidmte": "V Dnidmte",
             "vNombres": "V Nombres",
             "vDiffal": "V Diffal",
-            "vDoctor": "V Doctor",
             "nUsuareg": "N Usuareg",
             "tFecreg": "T Fecreg",
             "nFlgactivo": "N Flgactivo",
             "nSedereg": "N Sedereg",
             "nUsuaupd": "N Usuaupd",
             "tFecupd": "T Fecupd",
-            "nSedeupd": "N Sedeupd"
+            "nSedeupd": "N Sedeupd",
+            "empleador": "Empleador",
+            "trabajador": "Trabajador",
+            "abogado": "Abogado"
         }
     },
     "patrocinioApp": {

@@ -2,6 +2,12 @@
     "fluentMethods": true,
     "relationships": [
         {
+            "relationshipName": "abogado",
+            "otherEntityName": "abogado",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
             "relationshipName": "legajo",
             "otherEntityName": "legajo",
             "relationshipType": "many-to-one",
@@ -28,29 +34,11 @@
             "fieldValidateRulesMaxlength": 2
         },
         {
-            "fieldName": "vCodleg",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 6
-        },
-        {
             "fieldName": "nCorrel",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "required"
             ]
-        },
-        {
-            "fieldName": "vAboasig",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 15
         },
         {
             "fieldName": "dFecasig",

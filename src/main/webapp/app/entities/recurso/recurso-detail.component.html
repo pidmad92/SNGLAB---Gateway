@@ -1,0 +1,81 @@
+
+<div *ngIf="recurso">
+    <h2><span jhiTranslate="gatewayApp.recurso.detail.title">Recurso</span> {{recurso.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.recurso.vNumrecurs">V Numrecurs</span></dt>
+        <dd>
+            <span>{{recurso.vNumrecurs}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.recurso.tFecrecurs">T Fecrecurs</span></dt>
+        <dd>
+            <span>{{recurso.tFecrecurs | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.recurso.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{recurso.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.recurso.tFecprovei">T Fecprovei</span></dt>
+        <dd>
+            <span>{{recurso.tFecprovei | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.recurso.vObsrecurs">V Obsrecurs</span></dt>
+        <dd>
+            <span>{{recurso.vObsrecurs}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.recurso.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{recurso.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.recurso.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{recurso.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.recurso.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{recurso.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.recurso.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{recurso.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.recurso.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{recurso.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.recurso.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{recurso.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.recurso.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{recurso.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.recurso.tiporecurso">Tiporecurso</span></dt>
+        <dd>
+            <div *ngIf="recurso.tiporecurso">
+                <a [routerLink]="['/tiporecurso', recurso.tiporecurso?.id]">{{recurso.tiporecurso?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.recurso.organizacio">Organizacio</span></dt>
+        <dd>
+            <div *ngIf="recurso.organizacio">
+                <a [routerLink]="['/organizacio', recurso.organizacio?.id]">{{recurso.organizacio?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'recurso/'+ recurso.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

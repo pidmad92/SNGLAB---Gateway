@@ -1,0 +1,57 @@
+
+<div *ngIf="tipoorganiz">
+    <h2><span jhiTranslate="gatewayApp.tipoorganiz.detail.title">Tipoorganiz</span> {{tipoorganiz.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.tipoorganiz.vDestiporg">V Destiporg</span></dt>
+        <dd>
+            <span>{{tipoorganiz.vDestiporg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipoorganiz.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{tipoorganiz.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipoorganiz.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{tipoorganiz.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipoorganiz.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{tipoorganiz.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipoorganiz.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{tipoorganiz.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipoorganiz.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{tipoorganiz.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipoorganiz.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{tipoorganiz.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipoorganiz.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{tipoorganiz.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tipoorganiz.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{tipoorganiz.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'tipoorganiz/'+ tipoorganiz.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

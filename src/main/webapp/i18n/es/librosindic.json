@@ -1,0 +1,39 @@
+{
+    "gatewayApp": {
+        "librosindic" : {
+            "home": {
+                "title": "Librosindics",
+                "createLabel": "Crear nuevo Librosindic",
+                "createOrEditLabel": "Crear o editar Librosindic",
+                "search": "Search for Librosindic"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Librosindic {{ id }}?"
+            },
+            "detail": {
+                "title": "Librosindic"
+            },
+            "vNumreglib": "V Numreglib",
+            "vNumlibsin": "V Numlibsin",
+            "tFecresolu": "T Fecresolu",
+            "vUsuregist": "V Usuregist",
+            "vEstado": "V Estado",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "tipolibro": "Tipolibro",
+            "organizacio": "Organizacio"
+        }
+    },
+    "sindicatosApp": {
+        "librosindic" : {
+            "created": "Un nuevo Librosindic ha sido creado con el identificador {{ param }}",
+            "updated": "Un Librosindic ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Librosindic ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -9,8 +9,20 @@
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "legajo",
-            "otherEntityName": "legajo",
+            "relationshipName": "legajoasig",
+            "otherEntityName": "legajoasig",
+            "otherEntityRelationshipName": "abogado"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "legtipdoc",
+            "otherEntityName": "legtipdoc",
+            "otherEntityRelationshipName": "abogado"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "falsoexp",
+            "otherEntityName": "falsoexp",
             "otherEntityRelationshipName": "abogado"
         },
         {

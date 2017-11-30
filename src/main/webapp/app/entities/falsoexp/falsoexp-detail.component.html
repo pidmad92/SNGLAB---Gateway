@@ -36,10 +36,6 @@
         <dd>
             <span>{{falsoexp.vDiffal}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.falsoexp.vDoctor">V Doctor</span></dt>
-        <dd>
-            <span>{{falsoexp.vDoctor}}</span>
-        </dd>
         <dt><span jhiTranslate="gatewayApp.falsoexp.nUsuareg">N Usuareg</span></dt>
         <dd>
             <span>{{falsoexp.nUsuareg}}</span>
@@ -67,6 +63,24 @@
         <dt><span jhiTranslate="gatewayApp.falsoexp.nSedeupd">N Sedeupd</span></dt>
         <dd>
             <span>{{falsoexp.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.falsoexp.empleador">Empleador</span></dt>
+        <dd>
+            <div *ngIf="falsoexp.empleador">
+                <a [routerLink]="['/empleador', falsoexp.empleador?.id]">{{falsoexp.empleador?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.falsoexp.trabajador">Trabajador</span></dt>
+        <dd>
+            <div *ngIf="falsoexp.trabajador">
+                <a [routerLink]="['/trabajador', falsoexp.trabajador?.id]">{{falsoexp.trabajador?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.falsoexp.abogado">Abogado</span></dt>
+        <dd>
+            <div *ngIf="falsoexp.abogado">
+                <a [routerLink]="['/abogado', falsoexp.abogado?.id]">{{falsoexp.abogado?.id}}</a>
+            </div>
         </dd>
     </dl>
 

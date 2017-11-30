@@ -82,6 +82,7 @@ export class MantenimientoResultadoDialogComponent implements OnInit {
     }
 
     private onSaveSuccess(result: Resulconci) {
+        console.log('broadcast');
         this.eventManager.broadcast({ name: 'resulconciListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
@@ -89,6 +90,7 @@ export class MantenimientoResultadoDialogComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
+        console.log('saveerror');
     }
 
     private onError(error: any) {

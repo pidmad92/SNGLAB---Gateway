@@ -41,16 +41,16 @@
                             <p-column field="vDescrip" header="Descripción"></p-column>
                             <p-column field="tipresconc.vDescrip" header="Tipo"></p-column>
                             <p-column >
-                                <ng-template let-resultado="rowData" pTemplate="body">
+                                <ng-template let-res="rowData" pTemplate="body">
                                     <button type="submit"
-                                        [routerLink]="['/defensa/mantenimiento/resultados', { outlets: { popup: resultado.id + '/editar'} }]"
+                                        [routerLink]="['/defensa/mantenimiento/resultados', { outlets: { popupexp: '/' + res.id + '/editar'} }]"
                                         replaceUrl="true"
                                         class="btn btn-dark btn-sm">
                                         <span class="fa fa-pencil"></span>
                                         <span class="d-none d-md-inline" >Editar</span>
                                     </button>
                                     <button type="submit"
-                                            [routerLink]="['/defensa/mantenimiento/resultados', { outlets: { popup: resultado.id + '/borrar'} }]"
+                                            [routerLink]="['/defensa/mantenimiento/resultados', { outlets: { popupexp: '/' +  res.id + '/borrar'} }]"
                                             replaceUrl="true"
                                             class="btn btn-danger btn-sm">
                                         <span class="fa fa-remove"></span>

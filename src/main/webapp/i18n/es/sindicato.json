@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "sindicato" : {
+            "home": {
+                "title": "Sindicatoes",
+                "createLabel": "Crear nuevo Sindicato",
+                "createOrEditLabel": "Crear o editar Sindicato",
+                "search": "Search for Sindicato"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Sindicato {{ id }}?"
+            },
+            "detail": {
+                "title": "Sindicato"
+            },
+            "tFecafilia": "T Fecafilia",
+            "vEstado": "V Estado",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "organizacio": "Organizacio"
+        }
+    },
+    "sindicatosApp": {
+        "sindicato" : {
+            "created": "Un nuevo Sindicato ha sido creado con el identificador {{ param }}",
+            "updated": "Un Sindicato ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Sindicato ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

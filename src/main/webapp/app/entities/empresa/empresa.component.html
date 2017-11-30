@@ -1,0 +1,99 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.empresa.home.title">Empresas</span>
+        <button class="btn btn-primary float-right jh-create-entity create-empresa" [routerLink]="['/', { outlets: { popup: ['empresa-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.empresa.home.createLabel">
+            Create new Empresa
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.empresa.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="empresas">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.empresa.cDesdocruc">C Desdocruc</span></th>
+            <th><span jhiTranslate="gatewayApp.empresa.vDesrazons">V Desrazons</span></th>
+            <th><span jhiTranslate="gatewayApp.empresa.vDesdirecc">V Desdirecc</span></th>
+            <th><span jhiTranslate="gatewayApp.empresa.vEstado">V Estado</span></th>
+            <th><span jhiTranslate="gatewayApp.empresa.nUbigeo">N Ubigeo</span></th>
+            <th><span jhiTranslate="gatewayApp.empresa.vTipoempre">V Tipoempre</span></th>
+            <th><span jhiTranslate="gatewayApp.empresa.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.empresa.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.empresa.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.empresa.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.empresa.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.empresa.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.empresa.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.empresa.organizacio">Organizacio</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let empresa of empresas ;trackBy: trackId">
+                <td><a [routerLink]="['../empresa', empresa.id ]">{{empresa.id}}</a></td>
+                <td>{{empresa.cDesdocruc}}</td>
+                <td>{{empresa.vDesrazons}}</td>
+                <td>{{empresa.vDesdirecc}}</td>
+                <td>{{empresa.vEstado}}</td>
+                <td>{{empresa.nUbigeo}}</td>
+                <td>{{empresa.vTipoempre}}</td>
+                <td>{{empresa.nUsuareg}}</td>
+                <td>{{empresa.tFecreg | date:'medium'}}</td>
+                <td>{{empresa.nFlgactivo}}</td>
+                <td>{{empresa.nSedereg}}</td>
+                <td>{{empresa.nUsuaupd}}</td>
+                <td>{{empresa.tFecupd | date:'medium'}}</td>
+                <td>{{empresa.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="empresa.organizacio">
+                        <a [routerLink]="['../organizacio', empresa.organizacio?.id ]" >{{empresa.organizacio?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../empresa', empresa.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'empresa/'+ empresa.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'empresa/'+ empresa.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

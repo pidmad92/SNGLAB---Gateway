@@ -9,6 +9,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Legtipdoc } from './legtipdoc.model';
 import { LegtipdocPopupService } from './legtipdoc-popup.service';
 import { LegtipdocService } from './legtipdoc.service';
+import { Abogado, AbogadoService } from '../abogado';
 import { Legajo, LegajoService } from '../legajo';
 import { Tipdocpj, TipdocpjService } from '../tipdocpj';
 import { Tipresoluc, TipresolucService } from '../tipresoluc';
@@ -22,6 +23,8 @@ export class LegtipdocDialogComponent implements OnInit {
 
     legtipdoc: Legtipdoc;
     isSaving: boolean;
+
+    abogados: Abogado[];
 
     legajos: Legajo[];
 
@@ -40,6 +43,7 @@ export class LegtipdocDialogComponent implements OnInit {
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private legtipdocService: LegtipdocService,
+        private abogadoService: AbogadoService,
         private legajoService: LegajoService,
         private tipdocpjService: TipdocpjService,
         private tipresolucService: TipresolucService,
@@ -49,6 +53,8 @@ export class LegtipdocDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        this.abogadoService.query()
+            .subscribe((res: ResponseWrapper) => { this.abogados = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.legajoService.query()
             .subscribe((res: ResponseWrapper) => { this.legajos = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.tipdocpjService.query()
@@ -89,6 +95,10 @@ export class LegtipdocDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackAbogadoById(index: number, item: Abogado) {
+        return item.id;
     }
 
     trackLegajoById(index: number, item: Legajo) {

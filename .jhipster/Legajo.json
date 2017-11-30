@@ -20,12 +20,6 @@
             "otherEntityField": "id"
         },
         {
-            "relationshipName": "abogado",
-            "otherEntityName": "abogado",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
-        },
-        {
             "relationshipType": "one-to-many",
             "relationshipName": "legtipdoc",
             "otherEntityName": "legtipdoc",
@@ -62,24 +56,6 @@
         },
         {
             "fieldName": "vCodzon",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 2
-        },
-        {
-            "fieldName": "vCodpas",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 10
-        },
-        {
-            "fieldName": "vCodmat",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -179,15 +155,6 @@
                 "maxlength"
             ],
             "fieldValidateRulesMaxlength": 6
-        },
-        {
-            "fieldName": "vCodemp",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 11
         },
         {
             "fieldName": "nCodsuc",

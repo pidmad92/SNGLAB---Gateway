@@ -1,0 +1,79 @@
+
+<div *ngIf="empresa">
+    <h2><span jhiTranslate="gatewayApp.empresa.detail.title">Empresa</span> {{empresa.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.empresa.cDesdocruc">C Desdocruc</span></dt>
+        <dd>
+            <span>{{empresa.cDesdocruc}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empresa.vDesrazons">V Desrazons</span></dt>
+        <dd>
+            <span>{{empresa.vDesrazons}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empresa.vDesdirecc">V Desdirecc</span></dt>
+        <dd>
+            <span>{{empresa.vDesdirecc}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empresa.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{empresa.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empresa.nUbigeo">N Ubigeo</span></dt>
+        <dd>
+            <span>{{empresa.nUbigeo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empresa.vTipoempre">V Tipoempre</span></dt>
+        <dd>
+            <span>{{empresa.vTipoempre}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empresa.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{empresa.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empresa.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{empresa.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empresa.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{empresa.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empresa.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{empresa.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empresa.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{empresa.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empresa.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{empresa.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empresa.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{empresa.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.empresa.organizacio">Organizacio</span></dt>
+        <dd>
+            <div *ngIf="empresa.organizacio">
+                <a [routerLink]="['/organizacio', empresa.organizacio?.id]">{{empresa.organizacio?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'empresa/'+ empresa.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

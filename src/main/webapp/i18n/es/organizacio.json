@@ -1,0 +1,71 @@
+{
+    "gatewayApp": {
+        "organizacio" : {
+            "home": {
+                "title": "Organizacios",
+                "createLabel": "Crear nuevo Organizacio",
+                "createOrEditLabel": "Crear o editar Organizacio",
+                "search": "Search for Organizacio"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Organizacio {{ id }}?"
+            },
+            "detail": {
+                "title": "Organizacio"
+            },
+            "vNumexpedi": "V Numexpedi",
+            "vDesorgani": "V Desorgani",
+            "tFecregist": "T Fecregist",
+            "vDessiglas": "V Dessiglas",
+            "vNumresolu": "V Numresolu",
+            "cDesdocruc": "C Desdocruc",
+            "tFecpresen": "T Fecpresen",
+            "tFecconsta": "T Fecconsta",
+            "vCorreo": "V Correo",
+            "cTelefono": "C Telefono",
+            "vEstado": "V Estado",
+            "vDirecreal": "V Direcreal",
+            "vDirelegal": "V Direlegal",
+            "vTafiliaci": "V Tafiliaci",
+            "vDescalifi": "V Descalifi",
+            "nUbigeo": "N Ubigeo",
+            "nNumdnisin": "N Numdnisin",
+            "vObservaci": "V Observaci",
+            "nNumciiu": "N Numciiu",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "srubro": "Srubro",
+            "tipoorganiz": "Tipoorganiz",
+            "nivelorgani": "Nivelorgani",
+            "ambitoorgan": "Ambitoorgan",
+            "categoria": "Categoria",
+            "categoriaor": "Categoriaor",
+            "region": "Region",
+            "szonal": "Szonal",
+            "librosindic": "Librosindic",
+            "recurso": "Recurso",
+            "empresa": "Empresa",
+            "estatuto": "Estatuto",
+            "palabraclav": "Palabraclav",
+            "document": "Document",
+            "federacion": "Federacion",
+            "sindicato": "Sindicato",
+            "delegado": "Delegado",
+            "juntadirect": "Juntadirect",
+            "afiliado": "Afiliado",
+            "calificacio": "Calificacio"
+        }
+    },
+    "sindicatosApp": {
+        "organizacio" : {
+            "created": "Un nuevo Organizacio ha sido creado con el identificador {{ param }}",
+            "updated": "Un Organizacio ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Organizacio ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

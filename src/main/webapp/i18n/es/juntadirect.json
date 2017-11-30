@@ -1,0 +1,38 @@
+{
+    "gatewayApp": {
+        "juntadirect" : {
+            "home": {
+                "title": "Juntadirects",
+                "createLabel": "Crear nuevo Juntadirect",
+                "createOrEditLabel": "Crear o editar Juntadirect",
+                "search": "Search for Juntadirect"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Juntadirect {{ id }}?"
+            },
+            "detail": {
+                "title": "Juntadirect"
+            },
+            "tFecinicio": "T Fecinicio",
+            "tFecrfinal": "T Fecrfinal",
+            "nTitulares": "N Titulares",
+            "nSuplentes": "N Suplentes",
+            "vEstado": "V Estado",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "organizacio": "Organizacio"
+        }
+    },
+    "sindicatosApp": {
+        "juntadirect" : {
+            "created": "Un nuevo Juntadirect ha sido creado con el identificador {{ param }}",
+            "updated": "Un Juntadirect ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Juntadirect ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

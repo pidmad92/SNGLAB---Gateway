@@ -1,0 +1,181 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myLibrosindicLabel" jhiTranslate="gatewayApp.librosindic.home.createOrEditLabel">Create or edit a Librosindic</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!librosindic.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="librosindic.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.librosindic.vNumreglib" for="field_vNumreglib">V Numreglib</label>
+            <input type="text" class="form-control" name="vNumreglib" id="field_vNumreglib"
+                [(ngModel)]="librosindic.vNumreglib" required maxlength="100" />
+            <div [hidden]="!(editForm.controls.vNumreglib?.dirty && editForm.controls.vNumreglib?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNumreglib?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNumreglib?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.librosindic.vNumlibsin" for="field_vNumlibsin">V Numlibsin</label>
+            <input type="text" class="form-control" name="vNumlibsin" id="field_vNumlibsin"
+                [(ngModel)]="librosindic.vNumlibsin" required maxlength="100" />
+            <div [hidden]="!(editForm.controls.vNumlibsin?.dirty && editForm.controls.vNumlibsin?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNumlibsin?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNumlibsin?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.librosindic.tFecresolu" for="field_tFecresolu">T Fecresolu</label>
+            <div class="d-flex">
+                <input id="field_tFecresolu" type="datetime-local" class="form-control" name="tFecresolu" [(ngModel)]="librosindic.tFecresolu"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.librosindic.vUsuregist" for="field_vUsuregist">V Usuregist</label>
+            <input type="text" class="form-control" name="vUsuregist" id="field_vUsuregist"
+                [(ngModel)]="librosindic.vUsuregist" required maxlength="100" />
+            <div [hidden]="!(editForm.controls.vUsuregist?.dirty && editForm.controls.vUsuregist?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vUsuregist?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vUsuregist?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.librosindic.vEstado" for="field_vEstado">V Estado</label>
+            <input type="text" class="form-control" name="vEstado" id="field_vEstado"
+                [(ngModel)]="librosindic.vEstado" required maxlength="20" />
+            <div [hidden]="!(editForm.controls.vEstado?.dirty && editForm.controls.vEstado?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vEstado?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vEstado?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.librosindic.nUsuareg" for="field_nUsuareg">N Usuareg</label>
+            <input type="number" class="form-control" name="nUsuareg" id="field_nUsuareg"
+                [(ngModel)]="librosindic.nUsuareg" required />
+            <div [hidden]="!(editForm.controls.nUsuareg?.dirty && editForm.controls.nUsuareg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nUsuareg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nUsuareg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.librosindic.tFecreg" for="field_tFecreg">T Fecreg</label>
+            <div class="d-flex">
+                <input id="field_tFecreg" type="datetime-local" class="form-control" name="tFecreg" [(ngModel)]="librosindic.tFecreg"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.tFecreg?.dirty && editForm.controls.tFecreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tFecreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.tFecreg?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.librosindic.nFlgactivo" for="field_nFlgactivo">N Flgactivo</label>
+            <input type="checkbox" class="form-control" name="nFlgactivo" id="field_nFlgactivo"
+                [(ngModel)]="librosindic.nFlgactivo"  />
+            <div [hidden]="!(editForm.controls.nFlgactivo?.dirty && editForm.controls.nFlgactivo?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nFlgactivo?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.librosindic.nSedereg" for="field_nSedereg">N Sedereg</label>
+            <input type="number" class="form-control" name="nSedereg" id="field_nSedereg"
+                [(ngModel)]="librosindic.nSedereg" required />
+            <div [hidden]="!(editForm.controls.nSedereg?.dirty && editForm.controls.nSedereg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nSedereg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nSedereg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.librosindic.nUsuaupd" for="field_nUsuaupd">N Usuaupd</label>
+            <input type="number" class="form-control" name="nUsuaupd" id="field_nUsuaupd"
+                [(ngModel)]="librosindic.nUsuaupd"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.librosindic.tFecupd" for="field_tFecupd">T Fecupd</label>
+            <div class="d-flex">
+                <input id="field_tFecupd" type="datetime-local" class="form-control" name="tFecupd" [(ngModel)]="librosindic.tFecupd"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.librosindic.nSedeupd" for="field_nSedeupd">N Sedeupd</label>
+            <input type="number" class="form-control" name="nSedeupd" id="field_nSedeupd"
+                [(ngModel)]="librosindic.nSedeupd"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.librosindic.tipolibro" for="field_tipolibro">Tipolibro</label>
+            <select class="form-control" id="field_tipolibro" name="tipolibro" [(ngModel)]="librosindic.tipolibro" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="tipolibroOption.id === librosindic.tipolibro?.id ? librosindic.tipolibro : tipolibroOption" *ngFor="let tipolibroOption of tipolibros; trackBy: trackTipolibroById">{{tipolibroOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.librosindic.organizacio" for="field_organizacio">Organizacio</label>
+            <select class="form-control" id="field_organizacio" name="organizacio" [(ngModel)]="librosindic.organizacio" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="organizacioOption.id === librosindic.organizacio?.id ? librosindic.organizacio : organizacioOption" *ngFor="let organizacioOption of organizacios; trackBy: trackOrganizacioById">{{organizacioOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

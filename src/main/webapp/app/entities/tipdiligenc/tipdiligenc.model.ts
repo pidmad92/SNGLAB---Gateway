@@ -4,8 +4,6 @@ export class Tipdiligenc implements BaseEntity {
     constructor(
         public id?: number,
         public vCodsis?: string,
-        public vCodtipres?: string,
-        public vDestipdil?: string,
         public nUsuareg?: number,
         public tFecreg?: any,
         public nFlgactivo?: boolean,

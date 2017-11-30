@@ -15,9 +15,7 @@
             },
             "vCodreg": "V Codreg",
             "vCodzon": "V Codzon",
-            "vCodleg": "V Codleg",
             "nCorrel": "N Correl",
-            "vAboasig": "V Aboasig",
             "dFecasig": "D Fecasig",
             "vHostreg": "V Hostreg",
             "nUsuareg": "N Usuareg",
@@ -27,6 +25,7 @@
             "nUsuaupd": "N Usuaupd",
             "tFecupd": "T Fecupd",
             "nSedeupd": "N Sedeupd",
+            "abogado": "Abogado",
             "legajo": "Legajo"
         }
     },

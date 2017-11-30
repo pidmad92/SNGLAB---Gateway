@@ -1,0 +1,39 @@
+{
+    "gatewayApp": {
+        "document" : {
+            "home": {
+                "title": "Documents",
+                "createLabel": "Crear nuevo Document",
+                "createOrEditLabel": "Crear o editar Document",
+                "search": "Search for Document"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Document {{ id }}?"
+            },
+            "detail": {
+                "title": "Document"
+            },
+            "vNomdocume": "V Nomdocume",
+            "blArchivo": "Bl Archivo",
+            "vObsdocume": "V Obsdocume",
+            "vEstado": "V Estado",
+            "vTipodocum": "V Tipodocum",
+            "tFecregist": "T Fecregist",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "organizacio": "Organizacio"
+        }
+    },
+    "sindicatosApp": {
+        "document" : {
+            "created": "Un nuevo Document ha sido creado con el identificador {{ param }}",
+            "updated": "Un Document ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Document ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

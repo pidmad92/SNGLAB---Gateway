@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "tiporecurso" : {
+            "home": {
+                "title": "Tiporecursos",
+                "createLabel": "Crear nuevo Tiporecurso",
+                "createOrEditLabel": "Crear o editar Tiporecurso",
+                "search": "Search for Tiporecurso"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tiporecurso {{ id }}?"
+            },
+            "detail": {
+                "title": "Tiporecurso"
+            },
+            "vDestrecur": "V Destrecur",
+            "vEstado": "V Estado",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "recurso": "Recurso"
+        }
+    },
+    "sindicatosApp": {
+        "tiporecurso" : {
+            "created": "Un nuevo Tiporecurso ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tiporecurso ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tiporecurso ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -1,0 +1,101 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.afiliado.home.title">Afiliados</span>
+        <button class="btn btn-primary float-right jh-create-entity create-afiliado" [routerLink]="['/', { outlets: { popup: ['afiliado-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.afiliado.home.createLabel">
+            Create new Afiliado
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.afiliado.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="afiliados">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.afiliado.vTipafilia">V Tipafilia</span></th>
+            <th><span jhiTranslate="gatewayApp.afiliado.vEstado">V Estado</span></th>
+            <th><span jhiTranslate="gatewayApp.afiliado.nCodperson">N Codperson</span></th>
+            <th><span jhiTranslate="gatewayApp.afiliado.nCodafilia">N Codafilia</span></th>
+            <th><span jhiTranslate="gatewayApp.afiliado.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.afiliado.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.afiliado.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.afiliado.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.afiliado.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.afiliado.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.afiliado.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.afiliado.scargo">Scargo</span></th>
+            <th><span jhiTranslate="gatewayApp.afiliado.organizacio">Organizacio</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let afiliado of afiliados ;trackBy: trackId">
+                <td><a [routerLink]="['../afiliado', afiliado.id ]">{{afiliado.id}}</a></td>
+                <td>{{afiliado.vTipafilia}}</td>
+                <td>{{afiliado.vEstado}}</td>
+                <td>{{afiliado.nCodperson}}</td>
+                <td>{{afiliado.nCodafilia}}</td>
+                <td>{{afiliado.nUsuareg}}</td>
+                <td>{{afiliado.tFecreg | date:'medium'}}</td>
+                <td>{{afiliado.nFlgactivo}}</td>
+                <td>{{afiliado.nSedereg}}</td>
+                <td>{{afiliado.nUsuaupd}}</td>
+                <td>{{afiliado.tFecupd | date:'medium'}}</td>
+                <td>{{afiliado.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="afiliado.scargo">
+                        <a [routerLink]="['../scargo', afiliado.scargo?.id ]" >{{afiliado.scargo?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="afiliado.organizacio">
+                        <a [routerLink]="['../organizacio', afiliado.organizacio?.id ]" >{{afiliado.organizacio?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../afiliado', afiliado.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'afiliado/'+ afiliado.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'afiliado/'+ afiliado.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

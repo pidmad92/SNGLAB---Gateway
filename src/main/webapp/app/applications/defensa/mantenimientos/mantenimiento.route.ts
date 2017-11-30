@@ -27,7 +27,7 @@ export const mantenimientoRoute: Routes = [
                 outlet: 'popupexp'
             },
             {
-                path: ':id/editar',
+                path: '/:id/editar',
                 component: MantenimientoResultadoPopupComponent,
                 data: {
                     authorities: ['ROLE_USER'],

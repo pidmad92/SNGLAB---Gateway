@@ -1,6 +1,25 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "empleador",
+            "otherEntityName": "empleador",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "trabajador",
+            "otherEntityName": "trabajador",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "abogado",
+            "otherEntityName": "abogado",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
     "fields": [
         {
             "fieldName": "vCodreg",
@@ -73,15 +92,6 @@
                 "maxlength"
             ],
             "fieldValidateRulesMaxlength": 4
-        },
-        {
-            "fieldName": "vDoctor",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 15
         },
         {
             "fieldName": "nUsuareg",

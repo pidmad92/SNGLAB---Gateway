@@ -12,25 +12,13 @@
         <dd>
             <span>{{legtipdoc.vCodzon}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.legtipdoc.vCodleg">V Codleg</span></dt>
-        <dd>
-            <span>{{legtipdoc.vCodleg}}</span>
-        </dd>
         <dt><span jhiTranslate="gatewayApp.legtipdoc.nCorrel">N Correl</span></dt>
         <dd>
             <span>{{legtipdoc.nCorrel}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.legtipdoc.vCodtdoc">V Codtdoc</span></dt>
-        <dd>
-            <span>{{legtipdoc.vCodtdoc}}</span>
-        </dd>
         <dt><span jhiTranslate="gatewayApp.legtipdoc.vCodsis">V Codsis</span></dt>
         <dd>
             <span>{{legtipdoc.vCodsis}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.legtipdoc.vCodtipres">V Codtipres</span></dt>
-        <dd>
-            <span>{{legtipdoc.vCodtipres}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.legtipdoc.vAsundoc">V Asundoc</span></dt>
         <dd>
@@ -92,10 +80,6 @@
         <dd>
             <span>{{legtipdoc.nNumres}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.legtipdoc.vAboasig">V Aboasig</span></dt>
-        <dd>
-            <span>{{legtipdoc.vAboasig}}</span>
-        </dd>
         <dt><span jhiTranslate="gatewayApp.legtipdoc.nMondol">N Mondol</span></dt>
         <dd>
             <span>{{legtipdoc.nMondol}}</span>
@@ -103,14 +87,6 @@
         <dt><span jhiTranslate="gatewayApp.legtipdoc.vCodloc">V Codloc</span></dt>
         <dd>
             <span>{{legtipdoc.vCodloc}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.legtipdoc.vCodtipdil">V Codtipdil</span></dt>
-        <dd>
-            <span>{{legtipdoc.vCodtipdil}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.legtipdoc.vCodtipaud">V Codtipaud</span></dt>
-        <dd>
-            <span>{{legtipdoc.vCodtipaud}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.legtipdoc.vFlgconc">V Flgconc</span></dt>
         <dd>
@@ -151,6 +127,12 @@
         <dt><span jhiTranslate="gatewayApp.legtipdoc.nSedeupd">N Sedeupd</span></dt>
         <dd>
             <span>{{legtipdoc.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legtipdoc.abogado">Abogado</span></dt>
+        <dd>
+            <div *ngIf="legtipdoc.abogado">
+                <a [routerLink]="['/abogado', legtipdoc.abogado?.id]">{{legtipdoc.abogado?.id}}</a>
+            </div>
         </dd>
         <dt><span jhiTranslate="gatewayApp.legtipdoc.legajo">Legajo</span></dt>
         <dd>

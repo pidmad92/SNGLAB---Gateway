@@ -1,0 +1,37 @@
+{
+    "gatewayApp": {
+        "calificacio" : {
+            "home": {
+                "title": "Calificacios",
+                "createLabel": "Crear nuevo Calificacio",
+                "createOrEditLabel": "Crear o editar Calificacio",
+                "search": "Search for Calificacio"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Calificacio {{ id }}?"
+            },
+            "detail": {
+                "title": "Calificacio"
+            },
+            "vDescalifi": "V Descalifi",
+            "nPresento": "N Presento",
+            "nEnregla": "N Enregla",
+            "vEstado": "V Estado",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "organizacio": "Organizacio"
+        }
+    },
+    "sindicatosApp": {
+        "calificacio" : {
+            "created": "Un nuevo Calificacio ha sido creado con el identificador {{ param }}",
+            "updated": "Un Calificacio ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Calificacio ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

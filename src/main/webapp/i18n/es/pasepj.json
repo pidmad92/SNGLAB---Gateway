@@ -15,12 +15,9 @@
             },
             "vCodreg": "V Codreg",
             "vCodzon": "V Codzon",
-            "vCodpas": "V Codpas",
-            "vCodtra": "V Codtra",
             "vCodtdcide": "V Codtdcide",
             "nCorrel": "N Correl",
             "vCodsis": "V Codsis",
-            "vCodemp": "V Codemp",
             "nCodsuc": "N Codsuc",
             "vCodcon": "V Codcon",
             "dFecpas": "D Fecpas",
@@ -48,7 +45,8 @@
             "nSedereg": "N Sedereg",
             "nUsuaupd": "N Usuaupd",
             "tFecupd": "T Fecupd",
-            "nSedeupd": "N Sedeupd"
+            "nSedeupd": "N Sedeupd",
+            "empleador": "Empleador"
         }
     },
     "patrocinioApp": {

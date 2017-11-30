@@ -133,21 +133,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.falsoexp.vDoctor" for="field_vDoctor">V Doctor</label>
-            <input type="text" class="form-control" name="vDoctor" id="field_vDoctor"
-                [(ngModel)]="falsoexp.vDoctor" required maxlength="15" />
-            <div [hidden]="!(editForm.controls.vDoctor?.dirty && editForm.controls.vDoctor?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vDoctor?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vDoctor?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
-                   This field cannot be longer than 15 characters.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.falsoexp.nUsuareg" for="field_nUsuareg">N Usuareg</label>
             <input type="number" class="form-control" name="nUsuareg" id="field_nUsuareg"
                 [(ngModel)]="falsoexp.nUsuareg" required />
@@ -223,6 +208,27 @@
                 [(ngModel)]="falsoexp.nSedeupd"  />
         </div>
 
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.falsoexp.empleador" for="field_empleador">Empleador</label>
+            <select class="form-control" id="field_empleador" name="empleador" [(ngModel)]="falsoexp.empleador" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="empleadorOption.id === falsoexp.empleador?.id ? falsoexp.empleador : empleadorOption" *ngFor="let empleadorOption of empleadors; trackBy: trackEmpleadorById">{{empleadorOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.falsoexp.trabajador" for="field_trabajador">Trabajador</label>
+            <select class="form-control" id="field_trabajador" name="trabajador" [(ngModel)]="falsoexp.trabajador" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="trabajadorOption.id === falsoexp.trabajador?.id ? falsoexp.trabajador : trabajadorOption" *ngFor="let trabajadorOption of trabajadors; trackBy: trackTrabajadorById">{{trabajadorOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.falsoexp.abogado" for="field_abogado">Abogado</label>
+            <select class="form-control" id="field_abogado" name="abogado" [(ngModel)]="falsoexp.abogado" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="abogadoOption.id === falsoexp.abogado?.id ? falsoexp.abogado : abogadoOption" *ngFor="let abogadoOption of abogados; trackBy: trackAbogadoById">{{abogadoOption.id}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

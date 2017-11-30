@@ -1,0 +1,101 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "tiporecurso",
+            "otherEntityName": "tiporecurso",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "organizacio",
+            "otherEntityName": "organizacio",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "vNumrecurs",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "tFecrecurs",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "vEstado",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "tFecprovei",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "vObsrecurs",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "nUsuareg",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tFecreg",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nFlgactivo",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nSedereg",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nUsuaupd",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tFecupd",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "nSedeupd",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171130202910",
+    "entityTableName": "recurso",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "sindicatos"
+}

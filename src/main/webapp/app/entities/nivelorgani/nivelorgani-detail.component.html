@@ -1,0 +1,57 @@
+
+<div *ngIf="nivelorgani">
+    <h2><span jhiTranslate="gatewayApp.nivelorgani.detail.title">Nivelorgani</span> {{nivelorgani.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.nivelorgani.vDesnivorg">V Desnivorg</span></dt>
+        <dd>
+            <span>{{nivelorgani.vDesnivorg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.nivelorgani.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{nivelorgani.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.nivelorgani.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{nivelorgani.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.nivelorgani.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{nivelorgani.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.nivelorgani.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{nivelorgani.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.nivelorgani.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{nivelorgani.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.nivelorgani.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{nivelorgani.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.nivelorgani.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{nivelorgani.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.nivelorgani.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{nivelorgani.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'nivelorgani/'+ nivelorgani.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

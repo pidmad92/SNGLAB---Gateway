@@ -1,0 +1,91 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.palabraclav.home.title">Palabraclavs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-palabraclav" [routerLink]="['/', { outlets: { popup: ['palabraclav-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.palabraclav.home.createLabel">
+            Create new Palabraclav
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.palabraclav.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="palabraclavs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.palabraclav.vDespalcla">V Despalcla</span></th>
+            <th><span jhiTranslate="gatewayApp.palabraclav.vEstado">V Estado</span></th>
+            <th><span jhiTranslate="gatewayApp.palabraclav.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.palabraclav.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.palabraclav.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.palabraclav.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.palabraclav.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.palabraclav.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.palabraclav.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.palabraclav.organizacio">Organizacio</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let palabraclav of palabraclavs ;trackBy: trackId">
+                <td><a [routerLink]="['../palabraclav', palabraclav.id ]">{{palabraclav.id}}</a></td>
+                <td>{{palabraclav.vDespalcla}}</td>
+                <td>{{palabraclav.vEstado}}</td>
+                <td>{{palabraclav.nUsuareg}}</td>
+                <td>{{palabraclav.tFecreg | date:'medium'}}</td>
+                <td>{{palabraclav.nFlgactivo}}</td>
+                <td>{{palabraclav.nSedereg}}</td>
+                <td>{{palabraclav.nUsuaupd}}</td>
+                <td>{{palabraclav.tFecupd | date:'medium'}}</td>
+                <td>{{palabraclav.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="palabraclav.organizacio">
+                        <a [routerLink]="['../organizacio', palabraclav.organizacio?.id ]" >{{palabraclav.organizacio?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../palabraclav', palabraclav.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'palabraclav/'+ palabraclav.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'palabraclav/'+ palabraclav.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

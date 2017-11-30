@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "region" : {
+            "home": {
+                "title": "Regions",
+                "createLabel": "Crear nuevo Region",
+                "createOrEditLabel": "Crear o editar Region",
+                "search": "Search for Region"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Region {{ id }}?"
+            },
+            "detail": {
+                "title": "Region"
+            },
+            "vDesregion": "V Desregion",
+            "vEstado": "V Estado",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "organizacio": "Organizacio"
+        }
+    },
+    "sindicatosApp": {
+        "region" : {
+            "created": "Un nuevo Region ha sido creado con el identificador {{ param }}",
+            "updated": "Un Region ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Region ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

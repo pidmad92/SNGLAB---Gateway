@@ -12,17 +12,9 @@
         <dd>
             <span>{{legajoasig.vCodzon}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.legajoasig.vCodleg">V Codleg</span></dt>
-        <dd>
-            <span>{{legajoasig.vCodleg}}</span>
-        </dd>
         <dt><span jhiTranslate="gatewayApp.legajoasig.nCorrel">N Correl</span></dt>
         <dd>
             <span>{{legajoasig.nCorrel}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.legajoasig.vAboasig">V Aboasig</span></dt>
-        <dd>
-            <span>{{legajoasig.vAboasig}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.legajoasig.dFecasig">D Fecasig</span></dt>
         <dd>
@@ -59,6 +51,12 @@
         <dt><span jhiTranslate="gatewayApp.legajoasig.nSedeupd">N Sedeupd</span></dt>
         <dd>
             <span>{{legajoasig.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajoasig.abogado">Abogado</span></dt>
+        <dd>
+            <div *ngIf="legajoasig.abogado">
+                <a [routerLink]="['/abogado', legajoasig.abogado?.id]">{{legajoasig.abogado?.id}}</a>
+            </div>
         </dd>
         <dt><span jhiTranslate="gatewayApp.legajoasig.legajo">Legajo</span></dt>
         <dd>
