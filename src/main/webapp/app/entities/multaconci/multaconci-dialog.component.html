@@ -49,12 +49,12 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.multaconci.vcodigo" for="field_vcodigo">Vcodigo</label>
-            <input type="text" class="form-control" name="vcodigo" id="field_vcodigo"
-                [(ngModel)]="multaconci.vcodigo" maxlength="20" />
-            <div [hidden]="!(editForm.controls.vcodigo?.dirty && editForm.controls.vcodigo?.invalid)">
+            <label class="form-control-label" jhiTranslate="gatewayApp.multaconci.vCodigo" for="field_vCodigo">V Codigo</label>
+            <input type="text" class="form-control" name="vCodigo" id="field_vCodigo"
+                [(ngModel)]="multaconci.vCodigo" maxlength="20" />
+            <div [hidden]="!(editForm.controls.vCodigo?.dirty && editForm.controls.vCodigo?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vcodigo?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   [hidden]="!editForm.controls.vCodigo?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
                    This field cannot be longer than 20 characters.
                 </small>
             </div>

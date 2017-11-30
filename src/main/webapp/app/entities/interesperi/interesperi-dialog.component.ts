@@ -9,6 +9,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Interesperi } from './interesperi.model';
 import { InteresperiPopupService } from './interesperi-popup.service';
 import { InteresperiService } from './interesperi.service';
+import { Calperiodo, CalperiodoService } from '../calperiodo';
 import { Tipinteres, TipinteresService } from '../tipinteres';
 import { ResponseWrapper } from '../../shared';
 
@@ -21,12 +22,15 @@ export class InteresperiDialogComponent implements OnInit {
     interesperi: Interesperi;
     isSaving: boolean;
 
+    calperiodos: Calperiodo[];
+
     tipinteres: Tipinteres[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private interesperiService: InteresperiService,
+        private calperiodoService: CalperiodoService,
         private tipinteresService: TipinteresService,
         private eventManager: JhiEventManager
     ) {
@@ -34,6 +38,19 @@ export class InteresperiDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        this.calperiodoService
+            .query({filter: 'interesperi-is-null'})
+            .subscribe((res: ResponseWrapper) => {
+                if (!this.interesperi.calperiodo || !this.interesperi.calperiodo.id) {
+                    this.calperiodos = res.json;
+                } else {
+                    this.calperiodoService
+                        .find(this.interesperi.calperiodo.id)
+                        .subscribe((subRes: Calperiodo) => {
+                            this.calperiodos = [subRes].concat(res.json);
+                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
+                }
+            }, (res: ResponseWrapper) => this.onError(res.json));
         this.tipinteresService.query()
             .subscribe((res: ResponseWrapper) => { this.tipinteres = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
@@ -70,6 +87,10 @@ export class InteresperiDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackCalperiodoById(index: number, item: Calperiodo) {
+        return item.id;
     }
 
     trackTipinteresById(index: number, item: Tipinteres) {

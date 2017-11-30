@@ -106,6 +106,12 @@
                 <a [routerLink]="['/trabajador', expediente.trabajador?.id]">{{expediente.trabajador?.id}}</a>
             </div>
         </dd>
+        <dt><span jhiTranslate="gatewayApp.expediente.pasegl">Pasegl</span></dt>
+        <dd>
+            <div *ngIf="expediente.pasegl">
+                <a [routerLink]="['/pasegl', expediente.pasegl?.id]">{{expediente.pasegl?.id}}</a>
+            </div>
+        </dd>
         <dt><span jhiTranslate="gatewayApp.expediente.estexpedien">Estexpedien</span></dt>
         <dd>
             <div *ngIf="expediente.estexpedien">

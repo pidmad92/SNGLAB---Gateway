@@ -1,0 +1,550 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myLegajoLabel" jhiTranslate="gatewayApp.legajo.home.createOrEditLabel">Create or edit a Legajo</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!legajo.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="legajo.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vCodreg" for="field_vCodreg">V Codreg</label>
+            <input type="text" class="form-control" name="vCodreg" id="field_vCodreg"
+                [(ngModel)]="legajo.vCodreg" required maxlength="2" />
+            <div [hidden]="!(editForm.controls.vCodreg?.dirty && editForm.controls.vCodreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodreg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
+                   This field cannot be longer than 2 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vCodzon" for="field_vCodzon">V Codzon</label>
+            <input type="text" class="form-control" name="vCodzon" id="field_vCodzon"
+                [(ngModel)]="legajo.vCodzon" required maxlength="2" />
+            <div [hidden]="!(editForm.controls.vCodzon?.dirty && editForm.controls.vCodzon?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodzon?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodzon?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
+                   This field cannot be longer than 2 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vCodpas" for="field_vCodpas">V Codpas</label>
+            <input type="text" class="form-control" name="vCodpas" id="field_vCodpas"
+                [(ngModel)]="legajo.vCodpas" required maxlength="10" />
+            <div [hidden]="!(editForm.controls.vCodpas?.dirty && editForm.controls.vCodpas?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodpas?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodpas?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 10 }">
+                   This field cannot be longer than 10 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vCodmat" for="field_vCodmat">V Codmat</label>
+            <input type="text" class="form-control" name="vCodmat" id="field_vCodmat"
+                [(ngModel)]="legajo.vCodmat" required maxlength="2" />
+            <div [hidden]="!(editForm.controls.vCodmat?.dirty && editForm.controls.vCodmat?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodmat?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodmat?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
+                   This field cannot be longer than 2 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vNumexp" for="field_vNumexp">V Numexp</label>
+            <input type="text" class="form-control" name="vNumexp" id="field_vNumexp"
+                [(ngModel)]="legajo.vNumexp" required maxlength="30" />
+            <div [hidden]="!(editForm.controls.vNumexp?.dirty && editForm.controls.vNumexp?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNumexp?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNumexp?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 30 }">
+                   This field cannot be longer than 30 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vNomjuzg" for="field_vNomjuzg">V Nomjuzg</label>
+            <input type="text" class="form-control" name="vNomjuzg" id="field_vNomjuzg"
+                [(ngModel)]="legajo.vNomjuzg" required maxlength="50" />
+            <div [hidden]="!(editForm.controls.vNomjuzg?.dirty && editForm.controls.vNomjuzg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNomjuzg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNomjuzg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vNomjuez" for="field_vNomjuez">V Nomjuez</label>
+            <input type="text" class="form-control" name="vNomjuez" id="field_vNomjuez"
+                [(ngModel)]="legajo.vNomjuez" required maxlength="50" />
+            <div [hidden]="!(editForm.controls.vNomjuez?.dirty && editForm.controls.vNomjuez?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNomjuez?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNomjuez?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vEstleg" for="field_vEstleg">V Estleg</label>
+            <input type="text" class="form-control" name="vEstleg" id="field_vEstleg"
+                [(ngModel)]="legajo.vEstleg" required maxlength="1" />
+            <div [hidden]="!(editForm.controls.vEstleg?.dirty && editForm.controls.vEstleg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vEstleg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vEstleg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
+                   This field cannot be longer than 1 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.dFecconc" for="field_dFecconc">D Fecconc</label>
+            <div class="input-group">
+                <input id="field_dFecconc" type="text" class="form-control" name="dFecconc" ngbDatepicker  #dFecconcDp="ngbDatepicker" [(ngModel)]="legajo.dFecconc"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dFecconcDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vCodusureg" for="field_vCodusureg">V Codusureg</label>
+            <input type="text" class="form-control" name="vCodusureg" id="field_vCodusureg"
+                [(ngModel)]="legajo.vCodusureg" required maxlength="15" />
+            <div [hidden]="!(editForm.controls.vCodusureg?.dirty && editForm.controls.vCodusureg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodusureg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodusureg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                   This field cannot be longer than 15 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vHostreg" for="field_vHostreg">V Hostreg</label>
+            <input type="text" class="form-control" name="vHostreg" id="field_vHostreg"
+                [(ngModel)]="legajo.vHostreg" required maxlength="30" />
+            <div [hidden]="!(editForm.controls.vHostreg?.dirty && editForm.controls.vHostreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vHostreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vHostreg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 30 }">
+                   This field cannot be longer than 30 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vCodusumod" for="field_vCodusumod">V Codusumod</label>
+            <input type="text" class="form-control" name="vCodusumod" id="field_vCodusumod"
+                [(ngModel)]="legajo.vCodusumod" required maxlength="15" />
+            <div [hidden]="!(editForm.controls.vCodusumod?.dirty && editForm.controls.vCodusumod?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodusumod?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodusumod?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                   This field cannot be longer than 15 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.dFecmod" for="field_dFecmod">D Fecmod</label>
+            <div class="input-group">
+                <input id="field_dFecmod" type="text" class="form-control" name="dFecmod" ngbDatepicker  #dFecmodDp="ngbDatepicker" [(ngModel)]="legajo.dFecmod"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dFecmodDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vHostmod" for="field_vHostmod">V Hostmod</label>
+            <input type="text" class="form-control" name="vHostmod" id="field_vHostmod"
+                [(ngModel)]="legajo.vHostmod" required maxlength="30" />
+            <div [hidden]="!(editForm.controls.vHostmod?.dirty && editForm.controls.vHostmod?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vHostmod?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vHostmod?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 30 }">
+                   This field cannot be longer than 30 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.dFecexp" for="field_dFecexp">D Fecexp</label>
+            <div class="input-group">
+                <input id="field_dFecexp" type="text" class="form-control" name="dFecexp" ngbDatepicker  #dFecexpDp="ngbDatepicker" [(ngModel)]="legajo.dFecexp"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dFecexpDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vNumleg" for="field_vNumleg">V Numleg</label>
+            <input type="text" class="form-control" name="vNumleg" id="field_vNumleg"
+                [(ngModel)]="legajo.vNumleg" required maxlength="6" />
+            <div [hidden]="!(editForm.controls.vNumleg?.dirty && editForm.controls.vNumleg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNumleg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNumleg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 6 }">
+                   This field cannot be longer than 6 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vCodemp" for="field_vCodemp">V Codemp</label>
+            <input type="text" class="form-control" name="vCodemp" id="field_vCodemp"
+                [(ngModel)]="legajo.vCodemp" required maxlength="11" />
+            <div [hidden]="!(editForm.controls.vCodemp?.dirty && editForm.controls.vCodemp?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodemp?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodemp?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 11 }">
+                   This field cannot be longer than 11 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.nCodsuc" for="field_nCodsuc">N Codsuc</label>
+            <input type="number" class="form-control" name="nCodsuc" id="field_nCodsuc"
+                [(ngModel)]="legajo.nCodsuc" required />
+            <div [hidden]="!(editForm.controls.nCodsuc?.dirty && editForm.controls.nCodsuc?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nCodsuc?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nCodsuc?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vFlginst" for="field_vFlginst">V Flginst</label>
+            <input type="text" class="form-control" name="vFlginst" id="field_vFlginst"
+                [(ngModel)]="legajo.vFlginst" required maxlength="1" />
+            <div [hidden]="!(editForm.controls.vFlginst?.dirty && editForm.controls.vFlginst?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vFlginst?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vFlginst?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
+                   This field cannot be longer than 1 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vNumexpda" for="field_vNumexpda">V Numexpda</label>
+            <input type="text" class="form-control" name="vNumexpda" id="field_vNumexpda"
+                [(ngModel)]="legajo.vNumexpda" required maxlength="30" />
+            <div [hidden]="!(editForm.controls.vNumexpda?.dirty && editForm.controls.vNumexpda?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNumexpda?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNumexpda?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 30 }">
+                   This field cannot be longer than 30 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.dFecexpda" for="field_dFecexpda">D Fecexpda</label>
+            <div class="input-group">
+                <input id="field_dFecexpda" type="text" class="form-control" name="dFecexpda" ngbDatepicker  #dFecexpdaDp="ngbDatepicker" [(ngModel)]="legajo.dFecexpda"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dFecexpdaDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vNomjuzda" for="field_vNomjuzda">V Nomjuzda</label>
+            <input type="text" class="form-control" name="vNomjuzda" id="field_vNomjuzda"
+                [(ngModel)]="legajo.vNomjuzda" required maxlength="50" />
+            <div [hidden]="!(editForm.controls.vNomjuzda?.dirty && editForm.controls.vNomjuzda?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNomjuzda?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNomjuzda?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vNomjuezda" for="field_vNomjuezda">V Nomjuezda</label>
+            <input type="text" class="form-control" name="vNomjuezda" id="field_vNomjuezda"
+                [(ngModel)]="legajo.vNomjuezda" required maxlength="50" />
+            <div [hidden]="!(editForm.controls.vNomjuezda?.dirty && editForm.controls.vNomjuezda?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNomjuezda?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vNomjuezda?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vCodlegrig" for="field_vCodlegrig">V Codlegrig</label>
+            <input type="text" class="form-control" name="vCodlegrig" id="field_vCodlegrig"
+                [(ngModel)]="legajo.vCodlegrig" required maxlength="6" />
+            <div [hidden]="!(editForm.controls.vCodlegrig?.dirty && editForm.controls.vCodlegrig?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodlegrig?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodlegrig?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 6 }">
+                   This field cannot be longer than 6 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vTiporig" for="field_vTiporig">V Tiporig</label>
+            <input type="text" class="form-control" name="vTiporig" id="field_vTiporig"
+                [(ngModel)]="legajo.vTiporig" required maxlength="1" />
+            <div [hidden]="!(editForm.controls.vTiporig?.dirty && editForm.controls.vTiporig?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vTiporig?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vTiporig?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
+                   This field cannot be longer than 1 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vFlgarch" for="field_vFlgarch">V Flgarch</label>
+            <input type="text" class="form-control" name="vFlgarch" id="field_vFlgarch"
+                [(ngModel)]="legajo.vFlgarch" required maxlength="1" />
+            <div [hidden]="!(editForm.controls.vFlgarch?.dirty && editForm.controls.vFlgarch?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vFlgarch?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vFlgarch?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
+                   This field cannot be longer than 1 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vFlgcaut" for="field_vFlgcaut">V Flgcaut</label>
+            <input type="text" class="form-control" name="vFlgcaut" id="field_vFlgcaut"
+                [(ngModel)]="legajo.vFlgcaut" required maxlength="1" />
+            <div [hidden]="!(editForm.controls.vFlgcaut?.dirty && editForm.controls.vFlgcaut?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vFlgcaut?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vFlgcaut?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
+                   This field cannot be longer than 1 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vFlganul" for="field_vFlganul">V Flganul</label>
+            <input type="text" class="form-control" name="vFlganul" id="field_vFlganul"
+                [(ngModel)]="legajo.vFlganul" required maxlength="1" />
+            <div [hidden]="!(editForm.controls.vFlganul?.dirty && editForm.controls.vFlganul?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vFlganul?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vFlganul?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
+                   This field cannot be longer than 1 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vCodloc" for="field_vCodloc">V Codloc</label>
+            <input type="text" class="form-control" name="vCodloc" id="field_vCodloc"
+                [(ngModel)]="legajo.vCodloc" required maxlength="6" />
+            <div [hidden]="!(editForm.controls.vCodloc?.dirty && editForm.controls.vCodloc?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodloc?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodloc?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 6 }">
+                   This field cannot be longer than 6 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.nUsuareg" for="field_nUsuareg">N Usuareg</label>
+            <input type="number" class="form-control" name="nUsuareg" id="field_nUsuareg"
+                [(ngModel)]="legajo.nUsuareg" required />
+            <div [hidden]="!(editForm.controls.nUsuareg?.dirty && editForm.controls.nUsuareg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nUsuareg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nUsuareg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.tFecreg" for="field_tFecreg">T Fecreg</label>
+            <div class="d-flex">
+                <input id="field_tFecreg" type="datetime-local" class="form-control" name="tFecreg" [(ngModel)]="legajo.tFecreg"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.tFecreg?.dirty && editForm.controls.tFecreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tFecreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.tFecreg?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.nFlgactivo" for="field_nFlgactivo">N Flgactivo</label>
+            <input type="checkbox" class="form-control" name="nFlgactivo" id="field_nFlgactivo"
+                [(ngModel)]="legajo.nFlgactivo"  />
+            <div [hidden]="!(editForm.controls.nFlgactivo?.dirty && editForm.controls.nFlgactivo?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nFlgactivo?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.nSedereg" for="field_nSedereg">N Sedereg</label>
+            <input type="number" class="form-control" name="nSedereg" id="field_nSedereg"
+                [(ngModel)]="legajo.nSedereg" required />
+            <div [hidden]="!(editForm.controls.nSedereg?.dirty && editForm.controls.nSedereg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nSedereg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nSedereg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.nUsuaupd" for="field_nUsuaupd">N Usuaupd</label>
+            <input type="number" class="form-control" name="nUsuaupd" id="field_nUsuaupd"
+                [(ngModel)]="legajo.nUsuaupd"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.tFecupd" for="field_tFecupd">T Fecupd</label>
+            <div class="d-flex">
+                <input id="field_tFecupd" type="datetime-local" class="form-control" name="tFecupd" [(ngModel)]="legajo.tFecupd"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.nSedeupd" for="field_nSedeupd">N Sedeupd</label>
+            <input type="number" class="form-control" name="nSedeupd" id="field_nSedeupd"
+                [(ngModel)]="legajo.nSedeupd"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.empleador" for="field_empleador">Empleador</label>
+            <select class="form-control" id="field_empleador" name="empleador" [(ngModel)]="legajo.empleador" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="empleadorOption.id === legajo.empleador?.id ? legajo.empleador : empleadorOption" *ngFor="let empleadorOption of empleadors; trackBy: trackEmpleadorById">{{empleadorOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.pasegl" for="field_pasegl">Pasegl</label>
+            <select class="form-control" id="field_pasegl" name="pasegl" [(ngModel)]="legajo.pasegl" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="paseglOption.id === legajo.pasegl?.id ? legajo.pasegl : paseglOption" *ngFor="let paseglOption of pasegls; trackBy: trackPaseglById">{{paseglOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.trabajador" for="field_trabajador">Trabajador</label>
+            <select class="form-control" id="field_trabajador" name="trabajador" [(ngModel)]="legajo.trabajador" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="trabajadorOption.id === legajo.trabajador?.id ? legajo.trabajador : trabajadorOption" *ngFor="let trabajadorOption of trabajadors; trackBy: trackTrabajadorById">{{trabajadorOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.abogado" for="field_abogado">Abogado</label>
+            <select class="form-control" id="field_abogado" name="abogado" [(ngModel)]="legajo.abogado" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="abogadoOption.id === legajo.abogado?.id ? legajo.abogado : abogadoOption" *ngFor="let abogadoOption of abogados; trackBy: trackAbogadoById">{{abogadoOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.materia" for="field_materia">Materia</label>
+            <select class="form-control" id="field_materia" name="materia" [(ngModel)]="legajo.materia" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="materiaOption.id === legajo.materia?.id ? legajo.materia : materiaOption" *ngFor="let materiaOption of materias; trackBy: trackMateriaById">{{materiaOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

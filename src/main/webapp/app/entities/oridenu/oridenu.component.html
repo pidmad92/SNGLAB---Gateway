@@ -30,7 +30,7 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.oridenu.vDescripcion">V Descripcion</span></th>
+            <th><span jhiTranslate="gatewayApp.oridenu.vDescrip">V Descrip</span></th>
             <th><span jhiTranslate="gatewayApp.oridenu.vEstado">V Estado</span></th>
             <th><span jhiTranslate="gatewayApp.oridenu.vUsuareg">V Usuareg</span></th>
             <th><span jhiTranslate="gatewayApp.oridenu.tFecreg">T Fecreg</span></th>
@@ -45,7 +45,7 @@
             <tbody>
             <tr *ngFor="let oridenu of oridenus ;trackBy: trackId">
                 <td><a [routerLink]="['../oridenu', oridenu.id ]">{{oridenu.id}}</a></td>
-                <td>{{oridenu.vDescripcion}}</td>
+                <td>{{oridenu.vDescrip}}</td>
                 <td>{{oridenu.vEstado}}</td>
                 <td>{{oridenu.vUsuareg}}</td>
                 <td>{{oridenu.tFecreg | date:'medium'}}</td>

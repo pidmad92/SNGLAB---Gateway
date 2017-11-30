@@ -28,11 +28,11 @@ export class ConciliaPopupService {
 
             if (id) {
                 this.conciliaService.find(id).subscribe((concilia) => {
-                    if (concilia.dFecConci) {
-                        concilia.dFecConci = {
-                            year: concilia.dFecConci.getFullYear(),
-                            month: concilia.dFecConci.getMonth() + 1,
-                            day: concilia.dFecConci.getDate()
+                    if (concilia.dFecconci) {
+                        concilia.dFecconci = {
+                            year: concilia.dFecconci.getFullYear(),
+                            month: concilia.dFecconci.getMonth() + 1,
+                            day: concilia.dFecconci.getDate()
                         };
                     }
                     concilia.tFecreg = this.datePipe

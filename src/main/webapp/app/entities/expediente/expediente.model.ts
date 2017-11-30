@@ -27,11 +27,11 @@ export class Expediente implements BaseEntity {
         public empleador?: BaseEntity,
         public tippersona?: BaseEntity,
         public trabajador?: BaseEntity,
+        public pasegl?: BaseEntity,
         public concilias?: BaseEntity[],
         public docexpediens?: BaseEntity[],
         public resolucrds?: BaseEntity[],
         public notificas?: BaseEntity[],
-        public pasegl?: BaseEntity,
         public estexpedien?: BaseEntity,
         public resolutor?: BaseEntity,
     ) {

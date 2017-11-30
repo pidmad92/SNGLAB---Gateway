@@ -59,9 +59,9 @@ export class TopbarComponent implements OnInit {
         } else if (this.ruta === '8') {
             this.router.navigate(['/dictamenes/listado-solicitudes']);
         } else if (this.ruta === '3') {
-            this.router.navigate(['/defensa/registro-expediente' , { outlets: { wizard: ['datos-pase'] } }]);
+            this.router.navigate(['/defensa/expediente/registro' , { outlets: { wizard: ['datos-pase'] } }]);
         } else if (this.ruta === '4') {
-            this.router.navigate(['/defensa/registro-expediente' , { outlets: { wizard: ['datos-pase'] } }]);
+            this.router.navigate(['/defensa/expediente/registro' , { outlets: { wizard: ['datos-pase'] } }]);
         } else if (this.ruta === '6') {
             this.router.navigate(['sindicatos/bienvenida']);
         } else if (this.ruta === '7') {

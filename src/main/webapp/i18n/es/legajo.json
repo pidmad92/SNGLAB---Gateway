@@ -1,0 +1,69 @@
+{
+    "gatewayApp": {
+        "legajo" : {
+            "home": {
+                "title": "Legajos",
+                "createLabel": "Crear nuevo Legajo",
+                "createOrEditLabel": "Crear o editar Legajo",
+                "search": "Search for Legajo"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Legajo {{ id }}?"
+            },
+            "detail": {
+                "title": "Legajo"
+            },
+            "vCodreg": "V Codreg",
+            "vCodzon": "V Codzon",
+            "vCodpas": "V Codpas",
+            "vCodmat": "V Codmat",
+            "vNumexp": "V Numexp",
+            "vNomjuzg": "V Nomjuzg",
+            "vNomjuez": "V Nomjuez",
+            "vEstleg": "V Estleg",
+            "dFecconc": "D Fecconc",
+            "vCodusureg": "V Codusureg",
+            "vHostreg": "V Hostreg",
+            "vCodusumod": "V Codusumod",
+            "dFecmod": "D Fecmod",
+            "vHostmod": "V Hostmod",
+            "dFecexp": "D Fecexp",
+            "vNumleg": "V Numleg",
+            "vCodemp": "V Codemp",
+            "nCodsuc": "N Codsuc",
+            "vFlginst": "V Flginst",
+            "vNumexpda": "V Numexpda",
+            "dFecexpda": "D Fecexpda",
+            "vNomjuzda": "V Nomjuzda",
+            "vNomjuezda": "V Nomjuezda",
+            "vCodlegrig": "V Codlegrig",
+            "vTiporig": "V Tiporig",
+            "vFlgarch": "V Flgarch",
+            "vFlgcaut": "V Flgcaut",
+            "vFlganul": "V Flganul",
+            "vCodloc": "V Codloc",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "empleador": "Empleador",
+            "pasegl": "Pasegl",
+            "trabajador": "Trabajador",
+            "abogado": "Abogado",
+            "legtipdoc": "Legtipdoc",
+            "atencionpj": "Atencionpj",
+            "legajoasig": "Legajoasig",
+            "materia": "Materia"
+        }
+    },
+    "patrocinioApp": {
+        "legajo" : {
+            "created": "Un nuevo Legajo ha sido creado con el identificador {{ param }}",
+            "updated": "Un Legajo ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Legajo ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

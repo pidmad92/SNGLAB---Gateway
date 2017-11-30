@@ -1,0 +1,169 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.legajo.home.title">Legajos</span>
+        <button class="btn btn-primary float-right jh-create-entity create-legajo" [routerLink]="['/', { outlets: { popup: ['legajo-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.legajo.home.createLabel">
+            Create new Legajo
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.legajo.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="legajos">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vCodreg">V Codreg</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vCodzon">V Codzon</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vCodpas">V Codpas</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vCodmat">V Codmat</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vNumexp">V Numexp</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vNomjuzg">V Nomjuzg</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vNomjuez">V Nomjuez</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vEstleg">V Estleg</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.dFecconc">D Fecconc</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vCodusureg">V Codusureg</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vHostreg">V Hostreg</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vCodusumod">V Codusumod</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.dFecmod">D Fecmod</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vHostmod">V Hostmod</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.dFecexp">D Fecexp</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vNumleg">V Numleg</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vCodemp">V Codemp</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.nCodsuc">N Codsuc</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vFlginst">V Flginst</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vNumexpda">V Numexpda</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.dFecexpda">D Fecexpda</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vNomjuzda">V Nomjuzda</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vNomjuezda">V Nomjuezda</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vCodlegrig">V Codlegrig</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vTiporig">V Tiporig</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vFlgarch">V Flgarch</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vFlgcaut">V Flgcaut</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vFlganul">V Flganul</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.vCodloc">V Codloc</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.empleador">Empleador</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.pasegl">Pasegl</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.trabajador">Trabajador</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.abogado">Abogado</span></th>
+            <th><span jhiTranslate="gatewayApp.legajo.materia">Materia</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let legajo of legajos ;trackBy: trackId">
+                <td><a [routerLink]="['../legajo', legajo.id ]">{{legajo.id}}</a></td>
+                <td>{{legajo.vCodreg}}</td>
+                <td>{{legajo.vCodzon}}</td>
+                <td>{{legajo.vCodpas}}</td>
+                <td>{{legajo.vCodmat}}</td>
+                <td>{{legajo.vNumexp}}</td>
+                <td>{{legajo.vNomjuzg}}</td>
+                <td>{{legajo.vNomjuez}}</td>
+                <td>{{legajo.vEstleg}}</td>
+                <td>{{legajo.dFecconc | date:'mediumDate'}}</td>
+                <td>{{legajo.vCodusureg}}</td>
+                <td>{{legajo.vHostreg}}</td>
+                <td>{{legajo.vCodusumod}}</td>
+                <td>{{legajo.dFecmod | date:'mediumDate'}}</td>
+                <td>{{legajo.vHostmod}}</td>
+                <td>{{legajo.dFecexp | date:'mediumDate'}}</td>
+                <td>{{legajo.vNumleg}}</td>
+                <td>{{legajo.vCodemp}}</td>
+                <td>{{legajo.nCodsuc}}</td>
+                <td>{{legajo.vFlginst}}</td>
+                <td>{{legajo.vNumexpda}}</td>
+                <td>{{legajo.dFecexpda | date:'mediumDate'}}</td>
+                <td>{{legajo.vNomjuzda}}</td>
+                <td>{{legajo.vNomjuezda}}</td>
+                <td>{{legajo.vCodlegrig}}</td>
+                <td>{{legajo.vTiporig}}</td>
+                <td>{{legajo.vFlgarch}}</td>
+                <td>{{legajo.vFlgcaut}}</td>
+                <td>{{legajo.vFlganul}}</td>
+                <td>{{legajo.vCodloc}}</td>
+                <td>{{legajo.nUsuareg}}</td>
+                <td>{{legajo.tFecreg | date:'medium'}}</td>
+                <td>{{legajo.nFlgactivo}}</td>
+                <td>{{legajo.nSedereg}}</td>
+                <td>{{legajo.nUsuaupd}}</td>
+                <td>{{legajo.tFecupd | date:'medium'}}</td>
+                <td>{{legajo.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="legajo.empleador">
+                        <a [routerLink]="['../empleador', legajo.empleador?.id ]" >{{legajo.empleador?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="legajo.pasegl">
+                        <a [routerLink]="['../pasegl', legajo.pasegl?.id ]" >{{legajo.pasegl?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="legajo.trabajador">
+                        <a [routerLink]="['../trabajador', legajo.trabajador?.id ]" >{{legajo.trabajador?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="legajo.abogado">
+                        <a [routerLink]="['../abogado', legajo.abogado?.id ]" >{{legajo.abogado?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="legajo.materia">
+                        <a [routerLink]="['../materia', legajo.materia?.id ]" >{{legajo.materia?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../legajo', legajo.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'legajo/'+ legajo.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'legajo/'+ legajo.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

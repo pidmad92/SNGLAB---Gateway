@@ -1,0 +1,45 @@
+{
+    "gatewayApp": {
+        "atencionpj" : {
+            "home": {
+                "title": "Atencionpjs",
+                "createLabel": "Crear nuevo Atencionpj",
+                "createOrEditLabel": "Crear o editar Atencionpj",
+                "search": "Search for Atencionpj"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Atencionpj {{ id }}?"
+            },
+            "detail": {
+                "title": "Atencionpj"
+            },
+            "vCodreg": "V Codreg",
+            "vCodzon": "V Codzon",
+            "vCodleg": "V Codleg",
+            "nCorrel": "N Correl",
+            "vCodusuaten": "V Codusuaten",
+            "dFecaten": "D Fecaten",
+            "vObsaten": "V Obsaten",
+            "vFlgtel": "V Flgtel",
+            "vFlgadm": "V Flgadm",
+            "vFlgtelr": "V Flgtelr",
+            "vFlgaten": "V Flgaten",
+            "vCodloc": "V Codloc",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "legajo": "Legajo"
+        }
+    },
+    "patrocinioApp": {
+        "atencionpj" : {
+            "created": "Un nuevo Atencionpj ha sido creado con el identificador {{ param }}",
+            "updated": "Un Atencionpj ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Atencionpj ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

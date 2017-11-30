@@ -1,0 +1,57 @@
+
+<div *ngIf="materia">
+    <h2><span jhiTranslate="gatewayApp.materia.detail.title">Materia</span> {{materia.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.materia.vDesmat">V Desmat</span></dt>
+        <dd>
+            <span>{{materia.vDesmat}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.materia.vAbrmat">V Abrmat</span></dt>
+        <dd>
+            <span>{{materia.vAbrmat}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.materia.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{materia.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.materia.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{materia.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.materia.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{materia.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.materia.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{materia.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.materia.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{materia.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.materia.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{materia.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.materia.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{materia.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'materia/'+ materia.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -65,9 +65,9 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.atencion.nCodtrabre" for="field_nCodtrabre">N Codtrabre</label>
-            <input type="number" class="form-control" name="nCodtrabre" id="field_nCodtrabre"
-                [(ngModel)]="atencion.nCodtrabre"  />
+            <label class="form-control-label" jhiTranslate="gatewayApp.atencion.nCodtrepre" for="field_nCodtrepre">N Codtrepre</label>
+            <input type="number" class="form-control" name="nCodtrepre" id="field_nCodtrepre"
+                [(ngModel)]="atencion.nCodtrepre"  />
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.atencion.nUsuareg" for="field_nUsuareg">N Usuareg</label>
@@ -146,10 +146,10 @@
         </div>
 
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.atencion.pasegl" for="field_pasegl">Pasegl</label>
-            <select class="form-control" id="field_pasegl" name="pasegl" [(ngModel)]="atencion.pasegl">
+            <label class="form-control-label" jhiTranslate="gatewayApp.atencion.liquidacion" for="field_liquidacion">Liquidacion</label>
+            <select class="form-control" id="field_liquidacion" name="liquidacion" [(ngModel)]="atencion.liquidacion">
                 <option [ngValue]="null"></option>
-                <option [ngValue]="paseglOption.id === atencion.pasegl?.id ? atencion.pasegl : paseglOption" *ngFor="let paseglOption of pasegls; trackBy: trackPaseglById">{{paseglOption.id}}</option>
+                <option [ngValue]="liquidacionOption.id === atencion.liquidacion?.id ? atencion.liquidacion : liquidacionOption" *ngFor="let liquidacionOption of liquidacions; trackBy: trackLiquidacionById">{{liquidacionOption.id}}</option>
             </select>
         </div>
         <div class="form-group">

@@ -226,6 +226,17 @@
                 "calidenu": "Calidenu",
                 "oridenu": "Oridenu",
                 "denuncia": "Denuncia",
+                "falsoexp": "Falsoexp",
+                "legajo": "Legajo",
+                "legajoasig": "Legajoasig",
+                "legtipdoc": "Legtipdoc",
+                "pasepj": "Pasepj",
+                "atencionpj": "Atencionpj",
+                "materia": "Materia",
+                "tipdocpj": "Tipdocpj",
+                "tipaudi": "Tipaudi",
+                "tipdiligenc": "Tipdiligenc",
+                "tipresoluc": "Tipresoluc",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

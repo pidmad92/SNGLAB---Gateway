@@ -34,7 +34,7 @@
             <th><span jhiTranslate="gatewayApp.atencion.nFlgembara">N Flgembara</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.vEstado">V Estado</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.vNumticket">V Numticket</span></th>
-            <th><span jhiTranslate="gatewayApp.atencion.nCodtrabre">N Codtrabre</span></th>
+            <th><span jhiTranslate="gatewayApp.atencion.nCodtrepre">N Codtrepre</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.nUsuareg">N Usuareg</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.tFecreg">T Fecreg</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.nFlgactivo">N Flgactivo</span></th>
@@ -42,7 +42,7 @@
             <th><span jhiTranslate="gatewayApp.atencion.nUsuaupd">N Usuaupd</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.nSedeupd">N Sedeupd</span></th>
-            <th><span jhiTranslate="gatewayApp.atencion.pasegl">Pasegl</span></th>
+            <th><span jhiTranslate="gatewayApp.atencion.liquidacion">Liquidacion</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.datlab">Datlab</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.empleador">Empleador</span></th>
             <th><span jhiTranslate="gatewayApp.atencion.oficina">Oficina</span></th>
@@ -58,7 +58,7 @@
                 <td>{{atencion.nFlgembara}}</td>
                 <td>{{atencion.vEstado}}</td>
                 <td>{{atencion.vNumticket}}</td>
-                <td>{{atencion.nCodtrabre}}</td>
+                <td>{{atencion.nCodtrepre}}</td>
                 <td>{{atencion.nUsuareg}}</td>
                 <td>{{atencion.tFecreg | date:'medium'}}</td>
                 <td>{{atencion.nFlgactivo}}</td>
@@ -67,8 +67,8 @@
                 <td>{{atencion.tFecupd | date:'medium'}}</td>
                 <td>{{atencion.nSedeupd}}</td>
                 <td>
-                    <div *ngIf="atencion.pasegl">
-                        <a [routerLink]="['../pasegl', atencion.pasegl?.id ]" >{{atencion.pasegl?.id}}</a>
+                    <div *ngIf="atencion.liquidacion">
+                        <a [routerLink]="['../liquidacion', atencion.liquidacion?.id ]" >{{atencion.liquidacion?.id}}</a>
                     </div>
                 </td>
                 <td>

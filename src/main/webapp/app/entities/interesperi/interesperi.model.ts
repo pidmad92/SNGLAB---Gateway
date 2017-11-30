@@ -11,6 +11,7 @@ export class Interesperi implements BaseEntity {
         public nUsuaupd?: number,
         public tFecupd?: any,
         public nSedeupd?: number,
+        public calperiodo?: BaseEntity,
         public tipinteres?: BaseEntity,
     ) {
         this.nFlgactivo = false;

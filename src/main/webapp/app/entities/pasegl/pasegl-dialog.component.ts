@@ -10,7 +10,6 @@ import { Pasegl } from './pasegl.model';
 import { PaseglPopupService } from './pasegl-popup.service';
 import { PaseglService } from './pasegl.service';
 import { Oficina, OficinaService } from '../oficina';
-import { Expediente, ExpedienteService } from '../expediente';
 import { Atencion, AtencionService } from '../atencion';
 import { ResponseWrapper } from '../../shared';
 
@@ -25,8 +24,6 @@ export class PaseglDialogComponent implements OnInit {
 
     oficinas: Oficina[];
 
-    expedientes: Expediente[];
-
     atencions: Atencion[];
 
     constructor(
@@ -34,7 +31,6 @@ export class PaseglDialogComponent implements OnInit {
         private jhiAlertService: JhiAlertService,
         private paseglService: PaseglService,
         private oficinaService: OficinaService,
-        private expedienteService: ExpedienteService,
         private atencionService: AtencionService,
         private eventManager: JhiEventManager
     ) {
@@ -44,21 +40,19 @@ export class PaseglDialogComponent implements OnInit {
         this.isSaving = false;
         this.oficinaService.query()
             .subscribe((res: ResponseWrapper) => { this.oficinas = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.expedienteService
+        this.atencionService
             .query({filter: 'pasegl-is-null'})
             .subscribe((res: ResponseWrapper) => {
-                if (!this.pasegl.expediente || !this.pasegl.expediente.id) {
-                    this.expedientes = res.json;
+                if (!this.pasegl.atencion || !this.pasegl.atencion.id) {
+                    this.atencions = res.json;
                 } else {
-                    this.expedienteService
-                        .find(this.pasegl.expediente.id)
-                        .subscribe((subRes: Expediente) => {
-                            this.expedientes = [subRes].concat(res.json);
+                    this.atencionService
+                        .find(this.pasegl.atencion.id)
+                        .subscribe((subRes: Atencion) => {
+                            this.atencions = [subRes].concat(res.json);
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
-        this.atencionService.query()
-            .subscribe((res: ResponseWrapper) => { this.atencions = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -96,10 +90,6 @@ export class PaseglDialogComponent implements OnInit {
     }
 
     trackOficinaById(index: number, item: Oficina) {
-        return item.id;
-    }
-
-    trackExpedienteById(index: number, item: Expediente) {
         return item.id;
     }
 

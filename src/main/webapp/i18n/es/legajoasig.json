@@ -1,0 +1,40 @@
+{
+    "gatewayApp": {
+        "legajoasig" : {
+            "home": {
+                "title": "Legajoasigs",
+                "createLabel": "Crear nuevo Legajoasig",
+                "createOrEditLabel": "Crear o editar Legajoasig",
+                "search": "Search for Legajoasig"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Legajoasig {{ id }}?"
+            },
+            "detail": {
+                "title": "Legajoasig"
+            },
+            "vCodreg": "V Codreg",
+            "vCodzon": "V Codzon",
+            "vCodleg": "V Codleg",
+            "nCorrel": "N Correl",
+            "vAboasig": "V Aboasig",
+            "dFecasig": "D Fecasig",
+            "vHostreg": "V Hostreg",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "legajo": "Legajo"
+        }
+    },
+    "patrocinioApp": {
+        "legajoasig" : {
+            "created": "Un nuevo Legajoasig ha sido creado con el identificador {{ param }}",
+            "updated": "Un Legajoasig ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Legajoasig ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

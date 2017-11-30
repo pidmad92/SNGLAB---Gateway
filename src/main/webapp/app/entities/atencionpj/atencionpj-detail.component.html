@@ -1,0 +1,103 @@
+
+<div *ngIf="atencionpj">
+    <h2><span jhiTranslate="gatewayApp.atencionpj.detail.title">Atencionpj</span> {{atencionpj.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.atencionpj.vCodreg">V Codreg</span></dt>
+        <dd>
+            <span>{{atencionpj.vCodreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.vCodzon">V Codzon</span></dt>
+        <dd>
+            <span>{{atencionpj.vCodzon}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.vCodleg">V Codleg</span></dt>
+        <dd>
+            <span>{{atencionpj.vCodleg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.nCorrel">N Correl</span></dt>
+        <dd>
+            <span>{{atencionpj.nCorrel}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.vCodusuaten">V Codusuaten</span></dt>
+        <dd>
+            <span>{{atencionpj.vCodusuaten}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.dFecaten">D Fecaten</span></dt>
+        <dd>
+            <span>{{atencionpj.dFecaten | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.vObsaten">V Obsaten</span></dt>
+        <dd>
+            <span>{{atencionpj.vObsaten}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.vFlgtel">V Flgtel</span></dt>
+        <dd>
+            <span>{{atencionpj.vFlgtel}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.vFlgadm">V Flgadm</span></dt>
+        <dd>
+            <span>{{atencionpj.vFlgadm}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.vFlgtelr">V Flgtelr</span></dt>
+        <dd>
+            <span>{{atencionpj.vFlgtelr}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.vFlgaten">V Flgaten</span></dt>
+        <dd>
+            <span>{{atencionpj.vFlgaten}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.vCodloc">V Codloc</span></dt>
+        <dd>
+            <span>{{atencionpj.vCodloc}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{atencionpj.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{atencionpj.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{atencionpj.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{atencionpj.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{atencionpj.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{atencionpj.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{atencionpj.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.atencionpj.legajo">Legajo</span></dt>
+        <dd>
+            <div *ngIf="atencionpj.legajo">
+                <a [routerLink]="['/legajo', atencionpj.legajo?.id]">{{atencionpj.legajo?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'atencionpj/'+ atencionpj.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

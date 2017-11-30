@@ -10,7 +10,7 @@
     ],
     "fields": [
         {
-            "fieldName": "vDescripcion",
+            "fieldName": "vDescrip",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",

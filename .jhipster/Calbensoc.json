@@ -24,12 +24,12 @@
         {
             "fieldName": "nCalbens",
             "javadoc": "MONTO TOTAL CALCULADO DEL BENEFICIO SOCIAL",
-            "fieldType": "Double"
+            "fieldType": "BigDecimal"
         },
         {
             "fieldName": "nCalbens2",
             "javadoc": "MONTO TOTAL2 CALCULADO DEL BENEFICIO SOCIAL",
-            "fieldType": "Double"
+            "fieldType": "BigDecimal"
         },
         {
             "fieldName": "nUsuareg",
