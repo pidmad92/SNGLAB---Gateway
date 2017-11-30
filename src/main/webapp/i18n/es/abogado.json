@@ -23,7 +23,9 @@
             "tFecupd": "T Fecupd",
             "nSedeupd": "N Sedeupd",
             "oficina": "Oficina",
-            "legajo": "Legajo",
+            "legajoasig": "Legajoasig",
+            "legtipdoc": "Legtipdoc",
+            "falsoexp": "Falsoexp",
             "concilia": "Concilia"
         }
     },

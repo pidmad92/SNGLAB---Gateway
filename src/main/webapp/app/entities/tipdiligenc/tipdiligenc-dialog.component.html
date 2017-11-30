@@ -28,36 +28,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.tipdiligenc.vCodtipres" for="field_vCodtipres">V Codtipres</label>
-            <input type="text" class="form-control" name="vCodtipres" id="field_vCodtipres"
-                [(ngModel)]="tipdiligenc.vCodtipres" required maxlength="2" />
-            <div [hidden]="!(editForm.controls.vCodtipres?.dirty && editForm.controls.vCodtipres?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodtipres?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodtipres?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
-                   This field cannot be longer than 2 characters.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.tipdiligenc.vDestipdil" for="field_vDestipdil">V Destipdil</label>
-            <input type="text" class="form-control" name="vDestipdil" id="field_vDestipdil"
-                [(ngModel)]="tipdiligenc.vDestipdil" required maxlength="100" />
-            <div [hidden]="!(editForm.controls.vDestipdil?.dirty && editForm.controls.vDestipdil?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vDestipdil?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vDestipdil?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
-                   This field cannot be longer than 100 characters.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.tipdiligenc.nUsuareg" for="field_nUsuareg">N Usuareg</label>
             <input type="number" class="form-control" name="nUsuareg" id="field_nUsuareg"
                 [(ngModel)]="tipdiligenc.nUsuareg" required />

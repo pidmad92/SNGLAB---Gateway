@@ -1,0 +1,57 @@
+
+<div *ngIf="categoria">
+    <h2><span jhiTranslate="gatewayApp.categoria.detail.title">Categoria</span> {{categoria.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.categoria.vDescatego">V Descatego</span></dt>
+        <dd>
+            <span>{{categoria.vDescatego}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.categoria.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{categoria.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.categoria.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{categoria.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.categoria.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{categoria.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.categoria.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{categoria.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.categoria.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{categoria.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.categoria.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{categoria.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.categoria.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{categoria.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.categoria.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{categoria.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'categoria/'+ categoria.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

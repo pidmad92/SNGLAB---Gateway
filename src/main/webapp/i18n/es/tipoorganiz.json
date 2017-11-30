@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "tipoorganiz" : {
+            "home": {
+                "title": "Tipoorganizs",
+                "createLabel": "Crear nuevo Tipoorganiz",
+                "createOrEditLabel": "Crear o editar Tipoorganiz",
+                "search": "Search for Tipoorganiz"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipoorganiz {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipoorganiz"
+            },
+            "vDestiporg": "V Destiporg",
+            "vEstado": "V Estado",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "organizacio": "Organizacio"
+        }
+    },
+    "sindicatosApp": {
+        "tipoorganiz" : {
+            "created": "Un nuevo Tipoorganiz ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipoorganiz ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipoorganiz ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

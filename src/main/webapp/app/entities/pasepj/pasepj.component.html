@@ -32,12 +32,9 @@
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="gatewayApp.pasepj.vCodreg">V Codreg</span></th>
             <th><span jhiTranslate="gatewayApp.pasepj.vCodzon">V Codzon</span></th>
-            <th><span jhiTranslate="gatewayApp.pasepj.vCodpas">V Codpas</span></th>
-            <th><span jhiTranslate="gatewayApp.pasepj.vCodtra">V Codtra</span></th>
             <th><span jhiTranslate="gatewayApp.pasepj.vCodtdcide">V Codtdcide</span></th>
             <th><span jhiTranslate="gatewayApp.pasepj.nCorrel">N Correl</span></th>
             <th><span jhiTranslate="gatewayApp.pasepj.vCodsis">V Codsis</span></th>
-            <th><span jhiTranslate="gatewayApp.pasepj.vCodemp">V Codemp</span></th>
             <th><span jhiTranslate="gatewayApp.pasepj.nCodsuc">N Codsuc</span></th>
             <th><span jhiTranslate="gatewayApp.pasepj.vCodcon">V Codcon</span></th>
             <th><span jhiTranslate="gatewayApp.pasepj.dFecpas">D Fecpas</span></th>
@@ -66,6 +63,7 @@
             <th><span jhiTranslate="gatewayApp.pasepj.nUsuaupd">N Usuaupd</span></th>
             <th><span jhiTranslate="gatewayApp.pasepj.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.pasepj.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.empleador">Empleador</span></th>
             <th></th>
             </tr>
             </thead>
@@ -74,12 +72,9 @@
                 <td><a [routerLink]="['../pasepj', pasepj.id ]">{{pasepj.id}}</a></td>
                 <td>{{pasepj.vCodreg}}</td>
                 <td>{{pasepj.vCodzon}}</td>
-                <td>{{pasepj.vCodpas}}</td>
-                <td>{{pasepj.vCodtra}}</td>
                 <td>{{pasepj.vCodtdcide}}</td>
                 <td>{{pasepj.nCorrel}}</td>
                 <td>{{pasepj.vCodsis}}</td>
-                <td>{{pasepj.vCodemp}}</td>
                 <td>{{pasepj.nCodsuc}}</td>
                 <td>{{pasepj.vCodcon}}</td>
                 <td>{{pasepj.dFecpas | date:'mediumDate'}}</td>
@@ -108,6 +103,11 @@
                 <td>{{pasepj.nUsuaupd}}</td>
                 <td>{{pasepj.tFecupd | date:'medium'}}</td>
                 <td>{{pasepj.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="pasepj.empleador">
+                        <a [routerLink]="['../empleador', pasepj.empleador?.id ]" >{{pasepj.empleador?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

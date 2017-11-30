@@ -5,9 +5,7 @@ export class Legajoasig implements BaseEntity {
         public id?: number,
         public vCodreg?: string,
         public vCodzon?: string,
-        public vCodleg?: string,
         public nCorrel?: number,
-        public vAboasig?: string,
         public dFecasig?: any,
         public vHostreg?: string,
         public nUsuareg?: number,
@@ -17,6 +15,7 @@ export class Legajoasig implements BaseEntity {
         public nUsuaupd?: number,
         public tFecupd?: any,
         public nSedeupd?: number,
+        public abogado?: BaseEntity,
         public legajo?: BaseEntity,
     ) {
         this.nFlgactivo = false;

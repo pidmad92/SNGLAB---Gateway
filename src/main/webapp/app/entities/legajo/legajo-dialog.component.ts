@@ -12,7 +12,6 @@ import { LegajoService } from './legajo.service';
 import { Empleador, EmpleadorService } from '../empleador';
 import { Pasegl, PaseglService } from '../pasegl';
 import { Trabajador, TrabajadorService } from '../trabajador';
-import { Abogado, AbogadoService } from '../abogado';
 import { Materia, MateriaService } from '../materia';
 import { ResponseWrapper } from '../../shared';
 
@@ -31,8 +30,6 @@ export class LegajoDialogComponent implements OnInit {
 
     trabajadors: Trabajador[];
 
-    abogados: Abogado[];
-
     materias: Materia[];
     dFecconcDp: any;
     dFecmodDp: any;
@@ -46,7 +43,6 @@ export class LegajoDialogComponent implements OnInit {
         private empleadorService: EmpleadorService,
         private paseglService: PaseglService,
         private trabajadorService: TrabajadorService,
-        private abogadoService: AbogadoService,
         private materiaService: MateriaService,
         private eventManager: JhiEventManager
     ) {
@@ -60,8 +56,6 @@ export class LegajoDialogComponent implements OnInit {
             .subscribe((res: ResponseWrapper) => { this.pasegls = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.trabajadorService.query()
             .subscribe((res: ResponseWrapper) => { this.trabajadors = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.abogadoService.query()
-            .subscribe((res: ResponseWrapper) => { this.abogados = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.materiaService.query()
             .subscribe((res: ResponseWrapper) => { this.materias = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
@@ -109,10 +103,6 @@ export class LegajoDialogComponent implements OnInit {
     }
 
     trackTrabajadorById(index: number, item: Trabajador) {
-        return item.id;
-    }
-
-    trackAbogadoById(index: number, item: Abogado) {
         return item.id;
     }
 

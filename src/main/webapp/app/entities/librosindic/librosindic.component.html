@@ -1,0 +1,103 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.librosindic.home.title">Librosindics</span>
+        <button class="btn btn-primary float-right jh-create-entity create-librosindic" [routerLink]="['/', { outlets: { popup: ['librosindic-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.librosindic.home.createLabel">
+            Create new Librosindic
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.librosindic.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="librosindics">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.librosindic.vNumreglib">V Numreglib</span></th>
+            <th><span jhiTranslate="gatewayApp.librosindic.vNumlibsin">V Numlibsin</span></th>
+            <th><span jhiTranslate="gatewayApp.librosindic.tFecresolu">T Fecresolu</span></th>
+            <th><span jhiTranslate="gatewayApp.librosindic.vUsuregist">V Usuregist</span></th>
+            <th><span jhiTranslate="gatewayApp.librosindic.vEstado">V Estado</span></th>
+            <th><span jhiTranslate="gatewayApp.librosindic.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.librosindic.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.librosindic.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.librosindic.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.librosindic.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.librosindic.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.librosindic.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.librosindic.tipolibro">Tipolibro</span></th>
+            <th><span jhiTranslate="gatewayApp.librosindic.organizacio">Organizacio</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let librosindic of librosindics ;trackBy: trackId">
+                <td><a [routerLink]="['../librosindic', librosindic.id ]">{{librosindic.id}}</a></td>
+                <td>{{librosindic.vNumreglib}}</td>
+                <td>{{librosindic.vNumlibsin}}</td>
+                <td>{{librosindic.tFecresolu | date:'medium'}}</td>
+                <td>{{librosindic.vUsuregist}}</td>
+                <td>{{librosindic.vEstado}}</td>
+                <td>{{librosindic.nUsuareg}}</td>
+                <td>{{librosindic.tFecreg | date:'medium'}}</td>
+                <td>{{librosindic.nFlgactivo}}</td>
+                <td>{{librosindic.nSedereg}}</td>
+                <td>{{librosindic.nUsuaupd}}</td>
+                <td>{{librosindic.tFecupd | date:'medium'}}</td>
+                <td>{{librosindic.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="librosindic.tipolibro">
+                        <a [routerLink]="['../tipolibro', librosindic.tipolibro?.id ]" >{{librosindic.tipolibro?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="librosindic.organizacio">
+                        <a [routerLink]="['../organizacio', librosindic.organizacio?.id ]" >{{librosindic.organizacio?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../librosindic', librosindic.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'librosindic/'+ librosindic.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'librosindic/'+ librosindic.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

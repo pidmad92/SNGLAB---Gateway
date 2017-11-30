@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "scargo" : {
+            "home": {
+                "title": "Scargos",
+                "createLabel": "Crear nuevo Scargo",
+                "createOrEditLabel": "Crear o editar Scargo",
+                "search": "Search for Scargo"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Scargo {{ id }}?"
+            },
+            "detail": {
+                "title": "Scargo"
+            },
+            "vDesscargo": "V Desscargo",
+            "vEstado": "V Estado",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "afiliado": "Afiliado"
+        }
+    },
+    "sindicatosApp": {
+        "scargo" : {
+            "created": "Un nuevo Scargo ha sido creado con el identificador {{ param }}",
+            "updated": "Un Scargo ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Scargo ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "ambitoorgan" : {
+            "home": {
+                "title": "Ambitoorgans",
+                "createLabel": "Crear nuevo Ambitoorgan",
+                "createOrEditLabel": "Crear o editar Ambitoorgan",
+                "search": "Search for Ambitoorgan"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Ambitoorgan {{ id }}?"
+            },
+            "detail": {
+                "title": "Ambitoorgan"
+            },
+            "vDesamborg": "V Desamborg",
+            "vEstado": "V Estado",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "organizacio": "Organizacio"
+        }
+    },
+    "sindicatosApp": {
+        "ambitoorgan" : {
+            "created": "Un nuevo Ambitoorgan ha sido creado con el identificador {{ param }}",
+            "updated": "Un Ambitoorgan ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Ambitoorgan ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

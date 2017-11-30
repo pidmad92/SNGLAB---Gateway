@@ -2,6 +2,12 @@
     "fluentMethods": true,
     "relationships": [
         {
+            "relationshipName": "abogado",
+            "otherEntityName": "abogado",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
             "relationshipName": "legajo",
             "otherEntityName": "legajo",
             "relationshipType": "many-to-one",
@@ -40,29 +46,11 @@
             "fieldValidateRulesMaxlength": 2
         },
         {
-            "fieldName": "vCodleg",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 6
-        },
-        {
             "fieldName": "nCorrel",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "required"
             ]
-        },
-        {
-            "fieldName": "vCodtdoc",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 2
         },
         {
             "fieldName": "vCodsis",
@@ -72,15 +60,6 @@
                 "maxlength"
             ],
             "fieldValidateRulesMaxlength": 3
-        },
-        {
-            "fieldName": "vCodtipres",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 2
         },
         {
             "fieldName": "vAsundoc",
@@ -184,15 +163,6 @@
             ]
         },
         {
-            "fieldName": "vAboasig",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 15
-        },
-        {
             "fieldName": "nMondol",
             "fieldType": "Integer",
             "fieldValidateRules": [
@@ -207,24 +177,6 @@
                 "maxlength"
             ],
             "fieldValidateRulesMaxlength": 6
-        },
-        {
-            "fieldName": "vCodtipdil",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 2
-        },
-        {
-            "fieldName": "vCodtipaud",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 2
         },
         {
             "fieldName": "vFlgconc",

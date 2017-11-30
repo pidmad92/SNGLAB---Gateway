@@ -9,6 +9,10 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Falsoexp } from './falsoexp.model';
 import { FalsoexpPopupService } from './falsoexp-popup.service';
 import { FalsoexpService } from './falsoexp.service';
+import { Empleador, EmpleadorService } from '../empleador';
+import { Trabajador, TrabajadorService } from '../trabajador';
+import { Abogado, AbogadoService } from '../abogado';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-falsoexp-dialog',
@@ -19,16 +23,31 @@ export class FalsoexpDialogComponent implements OnInit {
     falsoexp: Falsoexp;
     isSaving: boolean;
 
+    empleadors: Empleador[];
+
+    trabajadors: Trabajador[];
+
+    abogados: Abogado[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private falsoexpService: FalsoexpService,
+        private empleadorService: EmpleadorService,
+        private trabajadorService: TrabajadorService,
+        private abogadoService: AbogadoService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.empleadorService.query()
+            .subscribe((res: ResponseWrapper) => { this.empleadors = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.trabajadorService.query()
+            .subscribe((res: ResponseWrapper) => { this.trabajadors = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.abogadoService.query()
+            .subscribe((res: ResponseWrapper) => { this.abogados = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -63,6 +82,18 @@ export class FalsoexpDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackEmpleadorById(index: number, item: Empleador) {
+        return item.id;
+    }
+
+    trackTrabajadorById(index: number, item: Trabajador) {
+        return item.id;
+    }
+
+    trackAbogadoById(index: number, item: Abogado) {
+        return item.id;
     }
 }
 

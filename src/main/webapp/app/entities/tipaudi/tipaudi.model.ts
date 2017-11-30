@@ -4,9 +4,6 @@ export class Tipaudi implements BaseEntity {
     constructor(
         public id?: number,
         public vCodsis?: string,
-        public vCodtipres?: string,
-        public vCodtipdil?: string,
-        public vDestipaud?: string,
         public nUsuareg?: number,
         public tFecreg?: any,
         public nFlgactivo?: boolean,

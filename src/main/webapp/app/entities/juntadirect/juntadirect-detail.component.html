@@ -1,0 +1,75 @@
+
+<div *ngIf="juntadirect">
+    <h2><span jhiTranslate="gatewayApp.juntadirect.detail.title">Juntadirect</span> {{juntadirect.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.juntadirect.tFecinicio">T Fecinicio</span></dt>
+        <dd>
+            <span>{{juntadirect.tFecinicio | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.juntadirect.tFecrfinal">T Fecrfinal</span></dt>
+        <dd>
+            <span>{{juntadirect.tFecrfinal | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.juntadirect.nTitulares">N Titulares</span></dt>
+        <dd>
+            <span>{{juntadirect.nTitulares}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.juntadirect.nSuplentes">N Suplentes</span></dt>
+        <dd>
+            <span>{{juntadirect.nSuplentes}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.juntadirect.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{juntadirect.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.juntadirect.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{juntadirect.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.juntadirect.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{juntadirect.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.juntadirect.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{juntadirect.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.juntadirect.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{juntadirect.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.juntadirect.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{juntadirect.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.juntadirect.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{juntadirect.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.juntadirect.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{juntadirect.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.juntadirect.organizacio">Organizacio</span></dt>
+        <dd>
+            <div *ngIf="juntadirect.organizacio">
+                <a [routerLink]="['/organizacio', juntadirect.organizacio?.id]">{{juntadirect.organizacio?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'juntadirect/'+ juntadirect.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

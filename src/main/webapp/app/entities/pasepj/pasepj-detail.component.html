@@ -12,14 +12,6 @@
         <dd>
             <span>{{pasepj.vCodzon}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.pasepj.vCodpas">V Codpas</span></dt>
-        <dd>
-            <span>{{pasepj.vCodpas}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.pasepj.vCodtra">V Codtra</span></dt>
-        <dd>
-            <span>{{pasepj.vCodtra}}</span>
-        </dd>
         <dt><span jhiTranslate="gatewayApp.pasepj.vCodtdcide">V Codtdcide</span></dt>
         <dd>
             <span>{{pasepj.vCodtdcide}}</span>
@@ -31,10 +23,6 @@
         <dt><span jhiTranslate="gatewayApp.pasepj.vCodsis">V Codsis</span></dt>
         <dd>
             <span>{{pasepj.vCodsis}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.pasepj.vCodemp">V Codemp</span></dt>
-        <dd>
-            <span>{{pasepj.vCodemp}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.pasepj.nCodsuc">N Codsuc</span></dt>
         <dd>
@@ -147,6 +135,12 @@
         <dt><span jhiTranslate="gatewayApp.pasepj.nSedeupd">N Sedeupd</span></dt>
         <dd>
             <span>{{pasepj.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pasepj.empleador">Empleador</span></dt>
+        <dd>
+            <div *ngIf="pasepj.empleador">
+                <a [routerLink]="['/empleador', pasepj.empleador?.id]">{{pasepj.empleador?.id}}</a>
+            </div>
         </dd>
     </dl>
 

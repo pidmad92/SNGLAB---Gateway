@@ -21,6 +21,12 @@
         },
         {
             "relationshipType": "one-to-many",
+            "relationshipName": "falsoexp",
+            "otherEntityName": "falsoexp",
+            "otherEntityRelationshipName": "trabajador"
+        },
+        {
+            "relationshipType": "one-to-many",
             "relationshipName": "expediente",
             "otherEntityName": "expediente",
             "otherEntityRelationshipName": "trabajador"

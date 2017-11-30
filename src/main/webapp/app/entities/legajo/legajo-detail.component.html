@@ -12,14 +12,6 @@
         <dd>
             <span>{{legajo.vCodzon}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.legajo.vCodpas">V Codpas</span></dt>
-        <dd>
-            <span>{{legajo.vCodpas}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.legajo.vCodmat">V Codmat</span></dt>
-        <dd>
-            <span>{{legajo.vCodmat}}</span>
-        </dd>
         <dt><span jhiTranslate="gatewayApp.legajo.vNumexp">V Numexp</span></dt>
         <dd>
             <span>{{legajo.vNumexp}}</span>
@@ -67,10 +59,6 @@
         <dt><span jhiTranslate="gatewayApp.legajo.vNumleg">V Numleg</span></dt>
         <dd>
             <span>{{legajo.vNumleg}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.legajo.vCodemp">V Codemp</span></dt>
-        <dd>
-            <span>{{legajo.vCodemp}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.legajo.nCodsuc">N Codsuc</span></dt>
         <dd>
@@ -164,12 +152,6 @@
         <dd>
             <div *ngIf="legajo.trabajador">
                 <a [routerLink]="['/trabajador', legajo.trabajador?.id]">{{legajo.trabajador?.id}}</a>
-            </div>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.legajo.abogado">Abogado</span></dt>
-        <dd>
-            <div *ngIf="legajo.abogado">
-                <a [routerLink]="['/abogado', legajo.abogado?.id]">{{legajo.abogado?.id}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="gatewayApp.legajo.materia">Materia</span></dt>

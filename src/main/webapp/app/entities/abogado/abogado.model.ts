@@ -13,7 +13,9 @@ export class Abogado implements BaseEntity {
         public tFecupd?: any,
         public nSedeupd?: number,
         public oficina?: BaseEntity,
-        public legajos?: BaseEntity[],
+        public legajoasigs?: BaseEntity[],
+        public legtipdocs?: BaseEntity[],
+        public falsoexps?: BaseEntity[],
         public concilias?: BaseEntity[],
     ) {
         this.nFlgactivo = false;

@@ -28,29 +28,11 @@
             "fieldValidateRulesMaxlength": 2
         },
         {
-            "fieldName": "vCodleg",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 6
-        },
-        {
             "fieldName": "nCorrel",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "required"
             ]
-        },
-        {
-            "fieldName": "vCodusuaten",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 15
         },
         {
             "fieldName": "dFecaten",

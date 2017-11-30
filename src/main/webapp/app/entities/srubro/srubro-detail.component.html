@@ -1,0 +1,57 @@
+
+<div *ngIf="srubro">
+    <h2><span jhiTranslate="gatewayApp.srubro.detail.title">Srubro</span> {{srubro.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.srubro.vDessrubro">V Dessrubro</span></dt>
+        <dd>
+            <span>{{srubro.vDessrubro}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.srubro.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{srubro.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.srubro.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{srubro.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.srubro.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{srubro.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.srubro.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{srubro.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.srubro.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{srubro.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.srubro.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{srubro.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.srubro.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{srubro.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.srubro.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{srubro.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'srubro/'+ srubro.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -43,36 +43,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vCodpas" for="field_vCodpas">V Codpas</label>
-            <input type="text" class="form-control" name="vCodpas" id="field_vCodpas"
-                [(ngModel)]="legajo.vCodpas" required maxlength="10" />
-            <div [hidden]="!(editForm.controls.vCodpas?.dirty && editForm.controls.vCodpas?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodpas?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodpas?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 10 }">
-                   This field cannot be longer than 10 characters.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vCodmat" for="field_vCodmat">V Codmat</label>
-            <input type="text" class="form-control" name="vCodmat" id="field_vCodmat"
-                [(ngModel)]="legajo.vCodmat" required maxlength="2" />
-            <div [hidden]="!(editForm.controls.vCodmat?.dirty && editForm.controls.vCodmat?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodmat?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodmat?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
-                   This field cannot be longer than 2 characters.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vNumexp" for="field_vNumexp">V Numexp</label>
             <input type="text" class="form-control" name="vNumexp" id="field_vNumexp"
                 [(ngModel)]="legajo.vNumexp" required maxlength="30" />
@@ -234,21 +204,6 @@
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.vNumleg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 6 }">
                    This field cannot be longer than 6 characters.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.vCodemp" for="field_vCodemp">V Codemp</label>
-            <input type="text" class="form-control" name="vCodemp" id="field_vCodemp"
-                [(ngModel)]="legajo.vCodemp" required maxlength="11" />
-            <div [hidden]="!(editForm.controls.vCodemp?.dirty && editForm.controls.vCodemp?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodemp?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodemp?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 11 }">
-                   This field cannot be longer than 11 characters.
                 </small>
             </div>
         </div>
@@ -522,13 +477,6 @@
             <select class="form-control" id="field_trabajador" name="trabajador" [(ngModel)]="legajo.trabajador" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="trabajadorOption.id === legajo.trabajador?.id ? legajo.trabajador : trabajadorOption" *ngFor="let trabajadorOption of trabajadors; trackBy: trackTrabajadorById">{{trabajadorOption.id}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.legajo.abogado" for="field_abogado">Abogado</label>
-            <select class="form-control" id="field_abogado" name="abogado" [(ngModel)]="legajo.abogado" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="abogadoOption.id === legajo.abogado?.id ? legajo.abogado : abogadoOption" *ngFor="let abogadoOption of abogados; trackBy: trackAbogadoById">{{abogadoOption.id}}</option>
             </select>
         </div>
         <div class="form-group">

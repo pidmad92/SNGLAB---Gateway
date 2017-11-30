@@ -1,0 +1,63 @@
+
+<div *ngIf="sindicato">
+    <h2><span jhiTranslate="gatewayApp.sindicato.detail.title">Sindicato</span> {{sindicato.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.sindicato.tFecafilia">T Fecafilia</span></dt>
+        <dd>
+            <span>{{sindicato.tFecafilia | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.sindicato.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{sindicato.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.sindicato.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{sindicato.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.sindicato.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{sindicato.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.sindicato.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{sindicato.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.sindicato.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{sindicato.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.sindicato.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{sindicato.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.sindicato.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{sindicato.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.sindicato.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{sindicato.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.sindicato.organizacio">Organizacio</span></dt>
+        <dd>
+            <div *ngIf="sindicato.organizacio">
+                <a [routerLink]="['/organizacio', sindicato.organizacio?.id]">{{sindicato.organizacio?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'sindicato/'+ sindicato.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

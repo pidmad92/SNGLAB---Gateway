@@ -1,0 +1,85 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.szonal.home.title">Szonals</span>
+        <button class="btn btn-primary float-right jh-create-entity create-szonal" [routerLink]="['/', { outlets: { popup: ['szonal-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.szonal.home.createLabel">
+            Create new Szonal
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.szonal.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="szonals">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.szonal.vDesszonal">V Desszonal</span></th>
+            <th><span jhiTranslate="gatewayApp.szonal.vEstado">V Estado</span></th>
+            <th><span jhiTranslate="gatewayApp.szonal.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.szonal.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.szonal.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.szonal.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.szonal.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.szonal.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.szonal.nSedeupd">N Sedeupd</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let szonal of szonals ;trackBy: trackId">
+                <td><a [routerLink]="['../szonal', szonal.id ]">{{szonal.id}}</a></td>
+                <td>{{szonal.vDesszonal}}</td>
+                <td>{{szonal.vEstado}}</td>
+                <td>{{szonal.nUsuareg}}</td>
+                <td>{{szonal.tFecreg | date:'medium'}}</td>
+                <td>{{szonal.nFlgactivo}}</td>
+                <td>{{szonal.nSedereg}}</td>
+                <td>{{szonal.nUsuaupd}}</td>
+                <td>{{szonal.tFecupd | date:'medium'}}</td>
+                <td>{{szonal.nSedeupd}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../szonal', szonal.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'szonal/'+ szonal.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'szonal/'+ szonal.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

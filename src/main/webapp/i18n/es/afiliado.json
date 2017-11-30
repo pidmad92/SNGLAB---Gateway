@@ -1,0 +1,38 @@
+{
+    "gatewayApp": {
+        "afiliado" : {
+            "home": {
+                "title": "Afiliados",
+                "createLabel": "Crear nuevo Afiliado",
+                "createOrEditLabel": "Crear o editar Afiliado",
+                "search": "Search for Afiliado"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Afiliado {{ id }}?"
+            },
+            "detail": {
+                "title": "Afiliado"
+            },
+            "vTipafilia": "V Tipafilia",
+            "vEstado": "V Estado",
+            "nCodperson": "N Codperson",
+            "nCodafilia": "N Codafilia",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "scargo": "Scargo",
+            "organizacio": "Organizacio"
+        }
+    },
+    "sindicatosApp": {
+        "afiliado" : {
+            "created": "Un nuevo Afiliado ha sido creado con el identificador {{ param }}",
+            "updated": "Un Afiliado ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Afiliado ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -1,0 +1,173 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.organizacio.home.title">Organizacios</span>
+        <button class="btn btn-primary float-right jh-create-entity create-organizacio" [routerLink]="['/', { outlets: { popup: ['organizacio-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.organizacio.home.createLabel">
+            Create new Organizacio
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.organizacio.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="organizacios">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.vNumexpedi">V Numexpedi</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.vDesorgani">V Desorgani</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.tFecregist">T Fecregist</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.vDessiglas">V Dessiglas</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.vNumresolu">V Numresolu</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.cDesdocruc">C Desdocruc</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.tFecpresen">T Fecpresen</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.tFecconsta">T Fecconsta</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.vCorreo">V Correo</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.cTelefono">C Telefono</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.vEstado">V Estado</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.vDirecreal">V Direcreal</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.vDirelegal">V Direlegal</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.vTafiliaci">V Tafiliaci</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.vDescalifi">V Descalifi</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.nUbigeo">N Ubigeo</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.nNumdnisin">N Numdnisin</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.vObservaci">V Observaci</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.nNumciiu">N Numciiu</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.srubro">Srubro</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.tipoorganiz">Tipoorganiz</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.nivelorgani">Nivelorgani</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.ambitoorgan">Ambitoorgan</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.categoria">Categoria</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.categoriaor">Categoriaor</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.region">Region</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.szonal">Szonal</span></th>
+            <th><span jhiTranslate="gatewayApp.organizacio.calificacio">Calificacio</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let organizacio of organizacios ;trackBy: trackId">
+                <td><a [routerLink]="['../organizacio', organizacio.id ]">{{organizacio.id}}</a></td>
+                <td>{{organizacio.vNumexpedi}}</td>
+                <td>{{organizacio.vDesorgani}}</td>
+                <td>{{organizacio.tFecregist | date:'medium'}}</td>
+                <td>{{organizacio.vDessiglas}}</td>
+                <td>{{organizacio.vNumresolu}}</td>
+                <td>{{organizacio.cDesdocruc}}</td>
+                <td>{{organizacio.tFecpresen | date:'medium'}}</td>
+                <td>{{organizacio.tFecconsta | date:'medium'}}</td>
+                <td>{{organizacio.vCorreo}}</td>
+                <td>{{organizacio.cTelefono}}</td>
+                <td>{{organizacio.vEstado}}</td>
+                <td>{{organizacio.vDirecreal}}</td>
+                <td>{{organizacio.vDirelegal}}</td>
+                <td>{{organizacio.vTafiliaci}}</td>
+                <td>{{organizacio.vDescalifi}}</td>
+                <td>{{organizacio.nUbigeo}}</td>
+                <td>{{organizacio.nNumdnisin}}</td>
+                <td>{{organizacio.vObservaci}}</td>
+                <td>{{organizacio.nNumciiu}}</td>
+                <td>{{organizacio.nUsuareg}}</td>
+                <td>{{organizacio.tFecreg | date:'medium'}}</td>
+                <td>{{organizacio.nFlgactivo}}</td>
+                <td>{{organizacio.nSedereg}}</td>
+                <td>{{organizacio.nUsuaupd}}</td>
+                <td>{{organizacio.tFecupd | date:'medium'}}</td>
+                <td>{{organizacio.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="organizacio.srubro">
+                        <a [routerLink]="['../srubro', organizacio.srubro?.id ]" >{{organizacio.srubro?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="organizacio.tipoorganiz">
+                        <a [routerLink]="['../tipoorganiz', organizacio.tipoorganiz?.id ]" >{{organizacio.tipoorganiz?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="organizacio.nivelorgani">
+                        <a [routerLink]="['../nivelorgani', organizacio.nivelorgani?.id ]" >{{organizacio.nivelorgani?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="organizacio.ambitoorgan">
+                        <a [routerLink]="['../ambitoorgan', organizacio.ambitoorgan?.id ]" >{{organizacio.ambitoorgan?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="organizacio.categoria">
+                        <a [routerLink]="['../categoria', organizacio.categoria?.id ]" >{{organizacio.categoria?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="organizacio.categoriaor">
+                        <a [routerLink]="['../categoriaor', organizacio.categoriaor?.id ]" >{{organizacio.categoriaor?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="organizacio.region">
+                        <a [routerLink]="['../region', organizacio.region?.id ]" >{{organizacio.region?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="organizacio.szonal">
+                        <a [routerLink]="['../szonal', organizacio.szonal?.id ]" >{{organizacio.szonal?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="organizacio.calificacio">
+                        <a [routerLink]="['../calificacio', organizacio.calificacio?.id ]" >{{organizacio.calificacio?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../organizacio', organizacio.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'organizacio/'+ organizacio.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'organizacio/'+ organizacio.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

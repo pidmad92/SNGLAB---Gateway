@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "szonal" : {
+            "home": {
+                "title": "Szonals",
+                "createLabel": "Crear nuevo Szonal",
+                "createOrEditLabel": "Crear o editar Szonal",
+                "search": "Search for Szonal"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Szonal {{ id }}?"
+            },
+            "detail": {
+                "title": "Szonal"
+            },
+            "vDesszonal": "V Desszonal",
+            "vEstado": "V Estado",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "organizacio": "Organizacio"
+        }
+    },
+    "sindicatosApp": {
+        "szonal" : {
+            "created": "Un nuevo Szonal ha sido creado con el identificador {{ param }}",
+            "updated": "Un Szonal ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Szonal ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

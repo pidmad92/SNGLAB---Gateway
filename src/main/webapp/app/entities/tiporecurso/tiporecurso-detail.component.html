@@ -1,0 +1,57 @@
+
+<div *ngIf="tiporecurso">
+    <h2><span jhiTranslate="gatewayApp.tiporecurso.detail.title">Tiporecurso</span> {{tiporecurso.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.tiporecurso.vDestrecur">V Destrecur</span></dt>
+        <dd>
+            <span>{{tiporecurso.vDestrecur}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tiporecurso.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{tiporecurso.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tiporecurso.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{tiporecurso.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tiporecurso.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{tiporecurso.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tiporecurso.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{tiporecurso.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tiporecurso.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{tiporecurso.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tiporecurso.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{tiporecurso.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tiporecurso.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{tiporecurso.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.tiporecurso.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{tiporecurso.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'tiporecurso/'+ tiporecurso.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

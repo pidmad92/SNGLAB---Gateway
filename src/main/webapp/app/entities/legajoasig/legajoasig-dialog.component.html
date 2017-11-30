@@ -43,21 +43,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.legajoasig.vCodleg" for="field_vCodleg">V Codleg</label>
-            <input type="text" class="form-control" name="vCodleg" id="field_vCodleg"
-                [(ngModel)]="legajoasig.vCodleg" required maxlength="6" />
-            <div [hidden]="!(editForm.controls.vCodleg?.dirty && editForm.controls.vCodleg?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodleg?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vCodleg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 6 }">
-                   This field cannot be longer than 6 characters.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.legajoasig.nCorrel" for="field_nCorrel">N Correl</label>
             <input type="number" class="form-control" name="nCorrel" id="field_nCorrel"
                 [(ngModel)]="legajoasig.nCorrel" required />
@@ -69,21 +54,6 @@
                 <small class="form-text text-danger"
                     [hidden]="!editForm.controls.nCorrel?.errors?.number" jhiTranslate="entity.validation.number">
                     This field should be a number.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.legajoasig.vAboasig" for="field_vAboasig">V Aboasig</label>
-            <input type="text" class="form-control" name="vAboasig" id="field_vAboasig"
-                [(ngModel)]="legajoasig.vAboasig" required maxlength="15" />
-            <div [hidden]="!(editForm.controls.vAboasig?.dirty && editForm.controls.vAboasig?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vAboasig?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.vAboasig?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
-                   This field cannot be longer than 15 characters.
                 </small>
             </div>
         </div>
@@ -188,6 +158,13 @@
                 [(ngModel)]="legajoasig.nSedeupd"  />
         </div>
 
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legajoasig.abogado" for="field_abogado">Abogado</label>
+            <select class="form-control" id="field_abogado" name="abogado" [(ngModel)]="legajoasig.abogado" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="abogadoOption.id === legajoasig.abogado?.id ? legajoasig.abogado : abogadoOption" *ngFor="let abogadoOption of abogados; trackBy: trackAbogadoById">{{abogadoOption.id}}</option>
+            </select>
+        </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.legajoasig.legajo" for="field_legajo">Legajo</label>
             <select class="form-control" id="field_legajo" name="legajo" [(ngModel)]="legajoasig.legajo" >

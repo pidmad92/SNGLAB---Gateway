@@ -32,11 +32,8 @@
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.vCodreg">V Codreg</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.vCodzon">V Codzon</span></th>
-            <th><span jhiTranslate="gatewayApp.legtipdoc.vCodleg">V Codleg</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.nCorrel">N Correl</span></th>
-            <th><span jhiTranslate="gatewayApp.legtipdoc.vCodtdoc">V Codtdoc</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.vCodsis">V Codsis</span></th>
-            <th><span jhiTranslate="gatewayApp.legtipdoc.vCodtipres">V Codtipres</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.vAsundoc">V Asundoc</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.dFecdoc">D Fecdoc</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.nMonpag">N Monpag</span></th>
@@ -52,11 +49,8 @@
             <th><span jhiTranslate="gatewayApp.legtipdoc.vFlgfund">V Flgfund</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.vFlgasis">V Flgasis</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.nNumres">N Numres</span></th>
-            <th><span jhiTranslate="gatewayApp.legtipdoc.vAboasig">V Aboasig</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.nMondol">N Mondol</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.vCodloc">V Codloc</span></th>
-            <th><span jhiTranslate="gatewayApp.legtipdoc.vCodtipdil">V Codtipdil</span></th>
-            <th><span jhiTranslate="gatewayApp.legtipdoc.vCodtipaud">V Codtipaud</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.vFlgconc">V Flgconc</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.vDettdoc">V Dettdoc</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.dFecdocreq">D Fecdocreq</span></th>
@@ -67,6 +61,7 @@
             <th><span jhiTranslate="gatewayApp.legtipdoc.nUsuaupd">N Usuaupd</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.abogado">Abogado</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.legajo">Legajo</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.tipdocpj">Tipdocpj</span></th>
             <th><span jhiTranslate="gatewayApp.legtipdoc.tipresoluc">Tipresoluc</span></th>
@@ -78,11 +73,8 @@
                 <td><a [routerLink]="['../legtipdoc', legtipdoc.id ]">{{legtipdoc.id}}</a></td>
                 <td>{{legtipdoc.vCodreg}}</td>
                 <td>{{legtipdoc.vCodzon}}</td>
-                <td>{{legtipdoc.vCodleg}}</td>
                 <td>{{legtipdoc.nCorrel}}</td>
-                <td>{{legtipdoc.vCodtdoc}}</td>
                 <td>{{legtipdoc.vCodsis}}</td>
-                <td>{{legtipdoc.vCodtipres}}</td>
                 <td>{{legtipdoc.vAsundoc}}</td>
                 <td>{{legtipdoc.dFecdoc | date:'mediumDate'}}</td>
                 <td>{{legtipdoc.nMonpag}}</td>
@@ -98,11 +90,8 @@
                 <td>{{legtipdoc.vFlgfund}}</td>
                 <td>{{legtipdoc.vFlgasis}}</td>
                 <td>{{legtipdoc.nNumres}}</td>
-                <td>{{legtipdoc.vAboasig}}</td>
                 <td>{{legtipdoc.nMondol}}</td>
                 <td>{{legtipdoc.vCodloc}}</td>
-                <td>{{legtipdoc.vCodtipdil}}</td>
-                <td>{{legtipdoc.vCodtipaud}}</td>
                 <td>{{legtipdoc.vFlgconc}}</td>
                 <td>{{legtipdoc.vDettdoc}}</td>
                 <td>{{legtipdoc.dFecdocreq | date:'mediumDate'}}</td>
@@ -113,6 +102,11 @@
                 <td>{{legtipdoc.nUsuaupd}}</td>
                 <td>{{legtipdoc.tFecupd | date:'medium'}}</td>
                 <td>{{legtipdoc.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="legtipdoc.abogado">
+                        <a [routerLink]="['../abogado', legtipdoc.abogado?.id ]" >{{legtipdoc.abogado?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="legtipdoc.legajo">
                         <a [routerLink]="['../legajo', legtipdoc.legajo?.id ]" >{{legtipdoc.legajo?.id}}</a>

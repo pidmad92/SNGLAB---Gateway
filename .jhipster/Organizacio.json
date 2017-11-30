@@ -1,0 +1,312 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "srubro",
+            "otherEntityName": "srubro",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "tipoorganiz",
+            "otherEntityName": "tipoorganiz",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "nivelorgani",
+            "otherEntityName": "nivelorgani",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "ambitoorgan",
+            "otherEntityName": "ambitoorgan",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "categoria",
+            "otherEntityName": "categoria",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "categoriaor",
+            "otherEntityName": "categoriaor",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "region",
+            "otherEntityName": "region",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "szonal",
+            "otherEntityName": "szonal",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "librosindic",
+            "otherEntityName": "librosindic",
+            "otherEntityRelationshipName": "organizacio"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "recurso",
+            "otherEntityName": "recurso",
+            "otherEntityRelationshipName": "organizacio"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "empresa",
+            "otherEntityName": "empresa",
+            "otherEntityRelationshipName": "organizacio"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "estatuto",
+            "otherEntityName": "estatuto",
+            "otherEntityRelationshipName": "organizacio"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "palabraclav",
+            "otherEntityName": "palabraclav",
+            "otherEntityRelationshipName": "organizacio"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "document",
+            "otherEntityName": "document",
+            "otherEntityRelationshipName": "organizacio"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "federacion",
+            "otherEntityName": "federacion",
+            "otherEntityRelationshipName": "organizacio"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "sindicato",
+            "otherEntityName": "sindicato",
+            "otherEntityRelationshipName": "organizacio"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "delegado",
+            "otherEntityName": "delegado",
+            "otherEntityRelationshipName": "organizacio"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "juntadirect",
+            "otherEntityName": "juntadirect",
+            "otherEntityRelationshipName": "organizacio"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "afiliado",
+            "otherEntityName": "afiliado",
+            "otherEntityRelationshipName": "organizacio"
+        },
+        {
+            "relationshipName": "calificacio",
+            "otherEntityName": "calificacio",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "vNumexpedi",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "vDesorgani",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "tFecregist",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "vDessiglas",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "vNumresolu",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "cDesdocruc",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tFecpresen",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "tFecconsta",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "vCorreo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "cTelefono",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "vEstado",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "vDirecreal",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "vDirelegal",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "vTafiliaci",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "vDescalifi",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "nUbigeo",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nNumdnisin",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 7
+        },
+        {
+            "fieldName": "vObservaci",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "nNumciiu",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "nUsuareg",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tFecreg",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nFlgactivo",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nSedereg",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nUsuaupd",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tFecupd",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "nSedeupd",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171130202904",
+    "entityTableName": "organizacio",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "sindicatos"
+}

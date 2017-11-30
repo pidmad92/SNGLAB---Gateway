@@ -9,6 +9,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Legajoasig } from './legajoasig.model';
 import { LegajoasigPopupService } from './legajoasig-popup.service';
 import { LegajoasigService } from './legajoasig.service';
+import { Abogado, AbogadoService } from '../abogado';
 import { Legajo, LegajoService } from '../legajo';
 import { ResponseWrapper } from '../../shared';
 
@@ -21,6 +22,8 @@ export class LegajoasigDialogComponent implements OnInit {
     legajoasig: Legajoasig;
     isSaving: boolean;
 
+    abogados: Abogado[];
+
     legajos: Legajo[];
     dFecasigDp: any;
 
@@ -28,6 +31,7 @@ export class LegajoasigDialogComponent implements OnInit {
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private legajoasigService: LegajoasigService,
+        private abogadoService: AbogadoService,
         private legajoService: LegajoService,
         private eventManager: JhiEventManager
     ) {
@@ -35,6 +39,8 @@ export class LegajoasigDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        this.abogadoService.query()
+            .subscribe((res: ResponseWrapper) => { this.abogados = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.legajoService.query()
             .subscribe((res: ResponseWrapper) => { this.legajos = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
@@ -71,6 +77,10 @@ export class LegajoasigDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackAbogadoById(index: number, item: Abogado) {
+        return item.id;
     }
 
     trackLegajoById(index: number, item: Legajo) {
