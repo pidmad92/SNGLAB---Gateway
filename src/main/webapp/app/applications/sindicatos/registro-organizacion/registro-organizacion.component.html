@@ -352,6 +352,7 @@ body .ui-datepicker table {
                             </tr>
                             <tr align="center">
                                 <td colspan="4">
+                                    <div class="table-responsive">
                                     <p-dataTable [value]="listaJD" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
                                                 <p-column field="id" header="ID" [sortable]="true"></p-column>
                                                 <p-column field="numero" header="N°" [sortable]="true"></p-column>
@@ -360,6 +361,7 @@ body .ui-datepicker table {
                                                 <p-column field="nombre" header="Nombre" [sortable]="true"></p-column>
                                                 <p-column field="cargo" header="Cargo" [sortable]="true"></p-column>
                                     </p-dataTable>
+                                </div>
                                 </td>
                             </tr>
                         </table>

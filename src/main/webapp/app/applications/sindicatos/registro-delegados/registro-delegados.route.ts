@@ -22,17 +22,17 @@ export const RegistroDelegadosRoute: Routes = [
         component: PrincipalComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'Consulta Delegados'
+            pageTitle: 'ConsultaDelegados'
         },
         canActivate: [UserRouteAccessService],
         children: [
             {
                 path: 'nuevo-delegados',
                 component: NuevoDelegadosComponent,
-                /*data: {
+                data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'gatewayApp.accionadop.home.title'
-                },*/
+                    pageTitle: 'NuevoDelegados'
+                },
                 outlet: 'wizard',
                 canActivate: [UserRouteAccessService],
                 children: [
@@ -41,7 +41,7 @@ export const RegistroDelegadosRoute: Routes = [
                         component: IngresoDelegadosPopupComponent,
                         data: {
                             authorities: ['ROLE_USER'],
-                            pageTitle: 'ASD'
+                            pageTitle: 'IngresoDelegados'
                         },
                         canActivate: [UserRouteAccessService],
                         outlet: 'wizard'
@@ -51,6 +51,10 @@ export const RegistroDelegadosRoute: Routes = [
             {
                 path: 'consulta-delegados',
                 component: ConsultaDelegadosComponent,
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'ConsultaDelegados'
+                },
                 outlet: 'wizard'
             }
         ]
@@ -60,7 +64,7 @@ export const RegistroDelegadosRoute: Routes = [
         component: ConsultaDelegadosComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'holaaaa'
+            pageTitle: 'ConsultaDelegados'
         },
         canActivate: [UserRouteAccessService],
         children: [
@@ -69,7 +73,7 @@ export const RegistroDelegadosRoute: Routes = [
                 component: RegistroDelegadosPopupComponent,
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'ASD'
+                    pageTitle: 'RegistroDelegados'
                 },
                 canActivate: [UserRouteAccessService],
                 outlet: 'popupexp'
@@ -81,7 +85,7 @@ export const RegistroDelegadosRoute: Routes = [
         component: NuevoDelegadosComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'holaaaa'
+            pageTitle: 'NuevoDelegados'
         },
         canActivate: [UserRouteAccessService],
         children: [
@@ -90,7 +94,7 @@ export const RegistroDelegadosRoute: Routes = [
                 component: IngresoDelegadosPopupComponent,
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'ASD'
+                    pageTitle: 'IngresoDelegados'
                 },
                 canActivate: [UserRouteAccessService],
                 outlet: 'popupexp'
@@ -106,7 +110,7 @@ export const RegistroDelegadosPopupRoute: Routes = [
         component: RegistroDelegadosComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'Evaluar Solicitudes'
+            pageTitle: 'RegistroDelegados'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popupexp'

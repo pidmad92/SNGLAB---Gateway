@@ -17,7 +17,7 @@ export const RevisarSolicitudesRoute: Routes = [
         component: RevisarSolicitudesComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'ASD'
+            pageTitle: 'RevisarSolicitudes'
         },
 
         canActivate: [UserRouteAccessService],
@@ -27,7 +27,7 @@ export const RevisarSolicitudesRoute: Routes = [
                 component: EvaluarSolicitudesPopupComponent,
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'ASD'
+                    pageTitle: 'AprobarSolicitud'
                 },
                 canActivate: [UserRouteAccessService],
                 outlet: 'popupexp'
@@ -51,7 +51,7 @@ export const RevisarSolicitudesPopupRoute: Routes = [
         component: EvaluarSolicitudesComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'Evaluar Solicitudes'
+            pageTitle: 'AprobarSolicitud'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popupexp'

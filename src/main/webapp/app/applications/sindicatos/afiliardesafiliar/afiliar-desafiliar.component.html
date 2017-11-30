@@ -1,0 +1,70 @@
+<style>
+        fieldset {
+        border: 1px solid #d6d6d6 !important;
+        margin: 0;
+        padding: 10px;
+        position: relative;
+        border-radius: 4px;
+        background-color: #fbfbfb;
+        padding-left: 10px !important;
+        }
+
+    legend {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 0px;
+        width: 35%;
+        border: 1px solid #d6d6d6;
+        border-radius: 4px;
+        padding: 5px 5px 5px 10px;
+        background-color: #ffffff;
+        }
+</style>
+
+<div>
+    <br/>
+    <h4 class="title my-3" align="center">
+        <span>Bienvenido</span>
+    </h4>
+
+    <fieldset class="col">
+
+        <div class="panel">
+            <div class="panel-body">
+                <form>
+                    <div align="center">
+                        <label for="inpNumero" class="col-sm-3 col-form-label">Usuario:</label>
+                        <label for="inpNumero" class="col-sm-3 col-form-label">Loco Harol rodriguez ortiz</label>         
+                    </div>
+                </form>
+            </div>
+        </div>
+    </fieldset>
+
+    <br/>
+
+    <div class="table-responsive">
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <p-dataTable [value]="listaConsulta" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+                        <p-column field="nombre" header="Organización Sindical" [sortable]="true"></p-column>
+                        <p-column field="empresa" header="Empresa " [sortable]="true"></p-column>
+                        <p-column styleClass="col-button">
+                            <ng-template let-car="rowData" pTemplate="body">
+                                <button type="button" [routerLink]="['/sindicatos/afiliar-desafiliar', { outlets:  { popupexp: 'evaluar-afiliar/'+ id } }]" class="btn btn-primary jh-create-entity create-accionadop">Ver Junta Directiva</button>
+                            </ng-template>
+                        </p-column>
+                        <p-column styleClass="col-button">
+                                <ng-template let-car="rowData" pTemplate="body">
+                                    <button type="button" class="btn btn-primary jh-create-entity create-accionadop">Desafiliación</button>
+                                </ng-template>
+                            </p-column>
+                    </p-dataTable>
+                </div>
+            </div>
+        </div>    
+    </div>
+
+    <router-outlet name="popupexp"></router-outlet>
+    
+   

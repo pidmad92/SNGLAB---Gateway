@@ -3,40 +3,39 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } from 'ng-jhipster';
 
-import { RegistroOrganizacionService } from './registro-organizacion.service';
 import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../shared';
-
-import { OrganizacionModel } from './organizacion.model';
-import {Message} from 'primeng/primeng';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal/modal';
 
 @Component({
-    selector: 'jhi-consulta-organizacion',
-    templateUrl: './consulta-organizacion.component.html'
+    selector: 'jhi-bandeja',
+    templateUrl: './bandeja.component.html'
 })
-export class ConsultaOrganizacionComponent implements OnInit {
+export class BandejaComponent implements OnInit {
     currentAccount: any;
     eventSubscriber: Subscription;
     currentSearch: string;
+    routeSub: any;
+    id = '14';
 
     txtBuscar: string;
     val1: string;
     displayDialog: boolean;
     newCar: boolean;
     listaConsulta: any[];
-    organizacionModel: OrganizacionModel;
-    msgs: Message[] = [];
 
     constructor(
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private modalService: NgbModal,
+        private route: ActivatedRoute
     ) {
+
     }
 
     ngOnInit() {
-        this.organizacionModel = new OrganizacionModel(0, '');
         this.listaConsulta = [
-            {expediente : '124234-2343', nombre: 'Ministerio de Trabajo Lima', fecha: '11/11/11'},
-            {expediente : '124234-2342', nombre: 'Ministerio de Trabajo Huau', fecha: '11/11/11'},
-            {expediente : '124234-2341', nombre: 'Ministerio de Trabajo Huaa', fecha: '11/11/11'},
+            {expediente : '124234-2343', nombre: 'Ministerio de Trabajo Lima', recurso: 'Junta Directiva', fecha: '11/11/11'},
+            {expediente : '124234-2342', nombre: 'Ministerio de Trabajo Huau', recurso: 'Junta Directiva', fecha: '11/11/11'},
+            {expediente : '124234-2341', nombre: 'Ministerio de Trabajo Huaa', recurso: 'Junta Directiva', fecha: '11/11/11'},
         ]
         /*this.loadAll();
         this.principal.identity().then((account) => {
@@ -45,24 +44,8 @@ export class ConsultaOrganizacionComponent implements OnInit {
         this.registerChangeInAtencionEmpleador();*/
     }
 
-    buscar() {
-        if (this.organizacionModel.dato === '') {
-            this.msgs.push({severity: 'info', summary: 'Info Message', detail: 'PrimeNG rocks'});
-        }
-    }
-
-    submitNuevoUsuario() {
-        if (this.organizacionModel.dato === '') {
-            this.msgs.push({severity: 'info', summary: 'Info Message', detail: 'PrimeNG rocks'});
-        }
-    }
-
-    showDialogToAdd() {
-        this.newCar = true;
-        this.displayDialog = true;
-    }
-
     loadAll() {
+
         /*if (this.currentSearch) {
             this.atencionEmpleadorService.search({
                 query: this.currentSearch,
@@ -84,6 +67,10 @@ export class ConsultaOrganizacionComponent implements OnInit {
     clear() {
         /*this.currentSearch = '';
         this.loadAll();*/
+    }
+    open(texto) {
+        console.log('texto: ' + texto);
+        // this.modalService.open(EvaluarSolicitudesComponent);
     }
 
     /*ngOnDestroy() {

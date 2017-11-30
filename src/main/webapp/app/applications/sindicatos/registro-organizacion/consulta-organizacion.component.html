@@ -32,7 +32,7 @@ legend {
             
       <div class="panel">
         <div class="panel-body">
-          <form>
+          <form name="editForm" role="form" novalidate (ngSubmit)="submitNuevoUsuario()" #editForm="ngForm">
             <div align="center">
               <p-radioButton name="group1" value="Option1" label="Nro. Expediente" [(ngModel)]="val1" inputId="opt1"></p-radioButton>
               <p-radioButton name="group1" value="Option2" label="Año de Registro" [(ngModel)]="val1" inputId="opt2"></p-radioButton>
@@ -43,8 +43,8 @@ legend {
               <table border="0" style="width: 250px;">
                 <tr>
                   <td><label for="inpNumero" class="col-sm-3 col-form-label">Ingrese Dato:</label></td>
-                  <td><input id="input" type="text" size="30" pInputText /></td>
-                  <td><a class="btn btn-sm btn-secondary"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a></td>
+                  <td><input name="dato" type="text" size="30" pInputText [(ngModel)]="organizacionModel.dato"/></td>
+                  <td><button type="submit" (click)="buscar()" class="btn btn-primary jh-create-entity create-accionadop"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</button></td>
                 </tr>
               </table>                
             </div>
@@ -71,3 +71,5 @@ legend {
     </div>
 
     </div>
+
+    <p-growl [(value)]="msgs"></p-growl>

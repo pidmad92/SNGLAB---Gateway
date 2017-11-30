@@ -352,5 +352,27 @@
         "idexists": "A new {{entityName}} cannot already have an ID"
     },
     "footer": "pie de página",
-    "ASD": "ASD"
+    "AfiliarDesafiliar": "Afiliar Desafiliar",
+    "EvaluarAfiliarDesafiliar":"Evaluar Afiliar Desafiliar",
+    "BandejaRecursos": "Bandeja Recursos",
+    "EvaluarBandeja": "Evaluar Bandeja",
+    "Bienvenida": "Bienvenida",
+    "RevisarSolicitudes": "Revisar Solicitudes",
+    "AprobarSolicitud": "Aprobar Solicitud",
+    "Principal": "Principal",
+    "ConsultaDelegados": "Consulta Delegados",
+    "NuevoDelegados": "Nuevo Delegados",
+    "IngresoDelegados": "Ingreso Delegados",
+    "RegistroDelegados": "Registro Delegados",
+    "ConsultaRecurso": "Consulta Recurso",
+    "RegistroRecurso": "Registro Recurso",
+    "NuevoRecurso": "Nuevo Recurso",
+    "RegistroOrganizacion": "Registro Organización",
+    "RegistroJD": "Registro Junta Directiva",
+    "RegistroCargo": "Registro Cargo",
+    "RegistroEstatuto":"Registro Estatuto",
+    "RegistroAfiliado": "Registro Afiliado",
+    "RegistroFederacion": "Registro Federación",
+    "RegistroConfederacion": "Registro Confederación",
+    "ConsultaOrganizacion": "Consulta Organización"
 }
