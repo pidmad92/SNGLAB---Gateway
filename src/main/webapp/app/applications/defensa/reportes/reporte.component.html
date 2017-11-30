@@ -98,13 +98,16 @@
                             <div *ngIf="tipoBusqueda=='fechas'" class="col-md-9">
                                 <div class="form-group row">
                                     <label for="inpTipo" class="col-sm-4 col-form-label">Fechas:</label>
-                                    <p-calendar name="rangeDates" [(ngModel)]="rangeDates" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" selectionMode="range" readonlyInput="true"></p-calendar>
+                                    <div class="col-sm-8">
+                                        <p-calendar name="rangeDates" [(ngModel)]="rangeDates" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" selectionMode="range" readonlyInput="true"></p-calendar>
+                                    </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="inpTipo" class="col-sm-4 col-form-label">Resultado:</label>
-                                    <select class="form-control">
-                                        
-                                    </select>
+                                    <div class="col-xs-8 col-sm-6">
+                                        <select class="form-control form-control-sm">                                        
+                                        </select>
+                                    </div>                                    
                                 </div>
                             </div>
                             <div *ngIf="tipoBusqueda=='periodo'" class="col-md-9">
@@ -124,11 +127,26 @@
                             </div>
                         </div>
                     </p-tabPanel>
-                    <p-tabPanel class="tableft" header="Reporte por Tipo de Informe"></p-tabPanel>
+                    <p-tabPanel class="tableft" header="Reporte por Tipo de Informe">
+                        <div class="form-group row pl-2">
+                            <label for="inpTipo" class="col-sm-4 col-form-label">Informe:</label>
+                            <div class="col-xs-8 col-sm-6">
+                                <select class="form-control form-control-sm">                                        
+                                </select>
+                            </div>                                    
+                        </div>
+                        <div class="form-group row pl-2">
+                            <label for="inpTipo" class="col-sm-4 col-form-label">Fecha:</label>
+                            <div class="col-sm-8">
+                                <p-calendar name="rangeDates" [(ngModel)]="rangeDates" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                            </div>
+                        </div>
+                    </p-tabPanel>
                 </p-tabView>
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col-md-12 text-center">
-                        <a href="#" class="btn btn-sm btn-secondary "><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                        <a href="#" class="btn btn-sm btn-warning "><i class="fa fa-eye" aria-hidden="true"></i> Previsualizar</a>
+                        <a href="#" class="btn btn-sm btn-primary "><i class="fa fa-print" aria-hidden="true"></i> Imprimir</a>
                     </div>
                 </div>
             </div>

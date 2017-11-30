@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'jhi-mantenimiento',
-    templateUrl: './mantenimiento.component.html'
+    selector: 'jhi-mantenimiento-audiencia',
+    templateUrl: './mantenimiento-audiencia.component.html'
 })
-export class MantenimientoComponent implements OnInit {
+export class MantenimientoAudienciaComponent implements OnInit {
 
     expedientes: any;
     id = '14';

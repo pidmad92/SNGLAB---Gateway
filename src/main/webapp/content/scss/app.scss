@@ -397,7 +397,7 @@ footer .footer{
   padding-left:auto;
 }
 .ng-invalid{
-  border: thin solid #990000;
+  // border: thin solid #990000;
 }
 /*Datatables*/
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
@@ -890,7 +890,7 @@ body .ui-radiobutton .ui-radiobutton-box .ui-radiobutton-icon {
   font-size: 0.5em;
   overflow: visible;
   position: relative;
-  top: -0.50em;
+  top: -0.23em;
 }
 
 .footer-steps{
@@ -1022,10 +1022,17 @@ body .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-default a:hover{
 }
 body .ui-tabview .tableft .ui-tabview-panel{
   border-left:0px;
+  min-height: 124px;
 }
 body .ui-tabview.ui-tabview-left .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover{
   color: black;
   border:1px solid transparent;
+}
+.ui-tabview-left>.ui-tabview-nav{
+  width: 40%;
+}
+.ui-tabview-left>.ui-tabview-panels{
+  width: 60%;
 }
 
 p-inputmask{

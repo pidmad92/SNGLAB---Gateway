@@ -4,12 +4,12 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@a
 import { UserRouteAccessService } from '../../../shared';
 import { JhiPaginationUtil } from 'ng-jhipster';
 
-import { MantenimientoComponent, MantenimientoPopupComponent } from './';
+import { MantenimientoResultadoComponent, MantenimientoAudienciaComponent, MantenimientoResultadoPopupComponent } from './';
 
 export const mantenimientoRoute: Routes = [
     {
-        path: 'matenimiento/resultados',
-        component: MantenimientoComponent,
+        path: 'mantenimiento/resultados',
+        component: MantenimientoResultadoComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'global.menu.entities.consultaExpediente'
@@ -17,15 +17,45 @@ export const mantenimientoRoute: Routes = [
         canActivate: [UserRouteAccessService],
         children: [
             {
-                path: 'expediente/:id',
-                component: MantenimientoPopupComponent,
+                path: 'registrar',
+                component: MantenimientoResultadoPopupComponent,
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'global.menu.entities.consultaExpediente'
+                    pageTitle: 'gatewayApp.resulconci.home.title'
                 },
+                canActivate: [UserRouteAccessService],
                 outlet: 'popupexp'
             },
+            {
+                path: ':id/editar',
+                component: MantenimientoResultadoPopupComponent,
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'gatewayApp.resulconci.home.title'
+                },
+                canActivate: [UserRouteAccessService],
+                outlet: 'popup'
+            }
+            // ,
+            // {
+            //     path: 'resulconci/:id/delete',
+            //     component: ResulconciDeletePopupComponent,
+            //     data: {
+            //         authorities: ['ROLE_USER'],
+            //         pageTitle: 'gatewayApp.resulconci.home.title'
+            //     },
+            //     canActivate: [UserRouteAccessService],
+            //     outlet: 'popup'
+            // }
         ]
+    },
+    {
+        path: 'mantenimiento/audiencias',
+        component: MantenimientoAudienciaComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'global.menu.entities.consultaExpediente'
+        },
     }
 
 ];
