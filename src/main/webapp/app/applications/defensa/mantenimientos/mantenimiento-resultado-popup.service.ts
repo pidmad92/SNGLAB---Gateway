@@ -49,10 +49,10 @@ export class MantenimientoResultadoPopupService {
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
         modalRef.componentInstance.resulconci = resulconci;
         modalRef.result.then((result) => {
-            this.router.navigate(['defensa/mantenimiento/resultado'], { replaceUrl: true });
+            this.router.navigate(['defensa/mantenimiento/resultados'], { replaceUrl: true });
             this.ngbModalRef = null;
         }, (reason) => {
-            this.router.navigate(['defensa/mantenimiento/resultado'], { replaceUrl: true });
+            this.router.navigate(['defensa/mantenimiento/resultados'], { replaceUrl: true });
             this.ngbModalRef = null;
         });
         return modalRef;

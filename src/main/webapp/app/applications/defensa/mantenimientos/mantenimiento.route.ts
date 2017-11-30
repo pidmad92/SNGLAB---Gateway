@@ -17,15 +17,6 @@ export const mantenimientoRoute: Routes = [
         canActivate: [UserRouteAccessService],
         children: [
             {
-                path: ':id',
-                component: MantenimientoResultadoPopupComponent,
-                data: {
-                    authorities: ['ROLE_USER'],
-                    pageTitle: 'global.menu.entities.consultaExpediente'
-                },
-                outlet: 'popupexp'
-            },
-            {
                 path: 'registrar',
                 component: MantenimientoResultadoPopupComponent,
                 data: {

@@ -2,7 +2,7 @@
     <div class="col">
         <div class="card card-panel mb-3">
             <div class="card-header d-sm-flex justify-content-between">
-                <h5>Consulta de Expediente</h5>
+                <h5>Mantenimiento de Resultado</h5>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -31,17 +31,33 @@
                 <br/>
                 <div class="row">
                     <div class="col-md-12 mb-3">
-                        <p-dataTable selectionMode="single" [value]="expedientes" dataKey="codexpediente">
-                            <p-header>Expedientes</p-header>
-                            <p-column field="item" header="Item"></p-column>
-                            <p-column field="estado" header="Estado"></p-column>
-                            <p-column field="codexpediente" header="Nro. Expediente"></p-column>
-                            <p-column field="fecha" header="Fecha de Registro"></p-column>
-                            <p-column field="conciliador" header="Conciliador"></p-column>
-                            <p-column field="ruc" header="Razón Nro. RUC"></p-column>
-                            <p-column field="empleador" header="Empleador"></p-column>
-                            <p-column field="nrotra" header="Nro. Documento"></p-column>
-                            <p-column field="nomtra" header="Trabajador"></p-column>
+                        <p-dataTable selectionMode="single" [value]="resulconcis" dataKey="id">
+                            <p-header>Resultados</p-header>
+                            <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
+                                <ng-template let-i="rowIndex" pTemplate="body">
+                                    <span style="text-align:center">{{i+1}}</span>
+                                </ng-template>
+                            </p-column>
+                            <p-column field="vDescrip" header="Descripción"></p-column>
+                            <p-column field="tipresconc.vDescrip" header="Tipo"></p-column>
+                            <p-column >
+                                <ng-template let-resultado="rowData" pTemplate="body">
+                                    <button type="submit"
+                                        [routerLink]="['/defensa/mantenimiento/resultados', { outlets: { popup: resultado.id + '/editar'} }]"
+                                        replaceUrl="true"
+                                        class="btn btn-dark btn-sm">
+                                        <span class="fa fa-pencil"></span>
+                                        <span class="d-none d-md-inline" >Editar</span>
+                                    </button>
+                                    <button type="submit"
+                                            [routerLink]="['/defensa/mantenimiento/resultados', { outlets: { popup: resultado.id + '/borrar'} }]"
+                                            replaceUrl="true"
+                                            class="btn btn-danger btn-sm">
+                                        <span class="fa fa-remove"></span>
+                                        <span class="d-none d-md-inline" >Eliminar</span>
+                                    </button>
+                                </ng-template>
+                            </p-column>
                         </p-dataTable>
                     </div>
                 </div>

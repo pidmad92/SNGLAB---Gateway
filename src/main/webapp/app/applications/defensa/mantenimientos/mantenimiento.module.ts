@@ -42,6 +42,7 @@ const ENTITY_STATES = [
     providers: [
         ResulconciService,
         MantenimientoResultadoPopupService,
+        TipresconcService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

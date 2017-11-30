@@ -5,17 +5,22 @@ import { Observable } from 'rxjs/Rx';
 import { JhiDateUtils } from 'ng-jhipster';
 
 import { Resulconci } from './resulconci.model';
-import { ResponseWrapper, createRequestOption } from '../../../shared';
+import { ResponseWrapper, createRequestOption, AuthServerProvider } from '../../../shared';
 
 @Injectable()
 export class ResulconciService {
 
     private resourceUrl = '/defensa/api/resulconcis';
+    private resourceUrlTot = '/defensa/api/resulconcis/tot';
     private resourceSearchUrl = '/defensa/api/_search/resulconcis';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils, private authServerProvider: AuthServerProvider) { }
 
     create(resulconci: Resulconci): Observable<Resulconci> {
+        const token = this.authServerProvider.getToken();
+        resulconci.nUsuareg = 1;
+        resulconci.nFlgactivo = true;
+        resulconci.nSedereg = 1;
         const copy = this.convert(resulconci);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
@@ -40,7 +45,7 @@ export class ResulconciService {
 
     query(req?: any): Observable<ResponseWrapper> {
         const options = createRequestOption(req);
-        return this.http.get(this.resourceUrl, options)
+        return this.http.get(this.resourceUrlTot, options)
             .map((res: Response) => this.convertResponse(res));
     }
 

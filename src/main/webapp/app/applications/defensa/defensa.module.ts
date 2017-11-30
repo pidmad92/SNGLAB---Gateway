@@ -42,7 +42,7 @@ import { MantenimientoModule } from './mantenimientos/mantenimiento.module';
         // GatewayEstexpedienModule,
         // GatewayHoraModule,
         // GatewayResolutorModule,
-        // GatewayResulconciModule,
+        GatewayResulconciModule,
         // GatewayTipdocexpModule,
         // GatewayTipenvnotModule,
         // GatewayTipnotifModule,
