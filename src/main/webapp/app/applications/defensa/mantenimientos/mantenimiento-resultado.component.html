@@ -43,7 +43,7 @@
                             <p-column >
                                 <ng-template let-res="rowData" pTemplate="body">
                                     <button type="submit"
-                                        [routerLink]="['/defensa/mantenimiento/resultados', { outlets: { popupexp: '/' + res.id + '/editar'} }]"
+                                        [routerLink]="['/defensa/mantenimiento/resultados', { outlets: { popupexp: res.id + '/editar'} }]"
                                         replaceUrl="true"
                                         class="btn btn-dark btn-sm">
                                         <span class="fa fa-pencil"></span>

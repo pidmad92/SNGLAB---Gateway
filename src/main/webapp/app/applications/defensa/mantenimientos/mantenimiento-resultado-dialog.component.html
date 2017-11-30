@@ -9,7 +9,7 @@
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
             <div class="modal-body">
                 <jhi-alert-error></jhi-alert-error>
-                <div class="form-group" [hidden]="!resulconci.id">
+                <div class="form-group" hidden>
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id"
                             [(ngModel)]="resulconci.id" readonly />
