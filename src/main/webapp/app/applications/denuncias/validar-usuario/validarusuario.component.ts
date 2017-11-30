@@ -249,6 +249,12 @@ export class ValidarUsuarioComponent implements OnInit {
         this.displayNuevoUsuario = true;
     }
 
+    onSubmit() {
+    }
+
+    submitNuevoUsuario() {
+    }
+
     onChangeDepartamento() {
         this.block = true;
         this.messageList = [];
