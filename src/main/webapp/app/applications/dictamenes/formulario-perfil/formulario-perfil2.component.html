@@ -1,0 +1,492 @@
+<div *ngIf="formPerfil&&solicitud"  class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
+  <div class="row">
+    <div class="col">
+      <h4 class="title">Perfil del Empleador</h4>
+    </div>
+  </div>
+  <div class="form-row mb-2">
+    <div class="col-md-4">
+      <div class="form-group row">
+        <label for="inpRuc" class="col-sm-3 col-form-label col-form-label-sm text-right">RUC</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" id="inpRuc" [(ngModel)]="solicitud.vRucsol">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="form-group row">
+        <label for="inpRsocial" class="col-sm-3 col-form-label col-form-label-sm text-right" value="1047792455654">Razón Social</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" id="inpRsocial" [(ngModel)]="solicitud.vEmpleador">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card-panel box-shadow mb-3">
+        <div class="card-body">
+          <div class="row no-gutters y-steps">
+            <div class="col d-flex justify-content-center y-step active">
+              <div class="y-progress">
+                <div class="y-progress-line"></div>
+              </div>
+              <div class="y-content">
+                <a [routerLink]="" (click)="previousState()" class="btn-y">
+                  <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                  </div>
+                </a>
+                <p class="text-center mb-0">Datos Generales I</p>
+              </div>
+            </div>
+            <div class="col d-flex justify-content-center y-step active">
+              <div class="y-progress">
+                <div class="y-progress-line"></div>
+              </div>
+              <div class="y-content">
+                <a [routerLink]="" (click)="irPerfil2()" class="btn-y">
+                  <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                    <i class="fa fa-database" aria-hidden="true"></i>
+                  </div>
+                </a>
+                <p class="text-center mb-0">Datos Generales II</p>
+              </div>
+            </div>
+            <div class="col d-flex justify-content-center y-step">
+              <div class="y-progress">
+                <div class="y-progress-line"></div>
+              </div>
+              <div class="y-content">
+                <a [routerLink]="" class="btn-y btn-y-disabled">
+                  <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                    <i class="fa fa-plane" aria-hidden="true"></i>
+                  </div>
+                </a>
+                <p class="text-center mb-0">Negociación Colectiva (NVC)</p>
+              </div>
+            </div>
+            <div class="col d-flex justify-content-center y-step">
+              <div class="y-progress">
+                <div class="y-progress-line"></div>
+              </div>
+              <div class="y-content">
+                <a [routerLink]="" class="btn-y btn-y-disabled">
+                  <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                    <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                  </div>
+                </a>
+                <p class="text-center mb-0">Resultado de Ultimas NC</p>
+              </div>
+            </div>
+            <div class="col d-flex justify-content-center y-step">
+              <div class="y-progress">
+                <div class="y-progress-line"></div>
+              </div>
+              <div class="y-content">
+                <a [routerLink]="" class="btn-y btn-y-disabled">
+                  <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                    <i class="fa fa-usd" aria-hidden="true"></i>
+                  </div>
+                </a>
+                <p class="text-center mb-0">Responsables de Información</p>
+              </div>
+            </div>
+            <div class="col d-flex justify-content-center y-step">
+              <div class="y-progress">
+                <div class="y-progress-line"></div>
+              </div>
+              <div class="y-content">
+                <a [routerLink]="" class="btn-y btn-y-disabled">
+                  <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                    <i class="fa fa-paperclip" aria-hidden="true"></i>
+                  </div>
+                </a>
+                <p class="text-center mb-0">Anexo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card card-mtpe mb-3">
+        <div class="card-header bg-light d-sm-flex justify-content-between p-1">
+          <h5 class="mb-0">
+            <small>
+              <i class="fa fa-user" aria-hidden="true"></i> Unidades de Negocio o Organismos Adscritos</small>
+          </h5>
+        </div>
+        <div class="card-body">
+          <a style="color:white" (click)="showUnidad()" class="btn btn-sm btn-dark mb-2">
+            <i class="fa fa-plus" aria-hidden="true"></i> Agregar otro</a>
+          <table class="table table-responsive table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Descripción</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let undNegocio of undNegocios; let i = index">
+              <tr>
+                <td>{{undNegocio.vDesundng}}</td>
+                <td class="text-center">
+                  <a [routerLink]="" (click)="editarUnidad(undNegocio)" class="btn btn-sm btn-warning">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </a>
+                  <a [routerLink]="" (click)="eliminarUnidad(undNegocio)" class="btn btn-sm btn-danger">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </a>
+                </td>
+              </tr>
+            </ng-container>
+            </tbody>
+          </table>
+          <div class="form-group row m-2">
+            <label for="inpComercial" class="col-sm-2 col-form-label col-form-label-sm">Grupo Economico</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control form-control-sm" id="inpComercial" placeholder="" value="CYH Solutions SAC">
+            </div>
+          </div>
+          <p-tabView class="tab-content p-2 border border-mtpe border-top-0" id="nav-tabContent">
+            <p-tabPanel header="Participación Accionaria del Empleador">
+              <div class="tab-pane" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <a style="color:white" (click)="showPartiAccionaria()" class="btn btn-sm btn-dark mb-2" data-toggle="modal" data-target="#accionariaModal">
+                  <i class="fa fa-plus" aria-hidden="true"></i> Agregar otro</a>
+                <table class="table table-responsive table-hover table-striped">
+                  <thead>
+                    <tr>
+                      <th>N°</th>
+                      <th>Tipo Doc.</th>
+                      <th>Num. Doc.</th>
+                      <th>Razón</th>
+                      <th>%</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <ng-container *ngFor="let acciones of participacionesAccionarias; let i = index">
+                    <tr>
+                      <td>{{i+1}}</td>
+                      <td>{{acciones.vTipodoc}}</td>
+                      <td>{{acciones.vNumdocum}}</td>
+                      <td>{{acciones.vRazonsoc}}</td>
+                      <td>{{acciones.nPorcasig}}</td>
+                      <td class="text-center">
+                        <a [routerLink]="" (click)="editarPartiAccionaria(acciones)" class="btn btn-sm btn-warning">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                        <a [routerLink]="" (click)="eliminarPartiAccionaria(acciones)" class="btn btn-sm btn-danger">
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </ng-container>
+                  </tbody>
+                </table>
+              </div>
+            </p-tabPanel>
+            <p-tabPanel header="Participación del mercado">
+              <div class="tab-pane" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <a style="color:white" (click)="showPartiMercado()" class="btn btn-sm btn-dark mb-2" data-toggle="modal" data-target="#accionariaModal">
+                  <i class="fa fa-plus" aria-hidden="true"></i> Agregar otro</a>
+                <table class="table table-responsive table-hover table-striped">
+                  <thead>
+                    <tr>
+                      <th>N°</th>
+                      <th>Tipo Doc.</th>
+                      <th>Num. Doc.</th>
+                      <th>Razón</th>
+                      <th>%</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <ng-container *ngFor="let mercado of participacionesMercados; let i = index">
+                          <tr>
+                            <td>{{i+1}}</td>
+                            <td>{{mercado.vTipodoc}}</td>
+                            <td>{{mercado.vNumdocum}}</td>
+                            <td>{{mercado.vRazonsoc}}</td>
+                            <td>{{mercado.nPorcasig}}</td>
+                            <td class="text-center">
+                              <a [routerLink]="" (click)="editarPartiMercado(mercado)" class="btn btn-sm btn-warning">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                              </a>
+                              <a [routerLink]="" (click)="eliminarPartiMercado(mercado)" class="btn btn-sm btn-danger">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                              </a>
+                            </td>
+                          </tr>
+                        </ng-container>
+                  </tbody>
+                </table>
+              </div>
+            </p-tabPanel>
+            <p-tabPanel header="Principales Obras">
+              <div class="tab-pane" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                <p>Principales hechos de importancia que tengan relevancia en el proceso de Negociación Colectiva: (*)</p>
+                <a style="color:white" (click)="showObras()" class="btn btn-sm btn-dark mb-2" data-toggle="modal" data-target="#hechosModal">
+                  <i class="fa fa-plus" aria-hidden="true"></i> Agregar otro</a>
+                <table class="table table-responsive table-hover table-striped">
+                  <thead>
+                    <tr>
+                      <th>Descripción</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <ng-container *ngFor="let obra of obras; let i = index">
+                    <tr>
+                      <td>{{obra.vDeshinve}}</td>
+                      <td class="text-center">
+                        <a [routerLink]=""  (click)="editarObras(obra)" class="btn btn-sm btn-warning">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                        <a [routerLink]=""  (click)="eliminarObras(obra)" class="btn btn-sm btn-danger">
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </ng-container>
+                  </tbody>
+                </table>
+              </div>
+            </p-tabPanel>
+            <p-tabPanel header="Principales Inversiones y/o Proyectos">
+              <div class="tab-pane" id="nav-proyect" role="tabpanel" aria-labelledby="nav-proyect-tab">
+                <p>Principales inversiones y/o proyectos que tengan relevancia en el proceso de Negociación Colectiva:</p>
+                <a style="color:white" (click)="showInvProy()" class="btn btn-sm btn-dark mb-2" data-toggle="modal" data-target="#proyectModal">
+                  <i class="fa fa-plus" aria-hidden="true"></i> Agregar otro</a>
+                <table class="table table-responsive table-hover table-striped">
+                  <thead>
+                    <tr>
+                      <th>Descripción</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <ng-container *ngFor="let proyecto of proyectos; let i = index">
+                    <tr>
+                      <td>{{proyecto.vDeshinve}}</td>
+                      <td class="text-center">
+                        <a [routerLink]="" (click)="editarInvProy(proyecto)" class="btn btn-sm btn-warning">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                        <a [routerLink]="" (click)="eliminarInvProy(proyecto)" class="btn btn-sm btn-danger">
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </ng-container>
+                  </tbody>
+                </table>
+              </div>
+            </p-tabPanel>
+          </p-tabView>
+          <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row mb-2">
+                  <label for="selectDocumento" class="col-sm-4 col-form-label col-form-label-sm">Sector (*)</label>
+                  <div class="col-sm-8">
+                    <select class="form-control form-control-sm" id="selectDocumento">
+                      <option>Privado</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row mb-2">
+                  <label for="selectDocumento" class="col-sm-4 col-form-label col-form-label-sm">Regimen Laboral</label>
+                  <div class="col-sm-8">
+                    <select class="form-control form-control-sm" id="selectDocumento">
+                      <option>Regimen Común</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group row mb-2">
+                  <label for="selectDocumento" class="col-sm-4 col-form-label col-form-label-sm">Plan Contable Utilizado (*)</label>
+                  <div class="col-sm-8">
+                    <select class="form-control form-control-sm" id="selectDocumento">
+                      <option>PCGE</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div class="row">
+            <div class="col-12 text-sm-right">
+              <a [routerLink]="" (click)="previousState()" class="btn btn-sm m-1 btn-success">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
+              <a [routerLink]="" class="btn btn-sm m-1 btn-secondary">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
+              <a [routerLink]="" (click)="irPerfil3()" class="btn btn-sm m-1 btn-success">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i> Siguiente</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Dialog de Unidades de Negocio -->
+<p-dialog [(visible)]="displayUnidad" modal="modal" width="500" [responsive]="true" >
+  <p-header >
+    Agregar Unidad de Negocio o Organismo Adscrito
+  </p-header>
+  <p>
+    <div>
+      <div class="col-md mb-2">
+        <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripción:</label>
+        <input type="text" class="form-control form-control-sm" id="inpDireccion" [(ngModel)]="undNegocio.vDesundng" value="Unidad de Negocio D">
+      </div>
+    </div>
+  </p>
+  <p-footer>
+    <a style="color:white" class="btn btn-sm btn-danger" (click)="cancelarUnidad()">
+      <i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
+    <a class="btn btn-sm btn-warning" (click)="guardarUnidad()">
+      <i class="fa fa-plus" aria-hidden="true"></i> Añadir</a>
+  </p-footer>
+</p-dialog>
+
+<!-- Dialog de Participacion Accionario del Empleador -->
+<p-dialog [(visible)]="displayPartiAccionaria" modal="modal" width="800" class="overfix" [responsive]="true">
+  <p-header>
+    Agregar participación accionaria del empleador
+  </p-header>
+  <p class="overfix">
+      <div class="row" style="margin-right:0px!important">
+          <div class="col-lg-5">
+            <div class="form-group">
+              <label for="inpTipo" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo Doc.</label>
+              <div class="col-sm-7">
+                <select class="form-control form-control-sm" id="inpTipo">
+                  <option>RUC</option>  
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="form-group row">
+              <label for="inpNumero" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Num. Documento</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control form-control-sm" id="inpNumero" [(ngModel)]="participacionAccionaria.vNumdocum">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2">
+            <div class="form-group row">
+              <div class="col-sm-9">
+                <a href="#" class="btn btn-sm btn-secondary"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row m-2">
+            <label for="inpRsocial" class="col-sm-2 col-form-label col-form-label-sm">Razón Social</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control form-control-sm" id="inpRsocial" [(ngModel)]="participacionAccionaria.vRazonsoc">
+            </div>
+          </div>
+          <div class="form-group row m-2">
+            <label for="inpRsocial" class="col-sm-2 col-form-label col-form-label-sm">% Asignado</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control form-control-sm" id="inpRsocial" [(ngModel)]="participacionAccionaria.nPorcasig">
+            </div>
+          </div>
+  </p>
+  <p-footer>
+    <a class="btn btn-sm btn-danger" (click)="cancelarPartiAccionaria()"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
+    <a class="btn btn-sm btn-warning" (click)="guardarPartiAccionaria()"><i class="fa fa-plus" aria-hidden="true"></i> Añadir</a>
+  </p-footer>
+</p-dialog>
+
+<!-- Dialog de Participacion de Mercado -->
+<p-dialog [(visible)]="displayPartiMercado" modal="modal" width="800" [responsive]="true">
+  <p-header>
+    Agregar Participación de Mercado
+  </p-header>
+  <p>
+      <div class="row" style="margin-right:0px!important">
+          <div class="col-lg-5">
+            <div class="form-group">
+              <label for="inpTipo" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo Doc.</label>
+              <div class="col-sm-7">
+                <select class="form-control form-control-sm" id="inpTipo">
+                  <option>RUC</option>  
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="form-group row">
+              <label for="inpNumero" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Num. Documento</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control form-control-sm" id="inpNumero" [(ngModel)]="participacionMercado.vNumdocum">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2">
+            <div class="form-group row">
+              <div class="col-sm-9">
+                <a href="#" class="btn btn-sm btn-secondary"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row m-2">
+            <label for="inpRsocial" class="col-sm-2 col-form-label col-form-label-sm">Razón Social</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control form-control-sm" id="inpRsocial" [(ngModel)]="participacionMercado.vRazonsoc">
+            </div>
+          </div>
+          <div class="form-group row m-2">
+            <label for="inpRsocial" class="col-sm-2 col-form-label col-form-label-sm">% Asignado</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control form-control-sm" id="inpRsocial" [(ngModel)]="participacionMercado.nPorcasig">
+            </div>
+          </div>
+  </p>
+  <p-footer>
+    <a class="btn btn-sm btn-danger" (click)="cancelarPartiMercado()"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
+    <a class="btn btn-sm btn-warning" (click)="guardarPartiMercado()"><i class="fa fa-plus" aria-hidden="true"></i> Añadir</a>  
+  </p-footer>
+</p-dialog>
+<!-- Dialog de las Principales Obras -->
+<p-dialog [(visible)]="displayObras" modal="modal" width="800" [responsive]="true">
+  <p-header>
+    Registro de las Principales Obras
+  </p-header>
+  <p>
+      <div class="form-group m-2">
+          <label for="inpDescripcion" class="col-sm-2 col-form-label col-form-label-sm">Descripción</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control form-control-sm" id="inpDescripcion" [(ngModel)]="obra.vDeshinve">
+          </div>
+        </div>
+  </p>
+  <p-footer>
+      <a class="btn btn-sm btn-danger" (click)="cancelarObras()"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
+      <a class="btn btn-sm btn-warning" (click)="guardarObras()"><i class="fa fa-plus" aria-hidden="true"></i> Añadir</a>
+  </p-footer>
+</p-dialog>
+<!-- Dialog de las Principales Inversiones y/o Proyectos -->
+<p-dialog [(visible)]="displayInvProy" modal="modal" width="800" [responsive]="true">
+  <p-header>
+    Registro de las Principales Inversiones y/o Proyectos
+  </p-header>
+  <p>
+      <div class="form-group m-2">
+          <label for="inpDescripcion" class="col-sm-2 col-form-label col-form-label-sm">Descripción</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control form-control-sm" id="inpDescripcion" [(ngModel)]="proyecto.vDeshinve">
+          </div>
+        </div>
+  </p>
+  <p-footer>
+    <a class="btn btn-sm btn-danger" (click)="cancelarInvProy()"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
+    <a class="btn btn-sm btn-warning" (click)="guardarInvProy()"><i class="fa fa-plus" aria-hidden="true"></i> Añadir</a>
+  </p-footer>
+</p-dialog>

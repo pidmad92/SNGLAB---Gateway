@@ -115,12 +115,12 @@
                     </div>
                 </div>
                 <div *ngIf="!cambiaDir" class="ui-g"></div>
-                    <div class="ui-md-12">
-                        <label>Domicilio actual:</label>
-                    </div>
-                    <div class="ui-md-12">
-                        <label>{{pernatural.direccion}}</label>
-                    </div>
+                <div class="ui-md-12">
+                    <label>Domicilio actual:</label>
+                </div>
+                <div class="ui-md-12">
+                    <label>{{pernatural.direccion}}</label>
+                </div>
                 </div>
                 <div *ngIf="!cambiaDir" class="ui-g">
                     <div class="ui-md-4">
@@ -138,19 +138,55 @@
                 </div>
                 <div *ngIf="cambiaDir" class="ui-g">
                     <div class="ui-md-4">
+                        <label>Tipo Via</label>
+                        <p-dropdown [options]="tviasLista" name="tviaSelected" [(ngModel)]="tviaSelected" [style]="{'width':'140px'}" placeholder="Seleccione via"
+                            optionLabel="name"></p-dropdown>
+                    </div>
+                    <div class="ui-md-8">
+                        <label>Descripcion via</label>
+                        <input class="form-control" placeholder="Descripción de la via" [(ngModel)]="dirdenunDirec.vDesvia" name="vDesvia" type="text"
+                        />
+                    </div>
+                </div>
+                <div *ngIf="cambiaDir" class="ui-g">
+                    <div class="ui-md-4">
+                        <label>Tipo Zona</label>
+                        <p-dropdown [options]="tzonasLista" name="tzonaSelected" [(ngModel)]="tzonaSelected" [style]="{'width':'140px'}" placeholder="Seleccione zona"
+                            optionLabel="name"></p-dropdown>
+                    </div>
+                    <div class="ui-md-8">
+                        <label>Descripcion zona</label>
+                        <input class="form-control" placeholder="Descripción de la zona" [(ngModel)]="dirdenunDirec.vDeszona" name="vDeszona" type="text"
+                        />
+                    </div>
+                </div>
+                <div *ngIf="cambiaDir" class="ui-g">
+                    <div class="ui-md-12">
+                        <label>Dirección</label>
+                        <input class="form-control" placeholder="Dirección completa" [(ngModel)]="dirdenunDirec.vDireccion" name="vDireccion" type="text"
+                        />
+                    </div>
+                </div>
+                <div *ngIf="cambiaDir" class="ui-g">
+                    <div class="ui-md-4">
                         <label>Departamento:</label>
                         <p-dropdown [options]="departs" name="selectedDeparts" [(ngModel)]="selectedDeparts" [style]="{'width':'140px'}" placeholder="Seleccione departamento."
-                        optionLabel="name"></p-dropdown>
+                            filter="true"
+                            (onChange)="onChangeDepartamento()"
+                            optionLabel="name"></p-dropdown>
                     </div>
                     <div class="ui-md-4">
                         <label>Provincia:</label>
                         <p-dropdown [options]="provins" name="selectedProvins" [(ngModel)]="selectedProvins" [style]="{'width':'140px'}" placeholder="Seleccione provincia."
-                        optionLabel="name"></p-dropdown>
+                            filter="true"
+                            (onChange)="onChangeProvincia()"
+                            optionLabel="name"></p-dropdown>
                     </div>
                     <div class="ui-md-4">
                         <label>Distrito:</label>
                         <p-dropdown [options]="distris" name="selectedDistris" [(ngModel)]="selectedDistris" [style]="{'width':'140px'}" placeholder="Seleccione distrito."
-                        optionLabel="name"></p-dropdown>
+                            filter="true"
+                            optionLabel="name"></p-dropdown>
                     </div>
                 </div>
                 <div class="ui-g">

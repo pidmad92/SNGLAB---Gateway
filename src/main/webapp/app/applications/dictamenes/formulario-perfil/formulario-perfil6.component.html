@@ -1,0 +1,257 @@
+<div class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
+        <div class="row">
+          <div class="col">
+            <h4 class="title">Perfil del Empleador</h4>
+          </div>
+        </div>
+        <div class="form-row mb-2">
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label for="inpRuc" class="col-sm-3 col-form-label col-form-label-sm text-right">RUC</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control form-control-sm" id="inpRuc" placeholder="">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="form-group row">
+              <label for="inpRsocial" class="col-sm-3 col-form-label col-form-label-sm text-right" value="1047792455654">Razón Social</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control form-control-sm" id="inpRsocial" placeholder="" value="CYH Solutions SAC">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="card-panel box-shadow mb-3">
+              <div class="card-body">
+                <div class="row no-gutters y-steps">
+                  <div class="col d-flex justify-content-center y-step active">
+                    <div class="y-progress">
+                      <div class="y-progress-line"></div>
+                    </div>
+                    <div class="y-content">
+                      <a [routerLink]="" (click)="irPerfil()" class="btn-y">
+                        <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                          <i class="fa fa-user" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      <p class="text-center mb-0">Datos Generales I</p>
+                    </div>
+                  </div>
+                  <div class="col d-flex justify-content-center y-step active">
+                    <div class="y-progress">
+                      <div class="y-progress-line"></div>
+                    </div>
+                    <div class="y-content">
+                      <a [routerLink]="" (click)="irPerfil2()" class="btn-y">
+                        <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                          <i class="fa fa-database" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      <p class="text-center mb-0">Datos Generales II</p>
+                    </div>
+                  </div>
+                  <div class="col d-flex justify-content-center y-step active">
+                    <div class="y-progress">
+                      <div class="y-progress-line"></div>
+                    </div>
+                    <div class="y-content">
+                      <a [routerLink]="" (click)="irPerfil3()" class="btn-y">
+                        <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                          <i class="fa fa-plane" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      <p class="text-center mb-0">Negociación Colectiva (NVC)</p>
+                    </div>
+                  </div>
+                  <div class="col d-flex justify-content-center y-step active">
+                    <div class="y-progress">
+                      <div class="y-progress-line"></div>
+                    </div>
+                    <div class="y-content">
+                      <a [routerLink]="" (click)="irPerfil4()" class="btn-y">
+                        <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                          <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      <p class="text-center mb-0">Resultado de Ultimas NC</p>
+                    </div>
+                  </div>
+                  <div class="col d-flex justify-content-center y-step active">
+                    <div class="y-progress">
+                      <div class="y-progress-line"></div>
+                    </div>
+                    <div class="y-content">
+                      <a [routerLink]="" (click)="previousState()" class="btn-y">
+                        <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                          <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      <p class="text-center mb-0">Responsables de Información</p>
+                    </div>
+                  </div>
+                  <div class="col d-flex justify-content-center y-step active">
+                    <div class="y-progress">
+                      <div class="y-progress-line"></div>
+                    </div>
+                    <div class="y-content">
+                      <a [routerLink]="" class="btn-y">
+                        <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                          <i class="fa fa-paperclip" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      <p class="text-center mb-0">Anexo</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card card-mtpe mb-3">
+              <div class="card-header bg-light d-sm-flex justify-content-between p-1">
+                <h5 class="mb-0"><small><i class="fa fa-user" aria-hidden="true"></i> Unidades de Negocio o Organismos Adscritos</small></h5>
+              </div>
+              <div class="card-body">
+                <nav class="nav nav-tabs" id="myTab" role="tablist">
+                  <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">2011</a>
+                  <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">2012</a>
+                </nav>
+                <div class="tab-content p-2 border border-mtpe border-top-0" id="nav-tabContent">
+                  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <p>Contratación Laboral Directa</p>
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Descripción</th>
+                          <th>DL N° 276</th>
+                          <th>DL N° 728</th>
+                          <th>DL N° 1057</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>EMPLEADOR DE DIRECCIÓN</td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                        </tr>
+                        <tr>
+                          <td>EMPLEADOR DE CONFIANZA</td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                        </tr>
+                        <tr>
+                          <td>EMPLEADOS</td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                        </tr>
+                        <tr>
+                          <td>EMPLEADOS A TIEMPO PARCIAL</td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                        </tr>
+                        <tr>
+                          <td>TOTAL</td>
+                          <td class="text-right"><label for="" class="col-form-label col-form-label-sm">0</label></td>
+                          <td class="text-right"><label for="" class="col-form-label col-form-label-sm">0</label></td>
+                          <td class="text-right"><label for="" class="col-form-label col-form-label-sm">0</label></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p>Contratación Laboral Directa</p>
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Descripción</th>
+                          <th>DL N° 276</th>
+                          <th>DL N° 728</th>
+                          <th>DL N° 1057</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>TRABAJADORES POR TERCEROS</td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                        </tr>
+                        <tr>
+                          <td>EMPRESAS DE SERVICIOS ESPECIALES (SERVICES)</td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                        </tr>
+                        <tr>
+                          <td>EMPLEADOS</td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                        </tr>
+                        <tr>
+                          <td>OBREROS</td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                          <td><input type="text" class="form-control form-control-sm" name="" id=""></td>
+                        </tr>
+                        <tr>
+                          <td>TOTAL</td>
+                          <td class="text-right"><label for="" class="col-form-label col-form-label-sm">0</label></td>
+                          <td class="text-right"><label for="" class="col-form-label col-form-label-sm">0</label></td>
+                          <td class="text-right"><label for="" class="col-form-label col-form-label-sm">0</label></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <p>Otras Organizaciones Sindicales no sujetos al presente pliego de peticiones que tienen NC</p>
+                    <a href="#" class="btn btn-sm btn-dark mb-2" data-toggle="modal" data-target="#sindicalModal"><i class="fa fa-plus" aria-hidden="true"></i> Agregar</a>
+                    <table class="table table-responsive table-hover table-striped">
+                      <thead>
+                        <tr>
+                          <th>RUC</th>
+                          <th>Registrar</th>
+                          <th>Razón Social</th>
+                          <th>Ámbito</th>
+                          <th>N° Expediente</th>
+                          <th>Autoridad de Trc</th>
+                          <th>Vigencia Inicial</th>
+                          <th>Vigencia</th>
+                          <th>Etapa</th>
+                          <th>Opción</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>10354656126</td>
+                          <td></td>
+                          <td>Trabajadores de CYH Se</td>
+                          <td>Economico-Financie</td>
+                          <td>25525-2017</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-center">
+                            <a href="" class="btn btn-sm btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a href="" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-sm-right">
+                <a [routerLink]="" (click)="irPerfil5()" class="btn btn-sm m-1 btn-success"><i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
+                <a [routerLink]="" class="btn btn-sm m-1 btn-secondary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

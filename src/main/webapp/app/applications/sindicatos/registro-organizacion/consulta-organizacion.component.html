@@ -1,72 +1,75 @@
+<style>
+    fieldset {
+    border: 1px solid #d6d6d6 !important;
+    margin: 0;
+    padding: 10px;
+    position: relative;
+    border-radius: 4px;
+    background-color: #fbfbfb;
+    padding-left: 10px !important;
+    }
+
+legend {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 0px;
+    width: 35%;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    padding: 5px 5px 5px 10px;
+    background-color: #ffffff;
+    }
+</style>
+
 <div>
     <br/>
     <h4 class="title my-3" align="center">
         <span>Listado de Organizaciones Sindicales</span>
     </h4>
-    
-    <table align="center" border="0">
-        <tr>
-            <td>
-                <input type="radio" name="ch1" />
-            </td>
-            <td>
-                Nro. Expediente
-            </td>
-            <td>                
-                <input type="radio" name="ch1" />
-            </td>
-            <td>
-                Año de Registro
-            </td>
-            <td>
-                <input type="radio" name="ch1" />
-            </td>
-            <td>
-                Nombre Org. Sindical
-            </td>
-            <td>
-                <input type="radio" name="ch1" />
-            </td>
-            <td>
-                Palabras Claves
-            </td>
-        </tr>
-        <tr><td></td></tr>
-        <tr>
-            <td colspan="3" align="right">
-                Ingrese Dato:
-            </td>
-            <td colspan="4">
-                <input type="text" class="form-control" id="currentSearch"/>    
-                </td>
-            <td colspan="1">
-                <button class="input-group-addon btn btn-info">
-                    <span class="fa fa-search"></span>
-                </button>
-            </td>
-        </tr>
-    </table>
+
+    <fieldset class="col">     
+      <legend>Criterios de Búsqueda</legend>
             
+      <div class="panel">
+        <div class="panel-body">
+          <form name="editForm" role="form" novalidate (ngSubmit)="submitNuevoUsuario()" #editForm="ngForm">
+            <div align="center">
+              <p-radioButton name="group1" value="Option1" label="Nro. Expediente" [(ngModel)]="val1" inputId="opt1"></p-radioButton>
+              <p-radioButton name="group1" value="Option2" label="Año de Registro" [(ngModel)]="val1" inputId="opt2"></p-radioButton>
+              <p-radioButton name="group1" value="Option3" label="Nombre Org. Sind." [(ngModel)]="val1" inputId="opt3"></p-radioButton>
+              <p-radioButton name="group1" value="Option4" label="Palabras Claves" [(ngModel)]="val1" inputId="opt4"></p-radioButton>
+            </div>
+            <div align="center">
+              <table border="0" style="width: 250px;">
+                <tr>
+                  <td><label for="inpNumero" class="col-sm-3 col-form-label">Ingrese Dato:</label></td>
+                  <td><input name="dato" type="text" size="30" pInputText [(ngModel)]="organizacionModel.dato"/></td>
+                  <td><button type="submit" (click)="buscar()" class="btn btn-primary jh-create-entity create-accionadop"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</button></td>
+                </tr>
+              </table>                
+            </div>
+          </form>
+        </div>
+      </div>
+    </fieldset>
+
     <br/>    
     
     <button type="button"  [routerLink]="['/sindicatos/principal', {outlets: { wizard: 'registro-organizacion' } } ]" class="btn btn-primary jh-create-entity create-accionadop">Nuevo Registro</button>
     
     <br/>
     <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                <th><span >Num. Expediente</span></th>
-                <th><span >Organización Sindical</span></th>
-                <th><span >Fecha Registro</span></th>
-                <th><span ></span></th>
-                <th><span ></span></th>
-                </tr>
-            </thead>
-            <tbody>
-    
-            </tbody>
-        </table>
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <p-dataTable [value]="listaConsulta" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+                    <p-column field="expediente" header="Num. Expediente" [sortable]="true"></p-column>
+                    <p-column field="nombre" header="Organización Sindical" [sortable]="true"></p-column>
+                    <p-column field="fecha" header="Fecha Registro" [sortable]="true"></p-column>
+                </p-dataTable>
+            </div>
+        </div>
     </div>
-    
+
     </div>
+
+    <p-growl [(value)]="msgs"></p-growl>

@@ -1,21 +1,37 @@
+<style>
+        fieldset {
+        border: 1px solid #d6d6d6 !important;
+        margin: 0;
+        padding: 10px;
+        position: relative;
+        border-radius: 4px;
+        background-color: #fbfbfb;
+        padding-left: 10px !important;
+        }
+
+    legend {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 0px;
+        width: 35%;
+        border: 1px solid #d6d6d6;
+        border-radius: 4px;
+        padding: 5px 5px 5px 10px;
+        background-color: #ffffff;
+        }
+</style>
+
 <div>
-        <br/>
+    <br/>
         <h4 class="title my-3" align="center">
             <span>Registro Recurso</span>
         </h4>
     
-    <table align="center" border="0">
-        <tr>
-            <td>
-                Razón Social:
-            </td>
-            <td>
-                <label>razooooonnnnn</label>
-            </td>
-        </tr>
-        <tr><td></td></tr>
-    </table>    
-            
+        <fieldset class="col">
+                <div align="center">
+                    Razón Social: <label>razooooonnnnn</label>
+                </div>
+        </fieldset>
     <br/>    
     
     <button [routerLink]="['/sindicatos/principal', {outlets: { wizard: 'registro-recurso' } } ]" class="btn btn-primary jh-create-entity create-accionadop">Agregar Recurso</button>
@@ -23,21 +39,17 @@
     
     <br/>
     <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                <th><span >N°</span></th>
-                <th><span >Nro. Recurso</span></th>
-                <th><span >Tipo Recurso</span></th>
-                <th><span >Fecha Registro</span></th>
-                <th><span >Estado</span></th>
-                <th></th>
-                </tr>
-            </thead>
-            <tbody>
-    
-            </tbody>
-        </table>
-    </div>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <p-dataTable [value]="listaConsulta" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+                        <p-column field="numero" header="N°" [sortable]="true"></p-column>
+                        <p-column field="numrec" header="Nro. Recurso" [sortable]="true"></p-column>
+                        <p-column field="tiprec" header="Tipo Recurso" [sortable]="true"></p-column>
+                        <p-column field="fecreg" header="Fecha Registro" [sortable]="true"></p-column>
+                        <p-column field="estado" header="Estado" [sortable]="true"></p-column>
+                    </p-dataTable>
+                </div>
+            </div>
+        </div>
     
     </div>

@@ -1,0 +1,180 @@
+<div class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
+        <div class="row">
+          <div class="col">
+            <h4 class="title">Perfil del Empleador</h4>
+          </div>
+        </div>
+        <div class="form-row mb-2">
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label for="inpRuc" class="col-sm-3 col-form-label col-form-label-sm text-right">RUC</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control form-control-sm" id="inpRuc" placeholder="">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="form-group row">
+              <label for="inpRsocial" class="col-sm-3 col-form-label col-form-label-sm text-right" value="1047792455654">Razón Social</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control form-control-sm" id="inpRsocial" placeholder="" value="CYH Solutions SAC">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="card-panel box-shadow mb-3">
+              <div class="card-body">
+                <div class="row no-gutters y-steps">
+                  <div class="col d-flex justify-content-center y-step active">
+                    <div class="y-progress">
+                      <div class="y-progress-line"></div>
+                    </div>
+                    <div class="y-content">
+                      <a [routerLink]="" (click)="irPerfil()" class="btn-y">
+                        <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                          <i class="fa fa-user" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      <p class="text-center mb-0">Datos Generales I</p>
+                    </div>
+                  </div>
+                  <div class="col d-flex justify-content-center y-step active">
+                    <div class="y-progress">
+                      <div class="y-progress-line"></div>
+                    </div>
+                    <div class="y-content">
+                      <a [routerLink]="" (click)="irPerfil2()" class="btn-y">
+                        <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                          <i class="fa fa-database" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      <p class="text-center mb-0">Datos Generales II</p>
+                    </div>
+                  </div>
+                  <div class="col d-flex justify-content-center y-step active">
+                    <div class="y-progress">
+                      <div class="y-progress-line"></div>
+                    </div>
+                    <div class="y-content">
+                      <a [routerLink]="" (click)="previousState()" class="btn-y">
+                        <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                          <i class="fa fa-plane" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      <p class="text-center mb-0">Negociación Colectiva (NVC)</p>
+                    </div>
+                  </div>
+                  <div class="col d-flex justify-content-center y-step active">
+                    <div class="y-progress">
+                      <div class="y-progress-line"></div>
+                    </div>
+                    <div class="y-content">
+                      <a [routerLink]="" (click)="irPerfil4()" class="btn-y">
+                        <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                          <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      <p class="text-center mb-0">Resultado de Ultimas NC</p>
+                    </div>
+                  </div>
+                  <div class="col d-flex justify-content-center y-step">
+                    <div class="y-progress">
+                      <div class="y-progress-line"></div>
+                    </div>
+                    <div class="y-content">
+                      <a [routerLink]="" class="btn-y btn-y-disabled">
+                        <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                          <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      <p class="text-center mb-0">Responsables de Información</p>
+                    </div>
+                  </div>
+                  <div class="col d-flex justify-content-center y-step">
+                      <div class="y-progress">
+                        <div class="y-progress-line"></div>
+                      </div>
+                      <div class="y-content">
+                        <a [routerLink]="" class="btn-y btn-y-disabled">
+                          <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                            <i class="fa fa-paperclip" aria-hidden="true"></i>
+                          </div>
+                        </a>
+                        <p class="text-center mb-0">Anexo</p>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="card card-mtpe mb-3">
+              <div class="card-header bg-light d-sm-flex justify-content-between p-1">
+                <h5 class="mb-0"><small><i class="fa fa-user" aria-hidden="true"></i> Unidades de Negocio o Organismos Adscritos</small></h5>
+              </div>
+              <div class="card-body">
+                <p class="mb-0">Resultados de las negociaciones colectivas finalizadas</p>
+                <p class="mb-0">Principales reajustes de mayor impacto otorgados por cada trabajador (s/)</p>
+                <table class="table table-responsive table-hover table-striped">
+                  <thead>
+                    <tr>
+                      <th>Fecha</th>
+                      <th>Aumento General</th>
+                      <th>Clausula de Salvaguarda o Adicional</th>
+                      <th>Gratificación por Cierre de Pliego</th>
+                      <th>Alimentación</th>
+                      <th>Movilidad</th>
+                      <th>Opción</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>01/01/2017</td>
+                      <td>60.00</td>
+                      <td>1000.00</td>
+                      <td>2000.00</td>
+                      <td>30.00</td>
+                      <td>20.00</td>
+                      <td class="text-center">
+                        <a href="" class="btn btn-sm btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a href="" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>01/01/2017</td>
+                      <td>60.00</td>
+                      <td>1000.00</td>
+                      <td>2000.00</td>
+                      <td>30.00</td>
+                      <td>20.00</td>
+                      <td class="text-center">
+                        <a href="" class="btn btn-sm btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a href="" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>01/01/2017</td>
+                      <td>60.00</td>
+                      <td>1000.00</td>
+                      <td>2000.00</td>
+                      <td>30.00</td>
+                      <td>20.00</td>
+                      <td class="text-center">
+                        <a href="" class="btn btn-sm btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a href="" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="row">
+                  <div class="col-12 text-sm-right">
+                    <a [routerLink]="" (click)="irPerfil3()" class="btn btn-sm m-1 btn-success"><i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
+                    <a [routerLink]="" class="btn btn-sm m-1 btn-secondary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
+                    <a [routerLink]="" (click)="irPerfil5()" class="btn btn-sm m-1 btn-success"><i class="fa fa-chevron-right" aria-hidden="true"></i> Siguiente</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

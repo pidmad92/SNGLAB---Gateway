@@ -3,24 +3,49 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } from 'ng-jhipster';
 
-import { RegistroRecursoService } from './registro-recurso.service';
 import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../shared';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal/modal';
 
 @Component({
-    selector: 'jhi-registro-observacion',
-    templateUrl: './registro-observacion.component.html'
+    selector: 'jhi-bandeja',
+    templateUrl: './bandeja.component.html'
 })
-export class RegistroObservacionComponent implements OnInit {
+export class BandejaComponent implements OnInit {
     currentAccount: any;
     eventSubscriber: Subscription;
     currentSearch: string;
+    routeSub: any;
+    id = '14';
+
+    txtBuscar: string;
+    val1: string;
+    displayDialog: boolean;
+    newCar: boolean;
+    listaConsulta: any[];
 
     constructor(
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private modalService: NgbModal,
+        private route: ActivatedRoute
     ) {
+
+    }
+
+    ngOnInit() {
+        this.listaConsulta = [
+            {expediente : '124234-2343', nombre: 'Ministerio de Trabajo Lima', recurso: 'Junta Directiva', fecha: '11/11/11'},
+            {expediente : '124234-2342', nombre: 'Ministerio de Trabajo Huau', recurso: 'Junta Directiva', fecha: '11/11/11'},
+            {expediente : '124234-2341', nombre: 'Ministerio de Trabajo Huaa', recurso: 'Junta Directiva', fecha: '11/11/11'},
+        ]
+        /*this.loadAll();
+        this.principal.identity().then((account) => {
+            this.currentAccount = account;
+        });
+        this.registerChangeInAtencionEmpleador();*/
     }
 
     loadAll() {
+
         /*if (this.currentSearch) {
             this.atencionEmpleadorService.search({
                 query: this.currentSearch,
@@ -43,12 +68,9 @@ export class RegistroObservacionComponent implements OnInit {
         /*this.currentSearch = '';
         this.loadAll();*/
     }
-    ngOnInit() {
-        /*this.loadAll();
-        this.principal.identity().then((account) => {
-            this.currentAccount = account;
-        });
-        this.registerChangeInAtencionEmpleador();*/
+    open(texto) {
+        console.log('texto: ' + texto);
+        // this.modalService.open(EvaluarSolicitudesComponent);
     }
 
     /*ngOnDestroy() {

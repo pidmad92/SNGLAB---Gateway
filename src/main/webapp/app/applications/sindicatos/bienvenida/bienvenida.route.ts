@@ -16,19 +16,19 @@ export const BienvenidaRoute: Routes = [
     {
         path: 'bienvenida',
         component: BienvenidaComponent,
-        /*data: {
+        data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
-        },*/
-        // canActivate: [UserRouteAccessService],
+            pageTitle: 'Bienvenida'
+        },
+        canActivate: [UserRouteAccessService],
         children: [
             {
                 path: 'bienvenidat',
                 component: BienvenidatComponent,
-                /*data: {
+                data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'gatewayApp.accionadop.home.title'
-                },*/
+                    pageTitle: 'Bienvenida'
+                },
                 outlet: 'wizardbt'
             }
             // {

@@ -101,12 +101,6 @@ export class ListadoSolicitudesComponent implements OnInit, OnDestroy {
     }
 
     verificarVoucher() {
-        console.log('vCodigo' + this.vCodigo);
-        console.log('vNumRecibo1' + this.vNumRecibo1);
-        console.log('vNumRecibo2' + this.vNumRecibo2);
-        console.log('vNumRecibo3' + this.vNumRecibo3);
-        console.log('vNumRecibo4' + this.vNumRecibo4);
-        console.log('tFecPago' + this.tFecPago);
         let verificar = true;
         if (this.vCodigo.length > 0) {
             verificar = false;
@@ -123,12 +117,9 @@ export class ListadoSolicitudesComponent implements OnInit, OnDestroy {
         }
     }
 
-    enviarVoucher() {
-        console.log('enviarVoucher()');
-    }
+    enviarVoucher() {}
 
     verControlInformacion(obj: Solicitud) {
-        console.log('verControlInformacion()');
         /*for (let i = 0; i < this.router.config.length; i++) {
             const routePath = this.router.config[i].path;
             console.log(routePath);

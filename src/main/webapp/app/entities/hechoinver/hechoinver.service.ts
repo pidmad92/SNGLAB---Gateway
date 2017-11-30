@@ -87,4 +87,11 @@ export class HechoinverService {
         copy.tFecupd = this.dateUtils.toDate(hechoinver.tFecupd);
         return copy;
     }
+
+    obtenerHechoInversionPorTipo(codFormPerfil: number, tipo: string): Observable<ResponseWrapper> {
+        const options = createRequestOption();
+        const url = SERVER_API_URL + 'api/listarHechosInversiones';
+        return this.http.get(url +  '?tipo=' + tipo + '&codFormPerfil=' + codFormPerfil, options)
+            .map((res: Response) => this.convertResponse(res));
+    }
 }

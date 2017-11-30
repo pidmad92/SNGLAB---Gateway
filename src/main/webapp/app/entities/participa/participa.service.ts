@@ -87,4 +87,11 @@ export class ParticipaService {
         copy.tFecupd = this.dateUtils.toDate(participa.tFecupd);
         return copy;
     }
+
+    obtenerParticipacionPorTipo(codFormPerfil: number, tipoParticipacion: string): Observable<ResponseWrapper> {
+        const options = createRequestOption();
+        const url = SERVER_API_URL + 'api/listarParticipacion';
+        return this.http.get(url + '?codFormPerfil=' + codFormPerfil + '&tipoParticipacion=' + tipoParticipacion, options)
+            .map((res: Response) => this.convertResponse(res));
+    }
 }

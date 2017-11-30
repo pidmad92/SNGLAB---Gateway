@@ -6,8 +6,6 @@ import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } f
 import { BienvenidaService } from './bienvenida.service';
 
 import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../shared';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal/modal';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
 import { BienvenidatComponent } from './index';
 
 @Component({
@@ -22,7 +20,6 @@ export class BienvenidaComponent implements OnInit {
 
     constructor(
         private eventManager: JhiEventManager,
-        private modalService: NgbModal,
     ) {
     }
 
@@ -45,10 +42,10 @@ export class BienvenidaComponent implements OnInit {
         );*/
     }
 
-    open() {
-        const modalRef = this.modalService.open(BienvenidatComponent);
-        modalRef.componentInstance.name = 'World';
-    }
+    // open() {
+    //     const modalRef = this.modalService.open(BienvenidatComponent);
+    //     modalRef.componentInstance.name = 'World';
+    // }
 
     clear() {
         /*this.currentSearch = '';

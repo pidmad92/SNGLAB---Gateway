@@ -16,6 +16,8 @@ export class BienvenidatComponent implements OnInit {
     currentSearch: string;
     hideElement: false;
 
+    tipoSector= 'sector';
+
     constructor(
         private eventManager: JhiEventManager
     ) {
@@ -24,6 +26,7 @@ export class BienvenidatComponent implements OnInit {
     verAmbito(valor: number) {
         console.log('valor=> ' + valor);
         if (valor === 1) {
+            document.getElementById('divOpciones').style.display = 'block';
         } else if (valor === 2) {
             document.getElementById('divOpciones').style.display = 'none';
         } else if (valor === 3) {

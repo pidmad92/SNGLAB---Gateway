@@ -145,7 +145,6 @@
             </li>
         </ul>
     </div>
-
     <div class="my-2" *ngIf="aplicacion == 'conciliacion'">
         <li routerLinkActive="active">
             <a href="index.html" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
@@ -180,35 +179,34 @@
         </ul>
     </div>
 
-    <!-- JROMERO SINDICATOS -->
     <div class="my-2" *ngIf="aplicacion == 'sindicatos'">
-        <ul class="level-one mt-2 p-0" id="accordion">
+      <ngb-accordion class="level-one mt-2 p-0" id="accordion" activeIds="sindicatos-1" [closeOthers]="true" >
+        <ngb-panel id="sindicatos-1">
+          <ng-template ngbPanelTitle>
             <li routerLinkActive="active">
-                <ngb-accordion [closeOthers]="true" activeIds="static-1">
-                    <ngb-panel id="static-1">
-                        <ng-template ngbPanelTitle>
-                            <li routerLinkActive="active">
-                                <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
-                                    <i class="fa fa-cubes px-2" aria-hidden="true"></i> <span>Sindicatos</span>
-                                    <span class="fa fa-chevron-down ml-auto"></span>
-                                </a>
-                            </li>
-                        </ng-template>
-                        <ng-template ngbPanelContent>
-                            <div class="level-two p-0">
-                                <li><a routerLink="sindicatos/consulta-organizacion" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Registro Organización</span></a></li>
-                                <li><a routerLink="sindicatos/consulta-recurso" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Registro de Recursos</span></a></li>
-                                <li><a routerLink="sindicatos/consulta-delegados" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Registro de Delegados</span></a></li>
-                                <li><a routerLink="sindicatos/revisar-solicitudes" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Revisar Solicitudes</span></a></li>
-                                <li><a routerLink="sindicatos/bienvenida" class="a-menu d-sm-flex align-items-sm-center px-2 py-3"><span>Bienvenida</span></a></li>
-                            </div>
-                        </ng-template>
-                    </ngb-panel>
-                </ngb-accordion>
+              <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                <i class="fa fa-cubes px-2" aria-hidden="true"></i> <span>Sindicatos</span>
+                <span class="fa fa-chevron-down ml-auto"></span>
+              </a>
             </li>
-        </ul>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <div class="level-two p-0">
+              <li><a routerLink="sindicatos/consulta-organizacion" class="a-menu d-sm-flex align-items-sm-center "><span>Registro Organización</span></a></li>
+              <li><a routerLink="sindicatos/consulta-recurso" class="a-menu d-sm-flex align-items-sm-center "><span>Registro de Recursos</span></a></li>
+              <li><a routerLink="sindicatos/consulta-delegados" class="a-menu d-sm-flex align-items-sm-center "><span>Registro de Delegados</span></a></li>
+              <li><a routerLink="sindicatos/revisar-solicitudes" class="a-menu d-sm-flex align-items-sm-center "><span>Revisar Solicitudes</span></a></li>
+              <li><a routerLink="sindicatos/bienvenida" class="a-menu d-sm-flex align-items-sm-center "><span>Bienvenida</span></a></li>
+              <li><a routerLink="sindicatos/bandeja" class="a-menu d-sm-flex align-items-sm-center "><span>Bandeja</span></a></li>
+              <li><a routerLink="sindicatos/afiliar-desafiliar" class="a-menu d-sm-flex align-items-sm-center "><span>Afiliar - Desafiliar</span></a></li>
+            </div>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+
     </div>
-    <!-- JROMERO SINDICATOS -->
+
+    </div>
 
     <!-- GGALARZA DICTAMEN ECONOMICO LABORAL -->
     <div class="my-2" *ngIf="aplicacion == 'dictamenes'">

@@ -2,527 +2,499 @@
    .table tr td:nth-last-child(1) {
                   text-align: left;
               }
+    fieldset {
+        border: 1px solid #d6d6d6 !important;
+        margin: 0;
+        padding: 10px;
+        position: relative;
+        border-radius: 4px;
+        background-color: #fbfbfb;
+        padding-left: 10px !important;
+        }
+
+    legend {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 0px;
+        width: 35%;
+        border: 1px solid #d6d6d6;
+        border-radius: 4px;
+        padding: 5px 5px 5px 10px;
+        background-color: #ffffff;
+        }
+
+        ui-datepicker-calendar ng-tns-c2-1 {
+            width: 0%;
+        }
+
+ .ui-datepicker {
+    width: 0%;
+    padding: .2em;
+    display: none;
+    position: absolute;
+}
+
+  .ui-datepicker {
+    width: 0;
+    padding: .2em;
+    display: none;
+    position: absolute;
+}
+body .ui-datepicker {
+    width: 0;
+}
+
+body .ui-datepicker table {
+    width: 0;
+}
+
 </style>
 
 <div>
   
 <br/>
-<ngb-tabset #t="ngbTabset">
-        <ngb-tab id="tab-selectbyid1">
-            <ng-template ngbTabTitle>
-                <div (click)="mostrarOcultar(1);">Organización Sindical</div>
-            </ng-template>
-            <ng-template ngbTabContent>
 
-            </ng-template>
-        </ngb-tab>
-        <ngb-tab id="tab-selectbyid2">
-            <ng-template ngbTabTitle>
-                <div (click)="mostrarOcultar(0);">Empresa</div>
-            </ng-template>
-            <ng-template ngbTabContent>
-              <br/>
-              <div class="table-responsive">
-                  <table class="table table-striped" border="0">
-                      <tr>
-                          <td>Or. Sindical </td>
-                          <td colspan="3"><label class="form-control form-control-sm">sindicatoooossss</label></td>
-                      </tr>
-                      <tr>
-                          <td>N° Expediente </td>
-                          <td colspan="3"><label class="form-control form-control-sm">654684-65468</label></td>
-                      </tr>
-                      <tr>
-                          <td>R.U.C. </td>
-                          <td colspan="2"><input type="text" class="form-control form-control-sm"/></td>
-                          <td><input type="button" value="Buscar" /></td>
-                      </tr>
-                      <tr>
-                          <td>Razón Social(*) </td>
-                          <td colspan="3"><textarea class="form-control form-control-sm" rows="2" cols="200"></textarea></td>
-                      </tr>
-                      <tr>
-                          <td>Dirección(*) </td>
-                          <td colspan="3"><textarea class="form-control form-control-sm" rows="2" cols="200"></textarea></td>
-                      </tr>
-                      <tr>
-                          <td>Departamento(*) </td>
-                          <td>
-                              <select class="form-control form-control-sm" id="">
-                                  <option>DNI</option>
-                                  <option>RUC</option>
-                                </select>
-                          </td>
-                          <td align="right">Provincia(*) </td>
-                          <td>
-                              <select class="form-control form-control-sm" id="">
-                                  <option>DNI</option>
-                                  <option>RUC</option>
-                                </select>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>Distrito(*) </td>
-                          <td colspan="3">
+    <p-tabView [activeIndex]="index">
+            <p-tabPanel header="Organización Sindical" leftIcon="fa-cubes">
+                <p-tabView [activeIndex]="indexx">
+                    <p-tabPanel header="Datos Generales" leftIcon="fa-cubes">
+                            <div class="table-responsive">
+                                <table class="table table-striped" border="0">
+                                    <tr>
+                                        <td>Número Expediente </td>
+                                        <td><input value=""  class="form-control form-control-sm"/></td>
+                                        <td>Número Resolución </td>
+                                        <td><input value=""  class="form-control form-control-sm"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>R.U.C. </td>
+                                        <td><input value=""  class="form-control form-control-sm"/> <button>Buscar</button></td>
+                                        <td>Siglas </td> 
+                                        <td><input value=""  class="form-control form-control-sm"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nombre Organización </td>
+                                        <td align="left" colspan="3"><input type="text" size="150" class="form-control form-control-sm"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fecha Presentación </td>
+                                        <td><p-calendar name="date1" [(ngModel)]="date1" dateFormat="dd/mm/yy"></p-calendar></td>
+                                        <td>Fecha Constancia(*) </td>
+                                        <td><p-calendar name="date2" [(ngModel)]="date2" dateFormat="dd/mm/yy"></p-calendar></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Región(*) </td>
+                                        <td>
+                                            <select class="form-control form-control-sm" id="">
+                                                <option>DNI</option>
+                                                <option>RUC</option>
+                                              </select>
+                                        </td>
+                                        <td>Zonal(*) </td>
+                                        <td>
+                                            <select class="form-control form-control-sm" id="">
+                                                <option>DNI</option>
+                                                <option>RUC</option>
+                                              </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Clasificación(*) </td>
+                                        <td>
+                                                <select class="form-control form-control-sm" id="">
+                                                  <option>DNI</option>
+                                                  <option>RUC</option>
+                                                </select>
+                                        </td>
+                                        <td>Correo(*) </td>
+                                        <td><input value=""  class="form-control form-control-sm"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Teléfono(*) </td>
+                                        <td><input value=""  class="form-control form-control-sm"/></td>
+                                        <td>Acta de constitución</td>
+                                        <td><input type="File" class="form-control form-control-sm" /></td>
+                                    </tr>
+                                </table>
+                                <div align="center">
+                                    <button class="btn mx-1 btn-dark float-center">Cancelar</button>
+                                    <button class="btn mx-1 btn-dark float-center">Siguiente</button>
+                                </div>
+                              </div>
+                    </p-tabPanel>
+                    <p-tabPanel header="Clasificación" leftIcon="fa-cubes">
+                            <div class="table-responsive">
+                                <table class="table table-striped" border="0">                  
+                                    <tr>
+                                        <td>Ámbito Sindical(*) </td>
+                                        <td>
+                                            <select class="form-control form-control-sm" id="">
+                                                <option>DNI</option>
+                                                <option>RUC</option>
+                                              </select>
+                                        </td>
+                                        <td>Cat. Org. Sindical(*) </td>
+                                        <td>
+                                            <select class="form-control form-control-sm" id="">
+                                                <option>DNI</option>
+                                                <option>RUC</option>
+                                              </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nivel Org. Sindical(*) </td>
+                                        <td>
+                                            <select class="form-control form-control-sm" id="">
+                                                <option>DNI</option>
+                                                <option>RUC</option>
+                                              </select>
+                                        </td>
+                                        <td>Tipo Org. Sindical </td>
+                                        <td>
+                                            <select class="form-control form-control-sm" id="">
+                                                <option>DNI</option>
+                                                <option>RUC</option>
+                                              </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rubro(*) </td>
+                                        <td>
+                                            <select class="form-control form-control-sm" id="">
+                                                <option>DNI</option>
+                                                <option>RUC</option>
+                                              </select>
+                                        </td>
+                                        <td>Categoría(*) </td>
+                                        <td>
+                                            <select class="form-control form-control-sm" id="">
+                                                <option>DNI</option>
+                                                <option>RUC</option>
+                                              </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">Palabras Clave(*) </td>
+                                    </tr>
+                                    <tr align="center">
+                                        <td colspan="4">
+                                              <p-chips [(ngModel)]="values1" placeholder="Escribe aquí"></p-chips>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div align="center">
+                                    <button class="btn mx-1 btn-dark float-center">Cancelar</button>
+                                    <button class="btn mx-1 btn-dark float-center">Siguiente</button>
+                                </div>
+                              </div>
+                    </p-tabPanel>
+                    <p-tabPanel header="Dirección" leftIcon="fa-cubes">
+                            <div class="table-responsive">
+                                <table class="table table-striped" border="0">                  
+                                    <tr>
+                                        <td>Departamento(*) </td>
+                                        <td>
+                                            <select class="form-control form-control-sm" id="">
+                                                <option>DNI</option>
+                                                <option>RUC</option>
+                                              </select>
+                                        </td>
+                                        <td align="center">Provincia(*) </td>
+                                        <td align="left">
+                                            <select class="form-control form-control-sm" id="">
+                                                <option>DNI</option>
+                                                <option>RUC</option>
+                                              </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Distrito(*) </td>
+                                        <td>
+                                            <select class="form-control form-control-sm" id="">
+                                                <option>DNI</option>
+                                                <option>RUC</option>
+                                              </select>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dirección Real </td>
+                                        <td colspan="3"><textarea class="form-control form-control-sm" rows="2" cols="200"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dirección Legal </td>
+                                        <td colspan="3"><textarea class="form-control form-control-sm" rows="2" cols="200"></textarea></td>
+                                    </tr>  
+                                </table>
+                                <div align="center">
+                                    <button class="btn mx-1 btn-dark float-center">Cancelar</button>
+                                    <button class="btn mx-1 btn-dark float-center">Siguiente</button>
+                                </div>
+                              </div>
+                    </p-tabPanel>
+                </p-tabView>
+            </p-tabPanel>
+            <p-tabPanel header="Empresa" leftIcon="fa-cubes">
+                    <div class="table-responsive">
+                        <table class="table table-striped" border="0">
+                            <tr>
+                                <td colspan="2">Or. Sindical </td>
+                                <td colspan="2">N° Expediente</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><label class="form-control form-control-sm">sindicatoooossss</label></td>
+                                <td colspan="2"><label class="form-control form-control-sm">654684-65468</label></td>
+                            </tr>
+                            <tr>
+                                <td>R.U.C. </td>
+                                <td colspan="2"><input type="text" class="form-control form-control-sm"/></td>
+                                <td><input type="button" value="Buscar" /></td>
+                            </tr>
+                            <tr>
+                                <td>Razón Social(*) </td>
+                                <td colspan="3"><input type="text" class="form-control form-control-sm"/></textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Dirección(*) </td>
+                                <td colspan="3"><input type="text" class="form-control form-control-sm"/></textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Departamento(*) </td>
+                                <td>
+                                    <select class="form-control form-control-sm" id="">
+                                        <option>DNI</option>
+                                        <option>RUC</option>
+                                      </select>
+                                </td>
+                                <td align="right">Provincia(*) </td>
+                                <td>
+                                    <select class="form-control form-control-sm" id="">
+                                        <option>DNI</option>
+                                        <option>RUC</option>
+                                      </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Distrito(*) </td>
+                                <td colspan="3">
+                                        <select class="form-control form-control-sm" id="">
+                                          <option>DNI</option>
+                                          <option>RUC</option>
+                                        </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>CIIU(*) </td>
+                                <td colspan="3">
                                   <select class="form-control form-control-sm" id="">
                                     <option>DNI</option>
                                     <option>RUC</option>
                                   </select>
-                          </td>
-                          <td></td>
-                          <td></td>
-                      </tr>
-                      <tr>
-                          <td>CIIU(*) </td>
-                          <td colspan="3">
-                            <select class="form-control form-control-sm" id="">
-                              <option>DNI</option>
-                              <option>RUC</option>
-                            </select>
-                          </td>
-                      </tr>
-                  </table>
-                  <div align="center">
-                      <button class="btn mx-1 btn-dark float-center">Cancelar</button>
-                      <button class="btn mx-1 btn-dark float-center">Siguiente</button>
-                  </div>
-                </div>
-            </ng-template>
-        </ngb-tab>
-        <ngb-tab id="tab-selectbyid3">
-            <ng-template ngbTabTitle>
-                <div (click)="mostrarOcultar(0);">Junta Directiva</div>
-            </ng-template>
-            <ng-template ngbTabContent>
-                <br/>
-                <div class="table-responsive">
-                    <table class="table table-striped" border="0">
-                        <tr>
-                            <td colspan="4">Org. Sindical <label class="form-control form-control-sm">sindicatoooossss</label></td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">N° Expediente <label class="form-control form-control-sm">654684-65468</label></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <fieldset class="col">     
-                                    <legend>Periodo de Vigencia</legend>
-                                                    <div class="col-6">
-                                                        F. Inicio(*) <input type="date" class="form-control form-control-sm" />
-                                                    </div>
-                                                    <div class="col-6">
-                                                        F. Fin(*) <input type="date" class="form-control form-control-sm" />
-                                                    </div>
-                                                    <div class="col-6">
-                                                        Estado <label>VIGENTE</label>
-                                                    </div>
-                                </fieldset>
-                            </td>
-                            <td colspan="2">
-                                <fieldset class="col">     
-                                    <legend>Número Miembros</legend>
-                                                    <div class="col-6">
-                                                        Titulares(*) <input type="text" value="0" class="form-control form-control-sm" />
-                                                    </div>
-                                                    <div class="col-6">
-                                                        Suplentes(*) <input type="text" value="0" class="form-control form-control-sm" />
-                                                    </div>
-                                                    <div class="col-6">
-                                                    </div>
-                                </fieldset>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">
-                                <div align="left">
-                                    <button class="btn mx-1 btn-dark float-left">Agregar</button>
-                                    <button class="btn mx-1 btn-dark float-left">Eliminar</button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div align="center">
+                            <button class="btn mx-1 btn-dark float-center">Cancelar</button>
+                            <button class="btn mx-1 btn-dark float-center">Siguiente</button>
+                        </div>
+                      </div>
+            </p-tabPanel>
+            <p-tabPanel header="Junta Directiva" leftIcon="fa-cubes">
+                    <div class="table-responsive">
+                        <table class="table table-striped" border="0">
+                            <tr>
+                                <td colspan="2">Org. Sindical <label class="form-control form-control-sm">sindicatoooossss</label></td>
+                                <td colspan="2">N° Expediente <label class="form-control form-control-sm">654684-65468</label></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                        <fieldset class="col">     
+                                                <legend>Periodo de Vigencia</legend>
+                                                <div align="center">
+                                                <table>
+                                                    <tr>
+                                                        <td>F. Inicio(*)</td>
+                                                        <td><p-calendar name="vigencia1" [(ngModel)]="vigencia1" dateFormat="dd/mm/yy"></p-calendar></td>
+                                                        <td>F. Fin(*)</td>
+                                                        <td><p-calendar name="vigencia2" [(ngModel)]="vigencia2" dateFormat="dd/mm/yy"></p-calendar></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Estado <label>VIGENTE</label></td>
+                                                    </tr>
+                                                </table>
+                                                </div>
+                                            </fieldset>
+                                </td>
+                                <td colspan="2">
+                                    <fieldset class="col">     
+                                        <legend>Número Miembros</legend>
+                                        <div align="center">
+                                            <table>
+                                                <tr>
+                                                    <td>Titulares(*)</td>
+                                                    <td><input type="text" value="0" pInputText /></td>
+                                                    <td>Suplentes(*)</td>
+                                                    <td><input type="text" value="0" pInputText /></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </fieldset>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <div align="left">
+                                        <button class="btn mx-1 btn-dark float-left">Agregar</button>
+                                        <button class="btn mx-1 btn-dark float-left">Eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr align="center">
+                                <td colspan="4">
+                                    <div class="table-responsive">
+                                    <p-dataTable [value]="listaJD" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+                                                <p-column field="id" header="ID" [sortable]="true"></p-column>
+                                                <p-column field="numero" header="N°" [sortable]="true"></p-column>
+                                                <p-column field="tipdoc" header="Tipo Doc." [sortable]="true"></p-column>
+                                                <p-column field="numdoc" header="Num. Doc." [sortable]="true"></p-column>
+                                                <p-column field="nombre" header="Nombre" [sortable]="true"></p-column>
+                                                <p-column field="cargo" header="Cargo" [sortable]="true"></p-column>
+                                    </p-dataTable>
                                 </div>
-                            </td>
-                        </tr>
-                        <tr align="center">
-                            <td colspan="4">
-                                <table class="table table-striped" border="0">
-                                    <thead>
+                                </td>
+                            </tr>
+                        </table>
+                        <div align="center">
+                            <button class="btn mx-1 btn-dark float-center">Cancelar</button>
+                            <button class="btn mx-1 btn-dark float-center">Siguiente</button>
+                        </div>
+                        </div>
+            </p-tabPanel>
+            <p-tabPanel header="Estatuto" leftIcon="fa-cubes">
+                    <div class="table-responsive">
+                        <table class="table table-striped" border="0">
+                            <tr>
+                                <td colspan="2">Org. Sindical <label class="form-control form-control-sm">sindicatoooossss</label></td>
+                                <td colspan="2">N° Expediente <label class="form-control form-control-sm">654684-65468</label></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <div align="left">
+                                        <button class="btn mx-1 btn-dark float-left">Agregar</button>
+                                        <button class="btn mx-1 btn-dark float-left">Eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr align="center">
+                                <td colspan="4">
+                                    <p-dataTable [value]="listaEstatuto" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+                                                <p-column field="id" header="ID" [sortable]="true"></p-column>
+                                                <p-column field="fecasa" header="Fecha Asamblea" [sortable]="true"></p-column>
+                                                <p-column field="descri" header="Descripción" [sortable]="true"></p-column>
+                                                <p-column field="archiv" header="Archivo" [sortable]="true"></p-column>
+                                    </p-dataTable>
+                                </td>
+                            </tr>
+                        </table>
+                        <div align="center">
+                            <button class="btn mx-1 btn-dark float-center">Cancelar</button>
+                            <button class="btn mx-1 btn-dark float-center">Siguiente</button>
+                        </div>
+                        </div>
+            </p-tabPanel>
+            <p-tabPanel header="Afiliación" leftIcon="fa-cubes">
+                    <div class="table-responsive">
+                        <table class="table table-striped" border="0">
+                            <tr>
+                                <td colspan="2">Org. Sindical <label class="form-control form-control-sm">sindicatoooossss</label></td>
+                                <td colspan="2">N° Expediente <label class="form-control form-control-sm">654684-65468</label></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <div align="left">
+                                        <button class="btn mx-1 btn-dark float-left">Agregar</button>
+                                        <button class="btn mx-1 btn-dark float-left">Eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr align="center">
+                                <td colspan="4">
+                                        <p-dataTable [value]="listaAfiliacion" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+                                                <p-column field="expedi" header="Num. Expediente" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+                                                <p-column field="tipdoc" header="Tipo Doc." [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+                                                <p-column field="numdoc" header="Num. Doc." [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+                                                <p-column field="tiporg" header="Tipo Org." [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+                                                <p-column field="razsoc" header="Razón Social" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+                                                <p-column field="fecafi" header="F. Afiliación" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+                                                <p-column field="fecdes" header="F. Desafiliación" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+                                                <p-column field="estado" header="Estado" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+                                            </p-dataTable>
+                                </td>
+                            </tr>
+                        </table>
+                        <div align="center">
+                            <button class="btn mx-1 btn-dark float-center">Cancelar</button>
+                            <button class="btn mx-1 btn-dark float-center">Siguiente</button>
+                        </div>
+                        </div>
+            </p-tabPanel>
+            <p-tabPanel header="Califiación" leftIcon="fa-cubes">
+                    <div class="table-responsive">
+                        <table class="table table-striped" border="0">
+                            <tr>
+                                <td colspan="2">Org. Sindical <label class="form-control form-control-sm">sindicatoooossss</label></td>
+                                <td colspan="2">N° Expediente <label class="form-control form-control-sm">654684-65468</label></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    Requisitos
+                                </td>
+                            </tr>
+                            <tr align="center">
+                                <td colspan="4">
+                                    <table class="table table-striped" border="0" style="">
+                                        <thead>
+                                            <tr>
+                                            <th><span><font color="#000000">Descripción</font></span></th>
+                                            <th><span><font color="#000000">Presento</font></span></th>
+                                            <th><span><font color="#000000">En Regla</font></span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
                                         <tr>
-                                        <th><span >ID</span></th>
-                                        <th><span >N°</span></th>
-                                        <th><span >Tipo Doc.</span></th>
-                                        <th><span >Num. Doc.</span></th>
-                                        <th><span >Nombre</span></th>
-                                        <th><span >Cargo</span></th>
-                                        <th></th>
-                                        <th></th>
+                                            <td>Observación 1</td>
+                                            <td><p-checkbox name="group1" value="check1" [(ngModel)]="selectedCities" inputId="ny1"></p-checkbox></td>
+                                            <td><p-checkbox name="group1" value="check2" [(ngModel)]="selectedCities" inputId="ny2"></p-checkbox></td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-    
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-                    <div align="center">
-                        <button class="btn mx-1 btn-dark float-center">Cancelar</button>
-                        <button class="btn mx-1 btn-dark float-center">Siguiente</button>
-                    </div>
-                    </div>
-            </ng-template>
-        </ngb-tab>
-        <ngb-tab id="tab-selectbyid4">
-            <ng-template ngbTabTitle>
-                <div (click)="mostrarOcultar(0);">Estatuto</div>
-            </ng-template>
-            <ng-template ngbTabContent>
-                <br/>
-                <div class="table-responsive">
-                    <table class="table table-striped" border="0">
-                        <tr>
-                            <td colspan="4">Org. Sindical <label class="form-control form-control-sm">sindicatoooossss</label></td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">N° Expediente <label class="form-control form-control-sm">654684-65468</label></td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">
-                                <div align="left">
-                                    <button class="btn mx-1 btn-dark float-left">Agregar</button>
-                                    <button class="btn mx-1 btn-dark float-left">Eliminar</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr align="center">
-                            <td colspan="4">
-                                <table class="table table-striped" border="0">
-                                    <thead>
                                         <tr>
-                                        <th><span >ID</span></th>
-                                        <th><span >Fecha Asamblea</span></th>
-                                        <th><span >Descripción</span></th>
-                                        <th><span >Archivo</span></th>
-                                        <th></th>
-                                        <th></th>
+                                            <td>Observación 2</td>
+                                            <td><p-checkbox name="group1" value="check3" [(ngModel)]="selectedCities" inputId="ny3"></td>
+                                            <td><p-checkbox name="group1" value="check4" [(ngModel)]="selectedCities" inputId="ny4"></td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-    
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-                    <div align="center">
-                        <button class="btn mx-1 btn-dark float-center">Cancelar</button>
-                        <button class="btn mx-1 btn-dark float-center">Siguiente</button>
-                    </div>
-                    </div>
-            </ng-template>
-        </ngb-tab>
-        <ngb-tab id="tab-selectbyid5">
-            <ng-template ngbTabTitle>
-                <div (click)="mostrarOcultar(0);">Afiliación</div>
-            </ng-template>
-            <ng-template ngbTabContent>
-                <br/>
-                <div class="table-responsive">
-                    <table class="table table-striped" border="0">
-                        <tr>
-                            <td colspan="4">Org. Sindical <label class="form-control form-control-sm">sindicatoooossss</label></td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">N° Expediente <label class="form-control form-control-sm">654684-65468</label></td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">
-                                <div align="left">
-                                    <button class="btn mx-1 btn-dark float-left">Agregar</button>
-                                    <button class="btn mx-1 btn-dark float-left">Eliminar</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr align="center">
-                            <td colspan="4">
-                                <table class="table table-striped" border="0">
-                                    <thead>
                                         <tr>
-                                        <th><span>Num. Expediente</span></th>
-                                        <th><span>Tipo Doc.</span></th>
-                                        <th><span>Num. Doc.</span></th>
-                                        <th><span>Tipo Org.</span></th>
-                                        <th><span>Razón Social</span></th>
-                                        <th><span>F. Afiliación</span></th>
-                                        <th><span>F. Desafiliación</span></th>
-                                        <th><span>Estado</span></th>
-                                        <th></th>
-                                        <th></th>
+                                            <td>Observación 3</td>
+                                            <td><p-checkbox name="group1" value="check5" [(ngModel)]="selectedCities" inputId="ny5"></td>
+                                            <td><p-checkbox name="group1" value="check6" [(ngModel)]="selectedCities" inputId="ny6"></td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-    
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-                    <div align="center">
-                        <button class="btn mx-1 btn-dark float-center">Cancelar</button>
-                        <button class="btn mx-1 btn-dark float-center">Siguiente</button>
-                    </div>
-                    </div>
-            </ng-template>
-        </ngb-tab>
-        <ngb-tab id="tab-selectbyid6">
-            <ng-template ngbTabTitle>
-                <div (click)="mostrarOcultar(0);">Califiación</div>
-            </ng-template>
-            <ng-template ngbTabContent>
-                <br/>
-                <div class="table-responsive">
-                    <table class="table table-striped" border="0">
-                        <tr>
-                            <td colspan="4">Org. Sindical <label class="form-control form-control-sm">sindicatoooossss</label></td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">N° Expediente <label class="form-control form-control-sm">654684-65468</label></td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">
-                                Requisitos
-                            </td>
-                        </tr>
-                        <tr align="center">
-                            <td colspan="4">
-                                <table class="table table-striped" border="0">
-                                    <thead>
                                         <tr>
-                                        <th><span >Descripción</span></th>
-                                        <th><span >Presento</span></th>
-                                        <th><span >En Regla</span></th>
+                                            <td>Observación 4</td>
+                                            <td><p-checkbox name="group1" value="check7" [(ngModel)]="selectedCities" inputId="ny7"></td>
+                                            <td><p-checkbox name="group1" value="check8" [(ngModel)]="selectedCities" inputId="ny8"></td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Observación 1</td>
-                                        <td><input type="checkbox" /></td>
-                                        <td><input type="checkbox" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Observación 2</td>
-                                        <td><input type="checkbox" /></td>
-                                        <td><input type="checkbox" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Observación 3</td>
-                                        <td><input type="checkbox" /></td>
-                                        <td><input type="checkbox" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Observación 4</td>
-                                        <td><input type="checkbox" /></td>
-                                        <td><input type="checkbox" /></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-                    <div align="center">
-                        <button class="btn mx-1 btn-dark float-center">Cancelar</button>
-                        <button class="btn mx-1 btn-dark float-center">Siguiente</button>
-                    </div>
-                    </div>
-            </ng-template>
-        </ngb-tab>
-</ngb-tabset>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        <div align="center">
+                            <button class="btn mx-1 btn-dark float-center">Cancelar</button>
+                            <button class="btn mx-1 btn-dark float-center">Siguiente</button>
+                        </div>
+                        </div>
+            </p-tabPanel>
+    </p-tabView>
 
-<div id="divDatosGenerales">
-    <ngb-tabset id="tabDatosGenerales">
-        <ngb-tab id="tab-selectbyid1i" title="Datos Generales">
-          <ng-template ngbTabContent>
-            <br/>
-            <div class="table-responsive">
-                <table class="table table-striped" border="0">
-                    <tr>
-                        <td>Número Expediente </td>
-                        <td><input value=""  class="form-control form-control-sm"/></td>
-                        <td>Número Resolución </td>
-                        <td><input value=""  class="form-control form-control-sm"/></td>
-                    </tr>
-                    <tr>
-                        <td>R.U.C. </td>
-                        <td><input value=""  class="form-control form-control-sm"/> <button>Buscar</button></td>
-                        <td>Siglas </td> 
-                        <td><input value=""  class="form-control form-control-sm"/></td>
-                    </tr>
-                    <tr>
-                        <td>Nombre Organización </td>
-                        <td align="left" colspan="3"><input type="text" size="150" class="form-control form-control-sm"/></td>
-                    </tr>
-                    <tr>
-                        <td>Fecha Presentación </td>
-                        <td><input type="date" class="form-control form-control-sm" /></td>
-                        <td>Fecha Constancia(*) </td>
-                        <td><input type="date" class="form-control form-control-sm" /></td>
-                    </tr>
-                    <tr>
-                        <td>Región(*) </td>
-                        <td>
-                            <select class="form-control form-control-sm" id="">
-                                <option>DNI</option>
-                                <option>RUC</option>
-                              </select>
-                        </td>
-                        <td>Zonal(*) </td>
-                        <td>
-                            <select class="form-control form-control-sm" id="">
-                                <option>DNI</option>
-                                <option>RUC</option>
-                              </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Clasificación(*) </td>
-                        <td>
-                                <select class="form-control form-control-sm" id="">
-                                  <option>DNI</option>
-                                  <option>RUC</option>
-                                </select>
-                        </td>
-                        <td>Correo(*) </td>
-                        <td><input value=""  class="form-control form-control-sm"/></td>
-                    </tr>
-                    <tr>
-                        <td>Teléfono(*) </td>
-                        <td><input value=""  class="form-control form-control-sm"/></td>
-                        <td>Archivo</td>
-                        <td><input type="File" class="form-control form-control-sm" /></td>
-                    </tr>
-                </table>
-                <div align="center">
-                    <button class="btn mx-1 btn-dark float-center" (click)="mostrarOcultar(1);" >Cancelaras</button>
-                    <button class="btn mx-1 btn-dark float-center">Siguiente</button>
-                </div>
-              </div>
-          </ng-template>
-        </ngb-tab>
-        <ngb-tab id="tab-selectbyid2i" title="Clasificación">
-          <ng-template ngbTabContent>
-              <br/>
-              <div class="table-responsive">
-                  <table class="table table-striped" border="0">                  
-                      <tr>
-                          <td>Ámbito Sindical(*) </td>
-                          <td>
-                              <select class="form-control form-control-sm" id="">
-                                  <option>DNI</option>
-                                  <option>RUC</option>
-                                </select>
-                          </td>
-                          <td>Cat. Org. Sindical(*) </td>
-                          <td>
-                              <select class="form-control form-control-sm" id="">
-                                  <option>DNI</option>
-                                  <option>RUC</option>
-                                </select>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>Nivel Org. Sindical(*) </td>
-                          <td>
-                              <select class="form-control form-control-sm" id="">
-                                  <option>DNI</option>
-                                  <option>RUC</option>
-                                </select>
-                          </td>
-                          <td>Tipo Org. Sindical </td>
-                          <td>
-                              <select class="form-control form-control-sm" id="">
-                                  <option>DNI</option>
-                                  <option>RUC</option>
-                                </select>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>Rubro(*) </td>
-                          <td>
-                              <select class="form-control form-control-sm" id="">
-                                  <option>DNI</option>
-                                  <option>RUC</option>
-                                </select>
-                          </td>
-                          <td>Categoría(*) </td>
-                          <td>
-                              <select class="form-control form-control-sm" id="">
-                                  <option>DNI</option>
-                                  <option>RUC</option>
-                                </select>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td colspan="4">Palabras Clave(*) </td>
-                      </tr>
-                      <tr align="center">
-                          <td colspan="4">
-                                <p-chips [(ngModel)]="values1" placeholder="Escribe aquí"></p-chips>
-                          </td>
-                      </tr>
-                  </table>
-                  <div align="center">
-                      <button class="btn mx-1 btn-dark float-center">Cancelar</button>
-                      <button class="btn mx-1 btn-dark float-center">Siguiente</button>
-                  </div>
-                </div>
-          </ng-template>
-        </ngb-tab>
-        <ngb-tab id="tab-selectbyid3i" title="Dirección">
-          <ng-template ngbTabContent>
-              <br/>
-              <div class="table-responsive">
-                  <table class="table table-striped" border="0">                  
-                      <tr>
-                          <td>Departamento(*) </td>
-                          <td>
-                              <select class="form-control form-control-sm" id="">
-                                  <option>DNI</option>
-                                  <option>RUC</option>
-                                </select>
-                          </td>
-                          <td align="center">Provincia(*) </td>
-                          <td align="left">
-                              <select class="form-control form-control-sm" id="">
-                                  <option>DNI</option>
-                                  <option>RUC</option>
-                                </select>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>Distrito(*) </td>
-                          <td>
-                              <select class="form-control form-control-sm" id="">
-                                  <option>DNI</option>
-                                  <option>RUC</option>
-                                </select>
-                          </td>
-                          <td></td>
-                          <td></td>
-                      </tr>
-                      <tr>
-                          <td>Dirección Real </td>
-                          <td colspan="3"><textarea class="form-control form-control-sm" rows="2" cols="200"></textarea></td>
-                      </tr>
-                      <tr>
-                          <td>Dirección Legal </td>
-                          <td colspan="3"><textarea class="form-control form-control-sm" rows="2" cols="200"></textarea></td>
-                      </tr>  
-                  </table>
-                  <div align="center">
-                      <button class="btn mx-1 btn-dark float-center">Cancelar</button>
-                      <button class="btn mx-1 btn-dark float-center">Siguiente</button>
-                  </div>
-                </div>
-          </ng-template>
-        </ngb-tab>
-    </ngb-tabset>
-</div>
-
+        <button type="button" pButton icon="fa fa-chevron-up" (click)="openPrev()"></button>
+        <button type="button" pButton icon="fa fa-chevron-down" (click)="openNext()"></button>
 </div>

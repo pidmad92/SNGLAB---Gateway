@@ -20,6 +20,19 @@ import { ControlInformacionService,
     ControlInformacionComponent,
     ControlInformacionRoute,
 } from './';
+import { FormularioPerfilComponent } from '../formulario-perfil/index';
+import { FormperfilService, FormperfilComponent } from '../../../entities/formperfil/index';
+import { DireccionService, DireccionComponent } from '../../../entities/direccion/index';
+import { ActieconService,
+        ActieconComponent,
+        actieconRoute,
+} from '../../../entities/actiecon';
+import { FormularioPerfil2Component } from '../formulario-perfil/formulario-perfil2.component';
+import { FormularioPerfil3Component } from '../formulario-perfil/formulario-perfil3.component';
+import { FormularioPerfil4Component } from '../formulario-perfil/formulario-perfil4.component';
+import { FormularioPerfil5Component } from '../formulario-perfil/formulario-perfil5.component';
+import { FormularioPerfil6Component } from '../formulario-perfil/formulario-perfil6.component';
+import { NegocolectService, NegocolectComponent } from '../../../entities/negocolect/index';
 
 const ENTITY_STATES = [
     ...ControlInformacionRoute,
@@ -29,7 +42,17 @@ const ENTITY_STATES = [
     declarations: [
         ControlInformacionComponent,
         SolicitudComponent,
-        SolicformComponent
+        SolicformComponent,
+        DireccionComponent,
+        FormperfilComponent,
+        FormularioPerfilComponent,
+        FormularioPerfil2Component,
+        FormularioPerfil3Component,
+        FormularioPerfil4Component,
+        FormularioPerfil5Component,
+        FormularioPerfil6Component,
+        ActieconComponent,
+        NegocolectComponent,
     ],
     imports: [
         GatewaySharedModule,
@@ -41,8 +64,12 @@ const ENTITY_STATES = [
     ],
     providers: [
         ControlInformacionService,
+        DireccionService,
         SolicitudService,
-        SolicformService
+        SolicformService,
+        FormperfilService,
+        ActieconService,
+        NegocolectService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
