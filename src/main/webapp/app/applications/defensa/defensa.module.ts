@@ -1,4 +1,3 @@
-
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { customHttpProvider } from '../../blocks/interceptor/http.provider';
 
@@ -22,7 +21,11 @@ import { GatewayTipresconcModule } from '../../entities/tipresconc/tipresconc.mo
 
 import { RegistroExpedienteModule } from './registro-expediente/registro-expediente.module';
 import { EnvioNotificacionModule } from './envio-notificacion/envio-notificacion.module';
-import { ConsultaExpedienteModule } from './consulta-expediente/consulta-expediente.module';
+import { ConsultaExpedienteModule } from './consulta-expedientes/consulta-expediente.module';
+import { ConsultaNotificacionesModule } from './consulta-notificaciones/consulta-notificaciones.module';
+import { AudienciaModule } from './audiencias/audiencia.module';
+import { ReporteModule } from './reportes/reporte.module';
+import { MantenimientoModule } from './mantenimientos/mantenimiento.module';
 
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
@@ -47,7 +50,11 @@ import { ConsultaExpedienteModule } from './consulta-expediente/consulta-expedie
         // GatewayTipresconcModule,
         RegistroExpedienteModule,
         EnvioNotificacionModule,
-        ConsultaExpedienteModule
+        ConsultaExpedienteModule,
+        ConsultaNotificacionesModule,
+        AudienciaModule,
+        ReporteModule,
+        MantenimientoModule
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

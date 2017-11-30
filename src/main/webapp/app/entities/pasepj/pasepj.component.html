@@ -1,0 +1,139 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.pasepj.home.title">Pasepjs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-pasepj" [routerLink]="['/', { outlets: { popup: ['pasepj-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.pasepj.home.createLabel">
+            Create new Pasepj
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.pasepj.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="pasepjs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vCodreg">V Codreg</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vCodzon">V Codzon</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vCodpas">V Codpas</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vCodtra">V Codtra</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vCodtdcide">V Codtdcide</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.nCorrel">N Correl</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vCodsis">V Codsis</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vCodemp">V Codemp</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.nCodsuc">N Codsuc</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vCodcon">V Codcon</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.dFecpas">D Fecpas</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.dFecrecep">D Fecrecep</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vCodusurec">V Codusurec</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vCodusureg">V Codusureg</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vHostreg">V Hostreg</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vCodusumod">V Codusumod</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.dFecmod">D Fecmod</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vHostmod">V Hostmod</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vCodsisdes">V Codsisdes</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.dFecdes">D Fecdes</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.dFeccon">D Feccon</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vCodtrar">V Codtrar</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vCodtdcidr">V Codtdcidr</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.nCorrelr">N Correlr</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vObspas">V Obspas</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vCodtrac">V Codtrac</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vCodtdcidi">V Codtdcidi</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.nCorrelc">N Correlc</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.vCodloc">V Codloc</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.pasepj.nSedeupd">N Sedeupd</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pasepj of pasepjs ;trackBy: trackId">
+                <td><a [routerLink]="['../pasepj', pasepj.id ]">{{pasepj.id}}</a></td>
+                <td>{{pasepj.vCodreg}}</td>
+                <td>{{pasepj.vCodzon}}</td>
+                <td>{{pasepj.vCodpas}}</td>
+                <td>{{pasepj.vCodtra}}</td>
+                <td>{{pasepj.vCodtdcide}}</td>
+                <td>{{pasepj.nCorrel}}</td>
+                <td>{{pasepj.vCodsis}}</td>
+                <td>{{pasepj.vCodemp}}</td>
+                <td>{{pasepj.nCodsuc}}</td>
+                <td>{{pasepj.vCodcon}}</td>
+                <td>{{pasepj.dFecpas | date:'mediumDate'}}</td>
+                <td>{{pasepj.dFecrecep | date:'mediumDate'}}</td>
+                <td>{{pasepj.vCodusurec}}</td>
+                <td>{{pasepj.vCodusureg}}</td>
+                <td>{{pasepj.vHostreg}}</td>
+                <td>{{pasepj.vCodusumod}}</td>
+                <td>{{pasepj.dFecmod | date:'mediumDate'}}</td>
+                <td>{{pasepj.vHostmod}}</td>
+                <td>{{pasepj.vCodsisdes}}</td>
+                <td>{{pasepj.dFecdes | date:'mediumDate'}}</td>
+                <td>{{pasepj.dFeccon | date:'mediumDate'}}</td>
+                <td>{{pasepj.vCodtrar}}</td>
+                <td>{{pasepj.vCodtdcidr}}</td>
+                <td>{{pasepj.nCorrelr}}</td>
+                <td>{{pasepj.vObspas}}</td>
+                <td>{{pasepj.vCodtrac}}</td>
+                <td>{{pasepj.vCodtdcidi}}</td>
+                <td>{{pasepj.nCorrelc}}</td>
+                <td>{{pasepj.vCodloc}}</td>
+                <td>{{pasepj.nUsuareg}}</td>
+                <td>{{pasepj.tFecreg | date:'medium'}}</td>
+                <td>{{pasepj.nFlgactivo}}</td>
+                <td>{{pasepj.nSedereg}}</td>
+                <td>{{pasepj.nUsuaupd}}</td>
+                <td>{{pasepj.tFecupd | date:'medium'}}</td>
+                <td>{{pasepj.nSedeupd}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../pasepj', pasepj.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'pasepj/'+ pasepj.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'pasepj/'+ pasepj.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

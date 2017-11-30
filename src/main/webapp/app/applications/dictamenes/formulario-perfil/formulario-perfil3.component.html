@@ -1,0 +1,369 @@
+<div *ngIf="formPerfil&&solicitud" class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
+  <div class="row">
+    <div class="col">
+      <h4 class="title">Perfil del Empleador</h4>
+    </div>
+  </div>
+  <div class="form-row mb-2">
+    <div class="col-md-4">
+      <div class="form-group row">
+        <label for="inpRuc" class="col-sm-3 col-form-label col-form-label-sm text-right">RUC</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" id="inpRuc" [(ngModel)]="solicitud.vRucsol">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="form-group row">
+        <label for="inpRsocial" class="col-sm-3 col-form-label col-form-label-sm text-right" value="1047792455654">Razón Social</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" id="inpRsocial" [(ngModel)]="solicitud.vEmpleador">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card-panel box-shadow mb-3">
+        <div class="card-body">
+          <div class="row no-gutters y-steps">
+            <div class="col d-flex justify-content-center y-step active">
+              <div class="y-progress">
+                <div class="y-progress-line"></div>
+              </div>
+              <div class="y-content">
+                <a [routerLink]="" (click)="irPerfil()" class="btn-y">
+                  <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                  </div>
+                </a>
+                <p class="text-center mb-0">Datos Generales I</p>
+              </div>
+            </div>
+            <div class="col d-flex justify-content-center y-step active">
+              <div class="y-progress">
+                <div class="y-progress-line"></div>
+              </div>
+              <div class="y-content">
+                <a [routerLink]="" (click)="previousState()" class="btn-y">
+                  <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                    <i class="fa fa-database" aria-hidden="true"></i>
+                  </div>
+                </a>
+                <p class="text-center mb-0">Datos Generales II</p>
+              </div>
+            </div>
+            <div class="col d-flex justify-content-center y-step active">
+              <div class="y-progress">
+                <div class="y-progress-line"></div>
+              </div>
+              <div class="y-content">
+                <a [routerLink]="" (click)="irPerfil3()" class="btn-y">
+                  <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                    <i class="fa fa-plane" aria-hidden="true"></i>
+                  </div>
+                </a>
+                <p class="text-center mb-0">Negociación Colectiva (NVC)</p>
+              </div>
+            </div>
+            <div class="col d-flex justify-content-center y-step">
+              <div class="y-progress">
+                <div class="y-progress-line"></div>
+              </div>
+              <div class="y-content">
+                <a [routerLink]="" class="btn-y btn-y-disabled">
+                  <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                    <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                  </div>
+                </a>
+                <p class="text-center mb-0">Resultado de Ultimas NC</p>
+              </div>
+            </div>
+            <div class="col d-flex justify-content-center y-step">
+              <div class="y-progress">
+                <div class="y-progress-line"></div>
+              </div>
+              <div class="y-content">
+                <a [routerLink]="" class="btn-y btn-y-disabled">
+                  <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                    <i class="fa fa-usd" aria-hidden="true"></i>
+                  </div>
+                </a>
+                <p class="text-center mb-0">Responsables de Información</p>
+              </div>
+            </div>
+            <div class="col d-flex justify-content-center y-step">
+              <div class="y-progress">
+                <div class="y-progress-line"></div>
+              </div>
+              <div class="y-content">
+                <a [routerLink]="" class="btn-y btn-y-disabled">
+                  <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                    <i class="fa fa-paperclip" aria-hidden="true"></i>
+                  </div>
+                </a>
+                <p class="text-center mb-0">Anexo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card card-mtpe mb-3">
+        <div class="card-header bg-light d-sm-flex justify-content-between p-1">
+          <h5 class="mb-0">
+            <small>
+              <i class="fa fa-user" aria-hidden="true"></i> Unidades de Negocio o Organismos Adscritos</small>
+          </h5>
+        </div>
+        <div class="card-body">
+          <!--<nav class="nav nav-tabs" id="myTab" role="tablist">
+                  <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Organización sindical que solicita dictamen economico laboral</a>
+                  <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Organizaciones Sindicales que tienen NC</a>
+                </nav>-->
+
+          <p-tabView class="tab-content p-2 border border-mtpe border-top-0" id="nav-tabContent">
+            <p-tabPanel header="Organización sindical que solicita dictamen económico laboral">
+              <div class="tab-content p-2 border border-mtpe border-top-0" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group row mb-2">
+                        <label for="inpRegistro" class="col-sm-4 col-form-label col-form-label-sm">Registro (*)</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control form-control-sm" id="inpRegistro" [(ngModel)]="solicitud.vRegistro">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="form-group row mb-2">
+                        <label for="inpNombre" class="col-sm-4 col-form-label col-form-label-sm">Nombre (*)</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control form-control-sm" id="inpNombre" [(ngModel)]="solicitud.vSindicato">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group row mb-2">
+                        <label for="inpRUC" class="col-sm-4 col-form-label col-form-label-sm">RUC (*)</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control form-control-sm" id="inpRUC" [(ngModel)]="solicitante.vRucneg">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group row mb-2">
+                        <label for="inpRUC" class="col-sm-8 col-form-label col-form-label-sm">Ambito Subjetivo de la NC (*)</label>
+                        <div class="col-sm-4">
+                          <select class="form-control form-control-sm" id="selectDisca">
+                            <option>Empleados de Confianza</option>
+                            <option>...</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group row mb-2">
+                        <label for="inpRUC" class="col-sm-8 col-form-label col-form-label-sm">Etapa de la NC a la fecha de la solicitud del Dictamen Económico-Laboral (*)</label>
+                        <div class="col-sm-4">
+                          <select class="form-control form-control-sm" id="selectDisca">
+                            <option>Trato Directo</option>
+                            <option>...</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group row mb-2">
+                        <label for="inpRUC" class="col-sm-4 col-form-label col-form-label-sm">Vigencia Colectiva del</label>
+                        <div class="col-sm-2">
+                          <input type="date" class="form-control form-control-sm" id="inpRUC" [(ngModel)]="solicitante.tFecvigde">
+                        </div>
+                        <div class="col-sm-1 text-center">
+                          Al
+                        </div>
+                        <div class="col-sm-2">
+                          <input type="date" class="form-control form-control-sm" id="inpRUC" [(ngModel)]="solicitante.tFecvigha">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header bg-secondary text-white d-sm-flex justify-content-between p-1">
+                      <h5 class="mb-0">
+                        <small> Datos Ingresados por el revisor</small>
+                      </h5>
+                    </div>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-5">
+                          <div class="form-group row mb-2">
+                            <label for="inpExpediente" class="col-sm-5 col-form-label col-form-label-sm">N° Expediente del NC</label>
+                            <div class="col-sm-7">
+                              <input type="text" class="form-control form-control-sm" id="inpExpediente" [(ngModel)]="solicitante.vNumexpe">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-7">
+                          <div class="form-group row mb-2">
+                            <label for="inpNombre" class="col-sm-5 col-form-label col-form-label-sm">Autoridad de trabajo Ubigeo</label>
+                            <div class="col-sm-7">
+                              <input type="text" class="form-control form-control-sm" id="inpNombre" [(ngModel)]="solicitante.vAuttrab">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="Organizaciones Sindicales que tienen NC">
+              <div class="tab-pane" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <p>Otras Organizaciones Sindicales no sujetos al presente pliego de peticiones que tienen NC</p>
+                <a style="color:white;" (click)="showOrganizacion()" class="btn btn-sm btn-dark mb-2">
+                  <i class="fa fa-plus" aria-hidden="true"></i> Agregar</a>
+                <table class="table table-responsive table-hover table-striped">
+                  <thead>
+                    <tr>
+                      <th>RUC</th>
+                      <th>Registro</th>
+                      <th>Razón Social</th>
+                      <th>Ámbito</th>
+                      <th>N° Expediente</th>
+                      <th>Autoridad de Trc</th>
+                      <th>Vigencia Inicial</th>
+                      <th>Vigencia</th>
+                      <th>Etapa</th>
+                      <th>Opción</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container *ngFor="let organizacion of organizaciones; let i = index">
+                      <tr>
+                        <td>{{organizacion.vRucneg}}</td>
+                        <td>{{organizacion.vRegistro}}</td>
+                        <td>{{organizacion.vRazonsoc}}</td>
+                        <td>{{organizacion.vAmbsubje}}</td>
+                        <td>{{organizacion.vNumexpe}}</td>
+                        <td>{{organizacion.vAuttrab}}</td>
+                        <td>{{organizacion.tFecvigde | date:'dd/MM/yyyy'}}</td>
+                        <td>{{organizacion.tFecvigha | date:'dd/MM/yyyy'}}</td>
+                        <td>{{organizacion.vEtapaneg}}</td>
+                        <td class="text-center">
+                          <a (click)="editarOrganizacion()" class="btn btn-sm btn-warning">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                          </a>
+                          <a (click)="eliminarOrganizacion()" class="btn btn-sm btn-danger">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                          </a>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </div>
+            </p-tabPanel>
+          </p-tabView>
+          </div>
+          <div class="row">
+            <div class="col-12 text-sm-right">
+              <a [routerLink]="" (click)="irPerfil2()" class="btn btn-sm m-1 btn-success">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
+              <a [routerLink]="" class="btn btn-sm m-1 btn-secondary">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
+              <a [routerLink]="" (click)="irPerfil4()" class="btn btn-sm m-1 btn-success">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i> Siguiente</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Dialog de Organizaciones Sindicales que tienen NC -->
+<p-dialog [(visible)]="displayOrganizacion" modal="modal" width="800" [responsive]="true">
+  <p-header>
+    Agregar Organizaciones Sindical
+  </p-header>
+  <p>
+    <div class="form-group row mb-2" style="margin-right:0px!important">
+      <label for="inpNumero" class="col-sm-3 col-form-label col-form-label-sm">RUC</label>
+      <div class="col-sm-5">
+        <input type="text" class="form-control form-control-sm" id="inpNumero" [(ngModel)]="organizacion.vRucneg">
+      </div>
+      <div class="col-sm-3">
+        <a href="#" class="btn btn-sm btn-secondary">
+          <i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+      </div>
+    </div>
+    <div class="form-group row mb-2" style="margin-right:0px!important">
+      <label for="inpRsocial" class="col-sm-3 col-form-label col-form-label-sm">Razón social</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control form-control-sm" id="inpRsocial" [(ngModel)]="organizacion.vRazonsoc">
+      </div>
+    </div>
+    <div class="form-group row mb-2" style="margin-right:0px!important">
+      <label for="inpNumero" class="col-sm-3 col-form-label col-form-label-sm">Ambito</label>
+      <div class="col-sm-5">
+        <select class="form-control form-control-sm" id="selCargo">
+          <option>ComboBox</option>>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row mb-2" style="margin-right:0px!important">
+      <label for="inpRUC" class="col-sm-3 col-form-label col-form-label-sm">Vigencia Colectiva del</label>
+      <div class="col-sm-3">
+        <input type="date" class="form-control form-control-sm" id="inpRUC" [(ngModel)]="organizacion.tFecvigde">
+      </div>
+      <div class="col-sm-1 text-center">
+        Al
+      </div>
+      <div class="col-sm-3">
+        <input type="date" class="form-control form-control-sm" id="inpRUC" [(ngModel)]="organizacion.tFecvigha">
+      </div>
+    </div>
+    <div class="form-group row mb-2" style="margin-right:0px!important">
+      <label for="inpEtapa" class="col-sm-3 col-form-label col-form-label-sm">Etapa</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control form-control-sm" id="inpEtapa" [(ngModel)]="organizacion.vEtapaneg">
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header bg-secondary text-white d-sm-flex justify-content-between p-1">
+        <h5 class="mb-0">
+          <small> Datos Ingresados por el revisor</small>
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="form-group row mb-2" style="margin-right:0px!important">
+          <label for="inpExpediente" class="col-sm-5 col-form-label col-form-label-sm">N° Expediente del NC</label>
+          <div class="col-sm-7">
+            <input type="text" class="form-control form-control-sm" id="inpExpediente" [(ngModel)]="organizacion.vNumexpe">
+          </div>
+        </div>
+        <div class="form-group row mb-2" style="margin-right:0px!important">
+          <label for="inpNombre" class="col-sm-5 col-form-label col-form-label-sm">Autoridad de trabajo</label>
+          <div class="col-sm-7">
+            <select class="form-control form-control-sm" id="selCargo">
+              <option>ComboBox</option>>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p>
+  <p-footer>
+      <a style="color:white" class="btn btn-sm btn-danger" (click)="cancelarOrganizacion()">
+        <i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
+      <a class="btn btn-sm btn-warning" (click)="guardarOrganizacion()">
+        <i class="fa fa-plus" aria-hidden="true"></i> Añadir</a>
+  </p-footer>
+</p-dialog>

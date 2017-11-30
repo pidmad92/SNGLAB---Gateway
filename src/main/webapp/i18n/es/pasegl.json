@@ -23,9 +23,9 @@
             "tFecupd": "T Fecupd",
             "nSedeupd": "N Sedeupd",
             "oficina": "Oficina",
-            "expediente": "Expediente",
-            "motivpase": "Motivpase",
-            "atencion": "Atencion"
+            "atencion": "Atencion",
+            "legajo": "Legajo",
+            "motivpase": "Motivpase"
         }
     },
     "consultasApp": {

@@ -1,0 +1,536 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myLegtipdocLabel" jhiTranslate="gatewayApp.legtipdoc.home.createOrEditLabel">Create or edit a Legtipdoc</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!legtipdoc.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="legtipdoc.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vCodreg" for="field_vCodreg">V Codreg</label>
+            <input type="text" class="form-control" name="vCodreg" id="field_vCodreg"
+                [(ngModel)]="legtipdoc.vCodreg" required maxlength="2" />
+            <div [hidden]="!(editForm.controls.vCodreg?.dirty && editForm.controls.vCodreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodreg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
+                   This field cannot be longer than 2 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vCodzon" for="field_vCodzon">V Codzon</label>
+            <input type="text" class="form-control" name="vCodzon" id="field_vCodzon"
+                [(ngModel)]="legtipdoc.vCodzon" required maxlength="2" />
+            <div [hidden]="!(editForm.controls.vCodzon?.dirty && editForm.controls.vCodzon?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodzon?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodzon?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
+                   This field cannot be longer than 2 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vCodleg" for="field_vCodleg">V Codleg</label>
+            <input type="text" class="form-control" name="vCodleg" id="field_vCodleg"
+                [(ngModel)]="legtipdoc.vCodleg" required maxlength="6" />
+            <div [hidden]="!(editForm.controls.vCodleg?.dirty && editForm.controls.vCodleg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodleg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodleg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 6 }">
+                   This field cannot be longer than 6 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.nCorrel" for="field_nCorrel">N Correl</label>
+            <input type="number" class="form-control" name="nCorrel" id="field_nCorrel"
+                [(ngModel)]="legtipdoc.nCorrel" required />
+            <div [hidden]="!(editForm.controls.nCorrel?.dirty && editForm.controls.nCorrel?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nCorrel?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nCorrel?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vCodtdoc" for="field_vCodtdoc">V Codtdoc</label>
+            <input type="text" class="form-control" name="vCodtdoc" id="field_vCodtdoc"
+                [(ngModel)]="legtipdoc.vCodtdoc" required maxlength="2" />
+            <div [hidden]="!(editForm.controls.vCodtdoc?.dirty && editForm.controls.vCodtdoc?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtdoc?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtdoc?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
+                   This field cannot be longer than 2 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vCodsis" for="field_vCodsis">V Codsis</label>
+            <input type="text" class="form-control" name="vCodsis" id="field_vCodsis"
+                [(ngModel)]="legtipdoc.vCodsis" required maxlength="3" />
+            <div [hidden]="!(editForm.controls.vCodsis?.dirty && editForm.controls.vCodsis?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodsis?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodsis?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 3 }">
+                   This field cannot be longer than 3 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vCodtipres" for="field_vCodtipres">V Codtipres</label>
+            <input type="text" class="form-control" name="vCodtipres" id="field_vCodtipres"
+                [(ngModel)]="legtipdoc.vCodtipres" required maxlength="2" />
+            <div [hidden]="!(editForm.controls.vCodtipres?.dirty && editForm.controls.vCodtipres?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtipres?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtipres?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
+                   This field cannot be longer than 2 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vAsundoc" for="field_vAsundoc">V Asundoc</label>
+            <input type="text" class="form-control" name="vAsundoc" id="field_vAsundoc"
+                [(ngModel)]="legtipdoc.vAsundoc" required maxlength="100" />
+            <div [hidden]="!(editForm.controls.vAsundoc?.dirty && editForm.controls.vAsundoc?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vAsundoc?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vAsundoc?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.dFecdoc" for="field_dFecdoc">D Fecdoc</label>
+            <div class="input-group">
+                <input id="field_dFecdoc" type="text" class="form-control" name="dFecdoc" ngbDatepicker  #dFecdocDp="ngbDatepicker" [(ngModel)]="legtipdoc.dFecdoc"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dFecdocDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.nMonpag" for="field_nMonpag">N Monpag</label>
+            <input type="number" class="form-control" name="nMonpag" id="field_nMonpag"
+                [(ngModel)]="legtipdoc.nMonpag" required />
+            <div [hidden]="!(editForm.controls.nMonpag?.dirty && editForm.controls.nMonpag?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nMonpag?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nMonpag?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.dFecentr" for="field_dFecentr">D Fecentr</label>
+            <div class="input-group">
+                <input id="field_dFecentr" type="text" class="form-control" name="dFecentr" ngbDatepicker  #dFecentrDp="ngbDatepicker" [(ngModel)]="legtipdoc.dFecentr"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dFecentrDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.dFecdev" for="field_dFecdev">D Fecdev</label>
+            <div class="input-group">
+                <input id="field_dFecdev" type="text" class="form-control" name="dFecdev" ngbDatepicker  #dFecdevDp="ngbDatepicker" [(ngModel)]="legtipdoc.dFecdev"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dFecdevDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.dFecrecjuz" for="field_dFecrecjuz">D Fecrecjuz</label>
+            <div class="input-group">
+                <input id="field_dFecrecjuz" type="text" class="form-control" name="dFecrecjuz" ngbDatepicker  #dFecrecjuzDp="ngbDatepicker" [(ngModel)]="legtipdoc.dFecrecjuz"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dFecrecjuzDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vCodusureg" for="field_vCodusureg">V Codusureg</label>
+            <input type="text" class="form-control" name="vCodusureg" id="field_vCodusureg"
+                [(ngModel)]="legtipdoc.vCodusureg" required maxlength="15" />
+            <div [hidden]="!(editForm.controls.vCodusureg?.dirty && editForm.controls.vCodusureg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodusureg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodusureg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                   This field cannot be longer than 15 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vHostreg" for="field_vHostreg">V Hostreg</label>
+            <input type="text" class="form-control" name="vHostreg" id="field_vHostreg"
+                [(ngModel)]="legtipdoc.vHostreg" required maxlength="30" />
+            <div [hidden]="!(editForm.controls.vHostreg?.dirty && editForm.controls.vHostreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vHostreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vHostreg?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 30 }">
+                   This field cannot be longer than 30 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vCodusumod" for="field_vCodusumod">V Codusumod</label>
+            <input type="text" class="form-control" name="vCodusumod" id="field_vCodusumod"
+                [(ngModel)]="legtipdoc.vCodusumod" required maxlength="15" />
+            <div [hidden]="!(editForm.controls.vCodusumod?.dirty && editForm.controls.vCodusumod?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodusumod?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodusumod?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                   This field cannot be longer than 15 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.dFecmod" for="field_dFecmod">D Fecmod</label>
+            <div class="input-group">
+                <input id="field_dFecmod" type="text" class="form-control" name="dFecmod" ngbDatepicker  #dFecmodDp="ngbDatepicker" [(ngModel)]="legtipdoc.dFecmod"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dFecmodDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vHostmod" for="field_vHostmod">V Hostmod</label>
+            <input type="text" class="form-control" name="vHostmod" id="field_vHostmod"
+                [(ngModel)]="legtipdoc.vHostmod" required maxlength="30" />
+            <div [hidden]="!(editForm.controls.vHostmod?.dirty && editForm.controls.vHostmod?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vHostmod?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vHostmod?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 30 }">
+                   This field cannot be longer than 30 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.dFeccit" for="field_dFeccit">D Feccit</label>
+            <div class="input-group">
+                <input id="field_dFeccit" type="text" class="form-control" name="dFeccit" ngbDatepicker  #dFeccitDp="ngbDatepicker" [(ngModel)]="legtipdoc.dFeccit"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dFeccitDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vFlgfund" for="field_vFlgfund">V Flgfund</label>
+            <input type="text" class="form-control" name="vFlgfund" id="field_vFlgfund"
+                [(ngModel)]="legtipdoc.vFlgfund" required maxlength="1" />
+            <div [hidden]="!(editForm.controls.vFlgfund?.dirty && editForm.controls.vFlgfund?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vFlgfund?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vFlgfund?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
+                   This field cannot be longer than 1 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vFlgasis" for="field_vFlgasis">V Flgasis</label>
+            <input type="text" class="form-control" name="vFlgasis" id="field_vFlgasis"
+                [(ngModel)]="legtipdoc.vFlgasis" required maxlength="1" />
+            <div [hidden]="!(editForm.controls.vFlgasis?.dirty && editForm.controls.vFlgasis?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vFlgasis?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vFlgasis?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
+                   This field cannot be longer than 1 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.nNumres" for="field_nNumres">N Numres</label>
+            <input type="number" class="form-control" name="nNumres" id="field_nNumres"
+                [(ngModel)]="legtipdoc.nNumres" required />
+            <div [hidden]="!(editForm.controls.nNumres?.dirty && editForm.controls.nNumres?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nNumres?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nNumres?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vAboasig" for="field_vAboasig">V Aboasig</label>
+            <input type="text" class="form-control" name="vAboasig" id="field_vAboasig"
+                [(ngModel)]="legtipdoc.vAboasig" required maxlength="15" />
+            <div [hidden]="!(editForm.controls.vAboasig?.dirty && editForm.controls.vAboasig?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vAboasig?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vAboasig?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                   This field cannot be longer than 15 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.nMondol" for="field_nMondol">N Mondol</label>
+            <input type="number" class="form-control" name="nMondol" id="field_nMondol"
+                [(ngModel)]="legtipdoc.nMondol" required />
+            <div [hidden]="!(editForm.controls.nMondol?.dirty && editForm.controls.nMondol?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nMondol?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nMondol?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vCodloc" for="field_vCodloc">V Codloc</label>
+            <input type="text" class="form-control" name="vCodloc" id="field_vCodloc"
+                [(ngModel)]="legtipdoc.vCodloc" required maxlength="6" />
+            <div [hidden]="!(editForm.controls.vCodloc?.dirty && editForm.controls.vCodloc?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodloc?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodloc?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 6 }">
+                   This field cannot be longer than 6 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vCodtipdil" for="field_vCodtipdil">V Codtipdil</label>
+            <input type="text" class="form-control" name="vCodtipdil" id="field_vCodtipdil"
+                [(ngModel)]="legtipdoc.vCodtipdil" required maxlength="2" />
+            <div [hidden]="!(editForm.controls.vCodtipdil?.dirty && editForm.controls.vCodtipdil?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtipdil?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtipdil?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
+                   This field cannot be longer than 2 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vCodtipaud" for="field_vCodtipaud">V Codtipaud</label>
+            <input type="text" class="form-control" name="vCodtipaud" id="field_vCodtipaud"
+                [(ngModel)]="legtipdoc.vCodtipaud" required maxlength="2" />
+            <div [hidden]="!(editForm.controls.vCodtipaud?.dirty && editForm.controls.vCodtipaud?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtipaud?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vCodtipaud?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
+                   This field cannot be longer than 2 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vFlgconc" for="field_vFlgconc">V Flgconc</label>
+            <input type="text" class="form-control" name="vFlgconc" id="field_vFlgconc"
+                [(ngModel)]="legtipdoc.vFlgconc" required maxlength="1" />
+            <div [hidden]="!(editForm.controls.vFlgconc?.dirty && editForm.controls.vFlgconc?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vFlgconc?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vFlgconc?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1 }">
+                   This field cannot be longer than 1 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.vDettdoc" for="field_vDettdoc">V Dettdoc</label>
+            <input type="text" class="form-control" name="vDettdoc" id="field_vDettdoc"
+                [(ngModel)]="legtipdoc.vDettdoc" required maxlength="2" />
+            <div [hidden]="!(editForm.controls.vDettdoc?.dirty && editForm.controls.vDettdoc?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vDettdoc?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vDettdoc?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
+                   This field cannot be longer than 2 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.dFecdocreq" for="field_dFecdocreq">D Fecdocreq</label>
+            <div class="input-group">
+                <input id="field_dFecdocreq" type="text" class="form-control" name="dFecdocreq" ngbDatepicker  #dFecdocreqDp="ngbDatepicker" [(ngModel)]="legtipdoc.dFecdocreq"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dFecdocreqDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.nUsuareg" for="field_nUsuareg">N Usuareg</label>
+            <input type="number" class="form-control" name="nUsuareg" id="field_nUsuareg"
+                [(ngModel)]="legtipdoc.nUsuareg" required />
+            <div [hidden]="!(editForm.controls.nUsuareg?.dirty && editForm.controls.nUsuareg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nUsuareg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nUsuareg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.tFecreg" for="field_tFecreg">T Fecreg</label>
+            <div class="d-flex">
+                <input id="field_tFecreg" type="datetime-local" class="form-control" name="tFecreg" [(ngModel)]="legtipdoc.tFecreg"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.tFecreg?.dirty && editForm.controls.tFecreg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tFecreg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.tFecreg?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.nFlgactivo" for="field_nFlgactivo">N Flgactivo</label>
+            <input type="checkbox" class="form-control" name="nFlgactivo" id="field_nFlgactivo"
+                [(ngModel)]="legtipdoc.nFlgactivo"  />
+            <div [hidden]="!(editForm.controls.nFlgactivo?.dirty && editForm.controls.nFlgactivo?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nFlgactivo?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.nSedereg" for="field_nSedereg">N Sedereg</label>
+            <input type="number" class="form-control" name="nSedereg" id="field_nSedereg"
+                [(ngModel)]="legtipdoc.nSedereg" required />
+            <div [hidden]="!(editForm.controls.nSedereg?.dirty && editForm.controls.nSedereg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nSedereg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nSedereg?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.nUsuaupd" for="field_nUsuaupd">N Usuaupd</label>
+            <input type="number" class="form-control" name="nUsuaupd" id="field_nUsuaupd"
+                [(ngModel)]="legtipdoc.nUsuaupd"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.tFecupd" for="field_tFecupd">T Fecupd</label>
+            <div class="d-flex">
+                <input id="field_tFecupd" type="datetime-local" class="form-control" name="tFecupd" [(ngModel)]="legtipdoc.tFecupd"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.nSedeupd" for="field_nSedeupd">N Sedeupd</label>
+            <input type="number" class="form-control" name="nSedeupd" id="field_nSedeupd"
+                [(ngModel)]="legtipdoc.nSedeupd"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.legajo" for="field_legajo">Legajo</label>
+            <select class="form-control" id="field_legajo" name="legajo" [(ngModel)]="legtipdoc.legajo" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="legajoOption.id === legtipdoc.legajo?.id ? legtipdoc.legajo : legajoOption" *ngFor="let legajoOption of legajos; trackBy: trackLegajoById">{{legajoOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.tipdocpj" for="field_tipdocpj">Tipdocpj</label>
+            <select class="form-control" id="field_tipdocpj" name="tipdocpj" [(ngModel)]="legtipdoc.tipdocpj" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="tipdocpjOption.id === legtipdoc.tipdocpj?.id ? legtipdoc.tipdocpj : tipdocpjOption" *ngFor="let tipdocpjOption of tipdocpjs; trackBy: trackTipdocpjById">{{tipdocpjOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.legtipdoc.tipresoluc" for="field_tipresoluc">Tipresoluc</label>
+            <select class="form-control" id="field_tipresoluc" name="tipresoluc" [(ngModel)]="legtipdoc.tipresoluc" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="tipresolucOption.id === legtipdoc.tipresoluc?.id ? legtipdoc.tipresoluc : tipresolucOption" *ngFor="let tipresolucOption of tipresolucs; trackBy: trackTipresolucById">{{tipresolucOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

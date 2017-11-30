@@ -17,10 +17,25 @@ export class NuevoRecursoComponent implements OnInit {
     eventSubscriber: Subscription;
     currentSearch: string;
 
+    listaConsulta: any[];
+
     constructor(
         private eventManager: JhiEventManager,
         private modalService: NgbModal,
     ) {
+    }
+
+    ngOnInit() {
+        this.listaConsulta = [
+            {numero : '124234-2343', numrec: '235345', tiprec: 'Evaluación', fecreg: '11/11/11', estado: 'Evaluación'},
+            {numero : '124234-2342', numrec: '345345', tiprec: 'Evaluación', fecreg: '11/11/11', estado: 'Evaluación'},
+            {numero : '124234-2341', numrec: '345435', tiprec: 'Evaluación', fecreg: '11/11/11', estado: 'Evaluación'},
+        ]
+        /*this.loadAll();
+        this.principal.identity().then((account) => {
+            this.currentAccount = account;
+        });
+        this.registerChangeInAtencionEmpleador();*/
     }
 
     loadAll() {
@@ -49,14 +64,6 @@ export class NuevoRecursoComponent implements OnInit {
 
     open() {
        // this.modalService.open(IngresoDelegadosComponent);
-    }
-
-    ngOnInit() {
-        /*this.loadAll();
-        this.principal.identity().then((account) => {
-            this.currentAccount = account;
-        });
-        this.registerChangeInAtencionEmpleador();*/
     }
 
     /*ngOnDestroy() {

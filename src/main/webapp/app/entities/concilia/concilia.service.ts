@@ -68,8 +68,8 @@ export class ConciliaService {
      */
     private convertItemFromServer(json: any): Concilia {
         const entity: Concilia = Object.assign(new Concilia(), json);
-        entity.dFecConci = this.dateUtils
-            .convertLocalDateFromServer(json.dFecConci);
+        entity.dFecconci = this.dateUtils
+            .convertLocalDateFromServer(json.dFecconci);
         entity.tFecreg = this.dateUtils
             .convertDateTimeFromServer(json.tFecreg);
         entity.tFecupd = this.dateUtils
@@ -82,8 +82,8 @@ export class ConciliaService {
      */
     private convert(concilia: Concilia): Concilia {
         const copy: Concilia = Object.assign({}, concilia);
-        copy.dFecConci = this.dateUtils
-            .convertLocalDateToServer(concilia.dFecConci);
+        copy.dFecconci = this.dateUtils
+            .convertLocalDateToServer(concilia.dFecconci);
 
         copy.tFecreg = this.dateUtils.toDate(concilia.tFecreg);
 

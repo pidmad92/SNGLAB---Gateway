@@ -15,7 +15,7 @@
                 </div>
                 <div class="card-body">
                     <p>Vigencia Desde {{solicitud.tFecvigde | date:'dd/MM/yyyy'}} &nbsp; Vigencia Hasta {{solicitud.tFecvigha | date:'dd/MM/yyyy'}}</p>
-                    <button style="display:inline" (click)='listarSolicitudes()'>Volver</button>
+                    
                     <div class="card">
                         <div class="card-header bg-secondary text-white d-sm-flex justify-content-between p-1">
                             <h5 class="mb-0">
@@ -51,8 +51,8 @@
                                                 <span>{{solicForm.vNomform}}</span>
                                             </td>
                                             <td>
-                                                <span *ngIf="solicForm.vTipoform != 'A'"><button class="fa fa-pencil"></button></span>
-                                                <span *ngIf="solicForm.vTipoform == 'A'"><button class="fa fa fa-upload"></button></span>
+                                                <span *ngIf="solicForm.vTipoform != 'A'"><button class="fa fa-pencil" (click)="abrirFormulario(solicForm)"></button></span>
+                                                <span *ngIf="solicForm.vTipoform == 'A'"><button class="fa fa fa-upload" (click)="subirArchivo(solicForm)"></button></span>
                                                 
                                             </td>
                                             <td>
@@ -124,6 +124,9 @@
                             </table>
                         </div>
                     </div>
+                    <br/>
+                    <br/>
+                    <button class="btn btn-primary btn-sm" style="float:right" (click)='listarSolicitudes()'>Volver</button>
                 </div>
             </div>
         </div>

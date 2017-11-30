@@ -49,11 +49,11 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
         this.solicitudService.find(nCodsolic).subscribe((solicitud) => {
             this.solicitud = solicitud;
             this.formperfilService.obtenerlistaFormulariosObligatorios(1, this.solicitud.nCodsolic).subscribe(
-                (res: ResponseWrapper) => { console.log(res.json); this.solicFormsObligatorio = res.json; },
+                (res: ResponseWrapper) => this.solicFormsObligatorio = res.json,
                 (res: ResponseWrapper) => this.onError(res.json)
             );
             this.formperfilService.obtenerlistaFormulariosObligatorios(0, this.solicitud.nCodsolic).subscribe(
-                (res: ResponseWrapper) => { console.log(res.json); this.solicFormsOpcional = res.json; },
+                (res: ResponseWrapper) => this.solicFormsOpcional = res.json,
                 (res: ResponseWrapper) => this.onError(res.json)
             );
         });
@@ -74,9 +74,9 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
     }
 
     abrirFormulario(obj: Solicform) {
-        if (obj.vTipoform === 'G' && obj.formPerfil != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
+        if (obj.vTipoform === 'G' && obj.nCodfperf != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
             // Formulario Perfil
-            this.router.navigate(['./dictamenes/formulario-perfil'])
+            this.router.navigate(['../../dictamenes/formulario-perfil/' + obj.nCodfperf])
         }else {
             this.router.navigate(['./dictamenes/control-informacion/' + obj.nCodsolic])
         }

@@ -1,0 +1,65 @@
+{
+    "gatewayApp": {
+        "legtipdoc" : {
+            "home": {
+                "title": "Legtipdocs",
+                "createLabel": "Crear nuevo Legtipdoc",
+                "createOrEditLabel": "Crear o editar Legtipdoc",
+                "search": "Search for Legtipdoc"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Legtipdoc {{ id }}?"
+            },
+            "detail": {
+                "title": "Legtipdoc"
+            },
+            "vCodreg": "V Codreg",
+            "vCodzon": "V Codzon",
+            "vCodleg": "V Codleg",
+            "nCorrel": "N Correl",
+            "vCodtdoc": "V Codtdoc",
+            "vCodsis": "V Codsis",
+            "vCodtipres": "V Codtipres",
+            "vAsundoc": "V Asundoc",
+            "dFecdoc": "D Fecdoc",
+            "nMonpag": "N Monpag",
+            "dFecentr": "D Fecentr",
+            "dFecdev": "D Fecdev",
+            "dFecrecjuz": "D Fecrecjuz",
+            "vCodusureg": "V Codusureg",
+            "vHostreg": "V Hostreg",
+            "vCodusumod": "V Codusumod",
+            "dFecmod": "D Fecmod",
+            "vHostmod": "V Hostmod",
+            "dFeccit": "D Feccit",
+            "vFlgfund": "V Flgfund",
+            "vFlgasis": "V Flgasis",
+            "nNumres": "N Numres",
+            "vAboasig": "V Aboasig",
+            "nMondol": "N Mondol",
+            "vCodloc": "V Codloc",
+            "vCodtipdil": "V Codtipdil",
+            "vCodtipaud": "V Codtipaud",
+            "vFlgconc": "V Flgconc",
+            "vDettdoc": "V Dettdoc",
+            "dFecdocreq": "D Fecdocreq",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "legajo": "Legajo",
+            "tipdocpj": "Tipdocpj",
+            "tipresoluc": "Tipresoluc"
+        }
+    },
+    "patrocinioApp": {
+        "legtipdoc" : {
+            "created": "Un nuevo Legtipdoc ha sido creado con el identificador {{ param }}",
+            "updated": "Un Legtipdoc ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Legtipdoc ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

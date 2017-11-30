@@ -7,7 +7,7 @@ export class Dirperjuri implements BaseEntity {
         public nCodprov?: number,
         public nCoddist?: number,
         public vDircomple?: string,
-        public vRefer?: string,
+        public vReferen?: string,
         public nFlgnotifi?: boolean,
         public nUsuareg?: number,
         public tFecreg?: any,

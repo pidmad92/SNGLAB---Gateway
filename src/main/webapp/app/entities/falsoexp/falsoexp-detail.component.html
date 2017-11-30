@@ -1,0 +1,85 @@
+
+<div *ngIf="falsoexp">
+    <h2><span jhiTranslate="gatewayApp.falsoexp.detail.title">Falsoexp</span> {{falsoexp.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.falsoexp.vCodreg">V Codreg</span></dt>
+        <dd>
+            <span>{{falsoexp.vCodreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.falsoexp.vCargofal">V Cargofal</span></dt>
+        <dd>
+            <span>{{falsoexp.vCargofal}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.falsoexp.vDemndte">V Demndte</span></dt>
+        <dd>
+            <span>{{falsoexp.vDemndte}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.falsoexp.vDemandado">V Demandado</span></dt>
+        <dd>
+            <span>{{falsoexp.vDemandado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.falsoexp.vDnidmdo">V Dnidmdo</span></dt>
+        <dd>
+            <span>{{falsoexp.vDnidmdo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.falsoexp.vDnidmte">V Dnidmte</span></dt>
+        <dd>
+            <span>{{falsoexp.vDnidmte}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.falsoexp.vNombres">V Nombres</span></dt>
+        <dd>
+            <span>{{falsoexp.vNombres}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.falsoexp.vDiffal">V Diffal</span></dt>
+        <dd>
+            <span>{{falsoexp.vDiffal}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.falsoexp.vDoctor">V Doctor</span></dt>
+        <dd>
+            <span>{{falsoexp.vDoctor}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.falsoexp.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{falsoexp.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.falsoexp.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{falsoexp.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.falsoexp.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{falsoexp.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.falsoexp.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{falsoexp.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.falsoexp.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{falsoexp.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.falsoexp.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{falsoexp.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.falsoexp.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{falsoexp.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'falsoexp/'+ falsoexp.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

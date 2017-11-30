@@ -28,7 +28,7 @@
     ],
     "fields": [
         {
-            "fieldName": "dFecConci",
+            "fieldName": "dFecconci",
             "fieldType": "LocalDate"
         },
         {

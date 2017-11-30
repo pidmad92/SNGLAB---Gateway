@@ -9,8 +9,6 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Liquidacion } from './liquidacion.model';
 import { LiquidacionPopupService } from './liquidacion-popup.service';
 import { LiquidacionService } from './liquidacion.service';
-import { Atencion, AtencionService } from '../atencion';
-import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-liquidacion-dialog',
@@ -21,32 +19,16 @@ export class LiquidacionDialogComponent implements OnInit {
     liquidacion: Liquidacion;
     isSaving: boolean;
 
-    atencions: Atencion[];
-
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private liquidacionService: LiquidacionService,
-        private atencionService: AtencionService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
-        this.atencionService
-            .query({filter: 'liquidacion-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.liquidacion.atencion || !this.liquidacion.atencion.id) {
-                    this.atencions = res.json;
-                } else {
-                    this.atencionService
-                        .find(this.liquidacion.atencion.id)
-                        .subscribe((subRes: Atencion) => {
-                            this.atencions = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -81,10 +63,6 @@ export class LiquidacionDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
-    }
-
-    trackAtencionById(index: number, item: Atencion) {
-        return item.id;
     }
 }
 

@@ -38,7 +38,7 @@
             <th><span jhiTranslate="gatewayApp.calperiodo.nTnocomput">N Tnocomput</span></th>
             <th><span jhiTranslate="gatewayApp.calperiodo.nDgozados">N Dgozados</span></th>
             <th><span jhiTranslate="gatewayApp.calperiodo.nDadeudos">N Dadeudos</span></th>
-            <th><span jhiTranslate="gatewayApp.calperiodo.nBase">N Base</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.nAnobase">N Anobase</span></th>
             <th><span jhiTranslate="gatewayApp.calperiodo.nUsuareg">N Usuareg</span></th>
             <th><span jhiTranslate="gatewayApp.calperiodo.tFecreg">T Fecreg</span></th>
             <th><span jhiTranslate="gatewayApp.calperiodo.nFlgactivo">N Flgactivo</span></th>
@@ -47,8 +47,7 @@
             <th><span jhiTranslate="gatewayApp.calperiodo.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.calperiodo.nSedeupd">N Sedeupd</span></th>
             <th><span jhiTranslate="gatewayApp.calperiodo.calbensoc">Calbensoc</span></th>
-            <th><span jhiTranslate="gatewayApp.calperiodo.interesperi">Interesperi</span></th>
-            <th><span jhiTranslate="gatewayApp.calperiodo.calrcmperi">Calrcmperi</span></th>
+            <th><span jhiTranslate="gatewayApp.calperiodo.segsalud">Segsalud</span></th>
             <th><span jhiTranslate="gatewayApp.calperiodo.estperical">Estperical</span></th>
             <th><span jhiTranslate="gatewayApp.calperiodo.tipcalperi">Tipcalperi</span></th>
             <th></th>
@@ -65,7 +64,7 @@
                 <td>{{calperiodo.nTnocomput}}</td>
                 <td>{{calperiodo.nDgozados}}</td>
                 <td>{{calperiodo.nDadeudos}}</td>
-                <td>{{calperiodo.nBase}}</td>
+                <td>{{calperiodo.nAnobase}}</td>
                 <td>{{calperiodo.nUsuareg}}</td>
                 <td>{{calperiodo.tFecreg | date:'medium'}}</td>
                 <td>{{calperiodo.nFlgactivo}}</td>
@@ -79,13 +78,8 @@
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="calperiodo.interesperi">
-                        <a [routerLink]="['../interesperi', calperiodo.interesperi?.id ]" >{{calperiodo.interesperi?.id}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="calperiodo.calrcmperi">
-                        <a [routerLink]="['../calrcmperi', calperiodo.calrcmperi?.id ]" >{{calperiodo.calrcmperi?.id}}</a>
+                    <div *ngIf="calperiodo.segsalud">
+                        <a [routerLink]="['../segsalud', calperiodo.segsalud?.id ]" >{{calperiodo.segsalud?.id}}</a>
                     </div>
                 </td>
                 <td>

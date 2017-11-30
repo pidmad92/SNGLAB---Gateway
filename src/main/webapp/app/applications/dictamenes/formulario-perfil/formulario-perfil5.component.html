@@ -1,0 +1,244 @@
+<div class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
+        <div class="row">
+          <div class="col">
+            <h4 class="title">Perfil del Empleador</h4>
+          </div>
+        </div>
+        <div class="form-row mb-2">
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label for="inpRuc" class="col-sm-3 col-form-label col-form-label-sm text-right">RUC</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control form-control-sm" id="inpRuc" placeholder="">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="form-group row">
+              <label for="inpRsocial" class="col-sm-3 col-form-label col-form-label-sm text-right" value="1047792455654">Razón Social</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control form-control-sm" id="inpRsocial" placeholder="" value="CYH Solutions SAC">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="card-panel box-shadow mb-3">
+              <div class="card-body">
+                <div class="row no-gutters y-steps">
+                  <div class="col d-flex justify-content-center y-step active">
+                    <div class="y-progress">
+                      <div class="y-progress-line"></div>
+                    </div>
+                    <div class="y-content">
+                      <a [routerLink]="" (click)="irPerfil()" class="btn-y">
+                        <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                          <i class="fa fa-user" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      <p class="text-center mb-0">Datos Generales I</p>
+                    </div>
+                  </div>
+                  <div class="col d-flex justify-content-center y-step active">
+                    <div class="y-progress">
+                      <div class="y-progress-line"></div>
+                    </div>
+                    <div class="y-content">
+                      <a [routerLink]="" (click)="irPerfil2()" class="btn-y">
+                        <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                          <i class="fa fa-database" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      <p class="text-center mb-0">Datos Generales II</p>
+                    </div>
+                  </div>
+                  <div class="col d-flex justify-content-center y-step active">
+                    <div class="y-progress">
+                      <div class="y-progress-line"></div>
+                    </div>
+                    <div class="y-content">
+                      <a [routerLink]="" (click)="irPerfil3()" class="btn-y">
+                        <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                          <i class="fa fa-plane" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      <p class="text-center mb-0">Negociación Colectiva (NVC)</p>
+                    </div>
+                  </div>
+                  <div class="col d-flex justify-content-center y-step active">
+                    <div class="y-progress">
+                      <div class="y-progress-line"></div>
+                    </div>
+                    <div class="y-content">
+                      <a [routerLink]="" (click)="previousState()" class="btn-y">
+                        <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                          <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      <p class="text-center mb-0">Resultado de Ultimas NC</p>
+                    </div>
+                  </div>
+                  <div class="col d-flex justify-content-center y-step active">
+                    <div class="y-progress">
+                      <div class="y-progress-line"></div>
+                    </div>
+                    <div class="y-content">
+                      <a [routerLink]="" class="btn-y">
+                        <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                          <i class="fa fa-usd" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      <p class="text-center mb-0">Responsables de Información</p>
+                    </div>
+                  </div>
+                  <div class="col d-flex justify-content-center y-step">
+                      <div class="y-progress">
+                        <div class="y-progress-line"></div>
+                      </div>
+                      <div class="y-content">
+                        <a [routerLink]="" class="btn-y btn-y-disabled">
+                          <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                            <i class="fa fa-paperclip" aria-hidden="true"></i>
+                          </div>
+                        </a>
+                        <p class="text-center mb-0">Anexo</p>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="card card-mtpe mb-3">
+              <div class="card-header bg-light d-sm-flex justify-content-between p-1">
+                <h5 class="mb-0"><small><i class="fa fa-user" aria-hidden="true"></i> Responsable de la información económica - financiera</small></h5>
+              </div>
+              <div class="card-body">
+                <div class="form-row">
+                  <div class="col-md-4">
+                    <div class="form-group row mb-2">
+                      <label for="inpDNI" class="col-sm-3 col-form-label col-form-label-sm">DNI</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control form-control-sm" name="txtDNI" id="inpDNI">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group row">
+                      <div class="col-sm-9">
+                        <a href="#" class="btn btn-sm btn-secondary"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row mb-2">
+                  <label for="inpNombre" class="col-sm-1 col-form-label col-form-label-sm">Nombre</label>
+                  <div class="col-sm-11">
+                    <input type="text" class="form-control form-control-sm" name="txtNombre" id="inpNombre">
+                  </div>
+                </div>
+                <div class="form-group row mb-2">
+                  <label for="selectCargo" class="col-sm-1 col-form-label col-form-label-sm">Cargo</label>
+                  <div class="col-sm-11">
+                    <select class="form-control form-control-sm" id="selectCargo">
+                      <option>JEFE</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row mb-2">
+                  <label for="inpCorreo" class="col-sm-1 col-form-label col-form-label-sm">Correo</label>
+                  <div class="col-sm-11">
+                    <input type="text" class="form-control form-control-sm" name="txtCorreo" id="inpCorreo">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md">
+                    <div class="form-group row mb-2">
+                      <label for="inpTelefono" class="col-sm-2 col-form-label col-form-label-sm">Teléfono</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" name="txtTelefono" id="inpTelefono">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md">
+                    <div class="form-group row mb-2">
+                      <label for="inpCelular" class="col-sm-2 col-form-label col-form-label-sm">Celular</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" name="txtTelefono" id="inpCelular">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card card-mtpe mb-3">
+              <div class="card-header bg-light d-sm-flex justify-content-between p-1">
+                <h5 class="mb-0"><small><i class="fa fa-user" aria-hidden="true"></i> Responsable de la información laboral</small></h5>
+              </div>
+              <div class="card-body">
+                <div class="form-row">
+                  <div class="col-md-4">
+                    <div class="form-group row mb-2">
+                      <label for="inpDNI" class="col-sm-3 col-form-label col-form-label-sm">DNI</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control form-control-sm" name="txtDNI" id="inpDNI">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group row">
+                      <div class="col-sm-9">
+                        <a href="#" class="btn btn-sm btn-secondary"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row mb-2">
+                  <label for="inpNombre" class="col-sm-1 col-form-label col-form-label-sm">Nombre</label>
+                  <div class="col-sm-11">
+                    <input type="text" class="form-control form-control-sm" name="txtNombre" id="inpNombre">
+                  </div>
+                </div>
+                <div class="form-group row mb-2">
+                  <label for="selectCargo" class="col-sm-1 col-form-label col-form-label-sm">Cargo</label>
+                  <div class="col-sm-11">
+                    <select class="form-control form-control-sm" id="selectCargo">
+                      <option>JEFE</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row mb-2">
+                  <label for="inpCorreo" class="col-sm-1 col-form-label col-form-label-sm">Correo</label>
+                  <div class="col-sm-11">
+                    <input type="text" class="form-control form-control-sm" name="txtCorreo" id="inpCorreo">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md">
+                    <div class="form-group row mb-2">
+                      <label for="inpTelefono" class="col-sm-2 col-form-label col-form-label-sm">Teléfono</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" name="txtTelefono" id="inpTelefono">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md">
+                    <div class="form-group row mb-2">
+                      <label for="inpCelular" class="col-sm-2 col-form-label col-form-label-sm">Celular</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" name="txtTelefono" id="inpCelular">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-sm-right">
+                <a [routerLink]="" (click)="irPerfil5()" class="btn btn-sm m-1 btn-success"><i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
+                <a [routerLink]="" class="btn btn-sm m-1 btn-secondary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
+                <a [routerLink]="" (click)="irPerfil6()" class="btn btn-sm m-1 btn-success"><i class="fa fa-chevron-right" aria-hidden="true"></i> Siguiente</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

@@ -3,6 +3,7 @@ import { BaseEntity } from './../../shared';
 export class Negocolect implements BaseEntity {
     constructor(
         public id?: number,
+        public vRazonsoc?: string,
         public nCodngcol?: number,
         public nCodfperf?: number,
         public vAmbsubje?: string,
@@ -23,6 +24,18 @@ export class Negocolect implements BaseEntity {
         public nSedeupd?: number,
         public formperfil?: BaseEntity,
     ) {
-        this.nFlgactivo = false;
+        this.vRazonsoc = '';
+        this.vAmbsubje = '';
+        this.vTipongco = '';
+        this.vEtapaneg = '';
+        this.tFecvigde = '';
+        this.tFecvigha = '';
+        this.vNumexpe = '';
+        this.vAuttrab = '';
+        this.vRucneg = '';
+        this.vRegistro = '';
+        this.vUsuareg = '';
+        this.tFecreg = '';
+        this.nFlgactivo = true;
     }
 }

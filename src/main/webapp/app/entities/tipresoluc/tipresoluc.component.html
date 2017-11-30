@@ -1,0 +1,83 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.tipresoluc.home.title">Tipresolucs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-tipresoluc" [routerLink]="['/', { outlets: { popup: ['tipresoluc-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.tipresoluc.home.createLabel">
+            Create new Tipresoluc
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.tipresoluc.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="tipresolucs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.tipresoluc.vDestipres">V Destipres</span></th>
+            <th><span jhiTranslate="gatewayApp.tipresoluc.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipresoluc.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipresoluc.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.tipresoluc.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipresoluc.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipresoluc.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipresoluc.nSedeupd">N Sedeupd</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let tipresoluc of tipresolucs ;trackBy: trackId">
+                <td><a [routerLink]="['../tipresoluc', tipresoluc.id ]">{{tipresoluc.id}}</a></td>
+                <td>{{tipresoluc.vDestipres}}</td>
+                <td>{{tipresoluc.nUsuareg}}</td>
+                <td>{{tipresoluc.tFecreg | date:'medium'}}</td>
+                <td>{{tipresoluc.nFlgactivo}}</td>
+                <td>{{tipresoluc.nSedereg}}</td>
+                <td>{{tipresoluc.nUsuaupd}}</td>
+                <td>{{tipresoluc.tFecupd | date:'medium'}}</td>
+                <td>{{tipresoluc.nSedeupd}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../tipresoluc', tipresoluc.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'tipresoluc/'+ tipresoluc.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'tipresoluc/'+ tipresoluc.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

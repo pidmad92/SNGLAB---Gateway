@@ -20,7 +20,8 @@
             "nSedereg": "N Sedereg",
             "nUsuaupd": "N Usuaupd",
             "tFecupd": "T Fecupd",
-            "nSedeupd": "N Sedeupd"
+            "nSedeupd": "N Sedeupd",
+            "calperiodo": "Calperiodo"
         }
     },
     "liquidacionesApp": {

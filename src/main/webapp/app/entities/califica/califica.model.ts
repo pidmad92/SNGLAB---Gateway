@@ -3,7 +3,7 @@ import { BaseEntity } from './../../shared';
 export class Califica implements BaseEntity {
     constructor(
         public id?: number,
-        public vDescripcion?: string,
+        public vDescrip?: string,
         public vUsuareg?: string,
         public tFecreg?: any,
         public nFlgactivo?: boolean,

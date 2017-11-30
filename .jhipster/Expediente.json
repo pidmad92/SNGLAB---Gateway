@@ -20,6 +20,14 @@
             "otherEntityField": "id"
         },
         {
+            "relationshipType": "one-to-one",
+            "relationshipName": "pasegl",
+            "otherEntityName": "pasegl",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "expediente"
+        },
+        {
             "relationshipType": "one-to-many",
             "relationshipName": "concilia",
             "otherEntityName": "concilia",
@@ -41,13 +49,6 @@
             "relationshipType": "one-to-many",
             "relationshipName": "notifica",
             "otherEntityName": "notifica",
-            "otherEntityRelationshipName": "expediente"
-        },
-        {
-            "relationshipType": "one-to-one",
-            "relationshipName": "pasegl",
-            "otherEntityName": "pasegl",
-            "ownerSide": false,
             "otherEntityRelationshipName": "expediente"
         },
         {

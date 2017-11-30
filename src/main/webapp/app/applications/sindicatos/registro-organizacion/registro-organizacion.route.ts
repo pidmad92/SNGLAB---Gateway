@@ -23,86 +23,90 @@ export const RegistroOrganizacionRoute: Routes = [
         component: PrincipalComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'consulta Organización'
+            pageTitle: 'Principal'
         },
         canActivate: [UserRouteAccessService],
         children: [
             {
                 path: 'registro-organizacion',
                 component: RegistroOrganizacionComponent,
-                /*data: {
+                data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'gatewayApp.accionadop.home.title'
-                },*/
+                    pageTitle: 'RegistroOrganizacion'
+                },
                 outlet: 'wizard'
             }
         ]
     },
     {
         path: 'registro-organizacion',
-        component: RegistroOrganizacionComponent
+        component: RegistroOrganizacionComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'RegistroOrganizacion'
+        }
     },
     {
         path: 'registro-jd',
         component: RegistroJdComponent,
-        /*data: {
+        data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
-        },*/
+            pageTitle: 'RegistroJD'
+        },
         canActivate: [UserRouteAccessService]
     },
     {
         path: 'registro-cargo',
         component: RegistroCargoComponent,
-        /*data: {
+        data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
-        },*/
+            pageTitle: 'RegistroCargo'
+        },
         canActivate: [UserRouteAccessService]
     },
     {
         path: 'registro-estatuto',
         component: RegistroEstatutoComponent,
-        /*data: {
+        data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
-        },*/
+            pageTitle: 'RegistroEstatuto'
+        },
         canActivate: [UserRouteAccessService]
     },
     {
         path: 'registro-afiliado',
         component: RegistroAfiliadoComponent,
-        /*data: {
+        data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
-        },*/
+            pageTitle: 'RegistroAfiliado'
+        },
         canActivate: [UserRouteAccessService]
     },
     {
         path: 'registro-federacion',
         component: RegistroFederacionComponent,
-        /*data: {
+        data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
-        },*/
+            pageTitle: 'RegistroFederacion'
+        },
         canActivate: [UserRouteAccessService]
     },
     {
         path: 'registro-confederacion',
         component: RegistroConfederacionComponent,
-        /*data: {
+        data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
-        },*/
+            pageTitle: 'RegistroConfederacion'
+        },
         canActivate: [UserRouteAccessService]
     },
     {
         path: 'consulta-organizacion',
         component: ConsultaOrganizacionComponent,
-        /*data: {
+        data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
-        },*/
+            pageTitle: 'ConsultaOrganizacion'
+        },
         canActivate: [UserRouteAccessService]
     }
     // {

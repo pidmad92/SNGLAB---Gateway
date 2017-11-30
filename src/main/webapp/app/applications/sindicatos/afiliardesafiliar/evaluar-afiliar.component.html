@@ -1,0 +1,30 @@
+<style>
+        .table {
+          width: 0%;
+        }
+        .modal-footer {
+          display: block;
+      }
+      </style>
+      
+      <div>
+              <div class="modal-header">
+                      <h4 class="modal-title">Junta Directiva: <label class="form-control form-control-sm">Desarrolladores del Perú</label></h4>
+                      
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                      (click)="clear()">&times;</button>
+                  </div>
+                  <div class="modal-body" align="center">
+                        <p-dataTable [value]="listaConsulta" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+                                <p-column field="representantes" header="Representantes" [sortable]="true"></p-column>
+                                <p-column field="fecini" header="Fecha Inicio" [sortable]="true"></p-column>
+                                <p-column field="fecfin" header="Fecha Fin" [sortable]="true"></p-column>
+                            </p-dataTable>
+                  </div>
+                  <div class="modal-footer" align="center">
+                    <button type="button" class="btn mx-1 btn-dark float-center" (click)="activeModal.dismiss('Cross click')">Regrezar</button>
+                    <button type="button" class="btn mx-1 btn-dark float-center" (click)="activeModal.dismiss('Cross click')">Desafiliar</button>
+                  </div>
+      </div>
+          
+      

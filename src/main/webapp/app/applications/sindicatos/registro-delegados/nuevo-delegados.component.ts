@@ -17,10 +17,25 @@ export class NuevoDelegadosComponent implements OnInit {
     eventSubscriber: Subscription;
     currentSearch: string;
 
+    listaConsulta: any[];
+
     constructor(
         private eventManager: JhiEventManager,
         private modalService: NgbModal,
     ) {
+    }
+
+    ngOnInit() {
+        this.listaConsulta = [
+            {tipdoc : 'DNI', numdoc: '23534512', nomcom: 'Evaluación de nombres', fecreg: '11/11/11', estado: 'Evaluación'},
+            {tipdoc : 'DNI', numdoc: '34534512', nomcom: 'Evaluación de nombres', fecreg: '11/11/11', estado: 'Evaluación'},
+            {tipdoc : 'DNI', numdoc: '34543512', nomcom: 'Evaluación de nombres', fecreg: '11/11/11', estado: 'Evaluación'},
+        ]
+        /*this.loadAll();
+        this.principal.identity().then((account) => {
+            this.currentAccount = account;
+        });
+        this.registerChangeInAtencionEmpleador();*/
     }
 
     loadAll() {
@@ -49,14 +64,6 @@ export class NuevoDelegadosComponent implements OnInit {
 
     open() {
         this.modalService.open(IngresoDelegadosComponent);
-    }
-
-    ngOnInit() {
-        /*this.loadAll();
-        this.principal.identity().then((account) => {
-            this.currentAccount = account;
-        });
-        this.registerChangeInAtencionEmpleador();*/
     }
 
     /*ngOnDestroy() {

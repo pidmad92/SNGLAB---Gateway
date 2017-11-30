@@ -85,9 +85,9 @@
                 [(ngModel)]="calperiodo.nDadeudos"  />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.nBase" for="field_nBase">N Base</label>
-            <input type="number" class="form-control" name="nBase" id="field_nBase"
-                [(ngModel)]="calperiodo.nBase"  />
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.nAnobase" for="field_nAnobase">N Anobase</label>
+            <input type="number" class="form-control" name="nAnobase" id="field_nAnobase"
+                [(ngModel)]="calperiodo.nAnobase"  />
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.nUsuareg" for="field_nUsuareg">N Usuareg</label>
@@ -173,17 +173,10 @@
             </select>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.interesperi" for="field_interesperi">Interesperi</label>
-            <select class="form-control" id="field_interesperi" name="interesperi" [(ngModel)]="calperiodo.interesperi">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.segsalud" for="field_segsalud">Segsalud</label>
+            <select class="form-control" id="field_segsalud" name="segsalud" [(ngModel)]="calperiodo.segsalud" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="interesperiOption.id === calperiodo.interesperi?.id ? calperiodo.interesperi : interesperiOption" *ngFor="let interesperiOption of interesperis; trackBy: trackInteresperiById">{{interesperiOption.id}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.calperiodo.calrcmperi" for="field_calrcmperi">Calrcmperi</label>
-            <select class="form-control" id="field_calrcmperi" name="calrcmperi" [(ngModel)]="calperiodo.calrcmperi">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="calrcmperiOption.id === calperiodo.calrcmperi?.id ? calperiodo.calrcmperi : calrcmperiOption" *ngFor="let calrcmperiOption of calrcmperis; trackBy: trackCalrcmperiById">{{calrcmperiOption.id}}</option>
+                <option [ngValue]="segsaludOption.id === calperiodo.segsalud?.id ? calperiodo.segsalud : segsaludOption" *ngFor="let segsaludOption of segsaluds; trackBy: trackSegsaludById">{{segsaludOption.id}}</option>
             </select>
         </div>
         <div class="form-group">

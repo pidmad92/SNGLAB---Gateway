@@ -1,0 +1,37 @@
+{
+    "gatewayApp": {
+        "tipaudi" : {
+            "home": {
+                "title": "Tipaudis",
+                "createLabel": "Crear nuevo Tipaudi",
+                "createOrEditLabel": "Crear o editar Tipaudi",
+                "search": "Search for Tipaudi"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipaudi {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipaudi"
+            },
+            "vCodsis": "V Codsis",
+            "vCodtipres": "V Codtipres",
+            "vCodtipdil": "V Codtipdil",
+            "vDestipaud": "V Destipaud",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "tipdiligenc": "Tipdiligenc"
+        }
+    },
+    "patrocinioApp": {
+        "tipaudi" : {
+            "created": "Un nuevo Tipaudi ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipaudi ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipaudi ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

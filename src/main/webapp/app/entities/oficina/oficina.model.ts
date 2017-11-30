@@ -12,9 +12,9 @@ export class Oficina implements BaseEntity {
         public tFecupd?: any,
         public nSedeupd?: number,
         public abogados?: BaseEntity[],
+        public pasegls?: BaseEntity[],
         public atencions?: BaseEntity[],
         public motatenofics?: BaseEntity[],
-        public pasegls?: BaseEntity[],
     ) {
         this.nFlgactivo = false;
     }

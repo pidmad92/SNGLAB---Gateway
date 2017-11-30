@@ -30,8 +30,8 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="gatewayApp.resolutor.vNomresolutor">V Nomresolutor</span></th>
-            <th><span jhiTranslate="gatewayApp.resolutor.nCodresolutorusuario">N Codresolutorusuario</span></th>
+            <th><span jhiTranslate="gatewayApp.resolutor.vNomresol">V Nomresol</span></th>
+            <th><span jhiTranslate="gatewayApp.resolutor.nCodresusu">N Codresusu</span></th>
             <th><span jhiTranslate="gatewayApp.resolutor.nUsuareg">N Usuareg</span></th>
             <th><span jhiTranslate="gatewayApp.resolutor.tFecreg">T Fecreg</span></th>
             <th><span jhiTranslate="gatewayApp.resolutor.nFlgactivo">N Flgactivo</span></th>
@@ -45,8 +45,8 @@
             <tbody>
             <tr *ngFor="let resolutor of resolutors ;trackBy: trackId">
                 <td><a [routerLink]="['../resolutor', resolutor.id ]">{{resolutor.id}}</a></td>
-                <td>{{resolutor.vNomresolutor}}</td>
-                <td>{{resolutor.nCodresolutorusuario}}</td>
+                <td>{{resolutor.vNomresol}}</td>
+                <td>{{resolutor.nCodresusu}}</td>
                 <td>{{resolutor.nUsuareg}}</td>
                 <td>{{resolutor.tFecreg | date:'medium'}}</td>
                 <td>{{resolutor.nFlgactivo}}</td>

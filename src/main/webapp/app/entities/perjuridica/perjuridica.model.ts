@@ -6,7 +6,7 @@ export class Perjuridica implements BaseEntity {
         public vRazsocial?: string,
         public vNomalter?: string,
         public vNumdoc?: string,
-        public vEmail?: string,
+        public vEmailper?: string,
         public vTelefono?: string,
         public vFaxperju?: string,
         public vEstado?: string,

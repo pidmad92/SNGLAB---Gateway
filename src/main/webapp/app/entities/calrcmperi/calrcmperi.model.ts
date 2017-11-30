@@ -11,6 +11,7 @@ export class Calrcmperi implements BaseEntity {
         public nUsuaupd?: number,
         public tFecupd?: any,
         public nSedeupd?: number,
+        public calperiodo?: BaseEntity,
         public conceprems?: BaseEntity[],
     ) {
         this.nFlgactivo = false;

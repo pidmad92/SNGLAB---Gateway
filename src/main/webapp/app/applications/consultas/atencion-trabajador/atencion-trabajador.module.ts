@@ -14,8 +14,14 @@ import { AtencionTrabajadorService,
     AtencionTrabajadorComponent,
     AtencionTrabajadorWizardComponent,
     atencionTrabajadorRoute,
-    accionadopPopupRoute
+    accionadopPopupRoute,
+    TipdocidentService,
+    CartrabService,
+    MotatenoficService,
+    AccionadopService
 } from './';
+
+// import { FormsModule } from '@angular/forms';
 
 const ENTITY_STATES = [
     ...atencionTrabajadorRoute,
@@ -28,7 +34,8 @@ const ENTITY_STATES = [
         StepsModule,
         DataTableModule,
         SharedModule,
-        RouterModule.forChild(ENTITY_STATES)
+        RouterModule.forChild(ENTITY_STATES),
+        // FormsModule
     ],
     declarations: [
         AtencionTrabajadorComponent,
@@ -57,6 +64,10 @@ const ENTITY_STATES = [
     ],
     providers: [
         AtencionTrabajadorService,
+        TipdocidentService,
+        CartrabService,
+        MotatenoficService,
+        AccionadopService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

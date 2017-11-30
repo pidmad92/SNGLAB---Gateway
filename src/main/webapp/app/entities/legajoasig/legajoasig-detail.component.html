@@ -1,0 +1,83 @@
+
+<div *ngIf="legajoasig">
+    <h2><span jhiTranslate="gatewayApp.legajoasig.detail.title">Legajoasig</span> {{legajoasig.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.legajoasig.vCodreg">V Codreg</span></dt>
+        <dd>
+            <span>{{legajoasig.vCodreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajoasig.vCodzon">V Codzon</span></dt>
+        <dd>
+            <span>{{legajoasig.vCodzon}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajoasig.vCodleg">V Codleg</span></dt>
+        <dd>
+            <span>{{legajoasig.vCodleg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajoasig.nCorrel">N Correl</span></dt>
+        <dd>
+            <span>{{legajoasig.nCorrel}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajoasig.vAboasig">V Aboasig</span></dt>
+        <dd>
+            <span>{{legajoasig.vAboasig}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajoasig.dFecasig">D Fecasig</span></dt>
+        <dd>
+            <span>{{legajoasig.dFecasig | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajoasig.vHostreg">V Hostreg</span></dt>
+        <dd>
+            <span>{{legajoasig.vHostreg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajoasig.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{legajoasig.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajoasig.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{legajoasig.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajoasig.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{legajoasig.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajoasig.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{legajoasig.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajoasig.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{legajoasig.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajoasig.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{legajoasig.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajoasig.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{legajoasig.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.legajoasig.legajo">Legajo</span></dt>
+        <dd>
+            <div *ngIf="legajoasig.legajo">
+                <a [routerLink]="['/legajo', legajoasig.legajo?.id]">{{legajoasig.legajo?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'legajoasig/'+ legajoasig.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

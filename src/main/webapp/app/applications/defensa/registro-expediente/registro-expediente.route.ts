@@ -15,7 +15,7 @@ import { DatosAudienciaComponent } from './registro-expediente-wizard/datos-audi
 
 export const registroExpedienteRoute: Routes = [
     {
-        path: 'registro-expediente',
+        path: 'expediente/registro',
         component: RegistroExpedienteComponent,
         data: {
             authorities: ['ROLE_USER'],

@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "tipresoluc" : {
+            "home": {
+                "title": "Tipresolucs",
+                "createLabel": "Crear nuevo Tipresoluc",
+                "createOrEditLabel": "Crear o editar Tipresoluc",
+                "search": "Search for Tipresoluc"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipresoluc {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipresoluc"
+            },
+            "vDestipres": "V Destipres",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "tipdiligenc": "Tipdiligenc",
+            "legtipdoc": "Legtipdoc"
+        }
+    },
+    "patrocinioApp": {
+        "tipresoluc" : {
+            "created": "Un nuevo Tipresoluc ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipresoluc ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipresoluc ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -6,7 +6,6 @@ import { JhiPaginationUtil } from 'ng-jhipster';
 
 import { RegistroRecursoComponent } from './registro-recurso.component';
 import { ConsultaRecursoComponent } from './consulta-recurso.component';
-import { RegistroObservacionComponent } from './registro-observacion.component';
 import { PrincipalComponent } from './principal.component';
 import { NuevoRecursoComponent } from './nuevo-recurso.component';
 // import { AccionadopDetailComponent } from './accionadop-detail.component';
@@ -17,28 +16,19 @@ export const RegistroRecursoRoute: Routes = [
     {
         path: 'registro-recurso',
         component: RegistroRecursoComponent,
-        /*data: {
+        data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
-        },*/
+            pageTitle: 'RegistroRecurso'
+        },
         canActivate: [UserRouteAccessService]
     },
     {
         path: 'consulta-recurso',
         component: ConsultaRecursoComponent,
-        /*data: {
+        data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
-        },*/
-        canActivate: [UserRouteAccessService]
-    },
-    {
-        path: 'registro-observacion',
-        component: RegistroObservacionComponent,
-        /*data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'gatewayApp.accionadop.home.title'
-        },*/
+            pageTitle: 'ConsultaRecurso'
+        },
         canActivate: [UserRouteAccessService]
     },
     {
@@ -46,35 +36,35 @@ export const RegistroRecursoRoute: Routes = [
         component: PrincipalComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'Consulta Recurso'
+            pageTitle: 'Principal'
         },
         canActivate: [UserRouteAccessService],
         children: [
             {
                 path: 'consulta-recurso',
                 component: ConsultaRecursoComponent,
-                /*data: {
+                data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'gatewayApp.accionadop.home.title'
-                },*/
+                    pageTitle: 'ConsultaRecurso'
+                },
                 outlet: 'wizard'
             },
             {
                 path: 'nuevo-recurso',
                 component: NuevoRecursoComponent,
-                /*data: {
+                data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'gatewayApp.accionadop.home.title'
-                },*/
+                    pageTitle: 'NuevoRecurso'
+                },
                 outlet: 'wizard'
             },
             {
                 path: 'registro-recurso',
                 component: RegistroRecursoComponent,
-                /*data: {
+                data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'gatewayApp.accionadop.home.title'
-                },*/
+                    pageTitle: 'RegistroRecurso'
+                },
                 outlet: 'wizard'
             }
         ]
