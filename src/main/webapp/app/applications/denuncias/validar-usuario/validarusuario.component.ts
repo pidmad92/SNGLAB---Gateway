@@ -48,11 +48,14 @@ export class ValidarUsuarioComponent implements OnInit {
     departs: ComboModel[];
     provins: ComboModel[];
     distris: ComboModel[];
+    tviasLista: ComboModel[];
+    tzonasLista: ComboModel[];
+    tviaSelected: string;
+    tzonaSelected: string;
     dirdenunDirec: Dirdenun;
-    selectedDeparts: string;
-    selectedProvins: string;
-    selectedDistris: string;
-
+    selectedDeparts: ComboModel;
+    selectedProvins: ComboModel;
+    selectedDistris: ComboModel;
     constructor(
         private eventManager: JhiEventManager,
         private loginService: LoginService,
@@ -89,6 +92,11 @@ export class ValidarUsuarioComponent implements OnInit {
         this.cambiaDir = false;
         this.pernatural = new Pernatural();
         this.dirdenunDirec = new Dirdenun();
+        this.departs = [];
+        this.provins = [];
+        this.distris = [];
+        this.tviasLista = [];
+        this.tzonasLista = [];
     }
 
     validarDatoPersona() {
@@ -137,11 +145,13 @@ export class ValidarUsuarioComponent implements OnInit {
                                                 this.dirdenunDirec.vCoddepartDes = (dep.length > 0) ? dep[0].vDesdep : '';
                                                 this.dirdenunDirec.vCodprovinDes = (prov.length > 0) ? prov[0].vDespro : '';
                                                 this.dirdenunDirec.vCoddistriDes = (dist.length > 0) ? dist[0].vDesdis : '';
-                                                this.avanzarVentana();
                                                 this.block = false;
+                                                this.avanzarVentana();
                                             },
-                                            (dist: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: prov }]);
-                                            this.block = false; });
+                                            (dist: ResponseWrapper) => {
+                                                this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: prov }]);
+                                                this.block = false;
+                                            });
                                     },
                                     (prov: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: prov }]); this.block = false; });
                             },
@@ -151,7 +161,7 @@ export class ValidarUsuarioComponent implements OnInit {
                         this.block = false;
                     }
                 },
-                (res: ResponseWrapper) => {this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: res.json }]); this.block = false; }
+                (res: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: res.json }]); this.block = false; }
                 );
         }
         this.onErrorMultiple(this.messageList);
@@ -159,11 +169,30 @@ export class ValidarUsuarioComponent implements OnInit {
 
     cambiaDireccion() {
         this.block = true;
+        this.messageList = [];
         this.validarUsuarioService.consultaDepas().subscribe(
             (deps: any) => {
-
+                this.validarUsuarioService.consultaTVia().subscribe(
+                    (tvias: ResponseWrapper) => {
+                        this.validarUsuarioService.consultaTZona().subscribe(
+                            (tzonas: ResponseWrapper) => {
+                                // tslint:disable-next-line:forin
+                                for (const i in deps) {
+                                    console.log('Entroo for departamento');
+                                    this.departs.push(new ComboModel(deps[i].vDesdep, deps[i].vCoddep, 0));
+                                }
+                                this.tviasLista = tvias.json;
+                                this.tzonasLista = tzonas.json;
+                                this.cambiaDir = true;
+                                this.block = false;
+                            },
+                            (tzonas: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: tzonas.json }]); this.block = false; }
+                        );
+                    },
+                    (tvias: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: tvias.json }]); this.block = false; }
+                );
             },
-            (res: ResponseWrapper) => {this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: res.json }]); this.block = false; }
+            (res: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: res.json }]); this.block = false; }
         );
 
         /* this.validarUsuarioService.consultaTipoDocIdentidad().subscribe(
@@ -201,6 +230,51 @@ export class ValidarUsuarioComponent implements OnInit {
     showNuevoUsuario() {
         this.loadAll();
         this.displayNuevoUsuario = true;
+    }
+
+    onChangeDepartamento() {
+        this.block = true;
+        this.messageList = [];
+        if (this.selectedDeparts === undefined) {
+            this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar un departamento' }]);
+            this.block = false;
+        } else {
+            this.validarUsuarioService.consultaProvs(this.selectedDeparts.value).subscribe(
+                (tprovs: ResponseWrapper) => {
+                    this.provins = [];
+                    // tslint:disable-next-line:forin
+                    for (const i in tprovs) {
+                        this.provins.push(new ComboModel(tprovs[i].vDespro, tprovs[i].vCodpro, 0));
+                    }
+                    this.block = false;
+                },
+                (tprovs: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: tprovs.json }]); this.block = false; }
+            );
+        }
+    }
+
+    onChangeProvincia() {
+        this.block = true;
+        this.messageList = [];
+        if (this.selectedDeparts === undefined) {
+            this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar un departamento' }]);
+            this.block = false;
+        } else if (this.selectedProvins === undefined) {
+            this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar una provincia' }]);
+            this.block = false;
+        } else {
+            this.validarUsuarioService.consultaDists(this.selectedDeparts.value, this.selectedProvins.value).subscribe(
+                (tdists: ResponseWrapper) => {
+                    this.distris = [];
+                    // tslint:disable-next-line:forin
+                    for (const i in tdists) {
+                        this.distris.push(new ComboModel(tdists[i].vDesdis, tdists[i].vCoddis, 0));
+                    }
+                    this.block = false;
+                },
+                (tdists: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: tdists.json }]); this.block = false; }
+            );
+        }
     }
 
     private onError(error: any) {
