@@ -1,0 +1,93 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.tipdiligenc.home.title">Tipdiligencs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-tipdiligenc" [routerLink]="['/', { outlets: { popup: ['tipdiligenc-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.tipdiligenc.home.createLabel">
+            Create new Tipdiligenc
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.tipdiligenc.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="tipdiligencs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdiligenc.vCodsis">V Codsis</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdiligenc.vCodtipres">V Codtipres</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdiligenc.vDestipdil">V Destipdil</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdiligenc.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdiligenc.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdiligenc.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdiligenc.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdiligenc.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdiligenc.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdiligenc.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.tipdiligenc.tipresoluc">Tipresoluc</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let tipdiligenc of tipdiligencs ;trackBy: trackId">
+                <td><a [routerLink]="['../tipdiligenc', tipdiligenc.id ]">{{tipdiligenc.id}}</a></td>
+                <td>{{tipdiligenc.vCodsis}}</td>
+                <td>{{tipdiligenc.vCodtipres}}</td>
+                <td>{{tipdiligenc.vDestipdil}}</td>
+                <td>{{tipdiligenc.nUsuareg}}</td>
+                <td>{{tipdiligenc.tFecreg | date:'medium'}}</td>
+                <td>{{tipdiligenc.nFlgactivo}}</td>
+                <td>{{tipdiligenc.nSedereg}}</td>
+                <td>{{tipdiligenc.nUsuaupd}}</td>
+                <td>{{tipdiligenc.tFecupd | date:'medium'}}</td>
+                <td>{{tipdiligenc.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="tipdiligenc.tipresoluc">
+                        <a [routerLink]="['../tipresoluc', tipdiligenc.tipresoluc?.id ]" >{{tipdiligenc.tipresoluc?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../tipdiligenc', tipdiligenc.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'tipdiligenc/'+ tipdiligenc.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'tipdiligenc/'+ tipdiligenc.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

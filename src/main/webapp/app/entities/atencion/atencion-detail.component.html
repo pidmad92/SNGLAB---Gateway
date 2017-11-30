@@ -20,9 +20,9 @@
         <dd>
             <span>{{atencion.vNumticket}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.atencion.nCodtrabre">N Codtrabre</span></dt>
+        <dt><span jhiTranslate="gatewayApp.atencion.nCodtrepre">N Codtrepre</span></dt>
         <dd>
-            <span>{{atencion.nCodtrabre}}</span>
+            <span>{{atencion.nCodtrepre}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.atencion.nUsuareg">N Usuareg</span></dt>
         <dd>
@@ -52,10 +52,10 @@
         <dd>
             <span>{{atencion.nSedeupd}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.atencion.pasegl">Pasegl</span></dt>
+        <dt><span jhiTranslate="gatewayApp.atencion.liquidacion">Liquidacion</span></dt>
         <dd>
-            <div *ngIf="atencion.pasegl">
-                <a [routerLink]="['/pasegl', atencion.pasegl?.id]">{{atencion.pasegl?.id}}</a>
+            <div *ngIf="atencion.liquidacion">
+                <a [routerLink]="['/liquidacion', atencion.liquidacion?.id]">{{atencion.liquidacion?.id}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="gatewayApp.atencion.datlab">Datlab</span></dt>

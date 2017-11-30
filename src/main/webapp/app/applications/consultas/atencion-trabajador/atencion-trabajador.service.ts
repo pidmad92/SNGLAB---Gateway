@@ -7,11 +7,14 @@ import { JhiDateUtils } from 'ng-jhipster';
 import { Trabajador } from './trabajador.model';
 import { ResponseWrapper, createRequestOption } from '../../../shared';
 
+import { Tipdocident } from './tipdocident.model';
+
 @Injectable()
 export class AtencionTrabajadorService {
 
     private resourceUrl = '/consultas/api/trabajador';
     private resourceSearchUrl = '/consultas/api/_search/trabajador';
+    private resource_tipdocident_url = '/consultas/api/tipdocident';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -37,6 +40,15 @@ export class AtencionTrabajadorService {
             return this.convertItemFromServer(jsonResponse);
         });
     }
+
+// JH: inicio
+    findTrabajadorByDocIdent(tipodoc: number, numdoc: String): Observable<Trabajador> {
+        return this.http.get(`${this.resourceUrl}/tipdoc/${tipodoc}/numdoc/${numdoc}`).map((res: Response) => {
+            const jsonResponse = res.json();
+            return this.convertItemFromServer(jsonResponse);
+        });
+    }
+// JH: final
 
     query(req?: any): Observable<ResponseWrapper> {
         const options = createRequestOption(req);
@@ -64,26 +76,26 @@ export class AtencionTrabajadorService {
     }
 
     /**
-     * Convert a returned JSON object to Trabajador.
+     * Convert a returned JSON object to trabajador.
      */
     private convertItemFromServer(json: any): Trabajador {
         const entity: Trabajador = Object.assign(new Trabajador(), json);
-        entity.dFechareg = this.dateUtils
-            .convertDateTimeFromServer(json.dFechareg);
-        entity.dFechaupd = this.dateUtils
-            .convertDateTimeFromServer(json.dFechaupd);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
     /**
-     * Convert a Trabajador to a JSON which can be sent to the server.
+     * Convert a trabajador to a JSON which can be sent to the server.
      */
     private convert(trabajador: Trabajador): Trabajador {
         const copy: Trabajador = Object.assign({}, trabajador);
 
-        copy.dFechareg = this.dateUtils.toDate(trabajador.dFechareg);
+        copy.tFecreg = this.dateUtils.toDate(trabajador.tFecreg);
 
-        copy.dFechaupd = this.dateUtils.toDate(trabajador.dFechaupd);
+        copy.tFecupd = this.dateUtils.toDate(trabajador.tFecupd);
         return copy;
     }
 }

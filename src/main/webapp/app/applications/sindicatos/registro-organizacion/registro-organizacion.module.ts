@@ -10,7 +10,8 @@ import { RegistroConfederacionComponent } from './registro-confederacion.compone
 import { ConsultaOrganizacionComponent } from './consulta-organizacion.component';
 import { PrincipalComponent } from './principal.component';
 
-import {ChipsModule} from 'primeng/primeng';
+import { DropdownModule, RadioButtonModule, InputTextModule, TabViewModule, ChipsModule, CalendarModule, DataGridModule, DataTableModule, SharedModule } from 'primeng/primeng';
+import { SelectItem, FieldsetModule, CheckboxModule } from 'primeng/primeng';
 
 import { GatewaySharedModule } from '../../../shared';
 import { RegistroOrganizacionService,
@@ -27,6 +28,16 @@ const ENTITY_STATES = [
     imports: [
         GatewaySharedModule,
         ChipsModule,
+        FieldsetModule,
+        InputTextModule,
+        CheckboxModule,
+        RadioButtonModule,
+        DataTableModule,
+        DropdownModule,
+        TabViewModule,
+        DataGridModule,
+        CalendarModule,
+        SharedModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [

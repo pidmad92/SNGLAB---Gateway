@@ -90,7 +90,7 @@
             "fieldValidateRulesMaxlength": 20
         },
         {
-            "fieldName": "fMonMulta",
+            "fieldName": "fMonmulta",
             "fieldType": "Float"
         },
         {

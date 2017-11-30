@@ -11,7 +11,6 @@ export class Liquidacion implements BaseEntity {
         public nUsuaupd?: number,
         public tFecupd?: any,
         public nSedeupd?: number,
-        public atencion?: BaseEntity,
         public calbensocs?: BaseEntity[],
     ) {
         this.nFlgactivo = false;

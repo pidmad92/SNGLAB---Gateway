@@ -21,7 +21,7 @@
             "nTnocomput": "N Tnocomput",
             "nDgozados": "N Dgozados",
             "nDadeudos": "N Dadeudos",
-            "nBase": "N Base",
+            "nAnobase": "N Anobase",
             "nUsuareg": "N Usuareg",
             "tFecreg": "T Fecreg",
             "nFlgactivo": "N Flgactivo",
@@ -30,8 +30,7 @@
             "tFecupd": "T Fecupd",
             "nSedeupd": "N Sedeupd",
             "calbensoc": "Calbensoc",
-            "interesperi": "Interesperi",
-            "calrcmperi": "Calrcmperi",
+            "segsalud": "Segsalud",
             "estperical": "Estperical",
             "tipcalperi": "Tipcalperi"
         }

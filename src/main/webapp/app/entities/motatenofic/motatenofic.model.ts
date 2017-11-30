@@ -13,7 +13,7 @@ export class Motatenofic implements BaseEntity {
         public motate?: BaseEntity,
         public oficina?: BaseEntity,
         public motateselecs?: BaseEntity[],
-        public motivpases?: BaseEntity[],
+        public motivPases?: BaseEntity[],
     ) {
         this.nFlgactivo = false;
     }

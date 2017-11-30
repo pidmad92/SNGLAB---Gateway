@@ -1,6 +1,13 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "calperiodo",
+            "otherEntityName": "calperiodo",
+            "otherEntityRelationshipName": "segsalud"
+        }
+    ],
     "fields": [
         {
             "fieldName": "vSegsal",

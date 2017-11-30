@@ -9,22 +9,33 @@ import {
     EvaluarSolicitudesComponent,
     RevisarSolicitudesPopupRoute,
     RevisarSolicitudesRoute,
+    EvaluarSolicitudesPopupComponent,
 } from './';
+
+import { RadioButtonModule, TabViewModule, InputTextModule, ChipsModule, CalendarModule, DataGridModule, DataTableModule, SharedModule } from 'primeng/primeng';
 
 const ENTITY_STATES = [
     ...RevisarSolicitudesRoute,
-    ...RevisarSolicitudesPopupRoute,
     // ...accionadopPopupRoute,
 ];
 
 @NgModule({
     imports: [
         GatewaySharedModule,
+        RadioButtonModule,
+        TabViewModule,
+        InputTextModule,
+        ChipsModule,
+        CalendarModule,
+        DataGridModule,
+        DataTableModule,
+        SharedModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
         RevisarSolicitudesComponent,
         EvaluarSolicitudesComponent,
+        EvaluarSolicitudesPopupComponent,
         // EvaluarSolicitudesPopupComponent,
         // AccionadopDetailComponent,
         // AccionadopDialogComponent,
@@ -35,6 +46,7 @@ const ENTITY_STATES = [
     entryComponents: [
         RevisarSolicitudesComponent,
         EvaluarSolicitudesComponent,
+        EvaluarSolicitudesPopupComponent
         // EvaluarSolicitudesPopupComponent,
         // AccionadopDialogComponent,
         // AccionadopPopupComponent,

@@ -1,0 +1,364 @@
+
+entity Tipolibro {
+	vDestlibro String required maxlength(100),
+    vEstado String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Tiporecurso {
+	vDestrecur String required maxlength(100),
+    vEstado String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Scargo {
+	vDesscargo String required maxlength(100),
+    vEstado String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Srubro {
+	vDessrubro String required maxlength(100),
+    vEstado String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Tipoorganiz {
+	vDestiporg String required maxlength(100),
+    vEstado String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Nivelorgani {
+	vDesnivorg String required maxlength(100),
+    vEstado String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Ambitoorgan {
+	vDesamborg String required maxlength(100),
+    vEstado String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Categoria {
+	vDescatego String required maxlength(100),
+    vEstado String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Categoriaor {
+	vDescatorg String required maxlength(100),
+    vEstado String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Region {
+	vDesregion String required maxlength(100),
+    vEstado String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Szonal {
+	vDesszonal String required maxlength(100),
+    vEstado String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Organizacio {
+	vNumexpedi String maxlength(100),
+    vDesorgani String required maxlength(100),
+    tFecregist Instant,
+	vDessiglas String required maxlength(50),
+    vNumresolu String maxlength(100),
+    cDesdocruc Integer maxlength(11),
+	tFecpresen Instant,
+    tFecconsta Instant,
+    vCorreo Integer required maxlength(100),
+	cTelefono String required maxlength(20),
+    vEstado String required maxlength(20),
+    vDirecreal Integer maxlength(200),
+	vDirelegal String maxlength(200),
+    vTafiliaci String required maxlength(20),
+    vDescalifi String required maxlength(20),
+    nUbigeo Integer required,
+	nNumdnisin String maxlength(7),
+	vObservaci String maxlength(200),
+	nNumciiu Integer,
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Empresa {
+	cDesdocruc String required maxlength(11),
+    vDesrazons String required maxlength(100),
+    vDesdirecc String required maxlength(200),
+    vEstado String required maxlength(20),
+	nUbigeo Integer required,
+	vTipoempre String required maxlength(50),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Documento {
+	vNomdocume String required maxlength(100),
+    blArchivo Blob required,
+    vObsdocume String required maxlength(200),
+    vEstado String required maxlength(20),
+	vTipodocum String required maxlength(50),
+    tFecregist Instant,
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Estatuto {
+	vDesestatu String required maxlength(100),
+    tFecestatu Instant,
+    blArchivo Blob required,
+    vEstado String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Palabraclav {
+	vDespalcla String required maxlength(100),
+    vEstado String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Calificacio {
+	vDescalifi String required maxlength(100),
+    nPresento Integer required max(1),
+    nEnregla Integer required max(1),
+    vEstado String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Recurso {
+	vNumrecurs String required maxlength(100),
+    tFecrecurs Instant,
+    vEstado String required maxlength(20),
+    tFecprovei Instant,
+    vObsrecurs String required maxlength(200),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Librosindic {
+	vNumreglib String required maxlength(100),
+    vNumlibsin String required maxlength(100),
+    tFecresolu Instant,
+    vUsuregist String required maxlength(100),
+    vEstado String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Juntadirect {
+	tFecinicio Instant,
+    tFecrfinal Instant,
+    nTitulares Integer required,
+    nSuplentes Integer required,
+    vEstado String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Delegado {
+	tFecinicio Instant,
+    tFecrfinal Instant,
+    vEstado String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Sindicato {
+	tFecafilia Instant,
+    vEstado String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Federacion {
+	tFecafilia Instant,
+    vEstado String required maxlength(20),
+    cTipafilia String required maxlength(20),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Afiliado {
+    vTipafilia String required maxlength(20),
+    vEstado String required maxlength(20),
+	nCodperson Integer required,
+	nCodafilia Integer required,
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+//********
+
+relationship OneToMany {
+	Tipolibro{librosindic} to Librosindic,
+    Organizacio{librosindic} to Librosindic,
+    Organizacio{recurso} to Recurso,
+    Organizacio{empresa} to Empresa,
+    Organizacio{estatuto} to Estatuto,
+    Tipoorganiz{organizacio} to Organizacio,
+    Nivelorgani{organizacio} to Organizacio,
+    Ambitoorgan{organizacio} to Organizacio,
+    Categoria{organizacio} to Organizacio,
+    
+    Categoriaor{organizacio} to Organizacio,
+    Organizacio{palabraclav} to Palabraclav,
+    Region{organizacio} to Organizacio,
+    Calificacio{organizacio} to Organizacio,
+    Szonal{organizacio} to Organizacio,
+    Organizacio{documento} to Documento,
+    Organizacio{federacion} to Federacion,
+    Organizacio{sindicato} to Sindicato,
+    Organizacio{delegado} to Delegado,
+    Organizacio{juntadirect} to Juntadirect,
+        
+    Tiporecurso{recurso} to Recurso,
+    Srubro{organizacio} to Organizacio,
+    Scargo{afiliado} to Afiliado,
+    Organizacio{afiliado} to Afiliado
+}
+
+microservice * with sindicatos
+
+

@@ -11,7 +11,7 @@ export class Pernatural implements BaseEntity {
         public vCelular?: string,
         public vEmailper?: string,
         public dFecnac?: any,
-        public vsexoper?: string,
+        public vSexoper?: string,
         public vEstado?: string,
         public nUsuareg?: number,
         public tFecreg?: any,

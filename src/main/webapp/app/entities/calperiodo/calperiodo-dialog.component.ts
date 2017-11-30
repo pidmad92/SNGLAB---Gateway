@@ -10,8 +10,7 @@ import { Calperiodo } from './calperiodo.model';
 import { CalperiodoPopupService } from './calperiodo-popup.service';
 import { CalperiodoService } from './calperiodo.service';
 import { Calbensoc, CalbensocService } from '../calbensoc';
-import { Interesperi, InteresperiService } from '../interesperi';
-import { Calrcmperi, CalrcmperiService } from '../calrcmperi';
+import { Segsalud, SegsaludService } from '../segsalud';
 import { Estperical, EstpericalService } from '../estperical';
 import { Tipcalperi, TipcalperiService } from '../tipcalperi';
 import { ResponseWrapper } from '../../shared';
@@ -27,9 +26,7 @@ export class CalperiodoDialogComponent implements OnInit {
 
     calbensocs: Calbensoc[];
 
-    interesperis: Interesperi[];
-
-    calrcmperis: Calrcmperi[];
+    segsaluds: Segsalud[];
 
     estpericals: Estperical[];
 
@@ -42,8 +39,7 @@ export class CalperiodoDialogComponent implements OnInit {
         private jhiAlertService: JhiAlertService,
         private calperiodoService: CalperiodoService,
         private calbensocService: CalbensocService,
-        private interesperiService: InteresperiService,
-        private calrcmperiService: CalrcmperiService,
+        private segsaludService: SegsaludService,
         private estpericalService: EstpericalService,
         private tipcalperiService: TipcalperiService,
         private eventManager: JhiEventManager
@@ -54,32 +50,8 @@ export class CalperiodoDialogComponent implements OnInit {
         this.isSaving = false;
         this.calbensocService.query()
             .subscribe((res: ResponseWrapper) => { this.calbensocs = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.interesperiService
-            .query({filter: 'calperiodo-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.calperiodo.interesperi || !this.calperiodo.interesperi.id) {
-                    this.interesperis = res.json;
-                } else {
-                    this.interesperiService
-                        .find(this.calperiodo.interesperi.id)
-                        .subscribe((subRes: Interesperi) => {
-                            this.interesperis = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
-        this.calrcmperiService
-            .query({filter: 'calperiodo-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.calperiodo.calrcmperi || !this.calperiodo.calrcmperi.id) {
-                    this.calrcmperis = res.json;
-                } else {
-                    this.calrcmperiService
-                        .find(this.calperiodo.calrcmperi.id)
-                        .subscribe((subRes: Calrcmperi) => {
-                            this.calrcmperis = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
+        this.segsaludService.query()
+            .subscribe((res: ResponseWrapper) => { this.segsaluds = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.estpericalService.query()
             .subscribe((res: ResponseWrapper) => { this.estpericals = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.tipcalperiService.query()
@@ -124,11 +96,7 @@ export class CalperiodoDialogComponent implements OnInit {
         return item.id;
     }
 
-    trackInteresperiById(index: number, item: Interesperi) {
-        return item.id;
-    }
-
-    trackCalrcmperiById(index: number, item: Calrcmperi) {
+    trackSegsaludById(index: number, item: Segsalud) {
         return item.id;
     }
 

@@ -16,7 +16,7 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
 
     items: MenuItem[];
     msgs: Message[] = [];
-    private routeExp = '/defensa/registro-expediente';
+    private routeExp = '/defensa/expediente/registro';
     activeIndex: number;
     url: string;
     router: any;

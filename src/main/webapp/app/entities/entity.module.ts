@@ -137,6 +137,17 @@ import { GatewayCalificaModule } from './califica/califica.module';
 import { GatewayCalidenuModule } from './calidenu/calidenu.module';
 import { GatewayOridenuModule } from './oridenu/oridenu.module';
 import { GatewayDenunciaModule } from './denuncia/denuncia.module';
+import { GatewayFalsoexpModule } from './falsoexp/falsoexp.module';
+import { GatewayLegajoModule } from './legajo/legajo.module';
+import { GatewayLegajoasigModule } from './legajoasig/legajoasig.module';
+import { GatewayLegtipdocModule } from './legtipdoc/legtipdoc.module';
+import { GatewayPasepjModule } from './pasepj/pasepj.module';
+import { GatewayAtencionpjModule } from './atencionpj/atencionpj.module';
+import { GatewayMateriaModule } from './materia/materia.module';
+import { GatewayTipdocpjModule } from './tipdocpj/tipdocpj.module';
+import { GatewayTipaudiModule } from './tipaudi/tipaudi.module';
+import { GatewayTipdiligencModule } from './tipdiligenc/tipdiligenc.module';
+import { GatewayTipresolucModule } from './tipresoluc/tipresoluc.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -276,6 +287,17 @@ import { GatewayDenunciaModule } from './denuncia/denuncia.module';
         GatewayCalidenuModule,
         GatewayOridenuModule,
         GatewayDenunciaModule,
+        GatewayFalsoexpModule,
+        GatewayLegajoModule,
+        GatewayLegajoasigModule,
+        GatewayLegtipdocModule,
+        GatewayPasepjModule,
+        GatewayAtencionpjModule,
+        GatewayMateriaModule,
+        GatewayTipdocpjModule,
+        GatewayTipaudiModule,
+        GatewayTipdiligencModule,
+        GatewayTipresolucModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

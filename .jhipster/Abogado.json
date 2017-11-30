@@ -9,6 +9,12 @@
         },
         {
             "relationshipType": "one-to-many",
+            "relationshipName": "legajo",
+            "otherEntityName": "legajo",
+            "otherEntityRelationshipName": "abogado"
+        },
+        {
+            "relationshipType": "one-to-many",
             "relationshipName": "concilia",
             "otherEntityName": "concilia",
             "otherEntityRelationshipName": "abogado"

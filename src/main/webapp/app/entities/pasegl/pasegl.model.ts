@@ -13,9 +13,9 @@ export class Pasegl implements BaseEntity {
         public tFecupd?: any,
         public nSedeupd?: number,
         public oficina?: BaseEntity,
-        public expediente?: BaseEntity,
-        public motivpases?: BaseEntity[],
         public atencion?: BaseEntity,
+        public legajos?: BaseEntity[],
+        public motivpases?: BaseEntity[],
     ) {
         this.nFlgactivo = false;
     }

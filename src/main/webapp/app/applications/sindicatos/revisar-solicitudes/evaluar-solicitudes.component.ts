@@ -78,29 +78,28 @@ export class EvaluarSolicitudesComponent implements OnInit {
 
 @Component({
     selector: 'jhi-evaluar-solicitudes-popup',
-    templateUrl: './evaluar-solicitudes.component.html'
+    template: ''
 })
 export class EvaluarSolicitudesPopupComponent implements OnInit, OnDestroy {
     routeSub: any;
 
-    constructor(
-        private route: ActivatedRoute,
-        public activeModal: NgbActiveModal,
-        private evaluarSolicitudesService: EvaluarSolicitudesService
-    ) {
-    }
+        constructor(
+            private route: ActivatedRoute,
+            private evaluarSolicitudesService: EvaluarSolicitudesService
+        ) { }
 
-    ngOnInit() {
-        this.routeSub = this.route.params.subscribe((params) => {
-            this.evaluarSolicitudesService
-            .open(EvaluarSolicitudesPopupComponent as Component);
-        });
-        /*this.loadAll();
-        this.principal.identity().then((account) => {
-            this.currentAccount = account;
-        });
-        this.registerChangeInAtencionEmpleador();*/
-    }
+        ngOnInit() {
+            console.log('OpenDialog');
+            this.routeSub = this.route.params.subscribe((params) => {
+                if ( params['id'] ) {
+                    this.evaluarSolicitudesService
+                        .open(EvaluarSolicitudesComponent as Component, params['id']);
+                } else {
+                    this.evaluarSolicitudesService
+                        .open(EvaluarSolicitudesComponent as Component);
+                }
+            });
+        }
 
     ngOnDestroy() {
         this.routeSub.unsubscribe();

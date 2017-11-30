@@ -1,0 +1,159 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.legtipdoc.home.title">Legtipdocs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-legtipdoc" [routerLink]="['/', { outlets: { popup: ['legtipdoc-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.legtipdoc.home.createLabel">
+            Create new Legtipdoc
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.legtipdoc.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="legtipdocs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vCodreg">V Codreg</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vCodzon">V Codzon</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vCodleg">V Codleg</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.nCorrel">N Correl</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vCodtdoc">V Codtdoc</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vCodsis">V Codsis</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vCodtipres">V Codtipres</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vAsundoc">V Asundoc</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.dFecdoc">D Fecdoc</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.nMonpag">N Monpag</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.dFecentr">D Fecentr</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.dFecdev">D Fecdev</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.dFecrecjuz">D Fecrecjuz</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vCodusureg">V Codusureg</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vHostreg">V Hostreg</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vCodusumod">V Codusumod</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.dFecmod">D Fecmod</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vHostmod">V Hostmod</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.dFeccit">D Feccit</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vFlgfund">V Flgfund</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vFlgasis">V Flgasis</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.nNumres">N Numres</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vAboasig">V Aboasig</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.nMondol">N Mondol</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vCodloc">V Codloc</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vCodtipdil">V Codtipdil</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vCodtipaud">V Codtipaud</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vFlgconc">V Flgconc</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.vDettdoc">V Dettdoc</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.dFecdocreq">D Fecdocreq</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.legajo">Legajo</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.tipdocpj">Tipdocpj</span></th>
+            <th><span jhiTranslate="gatewayApp.legtipdoc.tipresoluc">Tipresoluc</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let legtipdoc of legtipdocs ;trackBy: trackId">
+                <td><a [routerLink]="['../legtipdoc', legtipdoc.id ]">{{legtipdoc.id}}</a></td>
+                <td>{{legtipdoc.vCodreg}}</td>
+                <td>{{legtipdoc.vCodzon}}</td>
+                <td>{{legtipdoc.vCodleg}}</td>
+                <td>{{legtipdoc.nCorrel}}</td>
+                <td>{{legtipdoc.vCodtdoc}}</td>
+                <td>{{legtipdoc.vCodsis}}</td>
+                <td>{{legtipdoc.vCodtipres}}</td>
+                <td>{{legtipdoc.vAsundoc}}</td>
+                <td>{{legtipdoc.dFecdoc | date:'mediumDate'}}</td>
+                <td>{{legtipdoc.nMonpag}}</td>
+                <td>{{legtipdoc.dFecentr | date:'mediumDate'}}</td>
+                <td>{{legtipdoc.dFecdev | date:'mediumDate'}}</td>
+                <td>{{legtipdoc.dFecrecjuz | date:'mediumDate'}}</td>
+                <td>{{legtipdoc.vCodusureg}}</td>
+                <td>{{legtipdoc.vHostreg}}</td>
+                <td>{{legtipdoc.vCodusumod}}</td>
+                <td>{{legtipdoc.dFecmod | date:'mediumDate'}}</td>
+                <td>{{legtipdoc.vHostmod}}</td>
+                <td>{{legtipdoc.dFeccit | date:'mediumDate'}}</td>
+                <td>{{legtipdoc.vFlgfund}}</td>
+                <td>{{legtipdoc.vFlgasis}}</td>
+                <td>{{legtipdoc.nNumres}}</td>
+                <td>{{legtipdoc.vAboasig}}</td>
+                <td>{{legtipdoc.nMondol}}</td>
+                <td>{{legtipdoc.vCodloc}}</td>
+                <td>{{legtipdoc.vCodtipdil}}</td>
+                <td>{{legtipdoc.vCodtipaud}}</td>
+                <td>{{legtipdoc.vFlgconc}}</td>
+                <td>{{legtipdoc.vDettdoc}}</td>
+                <td>{{legtipdoc.dFecdocreq | date:'mediumDate'}}</td>
+                <td>{{legtipdoc.nUsuareg}}</td>
+                <td>{{legtipdoc.tFecreg | date:'medium'}}</td>
+                <td>{{legtipdoc.nFlgactivo}}</td>
+                <td>{{legtipdoc.nSedereg}}</td>
+                <td>{{legtipdoc.nUsuaupd}}</td>
+                <td>{{legtipdoc.tFecupd | date:'medium'}}</td>
+                <td>{{legtipdoc.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="legtipdoc.legajo">
+                        <a [routerLink]="['../legajo', legtipdoc.legajo?.id ]" >{{legtipdoc.legajo?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="legtipdoc.tipdocpj">
+                        <a [routerLink]="['../tipdocpj', legtipdoc.tipdocpj?.id ]" >{{legtipdoc.tipdocpj?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="legtipdoc.tipresoluc">
+                        <a [routerLink]="['../tipresoluc', legtipdoc.tipresoluc?.id ]" >{{legtipdoc.tipresoluc?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../legtipdoc', legtipdoc.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'legtipdoc/'+ legtipdoc.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'legtipdoc/'+ legtipdoc.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

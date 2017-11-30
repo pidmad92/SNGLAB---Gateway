@@ -46,10 +46,10 @@
                 <a [routerLink]="['/oficina', pasegl.oficina?.id]">{{pasegl.oficina?.id}}</a>
             </div>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.pasegl.expediente">Expediente</span></dt>
+        <dt><span jhiTranslate="gatewayApp.pasegl.atencion">Atencion</span></dt>
         <dd>
-            <div *ngIf="pasegl.expediente">
-                <a [routerLink]="['/expediente', pasegl.expediente?.id]">{{pasegl.expediente?.id}}</a>
+            <div *ngIf="pasegl.atencion">
+                <a [routerLink]="['/atencion', pasegl.atencion?.id]">{{pasegl.atencion?.id}}</a>
             </div>
         </dd>
     </dl>

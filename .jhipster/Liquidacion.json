@@ -2,14 +2,6 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipType": "one-to-one",
-            "relationshipName": "atencion",
-            "otherEntityName": "atencion",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "liquidacion"
-        },
-        {
             "relationshipType": "one-to-many",
             "relationshipName": "calbensoc",
             "otherEntityName": "calbensoc",
@@ -20,7 +12,7 @@
         {
             "fieldName": "nLiquid",
             "javadoc": "MONTO TOTAL CALCULADO DE LA LIQUIDACION",
-            "fieldType": "Double"
+            "fieldType": "BigDecimal"
         },
         {
             "fieldName": "nUsuareg",

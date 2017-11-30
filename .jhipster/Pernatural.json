@@ -41,6 +41,7 @@
     "fields": [
         {
             "fieldName": "vNombres",
+            "javadoc": "NOMBRES DE LA PERSONA NATURAL.",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -50,6 +51,7 @@
         },
         {
             "fieldName": "vApepat",
+            "javadoc": "APELLIDO PATERNO",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -59,6 +61,7 @@
         },
         {
             "fieldName": "vApemat",
+            "javadoc": "APELLIDO MATERNO",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -68,6 +71,7 @@
         },
         {
             "fieldName": "vNumdoc",
+            "javadoc": "NUMERO DE DOCUMENTO DE IDENTIDAD.",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -77,6 +81,7 @@
         },
         {
             "fieldName": "vTelefono",
+            "javadoc": "NUMERO DE TELEFONO",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -85,6 +90,7 @@
         },
         {
             "fieldName": "vCelular",
+            "javadoc": "NUMERO DE TELEFONO CELULAR.",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -93,6 +99,7 @@
         },
         {
             "fieldName": "vEmailper",
+            "javadoc": "CORREO ELECTRONICO",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -101,10 +108,12 @@
         },
         {
             "fieldName": "dFecnac",
+            "javadoc": "FECHA DE NACIMIENTO",
             "fieldType": "LocalDate"
         },
         {
-            "fieldName": "vsexoper",
+            "fieldName": "vSexoper",
+            "javadoc": "SEXO",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -114,6 +123,7 @@
         },
         {
             "fieldName": "vEstado",
+            "javadoc": "ESTADO DE LA PERSONA NATURAL.",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -123,6 +133,7 @@
         },
         {
             "fieldName": "nUsuareg",
+            "javadoc": "CODIGO DEL USUARIO QUE REGISTRA.",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "required"
@@ -130,6 +141,7 @@
         },
         {
             "fieldName": "tFecreg",
+            "javadoc": "FECHA Y HORA DEL REGISTRO.",
             "fieldType": "Instant",
             "fieldValidateRules": [
                 "required"
@@ -137,6 +149,7 @@
         },
         {
             "fieldName": "nFlgactivo",
+            "javadoc": "ESTADO ACTIVO DEL REGISTRO (1=ACTIVO, 0=INACTIVO)",
             "fieldType": "Boolean",
             "fieldValidateRules": [
                 "required"
@@ -144,6 +157,7 @@
         },
         {
             "fieldName": "nSedereg",
+            "javadoc": "CODIGO DE LA SEDE DONDE SE REGISTRA.",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "required"
@@ -151,18 +165,22 @@
         },
         {
             "fieldName": "nUsuaupd",
+            "javadoc": "CODIGO DEL USUARIO QUE MODIFICA EL REGISTRO.",
             "fieldType": "Integer"
         },
         {
             "fieldName": "tFecupd",
+            "javadoc": "CODIGO DEL USUARIO QUE MODIFICA EL REGISTRO.",
             "fieldType": "Instant"
         },
         {
             "fieldName": "nSedeupd",
+            "javadoc": "CODIGO DE LA SEDE DONDE SE MODIFICA EL REGISTRO.",
             "fieldType": "Integer"
         }
     ],
     "changelogDate": "20171122172619",
+    "javadoc": "LISTA MAESTRA DE PERSONAS NATURALES",
     "entityTableName": "pernatural",
     "dto": "no",
     "pagination": "no",

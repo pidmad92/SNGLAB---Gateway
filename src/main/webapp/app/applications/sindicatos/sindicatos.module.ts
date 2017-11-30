@@ -12,6 +12,10 @@ import { RevisarSolicitudesModule } from './revisar-solicitudes/revisar-solicitu
 
 import { BienvenidaModule } from './bienvenida/bienvenida.module';
 
+import { BandejaModule } from './bandeja/bandeja.module';
+
+import { AfiliarDesafiliarModule } from './afiliardesafiliar/afiliar-desafiliar.module';
+
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -21,6 +25,8 @@ import { BienvenidaModule } from './bienvenida/bienvenida.module';
         RevisarSolicitudesModule,
         RegistroDelegadosModule,
         BienvenidaModule,
+        BandejaModule,
+        AfiliarDesafiliarModule,
     ],
     declarations: [],
     entryComponents: [],

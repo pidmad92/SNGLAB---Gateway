@@ -3,7 +3,7 @@ import { BaseEntity } from './../../shared';
 export class Oridenu implements BaseEntity {
     constructor(
         public id?: number,
-        public vDescripcion?: string,
+        public vDescrip?: string,
         public vEstado?: string,
         public vUsuareg?: string,
         public tFecreg?: any,

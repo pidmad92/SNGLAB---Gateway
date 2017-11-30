@@ -13,6 +13,7 @@ export class Trabajador implements BaseEntity {
         public nSedeupd?: number,
         public cartrab?: BaseEntity,
         public pernatural?: BaseEntity,
+        public legajos?: BaseEntity[],
         public expedientes?: BaseEntity[],
         public datlabs?: BaseEntity[],
         public atencions?: BaseEntity[],

@@ -1,0 +1,41 @@
+{
+    "gatewayApp": {
+        "falsoexp" : {
+            "home": {
+                "title": "Falsoexps",
+                "createLabel": "Crear nuevo Falsoexp",
+                "createOrEditLabel": "Crear o editar Falsoexp",
+                "search": "Search for Falsoexp"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Falsoexp {{ id }}?"
+            },
+            "detail": {
+                "title": "Falsoexp"
+            },
+            "vCodreg": "V Codreg",
+            "vCargofal": "V Cargofal",
+            "vDemndte": "V Demndte",
+            "vDemandado": "V Demandado",
+            "vDnidmdo": "V Dnidmdo",
+            "vDnidmte": "V Dnidmte",
+            "vNombres": "V Nombres",
+            "vDiffal": "V Diffal",
+            "vDoctor": "V Doctor",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd"
+        }
+    },
+    "patrocinioApp": {
+        "falsoexp" : {
+            "created": "Un nuevo Falsoexp ha sido creado con el identificador {{ param }}",
+            "updated": "Un Falsoexp ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Falsoexp ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

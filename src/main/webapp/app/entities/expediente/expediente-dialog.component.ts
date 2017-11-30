@@ -63,8 +63,19 @@ export class ExpedienteDialogComponent implements OnInit {
             .subscribe((res: ResponseWrapper) => { this.tippersonas = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.trabajadorService.query()
             .subscribe((res: ResponseWrapper) => { this.trabajadors = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.paseglService.query()
-            .subscribe((res: ResponseWrapper) => { this.pasegls = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.paseglService
+            .query({filter: 'expediente-is-null'})
+            .subscribe((res: ResponseWrapper) => {
+                if (!this.expediente.pasegl || !this.expediente.pasegl.id) {
+                    this.pasegls = res.json;
+                } else {
+                    this.paseglService
+                        .find(this.expediente.pasegl.id)
+                        .subscribe((subRes: Pasegl) => {
+                            this.pasegls = [subRes].concat(res.json);
+                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
+                }
+            }, (res: ResponseWrapper) => this.onError(res.json));
         this.estexpedienService.query()
             .subscribe((res: ResponseWrapper) => { this.estexpediens = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.resolutorService.query()

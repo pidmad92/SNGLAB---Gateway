@@ -3,8 +3,8 @@
     "relationships": [
         {
             "relationshipType": "one-to-one",
-            "relationshipName": "pasegl",
-            "otherEntityName": "pasegl",
+            "relationshipName": "liquidacion",
+            "otherEntityName": "liquidacion",
             "otherEntityField": "id",
             "ownerSide": true,
             "otherEntityRelationshipName": "atencion"
@@ -67,6 +67,7 @@
     "fields": [
         {
             "fieldName": "vObsatenci",
+            "javadoc": "OBSERVACION EN LA ATENCION.",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -75,6 +76,7 @@
         },
         {
             "fieldName": "nFlgembara",
+            "javadoc": "BANDERA QUE INDICA QUE EL TRABAJADOR PRESENTA EMBARAZO AL MOMENTO DE LA ATENCION (EMBARAZO=1, NO EMBARAZO=0)",
             "fieldType": "Boolean",
             "fieldValidateRules": [
                 "required"
@@ -82,6 +84,7 @@
         },
         {
             "fieldName": "vEstado",
+            "javadoc": "ESTADO DE LA ATENCION.",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -91,6 +94,7 @@
         },
         {
             "fieldName": "vNumticket",
+            "javadoc": "NUMERO DE TICKET DE LA ATENCION.",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -99,11 +103,13 @@
             "fieldValidateRulesMaxlength": 10
         },
         {
-            "fieldName": "nCodtrabre",
+            "fieldName": "nCodtrepre",
+            "javadoc": "CODIGO DEL TRABAJADOR REPRESENTANTE DE LA EMPRESA A QUIEN SE REALIZA LA ATENCION.",
             "fieldType": "Integer"
         },
         {
             "fieldName": "nUsuareg",
+            "javadoc": "CODIGO DEL USUARIO QUE REGISTRA.",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "required"
@@ -118,6 +124,7 @@
         },
         {
             "fieldName": "nFlgactivo",
+            "javadoc": "FECHA Y HORA DEL REGISTRO.",
             "fieldType": "Boolean",
             "fieldValidateRules": [
                 "required"
@@ -125,6 +132,7 @@
         },
         {
             "fieldName": "nSedereg",
+            "javadoc": "CODIGO DE LA SEDE DONDE SE REGISTRA.",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "required"
@@ -132,18 +140,22 @@
         },
         {
             "fieldName": "nUsuaupd",
+            "javadoc": "CODIGO DEL USUARIO QUE MODIFICA EL REGISTRO.",
             "fieldType": "Integer"
         },
         {
             "fieldName": "tFecupd",
+            "javadoc": "FECHA Y HORA DE LA MODIFICACION DEL REGISTRO.",
             "fieldType": "Instant"
         },
         {
             "fieldName": "nSedeupd",
+            "javadoc": "CODIGO DE LA SEDE DONDE SE MODIFICA EL REGISTRO.",
             "fieldType": "Integer"
         }
     ],
     "changelogDate": "20171114152845",
+    "javadoc": "LISTA DE ATENCIONES A LOS TRABAJADORES Y/O EMPLEADORES",
     "entityTableName": "atencion",
     "dto": "no",
     "pagination": "no",

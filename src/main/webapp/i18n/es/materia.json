@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "materia" : {
+            "home": {
+                "title": "Materias",
+                "createLabel": "Crear nuevo Materia",
+                "createOrEditLabel": "Crear o editar Materia",
+                "search": "Search for Materia"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Materia {{ id }}?"
+            },
+            "detail": {
+                "title": "Materia"
+            },
+            "vDesmat": "V Desmat",
+            "vAbrmat": "V Abrmat",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "legajo": "Legajo"
+        }
+    },
+    "patrocinioApp": {
+        "materia" : {
+            "created": "Un nuevo Materia ha sido creado con el identificador {{ param }}",
+            "updated": "Un Materia ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Materia ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -122,10 +122,10 @@
             </select>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.pasegl.expediente" for="field_expediente">Expediente</label>
-            <select class="form-control" id="field_expediente" name="expediente" [(ngModel)]="pasegl.expediente">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pasegl.atencion" for="field_atencion">Atencion</label>
+            <select class="form-control" id="field_atencion" name="atencion" [(ngModel)]="pasegl.atencion">
                 <option [ngValue]="null"></option>
-                <option [ngValue]="expedienteOption.id === pasegl.expediente?.id ? pasegl.expediente : expedienteOption" *ngFor="let expedienteOption of expedientes; trackBy: trackExpedienteById">{{expedienteOption.id}}</option>
+                <option [ngValue]="atencionOption.id === pasegl.atencion?.id ? pasegl.atencion : atencionOption" *ngFor="let atencionOption of atencions; trackBy: trackAtencionById">{{atencionOption.id}}</option>
             </select>
         </div>
     </div>

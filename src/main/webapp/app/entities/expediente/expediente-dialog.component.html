@@ -251,6 +251,13 @@
             </select>
         </div>
         <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.expediente.pasegl" for="field_pasegl">Pasegl</label>
+            <select class="form-control" id="field_pasegl" name="pasegl" [(ngModel)]="expediente.pasegl">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="paseglOption.id === expediente.pasegl?.id ? expediente.pasegl : paseglOption" *ngFor="let paseglOption of pasegls; trackBy: trackPaseglById">{{paseglOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.expediente.estexpedien" for="field_estexpedien">Estexpedien</label>
             <select class="form-control" id="field_estexpedien" name="estexpedien" [(ngModel)]="expediente.estexpedien" >
                 <option [ngValue]="null"></option>

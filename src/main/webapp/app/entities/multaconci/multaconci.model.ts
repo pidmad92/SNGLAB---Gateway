@@ -6,7 +6,7 @@ export class Multaconci implements BaseEntity {
         public fMonmulta?: number,
         public vNumresosd?: string,
         public dFecresosd?: any,
-        public vcodigo?: string,
+        public vCodigo?: string,
         public nUsuareg?: number,
         public tFecreg?: any,
         public nFlgactivo?: boolean,

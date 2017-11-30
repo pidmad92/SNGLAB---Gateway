@@ -40,7 +40,7 @@
             <th><span jhiTranslate="gatewayApp.pasegl.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.pasegl.nSedeupd">N Sedeupd</span></th>
             <th><span jhiTranslate="gatewayApp.pasegl.oficina">Oficina</span></th>
-            <th><span jhiTranslate="gatewayApp.pasegl.expediente">Expediente</span></th>
+            <th><span jhiTranslate="gatewayApp.pasegl.atencion">Atencion</span></th>
             <th></th>
             </tr>
             </thead>
@@ -62,8 +62,8 @@
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="pasegl.expediente">
-                        <a [routerLink]="['../expediente', pasegl.expediente?.id ]" >{{pasegl.expediente?.id}}</a>
+                    <div *ngIf="pasegl.atencion">
+                        <a [routerLink]="['../atencion', pasegl.atencion?.id ]" >{{pasegl.atencion?.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">

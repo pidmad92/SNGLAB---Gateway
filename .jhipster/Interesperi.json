@@ -2,6 +2,14 @@
     "fluentMethods": true,
     "relationships": [
         {
+            "relationshipType": "one-to-one",
+            "relationshipName": "calperiodo",
+            "otherEntityName": "calperiodo",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "interesperi"
+        },
+        {
             "relationshipName": "tipinteres",
             "otherEntityName": "tipinteres",
             "relationshipType": "many-to-one",
@@ -12,7 +20,7 @@
         {
             "fieldName": "nValintper",
             "javadoc": "MONTO TOTAL CALCULADO DEL INTERES DEL BENEFICIO SOCIAL EN EL PERIODO",
-            "fieldType": "Double"
+            "fieldType": "BigDecimal"
         },
         {
             "fieldName": "nUsuareg",

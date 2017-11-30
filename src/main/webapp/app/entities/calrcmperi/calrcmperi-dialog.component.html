@@ -93,6 +93,13 @@
                 [(ngModel)]="calrcmperi.nSedeupd"  />
         </div>
 
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.calrcmperi.calperiodo" for="field_calperiodo">Calperiodo</label>
+            <select class="form-control" id="field_calperiodo" name="calperiodo" [(ngModel)]="calrcmperi.calperiodo">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="calperiodoOption.id === calrcmperi.calperiodo?.id ? calrcmperi.calperiodo : calperiodoOption" *ngFor="let calperiodoOption of calperiodos; trackBy: trackCalperiodoById">{{calperiodoOption.id}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

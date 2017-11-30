@@ -53,6 +53,7 @@
     "fields": [
         {
             "fieldName": "nFlgsitlab",
+            "javadoc": "BANDERA QUE INDICA SI EL TRABAJADOR MANTIENE SU VINCULO LABORAL CON EL EMPLEADOR (MANTIENE VINCULO = 1, NO MANTIENE VINCULO = 0)",
             "fieldType": "Boolean",
             "fieldValidateRules": [
                 "required"
@@ -60,18 +61,22 @@
         },
         {
             "fieldName": "dFecvincul",
+            "javadoc": "FECHA DE INICIO DEL VINCULO O FECHA DE INICIO DEL CONTRATO.",
             "fieldType": "LocalDate"
         },
         {
             "fieldName": "dFeccese",
+            "javadoc": "FECHA DE CESE.",
             "fieldType": "LocalDate"
         },
         {
             "fieldName": "dFecfincon",
+            "javadoc": "FECHA DE FIN DE CONTRATO.",
             "fieldType": "LocalDate"
         },
         {
             "fieldName": "nUsuareg",
+            "javadoc": "CODIGO DEL USUARIO QUE REGISTRA.",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "required"
@@ -79,6 +84,7 @@
         },
         {
             "fieldName": "tFecreg",
+            "javadoc": "FECHA Y HORA DEL REGISTRO.",
             "fieldType": "Instant",
             "fieldValidateRules": [
                 "required"
@@ -86,6 +92,7 @@
         },
         {
             "fieldName": "nFlgactivo",
+            "javadoc": "ESTADO ACTIVO DEL REGISTRO (1=ACTIVO, 0=INACTIVO)",
             "fieldType": "Boolean",
             "fieldValidateRules": [
                 "required"
@@ -93,6 +100,7 @@
         },
         {
             "fieldName": "nSedereg",
+            "javadoc": "CODIGO DE LA SEDE DONDE SE REGISTRA.",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "required"
@@ -100,18 +108,22 @@
         },
         {
             "fieldName": "nUsuaupd",
+            "javadoc": "CODIGO DEL USUARIO QUE MODIFICA EL REGISTRO.",
             "fieldType": "Integer"
         },
         {
             "fieldName": "tFecupd",
+            "javadoc": "CODIGO DEL USUARIO QUE MODIFICA EL REGISTRO.",
             "fieldType": "Instant"
         },
         {
             "fieldName": "nSedeupd",
+            "javadoc": "CODIGO DE LA SEDE DONDE SE MODIFICA EL REGISTRO.",
             "fieldType": "Integer"
         }
     ],
     "changelogDate": "20171122172608",
+    "javadoc": "LISTA DE LOS DATOS LABORALES QUE RELACIONA A UN EMPLEADOR CON UN TRABAJADOR",
     "entityTableName": "datlab",
     "dto": "no",
     "pagination": "no",

@@ -94,6 +94,13 @@
         </div>
 
         <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.interesperi.calperiodo" for="field_calperiodo">Calperiodo</label>
+            <select class="form-control" id="field_calperiodo" name="calperiodo" [(ngModel)]="interesperi.calperiodo">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="calperiodoOption.id === interesperi.calperiodo?.id ? interesperi.calperiodo : calperiodoOption" *ngFor="let calperiodoOption of calperiodos; trackBy: trackCalperiodoById">{{calperiodoOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.interesperi.tipinteres" for="field_tipinteres">Tipinteres</label>
             <select class="form-control" id="field_tipinteres" name="tipinteres" [(ngModel)]="interesperi.tipinteres" >
                 <option [ngValue]="null"></option>

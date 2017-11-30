@@ -1,0 +1,31 @@
+<div>
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAbogadoLabel">Consulta Expediente</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body pt-0">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row">
+            <div class="col-12 backmodal">
+                <span class="fa fa-file-text-o"></span>&nbsp;N° Expediente: 00003443129 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-calendar"></span>&nbsp;Fecha de Aud: 23/01/2017 14:10:00
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-md-4" for="field_tFecreg">Fecha de Archivo</label>
+            <div class="col-md-5">
+                <input id="field_tFecreg" type="date" class="form-control" name="tFecreg"  required  />
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span >Cancelar</span>
+        </button>
+        <button  data-dismiss="modal" (click)="clear()" class="btn btn-danger">
+            <span class="fa fa-remove"></span>&nbsp;<span>Archivar</span>
+        </button>
+    </div>
+
+</div>
+    

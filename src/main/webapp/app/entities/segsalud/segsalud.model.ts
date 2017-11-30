@@ -11,6 +11,7 @@ export class Segsalud implements BaseEntity {
         public nUsuaupd?: number,
         public tFecupd?: any,
         public nSedeupd?: number,
+        public calperiodos?: BaseEntity[],
     ) {
         this.nFlgactivo = false;
     }

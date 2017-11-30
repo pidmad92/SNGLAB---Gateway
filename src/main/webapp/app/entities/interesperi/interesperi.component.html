@@ -38,6 +38,7 @@
             <th><span jhiTranslate="gatewayApp.interesperi.nUsuaupd">N Usuaupd</span></th>
             <th><span jhiTranslate="gatewayApp.interesperi.tFecupd">T Fecupd</span></th>
             <th><span jhiTranslate="gatewayApp.interesperi.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.interesperi.calperiodo">Calperiodo</span></th>
             <th><span jhiTranslate="gatewayApp.interesperi.tipinteres">Tipinteres</span></th>
             <th></th>
             </tr>
@@ -53,6 +54,11 @@
                 <td>{{interesperi.nUsuaupd}}</td>
                 <td>{{interesperi.tFecupd | date:'medium'}}</td>
                 <td>{{interesperi.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="interesperi.calperiodo">
+                        <a [routerLink]="['../calperiodo', interesperi.calperiodo?.id ]" >{{interesperi.calperiodo?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="interesperi.tipinteres">
                         <a [routerLink]="['../tipinteres', interesperi.tipinteres?.id ]" >{{interesperi.tipinteres?.id}}</a>
