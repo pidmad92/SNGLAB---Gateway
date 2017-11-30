@@ -1,0 +1,36 @@
+{
+    "gatewayApp": {
+        "delegado" : {
+            "home": {
+                "title": "Delegados",
+                "createLabel": "Crear nuevo Delegado",
+                "createOrEditLabel": "Crear o editar Delegado",
+                "search": "Search for Delegado"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Delegado {{ id }}?"
+            },
+            "detail": {
+                "title": "Delegado"
+            },
+            "tFecinicio": "T Fecinicio",
+            "tFecrfinal": "T Fecrfinal",
+            "vEstado": "V Estado",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "organizacio": "Organizacio"
+        }
+    },
+    "sindicatosApp": {
+        "delegado" : {
+            "created": "Un nuevo Delegado ha sido creado con el identificador {{ param }}",
+            "updated": "Un Delegado ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Delegado ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

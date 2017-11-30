@@ -148,6 +148,30 @@ import { GatewayTipdocpjModule } from './tipdocpj/tipdocpj.module';
 import { GatewayTipaudiModule } from './tipaudi/tipaudi.module';
 import { GatewayTipdiligencModule } from './tipdiligenc/tipdiligenc.module';
 import { GatewayTipresolucModule } from './tipresoluc/tipresoluc.module';
+import { GatewayTipolibroModule } from './tipolibro/tipolibro.module';
+import { GatewayTiporecursoModule } from './tiporecurso/tiporecurso.module';
+import { GatewayScargoModule } from './scargo/scargo.module';
+import { GatewaySrubroModule } from './srubro/srubro.module';
+import { GatewayTipoorganizModule } from './tipoorganiz/tipoorganiz.module';
+import { GatewayNivelorganiModule } from './nivelorgani/nivelorgani.module';
+import { GatewayAmbitoorganModule } from './ambitoorgan/ambitoorgan.module';
+import { GatewayCategoriaModule } from './categoria/categoria.module';
+import { GatewayCategoriaorModule } from './categoriaor/categoriaor.module';
+import { GatewayRegionModule } from './region/region.module';
+import { GatewaySzonalModule } from './szonal/szonal.module';
+import { GatewayOrganizacioModule } from './organizacio/organizacio.module';
+import { GatewayEmpresaModule } from './empresa/empresa.module';
+import { GatewayDocumentModule } from './document/document.module';
+import { GatewayEstatutoModule } from './estatuto/estatuto.module';
+import { GatewayPalabraclavModule } from './palabraclav/palabraclav.module';
+import { GatewayCalificacioModule } from './calificacio/calificacio.module';
+import { GatewayRecursoModule } from './recurso/recurso.module';
+import { GatewayLibrosindicModule } from './librosindic/librosindic.module';
+import { GatewayJuntadirectModule } from './juntadirect/juntadirect.module';
+import { GatewayDelegadoModule } from './delegado/delegado.module';
+import { GatewaySindicatoModule } from './sindicato/sindicato.module';
+import { GatewayFederacionModule } from './federacion/federacion.module';
+import { GatewayAfiliadoModule } from './afiliado/afiliado.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -298,6 +322,30 @@ import { GatewayTipresolucModule } from './tipresoluc/tipresoluc.module';
         GatewayTipaudiModule,
         GatewayTipdiligencModule,
         GatewayTipresolucModule,
+        GatewayTipolibroModule,
+        GatewayTiporecursoModule,
+        GatewayScargoModule,
+        GatewaySrubroModule,
+        GatewayTipoorganizModule,
+        GatewayNivelorganiModule,
+        GatewayAmbitoorganModule,
+        GatewayCategoriaModule,
+        GatewayCategoriaorModule,
+        GatewayRegionModule,
+        GatewaySzonalModule,
+        GatewayOrganizacioModule,
+        GatewayEmpresaModule,
+        GatewayDocumentModule,
+        GatewayEstatutoModule,
+        GatewayPalabraclavModule,
+        GatewayCalificacioModule,
+        GatewayRecursoModule,
+        GatewayLibrosindicModule,
+        GatewayJuntadirectModule,
+        GatewayDelegadoModule,
+        GatewaySindicatoModule,
+        GatewayFederacionModule,
+        GatewayAfiliadoModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

@@ -5,12 +5,9 @@ export class Pasepj implements BaseEntity {
         public id?: number,
         public vCodreg?: string,
         public vCodzon?: string,
-        public vCodpas?: string,
-        public vCodtra?: string,
         public vCodtdcide?: string,
         public nCorrel?: number,
         public vCodsis?: string,
-        public vCodemp?: string,
         public nCodsuc?: number,
         public vCodcon?: string,
         public dFecpas?: any,
@@ -39,6 +36,7 @@ export class Pasepj implements BaseEntity {
         public nUsuaupd?: number,
         public tFecupd?: any,
         public nSedeupd?: number,
+        public empleador?: BaseEntity,
     ) {
         this.nFlgactivo = false;
     }

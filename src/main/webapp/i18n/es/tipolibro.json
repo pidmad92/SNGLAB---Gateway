@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "tipolibro" : {
+            "home": {
+                "title": "Tipolibros",
+                "createLabel": "Crear nuevo Tipolibro",
+                "createOrEditLabel": "Crear o editar Tipolibro",
+                "search": "Search for Tipolibro"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Tipolibro {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipolibro"
+            },
+            "vDestlibro": "V Destlibro",
+            "vEstado": "V Estado",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "librosindic": "Librosindic"
+        }
+    },
+    "sindicatosApp": {
+        "tipolibro" : {
+            "created": "Un nuevo Tipolibro ha sido creado con el identificador {{ param }}",
+            "updated": "Un Tipolibro ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Tipolibro ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

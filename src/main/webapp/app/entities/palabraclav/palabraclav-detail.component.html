@@ -1,0 +1,63 @@
+
+<div *ngIf="palabraclav">
+    <h2><span jhiTranslate="gatewayApp.palabraclav.detail.title">Palabraclav</span> {{palabraclav.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.palabraclav.vDespalcla">V Despalcla</span></dt>
+        <dd>
+            <span>{{palabraclav.vDespalcla}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.palabraclav.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{palabraclav.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.palabraclav.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{palabraclav.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.palabraclav.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{palabraclav.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.palabraclav.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{palabraclav.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.palabraclav.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{palabraclav.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.palabraclav.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{palabraclav.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.palabraclav.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{palabraclav.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.palabraclav.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{palabraclav.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.palabraclav.organizacio">Organizacio</span></dt>
+        <dd>
+            <div *ngIf="palabraclav.organizacio">
+                <a [routerLink]="['/organizacio', palabraclav.organizacio?.id]">{{palabraclav.organizacio?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'palabraclav/'+ palabraclav.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

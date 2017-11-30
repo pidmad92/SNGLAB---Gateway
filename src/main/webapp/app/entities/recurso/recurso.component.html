@@ -1,0 +1,103 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.recurso.home.title">Recursos</span>
+        <button class="btn btn-primary float-right jh-create-entity create-recurso" [routerLink]="['/', { outlets: { popup: ['recurso-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.recurso.home.createLabel">
+            Create new Recurso
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.recurso.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="recursos">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.recurso.vNumrecurs">V Numrecurs</span></th>
+            <th><span jhiTranslate="gatewayApp.recurso.tFecrecurs">T Fecrecurs</span></th>
+            <th><span jhiTranslate="gatewayApp.recurso.vEstado">V Estado</span></th>
+            <th><span jhiTranslate="gatewayApp.recurso.tFecprovei">T Fecprovei</span></th>
+            <th><span jhiTranslate="gatewayApp.recurso.vObsrecurs">V Obsrecurs</span></th>
+            <th><span jhiTranslate="gatewayApp.recurso.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.recurso.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.recurso.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.recurso.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.recurso.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.recurso.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.recurso.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.recurso.tiporecurso">Tiporecurso</span></th>
+            <th><span jhiTranslate="gatewayApp.recurso.organizacio">Organizacio</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let recurso of recursos ;trackBy: trackId">
+                <td><a [routerLink]="['../recurso', recurso.id ]">{{recurso.id}}</a></td>
+                <td>{{recurso.vNumrecurs}}</td>
+                <td>{{recurso.tFecrecurs | date:'medium'}}</td>
+                <td>{{recurso.vEstado}}</td>
+                <td>{{recurso.tFecprovei | date:'medium'}}</td>
+                <td>{{recurso.vObsrecurs}}</td>
+                <td>{{recurso.nUsuareg}}</td>
+                <td>{{recurso.tFecreg | date:'medium'}}</td>
+                <td>{{recurso.nFlgactivo}}</td>
+                <td>{{recurso.nSedereg}}</td>
+                <td>{{recurso.nUsuaupd}}</td>
+                <td>{{recurso.tFecupd | date:'medium'}}</td>
+                <td>{{recurso.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="recurso.tiporecurso">
+                        <a [routerLink]="['../tiporecurso', recurso.tiporecurso?.id ]" >{{recurso.tiporecurso?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="recurso.organizacio">
+                        <a [routerLink]="['../organizacio', recurso.organizacio?.id ]" >{{recurso.organizacio?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../recurso', recurso.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'recurso/'+ recurso.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'recurso/'+ recurso.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "categoriaor" : {
+            "home": {
+                "title": "Categoriaors",
+                "createLabel": "Crear nuevo Categoriaor",
+                "createOrEditLabel": "Crear o editar Categoriaor",
+                "search": "Search for Categoriaor"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Categoriaor {{ id }}?"
+            },
+            "detail": {
+                "title": "Categoriaor"
+            },
+            "vDescatorg": "V Descatorg",
+            "vEstado": "V Estado",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "organizacio": "Organizacio"
+        }
+    },
+    "sindicatosApp": {
+        "categoriaor" : {
+            "created": "Un nuevo Categoriaor ha sido creado con el identificador {{ param }}",
+            "updated": "Un Categoriaor ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Categoriaor ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

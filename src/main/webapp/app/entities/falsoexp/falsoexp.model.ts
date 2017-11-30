@@ -11,7 +11,6 @@ export class Falsoexp implements BaseEntity {
         public vDnidmte?: string,
         public vNombres?: string,
         public vDiffal?: string,
-        public vDoctor?: string,
         public nUsuareg?: number,
         public tFecreg?: any,
         public nFlgactivo?: boolean,
@@ -19,6 +18,9 @@ export class Falsoexp implements BaseEntity {
         public nUsuaupd?: number,
         public tFecupd?: any,
         public nSedeupd?: number,
+        public empleador?: BaseEntity,
+        public trabajador?: BaseEntity,
+        public abogado?: BaseEntity,
     ) {
         this.nFlgactivo = false;
     }

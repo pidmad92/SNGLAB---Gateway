@@ -32,8 +32,6 @@
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="gatewayApp.legajo.vCodreg">V Codreg</span></th>
             <th><span jhiTranslate="gatewayApp.legajo.vCodzon">V Codzon</span></th>
-            <th><span jhiTranslate="gatewayApp.legajo.vCodpas">V Codpas</span></th>
-            <th><span jhiTranslate="gatewayApp.legajo.vCodmat">V Codmat</span></th>
             <th><span jhiTranslate="gatewayApp.legajo.vNumexp">V Numexp</span></th>
             <th><span jhiTranslate="gatewayApp.legajo.vNomjuzg">V Nomjuzg</span></th>
             <th><span jhiTranslate="gatewayApp.legajo.vNomjuez">V Nomjuez</span></th>
@@ -46,7 +44,6 @@
             <th><span jhiTranslate="gatewayApp.legajo.vHostmod">V Hostmod</span></th>
             <th><span jhiTranslate="gatewayApp.legajo.dFecexp">D Fecexp</span></th>
             <th><span jhiTranslate="gatewayApp.legajo.vNumleg">V Numleg</span></th>
-            <th><span jhiTranslate="gatewayApp.legajo.vCodemp">V Codemp</span></th>
             <th><span jhiTranslate="gatewayApp.legajo.nCodsuc">N Codsuc</span></th>
             <th><span jhiTranslate="gatewayApp.legajo.vFlginst">V Flginst</span></th>
             <th><span jhiTranslate="gatewayApp.legajo.vNumexpda">V Numexpda</span></th>
@@ -69,7 +66,6 @@
             <th><span jhiTranslate="gatewayApp.legajo.empleador">Empleador</span></th>
             <th><span jhiTranslate="gatewayApp.legajo.pasegl">Pasegl</span></th>
             <th><span jhiTranslate="gatewayApp.legajo.trabajador">Trabajador</span></th>
-            <th><span jhiTranslate="gatewayApp.legajo.abogado">Abogado</span></th>
             <th><span jhiTranslate="gatewayApp.legajo.materia">Materia</span></th>
             <th></th>
             </tr>
@@ -79,8 +75,6 @@
                 <td><a [routerLink]="['../legajo', legajo.id ]">{{legajo.id}}</a></td>
                 <td>{{legajo.vCodreg}}</td>
                 <td>{{legajo.vCodzon}}</td>
-                <td>{{legajo.vCodpas}}</td>
-                <td>{{legajo.vCodmat}}</td>
                 <td>{{legajo.vNumexp}}</td>
                 <td>{{legajo.vNomjuzg}}</td>
                 <td>{{legajo.vNomjuez}}</td>
@@ -93,7 +87,6 @@
                 <td>{{legajo.vHostmod}}</td>
                 <td>{{legajo.dFecexp | date:'mediumDate'}}</td>
                 <td>{{legajo.vNumleg}}</td>
-                <td>{{legajo.vCodemp}}</td>
                 <td>{{legajo.nCodsuc}}</td>
                 <td>{{legajo.vFlginst}}</td>
                 <td>{{legajo.vNumexpda}}</td>
@@ -126,11 +119,6 @@
                 <td>
                     <div *ngIf="legajo.trabajador">
                         <a [routerLink]="['../trabajador', legajo.trabajador?.id ]" >{{legajo.trabajador?.id}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="legajo.abogado">
-                        <a [routerLink]="['../abogado', legajo.abogado?.id ]" >{{legajo.abogado?.id}}</a>
                     </div>
                 </td>
                 <td>

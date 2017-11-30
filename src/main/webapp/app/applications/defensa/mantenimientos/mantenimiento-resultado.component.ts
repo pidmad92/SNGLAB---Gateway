@@ -14,8 +14,6 @@ import { ResponseWrapper } from '../../../shared';
 export class MantenimientoResultadoComponent implements OnInit {
 
     resulconcis: Resulconci[];
-    expedientes: any;
-    id = '14';
     eventSubscriber: Subscription;
     currentSearch: string;
 
@@ -28,12 +26,8 @@ export class MantenimientoResultadoComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.expedientes = [
-            {item: '1', descripcion : 'Desc1', tipo: '1' },
-            {item: '2', descripcion : 'Desc2', tipo: '2' },
-            {item: '3', descripcion : 'Desc3', tipo: '1' }
-        ]
         this.loadAll();
+        this.registerChangeInResulconcis();
     }
     loadAll() {
         if (this.currentSearch) {

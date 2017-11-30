@@ -19,33 +19,6 @@
             "fieldValidateRulesMaxlength": 3
         },
         {
-            "fieldName": "vCodtipres",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 2
-        },
-        {
-            "fieldName": "vCodtipdil",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 2
-        },
-        {
-            "fieldName": "vDestipaud",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required",
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 100
-        },
-        {
             "fieldName": "nUsuareg",
             "fieldType": "Integer",
             "fieldValidateRules": [

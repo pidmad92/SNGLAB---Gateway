@@ -18,6 +18,8 @@ public class PersonaValidarServicioDTO {
     public String direccion;
     public String vTelefono;
     public String vCelular;
+    public String vEmailper;
+
     /**
      * @return the vNumdoc
      */

@@ -45,12 +45,6 @@ public class ServiciosExternosResource {
     @Timed
     public PersonaValidarServicioDTO ValidarPersonaNatural(@RequestBody PersonaValidarServicioDTO personaNatural)
             throws SOAPException, IOException {
-
-        System.out.println("========>");
-        System.out.println(personaNatural.getTipoDoc());
-        System.out.println(personaNatural.getvNombres());
-        System.out.println("========>");
-        System.out.println("========>");
         switch (personaNatural.getTipoDoc()) {
         case "DNI":
             PersonaBean personaBean = ReniecClient.getConsolidada(personaNatural.getvNumdoc());

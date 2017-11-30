@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "srubro" : {
+            "home": {
+                "title": "Srubros",
+                "createLabel": "Crear nuevo Srubro",
+                "createOrEditLabel": "Crear o editar Srubro",
+                "search": "Search for Srubro"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Srubro {{ id }}?"
+            },
+            "detail": {
+                "title": "Srubro"
+            },
+            "vDessrubro": "V Dessrubro",
+            "vEstado": "V Estado",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "organizacio": "Organizacio"
+        }
+    },
+    "sindicatosApp": {
+        "srubro" : {
+            "created": "Un nuevo Srubro ha sido creado con el identificador {{ param }}",
+            "updated": "Un Srubro ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Srubro ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

@@ -1,0 +1,81 @@
+
+<div *ngIf="librosindic">
+    <h2><span jhiTranslate="gatewayApp.librosindic.detail.title">Librosindic</span> {{librosindic.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.librosindic.vNumreglib">V Numreglib</span></dt>
+        <dd>
+            <span>{{librosindic.vNumreglib}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.librosindic.vNumlibsin">V Numlibsin</span></dt>
+        <dd>
+            <span>{{librosindic.vNumlibsin}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.librosindic.tFecresolu">T Fecresolu</span></dt>
+        <dd>
+            <span>{{librosindic.tFecresolu | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.librosindic.vUsuregist">V Usuregist</span></dt>
+        <dd>
+            <span>{{librosindic.vUsuregist}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.librosindic.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{librosindic.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.librosindic.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{librosindic.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.librosindic.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{librosindic.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.librosindic.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{librosindic.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.librosindic.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{librosindic.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.librosindic.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{librosindic.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.librosindic.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{librosindic.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.librosindic.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{librosindic.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.librosindic.tipolibro">Tipolibro</span></dt>
+        <dd>
+            <div *ngIf="librosindic.tipolibro">
+                <a [routerLink]="['/tipolibro', librosindic.tipolibro?.id]">{{librosindic.tipolibro?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.librosindic.organizacio">Organizacio</span></dt>
+        <dd>
+            <div *ngIf="librosindic.organizacio">
+                <a [routerLink]="['/organizacio', librosindic.organizacio?.id]">{{librosindic.organizacio?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'librosindic/'+ librosindic.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

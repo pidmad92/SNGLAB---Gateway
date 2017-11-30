@@ -11,6 +11,8 @@ export class Empleador implements BaseEntity {
         public tFecupd?: any,
         public nSedeupd?: number,
         public legajos?: BaseEntity[],
+        public pasepjs?: BaseEntity[],
+        public falsoexps?: BaseEntity[],
         public expedientes?: BaseEntity[],
         public datlabs?: BaseEntity[],
         public atencions?: BaseEntity[],

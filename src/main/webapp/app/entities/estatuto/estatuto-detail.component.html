@@ -1,0 +1,74 @@
+
+<div *ngIf="estatuto">
+    <h2><span jhiTranslate="gatewayApp.estatuto.detail.title">Estatuto</span> {{estatuto.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.estatuto.vDesestatu">V Desestatu</span></dt>
+        <dd>
+            <span>{{estatuto.vDesestatu}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.estatuto.tFecestatu">T Fecestatu</span></dt>
+        <dd>
+            <span>{{estatuto.tFecestatu | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.estatuto.blArchivo">Bl Archivo</span></dt>
+        <dd>
+            <div *ngIf="estatuto.blArchivo">
+                <a (click)="openFile(estatuto.blArchivoContentType, estatuto.blArchivo)" jhiTranslate="entity.action.open">open</a>
+                {{estatuto.blArchivoContentType}}, {{byteSize(estatuto.blArchivo)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.estatuto.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{estatuto.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.estatuto.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{estatuto.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.estatuto.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{estatuto.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.estatuto.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{estatuto.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.estatuto.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{estatuto.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.estatuto.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{estatuto.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.estatuto.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{estatuto.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.estatuto.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{estatuto.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.estatuto.organizacio">Organizacio</span></dt>
+        <dd>
+            <div *ngIf="estatuto.organizacio">
+                <a [routerLink]="['/organizacio', estatuto.organizacio?.id]">{{estatuto.organizacio?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'estatuto/'+ estatuto.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

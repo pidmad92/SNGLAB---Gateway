@@ -1,0 +1,35 @@
+{
+    "gatewayApp": {
+        "nivelorgani" : {
+            "home": {
+                "title": "Nivelorganis",
+                "createLabel": "Crear nuevo Nivelorgani",
+                "createOrEditLabel": "Crear o editar Nivelorgani",
+                "search": "Search for Nivelorgani"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Nivelorgani {{ id }}?"
+            },
+            "detail": {
+                "title": "Nivelorgani"
+            },
+            "vDesnivorg": "V Desnivorg",
+            "vEstado": "V Estado",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "organizacio": "Organizacio"
+        }
+    },
+    "sindicatosApp": {
+        "nivelorgani" : {
+            "created": "Un nuevo Nivelorgani ha sido creado con el identificador {{ param }}",
+            "updated": "Un Nivelorgani ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Nivelorgani ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

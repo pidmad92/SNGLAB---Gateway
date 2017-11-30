@@ -31,9 +31,6 @@
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="gatewayApp.tipaudi.vCodsis">V Codsis</span></th>
-            <th><span jhiTranslate="gatewayApp.tipaudi.vCodtipres">V Codtipres</span></th>
-            <th><span jhiTranslate="gatewayApp.tipaudi.vCodtipdil">V Codtipdil</span></th>
-            <th><span jhiTranslate="gatewayApp.tipaudi.vDestipaud">V Destipaud</span></th>
             <th><span jhiTranslate="gatewayApp.tipaudi.nUsuareg">N Usuareg</span></th>
             <th><span jhiTranslate="gatewayApp.tipaudi.tFecreg">T Fecreg</span></th>
             <th><span jhiTranslate="gatewayApp.tipaudi.nFlgactivo">N Flgactivo</span></th>
@@ -49,9 +46,6 @@
             <tr *ngFor="let tipaudi of tipaudis ;trackBy: trackId">
                 <td><a [routerLink]="['../tipaudi', tipaudi.id ]">{{tipaudi.id}}</a></td>
                 <td>{{tipaudi.vCodsis}}</td>
-                <td>{{tipaudi.vCodtipres}}</td>
-                <td>{{tipaudi.vCodtipdil}}</td>
-                <td>{{tipaudi.vDestipaud}}</td>
                 <td>{{tipaudi.nUsuareg}}</td>
                 <td>{{tipaudi.tFecreg | date:'medium'}}</td>
                 <td>{{tipaudi.nFlgactivo}}</td>

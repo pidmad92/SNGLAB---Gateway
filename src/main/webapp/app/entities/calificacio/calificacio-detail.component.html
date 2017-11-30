@@ -1,0 +1,65 @@
+
+<div *ngIf="calificacio">
+    <h2><span jhiTranslate="gatewayApp.calificacio.detail.title">Calificacio</span> {{calificacio.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.calificacio.vDescalifi">V Descalifi</span></dt>
+        <dd>
+            <span>{{calificacio.vDescalifi}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calificacio.nPresento">N Presento</span></dt>
+        <dd>
+            <span>{{calificacio.nPresento}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calificacio.nEnregla">N Enregla</span></dt>
+        <dd>
+            <span>{{calificacio.nEnregla}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calificacio.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{calificacio.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calificacio.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{calificacio.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calificacio.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{calificacio.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calificacio.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{calificacio.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calificacio.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{calificacio.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calificacio.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{calificacio.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calificacio.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{calificacio.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.calificacio.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{calificacio.nSedeupd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'calificacio/'+ calificacio.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

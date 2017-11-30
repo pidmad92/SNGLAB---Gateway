@@ -1,0 +1,36 @@
+{
+    "gatewayApp": {
+        "federacion" : {
+            "home": {
+                "title": "Federacions",
+                "createLabel": "Crear nuevo Federacion",
+                "createOrEditLabel": "Crear o editar Federacion",
+                "search": "Search for Federacion"
+            },
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Federacion {{ id }}?"
+            },
+            "detail": {
+                "title": "Federacion"
+            },
+            "tFecafilia": "T Fecafilia",
+            "vEstado": "V Estado",
+            "cTipafilia": "C Tipafilia",
+            "nUsuareg": "N Usuareg",
+            "tFecreg": "T Fecreg",
+            "nFlgactivo": "N Flgactivo",
+            "nSedereg": "N Sedereg",
+            "nUsuaupd": "N Usuaupd",
+            "tFecupd": "T Fecupd",
+            "nSedeupd": "N Sedeupd",
+            "organizacio": "Organizacio"
+        }
+    },
+    "sindicatosApp": {
+        "federacion" : {
+            "created": "Un nuevo Federacion ha sido creado con el identificador {{ param }}",
+            "updated": "Un Federacion ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Federacion ha sido eliminado con el identificador {{ param }}"
+        }
+    }
+}

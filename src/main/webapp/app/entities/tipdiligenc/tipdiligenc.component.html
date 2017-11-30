@@ -31,8 +31,6 @@
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="gatewayApp.tipdiligenc.vCodsis">V Codsis</span></th>
-            <th><span jhiTranslate="gatewayApp.tipdiligenc.vCodtipres">V Codtipres</span></th>
-            <th><span jhiTranslate="gatewayApp.tipdiligenc.vDestipdil">V Destipdil</span></th>
             <th><span jhiTranslate="gatewayApp.tipdiligenc.nUsuareg">N Usuareg</span></th>
             <th><span jhiTranslate="gatewayApp.tipdiligenc.tFecreg">T Fecreg</span></th>
             <th><span jhiTranslate="gatewayApp.tipdiligenc.nFlgactivo">N Flgactivo</span></th>
@@ -48,8 +46,6 @@
             <tr *ngFor="let tipdiligenc of tipdiligencs ;trackBy: trackId">
                 <td><a [routerLink]="['../tipdiligenc', tipdiligenc.id ]">{{tipdiligenc.id}}</a></td>
                 <td>{{tipdiligenc.vCodsis}}</td>
-                <td>{{tipdiligenc.vCodtipres}}</td>
-                <td>{{tipdiligenc.vDestipdil}}</td>
                 <td>{{tipdiligenc.nUsuareg}}</td>
                 <td>{{tipdiligenc.tFecreg | date:'medium'}}</td>
                 <td>{{tipdiligenc.nFlgactivo}}</td>

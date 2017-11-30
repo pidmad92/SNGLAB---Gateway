@@ -1,0 +1,82 @@
+
+<div *ngIf="document">
+    <h2><span jhiTranslate="gatewayApp.document.detail.title">Document</span> {{document.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.document.vNomdocume">V Nomdocume</span></dt>
+        <dd>
+            <span>{{document.vNomdocume}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.document.blArchivo">Bl Archivo</span></dt>
+        <dd>
+            <div *ngIf="document.blArchivo">
+                <a (click)="openFile(document.blArchivoContentType, document.blArchivo)" jhiTranslate="entity.action.open">open</a>
+                {{document.blArchivoContentType}}, {{byteSize(document.blArchivo)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.document.vObsdocume">V Obsdocume</span></dt>
+        <dd>
+            <span>{{document.vObsdocume}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.document.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{document.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.document.vTipodocum">V Tipodocum</span></dt>
+        <dd>
+            <span>{{document.vTipodocum}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.document.tFecregist">T Fecregist</span></dt>
+        <dd>
+            <span>{{document.tFecregist | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.document.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{document.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.document.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{document.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.document.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{document.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.document.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{document.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.document.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{document.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.document.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{document.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.document.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{document.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.document.organizacio">Organizacio</span></dt>
+        <dd>
+            <div *ngIf="document.organizacio">
+                <a [routerLink]="['/organizacio', document.organizacio?.id]">{{document.organizacio?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'document/'+ document.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -9,6 +9,18 @@
         },
         {
             "relationshipType": "one-to-many",
+            "relationshipName": "pasepj",
+            "otherEntityName": "pasepj",
+            "otherEntityRelationshipName": "empleador"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "falsoexp",
+            "otherEntityName": "falsoexp",
+            "otherEntityRelationshipName": "empleador"
+        },
+        {
+            "relationshipType": "one-to-many",
             "relationshipName": "expediente",
             "otherEntityName": "expediente",
             "otherEntityRelationshipName": "empleador"

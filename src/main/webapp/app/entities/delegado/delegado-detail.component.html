@@ -1,0 +1,67 @@
+
+<div *ngIf="delegado">
+    <h2><span jhiTranslate="gatewayApp.delegado.detail.title">Delegado</span> {{delegado.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.delegado.tFecinicio">T Fecinicio</span></dt>
+        <dd>
+            <span>{{delegado.tFecinicio | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.delegado.tFecrfinal">T Fecrfinal</span></dt>
+        <dd>
+            <span>{{delegado.tFecrfinal | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.delegado.vEstado">V Estado</span></dt>
+        <dd>
+            <span>{{delegado.vEstado}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.delegado.nUsuareg">N Usuareg</span></dt>
+        <dd>
+            <span>{{delegado.nUsuareg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.delegado.tFecreg">T Fecreg</span></dt>
+        <dd>
+            <span>{{delegado.tFecreg | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.delegado.nFlgactivo">N Flgactivo</span></dt>
+        <dd>
+            <span>{{delegado.nFlgactivo}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.delegado.nSedereg">N Sedereg</span></dt>
+        <dd>
+            <span>{{delegado.nSedereg}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.delegado.nUsuaupd">N Usuaupd</span></dt>
+        <dd>
+            <span>{{delegado.nUsuaupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.delegado.tFecupd">T Fecupd</span></dt>
+        <dd>
+            <span>{{delegado.tFecupd | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.delegado.nSedeupd">N Sedeupd</span></dt>
+        <dd>
+            <span>{{delegado.nSedeupd}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.delegado.organizacio">Organizacio</span></dt>
+        <dd>
+            <div *ngIf="delegado.organizacio">
+                <a [routerLink]="['/organizacio', delegado.organizacio?.id]">{{delegado.organizacio?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'delegado/'+ delegado.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

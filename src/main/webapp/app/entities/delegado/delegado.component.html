@@ -1,0 +1,93 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.delegado.home.title">Delegados</span>
+        <button class="btn btn-primary float-right jh-create-entity create-delegado" [routerLink]="['/', { outlets: { popup: ['delegado-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="gatewayApp.delegado.home.createLabel">
+            Create new Delegado
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.delegado.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="delegados">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gatewayApp.delegado.tFecinicio">T Fecinicio</span></th>
+            <th><span jhiTranslate="gatewayApp.delegado.tFecrfinal">T Fecrfinal</span></th>
+            <th><span jhiTranslate="gatewayApp.delegado.vEstado">V Estado</span></th>
+            <th><span jhiTranslate="gatewayApp.delegado.nUsuareg">N Usuareg</span></th>
+            <th><span jhiTranslate="gatewayApp.delegado.tFecreg">T Fecreg</span></th>
+            <th><span jhiTranslate="gatewayApp.delegado.nFlgactivo">N Flgactivo</span></th>
+            <th><span jhiTranslate="gatewayApp.delegado.nSedereg">N Sedereg</span></th>
+            <th><span jhiTranslate="gatewayApp.delegado.nUsuaupd">N Usuaupd</span></th>
+            <th><span jhiTranslate="gatewayApp.delegado.tFecupd">T Fecupd</span></th>
+            <th><span jhiTranslate="gatewayApp.delegado.nSedeupd">N Sedeupd</span></th>
+            <th><span jhiTranslate="gatewayApp.delegado.organizacio">Organizacio</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let delegado of delegados ;trackBy: trackId">
+                <td><a [routerLink]="['../delegado', delegado.id ]">{{delegado.id}}</a></td>
+                <td>{{delegado.tFecinicio | date:'medium'}}</td>
+                <td>{{delegado.tFecrfinal | date:'medium'}}</td>
+                <td>{{delegado.vEstado}}</td>
+                <td>{{delegado.nUsuareg}}</td>
+                <td>{{delegado.tFecreg | date:'medium'}}</td>
+                <td>{{delegado.nFlgactivo}}</td>
+                <td>{{delegado.nSedereg}}</td>
+                <td>{{delegado.nUsuaupd}}</td>
+                <td>{{delegado.tFecupd | date:'medium'}}</td>
+                <td>{{delegado.nSedeupd}}</td>
+                <td>
+                    <div *ngIf="delegado.organizacio">
+                        <a [routerLink]="['../organizacio', delegado.organizacio?.id ]" >{{delegado.organizacio?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../delegado', delegado.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'delegado/'+ delegado.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'delegado/'+ delegado.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
