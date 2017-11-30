@@ -10,7 +10,7 @@ export class Direccion implements BaseEntity {
         public vDistrito?: string,
         public vDireccion?: string,
         public vReferen?: string,
-        public nNotifica?: number,
+        public nNotifica?: boolean,
         public vUsuareg?: string,
         public tFecreg?: any,
         public nFlgactivo?: boolean,

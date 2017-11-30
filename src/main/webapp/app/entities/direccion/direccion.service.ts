@@ -87,4 +87,11 @@ export class DireccionService {
         copy.tFecupd = this.dateUtils.toDate(direccion.tFecupd);
         return copy;
     }
+
+    obtenerDireccion(codFormPerfil: number): Observable<ResponseWrapper> {
+        const options = createRequestOption();
+        const url = SERVER_API_URL + 'api/obtenerDireccion';
+        return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
+            .map((res: Response) => this.convertResponse(res));
+    }
 }

@@ -73,7 +73,7 @@
                                             <a (click)="showDialog(solicitud)" [routerLink]="">OBSERVADO</a>
                                         </span>
                                         <span *ngIf="solicitud.vFlgest == 'C'">
-                                            <a (click)="showDialog(solicitud)" [routerLink]="">CONFORME</a>
+                                            <span>CONFORME</span>
                                         </span>
                                         <span *ngIf="solicitud.vFlgest == 'P' && solicitud.vVoucher != null">
                                             <a (click)="verControlInformacion(solicitud)" [routerLink]="">PENDIENTE</a>

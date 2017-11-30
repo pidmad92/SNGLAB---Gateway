@@ -95,4 +95,11 @@ export class NegocolectService {
         copy.tFecupd = this.dateUtils.toDate(negocolect.tFecupd);
         return copy;
     }
+
+    obtenerNegociacion(codFormPerfil: number, tipo: string): Observable<ResponseWrapper> {
+        const options = createRequestOption();
+        const url = SERVER_API_URL + 'api/listarNegociacionColectiva';
+        return this.http.get(url + '?tipo=' + tipo + '&codFormPerfil=' + codFormPerfil, options)
+            .map((res: Response) => this.convertResponse(res));
+    }
 }

@@ -10,8 +10,8 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class ActieconService {
 
-    private resourceUrl = '/consultas/api/actiecons';
-    private resourceSearchUrl = '/consultas/api/_search/actiecons';
+    private resourceUrl = '/api/actiecons';
+    private resourceSearchUrl = '/api/_search/actiecons';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
