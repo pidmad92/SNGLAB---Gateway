@@ -9,6 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Formperfil, FormperfilService } from '../../../entities/formperfil';
 import { Actiecon, ActieconService } from '../../../entities/actiecon/index';
 import { SessionStorage } from 'ng2-webstorage';
+import { ComboModel } from '../../general/combobox.model';
+import { Message } from 'primeng/components/common/api';
+import { ValidarUsuarioService } from '../../denuncias/validar-usuario/validarusuario.service';
 
 @Component({
     selector: 'jhi-formulario-perfil',
@@ -32,6 +35,19 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     direccionRegistro: Direccion;
     private subscription: Subscription;
 
+    messageList: any;
+    messagesForm: Message[] = [];
+
+    block: boolean;
+
+    departs: ComboModel[];
+    provins: ComboModel[];
+    distris: ComboModel[];
+
+    selectedDeparts: ComboModel;
+    selectedProvins: ComboModel;
+    selectedDistris: ComboModel;
+
     constructor(
         private solicitudService: SolicitudService,
         private formperfilService: FormperfilService,
@@ -43,6 +59,7 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
         private principal: Principal,
         private route: ActivatedRoute,
         private router: Router,
+        private validarUsuarioService: ValidarUsuarioService,
     ) { }
 
     loadAll() {
@@ -92,6 +109,60 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
                 );
             });
         }
+        this.validarUsuarioService.consultaDepas().subscribe(
+            (deps: ResponseWrapper) => {
+                // tslint:disable-next-line:forin
+                for (const i in deps) {
+                    this.departs.push(new ComboModel(deps[i].vDesdep, deps[i].vCoddep, 0));
+                }
+                this.block = false; },
+            (res: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: res.json }]); this.block = false; }
+        );
+    }
+
+    onChangeDepartamento() {
+        this.block = true;
+        this.messageList = [];
+        if (this.selectedDeparts === undefined) {
+            this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar un departamento' }]);
+            this.block = false;
+        } else {
+            this.validarUsuarioService.consultaProvs(this.selectedDeparts.value).subscribe(
+                (tprovs: ResponseWrapper) => {
+                    this.provins = [];
+                    // tslint:disable-next-line:forin
+                    for (const i in tprovs) {
+                        this.provins.push(new ComboModel(tprovs[i].vDespro, tprovs[i].vCodpro, 0));
+                    }
+                    this.block = false;
+                },
+                (tprovs: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: tprovs.json }]); this.block = false; }
+            );
+        }
+    }
+
+    onChangeProvincia() {
+        this.block = true;
+        this.messageList = [];
+        if (this.selectedDeparts === undefined) {
+            this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar un departamento' }]);
+            this.block = false;
+        } else if (this.selectedProvins === undefined) {
+            this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar una provincia' }]);
+            this.block = false;
+        } else {
+            this.validarUsuarioService.consultaDists(this.selectedDeparts.value, this.selectedProvins.value).subscribe(
+                (tdists: ResponseWrapper) => {
+                    this.distris = [];
+                    // tslint:disable-next-line:forin
+                    for (const i in tdists) {
+                        this.distris.push(new ComboModel(tdists[i].vDesdis, tdists[i].vCoddis, 0));
+                    }
+                    this.block = false;
+                },
+                (tdists: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: tdists.json }]); this.block = false; }
+            );
+        }
     }
 
     previousState() {
@@ -128,5 +199,11 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
 
     irPerfil2() {
         this.router.navigate(['./dictamenes/formulario-perfil2']);
+    }
+
+    private onErrorMultiple(errorList: any) {
+        for (let i = 0; i < errorList.length; i++) {
+            this.messagesForm.push(errorList[i]);
+        }
     }
 }

@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { GatewaySharedModule } from '../../../shared';
-import { DialogModule, TabMenuModule, MenuItem } from 'primeng/primeng';
+import { DialogModule, TabMenuModule, MenuItem, DropdownModule } from 'primeng/primeng';
 
 import {
     SolicitudService,
@@ -44,6 +44,8 @@ import { FormularioPerfil4Component } from './formulario-perfil4.component';
 import { FormularioPerfil5Component } from './formulario-perfil5.component';
 import { FormularioPerfil6Component } from './formulario-perfil6.component';
 import { NegocolectService, NegocolectComponent } from '../../../entities/negocolect/index';
+import { ValidarUsuarioService } from '../../denuncias/validar-usuario/validarusuario.service';
+import { ValidarUsuarioComponent } from '../../denuncias/validar-usuario/index';
 
 const ENTITY_STATES = [
     ...FormularioPerfilRoute,
@@ -63,12 +65,14 @@ const ENTITY_STATES = [
         FormularioPerfil6Component,
         ActieconComponent,
         NegocolectComponent,
+        ValidarUsuarioComponent,
     ],
     imports: [
         GatewaySharedModule,
         RouterModule.forChild(ENTITY_STATES),
         DialogModule,
-        TabMenuModule
+        TabMenuModule,
+        DropdownModule,
     ],
     entryComponents: [
         FormularioPerfilComponent,
@@ -81,6 +85,7 @@ const ENTITY_STATES = [
         FormperfilService,
         ActieconService,
         NegocolectService,
+        ValidarUsuarioService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

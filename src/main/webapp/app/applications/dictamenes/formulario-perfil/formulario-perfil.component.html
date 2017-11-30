@@ -222,17 +222,15 @@
         <div class="row">
           <div class="col-md mb-2">
             <label for="selectDe" class="col-form-label col-form-label-sm">Departamento:</label>
-            <select class="form-control form-control-sm" id="selectDe" [(ngModel)]="direccionRegistro.vDepart" name="vDepart">
-              <option>Lima</option>
-              <option>Trujillo</option>
-            </select>
+            <p-dropdown [options]="departs" name="selectedDeparts" [(ngModel)]="selectedDeparts" [style]="{'width':'140px'}" placeholder="Seleccione departamento."
+            filter="true" (onChange)="onChangeDepartamento()"
+            optionLabel="name"></p-dropdown>
           </div>
           <div class="col-md mb-2">
             <label for="selectProv" class="col-form-label col-form-label-sm">Provincia:</label>
-            <select class="form-control form-control-sm" id="selectProv" [(ngModel)]="direccionRegistro.vProvincia" name="vProvincia">
-              <option>Lima</option>
-              <option>San Juan Lurigan</option>
-            </select>
+            <p-dropdown [options]="provins" name="selectedProvins" [(ngModel)]="selectedProvins" [style]="{'width':'140px'}" placeholder="Seleccione provincia."
+            filter="true" (onChange)="onChangeProvincia()"
+            optionLabel="name"></p-dropdown>
           </div>
           <div class="col-md mb-2">
             <label for="selectDist" class="col-form-label col-form-label-sm">Distrito:</label>

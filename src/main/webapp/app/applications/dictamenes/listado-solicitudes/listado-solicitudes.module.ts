@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { GatewaySharedModule } from '../../../shared';
-import {DialogModule, TabViewModule} from 'primeng/primeng';
+import {DialogModule, TabViewModule, DropdownModule} from 'primeng/primeng';
 
 import {
     SolicitudService,
@@ -53,6 +53,8 @@ import { UndnegocioComponent, UndnegocioService } from '../../../entities/undneg
 import { HechoinverService, HechoinverComponent } from '../../../entities/hechoinver/index';
 import { ParticipaService, ParticipaComponent } from '../../../entities/participa/index';
 import { NegocolectService, NegocolectComponent } from '../../../entities/negocolect/index';
+import { ValidarUsuarioService } from '../../denuncias/validar-usuario/validarusuario.service';
+import { ValidarUsuarioComponent } from '../../denuncias/validar-usuario/index';
 
 const ENTITY_STATES = [
     ...ListadoSolicitudesRoute,
@@ -77,6 +79,7 @@ const ENTITY_STATES = [
         ActieconComponent,
         UndnegocioComponent,
         NegocolectComponent,
+        ValidarUsuarioComponent,
     ],
     imports: [
         GatewaySharedModule,
@@ -85,6 +88,7 @@ const ENTITY_STATES = [
         FormsModule,
         ReactiveFormsModule,
         TabViewModule,
+        DropdownModule,
     ],
     entryComponents: [
         ListadoSolicitudesComponent,
@@ -100,6 +104,7 @@ const ENTITY_STATES = [
         FormperfilService,
         ActieconService,
         NegocolectService,
+        ValidarUsuarioService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

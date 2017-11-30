@@ -40,13 +40,13 @@ export class LeftbarComponent implements OnInit {
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
-        this.getRoute(router.url);
+        this.getRoute('dictamenes');
     }
 
     getRoute(url) {
         for (const module of this.modules) {
             if (url.indexOf(module) === 1) {
-                if (module === 'defensa') {
+                if (module === 'dictamenes') {
                     this.menuDefensaActive(url);
                 }
                 this.aplicacion = module;
