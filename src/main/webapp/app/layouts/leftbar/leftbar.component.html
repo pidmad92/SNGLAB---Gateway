@@ -212,8 +212,8 @@
     <div class="my-2" *ngIf="aplicacion == 'dictamenes'">
       <ul class="level-one mt-2 p-0" id="accordion">
           <li routerLinkActive="active">
-              <ngb-accordion [closeOthers]="true" activeIds="static-1">
-                  <ngb-panel id="static-1">
+              <ngb-accordion [closeOthers]="true" activeIds="{{accordionDictamen}}">
+                  <ngb-panel id="{{menuDefensa[0]}}">
                     <ng-template ngbPanelTitle>
                         <li routerLinkActive="active">
                             <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">

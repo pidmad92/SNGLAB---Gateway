@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { GatewaySharedModule } from '../../../shared';
-import {DialogModule} from 'primeng/primeng';
+import {DialogModule, TabMenuModule, DropdownModule} from 'primeng/primeng';
 
 import {
     SolicitudService,
@@ -60,7 +60,9 @@ const ENTITY_STATES = [
     imports: [
         GatewaySharedModule,
         RouterModule.forChild(ENTITY_STATES),
-        DialogModule
+        DialogModule,
+        TabMenuModule,
+        DropdownModule,
     ],
     entryComponents: [
         ControlInformacionComponent

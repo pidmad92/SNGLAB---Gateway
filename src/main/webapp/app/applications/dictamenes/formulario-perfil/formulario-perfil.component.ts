@@ -69,6 +69,9 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.departs = new Array<ComboModel>();
+        this.provins = new Array<ComboModel>();
+        this.distris = new Array<ComboModel>();
         this.displayDireccion = false;
         this.direccionRegistro = new Direccion;
         this.loadAll();
@@ -109,15 +112,6 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
                 );
             });
         }
-        this.validarUsuarioService.consultaDepas().subscribe(
-            (deps: ResponseWrapper) => {
-                // tslint:disable-next-line:forin
-                for (const i in deps) {
-                    this.departs.push(new ComboModel(deps[i].vDesdep, deps[i].vCoddep, 0));
-                }
-                this.block = false; },
-            (res: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: res.json }]); this.block = false; }
-        );
     }
 
     onChangeDepartamento() {
@@ -174,6 +168,15 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     }
 
     showDialogDireccion() {
+        this.validarUsuarioService.consultaDepas().subscribe(
+            (deps: any) => {
+                // tslint:disable-next-line:forin
+                for (const i in deps) {
+                    this.departs.push(new ComboModel(deps[i].vDesdep, deps[i].vCoddep, 0));
+                }
+                this.block = false; },
+            (res: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: res.json }]); this.block = false; }
+        );
         this.displayDireccion = true;
     }
     guardarDireccion() {
