@@ -3,10 +3,13 @@ import { RouterModule } from '@angular/router';
 
 import { GatewaySharedModule } from '../../../shared';
 import {
-    MantenimientoComponent,
-    MantenimientoDialogComponent,
-    MantenimientoPopupComponent,
-    MantenimientoPopupService,
+    MantenimientoResultadoComponent,
+    MantenimientoResultadoDialogComponent,
+    MantenimientoResultadoPopupComponent,
+    MantenimientoResultadoPopupService,
+    MantenimientoAudienciaComponent,
+    ResulconciService,
+    TipresconcService,
     mantenimientoRoute } from './';
 import { TabViewModule, DataTableModule, CheckboxModule, DropdownModule, CalendarModule } from 'primeng/primeng';
 
@@ -25,17 +28,20 @@ const ENTITY_STATES = [
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
-        MantenimientoComponent,
-        MantenimientoPopupComponent,
-        MantenimientoDialogComponent,
+        MantenimientoResultadoComponent,
+        MantenimientoAudienciaComponent,
+        MantenimientoResultadoDialogComponent,
+        MantenimientoResultadoPopupComponent
     ],
     entryComponents: [
-        MantenimientoComponent,
-        MantenimientoPopupComponent,
-        MantenimientoDialogComponent,
+        MantenimientoResultadoComponent,
+        MantenimientoAudienciaComponent,
+        MantenimientoResultadoDialogComponent,
+        MantenimientoResultadoPopupComponent
    ],
     providers: [
-        MantenimientoPopupService,
+        ResulconciService,
+        MantenimientoResultadoPopupService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

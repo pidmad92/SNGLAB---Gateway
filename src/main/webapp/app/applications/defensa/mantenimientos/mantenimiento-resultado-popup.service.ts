@@ -2,18 +2,18 @@ import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
-import { Expediente } from './../../../entities/expediente/expediente.model';
-// import { AbogadoService } from './abogado.service';
+import { Resulconci } from './resulconci.model';
+import { ResulconciService } from './resulconci.service';
 
 @Injectable()
-export class MantenimientoPopupService {
+export class MantenimientoResultadoPopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
         private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
-        // private abogadoService: AbogadoService
+        private resulconciService: ResulconciService
 
     ) {
         this.ngbModalRef = null;
@@ -27,34 +27,32 @@ export class MantenimientoPopupService {
             }
 
             if (id) {
-                // this.abogadoService.find(id).subscribe((abogado) => {
-                //     this.ngbModalRef = this.abogadoModalRef(component, abogado);
-                //     resolve(this.ngbModalRef);
-                // });
-                setTimeout(() => {
-                    this.ngbModalRef = this.mantenimientoModalRef(component, new Expediente());
+                this.resulconciService.find(id).subscribe((resulconci) => {
+                    resulconci.tFecreg = this.datePipe
+                        .transform(resulconci.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                    resulconci.tFecupd = this.datePipe
+                        .transform(resulconci.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
+                    this.ngbModalRef = this.mantenimientoResultadoModalRef(component, resulconci);
                     resolve(this.ngbModalRef);
-                }, 0);
+                });
             } else {
                 // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
                 setTimeout(() => {
-                    this.ngbModalRef = this.mantenimientoModalRef(component, new Expediente());
+                    this.ngbModalRef = this.mantenimientoResultadoModalRef(component, new Resulconci());
                     resolve(this.ngbModalRef);
                 }, 0);
             }
         });
     }
 
-    mantenimientoModalRef(component: Component, expediente: Expediente): NgbModalRef {
+    mantenimientoResultadoModalRef(component: Component, resulconci: Resulconci): NgbModalRef {
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
-        modalRef.componentInstance.expediente = expediente;
+        modalRef.componentInstance.resulconci = resulconci;
         modalRef.result.then((result) => {
-            this.router.navigate(['defensa/consulta-expediente'], { replaceUrl: true });
-            console.log('Cc-A');
+            this.router.navigate(['defensa/mantenimiento/resultado'], { replaceUrl: true });
             this.ngbModalRef = null;
         }, (reason) => {
-            this.router.navigate(['defensa/consulta-expediente'], { replaceUrl: true });
-            console.log('Cc-B');
+            this.router.navigate(['defensa/mantenimiento/resultado'], { replaceUrl: true });
             this.ngbModalRef = null;
         });
         return modalRef;

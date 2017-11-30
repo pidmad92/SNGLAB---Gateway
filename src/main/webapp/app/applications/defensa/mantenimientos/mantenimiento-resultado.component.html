@@ -1,0 +1,53 @@
+<div class="row mt-3">
+    <div class="col">
+        <div class="card card-panel mb-3">
+            <div class="card-header d-sm-flex justify-content-between">
+                <h5>Consulta de Expediente</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button class="btn btn-primary jh-create-entity create-resulconci" [routerLink]="['/defensa/mantenimiento/resultados', { outlets: { popupexp: ['registrar'] } }]">
+                            <span class="fa fa-plus"></span>
+                            <span class="hidden-sm-down"> Añadir Resultado</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form name="searchForm" class="form-inline">
+                            <div class="input-group w-100 mt-3">
+                                <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="Buscar Resultados por Descripción">
+                                <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                                    <span class="fa fa-search"></span>
+                                </button>
+                                <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                                    <span class="fa fa-trash-o"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <p-dataTable selectionMode="single" [value]="expedientes" dataKey="codexpediente">
+                            <p-header>Expedientes</p-header>
+                            <p-column field="item" header="Item"></p-column>
+                            <p-column field="estado" header="Estado"></p-column>
+                            <p-column field="codexpediente" header="Nro. Expediente"></p-column>
+                            <p-column field="fecha" header="Fecha de Registro"></p-column>
+                            <p-column field="conciliador" header="Conciliador"></p-column>
+                            <p-column field="ruc" header="Razón Nro. RUC"></p-column>
+                            <p-column field="empleador" header="Empleador"></p-column>
+                            <p-column field="nrotra" header="Nro. Documento"></p-column>
+                            <p-column field="nomtra" header="Trabajador"></p-column>
+                        </p-dataTable>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet name="popupexp"></router-outlet>
+

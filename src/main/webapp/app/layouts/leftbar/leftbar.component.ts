@@ -44,6 +44,7 @@ export class LeftbarComponent implements OnInit {
     }
 
     getRoute(url) {
+        console.log(url);
         for (const module of this.modules) {
             if (url.indexOf(module) === 1) {
                 if (module === 'defensa') {
@@ -63,7 +64,7 @@ export class LeftbarComponent implements OnInit {
     }
 
     registerChangeInRoutes() {
-        this.eventSubscriber = this.eventManager.subscribe('changeRoute', (response) => this.getRoute(this.router));
+        this.eventSubscriber = this.eventManager.subscribe('changeRoute', (response) => this.getRoute(this.router.url));
     }
 
     collapseNavbar() {
