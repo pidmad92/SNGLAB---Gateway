@@ -50,9 +50,9 @@
                                         <span class="d-none d-md-inline" >Editar</span>
                                     </button>
                                     <button type="submit"
-                                            [routerLink]="['/defensa/mantenimiento/resultados', { outlets: { popupexp: '/' +  res.id + '/borrar'} }]"
-                                            replaceUrl="true"
-                                            class="btn btn-danger btn-sm">
+                                        [routerLink]="['/defensa/mantenimiento/resultados', { outlets: { popupexp:  res.id + '/eliminar'} }]"
+                                        replaceUrl="true"
+                                        class="btn btn-danger btn-sm">
                                         <span class="fa fa-remove"></span>
                                         <span class="d-none d-md-inline" >Eliminar</span>
                                     </button>

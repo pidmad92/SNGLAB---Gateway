@@ -4,11 +4,11 @@ import { Observable } from 'rxjs/Rx';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
-import { Resulconci } from './resulconci.model';
+import { Pasegl } from './pasegl.model';
 import { ResponseWrapper, createRequestOption, AuthServerProvider } from '../../../shared';
 
 @Injectable()
-export class ResulconciService {
+export class RegistroExpedienteService {
 
     private resourceUrl = '/defensa/api/resulconcis';
     private resourceUrlTot = '/defensa/api/resulconcis/tot';
@@ -16,36 +16,35 @@ export class ResulconciService {
 
     constructor(private http: Http, private dateUtils: JhiDateUtils, private authServerProvider: AuthServerProvider) { }
 
-    create(resulconci: Resulconci): Observable<Resulconci> {
+    create(pasegl: Pasegl): Observable<Pasegl> {
         const token = this.authServerProvider.getToken();
-        resulconci.nUsuareg = 1;
-        resulconci.nFlgactivo = true;
-        resulconci.nSedereg = 1;
-        const copy = this.convert(resulconci);
+        pasegl.nUsuareg = 1;
+        pasegl.nFlgactivo = true;
+        pasegl.nSedereg = 1;
+        const copy = this.convert(pasegl);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-    update(resulconci: Resulconci): Observable<Resulconci> {
-        const copy = this.convert(resulconci);
-        console.log('update');
+    update(pasegl: Pasegl): Observable<Pasegl> {
+        const copy = this.convert(pasegl);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
-    updateLogic(resulconci: Resulconci): Observable<Resulconci> {
-        resulconci.nFlgactivo = false;
-        const copy = this.convert(resulconci);
+    updateLogic(pasegl: Pasegl): Observable<Pasegl> {
+        pasegl.nFlgactivo = false;
+        const copy = this.convert(pasegl);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-    find(id: number): Observable<Resulconci> {
+    find(id: number): Observable<Pasegl> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
@@ -80,8 +79,8 @@ export class ResulconciService {
     /**
      * Convert a returned JSON object to Resulconci.
      */
-    private convertItemFromServer(json: any): Resulconci {
-        const entity: Resulconci = Object.assign(new Resulconci(), json);
+    private convertItemFromServer(json: any): Pasegl {
+        const entity: Pasegl = Object.assign(new Pasegl(), json);
         entity.tFecreg = this.dateUtils
             .convertDateTimeFromServer(json.tFecreg);
         entity.tFecupd = this.dateUtils
@@ -92,8 +91,8 @@ export class ResulconciService {
     /**
      * Convert a Resulconci to a JSON which can be sent to the server.
      */
-    private convert(resulconci: Resulconci): Resulconci {
-        const copy: Resulconci = Object.assign({}, resulconci);
+    private convert(resulconci: Pasegl): Pasegl {
+        const copy: Pasegl = Object.assign({}, resulconci);
 
         copy.tFecreg = this.dateUtils.toDate(resulconci.tFecreg);
 

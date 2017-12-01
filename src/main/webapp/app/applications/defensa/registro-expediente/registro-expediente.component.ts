@@ -18,6 +18,7 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
     msgs: Message[] = [];
     private routeExp = '/defensa/expediente/registro';
     activeIndex: number;
+    message: string;
     url: string;
     router: any;
     routes = ['datos-pase', 'datos-trabajador', 'datos-empleador', 'datos-expediente', 'datos-audiencia'];
@@ -99,10 +100,17 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: label});
     }
+    public start() {
+        this.activeIndex++;
+    }
+    receiveMessage($event) {
+        this.message = $event
+        console.log(this.message);
+    }
 
     public next() {
         this.activeIndex++;
-        this.router.navigate(['/defensa/registro-expediente', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
+        this.router.navigate(['/defensa/expediente/registro', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
         // show / hide steps and emit selected label
         this.ngOnChanges({
             activeIndex: {
@@ -116,7 +124,7 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
 
     public previous() {
         this.activeIndex--;
-        this.router.navigate(['/defensa/registro-expediente', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
+        this.router.navigate(['/defensa/expediente/registro', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
         // show / hide steps and emit selected label
         this.ngOnChanges({
             activeIndex: {

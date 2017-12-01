@@ -8,42 +8,45 @@
                 <div class="panel">
                     <fieldset class="col">     
                         <legend>Búsqueda del Pase</legend>
-                        <form>
+                        <form name="busquedaPase">
                             <div class="form-row">
                                 <div class="col-md-3">
                                     <!-- <p-toggleButton name="checked2" [(ngModel)]="checked2" onLabel="Por: N° Documentos" offLabel="Por: Rango de Fechas"></p-toggleButton> -->
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <p-radioButton name="groupname" value="nroDoc" label="Por: Nro. de Doc." [(ngModel)]="tipoBusqueda"></p-radioButton>
+                                            <p-radioButton name="groupname" value="1" label="Por: Nro. de Doc." [(ngModel)]="tipoBusqueda"></p-radioButton>
                                         </div>
                                         <div class="col-md-12">
-                                            <p-radioButton name="groupname" value="fechas" label="Por: Rango de Fechas" [(ngModel)]="tipoBusqueda"></p-radioButton>        
+                                            <p-radioButton name="groupname" value="2" label="Por: Rango de Fechas" [(ngModel)]="tipoBusqueda"></p-radioButton>        
                                         </div>
                                     </div>
                                 </div>
-                                <div *ngIf="tipoBusqueda=='nroDoc'" class="col-md-6">
+                                <div *ngIf="tipoBusqueda==='1'" class="col-md-6">
                                     <div class="form-group row">
                                         <label for="inpTipo" class="col-sm-3 col-form-label">Tipo de documento:</label>
                                         <div class="col-sm-3 pl-0">
-                                            <select class="form-control form-control-sm" id="inpTipo">
+                                            <p-dropdown [options]="tipodocs" name="selectedTipodoc" [(ngModel)]="selectedTipodoc" [style]="{'width':'120px'}" placeholder="Seleccione un tipo doc."
+                                                optionLabel="name"></p-dropdown>
+                                            <!-- <select class="form-control form-control-sm" id="inpTipo">
                                                 <option>DNI</option>
                                                 <option>RUC</option>
-                                            </select>
+                                            </select> -->
                                         </div>
                                         <label for="inpNumero" class="col-sm-2 col-form-label">Número:</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control form-control-sm" id="inpNumero" placeholder="">
+                                            <!-- <input type="text" class="form-control form-control-sm" id="inpNumero" placeholder=""> -->
+                                            <input class="form-control form-control-sm" type="text" [(ngModel)]="vNumdoc" name="vNumdoc" />
                                         </div>
                                     </div>
                                 </div>
-                                <div *ngIf="tipoBusqueda=='fechas'" class="col-md-6">
+                                <div *ngIf="tipoBusqueda==='2'" class="col-md-6">
                                     <div class="form-group row">
                                         <label for="inpTipo" class="col-sm-3 col-form-label">Fechas:</label>
                                         <p-calendar name="rangeDates" [(ngModel)]="rangeDates" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" selectionMode="range" readonlyInput="true"></p-calendar>
                                     </div>
                                 </div>
                                 <div class="col-md-3 text-center">
-                                    <a href="#" class="btn btn-sm btn-secondary "><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                                    <button (click)="buscarPase()" class="btn btn-sm btn-secondary "><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</button>
                                 </div>
                             </div>
                         </form>
@@ -52,16 +55,16 @@
                     <form>
                         <div class="row">
                             <div class="col-md-12 mb-3">
-                                <p-dataTable [value]="pases" [(selection)]="pasesDoc" dataKey="codPase">
+                                <p-dataTable [value]="pasegls" [(selection)]="pasesDoc" selectionMode="single" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" dataKey="id">
                                         <p-header>Pases</p-header>
                                         <p-column [style]="{'width':'38px'}" selectionMode="single"></p-column>
-                                        <p-column field="codPase" header="Cod. Pase"></p-column>
-                                        <p-column field="fechaPase" header="Fecha de Pase"></p-column>
-                                        <p-column field="rucEmp" header="RUC Empleador"></p-column>
-                                        <p-column field="razonSocial" header="Razón Social del Empleador"></p-column>
-                                        <p-column field="nroTra" header="Nro. Documento Trabajador"></p-column>
-                                        <p-column field="nomTra" header="Apellidos y Nombres Trabajador"></p-column>
-                                        <p-column field="ofDer" header="Of. de Derivación"></p-column>
+                                        <!-- <p-column field="codPase" header="Cod. Pase"></p-column> -->
+                                        <p-column field="tFecreg" header="Fecha de Pase"></p-column>
+                                        <p-column field="atencion.datlab.empleador.perjuridica.vNumdoc" header="RUC Empleador"></p-column>
+                                        <p-column field="atencion.datlab.empleador.perjuridica.vRazsocial" header="Razón Social del Empleador"></p-column>
+                                        <p-column field="atencion.datlab.trabajador.pernatural.vNumdoc" header="Nro. Documento Trabajador"></p-column>
+                                        <p-column field="atencion.datlab.trabajador.pernatural.vNombres" header="Apellidos y Nombres Trabajador"></p-column>
+                                        <p-column field="atencion.oficina.vDesofic" header="Of. de Derivación"></p-column>
                                 </p-dataTable>
                             </div>
                         </div>

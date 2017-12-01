@@ -51,6 +51,10 @@ export class LeftbarComponent implements OnInit {
                     this.menuDefensaActive(url);
                 }
                 this.aplicacion = module;
+            } else {
+                if (url === '/') {
+                    this.aplicacion = 'seguridad';
+                }
             }
         }
     }

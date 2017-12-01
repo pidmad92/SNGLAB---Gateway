@@ -12,7 +12,7 @@ import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../shared';
     templateUrl: './pasegl.component.html'
 })
 export class PaseglComponent implements OnInit, OnDestroy {
-pasegls: Pasegl[];
+    pasegls: Pasegl[];
     currentAccount: any;
     eventSubscriber: Subscription;
     currentSearch: string;

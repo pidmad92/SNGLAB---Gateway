@@ -9,15 +9,15 @@ import { MantenimientoResultadoPopupService } from './mantenimiento-resultado-po
 import { ResulconciService } from './resulconci.service';
 
 @Component({
-    selector: 'jhi-aplicacion-delete-dialog',
-    templateUrl: './aplicacion-delete-dialog.component.html'
+    selector: 'jhi-mantenimiento-resultado-delete-dialog',
+    templateUrl: './mantenimiento-resultado-delete-dialog.component.html'
 })
 export class MantenimientoResultadoDeleteDialogComponent {
 
-    aplicacion: Resulconci;
+    resulconci: Resulconci;
 
     constructor(
-        private aplicacionService: ResulconciService,
+        private resulconciService: ResulconciService,
         public activeModal: NgbActiveModal,
         private eventManager: JhiEventManager
     ) {
@@ -29,9 +29,9 @@ export class MantenimientoResultadoDeleteDialogComponent {
 
     confirmDelete(aplicacion) {
         aplicacion.numEliminar = 0;
-        this.aplicacionService.update(aplicacion).subscribe((response) => {
+        this.resulconciService.updateLogic(aplicacion).subscribe((response) => {
             this.eventManager.broadcast({
-                name: 'aplicacionListModification',
+                name: 'resulconciListModification',
                 content: 'Deleted an aplicacion'
             });
             this.activeModal.dismiss(true);
@@ -40,10 +40,10 @@ export class MantenimientoResultadoDeleteDialogComponent {
 }
 
 @Component({
-    selector: 'jhi-aplicacion-delete-popup',
+    selector: 'jhi-mantenimiento-resultado-delete-popup',
     template: ''
 })
-export class AplicacionDeletePopupComponent implements OnInit, OnDestroy {
+export class MantenimientoResultadoDeletePopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 

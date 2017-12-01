@@ -4,7 +4,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@a
 import { UserRouteAccessService } from '../../../shared';
 import { JhiPaginationUtil } from 'ng-jhipster';
 
-import { MantenimientoResultadoComponent, MantenimientoAudienciaComponent, MantenimientoResultadoPopupComponent } from './';
+import { MantenimientoResultadoComponent, MantenimientoAudienciaComponent, MantenimientoResultadoPopupComponent, MantenimientoResultadoDeletePopupComponent } from './';
 
 export const mantenimientoRoute: Routes = [
     {
@@ -35,18 +35,17 @@ export const mantenimientoRoute: Routes = [
                 },
                 canActivate: [UserRouteAccessService],
                 outlet: 'popupexp'
+            },
+            {
+                path: ':id/eliminar',
+                component: MantenimientoResultadoDeletePopupComponent,
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'gatewayApp.resulconci.home.title'
+                },
+                canActivate: [UserRouteAccessService],
+                outlet: 'popupexp'
             }
-            // ,
-            // {
-            //     path: 'resulconci/:id/delete',
-            //     component: ResulconciDeletePopupComponent,
-            //     data: {
-            //         authorities: ['ROLE_USER'],
-            //         pageTitle: 'gatewayApp.resulconci.home.title'
-            //     },
-            //     canActivate: [UserRouteAccessService],
-            //     outlet: 'popup'
-            // }
         ]
     },
     {
