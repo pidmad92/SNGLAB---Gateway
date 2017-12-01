@@ -37,7 +37,7 @@
                                 </thead>
                                 <tbody>
                                     <ng-container *ngFor="let solicForm of solicFormsObligatorio; let i = index">
-                                        <tr>
+                                        <tr [ngClass]="{ enviado: solicForm.vFlgest == 'E', observado: solicForm.vFlgest == 'O', conforme: solicForm.vFlgest == 'C' }">
                                             <td>
                                                 <span>{{i+1}}</span>
                                             </td>
@@ -91,7 +91,7 @@
                                 </thead>
                                 <tbody>
                                     <ng-container *ngFor="let solicForm of solicFormsOpcional; let i = index">
-                                        <tr>
+                                        <tr [ngClass]="{ enviado: solicForm.vFlgest == 'E', observado: solicForm.vFlgest == 'O', conforme: solicForm.vFlgest == 'C' }">
                                             <td>
                                                 <span>{{i+1}}</span>
                                             </td>

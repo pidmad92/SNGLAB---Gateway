@@ -9,6 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Formperfil, FormperfilService } from '../../../entities/formperfil';
 import { Actiecon, ActieconService } from '../../../entities/actiecon/index';
 import { SessionStorage } from 'ng2-webstorage';
+import { ComboModel } from '../../general/combobox.model';
+import { Message } from 'primeng/components/common/api';
+import { ValidarUsuarioService } from '../../denuncias/validar-usuario/validarusuario.service';
 
 @Component({
     selector: 'jhi-formulario-perfil',
@@ -32,6 +35,19 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     direccionRegistro: Direccion;
     private subscription: Subscription;
 
+    messageList: any;
+    messagesForm: Message[] = [];
+
+    block: boolean;
+
+    departs: ComboModel[];
+    provins: ComboModel[];
+    distris: ComboModel[];
+
+    selectedDeparts: ComboModel;
+    selectedProvins: ComboModel;
+    selectedDistris: ComboModel;
+
     constructor(
         private solicitudService: SolicitudService,
         private formperfilService: FormperfilService,
@@ -43,6 +59,7 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
         private principal: Principal,
         private route: ActivatedRoute,
         private router: Router,
+        private validarUsuarioService: ValidarUsuarioService,
     ) { }
 
     loadAll() {
@@ -52,6 +69,9 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.departs = new Array<ComboModel>();
+        this.provins = new Array<ComboModel>();
+        this.distris = new Array<ComboModel>();
         this.displayDireccion = false;
         this.direccionRegistro = new Direccion;
         this.loadAll();
@@ -94,6 +114,51 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
         }
     }
 
+    onChangeDepartamento() {
+        this.block = true;
+        this.messageList = [];
+        if (this.selectedDeparts === undefined) {
+            this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar un departamento' }]);
+            this.block = false;
+        } else {
+            this.validarUsuarioService.consultaProvs(this.selectedDeparts.value).subscribe(
+                (tprovs: ResponseWrapper) => {
+                    this.provins = [];
+                    // tslint:disable-next-line:forin
+                    for (const i in tprovs) {
+                        this.provins.push(new ComboModel(tprovs[i].vDespro, tprovs[i].vCodpro, 0));
+                    }
+                    this.block = false;
+                },
+                (tprovs: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: tprovs.json }]); this.block = false; }
+            );
+        }
+    }
+
+    onChangeProvincia() {
+        this.block = true;
+        this.messageList = [];
+        if (this.selectedDeparts === undefined) {
+            this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar un departamento' }]);
+            this.block = false;
+        } else if (this.selectedProvins === undefined) {
+            this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar una provincia' }]);
+            this.block = false;
+        } else {
+            this.validarUsuarioService.consultaDists(this.selectedDeparts.value, this.selectedProvins.value).subscribe(
+                (tdists: ResponseWrapper) => {
+                    this.distris = [];
+                    // tslint:disable-next-line:forin
+                    for (const i in tdists) {
+                        this.distris.push(new ComboModel(tdists[i].vDesdis, tdists[i].vCoddis, 0));
+                    }
+                    this.block = false;
+                },
+                (tdists: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: tdists.json }]); this.block = false; }
+            );
+        }
+    }
+
     previousState() {
         window.history.back();
     }
@@ -103,9 +168,32 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     }
 
     showDialogDireccion() {
+        this.validarUsuarioService.consultaDepas().subscribe(
+            (deps: any) => {
+                this.departs = [];
+                // tslint:disable-next-line:forin
+                for (const i in deps) {
+                    this.departs.push(new ComboModel(deps[i].vDesdep, deps[i].vCoddep, 0));
+                }
+                this.block = false; },
+            (res: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: res.json }]); this.block = false; }
+        );
+        this.selectedDeparts = undefined;
+        this.selectedProvins = undefined;
+        this.selectedDistris = undefined;
         this.displayDireccion = true;
     }
     guardarDireccion() {
+
+        this.direccionRegistro.vDepart = this.selectedDeparts.name;
+        this.direccionRegistro.vCodDepa = this.selectedDeparts.value;
+
+        this.direccionRegistro.vProvincia = this.selectedProvins.name;
+        this.direccionRegistro.vCodProv = this.selectedProvins.value;
+
+        this.direccionRegistro.vDistrito = this.selectedDistris.name;
+        this.direccionRegistro.vCodDist = this.selectedDistris.value;
+
         if (this.direcciones.lastIndexOf(this.direccionRegistro, 1) === -1) {
             this.direcciones.push(this.direccionRegistro);
         }
@@ -119,6 +207,15 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
 
     editarDireccion(obj: Direccion) {
         this.direccionRegistro = obj;
+        if (this.selectedDeparts != null) {
+            this.selectedDeparts.value = this.direccionRegistro.vCodDepa;
+        }
+        if (this.selectedProvins != null) {
+            this.selectedProvins.value = this.direccionRegistro.vCodProv;
+        }
+        if (this.selectedDistris != null) {
+            this.selectedDistris.value = this.direccionRegistro.vCodDist;
+        }
         this.displayDireccion = true;
     }
 
@@ -128,5 +225,11 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
 
     irPerfil2() {
         this.router.navigate(['./dictamenes/formulario-perfil2']);
+    }
+
+    private onErrorMultiple(errorList: any) {
+        for (let i = 0; i < errorList.length; i++) {
+            this.messagesForm.push(errorList[i]);
+        }
     }
 }

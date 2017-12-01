@@ -99,9 +99,8 @@ export class FormularioPerfil3Component implements OnInit, OnDestroy {
 
     load(nCodfperf) {
 
-        this.negocolectService.obtenerNegociacion(nCodfperf, 'S').subscribe(
-            (res: ResponseWrapper) => this.solicitante = res.json,
-            (res: ResponseWrapper) => this.onError(res.json)
+        this.negocolectService.obtenerNegociacionSolicitante(nCodfperf, 'S').subscribe((solicitante) =>
+            this.solicitante = solicitante,
         );
         this.negocolectService.obtenerNegociacion(nCodfperf, 'O').subscribe(
             (res: ResponseWrapper) => this.organizaciones = res.json,

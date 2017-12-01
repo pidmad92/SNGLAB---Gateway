@@ -26,7 +26,9 @@ export class LeftbarComponent implements OnInit {
     version: string;
     aplicacion: string;
     accordionDefensa = 'expediente';
-    menuDefensa = [ 'expediente', 'audiencia', 'reportes', 'mantenimiento']
+    accordionDictamen = 'dictamen';
+    menuDefensa = [ 'expediente', 'audiencia', 'reportes', 'mantenimiento'];
+    menuDictamen = ['dictamen'];
     private modules = ['consultas', 'defensa', 'liquidaciones', 'sindicatos', 'dictamenes', 'denuncias', 'seguridad'];
 
     constructor(
@@ -40,15 +42,20 @@ export class LeftbarComponent implements OnInit {
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
-        this.getRoute(router.url);
+        console.log('router.url: ' + router.url);
+        this.getRoute(router.url + 'dictamenes');
     }
 
     getRoute(url) {
-        console.log(url);
         for (const module of this.modules) {
             if (url.indexOf(module) === 1) {
-                if (module === 'defensa') {
+                if (module === 'denuncias') {
                     this.menuDefensaActive(url);
+                }
+                this.aplicacion = module;
+            } else if (url.indexOf(module) === 5) {
+                if (module === 'dictamenes') {
+                    this.menuDictamenActive(url);
                 }
                 this.aplicacion = module;
             } else {
@@ -86,6 +93,14 @@ export class LeftbarComponent implements OnInit {
         for (const menu of this.menuDefensa) {
             if (url.indexOf(menu) !== -1) {
                 this.accordionDefensa = menu;
+            }
+        }
+    }
+
+    menuDictamenActive(url) {
+        for (const menu of this.menuDictamen) {
+            if (url.indexOf(menu) !== -1) {
+                this.accordionDictamen = menu;
             }
         }
     }

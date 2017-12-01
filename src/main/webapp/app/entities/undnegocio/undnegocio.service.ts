@@ -11,8 +11,8 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class UndnegocioService {
 
-    private resourceUrl = SERVER_API_URL + 'api/undnegocios';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/undnegocios';
+    private resourceUrl = SERVER_API_URL + '/dictamenes/api/undnegocios';
+    private resourceSearchUrl = SERVER_API_URL + '/dictamenes/api/_search/undnegocios';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -90,7 +90,7 @@ export class UndnegocioService {
 
     obtenerUnidadNegocio(codFormPerfil: number): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/listarUnidadNegocio';
+        const url = SERVER_API_URL + '/dictamenes/api/listarUnidadNegocio';
         return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
             .map((res: Response) => this.convertResponse(res));
     }

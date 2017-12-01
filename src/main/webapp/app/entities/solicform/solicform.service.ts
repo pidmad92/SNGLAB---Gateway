@@ -11,8 +11,8 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class SolicformService {
 
-    private resourceUrl = SERVER_API_URL + 'api/solicforms';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/solicforms';
+    private resourceUrl = SERVER_API_URL + '/dictamenes/api/solicforms';
+    private resourceSearchUrl = SERVER_API_URL + '/dictamenes/api/_search/solicforms';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -90,7 +90,7 @@ export class SolicformService {
 
     obtenerlistaFormulariosObligatorios(flgObligatorio: number, nCodsolic: number): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/obtenerDatosFormulario';
+        const url = SERVER_API_URL + '/dictamenes/api/obtenerDatosFormulario';
         return this.http.get(url + '?flgObligatorio=' + flgObligatorio + '&codSolicitud=' + nCodsolic, options)
             .map((res: Response) => this.convertResponse(res));
     }

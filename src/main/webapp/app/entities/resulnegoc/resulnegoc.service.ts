@@ -11,8 +11,8 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class ResulnegocService {
 
-    private resourceUrl = SERVER_API_URL + 'api/resulnegocs';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/resulnegocs';
+    private resourceUrl = SERVER_API_URL + '/dictamenes/api/resulnegocs';
+    private resourceSearchUrl = SERVER_API_URL + '/dictamenes/api/_search/resulnegocs';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -90,5 +90,12 @@ export class ResulnegocService {
 
         copy.tFecupd = this.dateUtils.toDate(resulnegoc.tFecupd);
         return copy;
+    }
+
+    obtenerResultadoNegociaciones(codFormPerfil: number): Observable<ResponseWrapper> {
+        const options = createRequestOption();
+        const url = SERVER_API_URL + '/dictamenes/api/listarResultadoNegocio';
+        return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
+            .map((res: Response) => this.convertResponse(res));
     }
 }

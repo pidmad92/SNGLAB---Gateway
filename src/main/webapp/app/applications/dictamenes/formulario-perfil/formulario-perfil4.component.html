@@ -1,4 +1,4 @@
-<div class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
+<div *ngIf="formPerfil&&solicitud" class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
         <div class="row">
           <div class="col">
             <h4 class="title">Perfil del Empleador</h4>
@@ -9,7 +9,7 @@
             <div class="form-group row">
               <label for="inpRuc" class="col-sm-3 col-form-label col-form-label-sm text-right">RUC</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control form-control-sm" id="inpRuc" placeholder="">
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="solicitud.vRucsol">
               </div>
             </div>
           </div>
@@ -17,7 +17,7 @@
             <div class="form-group row">
               <label for="inpRsocial" class="col-sm-3 col-form-label col-form-label-sm text-right" value="1047792455654">Razón Social</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control form-control-sm" id="inpRsocial" placeholder="" value="CYH Solutions SAC">
+                <input type="text" class="form-control form-control-sm" id="inpRsocial" [(ngModel)]="solicitud.vEmpleador">
               </div>
             </div>
           </div>
@@ -128,42 +128,20 @@
                     </tr>
                   </thead>
                   <tbody>
+                      <ng-container *ngFor="let resultado of resultadoNegociaciones; let i = index">
                     <tr>
-                      <td>01/01/2017</td>
-                      <td>60.00</td>
-                      <td>1000.00</td>
-                      <td>2000.00</td>
-                      <td>30.00</td>
-                      <td>20.00</td>
+                      <td>{{resultado.tFecreneg  | date:'dd/MM/yyyy'}}</td>
+                      <td>{{resultado.nAumento   | number: 1.2-2}}</td>
+                      <td>{{resultado.nClausula  | number: 1.2-2}}</td>
+                      <td>{{resultado.nGratifica | number: 1.2-2}}</td>
+                      <td>{{resultado.nAlimentac | number: 1.2-2}}</td>
+                      <td>{{resultado.nMovilidad | number: 1.2-2}}</td>
                       <td class="text-center">
-                        <a href="" class="btn btn-sm btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                        <a href="" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        <a (click)="editarResultado(resultado)" class="btn btn-sm btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a (click)="eliminarResultado(resultado)" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a>
                       </td>
                     </tr>
-                    <tr>
-                      <td>01/01/2017</td>
-                      <td>60.00</td>
-                      <td>1000.00</td>
-                      <td>2000.00</td>
-                      <td>30.00</td>
-                      <td>20.00</td>
-                      <td class="text-center">
-                        <a href="" class="btn btn-sm btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                        <a href="" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>01/01/2017</td>
-                      <td>60.00</td>
-                      <td>1000.00</td>
-                      <td>2000.00</td>
-                      <td>30.00</td>
-                      <td>20.00</td>
-                      <td class="text-center">
-                        <a href="" class="btn btn-sm btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                        <a href="" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a>
-                      </td>
-                    </tr>
+                  </ng-container>
                   </tbody>
                 </table>
                 <div class="row">
@@ -178,3 +156,20 @@
           </div>
         </div>
       </div>
+
+      
+<!-- Dialog de Resultado de Negociaciones-->
+<p-dialog [(visible)]="displayResultado" modal="modal" width="800" [responsive]="true" >
+    <p-header >
+      Editar Resultado de Negociación
+    </p-header>
+    <p>
+      
+    </p>
+    <p-footer>
+      <a style="color:white" class="btn btn-sm btn-danger" (click)="cancelarResultado()">
+        <i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
+      <a class="btn btn-sm btn-warning" (click)="guardarResultado()">
+        <i class="fa fa-plus" aria-hidden="true"></i> Guardar</a>
+    </p-footer>
+  </p-dialog>
