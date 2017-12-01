@@ -30,12 +30,10 @@ export class DatosPaseComponent implements OnInit {
     @Output() outgoingData = new EventEmitter<boolean>();
 
     onRowSelect(event) {
-        console.log('ABC');
         this.outgoingData.emit(true);
     }
 
     onRowUnselect(event) {
-        console.log('ABCDF');
         this.outgoingData.emit(false);
     }
 

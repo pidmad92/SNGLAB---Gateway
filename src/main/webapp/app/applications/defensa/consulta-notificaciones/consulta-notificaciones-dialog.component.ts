@@ -70,7 +70,6 @@ export class ConsultaNotificacionesPopupComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
-        console.log('OpenDialog');
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
                 this.consultaNotificacionesPopupService
@@ -83,7 +82,6 @@ export class ConsultaNotificacionesPopupComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        console.log('CloseDialog');
         this.routeSub.unsubscribe();
     }
 }

@@ -47,21 +47,19 @@ export class LeftbarComponent implements OnInit {
     }
 
     getRoute(url) {
+        console.log('|' + url + '|')
         for (const module of this.modules) {
-            if (url.indexOf(module) === 1) {
+            console.log('|' + url + '|')
+            if (url === '/') {
+                this.aplicacion = 'seguridad';
+            } else if (url.indexOf(module) === 1) {
                 if (module === 'denuncias') {
                     this.menuDefensaActive(url);
                 }
-                this.aplicacion = module;
-            } else if (url.indexOf(module) === 5) {
                 if (module === 'dictamenes') {
                     this.menuDictamenActive(url);
                 }
                 this.aplicacion = module;
-            } else {
-                if (url === '/') {
-                    this.aplicacion = 'seguridad';
-                }
             }
         }
     }
