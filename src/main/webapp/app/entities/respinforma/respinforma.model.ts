@@ -21,6 +21,12 @@ export class Respinforma implements BaseEntity {
         public nSedeupd?: number,
         public formperfil?: BaseEntity,
     ) {
-        this.nFlgactivo = false;
+        this.vNumdocum = '';
+        this.vNombre = '';
+        this.vCargores = '';
+        this.vEmailres = '';
+        this.vTelefono = '';
+        this.vCelular = '';
+        this.nFlgactivo = true;
     }
 }

@@ -1,4 +1,6 @@
 export * from './anexlaboral.model';
+export * from './modelanexo.model';
+export * from './modelanexodetalle.model';
 export * from './anexlaboral-popup.service';
 export * from './anexlaboral.service';
 export * from './anexlaboral-dialog.component';

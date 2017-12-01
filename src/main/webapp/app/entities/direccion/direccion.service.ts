@@ -11,8 +11,8 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class DireccionService {
 
-    private resourceUrl = SERVER_API_URL + 'api/direccions';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/direccions';
+    private resourceUrl = SERVER_API_URL + '/dictamenes/api/direccions';
+    private resourceSearchUrl = SERVER_API_URL + '/dictamenes/api/_search/direccions';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -90,7 +90,7 @@ export class DireccionService {
 
     obtenerDireccion(codFormPerfil: number): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/obtenerDireccion';
+        const url = SERVER_API_URL + '/dictamenes/api/obtenerDireccion';
         return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
             .map((res: Response) => this.convertResponse(res));
     }

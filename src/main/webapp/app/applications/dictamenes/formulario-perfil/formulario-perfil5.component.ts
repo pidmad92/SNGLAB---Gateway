@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy  } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
-import { Principal } from '../../../shared/index';
+import { Principal, ResponseWrapper } from '../../../shared/index';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SolicformService, Solicform } from '../../../entities/solicform/index';
 import { FormperfilService, Formperfil } from '../../../entities/formperfil/index';
@@ -12,6 +12,8 @@ import { Participa } from '../../../entities/participa/index';
 import { Hechoinver } from '../../../entities/hechoinver/index';
 import { Direccion } from '../../../entities/direccion/index';
 import { Negocolect } from '../../../entities/negocolect/index';
+import { RespinformaService, Respinforma } from '../../../entities/respinforma/index';
+import { Resulnegoc } from '../../../entities/resulnegoc/index';
 
 @Component({
     selector: 'jhi-formulario-perfil5',
@@ -49,6 +51,12 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
     solicitante: Negocolect;
     @SessionStorage('organizaciones')
     organizaciones: Negocolect[];
+    @SessionStorage('resultadoNegociaciones')
+    resultadoNegociaciones: Resulnegoc[];
+    @SessionStorage('responInfoFinanciera')
+    responInfoFinanciera: Respinforma;
+    @SessionStorage('responeInfoLaboral')
+    responeInfoLaboral: Respinforma;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -61,27 +69,26 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
         private solicitudService: SolicitudService,
         private formperfilService: FormperfilService,
         private solicfromService: SolicformService,
+        private respinformaService: RespinformaService,
     ) { }
 
     loadAll() {
-        this.subscription = this.route.params.subscribe((params) => {
-            this.load(params['nCodfperf']);
-        });
+        this.load(this.formPerfil.nCodfperf);
     }
 
     load(nCodfperf) {
-        this.solicfromService.find(nCodfperf).subscribe((solicForm) => {
-            this.solicForm = solicForm;
-            const nCodsolic = solicForm.nCodsolic;
-            // tslint:disable-next-line:no-shadowed-variable
-            const nCodfperf = solicForm.nCodfperf;
-            this.solicitudService.find(nCodsolic).subscribe((solicitud) => {
-                this.solicitud = solicitud;
-            });
-            this.formperfilService.find(nCodfperf).subscribe((formPerfil) => {
-                this.formPerfil = formPerfil;
-            });
-        });
+        this.respinformaService.obtenerResponsableInformacion(nCodfperf, 'F').subscribe((responInfoFinanciera) =>
+             this.responInfoFinanciera = responInfoFinanciera,
+        );
+        this.respinformaService.obtenerResponsableInformacion(nCodfperf, 'L').subscribe((responeInfoLaboral) =>
+            this.responeInfoLaboral = responeInfoLaboral,
+        );
+        if (this.responInfoFinanciera === null) {
+            this.responInfoFinanciera = new Respinforma;
+        }
+        if (this.responeInfoLaboral === null) {
+            this.responeInfoLaboral = new Respinforma;
+        }
     }
 
     ngOnInit() {
@@ -95,6 +102,7 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
     }
 
     private onError(error) {
+        console.log('error: ' + error);
         this.jhiAlertService.error(error.message, null, null);
     }
 

@@ -170,6 +170,7 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     showDialogDireccion() {
         this.validarUsuarioService.consultaDepas().subscribe(
             (deps: any) => {
+                this.departs = [];
                 // tslint:disable-next-line:forin
                 for (const i in deps) {
                     this.departs.push(new ComboModel(deps[i].vDesdep, deps[i].vCoddep, 0));
@@ -177,9 +178,22 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
                 this.block = false; },
             (res: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: res.json }]); this.block = false; }
         );
+        this.selectedDeparts = undefined;
+        this.selectedProvins = undefined;
+        this.selectedDistris = undefined;
         this.displayDireccion = true;
     }
     guardarDireccion() {
+
+        this.direccionRegistro.vDepart = this.selectedDeparts.name;
+        this.direccionRegistro.vCodDepa = this.selectedDeparts.value;
+
+        this.direccionRegistro.vProvincia = this.selectedProvins.name;
+        this.direccionRegistro.vCodProv = this.selectedProvins.value;
+
+        this.direccionRegistro.vDistrito = this.selectedDistris.name;
+        this.direccionRegistro.vCodDist = this.selectedDistris.value;
+
         if (this.direcciones.lastIndexOf(this.direccionRegistro, 1) === -1) {
             this.direcciones.push(this.direccionRegistro);
         }
@@ -193,6 +207,15 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
 
     editarDireccion(obj: Direccion) {
         this.direccionRegistro = obj;
+        if (this.selectedDeparts != null) {
+            this.selectedDeparts.value = this.direccionRegistro.vCodDepa;
+        }
+        if (this.selectedProvins != null) {
+            this.selectedProvins.value = this.direccionRegistro.vCodProv;
+        }
+        if (this.selectedDistris != null) {
+            this.selectedDistris.value = this.direccionRegistro.vCodDist;
+        }
         this.displayDireccion = true;
     }
 

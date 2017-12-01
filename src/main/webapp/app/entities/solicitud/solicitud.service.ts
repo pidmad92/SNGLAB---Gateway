@@ -11,9 +11,8 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class SolicitudService {
 
-    private resourceUrl = SERVER_API_URL + 'api/solicituds';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/solicituds';
-    private obtenerLista = '/obtenerSolicitud';
+    private resourceUrl = SERVER_API_URL + '/dictamenes/api/solicituds';
+    private resourceSearchUrl = SERVER_API_URL + '/dictamenes/api/_search/solicituds';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -107,7 +106,7 @@ export class SolicitudService {
 
     obtenerlistaSolicitudes(req?: any): Observable<ResponseWrapper> {
         const options = createRequestOption(req);
-        const url = SERVER_API_URL + 'api/obtenerSolicitud';
+        const url = SERVER_API_URL + '/dictamenes/api/obtenerSolicitud';
         return this.http.get(url + '?codUsuario=CODUSU', options)
             .map((res: Response) => this.convertResponse(res));
     }

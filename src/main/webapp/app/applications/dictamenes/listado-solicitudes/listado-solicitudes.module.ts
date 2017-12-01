@@ -55,6 +55,9 @@ import { ParticipaService, ParticipaComponent } from '../../../entities/particip
 import { NegocolectService, NegocolectComponent } from '../../../entities/negocolect/index';
 import { ValidarUsuarioService } from '../../denuncias/validar-usuario/validarusuario.service';
 import { ValidarUsuarioComponent } from '../../denuncias/validar-usuario/index';
+import { ResulnegocService, ResulnegocComponent } from '../../../entities/resulnegoc/index';
+import { RespinformaService, RespinformaComponent } from '../../../entities/respinforma/index';
+import { AnexlaboralService, AnexlaboralComponent } from '../../../entities/anexlaboral/index';
 
 const ENTITY_STATES = [
     ...ListadoSolicitudesRoute,
@@ -80,6 +83,9 @@ const ENTITY_STATES = [
         UndnegocioComponent,
         NegocolectComponent,
         ValidarUsuarioComponent,
+        ResulnegocComponent,
+        RespinformaComponent,
+        AnexlaboralComponent,
     ],
     imports: [
         GatewaySharedModule,
@@ -105,6 +111,9 @@ const ENTITY_STATES = [
         ActieconService,
         NegocolectService,
         ValidarUsuarioService,
+        ResulnegocService,
+        RespinformaService,
+        AnexlaboralService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -35,6 +35,9 @@ import { FormularioPerfil6Component } from '../formulario-perfil/formulario-perf
 import { NegocolectService, NegocolectComponent } from '../../../entities/negocolect/index';
 import { ValidarUsuarioService } from '../../denuncias/validar-usuario/validarusuario.service';
 import { ValidarUsuarioComponent } from '../../denuncias/validar-usuario/index';
+import { ResulnegocService, ResulnegocComponent } from '../../../entities/resulnegoc/index';
+import { RespinformaService, RespinformaComponent } from '../../../entities/respinforma/index';
+import { AnexlaboralComponent, AnexlaboralService } from '../../../entities/anexlaboral/index';
 
 const ENTITY_STATES = [
     ...ControlInformacionRoute,
@@ -56,6 +59,9 @@ const ENTITY_STATES = [
         ActieconComponent,
         NegocolectComponent,
         ValidarUsuarioComponent,
+        ResulnegocComponent,
+        RespinformaComponent,
+        AnexlaboralComponent,
     ],
     imports: [
         GatewaySharedModule,
@@ -76,6 +82,9 @@ const ENTITY_STATES = [
         ActieconService,
         NegocolectService,
         ValidarUsuarioService,
+        ResulnegocService,
+        RespinformaService,
+        AnexlaboralService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

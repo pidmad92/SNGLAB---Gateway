@@ -11,8 +11,8 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class FormarchivoService {
 
-    private resourceUrl = SERVER_API_URL + 'api/formarchivos';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/formarchivos';
+    private resourceUrl = SERVER_API_URL + '/dictamenes/api/formarchivos';
+    private resourceSearchUrl = SERVER_API_URL + '/dictamenes/api/_search/formarchivos';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 

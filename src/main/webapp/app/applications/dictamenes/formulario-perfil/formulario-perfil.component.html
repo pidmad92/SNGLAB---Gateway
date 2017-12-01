@@ -177,7 +177,7 @@
                     <span>
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input [(ngModel)]="direccion.nNotifica" type="checkbox" name="nNotifica" class="form-check-input" id="idNotificar">
+                          <input [(ngModel)]="direccion.nNotifica" type="checkbox" name="nNotifica" id="idNotificar">
                         </label>
                       </div>
                     </span>
@@ -234,10 +234,8 @@
           </div>
           <div class="col-md mb-2">
             <label for="selectDist" class="col-form-label col-form-label-sm">Distrito:</label>
-            <select class="form-control form-control-sm" id="selectDist" [(ngModel)]="direccionRegistro.vDistrito" name="vDistrito">
-              <option>Puente Piedra</option>
-              <option>Los Olivos</option>
-            </select>
+            <p-dropdown [options]="distris" name="selectedDistris" [(ngModel)]="selectedDistris" [style]="{'width':'140px'}" placeholder="Seleccione distrito."
+            filter="true" optionLabel="name"></p-dropdown>
           </div>
         </div>
         <div class="row">
