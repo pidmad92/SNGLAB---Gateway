@@ -27,14 +27,14 @@ export const mantenimientoRoute: Routes = [
                 outlet: 'popupexp'
             },
             {
-                path: '/:id/editar',
+                path: ':id/editar',
                 component: MantenimientoResultadoPopupComponent,
                 data: {
                     authorities: ['ROLE_USER'],
                     pageTitle: 'gatewayApp.resulconci.home.title'
                 },
                 canActivate: [UserRouteAccessService],
-                outlet: 'popup'
+                outlet: 'popupexp'
             }
             // ,
             // {
