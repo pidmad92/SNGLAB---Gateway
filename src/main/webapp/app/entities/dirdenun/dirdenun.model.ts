@@ -26,6 +26,7 @@ export class Dirdenun implements BaseEntity {
         public vCoddepartDes?: string,
         public vCodprovinDes?: string,
         public vCoddistriDes?: string,
+        public nCoddenute?: number
     ) {
         this.nFlgactivo = false;
     }

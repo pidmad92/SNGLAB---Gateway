@@ -12,12 +12,9 @@ import org.springframework.stereotype.Component;
 
 public class EmailComponent {
 
-    @Value("${mail.user}")
-    private String userFrom;
-    @Value("${mail.password}")
-    private String password;
-    @Value("${mail.desde}")
-    private String desde;
+    public String userFrom;
+    public String password;
+    public String desde;
     
     public  void sendEmail(String para, String subject, String body) throws MessagingException {
         Properties props = new Properties();

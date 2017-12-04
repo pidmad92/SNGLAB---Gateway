@@ -63,7 +63,6 @@ public class ServiciosExternosResource {
                 && dto.getvApemat().trim().toUpperCase().equals(persona.getApellidoMaterno())
                 && dto.getvNombres().trim().toUpperCase().equals(persona.getNombres())
             ) {
- 
             dto.setResultado(true);
             dto.setvApemat(persona.getApellidoMaterno());
             dto.setvApepat(persona.getApellidoPaterno());
@@ -76,6 +75,10 @@ public class ServiciosExternosResource {
             dto.setCodpro(persona.getCodpro());
             dto.setCoddist(persona.getCoddist());
             dto.setDireccion(persona.getDireccion());
+            dto.setdFecnac(persona.getFechaNacimiento());
+            dto.setGenero(persona.getGenero());
+            dto.vSexoper = (persona.getGenero().trim() == "1") ? "M" : "F";
+            dto.nCodtdiden = 1;
             }
             else{
                 dto.setResultado(false);

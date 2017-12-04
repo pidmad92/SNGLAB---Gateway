@@ -1,0 +1,260 @@
+<div *ngIf="formPerfil&&solicitud" class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
+    <div class="row">
+      <div class="col">
+        <h4 class="title">Perfil del Empleador</h4>
+      </div>
+    </div>
+    <div class="form-row mb-2">
+      <div class="col-md-4">
+        <div class="form-group row">
+          <label for="inpRuc" class="col-sm-3 col-form-label col-form-label-sm text-right">RUC</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control form-control-sm" id="inpRuc" placeholder="" [(ngModel)]="solicitud.vRucsol">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="form-group row">
+          <label for="inpRsocial" class="col-sm-3 col-form-label col-form-label-sm text-right" value="1047792455654">Razón Social</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control form-control-sm" id="inpRsocial" placeholder="" [(ngModel)]="solicitud.vEmpleador">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card-panel box-shadow mb-3">
+          <div class="card-body">
+            <div class="row no-gutters y-steps">
+              <div class="col d-flex justify-content-center y-step active">
+                <div class="y-progress">
+                  <div class="y-progress-line"></div>
+                </div>
+                <div class="y-content">
+                  <a href="#" class="btn-y">
+                    <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                  <p class="text-center mb-0">Datos Generales I</p>
+                </div>
+              </div>
+              <div class="col d-flex justify-content-center y-step">
+                <div class="y-progress">
+                  <div class="y-progress-line"></div>
+                </div>
+                <div class="y-content">
+                  <a href="#" class="btn-y btn-y-disabled">
+                    <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                      <i class="fa fa-database" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                  <p class="text-center mb-0">Datos Generales II</p>
+                </div>
+              </div>
+              <div class="col d-flex justify-content-center y-step">
+                <div class="y-progress">
+                  <div class="y-progress-line"></div>
+                </div>
+                <div class="y-content">
+                  <a href="#" class="btn-y btn-y-disabled">
+                    <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                      <i class="fa fa-plane" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                  <p class="text-center mb-0">Negociación Colectiva (NVC)</p>
+                </div>
+              </div>
+              <div class="col d-flex justify-content-center y-step">
+                <div class="y-progress">
+                  <div class="y-progress-line"></div>
+                </div>
+                <div class="y-content">
+                  <a href="#" class="btn-y btn-y-disabled">
+                    <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                      <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                  <p class="text-center mb-0">Resultado de Ultimas NC</p>
+                </div>
+              </div>
+              <div class="col d-flex justify-content-center y-step">
+                <div class="y-progress">
+                  <div class="y-progress-line"></div>
+                </div>
+                <div class="y-content">
+                  <a href="#" class="btn-y btn-y-disabled">
+                    <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                      <i class="fa fa-usd" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                  <p class="text-center mb-0">Responsables de Información</p>
+                </div>
+              </div>
+              <div class="col d-flex justify-content-center y-step">
+                  <div class="y-progress">
+                    <div class="y-progress-line"></div>
+                  </div>
+                  <div class="y-content">
+                    <a [routerLink]="" class="btn-y btn-y-disabled">
+                      <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                        <i class="fa fa-paperclip" aria-hidden="true"></i>
+                      </div>
+                    </a>
+                    <p class="text-center mb-0">Anexo</p>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="card card-mtpe mb-3">
+          <div class="card-header bg-light d-sm-flex justify-content-between p-1">
+            <h5 class="mb-0">
+              <small>
+                <i class="fa fa-user" aria-hidden="true"></i> Datos Generales</small>
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="form-group row mb-2">
+              <label for="inpComercial" class="col-sm-2 col-form-label col-form-label-sm">Nombre Comercial (*)</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control form-control-sm" id="inpComercial" [(ngModel)]="formPerfil.vNomcomer">
+              </div>
+            </div>
+            <div class="form-group mb-2">
+              <label for="textActividades" class="col-form-label col-form-label-sm">Breve descripción de las actividades económicas del empleador</label>
+              <textarea class="form-control form-control-sm" id="textActividades" rows="3" [(ngModel)]="formPerfil.vDesemple"></textarea>
+            </div>
+            <div class="form-group row mb-2">
+              <label for="selectCIIU" class="col-sm-2 col-form-label col-form-label-sm">CIIU (*)</label>
+              <div class="col-sm-10">
+                <select class="form-control" id="selectCIIU" [(ngModel)]="formPerfil.vCodciiu">
+                  <option *ngFor="let a of actiecon" [ngValue]="a.vCiuuaceco">{{a.vDesacteco}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row mb-2">
+              <label for="inpPartida" class="col-sm-2 col-form-label col-form-label-sm">Nro Partida Registral (*)</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control form-control-sm" id="inpPartida" [(ngModel)]="formPerfil.vPartreg">
+              </div>
+            </div>
+            <p>Dirección para notificar</p>
+            <a [routerLink]="" (click)="showDialogDireccion()" class="btn btn-sm btn-dark">
+              <i class="fa fa-plus" aria-hidden="true"></i> Añadir dirección</a>
+            <table class="table table-responsive table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>Departamento</th>
+                  <th>Distrito</th>
+                  <th>Provincia</th>
+                  <th>Dirección</th>
+                  <th>Referencia</th>
+                  <th>Notificar</th>
+                  <th>Opción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let direccion of direcciones; let i = index">
+                  <tr>
+                    <td>
+                      <span>{{direccion.vDepart}}</span>
+                    </td>
+                    <td>
+                      <span>{{direccion.vDistrito}}</span>
+                    </td>
+                    <td>
+                      <span>{{direccion.vProvincia}}</span>
+                    </td>
+                    <td>
+                      <span>{{direccion.vDireccion}}</span>
+                    </td>
+                    <td>
+                      <span>{{direccion.vReferen}}</span>
+                    </td>
+                    <td>
+                      <span>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input [(ngModel)]="direccion.nNotifica" type="checkbox" name="nNotifica" id="idNotificar">
+                          </label>
+                        </div>
+                      </span>
+                    </td>
+                    <td>
+                      <span>
+                        <a class="btn btn-sm btn-warning" (click)="editarDireccion(direccion)">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn-sm btn-danger" (click)="eliminarDireccion(direccion)">
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                      </span>
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+            <div class="row">
+              <div class="col-12 text-sm-right">
+                <a [routerLink]="" class="btn btn-sm m-1 btn-secondary">
+                  <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
+                <a [routerLink]="" (click)="irPerfil2()" class="btn btn-sm m-1 btn-success">
+                  <i class="fa fa-chevron-right" aria-hidden="true"></i> Siguiente</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <p-dialog [(visible)]="displayDireccion" modal="modal" width="600" [responsive]="true">
+    <p-header>
+      Registros de direcciones
+    </p-header>
+    <p>
+  
+      <div class="modal-body">
+        <p>Ingrese la dirección</p>
+        <form>
+          <div class="row">
+            <div class="col-md mb-2">
+              <label for="selectDe" class="col-form-label col-form-label-sm">Departamento:</label>
+              <p-dropdown [options]="departs" name="selectedDeparts" [(ngModel)]="selectedDeparts" [style]="{'width':'140px'}" placeholder="Seleccione departamento."
+              filter="true" (onChange)="onChangeDepartamento()"
+              optionLabel="name"></p-dropdown>
+            </div>
+            <div class="col-md mb-2">
+              <label for="selectProv" class="col-form-label col-form-label-sm">Provincia:</label>
+              <p-dropdown [options]="provins" name="selectedProvins" [(ngModel)]="selectedProvins" [style]="{'width':'140px'}" placeholder="Seleccione provincia."
+              filter="true" (onChange)="onChangeProvincia()"
+              optionLabel="name"></p-dropdown>
+            </div>
+            <div class="col-md mb-2">
+              <label for="selectDist" class="col-form-label col-form-label-sm">Distrito:</label>
+              <p-dropdown [options]="distris" name="selectedDistris" [(ngModel)]="selectedDistris" [style]="{'width':'140px'}" placeholder="Seleccione distrito."
+              filter="true" optionLabel="name"></p-dropdown>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md mb-2">
+              <label for="inpDireccion" class="col-form-label col-form-label-sm">Dirección:</label>
+              <input type="text" class="form-control form-control-sm" id="inpDireccion" [(ngModel)]="direccionRegistro.vDireccion" name="vDireccion">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md mb-2">
+              <label for="inpPreferencia" class="col-form-label col-form-label-sm">Referencia:</label>
+              <input type="text" class="form-control form-control-sm" id="inpPreferencia" [(ngModel)]="direccionRegistro.vReferen" name="vReferen">
+            </div>
+          </div>
+        </form>
+      </div>
+    </p>
+    <p-footer>
+      <button type="button" icon="fa-check" (click)="cancelarDireccion()">Cancelar</button>
+      <button type="button" icon="fa-close" (click)="guardarDireccion()">Añadir</button>
+    </p-footer>
+  </p-dialog>

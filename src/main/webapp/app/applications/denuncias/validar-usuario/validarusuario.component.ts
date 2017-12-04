@@ -50,8 +50,8 @@ export class ValidarUsuarioComponent implements OnInit {
     distris: ComboModel[];
     tviasLista: ComboModel[];
     tzonasLista: ComboModel[];
-    tviaSelected: string;
-    tzonaSelected: string;
+    tviaSelected: ComboModel;
+    tzonaSelected: ComboModel;
     dirdenunDirec: Dirdenun;
     selectedDeparts: ComboModel;
     selectedProvins: ComboModel;
@@ -174,16 +174,16 @@ export class ValidarUsuarioComponent implements OnInit {
         if (this.cambiaDir === true && this.tviaSelected === undefined) {
             this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar un tipo de via' });
             this.block = false;
-        } else if (this.cambiaDir === true && this.dirdenunDirec.vDesvia === '') {
+        } else if (this.cambiaDir === true && (this.dirdenunDirec.vDesvia === '' || this.dirdenunDirec.vDesvia === undefined)) {
             this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar la descripción de la via.' });
             this.block = false;
         } else if (this.cambiaDir === true && this.tzonaSelected === undefined) {
             this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar un tipo de zona' });
             this.block = false;
-        } else if (this.cambiaDir === true && this.dirdenunDirec.vDeszona === '') {
+        } else if (this.cambiaDir === true && (this.dirdenunDirec.vDeszona === '' || this.dirdenunDirec.vDesvia === undefined)) {
             this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar la descripción de la zona.' });
             this.block = false;
-        } else if (this.cambiaDir === true && this.dirdenunDirec.vDireccion === '') {
+        } else if (this.cambiaDir === true && (this.dirdenunDirec.vDireccion === '' || this.dirdenunDirec.vDesvia === undefined)) {
             this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar su dirección completa' });
             this.block = false;
         }  else if (this.cambiaDir === true && this.selectedDeparts === undefined) {
@@ -196,8 +196,60 @@ export class ValidarUsuarioComponent implements OnInit {
             this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar el distrito' });
             this.block = false;
         } else {
-            this.block = false;
+            console.log(this.pernatural);
+            this.pernatural.fecNacimiento = this.pernatural.dFecnac;
+            this.pernatural.dFecnac = null;
+            this.pernatural.vEstado = '1';
+            this.pernatural.nSedereg = 1;
+            this.pernatural.nUsuareg = 1;
+            this.pernatural.tFecreg = 0;
+            this.validarUsuarioService.regNuevoDenunciante(this.pernatural).subscribe(
+                (resp: any) => {
+                    console.log(resp);
+                    this.dirdenunDirec.nCoddenute = resp.id;
+                    // , this.pernatural.codpro, this.pernatural.coddist
+                    if (this.cambiaDir === true) {
+                        this.dirdenunDirec.nSedereg = 1;
+                        this.dirdenunDirec.vUsuareg = '1';
+                        this.dirdenunDirec.tFecreg = 0;
+                        this.dirdenunDirec.vCoddepart = this.selectedDeparts.value;
+                        this.dirdenunDirec.vCodprovin = this.selectedProvins.value;
+                        this.dirdenunDirec.vCoddistri = this.selectedDistris.value;
+                        this.dirdenunDirec.nCodtipvia = Number(this.tviaSelected.value);
+                        this.dirdenunDirec.nCodtzona = Number(this.tzonaSelected.value);
+                        this.dirdenunDirec.vDircomple = this.dirdenunDirec.vDireccion;
+                    } else {
+                        this.dirdenunDirec.nSedereg = 1;
+                        this.dirdenunDirec.vUsuareg = '1';
+                        this.dirdenunDirec.tFecreg = 0;
+                        this.dirdenunDirec.vCoddepart = this.pernatural.coddep;
+                        this.dirdenunDirec.vCodprovin = this.pernatural.codpro;
+                        this.dirdenunDirec.vCoddistri = this.pernatural.coddist;
+                        this.dirdenunDirec.nCodtipvia = 21;
+                        this.dirdenunDirec.nCodtzona = 12;
+                        this.dirdenunDirec.vDesvia = '';
+                        this.dirdenunDirec.vDeszona = '';
+                        this.dirdenunDirec.vDireccion = this.pernatural.direccion;
+                        this.dirdenunDirec.vDircomple = this.pernatural.direccion;
+                    }
+                    this.validarUsuarioService.regDireccionDenunciante(this.dirdenunDirec).subscribe(
+                        (respDir: any) => {
+                            console.log(respDir);
+                            this.displayNuevoUsuario = false;
+                            this.block = false;
+                        },
+                        (respDir: ResponseWrapper) => {
+                            console.log(respDir);
+                            this.block = false;
+                        });
+                },
+                (resp: ResponseWrapper) => {
+                    console.log(resp);
+                    this.block = false;
+                });
         }
+
+        this.onErrorMultiple(this.messageList);
     }
 
     cambiaDireccion() {
