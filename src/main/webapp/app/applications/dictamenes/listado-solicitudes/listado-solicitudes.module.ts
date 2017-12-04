@@ -59,6 +59,7 @@ import { ResulnegocService, ResulnegocComponent } from '../../../entities/resuln
 import { RespinformaService, RespinformaComponent } from '../../../entities/respinforma/index';
 import { AnexlaboralService, AnexlaboralComponent } from '../../../entities/anexlaboral/index';
 import { DecimalMask } from '../../general/decimal.directive';
+import { TipdocService, TipdocComponent } from '../../../entities/tipdoc/index';
 
 const ENTITY_STATES = [
     ...ListadoSolicitudesRoute,
@@ -88,6 +89,7 @@ const ENTITY_STATES = [
         RespinformaComponent,
         AnexlaboralComponent,
         DecimalMask,
+        TipdocComponent,
     ],
     imports: [
         GatewaySharedModule,
@@ -119,6 +121,7 @@ const ENTITY_STATES = [
         ResulnegocService,
         RespinformaService,
         AnexlaboralService,
+        TipdocService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

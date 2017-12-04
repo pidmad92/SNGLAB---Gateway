@@ -14,6 +14,9 @@ import { Direccion } from '../../../entities/direccion/index';
 import { SessionStorage } from 'ng2-webstorage';
 import { Message } from 'primeng/components/common/api';
 import { ComboModel } from '../../general/combobox.model';
+import { Tipdoc, TipdocService } from '../../../entities/tipdoc/index';
+import { ValidarUsuarioService } from '../../denuncias/validar-usuario/validarusuario.service';
+import { Negocolect } from '../../../entities/negocolect/index';
 
 @Component({
     selector: 'jhi-formulario-perfil2',
@@ -66,6 +69,10 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
     proyectos: Hechoinver[];
     @SessionStorage('direcciones')
     direcciones: Direccion[];
+    @SessionStorage('solicitante')
+    solicitante: Negocolect;
+    @SessionStorage('organizaciones')
+    organizaciones: Negocolect[];
 
     // Objetos CUD
     undNegocio: Undnegocio;
@@ -81,6 +88,9 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
     planContable: ComboModel[];
     selectedPlan: ComboModel;
 
+    tipodocs: ComboModel[];
+    selectedDoc: ComboModel;
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
@@ -94,6 +104,7 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
         private undNegocioService: UndnegocioService,
         private participaService: ParticipaService,
         private hechoinverService: HechoinverService,
+        private validarUsuarioService: ValidarUsuarioService,
     ) { }
 
     ngOnInit() {
@@ -170,6 +181,16 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
             (res: ResponseWrapper) => this.proyectos = res.json,
             (res: ResponseWrapper) => this.onError(res.json)
         );
+        this.validarUsuarioService.consultaTipoDocIdentidad().subscribe(
+            (res: ResponseWrapper) => {
+                this.tipodocs = res.json;
+                this.block = false;
+                if (this.tipodocs != null && this.selectedDoc !== undefined) {
+                    this.selectedDoc = this.tipodocs[0];
+                }
+            },
+            (res: ResponseWrapper) => { this.onError(res.json); this.block = false; }
+        );
     }
 
     // Solo numeros
@@ -192,8 +213,14 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
 
     }
 
-    setTwoNumberDecimal($event) {
-        $event.target.value = parseFloat($event.target.value).toFixed(2);
+    asignarTipoDocAccionaria() {
+        this.participacionAccionaria.vTipodoc = this.selectedDoc.name;
+        this.participacionAccionaria.vCodTipodoc = this.selectedDoc.value;
+    }
+
+    asignarTipoDocMercado() {
+        this.participacionMercado.vTipodoc = this.selectedDoc.name;
+        this.participacionMercado.vCodTipodoc = this.selectedDoc.value;
     }
 
     // Unidad de Negocio
@@ -276,6 +303,8 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
 
         if (this.validarPartiAccionaria()) {
             if (!this.editarAccion) {
+                this.participacionAccionaria.vTipodoc = this.selectedDoc.name;
+                this.participacionAccionaria.vCodTipodoc = this.selectedDoc.value;
                 this.participacionAccionaria.id = this.participacionesAccionarias.length;
                 if (this.participacionesAccionarias.lastIndexOf(this.participacionAccionaria, 1) === -1) {
                     this.participacionesAccionarias.push(this.participacionAccionaria);
@@ -328,16 +357,22 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
             this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar la razón social.' });
             error = false;
         } else if (this.participacionAccionaria.nPorcasig === undefined || this.participacionAccionaria.nPorcasig === null) {
+            this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar el porcetaje asignado' });
+            error = false;
+        } else if (this.participacionAccionaria.nPorcasig !== undefined && this.participacionAccionaria.nPorcasig !== null) {
 
-            if (this.participacionAccionaria.nPorcasig > 10) {
+            if (this.participacionAccionaria.nPorcasig <= 10) {
                 this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'El porcentaje asignado debe ser mayor a 10%' });
+                error = false;
             } else if (this.participacionAccionaria.nPorcasig > 100) {
                 this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'El porcentaje asignado máximo es 100%' });
+                error = false;
             } else {
-                this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar el porcetaje asignado' });
+                this.messageList = [];
+                this.messagesForm = [];
+                error = true;
             }
 
-            error = false;
         } else {
             this.messageList = [];
             this.messagesForm = [];
@@ -362,6 +397,8 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
     guardarPartiMercado() {
         if (this.validarPartiMercado()) {
             if (!this.editarMercado) {
+                this.participacionMercado.vTipodoc = this.selectedDoc.name;
+                this.participacionMercado.vCodTipodoc = this.selectedDoc.value;
                 this.participacionMercado.id = this.participacionesMercados.length;
                 if (this.participacionesMercados.lastIndexOf(this.participacionMercado, 1) === -1) {
                     this.participacionesMercados.push(this.participacionMercado);
@@ -413,16 +450,22 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
             this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar la razón social.' });
             error = false;
         } else if (this.participacionMercado.nPorcasig === undefined || this.participacionMercado.nPorcasig === null) {
+            this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar el porcetaje asignado' });
+            error = false;
+        } else if (this.participacionMercado.nPorcasig !== undefined && this.participacionMercado.nPorcasig !== null) {
 
-            if (this.participacionMercado.nPorcasig > 10) {
+            if (this.participacionMercado.nPorcasig <= 10) {
                 this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'El porcentaje asignado debe ser mayor a 10%' });
+                error = false;
             } else if (this.participacionMercado.nPorcasig > 100) {
                 this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'El porcentaje asignado máximo es 100%' });
+                error = false;
             } else {
-                this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar el porcetaje asignado' });
+                this.messageList = [];
+                this.messagesForm = [];
+                error = true;
             }
 
-            error = false;
         } else {
             this.messageList = [];
             this.messagesForm = [];

@@ -11,12 +11,12 @@ import { Tipzona } from '../../../entities/tipzona';
 
 @Injectable()
 export class ValidarUsuarioService {
-    private resourceTipoDoc = '/denuncias/api/tipdocidents';
+    private resourceTipoDoc = '/api/tipdocidents';
     private resourceDepa = '/api/departamentos';
     private resourceProv = '/api/provincias';
     private resourceDist = '/api/distritos';
-    private resourceTVia = '/denuncias/api/tipvias';
-    private resourceTZona = '/denuncias/api/tipzonas';
+    private resourceTVia = '/api/tipvias';
+    private resourceTZona = '/api/tipzonas';
     private resourcePersonaValidarServicio = '//localhost:8020/api/validarpersonaservicio';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
