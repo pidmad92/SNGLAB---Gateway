@@ -10,6 +10,9 @@ import { DatosEmpleadorComponent } from './registro-expediente-wizard/datos-empl
 import { DatosExpedienteComponent } from './registro-expediente-wizard/datos-expediente.component';
 import { DatosAudienciaComponent } from './registro-expediente-wizard/datos-audiencia.component';
 
+import { RegistroExpedienteService } from './registro-expediente.service';
+import { DatosPaseService } from './registro-expediente-wizard/datos-pase.service';
+
 const ENTITY_STATES = [
      ...registroExpedienteRoute
 ];
@@ -44,7 +47,8 @@ const ENTITY_STATES = [
         DatosAudienciaComponent
     ],
     providers: [
-        // AtencionEmpleadorService,
+        RegistroExpedienteService,
+        DatosPaseService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

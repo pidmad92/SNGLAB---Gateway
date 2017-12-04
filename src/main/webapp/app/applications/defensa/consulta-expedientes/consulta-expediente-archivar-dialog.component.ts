@@ -70,7 +70,6 @@ export class ConsultaExpedienteArchivarPopupComponent implements OnInit, OnDestr
     ) { }
 
     ngOnInit() {
-        console.log('OpenDialog');
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
                 this.consultaExpedienteArchivarPopupService
@@ -83,7 +82,6 @@ export class ConsultaExpedienteArchivarPopupComponent implements OnInit, OnDestr
     }
 
     ngOnDestroy() {
-        console.log('CloseDialog');
         this.routeSub.unsubscribe();
     }
 }

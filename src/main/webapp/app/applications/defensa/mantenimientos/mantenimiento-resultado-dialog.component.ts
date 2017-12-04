@@ -116,14 +116,11 @@ export class MantenimientoResultadoPopupComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
-        console.log('OpenDialog');
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
-                console.log('123')
                 this.mantenimientoResultadoPopupService
                     .open(MantenimientoResultadoDialogComponent as Component, params['id']);
             } else {
-                console.log('456')
                 this.mantenimientoResultadoPopupService
                     .open(MantenimientoResultadoDialogComponent as Component);
             }
@@ -131,7 +128,6 @@ export class MantenimientoResultadoPopupComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        console.log('CloseDialog');
         this.routeSub.unsubscribe();
     }
 }

@@ -6,6 +6,8 @@ import {
     MantenimientoResultadoComponent,
     MantenimientoResultadoDialogComponent,
     MantenimientoResultadoPopupComponent,
+    MantenimientoResultadoDeleteDialogComponent,
+    MantenimientoResultadoDeletePopupComponent,
     MantenimientoResultadoPopupService,
     MantenimientoAudienciaComponent,
     ResulconciService,
@@ -31,13 +33,17 @@ const ENTITY_STATES = [
         MantenimientoResultadoComponent,
         MantenimientoAudienciaComponent,
         MantenimientoResultadoDialogComponent,
-        MantenimientoResultadoPopupComponent
+        MantenimientoResultadoPopupComponent,
+        MantenimientoResultadoDeleteDialogComponent,
+        MantenimientoResultadoDeletePopupComponent
     ],
     entryComponents: [
         MantenimientoResultadoComponent,
         MantenimientoAudienciaComponent,
         MantenimientoResultadoDialogComponent,
-        MantenimientoResultadoPopupComponent
+        MantenimientoResultadoPopupComponent,
+        MantenimientoResultadoDeleteDialogComponent,
+        MantenimientoResultadoDeletePopupComponent
    ],
     providers: [
         ResulconciService,
