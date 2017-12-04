@@ -13,8 +13,8 @@ import { ModelAnexoDetalle } from './index';
 @Injectable()
 export class AnexlaboralService {
 
-    private resourceUrl = SERVER_API_URL + '/dictamenes/api/listarAnexoLaboral';
-    private resourceSearchUrl = SERVER_API_URL + 'dictamenes/api/_search/listarAnexoLaboral';
+    private resourceUrl = SERVER_API_URL + 'api/listarAnexoLaboral';
+    private resourceSearchUrl = SERVER_API_URL + 'api/_search/listarAnexoLaboral';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -116,28 +116,28 @@ export class AnexlaboralService {
 
     obtenerAnios(codFormPerfil: number): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + '/dictamenes/api/obtenerAnios';
+        const url = SERVER_API_URL + 'api/obtenerAnios';
         return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
             .map((res: Response) => this.convertResponse(res));
     }
 
     obtenerDecretosPorTipoAnio(codFormPerfil: number, tipo: string, anio: number): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + '/dictamenes/api/obtenerDecretosPorTipoAnio';
+        const url = SERVER_API_URL + 'api/obtenerDecretosPorTipoAnio';
         return this.http.get(url + '?codFormPerfil=' + codFormPerfil + '&tipo=' + tipo + '&anio=' + anio, options)
             .map((res: Response) => this.convertResponse(res));
     }
 
     obtenerDescripcionPorTipoAnio(codFormPerfil: number, tipo: string, anio: number): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + '/dictamenes/api/obtenerDescripcionPorTipoAnio';
+        const url = SERVER_API_URL + 'api/obtenerDescripcionPorTipoAnio';
         return this.http.get(url + '?codFormPerfil=' + codFormPerfil + '&tipo=' + tipo + '&anio=' + anio, options)
             .map((res: Response) => this.convertResponse(res));
     }
 
     obtenerCantidadPorTipoAnioDescripcion(codFormPerfil: number, tipo: string, anio: number, descripcion: string): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + '/dictamenes/api/obtenerCantidadPorTipoAnioDescripcion';
+        const url = SERVER_API_URL + 'api/obtenerCantidadPorTipoAnioDescripcion';
         return this.http.get(url + '?codFormPerfil=' + codFormPerfil + '&tipo=' + tipo + '&anio=' + anio + '&descripcion=' + descripcion, options)
             .map((res: Response) => this.convertResponseAnexo(res));
     }

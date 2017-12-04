@@ -11,8 +11,8 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class NegocolectService {
 
-    private resourceUrl = SERVER_API_URL + '/dictamenes/api/negocolects';
-    private resourceSearchUrl = SERVER_API_URL + '/dictamenes/api/_search/negocolects';
+    private resourceUrl = SERVER_API_URL + 'api/negocolects';
+    private resourceSearchUrl = SERVER_API_URL + 'api/_search/negocolects';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -98,14 +98,14 @@ export class NegocolectService {
 
     obtenerNegociacion(codFormPerfil: number, tipo: string): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + '/dictamenes/api/listarNegociacionColectiva';
+        const url = SERVER_API_URL + 'api/listarNegociacionColectiva';
         return this.http.get(url + '?tipo=' + tipo + '&codFormPerfil=' + codFormPerfil, options)
             .map((res: Response) => this.convertResponse(res));
     }
 
     obtenerNegociacionSolicitante(codFormPerfil: number, tipo: string): Observable<Negocolect> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + '/dictamenes/api/listarNegociacionColectiva';
+        const url = SERVER_API_URL + 'api/listarNegociacionColectiva';
         return this.http.get(url + '?tipo=' + tipo + '&codFormPerfil=' + codFormPerfil, options)
             .map(
                 (res: Response) => {

@@ -13,6 +13,7 @@ import { Hechoinver } from '../../../entities/hechoinver/index';
 import { Direccion } from '../../../entities/direccion/index';
 import { Negocolect } from '../../../entities/negocolect/index';
 import { Resulnegoc, ResulnegocService } from '../../../entities/resulnegoc/index';
+import { Message } from 'primeng/components/common/api';
 
 @Component({
     selector: 'jhi-formulario-perfil4',
@@ -24,36 +25,45 @@ export class FormularioPerfil4Component implements OnInit, OnDestroy {
     currentAccount: Account;
     eventSubscriber: Subscription;
     private subscription: Subscription;
-// Datos de Perfil
-@SessionStorage('solicitud')
-solicitud: Solicitud;
-@SessionStorage('solicform')
-solicForm: Solicform;
-@SessionStorage('formperfil')
-formPerfil: Formperfil;
 
-// Listados de dato
-@SessionStorage('undNegocios')
-undNegocios: Undnegocio[];
-@SessionStorage('participacionesAccionarias')
-participacionesAccionarias: Participa[];
-@SessionStorage('participacionesMercado')
-participacionesMercados: Participa[];
-@SessionStorage('obras')
-obras: Hechoinver[];
-@SessionStorage('proyectos')
-proyectos: Hechoinver[];
-@SessionStorage('direcciones')
-direcciones: Direccion[];
-@SessionStorage('solicitante')
-solicitante: Negocolect;
-@SessionStorage('organizaciones')
-organizaciones: Negocolect[];
-@SessionStorage('resultadoNegociaciones')
-resultadoNegociaciones: Resulnegoc[];
+    // Mensajes
+    messages: Message[] = [];
+    messagesForm: Message[] = [];
+    messageList: any;
 
-displayResultado: boolean;
-resultadoRegistro: Resulnegoc;
+    block: boolean;
+    editar: boolean;
+
+    // Datos de Perfil
+    @SessionStorage('solicitud')
+    solicitud: Solicitud;
+    @SessionStorage('solicform')
+    solicForm: Solicform;
+    @SessionStorage('formperfil')
+    formPerfil: Formperfil;
+
+    // Listados de dato
+    @SessionStorage('undNegocios')
+    undNegocios: Undnegocio[];
+    @SessionStorage('participacionesAccionarias')
+    participacionesAccionarias: Participa[];
+    @SessionStorage('participacionesMercado')
+    participacionesMercados: Participa[];
+    @SessionStorage('obras')
+    obras: Hechoinver[];
+    @SessionStorage('proyectos')
+    proyectos: Hechoinver[];
+    @SessionStorage('direcciones')
+    direcciones: Direccion[];
+    @SessionStorage('solicitante')
+    solicitante: Negocolect;
+    @SessionStorage('organizaciones')
+    organizaciones: Negocolect[];
+    @SessionStorage('resultadoNegociaciones')
+    resultadoNegociaciones: Resulnegoc[];
+
+    displayResultado: boolean;
+    resultadoRegistro: Resulnegoc;
 
 constructor(
     private jhiAlertService: JhiAlertService,
@@ -113,10 +123,6 @@ constructor(
         window.history.back();
     }
 
-    private onError(error) {
-        this.jhiAlertService.error(error.message, null, null);
-    }
-
     irPerfil5() {
         this.router.navigate(['./dictamenes/formulario-perfil5']);
     }
@@ -135,5 +141,16 @@ constructor(
 
     irPerfil() {
         this.router.navigate(['./dictamenes/formulario-perfil/' + this.solicForm.nCodfperf]);
+    }
+
+    private onErrorMultiple(errorList: any) {
+        for (let i = 0; i < errorList.length; i++) {
+            this.messagesForm.push(errorList[i]);
+        }
+    }
+
+    private onError(error: any) {
+        this.messages = [];
+        this.messages.push({ severity: 'error', summary: 'Mensaje de Error', detail: error.message });
     }
 }

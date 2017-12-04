@@ -43,6 +43,10 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
+        sessionStorage.removeItem('solicitud');
+        sessionStorage.removeItem('solicform');
+        sessionStorage.removeItem('formperfil');
+        sessionStorage.removeItem('direcciones');
     }
 
     load(nCodsolic) {

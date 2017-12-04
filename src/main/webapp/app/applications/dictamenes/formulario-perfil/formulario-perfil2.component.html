@@ -144,7 +144,7 @@
           <div class="form-group row m-2">
             <label for="inpComercial" class="col-sm-2 col-form-label col-form-label-sm">Grupo Economico</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control form-control-sm" id="inpComercial" placeholder="" value="CYH Solutions SAC">
+              <input type="text" class="form-control form-control-sm" id="inpComercial" maxlength="" [(ngModel)]="formPerfil.vGruecono">
             </div>
           </div>
           <p-tabView class="tab-content p-2 border border-mtpe border-top-0" id="nav-tabContent">
@@ -286,11 +286,11 @@
           <div class="row">
               <div class="col-md-6">
                 <div class="form-group row mb-2">
-                  <label for="selectDocumento" class="col-sm-4 col-form-label col-form-label-sm">Sector (*)</label>
+                  <label for="selectedSector" class="col-sm-4 col-form-label col-form-label-sm">Sector (*)</label>
                   <div class="col-sm-8">
-                    <select class="form-control form-control-sm" id="selectDocumento">
-                      <option>Privado</option>
-                    </select>
+                      <p-dropdown class="form-control form-control-sm" [options]="sector" name="selectedSector" [(ngModel)]="selectedSector" [style]="{'width':'100%'}" 
+                      optionLabel="name"> 
+                    </p-dropdown>
                   </div>
                 </div>
               </div>
@@ -306,18 +306,18 @@
               </div>
               <div class="col">
                 <div class="form-group row mb-2">
-                  <label for="selectDocumento" class="col-sm-4 col-form-label col-form-label-sm">Plan Contable Utilizado (*)</label>
+                  <label for="selectedPlan" class="col-sm-4 col-form-label col-form-label-sm">Plan Contable Utilizado (*)</label>
                   <div class="col-sm-8">
-                    <select class="form-control form-control-sm" id="selectDocumento">
-                      <option>PCGE</option>
-                    </select>
+                    <p-dropdown class="form-control form-control-sm" [options]="planContable" name="selectedPlan" [(ngModel)]="selectedPlan" [style]="{'width':'100%'}" 
+                      optionLabel="name">
+                    </p-dropdown>
                   </div>
                 </div>
               </div>
             </div>
           <div class="row">
             <div class="col-12 text-sm-right">
-              <a [routerLink]="" (click)="previousState()" class="btn btn-sm m-1 btn-success">
+              <a [routerLink]="" (click)="irPerfil()" class="btn btn-sm m-1 btn-success">
                 <i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
               <a [routerLink]="" class="btn btn-sm m-1 btn-secondary">
                 <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
@@ -343,6 +343,7 @@
       </div>
     </div>
   </p>
+  <p-messages [(value)]="messagesForm"></p-messages>
   <p-footer>
     <a style="color:white" class="btn btn-sm btn-danger" (click)="cancelarUnidad()">
       <i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
@@ -393,10 +394,11 @@
           <div class="form-group row m-2">
             <label for="inpRsocial" class="col-sm-2 col-form-label col-form-label-sm">% Asignado</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control form-control-sm" id="inpRsocial" [(ngModel)]="participacionAccionaria.nPorcasig">
+              <input type="number" decimal min="0" max="100" [(ngModel)]="participacionAccionaria.nPorcasig" class="form-control form-control-sm" id="inpRsocial">
             </div>
           </div>
   </p>
+  <p-messages [(value)]="messagesForm"></p-messages>
   <p-footer>
     <a class="btn btn-sm btn-danger" (click)="cancelarPartiAccionaria()"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
     <a class="btn btn-sm btn-warning" (click)="guardarPartiAccionaria()"><i class="fa fa-plus" aria-hidden="true"></i> Añadir</a>
@@ -445,10 +447,11 @@
           <div class="form-group row m-2">
             <label for="inpRsocial" class="col-sm-2 col-form-label col-form-label-sm">% Asignado</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control form-control-sm" id="inpRsocial" [(ngModel)]="participacionMercado.nPorcasig">
+              <input type="number" decimal min="0" max="100" class="form-control form-control-sm" id="inpRsocial" [(ngModel)]="participacionMercado.nPorcasig">
             </div>
           </div>
   </p>
+  <p-messages [(value)]="messagesForm"></p-messages>
   <p-footer>
     <a class="btn btn-sm btn-danger" (click)="cancelarPartiMercado()"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
     <a class="btn btn-sm btn-warning" (click)="guardarPartiMercado()"><i class="fa fa-plus" aria-hidden="true"></i> Añadir</a>  
@@ -467,6 +470,7 @@
           </div>
         </div>
   </p>
+  <p-messages [(value)]="messagesForm"></p-messages>
   <p-footer>
       <a class="btn btn-sm btn-danger" (click)="cancelarObras()"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
       <a class="btn btn-sm btn-warning" (click)="guardarObras()"><i class="fa fa-plus" aria-hidden="true"></i> Añadir</a>
@@ -485,6 +489,7 @@
           </div>
         </div>
   </p>
+  <p-messages [(value)]="messagesForm"></p-messages>
   <p-footer>
     <a class="btn btn-sm btn-danger" (click)="cancelarInvProy()"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
     <a class="btn btn-sm btn-warning" (click)="guardarInvProy()"><i class="fa fa-plus" aria-hidden="true"></i> Añadir</a>
