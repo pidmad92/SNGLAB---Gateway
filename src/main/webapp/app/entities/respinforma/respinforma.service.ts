@@ -11,8 +11,8 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class RespinformaService {
 
-    private resourceUrl = SERVER_API_URL + '/dictamenes/api/respinformas';
-    private resourceSearchUrl = SERVER_API_URL + '/dictamenes/api/_search/respinformas';
+    private resourceUrl = SERVER_API_URL + 'api/respinformas';
+    private resourceSearchUrl = SERVER_API_URL + 'api/_search/respinformas';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -90,7 +90,7 @@ export class RespinformaService {
 
     obtenerResponsableInformacion(codFormPerfil: number, tipo: string): Observable<Respinforma> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + '/dictamenes/api/obtenerResponsableInformacion';
+        const url = SERVER_API_URL + 'api/obtenerResponsableInformacion';
         return this.http.get(url + '?tipo=' + tipo + '&codFormPerfil=' + codFormPerfil, options)
             .map((res: Response) => {
                 const jsonResponse = res.text() ? res.json() : res;

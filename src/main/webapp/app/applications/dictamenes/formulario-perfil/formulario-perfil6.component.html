@@ -135,8 +135,9 @@
 
                 </thead>
                 <tbody>
-                  <tr>
+                  
                     <ng-container *ngFor="let des of descripciones; let i = index">
+                        <tr>
                         <td>{{des.vDesanexo}}</td>
                         
                         <td>
@@ -145,13 +146,10 @@
                         <td>
                             <input type="text" class="form-control form-control-sm" >
                         </td>
-                        
+                        </tr>
                     </ng-container>
-                  <tr>
+                  
                     <td>TOTAL</td>
-                    <td class="text-right">
-                      <label for="" class="col-form-label col-form-label-sm">0</label>
-                    </td>
                     <td class="text-right">
                       <label for="" class="col-form-label col-form-label-sm">0</label>
                     </td>

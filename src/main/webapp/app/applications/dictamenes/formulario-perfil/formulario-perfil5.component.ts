@@ -14,6 +14,7 @@ import { Direccion } from '../../../entities/direccion/index';
 import { Negocolect } from '../../../entities/negocolect/index';
 import { RespinformaService, Respinforma } from '../../../entities/respinforma/index';
 import { Resulnegoc } from '../../../entities/resulnegoc/index';
+import { Message } from 'primeng/components/common/api';
 
 @Component({
     selector: 'jhi-formulario-perfil5',
@@ -25,6 +26,14 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
     currentAccount: Account;
     eventSubscriber: Subscription;
     private subscription: Subscription;
+
+    // Mensajes
+    messages: Message[] = [];
+    messagesForm: Message[] = [];
+    messageList: any;
+
+    block: boolean;
+    editar: boolean;
 
     // Datos de Perfil
     @SessionStorage('solicitud')
@@ -101,11 +110,6 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
         window.history.back();
     }
 
-    private onError(error) {
-        console.log('error: ' + error);
-        this.jhiAlertService.error(error.message, null, null);
-    }
-
     irPerfil6() {
         this.router.navigate(['./dictamenes/formulario-perfil6']);
     }
@@ -128,5 +132,16 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
 
     irPerfil() {
         this.router.navigate(['./dictamenes/formulario-perfil/' + this.solicForm.nCodfperf]);
+    }
+
+    private onErrorMultiple(errorList: any) {
+        for (let i = 0; i < errorList.length; i++) {
+            this.messagesForm.push(errorList[i]);
+        }
+    }
+
+    private onError(error: any) {
+        this.messages = [];
+        this.messages.push({ severity: 'error', summary: 'Mensaje de Error', detail: error.message });
     }
 }

@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { GatewaySharedModule } from '../../../shared';
-import {DialogModule, TabViewModule, DropdownModule} from 'primeng/primeng';
+import {DialogModule, TabViewModule, DropdownModule, MessagesModule, MessageModule, BlockUIModule} from 'primeng/primeng';
 
 import {
     SolicitudService,
@@ -58,6 +58,7 @@ import { ValidarUsuarioComponent } from '../../denuncias/validar-usuario/index';
 import { ResulnegocService, ResulnegocComponent } from '../../../entities/resulnegoc/index';
 import { RespinformaService, RespinformaComponent } from '../../../entities/respinforma/index';
 import { AnexlaboralService, AnexlaboralComponent } from '../../../entities/anexlaboral/index';
+import { DecimalMask } from '../../general/decimal.directive';
 
 const ENTITY_STATES = [
     ...ListadoSolicitudesRoute,
@@ -86,6 +87,7 @@ const ENTITY_STATES = [
         ResulnegocComponent,
         RespinformaComponent,
         AnexlaboralComponent,
+        DecimalMask,
     ],
     imports: [
         GatewaySharedModule,
@@ -95,6 +97,9 @@ const ENTITY_STATES = [
         ReactiveFormsModule,
         TabViewModule,
         DropdownModule,
+        MessagesModule,
+        MessageModule,
+        BlockUIModule,
     ],
     entryComponents: [
         ListadoSolicitudesComponent,

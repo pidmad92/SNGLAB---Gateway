@@ -19,6 +19,7 @@ export class Participa implements BaseEntity {
         public nSedeupd?: number,
         public formperfil?: BaseEntity,
     ) {
-        this.nFlgactivo = false;
+        this.nPorcasig = 0;
+        this.nFlgactivo = true;
     }
 }

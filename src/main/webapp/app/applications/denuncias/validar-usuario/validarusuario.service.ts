@@ -12,9 +12,9 @@ import { Tipzona } from '../../../entities/tipzona';
 @Injectable()
 export class ValidarUsuarioService {
     private resourceTipoDoc = '/denuncias/api/tipdocidents';
-    private resourceDepa = '/denuncias/api/departamentos';
-    private resourceProv = '/denuncias/api/provincias';
-    private resourceDist = '/denuncias/api/distritos';
+    private resourceDepa = '/api/departamentos';
+    private resourceProv = '/api/provincias';
+    private resourceDist = '/api/distritos';
     private resourceTVia = '/denuncias/api/tipvias';
     private resourceTZona = '/denuncias/api/tipzonas';
     private resourcePersonaValidarServicio = '//localhost:8020/api/validarpersonaservicio';

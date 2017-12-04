@@ -35,10 +35,13 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     direccionRegistro: Direccion;
     private subscription: Subscription;
 
-    messageList: any;
+    // Mensajes
+    messages: Message[] = [];
     messagesForm: Message[] = [];
+    messageList: any;
 
     block: boolean;
+    editar: boolean;
 
     departs: ComboModel[];
     provins: ComboModel[];
@@ -69,13 +72,14 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.editar = false;
+        this.block = false;
         this.departs = new Array<ComboModel>();
         this.provins = new Array<ComboModel>();
         this.distris = new Array<ComboModel>();
         this.displayDireccion = false;
         this.direccionRegistro = new Direccion;
         this.loadAll();
-        // this.solicitudService.obtenerlistaFormulariosObligatorios();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
@@ -84,7 +88,7 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     ngOnDestroy() { }
 
     load(nCodfperf) {
-        if (this.solicForm == null) {
+        if (this.solicitud == null) {
             this.solicfromService.find(nCodfperf).subscribe((solicForm) => {
                 this.solicForm = solicForm;
                 const nCodsolic = solicForm.nCodsolic;
@@ -106,17 +110,27 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
                         (res: ResponseWrapper) => this.onError(res.json)
                     );
                 }
-                this.actieconService.query().subscribe(
-                    (res: ResponseWrapper) => this.actiecon = res.json,
-                    (res: ResponseWrapper) => this.onError(res.json)
-                );
             });
         }
+        this.actieconService.query().subscribe(
+            (res: ResponseWrapper) => this.actiecon = res.json,
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
+
+    // Solo numeros
+    keyPress(event: any) {
+        const pattern = /[0-9]/;
+        const inputChar = String.fromCharCode(event.charCode);
+        if (!pattern.test(inputChar)) {
+          event.preventDefault();
+        }
+      }
 
     onChangeDepartamento() {
         this.block = true;
         this.messageList = [];
+        this.messagesForm = [];
         if (this.selectedDeparts === undefined) {
             this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar un departamento' }]);
             this.block = false;
@@ -133,11 +147,14 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
                 (tprovs: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: tprovs.json }]); this.block = false; }
             );
         }
+        this.selectedProvins = undefined;
+        this.selectedDistris = undefined;
     }
 
     onChangeProvincia() {
         this.block = true;
         this.messageList = [];
+        this.messagesForm = [];
         if (this.selectedDeparts === undefined) {
             this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar un departamento' }]);
             this.block = false;
@@ -157,17 +174,15 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
                 (tdists: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: tdists.json }]); this.block = false; }
             );
         }
+        this.selectedDistris = undefined;
     }
 
     previousState() {
         window.history.back();
     }
 
-    private onError(error) {
-        this.jhiAlertService.error(error.message, null, null);
-    }
-
     showDialogDireccion() {
+        this.editar = false;
         this.validarUsuarioService.consultaDepas().subscribe(
             (deps: any) => {
                 this.departs = [];
@@ -175,7 +190,8 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
                 for (const i in deps) {
                     this.departs.push(new ComboModel(deps[i].vDesdep, deps[i].vCoddep, 0));
                 }
-                this.block = false; },
+                this.block = false;
+            },
             (res: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: res.json }]); this.block = false; }
         );
         this.selectedDeparts = undefined;
@@ -185,20 +201,58 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     }
     guardarDireccion() {
 
-        this.direccionRegistro.vDepart = this.selectedDeparts.name;
-        this.direccionRegistro.vCodDepa = this.selectedDeparts.value;
+        if (this.validarDireccion()) {
+            this.direccionRegistro.vDepart = this.selectedDeparts.name;
+            this.direccionRegistro.vCodDepa = this.selectedDeparts.value;
 
-        this.direccionRegistro.vProvincia = this.selectedProvins.name;
-        this.direccionRegistro.vCodProv = this.selectedProvins.value;
+            this.direccionRegistro.vProvincia = this.selectedProvins.name;
+            this.direccionRegistro.vCodProv = this.selectedProvins.value;
 
-        this.direccionRegistro.vDistrito = this.selectedDistris.name;
-        this.direccionRegistro.vCodDist = this.selectedDistris.value;
+            this.direccionRegistro.vDistrito = this.selectedDistris.name;
+            this.direccionRegistro.vCodDist = this.selectedDistris.value;
 
-        if (this.direcciones.lastIndexOf(this.direccionRegistro, 1) === -1) {
-            this.direcciones.push(this.direccionRegistro);
+            if (!this.editar) {
+                this.direccionRegistro.id = this.direcciones.length;
+                if (this.direcciones.lastIndexOf(this.direccionRegistro, 1) === -1) {
+                    this.direcciones.push(this.direccionRegistro);
+                }
+            } else {
+                const direccionGuardado: Direccion = this.direcciones.find((x) => x.id === this.direccionRegistro.id);
+                if (direccionGuardado !== undefined) {
+                    const index = this.direcciones.indexOf(direccionGuardado);
+                    this.direcciones[index] = this.direccionRegistro;
+                }
+
+            }
+
+            this.direccionRegistro = new Direccion;
+            this.displayDireccion = false;
         }
-        this.direccionRegistro = new Direccion;
-        this.displayDireccion = false;
+    }
+
+    validarDireccion(): boolean {
+        let error: boolean;
+        this.messageList = [];
+        this.messagesForm = [];
+        if (this.selectedDeparts === undefined) {
+            this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar un Departamento.' });
+            error = false;
+        } else if (this.selectedProvins === undefined) {
+            this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar una Provincia.' });
+            error = false;
+        } else if (this.selectedDistris === undefined) {
+            this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar un Distrito.' });
+            error = false;
+        } else if (this.direccionRegistro.vDireccion === '') {
+            this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar su Direccion.' });
+            error = false;
+        } else {
+            this.messageList = [];
+            this.messagesForm = [];
+            error = true;
+        }
+        this.onErrorMultiple(this.messageList);
+        return error;
     }
     cancelarDireccion() {
         this.direccionRegistro = new Direccion;
@@ -206,7 +260,17 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     }
 
     editarDireccion(obj: Direccion) {
-        this.direccionRegistro = obj;
+        this.editar = true;
+        this.direccionRegistro.vCodDepa = obj.vCodDepa;
+        this.direccionRegistro.vCodProv = obj.vCodProv;
+        this.direccionRegistro.vCodDist = obj.vCodDist;
+        this.direccionRegistro.vReferen = obj.vReferen;
+        this.direccionRegistro.nNotifica = obj.nNotifica;
+        this.direccionRegistro.vDireccion = obj.vDireccion;
+        this.direccionRegistro.vProvincia = obj.vProvincia;
+        this.direccionRegistro.vDistrito = obj.vDistrito;
+        this.direccionRegistro.id = obj.id;
+
         if (this.selectedDeparts != null) {
             this.selectedDeparts.value = this.direccionRegistro.vCodDepa;
         }
@@ -231,5 +295,10 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
         for (let i = 0; i < errorList.length; i++) {
             this.messagesForm.push(errorList[i]);
         }
+    }
+
+    private onError(error: any) {
+        this.messages = [];
+        this.messages.push({ severity: 'error', summary: 'Mensaje de Error', detail: error.message });
     }
 }
