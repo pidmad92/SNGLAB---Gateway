@@ -14,6 +14,10 @@ import { Undnegocio } from '../../../entities/undnegocio/index';
 import { Negocolect, NegocolectService } from '../../../entities/negocolect/index';
 import { Message } from 'primeng/components/common/api';
 import { ComboModel } from '../../general/combobox.model';
+import { FormularioPerfilService } from './index';
+import { Empresa } from '../../general/servicesmodel/empresa.model';
+import { Resulnegoc } from '../../../entities/resulnegoc/index';
+import { Respinforma } from '../../../entities/respinforma/index';
 
 @Component({
     selector: 'jhi-formulario-perfil3',
@@ -62,6 +66,12 @@ export class FormularioPerfil3Component implements OnInit, OnDestroy {
     solicitante: Negocolect;
     @SessionStorage('organizaciones')
     organizaciones: Negocolect[];
+    @SessionStorage('resultadoNegociaciones')
+    resultadoNegociaciones: Resulnegoc[];
+    @SessionStorage('responInfoFinanciera')
+    responInfoFinanciera: Respinforma;
+    @SessionStorage('responeInfoLaboral')
+    responeInfoLaboral: Respinforma;
 
     // Organizacion
     organizacion: Negocolect;
@@ -75,6 +85,8 @@ export class FormularioPerfil3Component implements OnInit, OnDestroy {
     selectedEtapa: ComboModel;
     selectedEtapaRegistro: ComboModel;
 
+    empresa: Empresa;
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
@@ -87,6 +99,7 @@ export class FormularioPerfil3Component implements OnInit, OnDestroy {
         private formperfilService: FormperfilService,
         private solicfromService: SolicformService,
         private negocolectService: NegocolectService,
+        private formularioPerfilService: FormularioPerfilService,
     ) { }
 
     // Solo numeros
@@ -218,11 +231,35 @@ export class FormularioPerfil3Component implements OnInit, OnDestroy {
                 this.solicitante = solicitante,
             );
         }
-        if (this.organizaciones === undefined || this.organizaciones.length === 0) {
+        if (this.organizaciones === undefined || this.organizaciones === null) {
             this.negocolectService.obtenerNegociacion(nCodfperf, 'O').subscribe(
                 (res: ResponseWrapper) => this.organizaciones = res.json,
                 (res: ResponseWrapper) => this.onError(res.json)
             );
+        }
+    }
+
+    buscarRazonSocial() {
+        this.messageList = [];
+        this.messagesForm = [];
+        this.empresa = new Empresa;
+        if (this.organizacion.vRucneg !== undefined && this.organizacion.vRucneg !== null && this.organizacion.vRucneg !== '') {
+            this.formularioPerfilService.obtenerDatosGenerales(this.organizacion.vRucneg)
+            .subscribe(
+                (res: ResponseWrapper) => {
+                    this.empresa = <Empresa>res.json[0];
+                    if (this.empresa.ddp_nombre !== undefined && this.empresa.ddp_nombre !== null) {
+                        this.organizacion.vRazonsoc = this.empresa.ddp_nombre;
+                    }else {
+                        this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'No se encontraron datos con el RUC ' + this.organizacion.vRucneg + '.' });
+                        this.onErrorMultiple(this.messageList);
+                    }
+                },
+                (res: ResponseWrapper) => this.onError(res.json),
+            );
+        } else {
+            this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Ingresar el Ruc de la Organizacion Sindical.' });
+            this.onErrorMultiple(this.messageList);
         }
     }
 

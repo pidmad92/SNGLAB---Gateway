@@ -16,6 +16,8 @@ import { Undnegocio } from '../../../entities/undnegocio/index';
 import { Participa } from '../../../entities/participa/index';
 import { Hechoinver } from '../../../entities/hechoinver/index';
 import { Negocolect } from '../../../entities/negocolect/index';
+import { Resulnegoc } from '../../../entities/resulnegoc/index';
+import { Respinforma } from '../../../entities/respinforma/index';
 
 @Component({
     selector: 'jhi-formulario-perfil',
@@ -54,8 +56,6 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     solicForm: Solicform;
     @SessionStorage('formperfil')
     formPerfil: Formperfil;
-    @SessionStorage('direcciones')
-    direcciones: Direccion[];
     @SessionStorage('undNegocios')
     undNegocios: Undnegocio[];
     @SessionStorage('participacionesAccionarias')
@@ -66,10 +66,18 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     obras: Hechoinver[];
     @SessionStorage('proyectos')
     proyectos: Hechoinver[];
+    @SessionStorage('direcciones')
+    direcciones: Direccion[];
     @SessionStorage('solicitante')
     solicitante: Negocolect;
     @SessionStorage('organizaciones')
     organizaciones: Negocolect[];
+    @SessionStorage('resultadoNegociaciones')
+    resultadoNegociaciones: Resulnegoc[];
+    @SessionStorage('responInfoFinanciera')
+    responInfoFinanciera: Respinforma;
+    @SessionStorage('responeInfoLaboral')
+    responeInfoLaboral: Respinforma;
 
     constructor(
         private solicitudService: SolicitudService,

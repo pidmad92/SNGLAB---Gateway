@@ -125,7 +125,7 @@
                   <div class="col-md-2">
                     <div class="form-group row">
                       <div class="col-sm-9">
-                        <a href="#" class="btn btn-sm btn-secondary"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                        <a style="color:white;" (click)="buscarNombreFinanciero()" class="btn btn-sm btn-secondary"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
                       </div>
                     </div>
                   </div>
@@ -133,7 +133,7 @@
                 <div class="form-group row mb-2">
                   <label for="inpNombre" class="col-sm-1 col-form-label col-form-label-sm">Nombre</label>
                   <div class="col-sm-11">
-                    <input type="text" class="form-control form-control-sm" name="txtNombre" id="inpNombre" [(ngModel)]="responInfoFinanciera.vNombre">
+                    <input type="text" disabled class="form-control form-control-sm" name="txtNombre" id="inpNombre" [(ngModel)]="responInfoFinanciera.vNombre">
                   </div>
                 </div>
                 <div class="form-group row mb-2">
@@ -187,7 +187,7 @@
                   <div class="col-md-2">
                     <div class="form-group row">
                       <div class="col-sm-9">
-                        <a href="#" class="btn btn-sm btn-secondary"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                        <a style="color:white;" (click)="buscarNombreLaboral()" class="btn btn-sm btn-secondary"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
                       </div>
                     </div>
                   </div>
@@ -195,7 +195,7 @@
                 <div class="form-group row mb-2">
                   <label for="inpNombre" class="col-sm-1 col-form-label col-form-label-sm">Nombre</label>
                   <div class="col-sm-11">
-                    <input type="text" class="form-control form-control-sm" name="txtNombre" id="inpNombre" [(ngModel)]="responeInfoLaboral.vNombre">
+                    <input type="text" disabled class="form-control form-control-sm" name="txtNombre" id="inpNombre" [(ngModel)]="responeInfoLaboral.vNombre">
                   </div>
                 </div>
                 <div class="form-group row mb-2">
@@ -232,6 +232,7 @@
                 </div>
               </div>
             </div>
+            <p-messages [(value)]="messagesForm"></p-messages>
             <div class="row">
               <div class="col-12 text-sm-right">
                 <a [routerLink]="" (click)="irPerfil4()" class="btn btn-sm m-1 btn-success"><i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>

@@ -17,6 +17,12 @@ import { ComboModel } from '../../general/combobox.model';
 import { Tipdoc, TipdocService } from '../../../entities/tipdoc/index';
 import { ValidarUsuarioService } from '../../denuncias/validar-usuario/validarusuario.service';
 import { Negocolect } from '../../../entities/negocolect/index';
+import { Empresa } from '../../general/servicesmodel/empresa.model';
+import { FormularioPerfilService } from './index';
+import { Persona } from '../../general/servicesmodel/persona.model';
+import { CarnetExtranjeria } from '../../general/servicesmodel/carnetextranjeria.model';
+import { Resulnegoc } from '../../../entities/resulnegoc/index';
+import { Respinforma } from '../../../entities/respinforma/index';
 
 @Component({
     selector: 'jhi-formulario-perfil2',
@@ -73,6 +79,12 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
     solicitante: Negocolect;
     @SessionStorage('organizaciones')
     organizaciones: Negocolect[];
+    @SessionStorage('resultadoNegociaciones')
+    resultadoNegociaciones: Resulnegoc[];
+    @SessionStorage('responInfoFinanciera')
+    responInfoFinanciera: Respinforma;
+    @SessionStorage('responeInfoLaboral')
+    responeInfoLaboral: Respinforma;
 
     // Objetos CUD
     undNegocio: Undnegocio;
@@ -91,6 +103,10 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
     tipodocs: ComboModel[];
     selectedDoc: ComboModel;
 
+    empresa: Empresa;
+    persona: Persona;
+    carnetExtranjeria: CarnetExtranjeria;
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
@@ -105,6 +121,7 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
         private participaService: ParticipaService,
         private hechoinverService: HechoinverService,
         private validarUsuarioService: ValidarUsuarioService,
+        private formularioPerfilService: FormularioPerfilService,
     ) { }
 
     ngOnInit() {
@@ -197,8 +214,6 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
     keyPress(event: any) {
         const pattern = /[0-9]/;
         const inputChar = String.fromCharCode(event.charCode);
-        console.log('inputChar: ' + inputChar);
-        console.log('participacionAccionaria.nPorcasig: ' + this.participacionAccionaria.nPorcasig);
         if (event.charCode === 46) {
             // Check if the text already contains the . character
             if (this.participacionAccionaria.nPorcasig.toString().indexOf('.') !== -1) {
@@ -214,11 +229,13 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
     }
 
     asignarTipoDocAccionaria() {
+        this.participacionAccionaria.vRazonsoc = '';
         this.participacionAccionaria.vTipodoc = this.selectedDoc.name;
         this.participacionAccionaria.vCodTipodoc = this.selectedDoc.value;
     }
 
     asignarTipoDocMercado() {
+        this.participacionMercado.vRazonsoc = '';
         this.participacionMercado.vTipodoc = this.selectedDoc.name;
         this.participacionMercado.vCodTipodoc = this.selectedDoc.value;
     }
@@ -289,6 +306,9 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
 
     // Participacion Accionaria
     showPartiAccionaria() {
+        this.selectedDoc = this.tipodocs[0];
+        this.participacionAccionaria.vTipodoc = this.selectedDoc.name;
+        this.participacionAccionaria.vCodTipodoc = this.selectedDoc.value
         this.block = true;
         this.editarAccion = false;
         this.displayPartiAccionaria = true;
@@ -384,6 +404,9 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
 
     // Participacion de Mercado
     showPartiMercado() {
+        this.selectedDoc = this.tipodocs[0];
+        this.participacionMercado.vTipodoc = this.selectedDoc.name;
+        this.participacionMercado.vCodTipodoc = this.selectedDoc.value
         this.block = true;
         this.displayPartiMercado = true;
         this.editarMercado = false;
@@ -607,6 +630,180 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
         }
         this.onErrorMultiple(this.messageList);
         return error;
+    }
+
+    buscarNombrePorDocumentoAccionaria() {
+        this.messageList = [];
+        this.messagesForm = [];
+        if (this.selectedDoc.value === '2') {
+            // RUC
+            this.empresa = new Empresa;
+            if (this.participacionAccionaria.vNumdocum !== undefined
+                && this.participacionAccionaria.vNumdocum !== null
+                && this.participacionAccionaria.vNumdocum !== '') {
+                this.formularioPerfilService.obtenerDatosGenerales(this.participacionAccionaria.vNumdocum)
+                    .subscribe(
+                    (res: ResponseWrapper) => {
+                        this.empresa = <Empresa>res.json[0];
+                        if (this.empresa.ddp_nombre !== undefined && this.empresa.ddp_nombre !== null) {
+                            this.participacionAccionaria.vRazonsoc = this.empresa.ddp_nombre;
+                        } else {
+                            this.messageList.push({
+                                severity: 'error', summary: 'Mensaje de Error', detail: 'No se encontraron ' +
+                                    'datos con el RUC ' + this.participacionAccionaria.vNumdocum + '.'
+                            });
+                            this.onErrorMultiple(this.messageList);
+                        }
+                    },
+                    (res: ResponseWrapper) => this.onError(res.json),
+                );
+            } else {
+                this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Ingresar el RUC de la Participacion Accionaria.' });
+                this.onErrorMultiple(this.messageList);
+            }
+        } else if (this.selectedDoc.value === '1') {
+            // DNI
+            this.persona = new Persona;
+            if (this.participacionAccionaria.vNumdocum !== undefined
+                && this.participacionAccionaria.vNumdocum !== null
+                && this.participacionAccionaria.vNumdocum !== '') {
+                this.formularioPerfilService.obtenerDatosReniec(this.participacionAccionaria.vNumdocum)
+                    .subscribe(
+                    (res: ResponseWrapper) => {
+                        this.persona = <Persona>res.json[0];
+                        if (this.persona.nombres !== undefined && this.persona.nombres !== null) {
+                            this.participacionAccionaria.vRazonsoc = this.persona.apellidoPaterno + ' ' + this.persona.apellidoMaterno + ' ' + this.persona.nombres;
+                        } else {
+                            this.messageList.push({
+                                severity: 'error', summary: 'Mensaje de Error', detail: 'No se encontraron ' +
+                                    'datos con el DNI ' + this.participacionAccionaria.vNumdocum + '.'
+                            });
+                            this.onErrorMultiple(this.messageList);
+                        }
+                    },
+                    (res: ResponseWrapper) => this.onError(res.json),
+                );
+            } else {
+                this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Ingresar el DNI del Participante Accionario.' });
+                this.onErrorMultiple(this.messageList);
+            }
+        } else if (this.selectedDoc.value === '4') {
+            // PASAPORTE
+        } else if (this.selectedDoc.value === '3') {
+            // CARNET EXTRANJERIA
+            this.carnetExtranjeria = new CarnetExtranjeria;
+            if (this.participacionAccionaria.vNumdocum !== undefined
+                && this.participacionAccionaria.vNumdocum !== null
+                && this.participacionAccionaria.vNumdocum !== '') {
+                this.formularioPerfilService.obtenerDatosMigracion(this.participacionAccionaria.vNumdocum)
+                    .subscribe(
+                    (res: ResponseWrapper) => {
+                        this.carnetExtranjeria = <CarnetExtranjeria>res.json[0];
+                        if (this.carnetExtranjeria.strNombres !== undefined && this.carnetExtranjeria.strNombres !== null) {
+                            this.participacionAccionaria.vRazonsoc = this.carnetExtranjeria.strPrimerApellido + ' ' +
+                            this.carnetExtranjeria.strSegundoApellido + ' ' + this.carnetExtranjeria.strNombres;
+                        } else {
+                            this.messageList.push({
+                                severity: 'error', summary: 'Mensaje de Error', detail: 'No se encontraron ' +
+                                    'datos del Carnet de Extranjeria ' + this.participacionAccionaria.vNumdocum + '.'
+                            });
+                            this.onErrorMultiple(this.messageList);
+                        }
+                    },
+                    (res: ResponseWrapper) => this.onError(res.json),
+                );
+            } else {
+                this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Ingresar el numero de Carnet de Extranjeria de la Participacion Accionaria.' });
+                this.onErrorMultiple(this.messageList);
+            }
+        }
+    }
+
+    buscarNombrePorDocumentoMercado() {
+        this.messageList = [];
+        this.messagesForm = [];
+        if (this.selectedDoc.value === '2') {
+            // RUC
+            this.empresa = new Empresa;
+            if (this.participacionMercado.vNumdocum !== undefined
+                && this.participacionMercado.vNumdocum !== null
+                && this.participacionMercado.vNumdocum !== '') {
+                this.formularioPerfilService.obtenerDatosGenerales(this.participacionMercado.vNumdocum)
+                    .subscribe(
+                    (res: ResponseWrapper) => {
+                        this.empresa = <Empresa>res.json[0];
+                        if (this.empresa.ddp_nombre !== undefined && this.empresa.ddp_nombre !== null) {
+                            this.participacionMercado.vRazonsoc = this.empresa.ddp_nombre;
+                        } else {
+                            this.messageList.push({
+                                severity: 'error', summary: 'Mensaje de Error', detail: 'No se encontraron ' +
+                                    'datos con el RUC ' + this.participacionMercado.vNumdocum + '.'
+                            });
+                            this.onErrorMultiple(this.messageList);
+                        }
+                    },
+                    (res: ResponseWrapper) => this.onError(res.json),
+                );
+            } else {
+                this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Ingresar el RUC de la Participacion Accionaria.' });
+                this.onErrorMultiple(this.messageList);
+            }
+        } else if (this.selectedDoc.value === '1') {
+            // DNI
+            this.persona = new Persona;
+            if (this.participacionMercado.vNumdocum !== undefined
+                && this.participacionMercado.vNumdocum !== null
+                && this.participacionMercado.vNumdocum !== '') {
+                this.formularioPerfilService.obtenerDatosReniec(this.participacionMercado.vNumdocum)
+                    .subscribe(
+                    (res: ResponseWrapper) => {
+                        this.persona = <Persona>res.json[0];
+                        if (this.persona.nombres !== undefined && this.persona.nombres !== null) {
+                            this.participacionMercado.vRazonsoc = this.persona.apellidoPaterno + ' ' + this.persona.apellidoMaterno + ' ' + this.persona.nombres;
+                        } else {
+                            this.messageList.push({
+                                severity: 'error', summary: 'Mensaje de Error', detail: 'No se encontraron ' +
+                                    'datos con el DNI ' + this.participacionMercado.vNumdocum + '.'
+                            });
+                            this.onErrorMultiple(this.messageList);
+                        }
+                    },
+                    (res: ResponseWrapper) => this.onError(res.json),
+                );
+            } else {
+                this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Ingresar el DNI del Participante Accionario.' });
+                this.onErrorMultiple(this.messageList);
+            }
+        } else if (this.selectedDoc.value === '4') {
+            // PASAPORTE
+        } else if (this.selectedDoc.value === '3') {
+            // CARNET EXTRANJERIA
+            this.carnetExtranjeria = new CarnetExtranjeria;
+            if (this.participacionMercado.vNumdocum !== undefined
+                && this.participacionMercado.vNumdocum !== null
+                && this.participacionMercado.vNumdocum !== '') {
+                this.formularioPerfilService.obtenerDatosMigracion(this.participacionMercado.vNumdocum)
+                    .subscribe(
+                    (res: ResponseWrapper) => {
+                        this.carnetExtranjeria = <CarnetExtranjeria>res.json[0];
+                        if (this.carnetExtranjeria.strNombres !== undefined && this.carnetExtranjeria.strNombres !== null) {
+                            this.participacionMercado.vRazonsoc = this.carnetExtranjeria.strPrimerApellido + ' ' +
+                            this.carnetExtranjeria.strSegundoApellido + ' ' + this.carnetExtranjeria.strNombres;
+                        } else {
+                            this.messageList.push({
+                                severity: 'error', summary: 'Mensaje de Error', detail: 'No se encontraron ' +
+                                    'datos del Carnet de Extranjeria ' + this.participacionMercado.vNumdocum + '.'
+                            });
+                            this.onErrorMultiple(this.messageList);
+                        }
+                    },
+                    (res: ResponseWrapper) => this.onError(res.json),
+                );
+            } else {
+                this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Ingresar el numero de Carnet de Extranjeria de la Participacion Accionaria.' });
+                this.onErrorMultiple(this.messageList);
+            }
+        }
     }
 
     // Router

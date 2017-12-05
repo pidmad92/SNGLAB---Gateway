@@ -23,7 +23,6 @@ export class DecimalMask {
       newVal = '';
     } else {
       const matches = valArray[0].match(/[0-9]{3}/mig);
-      console.log('valArray[0]: ' + valArray[0]);
       if (matches !== null && valArray[0].length > 3) {
         const commaGroups = Array.from(Array.from(valArray[0]).reverse().join('')).reverse().join('');
         const replacement = valArray[0].replace(commaGroups.replace(/\D/g, ''), '');
