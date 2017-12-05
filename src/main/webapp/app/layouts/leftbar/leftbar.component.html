@@ -29,6 +29,27 @@
             </li>
         </ul>
     </div>
+<!-- PATROCINIO- LEFTBAR -->
+<div class="my-2" *ngIf="aplicacion == 'patrocinio'">
+    <ul class="level-one p-0" id="accordion">
+        <li routerLinkActive="active">
+            <a routerLink="patrocinio/legajo-registro" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                <i class="fa fa-user-plus px-2" aria-hidden="true"></i> <span>Registro de Legajo</span>
+            </a>
+        </li>
+        <li>
+            <a role="button" data-role="disabled" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                <i class="fa fa-group px-2" aria-hidden="true"></i> <span>Atenciones</span>
+            </a>
+        </li>
+        <li routerLinkActive="active">
+            <a routerLink="patrocinio/atencion-legajo" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                <i class="fa fa-eye px-2" aria-hidden="true"></i> <span>Consulta de Legajos</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
 
     <div class="my-2" *ngIf="aplicacion == 'defensa'">
         <ngb-accordion #leftAcc="ngbAccordion" destroyOnHide="false" class="level-one mt-2 p-0" id="accordion" activeIds="{{accordionDefensa}}" [closeOthers]="true">

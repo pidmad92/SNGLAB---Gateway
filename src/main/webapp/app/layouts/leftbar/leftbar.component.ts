@@ -27,7 +27,7 @@ export class LeftbarComponent implements OnInit {
     aplicacion: string;
     accordionDefensa = 'expediente';
     menuDefensa = [ 'expediente', 'audiencia', 'reportes', 'mantenimiento']
-    private modules = ['consultas', 'defensa', 'liquidaciones', 'sindicatos', 'dictamenes', 'denuncias', 'seguridad'];
+    private modules = ['consultas', 'defensa', 'liquidaciones', 'sindicatos', 'dictamenes', 'denuncias', 'seguridad', 'patrocinio'];
 
     constructor(
         private loginService: LoginService,

@@ -40,6 +40,8 @@ export class TopbarComponent implements OnInit {
             this.ruta = '1';
         } else if (router.url.indexOf('consultas') === 1) {
             this.ruta = '2';
+        } else if (router.url.indexOf('patrocinio') === 1) {
+            this.ruta = '5';
         } else if (router.url.indexOf('sindicatos') === 1) {
             this.ruta = '6';
         } else if (router.url.indexOf('denuncias') === 1) {
@@ -58,6 +60,8 @@ export class TopbarComponent implements OnInit {
             this.router.navigate(['/consultas/atencion']);
         } else if (this.ruta === '8') {
             this.router.navigate(['/dictamenes/listado-solicitudes']);
+        } else if (this.ruta === '5') {
+            this.router.navigate(['/patrocinio/legajo-registro']);
         } else if (this.ruta === '3') {
             this.router.navigate(['/defensa/expediente/registro' , { outlets: { wizard: ['datos-pase'] } }]);
         } else if (this.ruta === '4') {
