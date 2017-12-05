@@ -6,8 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { ResponseWrapper } from '../../../../shared';
 import { DatePipe } from '@angular/common';
 import { ComboModel } from '../../../general/combobox.model';
-import { DatosPaseService } from './datos-pase.service';
-import { Pasegl } from './../';
+import { DatosWizardService } from './datos-wizard.service';
+import { Pasegl, RegistroExpedienteService } from './../';
+import { RegistroExpedienteWizardService } from './registro-expediente-wizard.service';
 
 @Component({
     selector: 'jhi-datos-pase',
@@ -21,28 +22,31 @@ export class DatosPaseComponent implements OnInit {
     pasesDoc: Object;
     pasegls: Pasegl[];
 
+    pasegl: Pasegl;
+
     tipodocs: ComboModel[];
     selectedTipodoc: ComboModel;
     vNumdoc: string;
     block: boolean;
     currentSearch: string;
 
-    @Output() outgoingData = new EventEmitter<boolean>();
+    message: string;
 
     onRowSelect(event) {
-        this.outgoingData.emit(true);
+        console.log(event.data);
+        this.data.cambiarPase(event.data);
     }
-
     onRowUnselect(event) {
-        this.outgoingData.emit(false);
     }
 
     constructor(
         private datePipe: DatePipe,
-        private datosPaseService: DatosPaseService
+        private datosPaseService: DatosWizardService,
+        private data: RegistroExpedienteWizardService
     ) {}
 
     ngOnInit() {
+        this.data.paseSeleccionado.subscribe((pasegl) => this.pasegl = pasegl);
         this.es = ES;
         // this.pases = [
         //     {codPase : '895624233', fechaPase: '02/02/2017', rucEmp: '2334343333', razonSocial: 'Ministerio de Trabajo',
@@ -81,7 +85,6 @@ export class DatosPaseComponent implements OnInit {
             (res: ResponseWrapper) => {
                 this.pasegls = res.json;
                 this.currentSearch = '';
-                console.log(res.json);
             },
             (res: ResponseWrapper) => this.onError(res.json)
         );

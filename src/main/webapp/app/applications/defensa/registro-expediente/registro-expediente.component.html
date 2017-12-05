@@ -1,7 +1,5 @@
 <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="false"></p-steps>
 <router-outlet name="wizard"></router-outlet>
-<app-child (outgoingData)="receiveMessage($event)"></app-child>
-
 <div class="footer-steps">
 	<button type="button" *ngIf="activeIndex > 0" class="btn btn-sm m-1 px-3 btn-success float-left"
 		(click)="previous()" label="Previous"><i class="fa fa-chevron-left" aria-hidden="true"></i> Anterior</button>
