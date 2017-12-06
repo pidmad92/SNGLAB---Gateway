@@ -14,6 +14,10 @@ import { Dirpernat } from './../dirpernat.model';
 export class DatosWizardService {
     private resourceTipoDoc = '/defensa/api/tipdocidents';
     private resourceDefensa = '/defensa/api';
+    private resourceDirec = '/defensa/api/dirpernats';
+    private resourceDepa = '/defensa/api/departamentos';
+    private resourceProv = '/defensa/api/provincias';
+    private resourceDist = '/defensa/api/distritos';
     private resourcePersonaValidarServicio = '//localhost:8020/api/validarpersonaservicio';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils, private datePipe: DatePipe) { }
@@ -81,5 +85,103 @@ export class DatosWizardService {
             .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
+
+    consDep(req?: any): Observable<ResponseWrapper> {
+        const options = createRequestOption(req);
+        return this.http.get(this.resourceDepa, options)
+            .map((res: Response) => this.convertResponseDep(res));
+    }
+    private convertResponseDep(res: Response): ResponseWrapper {
+        const jsonResponse = res.json();
+        return new ResponseWrapper(res.headers, jsonResponse, res.status);
+    }
+
+    consProv(id: string): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceProv}/${id}`)
+            .map((res: Response) => this.convertResponseProv(res));
+    }
+    private convertResponseProv(res: Response): ResponseWrapper {
+        const jsonResponse = res.json();
+        return new ResponseWrapper(res.headers, jsonResponse, res.status);
+    }
+
+    consDis(id: string, idprov: string): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceDist}/${id}/${idprov}`)
+            .map((res: Response) => this.convertResponseDis(res));
+    }
+    private convertResponseDis(res: Response): ResponseWrapper {
+        const jsonResponse = res.json();
+        return new ResponseWrapper(res.headers, jsonResponse, res.status);
+    }
+
+    createDir(dirpernat: Dirpernat): Observable<Dirpernat> {
+        dirpernat.nUsuareg = 1;
+        dirpernat.nFlgactivo = true;
+        dirpernat.nSedereg = 1;
+        const copy = this.convert(dirpernat);
+        return this.http.post(this.resourceDirec, copy).map((res: Response) => {
+            const jsonResponse = res.json();
+            return this.convertItemFromServer(jsonResponse);
+        });
+    }
+
+    updateDir(dirpernat: Dirpernat): Observable<Dirpernat> {
+        const copy = this.convert(dirpernat);
+        return this.http.put(this.resourceDirec, copy).map((res: Response) => {
+            const jsonResponse = res.json();
+            return this.convertItemFromServer(jsonResponse);
+        });
+    }
+
+    private convert(dirpernat: Dirpernat): Dirpernat {
+        const copy: Dirpernat = Object.assign({}, dirpernat);
+
+        copy.tFecreg = this.dateUtils.toDate(dirpernat.tFecreg);
+
+        copy.tFecupd = this.dateUtils.toDate(dirpernat.tFecupd);
+        return copy;
+    }
+
+    // consultaDepas(): any {
+    //     return this.http.get(`${this.resourceDepa}`).map((res: Response) => {
+    //         const jsonResponse = res.json();
+    //         return jsonResponse;
+    //     });
+    // }
+
+    // consultaDepa(depas: any): any {
+    //     return this.http.get(`${this.resourceDepa}/${depas}`).map((res: Response) => {
+    //         const jsonResponse = res.json();
+    //         return jsonResponse;
+    //     });
+    // }
+
+    // consultaProvs(depas: any): any {
+    //     return this.http.get(`${this.resourceProv}/${depas}`).map((res: Response) => {
+    //         const jsonResponse = res.json();
+    //         return jsonResponse;
+    //     });
+    // }
+
+    // consultaProv(depas: any, prov: any): any {
+    //     return this.http.get(`${this.resourceProv}/${depas}/${prov}`).map((res: Response) => {
+    //         const jsonResponse = res.json();
+    //         return jsonResponse;
+    //     });
+    // }
+
+    // consultaDist(depas: any, prov: any, dist: any): any {
+    //     return this.http.get(`${this.resourceDist}/${depas}/${prov}/${dist}`).map((res: Response) => {
+    //         const jsonResponse = res.json();
+    //         return jsonResponse;
+    //     });
+    // }
+
+    // consultaDists(depas: any, prov: any): any {
+    //     return this.http.get(`${this.resourceDist}/${depas}/${prov}`).map((res: Response) => {
+    //         const jsonResponse = res.json();
+    //         return jsonResponse;
+    //     });
+    // }
 
 }

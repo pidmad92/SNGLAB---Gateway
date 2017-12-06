@@ -12,7 +12,8 @@
                             <div class="form-group row">
                                 <label for="inpTipo" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo de documentos</label>
                                 <div class="col-sm-7">
-                                    <p-dropdown name="tipoDocumento" [options]="tipoDocumento" [(ngModel)]="selectedTDocumento" placeholder="Seleccione Tipo de Documento"></p-dropdown>
+                                    <p-dropdown [options]="tipodocs" (onChange)="func($event)" name="selectedTipodoc" [(ngModel)]="selectedTipodoc" [style]="{'width':'140px'}" placeholder="Seleccione"
+                                    optionLabel="name"></p-dropdown>
                                     <!-- <select class="form-control form-control-sm" [(ngModel)]="tipoDocumento" id="inpTipo">
                                         <option>RUC</option>
                                         <option>DNI</option>
@@ -24,7 +25,7 @@
                             <div class="form-group row">
                             <label for="inpNumero" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Número</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control form-control-sm" id="inpNumero" placeholder="">
+                                <input class="form-control form-control-sm" type="text" [(ngModel)]="pernatural.vNumdoc" name="pernatural.vNumdoc" />
                             </div>
                             </div>
                         </div>
@@ -38,37 +39,38 @@
                     </div>
                 </form>
                 <form>
-                    <div *ngIf="selectedTDocumento=='2'" class="row">
+                    <div *ngIf="selectedTipodoc.value!=='2'" class="row">
                         <div class="col-md-7">
                             <div class="row d-flex justify-content-between">
                             <div class="col-md-5 mb-2">
                                 <label for="inpAP" class="col-form-label col-form-label-sm">Apellido Paterno:</label>
-                                <input type="text" class="form-control form-control-sm" id="inpAP" placeholder="" value="Maldonado">
+                                <input type="text" [(ngModel)]="pernatural.vApepat" name="pernatural.vApepat" class="form-control form-control-sm" >
                             </div>
                             <div class="col-md-5 mb-2">
                                 <label for="inpAM" class="col-form-label col-form-label-sm">Apellido Materno:</label>
-                                <input type="text" class="form-control form-control-sm" id="inpAM" placeholder="" value="Diaz">
+                                <input type="text" [(ngModel)]="pernatural.vApemat" name="pernatural.vApemat" class="form-control form-control-sm" >
                             </div>
                             </div>  
                         </div>
                         <div class="col-md-5">
                             <label for="inpN" class="col-form-label col-form-label-sm">Nombres:</label>
-                            <input type="text" class="form-control form-control-sm" id="inpN" placeholder="" value="Pierre David">
+                            <input type="text" [(ngModel)]="pernatural.vNombres" name="pernatural.vNombres" class="form-control form-control-sm" >
                         </div>
                     </div>
-                    <div *ngIf="selectedTDocumento=='2'" class="row">
+                    <div *ngIf="selectedTipodoc.value!=='2'" class="row">
                         <div class="col-md-7">
                             <div class="row d-flex justify-content-between">
                             <div class="col-md-5 mb-2">
                                 <label for="inpFec" class="col-form-label col-form-label-sm">Fecha de Nacimiento:</label>
-                                <input type="text" class="form-control form-control-sm" id="inpFec" placeholder="" value="Maldonado">
+                                <input type="text" [(ngModel)]="pernatural.dFecnac" name="pernatural.dFecnac" class="form-control form-control-sm"  >
                             </div>
                             <div class="col-md-5 mb-2">
                                 <label for="selectSexo" class="col-form-label col-form-label-sm">Sexo:</label>
-                                <select class="form-control form-control-sm" id="selectSexo">
+                                <p-dropdown [options]="sexo" name="pernatural.vSexoper" [(ngModel)]="pernatural.vSexoper" [style]="{'width':'100%'}" optionLabel="name"></p-dropdown>
+                                <!-- <select class="form-control form-control-sm" id="selectSexo">
                                 <option>Masculino</option>
                                 <option>Femenino</option>
-                                </select>
+                                </select> -->
                             </div>
                             </div>  
                         </div>
@@ -76,16 +78,16 @@
                             <div class="row">
                             <div class="col-md-6">
                                 <label for="inpTele" class="col-form-label col-form-label-sm">Telefono:</label>
-                                <input type="text" class="form-control form-control-sm" id="inpTele" placeholder="" value="123456789">
+                                <input type="text" [(ngModel)]="pernatural.vTelefono" name="pernatural.vTelefono" class="form-control form-control-sm" >
                             </div>
                             <div class="col-md-6">
                                 <label for="inpCel" class="col-form-label col-form-label-sm">Celular:</label>
-                                <input type="text" class="form-control form-control-sm" id="inpCel" placeholder="" value="987654321">
+                                <input type="text" [(ngModel)]="pernatural.vCelular" name="pernatural.vCelular" class="form-control form-control-sm" >
                             </div>
                             </div>
                         </div>
                     </div>
-                    <div *ngIf="selectedTDocumento=='1'" class="row">
+                    <div *ngIf="selectedTipodoc.value==='2'" class="row">
                         <div class="col-md-7 mb-2">
                             <label for="inpFec" class="col-form-label col-form-label-sm">Razón social:</label>
                             <input type="text" class="form-control form-control-sm" id="inpFec" placeholder="" value="MINIST DE TRABAJO Y PROMOCIÓN DEL EMPLEO">  

@@ -5,6 +5,7 @@
                 <h5>Registro de Expediente<small class="ml-3">Datos del Trabajador</small></h5>
             </div>
             <div class="card-body">
+                <p-messages [(value)]="messages"></p-messages>
                 <form>
                     <div class="form-row">
                         <div class="col-lg-5">
@@ -78,7 +79,7 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-12">
-                            <p-dataTable [value]="dirpernat" selectionMode="single" [(selection)]="selecDirper"  (onRowSelect)="onRowSelect($event)" dataKey="id">
+                            <p-dataTable [value]="dirpernat" selectionMode="single" [(selection)]="selecDirper"  (onRowSelect)="onRowSelect($event)" dataKey="direc.id">
                                 <p-header>Direcciones</p-header>
                                 <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
                                     <ng-template let-i="rowIndex" pTemplate="body">
@@ -94,30 +95,49 @@
                                 </p-footer>
                             </p-dataTable>
                             <p-dialog [width]="500" header="Dirección:" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+                                <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
                                 <div class="ui-grid ui-grid-responsive ui-fluid" style="height:200px;">
+                                    <input type="hidden" class="form-control" name="dirper.id" [(ngModel)]="dirper.id" readonly />
+                                    <input type="hidden" name="dirper.pernatural" [(ngModel)]="dirper.pernatural">
                                     <div class="ui-grid-row form-group">
                                         <div class="ui-grid-col-4"><label for="vin">Departamento</label></div>
-                                        <div class="ui-grid-col-8"><p-dropdown [style]="{'width':'150px'}" [options]="departamentos"></p-dropdown></div>
+                                        <div class="ui-grid-col-8">
+                                            <select (change)="loadProvincias(true, $event.target.value)" required class="form-control" id="field_codDepto" name="dirper.nCoddepto" [(ngModel)]="dirper.nCoddepto" >
+                                                <option value="{{departamentos.vcoddep | number:'1.0'}}" *ngFor="let departamentos of departs;">{{departamentos.vdesdep}}</option>
+                                            </select>
+                                            <!-- <p-dropdown [(ngModel)]="dirper.nCoddepto" name="dirper.nCoddepto" [style]="{'width':'150px'}" dataKey="dirper.vcoddep" optionLabel="vdesdep" [options]="departs"></p-dropdown> -->
+                                        </div>
                                     </div>
                                     <div class="ui-grid-row form-group">
                                         <div class="ui-grid-col-4"><label for="year">Provincia</label></div>
-                                        <div class="ui-grid-col-8"><p-dropdown [style]="{'width':'150px'}" [options]="departamentos"></p-dropdown></div>
+                                        <div class="ui-grid-col-8">
+                                            <select (change)="loadDistritos($event.target.value)" required class="form-control" id="field_codDepto" name="dirper.nCodprov" [(ngModel)]="dirper.nCodprov" >
+                                                <option value="{{provincias.vcodpro | number:'1.0'}}" *ngFor="let provincias of provins;">{{provincias.vdespro}}</option>
+                                            </select>
+                                            <!-- <p-dropdown [(ngModel)]="dirper.nCodprov" name="dirper.nCodprov" [style]="{'width':'150px'}" dataKey="vcodpro" optionLabel="vdespro" [options]="provins"></p-dropdown> -->
+                                        </div>
                                     </div>
                                     <div class="ui-grid-row form-group">
                                         <div class="ui-grid-col-4"><label for="year">Distrito</label></div>
-                                        <div class="ui-grid-col-8"><p-dropdown [style]="{'width':'150px'}" [options]="departamentos"></p-dropdown></div>
+                                        <div class="ui-grid-col-8">
+                                            <select required class="form-control" id="field_codDepto" name="dirper.nCoddist" [(ngModel)]="dirper.nCoddist" >
+                                                <option value="{{distritos.vcoddis | number:'1.0'}}" *ngFor="let distritos of distris;">{{distritos.vdesdis}}</option>
+                                            </select>
+                                            <!-- <p-dropdown [(ngModel)]="dirper.nCoddist" name="dirper.nCoddist" [style]="{'width':'150px'}" dataKey="dirper.vcoddis" optionLabel="vdesdis" [options]="distris"></p-dropdown> -->
+                                        </div>
                                     </div>
                                     <div class="ui-grid-row form-group">
                                             <div class="ui-grid-col-4"><label for="year">Dirección</label></div>
-                                            <div class="ui-grid-col-8"><input type="text" class="form-control"  id="provincia" /></div>
+                                            <div class="ui-grid-col-8"><input type="text" name="dirper.vDircomple" [(ngModel)]="dirper.vDircomple" class="form-control"  id="direccion" /></div>
                                     </div>
                                 </div>
                                 <p-footer>
                                     <div class="ui-dialog-buttonpane ui-helper-clearfix">
-                                        <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
-                                        <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+                                        <button type="button" pButton icon="fa-close" (click)="delete()" label="Cancelar"></button>
+                                        <button pButton icon="fa-check" type="submit" label="Grabar"></button>
                                     </div>
                                 </p-footer>
+                                </form>
                             </p-dialog>
                         </div>
                     </div>

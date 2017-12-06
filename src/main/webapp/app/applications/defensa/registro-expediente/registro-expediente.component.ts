@@ -33,7 +33,10 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
-        this.data.paseSeleccionado.subscribe((pasegl) => this.pasegl = pasegl)
+        this.data.paseSeleccionado.subscribe((pasegl) => {
+            this.pasegl = pasegl;
+            this.isPaseSelect();
+        });
 
         this.items = [{
                 label: 'Datos del Pase',
@@ -84,6 +87,11 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
                 }
             },
         ];
+    }
+
+    isPaseSelect() {
+        console.log('RetPase' + JSON.stringify(this.pasegl));
+        return this.pasegl;
     }
 
     getStepCurrent(url) {

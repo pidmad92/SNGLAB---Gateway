@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {SelectItem} from 'primeng/primeng';
+
+import { Observable } from 'rxjs/Rx';
+
+import { Message } from 'primeng/components/common/api';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 import { ResponseWrapper } from '../../../../shared';
 import { ComboModel } from '../../../general/combobox.model';
@@ -18,33 +24,34 @@ export class DatosTrabajadorComponent implements OnInit {
     newDirec: boolean;
     departamentos: SelectItem[];
 
+    messages: Message[] = [];
+    messagesForm: Message[] = [];
+
     tipodocs: ComboModel[];
     selectedTipodoc: ComboModel;
     sexo: any;
+
+    departs: ResponseWrapper;
+    provins: ResponseWrapper;
+    distris: ResponseWrapper;
 
     pasegl = new Pasegl();
     atencion: Atencion;
     datlab: Datlab;
     dirpernat: Dirpernat[];
-    dirper: Dirpernat;
+    dirper = new Dirpernat();
+    pernatural = new Pernatural();
     selecDirper: Dirpernat;
-    pernatural: Pernatural
     trabajador: Trabajador;
-    tipdocident: Tipdocident;
+    tipdocident = new Tipdocident();
 
     constructor(
         private datosWizardService: DatosWizardService,
-        private registroExpedienteWizard: RegistroExpedienteWizardService
+        private registroExpedienteWizard: RegistroExpedienteWizardService,
+        private router: Router
     ) {
         this.atencion = new Atencion();
-        this.pernatural = new Pernatural();
-        this.departamentos = [
-            {label: 'Seleccione el Dpto.', value: null},
-            {label: 'Lima', value: {id: 1, name: 'New York', code: 'NY'}},
-            {label: 'Rome', value: {id: 2, name: 'Rome', code: 'RM'}},
-            {label: 'London', value: {id: 3, name: 'London', code: 'LDN'}},
-            {label: 'Istanbul', value: {id: 4, name: 'Istanbul', code: 'IST'}}
-        ];
+        this.dirper.pernatural = new Pernatural();
     }
     loadTipoDoc() {
         this.datosWizardService.consultaTipoDocIdentidad().subscribe(
@@ -59,7 +66,7 @@ export class DatosTrabajadorComponent implements OnInit {
         this.datosWizardService.buscarDirecciones(id).subscribe(
             (res: ResponseWrapper) => {
                 this.dirpernat = res.json;
-                console.log(JSON.stringify(this.dirpernat));
+                // console.log(JSON.stringify(this.dirpernat));
             },
             (res: ResponseWrapper) => { this.onError(res.json); }
         );
@@ -67,36 +74,61 @@ export class DatosTrabajadorComponent implements OnInit {
 
     ngOnInit() {
         this.loadTipoDoc();
+        this.loadDepartamentos();
         this.registroExpedienteWizard.paseSeleccionado.subscribe((pasegl) => {
-            this.pasegl = pasegl;
-            this.atencion = this.pasegl.atencion;
-            this.datlab = this.atencion.datlab;
-            this.trabajador = this.datlab.trabajador;
-            this.pernatural = this.trabajador.pernatural;
-            this.tipdocident = this.pernatural.tipdocident;
-            this.loadDirecPerNatu(this.pernatural.id);
+            if (pasegl.id) {
+                this.pasegl = pasegl;
+                this.atencion = this.pasegl.atencion;
+                this.datlab = this.atencion.datlab;
+                this.trabajador = this.datlab.trabajador;
+                this.pernatural = this.trabajador.pernatural;
+                this.dirper = new Dirpernat();
+                this.dirper.pernatural = this.pernatural;
+                this.tipdocident = this.pernatural.tipdocident;
+                this.loadDirecPerNatu(this.pernatural.id);
+            } else {
+                this.router.navigate(['/defensa/expediente/registro' , { outlets: { wizard: ['datos-pase'] } }]);
+            }
         });
         this.sexo = [
             {name: 'Masculino', value: 'M'},
             {name: 'Femenino', value: 'F'}
         ]
-        // this.trabajador = this.atencion.trabajador;
-        // this.pernatural = this.trabajador.pernatural;
-        this.direcciones = [
-            {departamento : 'Lima', provincia: 'Lima', distrito: 'Rimac',  vDircomple: 'Ministerio de Trabajo'},
-            {departamento : 'Lima', provincia: 'Huaura', distrito: 'Huaral', vDircomple: 'Apple S.A.C.'},
-            {departamento : 'Lima', provincia: 'Huaura', distrito: 'Huaura', vDircomple: 'Apple S.A.C.'},
-        ]
+    }
+
+    loadDepartamentos() {
+        this.datosWizardService.consDep().subscribe((departamentos) => {
+            this.departs = departamentos.json;
+            console.log(this.departs);
+        });
+    }
+    loadProvincias(init: boolean, idDept) {
+        console.log('LoadProv' + this.padWithZero(idDept));
+        this.datosWizardService.consProv(this.padWithZero(idDept)).subscribe((provincias) => {
+            this.provins = provincias.json;
+            console.log('LOADDATAPROV' + this.provins)
+        });
+        if (init) {
+            this.loadDistritos(0);
+        }
+    }
+    loadDistritos(idProv) {
+        console.log('Loaddist' + this.padWithZero(idProv));
+        this.datosWizardService.consDis(this.padWithZero(this.dirper.nCoddepto), this.padWithZero(idProv)).subscribe((distritos) => {
+            this.distris = distritos.json;
+            console.log('LOADDATAdist' + this.distris)
+    });
     }
     showDialogToAdd() {
         this.newDirec = true;
-        this.dirper = new Dirpernat();
         this.displayDialog = true;
     }
     onRowSelect(event) {
-        console.log('row');
         this.newDirec = false;
-        this.dirper = this.cloneDirec(event.data);
+        this.dirper = this.cloneDirec(event.data.direc);
+        console.log(this.dirper);
+        this.loadProvincias(false, this.dirper.nCoddepto);
+        this.loadDistritos(this.dirper.nCodprov);
         this.displayDialog = true;
     }
     cloneDirec(dir: Dirpernat): Dirpernat {
@@ -109,16 +141,58 @@ export class DatosTrabajadorComponent implements OnInit {
         return direc;
     }
 
+    padWithZero(number) {
+        let num_form = '' + number;
+        if (num_form.length < 2) {
+            num_form = '0' + num_form;
+        }
+        return num_form;
+    }
+
     save() {
-        this.displayDialog = false;
+        console.log('Grabar: ' + JSON.stringify(this.dirper));
+        // const dirpernat = [...this.dirpernat];
+        if (this.newDirec) {
+            // dirpernat.push(this.dirper);
+            this.subscribeToSaveResponse(
+                 this.datosWizardService.createDir(this.dirper));
+        } else {
+            // dirpernat[this.findSelectedDirecIndex()] = this.dirper;
+            this.subscribeToSaveResponse(
+                this.datosWizardService.updateDir(this.dirper));
+        }
+        // this.dirpernat = dirpernat;
+        this.dirper = new Dirpernat();
     }
     delete() {
         this.displayDialog = false;
     }
 
+    findSelectedDirecIndex(): number {
+        return this.dirpernat.indexOf(this.selecDirper);
+    }
+
+    private subscribeToSaveResponse(result: Observable<Dirpernat>) {
+        result.subscribe((res: Dirpernat) =>
+            this.onSaveSuccess(res), (res: Response) => this.onSaveError());
+    }
+
+    private onSaveSuccess(result: Dirpernat) {
+        this.loadDirecPerNatu(this.pernatural.id);
+        this.displayDialog = false;
+    }
+    private onSaveError() {
+        console.log('saveerror');
+    }
+
     private onError(error: any) {
-        console.log(error);
         // this.messages = [];
         // this.messages.push({ severity: 'error', summary: 'Mensaje de Error', detail: error.message });
+    }
+
+    private onErrorMultiple(errorList: any) {
+        for (let i = 0; i < errorList.length; i++) {
+            this.messagesForm.push(errorList[i]);
+        }
     }
 }

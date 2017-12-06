@@ -10,6 +10,10 @@ import { DatosEmpleadorComponent } from './registro-expediente-wizard/datos-empl
 import { DatosExpedienteComponent } from './registro-expediente-wizard/datos-expediente.component';
 import { DatosAudienciaComponent } from './registro-expediente-wizard/datos-audiencia.component';
 
+import {MessagesModule} from 'primeng/primeng';
+import {MessageModule} from 'primeng/primeng';
+import {MessageService} from 'primeng/components/common/messageservice';
+
 import { RegistroExpedienteService } from './registro-expediente.service';
 import { DatosWizardService } from './registro-expediente-wizard/datos-wizard.service';
 import { RegistroExpedienteWizardService } from './registro-expediente-wizard/registro-expediente-wizard.service';
@@ -21,6 +25,8 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         GatewaySharedModule,
+        MessagesModule,
+        MessageModule,
         StepsModule,
         ToggleButtonModule,
         CalendarModule,
@@ -50,7 +56,8 @@ const ENTITY_STATES = [
     providers: [
         RegistroExpedienteService,
         RegistroExpedienteWizardService,
-        DatosWizardService
+        DatosWizardService,
+        MessageService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
