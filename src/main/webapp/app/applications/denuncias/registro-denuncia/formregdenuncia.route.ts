@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
 
-import { FormularioregdenunciaComponent } from './formulario-regdenuncia.component';
+import { FormregdenunciaComponent } from './formregdenuncia.component';
 
 import { UserRouteAccessService } from '../../../shared';
 import { JhiPaginationUtil } from 'ng-jhipster';
@@ -11,10 +11,10 @@ import { JhiPaginationUtil } from 'ng-jhipster';
 // import { AccionadopPopupComponent } from './accionadop-dialog.component';
 // import { AccionadopDeletePopupComponent } from './accionadop-delete-dialog.component';
 
-export const FormularioregdenunciaRoute: Routes = [
+export const FormregdenunciaRoute: Routes = [
     {
         path: 'formularioregdenuncia',
-        component: FormularioregdenunciaComponent,
+        component: FormregdenunciaComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'global.menu.entities.registroExpediente'
@@ -23,7 +23,7 @@ export const FormularioregdenunciaRoute: Routes = [
         children: [
             {
                 path: 'formularioregdenuncia',
-                component: FormularioregdenunciaComponent,
+                component: FormregdenunciaComponent,
                 data: {
                     authorities: ['ROLE_USER'],
                     pageTitle: 'global.menu.entities.registroExpediente'

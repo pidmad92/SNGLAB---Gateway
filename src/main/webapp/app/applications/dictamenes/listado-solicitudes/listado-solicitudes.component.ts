@@ -80,10 +80,24 @@ export class ListadoSolicitudesComponent implements OnInit, OnDestroy {
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
-        sessionStorage.removeItem('solicitud');
-        sessionStorage.removeItem('solicform');
-        sessionStorage.removeItem('formperfil');
-        sessionStorage.removeItem('direcciones');
+        this.limpiarSessionStorage();
+    }
+
+    limpiarSessionStorage() {
+        sessionStorage.removeItem('ng2-webstorage|solicitud');
+        sessionStorage.removeItem('ng2-webstorage|solicform');
+        sessionStorage.removeItem('ng2-webstorage|formperfil');
+        sessionStorage.removeItem('ng2-webstorage|undNegocios');
+        sessionStorage.removeItem('ng2-webstorage|participacionesAccionarias');
+        sessionStorage.removeItem('ng2-webstorage|participacionesMercado');
+        sessionStorage.removeItem('ng2-webstorage|obras');
+        sessionStorage.removeItem('ng2-webstorage|proyectos');
+        sessionStorage.removeItem('ng2-webstorage|direcciones');
+        sessionStorage.removeItem('ng2-webstorage|solicitante');
+        sessionStorage.removeItem('ng2-webstorage|organizaciones');
+        sessionStorage.removeItem('ng2-webstorage|resultadoNegociaciones');
+        sessionStorage.removeItem('ng2-webstorage|responInfoFinanciera');
+        sessionStorage.removeItem('ng2-webstorage|responeInfoLaboral');
     }
 
     ngOnDestroy() {
