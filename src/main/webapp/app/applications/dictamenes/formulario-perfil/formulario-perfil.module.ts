@@ -44,8 +44,8 @@ import { FormularioPerfil4Component } from './formulario-perfil4.component';
 import { FormularioPerfil5Component } from './formulario-perfil5.component';
 import { FormularioPerfil6Component } from './formulario-perfil6.component';
 import { NegocolectService, NegocolectComponent } from '../../../entities/negocolect/index';
-import { ValidarUsuarioService } from '../../denuncias/validar-usuario/validarusuario.service';
-import { ValidarUsuarioComponent } from '../../denuncias/validar-usuario/index';
+// import { ValidarUsuarioService } from '../../denuncias/validar-usuario/validarusuario.service';
+// import { ValidarUsuarioComponent } from '../../denuncias/validar-usuario/index';
 import { ResulnegocService, ResulnegocComponent } from '../../../entities/resulnegoc/index';
 import { RespinformaService, RespinformaComponent } from '../../../entities/respinforma/index';
 import { AnexlaboralService, AnexlaboralComponent } from '../../../entities/anexlaboral/index';
@@ -68,7 +68,7 @@ const ENTITY_STATES = [
         FormularioPerfil6Component,
         ActieconComponent,
         NegocolectComponent,
-        ValidarUsuarioComponent,
+        // ValidarUsuarioComponent,
         ResulnegocComponent,
         RespinformaComponent,
         AnexlaboralComponent,
@@ -91,7 +91,7 @@ const ENTITY_STATES = [
         FormperfilService,
         ActieconService,
         NegocolectService,
-        ValidarUsuarioService,
+        // ValidarUsuarioService,
         ResulnegocService,
         RespinformaService,
         AnexlaboralService,
