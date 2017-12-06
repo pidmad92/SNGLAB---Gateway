@@ -11,7 +11,8 @@ import { DatosExpedienteComponent } from './registro-expediente-wizard/datos-exp
 import { DatosAudienciaComponent } from './registro-expediente-wizard/datos-audiencia.component';
 
 import { RegistroExpedienteService } from './registro-expediente.service';
-import { DatosPaseService } from './registro-expediente-wizard/datos-pase.service';
+import { DatosWizardService } from './registro-expediente-wizard/datos-wizard.service';
+import { RegistroExpedienteWizardService } from './registro-expediente-wizard/registro-expediente-wizard.service';
 
 const ENTITY_STATES = [
      ...registroExpedienteRoute
@@ -48,7 +49,8 @@ const ENTITY_STATES = [
     ],
     providers: [
         RegistroExpedienteService,
-        DatosPaseService
+        RegistroExpedienteWizardService,
+        DatosWizardService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

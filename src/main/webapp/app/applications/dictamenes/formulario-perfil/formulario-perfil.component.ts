@@ -12,6 +12,12 @@ import { SessionStorage } from 'ng2-webstorage';
 import { ComboModel } from '../../general/combobox.model';
 import { Message } from 'primeng/components/common/api';
 import { ValidarUsuarioService } from '../../denuncias/validar-usuario/validarusuario.service';
+import { Undnegocio } from '../../../entities/undnegocio/index';
+import { Participa } from '../../../entities/participa/index';
+import { Hechoinver } from '../../../entities/hechoinver/index';
+import { Negocolect } from '../../../entities/negocolect/index';
+import { Resulnegoc } from '../../../entities/resulnegoc/index';
+import { Respinforma } from '../../../entities/respinforma/index';
 
 @Component({
     selector: 'jhi-formulario-perfil',
@@ -20,14 +26,6 @@ import { ValidarUsuarioService } from '../../denuncias/validar-usuario/validarus
 })
 
 export class FormularioPerfilComponent implements OnInit, OnDestroy {
-    @SessionStorage('solicitud')
-    solicitud: Solicitud;
-    @SessionStorage('solicform')
-    solicForm: Solicform;
-    @SessionStorage('formperfil')
-    formPerfil: Formperfil;
-    @SessionStorage('direcciones')
-    direcciones: Direccion[];
     actiecon: Actiecon[];
     currentAccount: Account;
     eventSubscriber: Subscription;
@@ -50,6 +48,36 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     selectedDeparts: ComboModel;
     selectedProvins: ComboModel;
     selectedDistris: ComboModel;
+
+    // Listados de dato
+    @SessionStorage('solicitud')
+    solicitud: Solicitud;
+    @SessionStorage('solicform')
+    solicForm: Solicform;
+    @SessionStorage('formperfil')
+    formPerfil: Formperfil;
+    @SessionStorage('undNegocios')
+    undNegocios: Undnegocio[];
+    @SessionStorage('participacionesAccionarias')
+    participacionesAccionarias: Participa[];
+    @SessionStorage('participacionesMercado')
+    participacionesMercados: Participa[];
+    @SessionStorage('obras')
+    obras: Hechoinver[];
+    @SessionStorage('proyectos')
+    proyectos: Hechoinver[];
+    @SessionStorage('direcciones')
+    direcciones: Direccion[];
+    @SessionStorage('solicitante')
+    solicitante: Negocolect;
+    @SessionStorage('organizaciones')
+    organizaciones: Negocolect[];
+    @SessionStorage('resultadoNegociaciones')
+    resultadoNegociaciones: Resulnegoc[];
+    @SessionStorage('responInfoFinanciera')
+    responInfoFinanciera: Respinforma;
+    @SessionStorage('responeInfoLaboral')
+    responeInfoLaboral: Respinforma;
 
     constructor(
         private solicitudService: SolicitudService,

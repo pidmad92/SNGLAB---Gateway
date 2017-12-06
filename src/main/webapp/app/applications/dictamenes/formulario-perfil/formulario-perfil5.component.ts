@@ -15,6 +15,8 @@ import { Negocolect } from '../../../entities/negocolect/index';
 import { RespinformaService, Respinforma } from '../../../entities/respinforma/index';
 import { Resulnegoc } from '../../../entities/resulnegoc/index';
 import { Message } from 'primeng/components/common/api';
+import { Persona } from '../../general/servicesmodel/persona.model';
+import { FormularioPerfilService } from './index';
 
 @Component({
     selector: 'jhi-formulario-perfil5',
@@ -34,6 +36,8 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
 
     block: boolean;
     editar: boolean;
+
+    persona: Persona;
 
     // Datos de Perfil
     @SessionStorage('solicitud')
@@ -79,7 +83,68 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
         private formperfilService: FormperfilService,
         private solicfromService: SolicformService,
         private respinformaService: RespinformaService,
+        private formularioPerfilService: FormularioPerfilService,
     ) { }
+
+    buscarNombreFinanciero() {
+        this.messageList = [];
+        this.messagesForm = [];
+        // DNI
+        this.persona = new Persona;
+        if (this.responInfoFinanciera.vNumdocum !== undefined
+            && this.responInfoFinanciera.vNumdocum !== null
+            && this.responInfoFinanciera.vNumdocum !== '') {
+            this.formularioPerfilService.obtenerDatosReniec(this.responInfoFinanciera.vNumdocum)
+                .subscribe(
+                (res: ResponseWrapper) => {
+                    this.persona = <Persona>res.json[0];
+                    if (this.persona.nombres !== undefined && this.persona.nombres !== null) {
+                        this.responInfoFinanciera.vNombre = this.persona.apellidoPaterno + ' ' + this.persona.apellidoMaterno + ' ' + this.persona.nombres;
+                    } else {
+                        this.messageList.push({
+                            severity: 'error', summary: 'Mensaje de Error', detail: 'No se encontraron ' +
+                                'datos con el DNI ' + this.responInfoFinanciera.vNumdocum + '.'
+                        });
+                        this.onErrorMultiple(this.messageList);
+                    }
+                },
+                (res: ResponseWrapper) => this.onError(res.json),
+            );
+        } else {
+            this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Ingresar el DNI del Responsable de la información económica - financiera.' });
+            this.onErrorMultiple(this.messageList);
+        }
+    }
+
+    buscarNombreLaboral() {
+        this.messageList = [];
+        this.messagesForm = [];
+        // DNI
+        this.persona = new Persona;
+        if (this.responeInfoLaboral.vNumdocum !== undefined
+            && this.responeInfoLaboral.vNumdocum !== null
+            && this.responeInfoLaboral.vNumdocum !== '') {
+            this.formularioPerfilService.obtenerDatosReniec(this.responeInfoLaboral.vNumdocum)
+                .subscribe(
+                (res: ResponseWrapper) => {
+                    this.persona = <Persona>res.json[0];
+                    if (this.persona.nombres !== undefined && this.persona.nombres !== null) {
+                        this.responeInfoLaboral.vNombre = this.persona.apellidoPaterno + ' ' + this.persona.apellidoMaterno + ' ' + this.persona.nombres;
+                    } else {
+                        this.messageList.push({
+                            severity: 'error', summary: 'Mensaje de Error', detail: 'No se encontraron ' +
+                                'datos con el DNI ' + this.responeInfoLaboral.vNumdocum + '.'
+                        });
+                        this.onErrorMultiple(this.messageList);
+                    }
+                },
+                (res: ResponseWrapper) => this.onError(res.json),
+            );
+        } else {
+            this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Ingresar el DNI del Responsable de la información laboral.' });
+            this.onErrorMultiple(this.messageList);
+        }
+    }
 
     loadAll() {
         this.load(this.formPerfil.nCodfperf);

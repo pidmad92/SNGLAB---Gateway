@@ -35,7 +35,7 @@ import { DireccionService,
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ControlInformacionComponent } from '../control-informacion/index';
-import { FormularioPerfilComponent } from '../formulario-perfil/index';
+import { FormularioPerfilComponent, FormularioPerfilService } from '../formulario-perfil/index';
 import { FormperfilComponent,
          formperfilRoute,
          FormperfilService } from '../../../entities/formperfil/index';
@@ -59,6 +59,8 @@ import { ResulnegocService, ResulnegocComponent } from '../../../entities/resuln
 import { RespinformaService, RespinformaComponent } from '../../../entities/respinforma/index';
 import { AnexlaboralService, AnexlaboralComponent } from '../../../entities/anexlaboral/index';
 import { DecimalMask } from '../../general/decimal.directive';
+import { TipdocService, TipdocComponent } from '../../../entities/tipdoc/index';
+import { Empresa } from '../../general/servicesmodel/empresa.model';
 
 const ENTITY_STATES = [
     ...ListadoSolicitudesRoute,
@@ -88,6 +90,7 @@ const ENTITY_STATES = [
         RespinformaComponent,
         AnexlaboralComponent,
         DecimalMask,
+        TipdocComponent,
     ],
     imports: [
         GatewaySharedModule,
@@ -119,6 +122,8 @@ const ENTITY_STATES = [
         ResulnegocService,
         RespinformaService,
         AnexlaboralService,
+        TipdocService,
+        FormularioPerfilService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
