@@ -21,12 +21,16 @@
                                 <div class="form-group row">
                                     <label for="inpTipo" class="col-sm-1 col-form-label">Fecha:</label>
                                     <div class="col-sm-3 pl-0">
+                                        <!-- <p-calendar name="currentSearch" [(ngModel)]="currentSearch" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar> -->
                                         <p-calendar name="fechaAudiencia" [(ngModel)]="fechaAudiencia" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3 text-center">
-                                <a href="#" class="btn btn-sm btn-secondary "><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                                <button class="btn btn-sm btn-secondary" (click)="search(fechaAudiencia)">
+                                        <span class="fa fa-search"></span>Buscar
+                                </button>
+                                <!-- <a href="#" class="btn btn-sm btn-secondary "><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a> -->
                             </div>
                         </div>
                     </form>
@@ -66,12 +70,12 @@
                                 </p-column>
                                 <p-column field="expediente.estexpedien.vDescrip" header="Estado"></p-column>
                                 <p-column field="expediente.vNumexp" header="Nro. Expediente"></p-column>
-                                <p-column field="expediente.tFecreg" header="Fecha de Registro"></p-column>
+                                <p-column field="dFecconci" header="Fecha de Conciliación"></p-column>
                                 <p-column field="abogado.vNomabogad" header="Conciliador"></p-column>
-                                <p-column field="expediente.pasegl.atencion.datlab.empleador.perjuridica.vNumdoc" header="Razón Nro. RUC"></p-column>
-                                <p-column field="expediente.pasegl.atencion.datlab.empleador.perjuridica.vRazsocial" header="Empleador"></p-column>
-                                <p-column field="numerodocumento" header="Nro. Documento"></p-column>
-                                <p-column field="fullname" header="Trabajador"></p-column>
+                                <p-column field="nrodocemp" header="Razón Nro. RUC"></p-column>
+                                <p-column field="fullnameemp" header="Empleador"></p-column>
+                                <p-column field="nrodoctrab" header="Nro. Documento"></p-column>
+                                <p-column field="fullnametrab" header="Trabajador"></p-column>
                             </p-dataTable>
                         </div>
                     </div>

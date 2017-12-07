@@ -35,3 +35,4 @@ export * from './perjuridica.model';
 export * from './perjuridica.service';
 export * from './pernatural.model';
 export * from './pernatural.service';
+export * from './trabajador.model';
