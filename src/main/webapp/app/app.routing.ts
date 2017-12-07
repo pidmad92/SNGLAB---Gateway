@@ -22,6 +22,10 @@ export const consultasRoute: Route = {
     loadChildren: './applications/consultas/consultas.module#GatewayConsultasModule'
 };
 
+export const patrocinioRoute: Route = {
+    path: 'patrocinio',
+    loadChildren: './applications/patrocinio/patrocinio.module#GatewayPatrocinioModule'
+};
 export const liquidacionesRoute: Route = {
     path: 'liquidaciones',
     loadChildren: './applications/liquidaciones/liquidaciones.module#GatewayLiquidacionesModule'

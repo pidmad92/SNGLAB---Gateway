@@ -17,6 +17,7 @@ import { PaginationConfig } from './blocks/config/uib-pagination.config';
 import {
     adminRoute,
     consultasRoute,
+    patrocinioRoute,
     defensaRoute,
     denunciasRoute,
     entityRoute,
@@ -64,6 +65,7 @@ const LAZY_ROUTES = [
     consultasRoute,
     liquidacionesRoute,
     defensaRoute,
+    patrocinioRoute,
     denunciasRoute
 ];
 
