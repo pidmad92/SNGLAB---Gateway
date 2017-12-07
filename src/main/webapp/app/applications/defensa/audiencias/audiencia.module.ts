@@ -20,6 +20,8 @@ import {
     AudienciaRegistroResultadoDialogComponent,
     AudienciaRegistroResultadoPopupComponent,
     AudienciaRegistroResultadoPopupService,
+    ConciliaService,
+    ExpedienteService,
     audienciaRoute } from './';
 import { TabViewModule, DataTableModule, CheckboxModule, DropdownModule, CalendarModule } from 'primeng/primeng';
 
@@ -70,7 +72,9 @@ const ENTITY_STATES = [
         AudienciaAsignacionPopupService,
         AudienciaRegistroResultadoPopupService,
         AudienciaRegistroEscritoPopupService,
-        AudienciaReprogramacionPopupService
+        AudienciaReprogramacionPopupService,
+        ConciliaService,
+        ExpedienteService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

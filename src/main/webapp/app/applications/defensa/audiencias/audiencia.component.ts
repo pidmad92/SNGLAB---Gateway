@@ -1,6 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ES } from './../../applications.constant';
+import { DatePipe } from '@angular/common'
+
+import { Concilia } from './concilia.model';
+import { Expediente } from './expediente.model';
+import { Pasegl } from './pasegl.model';
+import { Atencion } from './atencion.model';
+import { Datlab } from './datlab.model';
+import { Empleador } from './empleador.model';
+import { Perjuridica } from './perjuridica.model';
+import { Pernatural } from './pernatural.model';
+import { Trabajador } from './trabajador.model';
+import { ConciliaService } from './concilia.service';
+import { ResponseWrapper } from '../../../shared';
 
 @Component({
     selector: 'jhi-audiencia',
@@ -9,25 +23,134 @@ import { ES } from './../../applications.constant';
 export class AudienciaComponent implements OnInit {
 
     expedientes: any;
+    concilias: Concilia[];
+    concilia: Concilia;
+    expediente: Expediente;
+    pasegl: Pasegl;
+    atencion: Atencion;
+    datlab: Datlab;
+    empleador: Empleador;
+    perjuridica: Perjuridica;
+    pernaturalEMP: Pernatural;
+    pernaturalTRA: Pernatural;
+    trabajador: Trabajador;
+
     id = '14';
     currentUrl: String;
     es: any;
     fechaAudiencia: Date;
+    date: Date;
 
-    constructor(private router: Router) {
+    constructor(
+        private router: Router,
+        private activatedRoute: ActivatedRoute,
+        private conciliaService: ConciliaService,
+        public datepipe: DatePipe
+    ) {
+        this.fechaAudiencia = activatedRoute.snapshot.params['search'] ? activatedRoute.snapshot.params['search'] : '';
     }
 
     ngOnInit() {
         this.es = ES;
         this.currentUrl = this.router.url;
-        console.log(this.currentUrl);
-        this.expedientes = [
-            {item: '1', codexpediente : '0000002169-10', fecha: '10/03/2010', conciliador: 'SLIZARRAGA',
-                ruc: '20505158343', empleador: 'CONFECCIONES INCA COTTON S.A.C', nrodoc: '56897245', nomdoc: '' },
-            {item: '2', codexpediente : '0000001699-06', fecha: '11/05/2006', conciliador: 'ACASSANA',
-                ruc: '20251850993', empleador: 'GRUPO INTERNACIONAL SERVICE S.A.C.', nrodoc: '56897458', nomdoc: '' },
-            {item: '3', codexpediente : '0000001698-07', fecha: '15/06/2007', conciliador: 'SLIZARRAGA',
-                ruc: '20504257381', empleador: 'SYSTEM DATABASE S.A.', nrodoc: '56897845', nomdoc: '' }
-        ]
+        this.loadAll();
     }
+
+    search(query) {
+        if (!query) {
+            return this.clear();
+        }
+        this.fechaAudiencia = query;
+        this.date = new Date();
+        // const latest_date = this.datepipe.transform(this.date, 'dd/MM/yyyy');
+        // console.log('FechaHoy');
+        // console.log(latest_date);
+
+        console.log('fecha');
+        console.log(this.fechaAudiencia);
+        this.loadAll();
+    }
+
+    clear() {
+        this.fechaAudiencia = null;
+        this.loadAll();
+    }
+
+    SelecUrl() {
+        switch (this.currentUrl) {
+            case '/defensa/audiencia/asignacion-abogado' : {this.AsignarAbogado();
+                                                           }
+        }
+    }
+    loadAll() {
+        this.SelecUrl();
+    }
+
+    AsignarAbogado() {
+        //  console.log(this.datepipe.transform(this.fechaAudiencia, 'dd/MM/yyyy'));
+        if (this.fechaAudiencia) {
+            console.log('Probando la fecha: ' + this.datepipe.transform(this.fechaAudiencia, 'dd-MM-yyyy'))
+            let fechabusqueda = '';
+            fechabusqueda = this.datepipe.transform(this.fechaAudiencia, 'dd-MM-yyyy');
+            this.conciliaService.SearfechaVar(fechabusqueda
+                ).subscribe(
+                    (res: ResponseWrapper) => {
+                        this.concilias = res.json;
+                        console.log(this.concilias);
+                        this.concilias.forEach((item, index) => {
+                            this.DatosFaltantes(item, index);
+                        });
+
+                        this.fechaAudiencia = null;
+                    },
+                    (res: ResponseWrapper) => this.onError(res.json)
+                );
+            return;
+       }
+        this.conciliaService.searfecha().subscribe(
+            (res: ResponseWrapper) => {
+                console.log(res.json);
+                this.concilias = res.json;
+                console.log(this.concilias);
+                this.concilias.forEach((item, index) => {
+                    this.DatosFaltantes(item, index);
+                });
+
+                this.fechaAudiencia = null;
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+
+    }
+
+    private onError(error) {
+        // console.log('error' + error.message);
+        // this.jhiAlertService.error(error.message, null, null);
+    }
+
+    private DatosFaltantes(item, index) {
+        const concilia = item;
+        console.log(concilia);
+        this.expediente = concilia.expediente;
+        this.pasegl = this.expediente.pasegl;
+        this.atencion = this.pasegl.atencion;
+        this.datlab = this.atencion.datlab;
+        this.empleador = this.datlab.empleador;
+        this.perjuridica = this.empleador.perjuridica;
+        this.pernaturalEMP = this.empleador.pernatural;
+        this.trabajador = this.datlab.trabajador;
+        this.pernaturalTRA = this.trabajador.pernatural;
+        if (this.perjuridica != null) {
+            this.concilias[index].nrodocemp = this.perjuridica.vNumdoc;
+            this.concilias[index].fullnameemp = this.perjuridica.vRazsocial;
+            console.log(this.perjuridica.vNumdoc);
+        }else {
+            this.concilias[index].nrodocemp = this.pernaturalEMP.vNumdoc;
+            this.concilias[index].fullnameemp = this.pernaturalEMP.vNombres + ' ' + this.pernaturalEMP.vApepat + ' ' + this.pernaturalEMP.vApemat ;
+            console.log(this.pernaturalEMP.vNumdoc);
+        }
+        this.concilias[index].nrodoctrab = this.pernaturalTRA.vNumdoc;
+        this.concilias[index].fullnametrab = this.pernaturalTRA.vNombres + ' ' + this.pernaturalTRA.vApepat + ' ' + this.pernaturalTRA.vApemat ;
+    }
+
 }
