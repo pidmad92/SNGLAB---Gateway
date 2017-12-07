@@ -5,6 +5,10 @@ import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } f
 import { ListadoSolicitudesService } from './listado-solicitudes.service';
 import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../shared';
 import { Solicitud, SolicitudService } from '../../../entities/solicitud/index';
+import { SessionStorage } from 'ng2-webstorage';
+import { Solicform } from '../../../entities/solicform/index';
+import { Formperfil } from '../../../entities/formperfil/index';
+import { Direccion } from '../../../entities/direccion/index';
 
 @Component({
     selector: 'jhi-listado-solicitudes',
@@ -13,6 +17,14 @@ import { Solicitud, SolicitudService } from '../../../entities/solicitud/index';
 })
 
 export class ListadoSolicitudesComponent implements OnInit, OnDestroy {
+    @SessionStorage('solicitud')
+    solicitud2: Solicitud;
+    @SessionStorage('solicform')
+    solicForm: Solicform;
+    @SessionStorage('formperfil')
+    formPerfil: Formperfil;
+    @SessionStorage('direcciones')
+    direcciones: Direccion[];
     solicituds: Solicitud[];
     solicitud: Solicitud;
     currentAccount: Account;
@@ -68,6 +80,24 @@ export class ListadoSolicitudesComponent implements OnInit, OnDestroy {
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
+        this.limpiarSessionStorage();
+    }
+
+    limpiarSessionStorage() {
+        sessionStorage.removeItem('ng2-webstorage|solicitud');
+        sessionStorage.removeItem('ng2-webstorage|solicform');
+        sessionStorage.removeItem('ng2-webstorage|formperfil');
+        sessionStorage.removeItem('ng2-webstorage|undNegocios');
+        sessionStorage.removeItem('ng2-webstorage|participacionesAccionarias');
+        sessionStorage.removeItem('ng2-webstorage|participacionesMercado');
+        sessionStorage.removeItem('ng2-webstorage|obras');
+        sessionStorage.removeItem('ng2-webstorage|proyectos');
+        sessionStorage.removeItem('ng2-webstorage|direcciones');
+        sessionStorage.removeItem('ng2-webstorage|solicitante');
+        sessionStorage.removeItem('ng2-webstorage|organizaciones');
+        sessionStorage.removeItem('ng2-webstorage|resultadoNegociaciones');
+        sessionStorage.removeItem('ng2-webstorage|responInfoFinanciera');
+        sessionStorage.removeItem('ng2-webstorage|responeInfoLaboral');
     }
 
     ngOnDestroy() {

@@ -1,6 +1,8 @@
 import { Component, OnInit, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
+import { RegistroExpedienteWizardService } from './registro-expediente-wizard/registro-expediente-wizard.service';
 import { MenuItem, Message } from 'primeng/primeng';
+import { Pasegl } from './';
 
 @Component({
     selector: 'jhi-registro-expediente',
@@ -14,20 +16,25 @@ import { MenuItem, Message } from 'primeng/primeng';
 })
 export class RegistroExpedienteComponent implements OnInit, OnChanges {
 
+    pasegl: Pasegl;
+
     items: MenuItem[];
     msgs: Message[] = [];
     private routeExp = '/defensa/expediente/registro';
     activeIndex: number;
+    message: string;
     url: string;
     router: any;
     routes = ['datos-pase', 'datos-trabajador', 'datos-empleador', 'datos-expediente', 'datos-audiencia'];
 
-    constructor( router: Router) {
+    constructor( router: Router, private data: RegistroExpedienteWizardService) {
         this.router = router;
         this.activeIndex = this.getStepCurrent(router.url);
     }
 
     ngOnInit() {
+        this.data.paseSeleccionado.subscribe((pasegl) => this.pasegl = pasegl)
+
         this.items = [{
                 label: 'Datos del Pase',
                 routerLink: [this.routeExp, { outlets: { wizard: ['datos-pase'] } }],
@@ -99,10 +106,21 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: label});
     }
-
+    public start() {
+        this.activeIndex++;
+        this.router.navigate(['/defensa/expediente/registro', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
+        this.ngOnChanges({
+            activeIndex: {
+                currentValue: this.activeIndex,
+                previousValue: this.activeIndex - 1,
+                firstChange: false,
+                isFirstChange: () => false
+            }
+        });
+    }
     public next() {
         this.activeIndex++;
-        this.router.navigate(['/defensa/registro-expediente', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
+        this.router.navigate(['/defensa/expediente/registro', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
         // show / hide steps and emit selected label
         this.ngOnChanges({
             activeIndex: {
@@ -116,7 +134,7 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
 
     public previous() {
         this.activeIndex--;
-        this.router.navigate(['/defensa/registro-expediente', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
+        this.router.navigate(['/defensa/expediente/registro', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
         // show / hide steps and emit selected label
         this.ngOnChanges({
             activeIndex: {

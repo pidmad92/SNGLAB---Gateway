@@ -57,17 +57,21 @@
                 <form>
                     <div class="row">
                         <div class="col-md-12 mb-3">
-                            <p-dataTable selectionMode="single" [value]="expedientes" dataKey="codexpediente">
+                            <p-dataTable selectionMode="single" [value]="concilias" dataKey="id">
                                 <p-header>Expedientes</p-header>
-                                <p-column field="item" header="Item"></p-column>
-                                <p-column field="estado" header="Estado"></p-column>
-                                <p-column field="codexpediente" header="Nro. Expediente"></p-column>
-                                <p-column field="fecha" header="Fecha de Registro"></p-column>
-                                <p-column field="conciliador" header="Conciliador"></p-column>
-                                <p-column field="ruc" header="Razón Nro. RUC"></p-column>
-                                <p-column field="empleador" header="Empleador"></p-column>
-                                <p-column field="nrotra" header="Nro. Documento"></p-column>
-                                <p-column field="nomtra" header="Trabajador"></p-column>
+                                <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
+                                    <ng-template let-i="rowIndex" pTemplate="body">
+                                        <span style="text-align:center">{{i+1}}</span>
+                                    </ng-template>
+                                </p-column>
+                                <p-column field="expediente.estexpedien.vDescrip" header="Estado"></p-column>
+                                <p-column field="expediente.vNumexp" header="Nro. Expediente"></p-column>
+                                <p-column field="expediente.tFecreg" header="Fecha de Registro"></p-column>
+                                <p-column field="abogado.vNomabogad" header="Conciliador"></p-column>
+                                <p-column field="expediente.pasegl.atencion.datlab.empleador.perjuridica.vNumdoc" header="Razón Nro. RUC"></p-column>
+                                <p-column field="expediente.pasegl.atencion.datlab.empleador.perjuridica.vRazsocial" header="Empleador"></p-column>
+                                <p-column field="numerodocumento" header="Nro. Documento"></p-column>
+                                <p-column field="fullname" header="Trabajador"></p-column>
                             </p-dataTable>
                         </div>
                     </div>

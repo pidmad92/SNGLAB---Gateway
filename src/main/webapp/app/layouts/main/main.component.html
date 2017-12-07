@@ -4,7 +4,7 @@
     <section [ngClass]="{'row': isAuth(), 'flex-nowrap': isAuth()}" >
         <jhi-leftbar *ngIf="isAuth()" class="left-col col-lg-2" id="sidebar-nav"></jhi-leftbar>
         <div [ngClass]="{'content-wrapper': isAuth(), 'right-col': isAuth(), 'col-10': isAuth(), 'col-sm-10': isAuth(), 'col-md-10': isAuth(), 'col-lg-10': isAuth()}">
-            <jhi-navbar *ngIf="isAuth()"></jhi-navbar> 
+            <!-- <jhi-navbar *ngIf="isAuth()"></jhi-navbar>  -->
             <router-outlet></router-outlet>    
             <router-outlet name="popup"></router-outlet>
         </div>        

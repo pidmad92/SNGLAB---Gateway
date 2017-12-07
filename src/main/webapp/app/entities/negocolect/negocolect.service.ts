@@ -102,4 +102,16 @@ export class NegocolectService {
         return this.http.get(url + '?tipo=' + tipo + '&codFormPerfil=' + codFormPerfil, options)
             .map((res: Response) => this.convertResponse(res));
     }
+
+    obtenerNegociacionSolicitante(codFormPerfil: number, tipo: string): Observable<Negocolect> {
+        const options = createRequestOption();
+        const url = SERVER_API_URL + 'api/listarNegociacionColectiva';
+        return this.http.get(url + '?tipo=' + tipo + '&codFormPerfil=' + codFormPerfil, options)
+            .map(
+                (res: Response) => {
+                    const jsonResponse = res.text() ? res.json() : res;
+                    return this.convertItemFromServer(jsonResponse);
+                }
+            );
+    }
 }

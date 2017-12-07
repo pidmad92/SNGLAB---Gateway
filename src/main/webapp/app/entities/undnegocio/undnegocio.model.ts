@@ -15,6 +15,6 @@ export class Undnegocio implements BaseEntity {
         public nSedeupd?: number,
         public formperfil?: BaseEntity,
     ) {
-        this.nFlgactivo = false;
+        this.nFlgactivo = true;
     }
 }

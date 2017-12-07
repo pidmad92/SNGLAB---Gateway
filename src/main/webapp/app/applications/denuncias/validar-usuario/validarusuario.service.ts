@@ -17,9 +17,34 @@ export class ValidarUsuarioService {
     private resourceDist = '/denuncias/api/distritos';
     private resourceTVia = '/denuncias/api/tipvias';
     private resourceTZona = '/denuncias/api/tipzonas';
+    private resourceRegPernat = '/denuncias/api/nuevodenunciante';
+    private resourceRegDirdenunciante = '/denuncias/api/direcciondenunciante';
+
     private resourcePersonaValidarServicio = '//localhost:8020/api/validarpersonaservicio';
+    private resourceNotificacionUsuario = '//localhost:8020/api/notificausuario';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+
+    regNuevoDenunciante(personaNatural: any): Observable<ResponseWrapper> {
+        return this.http.post(this.resourceRegPernat, personaNatural).map((res: Response) => {
+            const jsonResponse = res.json();
+            return jsonResponse;
+        });
+    }
+
+    regDireccionDenunciante(dirdenun: any): Observable<ResponseWrapper> {
+        return this.http.post(this.resourceRegDirdenunciante, dirdenun).map((res: Response) => {
+            const jsonResponse = res.json();
+            return jsonResponse;
+        });
+    }
+
+    notificacionUsuario(personaNatural: any): Observable<ResponseWrapper> {
+        return this.http.post(this.resourceNotificacionUsuario, personaNatural).map((res: Response) => {
+            const jsonResponse = res.json();
+            return jsonResponse;
+        });
+    }
 
     consultaTipoDocIdentidad(): Observable<ResponseWrapper> {
         return this.http.get(this.resourceTipoDoc, null)

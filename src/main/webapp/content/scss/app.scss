@@ -939,6 +939,28 @@ button.ui-button-text-icon-left .ui-button-text {
   margin-bottom:10px;
 }
 
+body .ui-dropdown .ui-dropdown-label {
+  line-height: 21px;
+}
+body .ui-dropdown .ui-widget{
+  width:100%;
+}
+
+body .ui-dropdown:not(.ui-state-disabled):hover{
+  background-color: white;
+  border-color: #80bdff;
+}
+body .ui-dropdown:not(.ui-state-disabled):hover .ui-dropdown-label{
+  background: white;
+}
+body .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item:not(.ui-state-highlight):hover {
+  background-color: #c8d1eb;
+  color: #373a3c;
+}
+body .ui-dropdown.ui-state-focus .ui-dropdown-label{
+  background: white;  
+}
+
 body .ui-tabview .ui-tabview-panel{
   border:1px solid #c8c8c8;
   padding:10px;

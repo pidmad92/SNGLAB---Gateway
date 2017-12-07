@@ -1,0 +1,208 @@
+<div class="content-wrapper right-col col-10 col-sm-10 col-md-10 col-lg-10 p-2">
+    <div class="row">
+        <div class="col">
+            <h4 class="title">Registros de atención</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card card-panel mb-3">
+                <div class="card-body">
+                    <div class="row no-gutters y-steps">
+                        <div class="col d-flex justify-content-center y-step active">
+                            <div class="y-progress">
+                                <div class="y-progress-line"></div>
+                            </div>
+                            <div class="y-content">
+                                <a href="registro-atencion.html" class="btn-y">
+                                    <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                                <p class="text-center mb-0">Datos del trabajador</p>
+                                <div class="y-content-descrip">
+                                    <p class="text-muted text-center mb-0"><small>Busca y completa los datos del empleador que viene a consultar</small></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col d-flex justify-content-center y-step active">
+                            <div class="y-progress">
+                                <div class="y-progress-line"></div>
+                            </div>
+                            <div class="y-content">
+                                <a href="registro-atencion2.html" class="btn-y">
+                                    <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                                        <i class="fa fa-database" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                                <p class="text-center mb-0">Datos del Empleador</p>
+                                <div class="y-content-descrip">
+                                    <p class="text-muted text-center mb-0"><small>Ingreso los principales datos del empleador del trabajador en cuestion</small></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col d-flex justify-content-center y-step active">
+                            <div class="y-progress">
+                                <div class="y-progress-line"></div>
+                            </div>
+                            <div class="y-content">
+                                <a href="registro-atencion3.html" class="btn-y">
+                                    <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                                        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                                <p class="text-center mb-0">Datos laborales</p>
+                                <div class="y-content-descrip">
+                                    <p class="text-muted text-center mb-0"><small>Detalla los vínculos laborales que existen entre el empleador y el trabajador</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header bg-light d-sm-flex justify-content-between p-2">
+                    <h5 class="mb-0"><small><i class="fa fa-user-plus px-2" aria-hidden="true"></i> Registro de atención</small></h5>
+                    <h5 class="mb-0"><small>Paso 3 de 3</small></h5>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-3 mb-2">
+                                <label for="selectCate" class="col-form-label col-form-label-sm">Categoria:</label>
+                                <select class="form-control form-control-sm" id="selectCate">
+                          <option>Regimen MyPe - Micro Empresa</option>
+                        </select>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <label for="selectTipo" class="col-form-label col-form-label-sm">Tipo:</label>
+                                <select class="custom-select d-block form-control form-control-sm" id="selectTipo">
+                          <option value="1">Empleador</option>
+                          <option value="2">Obrero</option>
+                        </select>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <label for="inpFingreso" class="col-form-label col-form-label-sm">Fecha de Ingreso:</label>
+                                <input type="date" class="form-control form-control-sm" id="inpFingreso">
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <label for="inpCese" class="col-form-label col-form-label-sm">Fecha de Cese:</label>
+                                <input type="date" class="form-control form-control-sm" id="inpCese">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 mb-2">
+                                <label for="selectMoti" class="col-form-label col-form-label-sm">Motivo de Cese:</label>
+                                <select class="form-control form-control-sm" id="selectMoti">
+                          <option>Despido Arbitrario</option>
+                        </select>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <label for="selectContra" class="col-form-label col-form-label-sm">Tipo de Contrato:</label>
+                                <select class="form-control form-control-sm" id="selectContra">
+                          <option>Contrato Sujeto o Modalidad</option>
+                        </select>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <label for="inpCese" class="col-form-label col-form-label-sm">Fecha Fin de Contrato:</label>
+                                <input type="date" class="form-control form-control-sm" id="inpCese">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 mb-2">
+                                <label for="selectDocu" class="col-form-label col-form-label-sm">Documentación presentada:</label>
+                                <select class="form-control form-control-sm" id="selectDocu">
+                          <option>Boletos de Pago</option>
+                        </select>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <label for="inpObser" class="col-form-label col-form-label-sm">Observaciones:</label>
+                                <input type="text" class="form-control form-control-sm" id="inpObser">
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <label for="selectBanco" class="col-form-label col-form-label-sm">Banco:</label>
+                                <select class="form-control form-control-sm" id="selectBanco">
+                          <option>PRomedio del Sistema</option>
+                        </select>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <label for="selectTipo" class="col-form-label col-form-label-sm">Moneda:</label>
+                                <select class="custom-select d-block form-control form-control-sm" id="selectTipo">
+                          <option value="1">Nacional</option>
+                          <option value="2">Extranjera</option>
+                        </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-sm-right">
+                                <a href="registro-atencion2.html" class="btn btn-sm m-1 btn-success"><i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
+                                <a href="#" class="btn btn-sm m-1 btn-danger" data-toggle="modal" data-target="#termAtencion"><i class="fa fa-times-circle" aria-hidden="true"></i> Terminar consulta</a>
+                                <a href="#" class="btn btn-sm m-1 btn-warning" data-toggle="modal" data-target="#generarPase"><i class="fa fa-exchange" aria-hidden="true"></i> Generar pase</a>
+                                <a href="registro-atencion3.html" class="btn btn-sm m-1 btn-success"><i class="fa fa-chevron-right" aria-hidden="true"></i> Calcular beneficio</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<footer class="row flex-nowrap">
+    <div class="left-col active col-2 col-sm-2 col-md-2 col-lg-2">
+        <div class="aside-footer row">
+        </div>
+    </div>
+    <div class="footer d-flex justify-content-center align-items-center right-col col-10 col-sm-10 col-md-10 col-lg-10">
+        <p class="text-center my-1">MTPE © 2017 Todos los derechos reservados</p>
+    </div>
+</footer>
+<div id="scroll">
+    <i class="fa fa-chevron-up" aria-hidden="true"></i>
+</div>
+</div>
+<!-- Modal Finalizar consulta-->
+<div class="modal fade" id="termAtencion" tabindex="-1" role="dialog" aria-labelledby="titleReg" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white p-2">
+                <h5 class="modal-title" id="titleReg">Finalizar consulta</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info" role="alert">
+                    <div class="row">
+                        <div class="col"><i class="fa fa-id-card" aria-hidden="true"></i> 79413933</div>
+                        <div class="col"><i class="fa fa-user" aria-hidden="true"></i> Maldonado Diaz Pierre David</div>
+                    </div>
+                </div>
+                <p>Ingrese los detalles de su atención</p>
+                <form>
+                    <div class="row">
+                        <div class="col-md mb-2">
+                            <label for="selectMotivo" class="col-form-label col-form-label-sm">Motivo de la atención:</label>
+                            <select class="form-control form-control-sm" id="selectMotivo">
+                    <option>Solicito consulta</option>
+                    <option>...</option>
+                  </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md mb-2">
+                            <label for="inpObs" class="col-form-label col-form-label-sm">Observación:</label>
+                            <input type="text" class="form-control form-control-sm" id="inpObs" placeholder="" value="Informe">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <a href="#" class="btn btn-sm btn-danger" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
+                <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-sign-out" aria-hidden="true"></i> Finalizar atención</a>
+            </div>
+        </div>
+    </div>
+</div>

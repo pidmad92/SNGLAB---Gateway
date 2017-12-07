@@ -30,6 +30,15 @@ export class ResulconciService {
 
     update(resulconci: Resulconci): Observable<Resulconci> {
         const copy = this.convert(resulconci);
+        console.log('update');
+        return this.http.put(this.resourceUrl, copy).map((res: Response) => {
+            const jsonResponse = res.json();
+            return this.convertItemFromServer(jsonResponse);
+        });
+    }
+    updateLogic(resulconci: Resulconci): Observable<Resulconci> {
+        resulconci.nFlgactivo = false;
+        const copy = this.convert(resulconci);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);

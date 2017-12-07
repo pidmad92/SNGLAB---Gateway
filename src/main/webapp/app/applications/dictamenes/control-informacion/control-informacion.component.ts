@@ -43,6 +43,12 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
+        console.log('sessionStorage.getItem(ng2-webstorage|solicitud): ' + sessionStorage.getItem('ng2-webstorage|solicitud'));
+        for (let i = 0; i < sessionStorage.length; i++) {
+            console.log('sessionStorage.key(' + i + '): ' + sessionStorage.key(i));
+            console.log('sessionStorage.getItem(' + sessionStorage.key(i) + '): ' + sessionStorage.getItem(sessionStorage.key(i)));
+        }
+        this.limpiarSessionStorage();
     }
 
     load(nCodsolic) {
@@ -57,6 +63,38 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
                 (res: ResponseWrapper) => this.onError(res.json)
             );
         });
+    }
+
+    limpiarSessionStorage() {
+        sessionStorage.removeItem('ng2-webstorage|solicitud');
+        sessionStorage.removeItem('ng2-webstorage|solicform');
+        sessionStorage.removeItem('ng2-webstorage|formperfil');
+        sessionStorage.removeItem('ng2-webstorage|undNegocios');
+        sessionStorage.removeItem('ng2-webstorage|participacionesAccionarias');
+        sessionStorage.removeItem('ng2-webstorage|participacionesMercado');
+        sessionStorage.removeItem('ng2-webstorage|obras');
+        sessionStorage.removeItem('ng2-webstorage|proyectos');
+        sessionStorage.removeItem('ng2-webstorage|direcciones');
+        sessionStorage.removeItem('ng2-webstorage|solicitante');
+        sessionStorage.removeItem('ng2-webstorage|organizaciones');
+        sessionStorage.removeItem('ng2-webstorage|resultadoNegociaciones');
+        sessionStorage.removeItem('ng2-webstorage|responInfoFinanciera');
+        sessionStorage.removeItem('ng2-webstorage|responeInfoLaboral');
+
+        sessionStorage.removeItem('jhi-direcciones');
+        sessionStorage.removeItem('jhi-formperfil');
+        sessionStorage.removeItem('jhi-obras');
+        sessionStorage.removeItem('jhi-organizaciones');
+        sessionStorage.removeItem('jhi-participacionesaccionarias');
+        sessionStorage.removeItem('jhi-participacionesmercado');
+        sessionStorage.removeItem('jhi-proyectos');
+        sessionStorage.removeItem('jhi-responeinfolaboral');
+        sessionStorage.removeItem('jhi-responinfofinanciera');
+        sessionStorage.removeItem('jhi-resultadonegociaciones');
+        sessionStorage.removeItem('jhi-solicform');
+        sessionStorage.removeItem('jhi-solicitante');
+        sessionStorage.removeItem('jhi-solicitud');
+        sessionStorage.removeItem('jhi-undnegocios');
     }
 
     previousState() {

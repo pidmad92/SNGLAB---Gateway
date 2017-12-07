@@ -19,6 +19,9 @@ public class PersonaValidarServicioDTO {
     public String vTelefono;
     public String vCelular;
     public String vEmailper;
+    public String vSexoper;
+    public int nCodtdiden;
+    public String pass;
 
     /**
      * @return the vNumdoc

@@ -50,11 +50,9 @@ export class AudienciaAsignacionPopupService {
         modalRef.componentInstance.expediente = expediente;
         modalRef.result.then((result) => {
             this.router.navigate(['defensa/audiencia/asignacion-abogado'], { replaceUrl: true });
-            console.log('Cc-A');
             this.ngbModalRef = null;
         }, (reason) => {
             this.router.navigate(['defensa/audiencia/asignacion-abogado'], { replaceUrl: true });
-            console.log('Cc-B');
             this.ngbModalRef = null;
         });
         return modalRef;

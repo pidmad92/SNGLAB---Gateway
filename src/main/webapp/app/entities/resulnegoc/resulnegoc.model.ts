@@ -20,6 +20,12 @@ export class Resulnegoc implements BaseEntity {
         public nSedeupd?: number,
         public formperfil?: BaseEntity,
     ) {
-        this.nFlgactivo = false;
+        this.tFecreneg = '';
+        this.nAumento = 0;
+        this.nClausula = 0;
+        this.nGratifica = 0;
+        this.nAlimentac = 0;
+        this.nMovilidad = 0;
+        this.nFlgactivo = true;
     }
 }

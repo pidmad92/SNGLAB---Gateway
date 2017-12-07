@@ -7,8 +7,10 @@ export class Negocolect implements BaseEntity {
         public nCodngcol?: number,
         public nCodfperf?: number,
         public vAmbsubje?: string,
+        public vCodAmbsu?: string,
         public vTipongco?: string,
         public vEtapaneg?: string,
+        public vCodEtapa?: string,
         public tFecvigde?: any,
         public tFecvigha?: any,
         public vNumexpe?: string,
@@ -36,6 +38,8 @@ export class Negocolect implements BaseEntity {
         this.vRegistro = '';
         this.vUsuareg = '';
         this.tFecreg = '';
+        this.vCodAmbsu = '';
+        this.vCodEtapa = '';
         this.nFlgactivo = true;
     }
 }

@@ -8,6 +8,9 @@ export class Direccion implements BaseEntity {
         public vDepart?: string,
         public vProvincia?: string,
         public vDistrito?: string,
+        public vCodDepa?: string,
+        public vCodProv?: string,
+        public vCodDist?: string,
         public vDireccion?: string,
         public vReferen?: string,
         public nNotifica?: boolean,
@@ -20,6 +23,15 @@ export class Direccion implements BaseEntity {
         public nSedeupd?: number,
         public formperfil?: BaseEntity,
     ) {
-        this.nFlgactivo = false;
+        this.vDepart = '';
+        this.vProvincia = '';
+        this.vDistrito = '';
+        this.vCodDepa = '';
+        this.vCodProv = '';
+        this.vCodDist = '';
+        this.vDireccion = '';
+        this.vReferen = '';
+        this.nNotifica = false;
+        this.nFlgactivo = true;
     }
 }

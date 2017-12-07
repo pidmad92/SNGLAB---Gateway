@@ -87,4 +87,14 @@ export class RespinformaService {
         copy.tFecupd = this.dateUtils.toDate(respinforma.tFecupd);
         return copy;
     }
+
+    obtenerResponsableInformacion(codFormPerfil: number, tipo: string): Observable<Respinforma> {
+        const options = createRequestOption();
+        const url = SERVER_API_URL + 'api/obtenerResponsableInformacion';
+        return this.http.get(url + '?tipo=' + tipo + '&codFormPerfil=' + codFormPerfil, options)
+            .map((res: Response) => {
+                const jsonResponse = res.text() ? res.json() : res;
+                return this.convertItemFromServer(jsonResponse);
+            });
+    }
 }

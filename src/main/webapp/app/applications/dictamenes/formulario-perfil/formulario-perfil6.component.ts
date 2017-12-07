@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy  } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
-import { Principal } from '../../../shared/index';
+import { Principal, ResponseWrapper } from '../../../shared/index';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SolicformService, Solicform } from '../../../entities/solicform/index';
 import { FormperfilService, Formperfil } from '../../../entities/formperfil/index';
@@ -12,6 +12,11 @@ import { Participa } from '../../../entities/participa/index';
 import { Hechoinver } from '../../../entities/hechoinver/index';
 import { Direccion } from '../../../entities/direccion/index';
 import { Negocolect } from '../../../entities/negocolect/index';
+import { ModelAnexo } from '../../../entities/anexlaboral/modelanexo.model';
+import { AnexlaboralService, Anexlaboral } from '../../../entities/anexlaboral/index';
+import { Resulnegoc } from '../../../entities/resulnegoc/index';
+import { Respinforma } from '../../../entities/respinforma/index';
+import { Message } from 'primeng/components/common/api';
 
 @Component({
     selector: 'jhi-formulario-perfil6',
@@ -23,6 +28,14 @@ export class FormularioPerfil6Component implements OnInit, OnDestroy {
     currentAccount: Account;
     eventSubscriber: Subscription;
     private subscription: Subscription;
+
+    // Mensajes
+    messages: Message[] = [];
+    messagesForm: Message[] = [];
+    messageList: any;
+
+    block: boolean;
+    editar: boolean;
 
     // Datos de Perfil
     @SessionStorage('solicitud')
@@ -49,6 +62,20 @@ export class FormularioPerfil6Component implements OnInit, OnDestroy {
     solicitante: Negocolect;
     @SessionStorage('organizaciones')
     organizaciones: Negocolect[];
+    @SessionStorage('resultadoNegociaciones')
+    resultadoNegociaciones: Resulnegoc[];
+    @SessionStorage('responInfoFinanciera')
+    responInfoFinanciera: Respinforma;
+    @SessionStorage('responeInfoLaboral')
+    responeInfoLaboral: Respinforma;
+    @SessionStorage('anexoLaboral')
+    anexoLaboral: ModelAnexo[];
+
+    anios: Anexlaboral[];
+    decretos: Anexlaboral[];
+    descripciones: Anexlaboral[];
+
+    cantidad: ModelAnexo[];
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -61,27 +88,32 @@ export class FormularioPerfil6Component implements OnInit, OnDestroy {
         private solicitudService: SolicitudService,
         private formperfilService: FormperfilService,
         private solicfromService: SolicformService,
+        private anexlaboralService: AnexlaboralService,
     ) { }
 
     loadAll() {
-        this.subscription = this.route.params.subscribe((params) => {
-            this.load(params['nCodfperf']);
-        });
+        this.load(this.formPerfil.nCodfperf);
     }
 
     load(nCodfperf) {
-        this.solicfromService.find(nCodfperf).subscribe((solicForm) => {
-            this.solicForm = solicForm;
-            const nCodsolic = solicForm.nCodsolic;
-            // tslint:disable-next-line:no-shadowed-variable
-            const nCodfperf = solicForm.nCodfperf;
-            this.solicitudService.find(nCodsolic).subscribe((solicitud) => {
-                this.solicitud = solicitud;
-            });
-            this.formperfilService.find(nCodfperf).subscribe((formPerfil) => {
-                this.formPerfil = formPerfil;
-            });
-        });
+        this.anexlaboralService.obtenerAnios(nCodfperf).subscribe(
+            (res: ResponseWrapper) => {
+                 this.anios = <Anexlaboral[]>res.json;
+                 this.anexlaboralService.obtenerDecretosPorTipoAnio(nCodfperf, 'D', this.anios[0].nAnioanex).subscribe(
+                    (res1: ResponseWrapper) => {
+                         this.decretos = <Anexlaboral[]>res1.json;
+                    },
+                    (res1: ResponseWrapper) => this.onError(res1.json)
+                 );
+                 this.anexlaboralService.obtenerDescripcionPorTipoAnio(nCodfperf, 'D', this.anios[0].nAnioanex).subscribe(
+                    (res2: ResponseWrapper) => {
+                            this.descripciones = <Anexlaboral[]>res2.json;
+                    },
+                    (res2: ResponseWrapper) => this.onError(res2.json)
+                );
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
     ngOnInit() {
@@ -92,10 +124,6 @@ export class FormularioPerfil6Component implements OnInit, OnDestroy {
 
     previousState() {
         window.history.back();
-    }
-
-    private onError(error) {
-        this.jhiAlertService.error(error.message, null, null);
     }
 
     irPerfil5() {
@@ -116,5 +144,16 @@ export class FormularioPerfil6Component implements OnInit, OnDestroy {
 
     irPerfil() {
         this.router.navigate(['./dictamenes/formulario-perfil/' + this.solicForm.nCodfperf]);
+    }
+
+    private onErrorMultiple(errorList: any) {
+        for (let i = 0; i < errorList.length; i++) {
+            this.messagesForm.push(errorList[i]);
+        }
+    }
+
+    private onError(error: any) {
+        this.messages = [];
+        this.messages.push({ severity: 'error', summary: 'Mensaje de Error', detail: error.message });
     }
 }

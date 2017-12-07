@@ -1,4 +1,4 @@
-<div *ngIf="formPerfil&&solicitud" class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
+<div *ngIf="formPerfil&&solicitud&&solicitante" class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
   <div class="row">
     <div class="col">
       <h4 class="title">Perfil del Empleador</h4>
@@ -156,12 +156,9 @@
                   <div class="row">
                     <div class="col">
                       <div class="form-group row mb-2">
-                        <label for="inpRUC" class="col-sm-8 col-form-label col-form-label-sm">Ambito Subjetivo de la NC (*)</label>
+                        <label for="selectedAmbito" class="col-sm-8 col-form-label col-form-label-sm">Ambito Subjetivo de la NC (*)</label>
                         <div class="col-sm-4">
-                          <select class="form-control form-control-sm" id="selectDisca">
-                            <option>Empleados de Confianza</option>
-                            <option>...</option>
-                          </select>
+                          <p-dropdown [options]="ambito" name="selectedAmbito" [(ngModel)]="selectedAmbito" [style]="{'width':'100%'}" optionLabel="name"></p-dropdown>
                         </div>
                       </div>
                     </div>
@@ -169,12 +166,9 @@
                   <div class="row">
                     <div class="col">
                       <div class="form-group row mb-2">
-                        <label for="inpRUC" class="col-sm-8 col-form-label col-form-label-sm">Etapa de la NC a la fecha de la solicitud del Dictamen Económico-Laboral (*)</label>
+                        <label for="selectedEtapa" class="col-sm-8 col-form-label col-form-label-sm">Etapa de la NC a la fecha de la solicitud del Dictamen Económico-Laboral (*)</label>
                         <div class="col-sm-4">
-                          <select class="form-control form-control-sm" id="selectDisca">
-                            <option>Trato Directo</option>
-                            <option>...</option>
-                          </select>
+                          <p-dropdown [options]="etapa" name="selectedEtapa" [(ngModel)]="selectedEtapa" [style]="{'width':'100%'}" optionLabel="name"></p-dropdown>
                         </div>
                       </div>
                     </div>
@@ -207,7 +201,7 @@
                           <div class="form-group row mb-2">
                             <label for="inpExpediente" class="col-sm-5 col-form-label col-form-label-sm">N° Expediente del NC</label>
                             <div class="col-sm-7">
-                              <input type="text" class="form-control form-control-sm" id="inpExpediente" [(ngModel)]="solicitante.vNumexpe">
+                              <input type="text" disabled class="form-control form-control-sm" id="inpExpediente" [(ngModel)]="solicitante.vNumexpe">
                             </div>
                           </div>
                         </div>
@@ -215,7 +209,7 @@
                           <div class="form-group row mb-2">
                             <label for="inpNombre" class="col-sm-5 col-form-label col-form-label-sm">Autoridad de trabajo Ubigeo</label>
                             <div class="col-sm-7">
-                              <input type="text" class="form-control form-control-sm" id="inpNombre" [(ngModel)]="solicitante.vAuttrab">
+                              <input type="text" disabled class="form-control form-control-sm" id="inpNombre" [(ngModel)]="solicitante.vAuttrab">
                             </div>
                           </div>
                         </div>
@@ -250,17 +244,23 @@
                         <td>{{organizacion.vRucneg}}</td>
                         <td>{{organizacion.vRegistro}}</td>
                         <td>{{organizacion.vRazonsoc}}</td>
-                        <td>{{organizacion.vAmbsubje}}</td>
+                        <td>
+                          {{organizacion.vAmbsubje}}
+                        </td>
                         <td>{{organizacion.vNumexpe}}</td>
-                        <td>{{organizacion.vAuttrab}}</td>
+                        <td>
+                          {{organizacion.vAuttrab}}
+                        </td>
                         <td>{{organizacion.tFecvigde | date:'dd/MM/yyyy'}}</td>
                         <td>{{organizacion.tFecvigha | date:'dd/MM/yyyy'}}</td>
-                        <td>{{organizacion.vEtapaneg}}</td>
+                        <td>
+                          {{organizacion.vEtapaneg}}
+                        </td>
                         <td class="text-center">
-                          <a (click)="editarOrganizacion()" class="btn btn-sm btn-warning">
+                          <a (click)="editarOrganizacion(organizacion)" class="btn btn-sm btn-warning">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                           </a>
-                          <a (click)="eliminarOrganizacion()" class="btn btn-sm btn-danger">
+                          <a (click)="eliminarOrganizacion(organizacion)" class="btn btn-sm btn-danger">
                             <i class="fa fa-times" aria-hidden="true"></i>
                           </a>
                         </td>
@@ -297,25 +297,30 @@
     <div class="form-group row mb-2" style="margin-right:0px!important">
       <label for="inpNumero" class="col-sm-3 col-form-label col-form-label-sm">RUC</label>
       <div class="col-sm-5">
-        <input type="text" class="form-control form-control-sm" id="inpNumero" [(ngModel)]="organizacion.vRucneg">
+        <input type="text" (keypress)="keyPress($event)" class="form-control form-control-sm" id="inpNumero" [(ngModel)]="organizacion.vRucneg">
       </div>
       <div class="col-sm-3">
-        <a href="#" class="btn btn-sm btn-secondary">
+        <a style="color:white;" (click)="buscarRazonSocial()" class="btn btn-sm btn-secondary">
           <i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+      </div>
+    </div>
+    <div class="form-group row mb-2" style="margin-right:0px!important">
+      <label for="inpNumero" class="col-sm-3 col-form-label col-form-label-sm">Registro</label>
+      <div class="col-sm-9">
+        <input type="text" (keypress)="keyPress($event)" class="form-control form-control-sm" id="inpNumero" [(ngModel)]="organizacion.vRegistro">
       </div>
     </div>
     <div class="form-group row mb-2" style="margin-right:0px!important">
       <label for="inpRsocial" class="col-sm-3 col-form-label col-form-label-sm">Razón social</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control form-control-sm" id="inpRsocial" [(ngModel)]="organizacion.vRazonsoc">
+        <input type="text" disabled class="form-control form-control-sm" id="inpRsocial" [(ngModel)]="organizacion.vRazonsoc" trim>
       </div>
     </div>
     <div class="form-group row mb-2" style="margin-right:0px!important">
-      <label for="inpNumero" class="col-sm-3 col-form-label col-form-label-sm">Ambito</label>
+      <label for="selectedAmbitoRegistro" class="col-sm-3 col-form-label col-form-label-sm">Ambito</label>
       <div class="col-sm-5">
-        <select class="form-control form-control-sm" id="selCargo">
-          <option>ComboBox</option>>
-        </select>
+        <p-dropdown [options]="ambito" name="selectedAmbitoRegistro" (onChange)="asignarAmbito(event)" [(ngModel)]="selectedAmbitoRegistro"
+          [style]="{'width':'100%'}" optionLabel="name"></p-dropdown>
       </div>
     </div>
     <div class="form-group row mb-2" style="margin-right:0px!important">
@@ -331,9 +336,11 @@
       </div>
     </div>
     <div class="form-group row mb-2" style="margin-right:0px!important">
-      <label for="inpEtapa" class="col-sm-3 col-form-label col-form-label-sm">Etapa</label>
+      <label for="selectedEtapaRegistro" class="col-sm-3 col-form-label col-form-label-sm">Etapa</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control form-control-sm" id="inpEtapa" [(ngModel)]="organizacion.vEtapaneg">
+        <p-dropdown [options]="etapa" name="selectedEtapaRegistro" (onChange)="asignarEtapa(event)" [(ngModel)]="selectedEtapaRegistro"
+          [style]="{'width':'100%'}" optionLabel="name"></p-dropdown>
+        <!--<input type="text" class="form-control form-control-sm" id="inpEtapa" [(ngModel)]="organizacion.vEtapaneg">-->
       </div>
     </div>
     <div class="card">
@@ -346,13 +353,13 @@
         <div class="form-group row mb-2" style="margin-right:0px!important">
           <label for="inpExpediente" class="col-sm-5 col-form-label col-form-label-sm">N° Expediente del NC</label>
           <div class="col-sm-7">
-            <input type="text" class="form-control form-control-sm" id="inpExpediente" [(ngModel)]="organizacion.vNumexpe">
+            <input type="text" disabled class="form-control form-control-sm" id="inpExpediente" [(ngModel)]="organizacion.vNumexpe">
           </div>
         </div>
         <div class="form-group row mb-2" style="margin-right:0px!important">
           <label for="inpNombre" class="col-sm-5 col-form-label col-form-label-sm">Autoridad de trabajo</label>
           <div class="col-sm-7">
-            <select class="form-control form-control-sm" id="selCargo">
+            <select disabled class="form-control form-control-sm" id="selCargo">
               <option>ComboBox</option>>
             </select>
           </div>
@@ -360,10 +367,11 @@
       </div>
     </div>
   </p>
+  <p-messages [(value)]="messagesForm"></p-messages>
   <p-footer>
-      <a style="color:white" class="btn btn-sm btn-danger" (click)="cancelarOrganizacion()">
-        <i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
-      <a class="btn btn-sm btn-warning" (click)="guardarOrganizacion()">
-        <i class="fa fa-plus" aria-hidden="true"></i> Añadir</a>
+    <a style="color:white" class="btn btn-sm btn-danger" (click)="cancelarOrganizacion()">
+      <i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
+    <a class="btn btn-sm btn-warning" (click)="guardarOrganizacion()">
+      <i class="fa fa-plus" aria-hidden="true"></i> Añadir</a>
   </p-footer>
 </p-dialog>

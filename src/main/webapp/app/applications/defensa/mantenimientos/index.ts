@@ -1,6 +1,7 @@
 
 export * from './mantenimiento-resultado.component';
 export * from './mantenimiento-resultado-dialog.component';
+export * from './mantenimiento-resultado-delete-dialog.component';
 export * from './mantenimiento-resultado-popup.service';
 
 export * from './mantenimiento-audiencia.component';

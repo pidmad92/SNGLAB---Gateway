@@ -8,6 +8,7 @@ export class Participa implements BaseEntity {
         public vNumdocum?: string,
         public vRazonsoc?: string,
         public vTipodoc?: string,
+        public vCodTipodoc?: string,
         public vTipopart?: string,
         public nPorcasig?: number,
         public vUsuareg?: string,
@@ -19,6 +20,6 @@ export class Participa implements BaseEntity {
         public nSedeupd?: number,
         public formperfil?: BaseEntity,
     ) {
-        this.nFlgactivo = false;
+        this.nFlgactivo = true;
     }
 }
