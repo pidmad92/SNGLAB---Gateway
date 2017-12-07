@@ -26,17 +26,12 @@ export class LeftbarComponent implements OnInit {
     version: string;
     aplicacion: string;
     accordionDefensa = 'expediente';
-<<<<<<< HEAD
     accordionPatrocinio= 'legajo';
     menuDefensa = [ 'expediente', 'audiencia', 'reportes', 'mantenimiento']
     menuPatrocinio = [ 'consulta', 'legajo', 'reportes', 'mantenimiento', 'atencion']
     private modules = ['consultas', 'defensa', 'liquidaciones', 'sindicatos', 'dictamenes', 'denuncias', 'seguridad', 'patrocinio'];
-=======
     accordionDictamen = 'dictamen';
-    menuDefensa = [ 'expediente', 'audiencia', 'reportes', 'mantenimiento'];
     menuDictamen = ['dictamen'];
-    private modules = ['consultas', 'defensa', 'liquidaciones', 'sindicatos', 'dictamenes', 'denuncias', 'seguridad'];
->>>>>>> 326dd3287f9e27ef41e283594e48685b1af91c86
 
     constructor(
         private loginService: LoginService,
@@ -56,16 +51,11 @@ export class LeftbarComponent implements OnInit {
     getRoute(url) {
         console.log('|' + url + '|')
         for (const module of this.modules) {
-<<<<<<< HEAD
-            if (url.indexOf(module) === 1) {
-                if (module === 'defensa' || module === 'patrocinio') {
-=======
             console.log('|' + url + '|')
             if (url === '/') {
                 this.aplicacion = 'seguridad';
             } else if (url.indexOf(module) === 1) {
                 if (module === 'denuncias') {
->>>>>>> 326dd3287f9e27ef41e283594e48685b1af91c86
                     this.menuDefensaActive(url);
                     this.menuPatrocinioActive(url);
                 }
@@ -108,7 +98,6 @@ export class LeftbarComponent implements OnInit {
         }
     }
 
-<<<<<<< HEAD
     menuPatrocinioActive(url) {
         for (const menu of this.menuPatrocinio) {
             if (url.indexOf(menu) !== -1) {
@@ -117,7 +106,6 @@ export class LeftbarComponent implements OnInit {
         }
     }
 
-=======
     menuDictamenActive(url) {
         for (const menu of this.menuDictamen) {
             if (url.indexOf(menu) !== -1) {
@@ -125,5 +113,4 @@ export class LeftbarComponent implements OnInit {
             }
         }
     }
->>>>>>> 326dd3287f9e27ef41e283594e48685b1af91c86
 }
