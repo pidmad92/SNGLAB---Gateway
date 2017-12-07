@@ -98,4 +98,14 @@ export class ResulnegocService {
         return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
             .map((res: Response) => this.convertResponse(res));
     }
+
+    eliminar(codFormPerfil: number) {
+        const options = createRequestOption();
+        const url = SERVER_API_URL + 'api/eliminarResul';
+        return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
+            .map((res: Response) => {
+                const jsonResponse = res.json();
+                return Object.assign(Number, jsonResponse);
+        });
+    }
 }

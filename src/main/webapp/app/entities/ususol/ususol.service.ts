@@ -5,35 +5,28 @@ import { SERVER_API_URL } from '../../app.constants';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
-import { Formperfil } from './formperfil.model';
+import { Ususol } from './ususol.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
 
 @Injectable()
-export class FormperfilService {
+export class UsusolService {
 
-    private resourceUrl = SERVER_API_URL + 'api/formperfils';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/formperfils';
+    private resourceUrl = SERVER_API_URL + '/api/ususols';
+    private resourceSearchUrl = SERVER_API_URL + '/api/_search/ususols';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
-    create(formperfil: Formperfil): Observable<Formperfil> {
-        const copy = this.convert(formperfil);
+    create(ususol: Ususol): Observable<Ususol> {
+        const copy = this.convert(ususol);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-    update(formperfil: Formperfil): Observable<Formperfil> {
-        const copy = this.convert(formperfil);
+    update(ususol: Ususol): Observable<Ususol> {
+        const copy = this.convert(ususol);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
-            const jsonResponse = res.json();
-            return this.convertItemFromServer(jsonResponse);
-        });
-    }
-
-    find(id: number): Observable<Formperfil> {
-        return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
@@ -43,10 +36,6 @@ export class FormperfilService {
         const options = createRequestOption(req);
         return this.http.get(this.resourceUrl, options)
             .map((res: Response) => this.convertResponse(res));
-    }
-
-    delete(id: number): Observable<Response> {
-        return this.http.delete(`${this.resourceUrl}/${id}`);
     }
 
     search(req?: any): Observable<ResponseWrapper> {
@@ -65,27 +54,24 @@ export class FormperfilService {
     }
 
     /**
-     * Convert a returned JSON object to Formperfil.
+     * Convert a returned JSON object to Ususol.
      */
-    private convertItemFromServer(json: any): Formperfil {
-        const entity: Formperfil = Object.assign(new Formperfil(), json);
-        entity.tFecreg = this.dateUtils
-            .convertDateTimeFromServer(json.tFecreg);
-        entity.tFecupd = this.dateUtils
-            .convertDateTimeFromServer(json.tFecupd);
+    private convertItemFromServer(json: any): Ususol {
+        const entity: Ususol = Object.assign(new Ususol(), json);
         return entity;
     }
 
     /**
-     * Convert a Formperfil to a JSON which can be sent to the server.
+     * Convert a Ususol to a JSON which can be sent to the server.
      */
-    private convert(formperfil: Formperfil): Formperfil {
-        const copy: Formperfil = Object.assign({}, formperfil);
-        console.log('formperfil.tFecreg: ' + formperfil.tFecreg);
-        console.log('formperfil.tFecupd: ' + formperfil.tFecupd);
-        copy.tFecreg = this.dateUtils.toDate(formperfil.tFecreg);
-        copy.tFecupd = this.dateUtils.toDate(formperfil.tFecupd);
+    private convert(ususol: Ususol): Ususol {
+        const copy: Ususol = Object.assign({}, ususol);
         return copy;
     }
 
+    obtenerUsuarioPorTipo(codSolicitud: number, tipoUsuario: string): Observable<ResponseWrapper> {
+        const options = createRequestOption();
+        return this.http.get('/api/obtenerUsuarioPorTipo?codSolicitud=' + codSolicitud + '&tipoUsuario=' + tipoUsuario, options)
+            .map((res: any) => this.convertResponse(res));
+    }
 }

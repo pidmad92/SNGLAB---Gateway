@@ -42,14 +42,11 @@ export class LeftbarComponent implements OnInit {
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
-        console.log('router.url: ' + router.url);
         this.getRoute(router.url + 'dictamenes');
     }
 
     getRoute(url) {
-        console.log('|' + url + '|')
         for (const module of this.modules) {
-            console.log('|' + url + '|')
             if (url === '/') {
                 this.aplicacion = 'seguridad';
             } else if (url.indexOf(module) === 1) {

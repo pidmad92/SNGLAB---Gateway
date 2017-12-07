@@ -6,18 +6,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SolicformService, Solicform } from '../../../entities/solicform/index';
 import { FormperfilService, Formperfil } from '../../../entities/formperfil/index';
 import { SolicitudService, Solicitud } from '../../../entities/solicitud/index';
-import { SessionStorage } from 'ng2-webstorage';
-import { Direccion } from '../../../entities/direccion/index';
-import { Hechoinver } from '../../../entities/hechoinver/index';
-import { Participa } from '../../../entities/participa/index';
-import { Undnegocio } from '../../../entities/undnegocio/index';
+import { SessionStorage, LocalStorage } from 'ng2-webstorage';
+import { Direccion, DireccionService } from '../../../entities/direccion/index';
+import { Hechoinver, HechoinverService } from '../../../entities/hechoinver/index';
+import { Participa, ParticipaService } from '../../../entities/participa/index';
+import { Undnegocio, UndnegocioService } from '../../../entities/undnegocio/index';
 import { Negocolect, NegocolectService } from '../../../entities/negocolect/index';
 import { Message } from 'primeng/components/common/api';
 import { ComboModel } from '../../general/combobox.model';
 import { FormularioPerfilService } from './index';
 import { Empresa } from '../../general/servicesmodel/empresa.model';
-import { Resulnegoc } from '../../../entities/resulnegoc/index';
-import { Respinforma } from '../../../entities/respinforma/index';
+import { Resulnegoc, ResulnegocService } from '../../../entities/resulnegoc/index';
+import { Respinforma, RespinformaService } from '../../../entities/respinforma/index';
+import { ModelAnexo } from '../../../entities/anexlaboral/modelanexo.model';
+import { AnexlaboralService } from '../../../entities/anexlaboral/index';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'jhi-formulario-perfil3',
@@ -37,41 +40,48 @@ export class FormularioPerfil3Component implements OnInit, OnDestroy {
 
     block: boolean;
     editar: boolean;
+    @LocalStorage('inicioSolicitante')
+    inicioSolicitante: boolean;
+    @LocalStorage('inicioOrganizacion')
+    inicioOrganizacion: boolean;
 
     // Flag de Modals
     displayOrganizacion: boolean;
+    displayGuardar: boolean;
 
     // Datos de Perfil
-    @SessionStorage('solicitud')
+    @LocalStorage('solicitud')
     solicitud: Solicitud;
-    @SessionStorage('solicform')
+    @LocalStorage('solicform')
     solicForm: Solicform;
-    @SessionStorage('formperfil')
+    @LocalStorage('formperfil')
     formPerfil: Formperfil;
 
     // Listados de dato
-    @SessionStorage('undNegocios')
+    @LocalStorage('undNegocios')
     undNegocios: Undnegocio[];
-    @SessionStorage('participacionesAccionarias')
+    @LocalStorage('participacionesAccionarias')
     participacionesAccionarias: Participa[];
-    @SessionStorage('participacionesMercado')
+    @LocalStorage('participacionesMercado')
     participacionesMercados: Participa[];
-    @SessionStorage('obras')
+    @LocalStorage('obras')
     obras: Hechoinver[];
-    @SessionStorage('proyectos')
+    @LocalStorage('proyectos')
     proyectos: Hechoinver[];
-    @SessionStorage('direcciones')
+    @LocalStorage('direcciones')
     direcciones: Direccion[];
-    @SessionStorage('solicitante')
+    @LocalStorage('solicitante')
     solicitante: Negocolect;
-    @SessionStorage('organizaciones')
+    @LocalStorage('organizaciones')
     organizaciones: Negocolect[];
-    @SessionStorage('resultadoNegociaciones')
+    @LocalStorage('resultadoNegociaciones')
     resultadoNegociaciones: Resulnegoc[];
-    @SessionStorage('responInfoFinanciera')
+    @LocalStorage('responInfoFinanciera')
     responInfoFinanciera: Respinforma;
-    @SessionStorage('responeInfoLaboral')
+    @LocalStorage('responeInfoLaboral')
     responeInfoLaboral: Respinforma;
+    @LocalStorage('anexoLaboral')
+    anexoLaboral: ModelAnexo[];
 
     // Organizacion
     organizacion: Negocolect;
@@ -98,9 +108,93 @@ export class FormularioPerfil3Component implements OnInit, OnDestroy {
         private solicitudService: SolicitudService,
         private formperfilService: FormperfilService,
         private solicfromService: SolicformService,
+        private direccionService: DireccionService,
+        private undnegocioService: UndnegocioService,
+        private participaService: ParticipaService,
+        private hechoinverService: HechoinverService,
         private negocolectService: NegocolectService,
+        private resulnegocService: ResulnegocService,
+        private respinformaService: RespinformaService,
+        private anexlaboralService: AnexlaboralService,
         private formularioPerfilService: FormularioPerfilService,
+        private datepipe: DatePipe,
     ) { }
+
+    ngOnInit() {
+        this.iniciarDatos();
+        this.loadAll();
+
+        // Iniciar Combos
+        this.ambito = [];
+        this.ambito.push(new ComboModel('Empleados de Confianza', 'EC', 0));
+        this.ambito.push(new ComboModel('Empleados', 'EM', 0));
+        this.ambito.push(new ComboModel('Obreros', 'OB', 0));
+
+        if (this.selectedAmbito === undefined || this.selectedAmbito === null) {
+            this.selectedAmbito = this.ambito[0];
+            this.selectedAmbitoRegistro = this.ambito[0];
+            this.solicitante.vAmbsubje = this.selectedAmbitoRegistro.value;
+        }
+
+        // Iniciar Combos
+        this.etapa = [];
+        this.etapa.push(new ComboModel('Trato Directo', 'TD', 0));
+        this.etapa.push(new ComboModel('Conciliación', 'CO', 0));
+        this.etapa.push(new ComboModel('Mediación', 'ME', 0));
+        this.etapa.push(new ComboModel('Extraproceso', 'EX', 0));
+        this.etapa.push(new ComboModel('Arbitraje', 'AR', 0));
+
+        if (this.selectedEtapa === undefined || this.selectedEtapa === null) {
+            this.selectedEtapa = this.etapa[0];
+            this.selectedEtapaRegistro = this.etapa[0];
+            this.solicitante.vEtapaneg = this.selectedEtapaRegistro.value;
+        }
+
+        this.organizacion = new Negocolect;
+        this.displayOrganizacion = false;
+        this.editar = false;
+        this.displayGuardar = false;
+    }
+
+    iniciarDatos() {
+        if (this.inicioSolicitante === null || this.inicioSolicitante === undefined) {
+            this.inicioSolicitante = true;
+        } else {
+            this.inicioSolicitante = false;
+        }
+        if (this.inicioOrganizacion === null || this.inicioOrganizacion === undefined) {
+            this.inicioOrganizacion = true;
+        } else {
+            this.inicioOrganizacion = false;
+        }
+    }
+
+    loadAll() {
+        this.load(this.solicForm.nCodfperf);
+    }
+
+    load(nCodfperf) {
+        if (this.solicitante === undefined || this.solicitante === null) {
+            this.negocolectService.obtenerNegociacionSolicitante(nCodfperf, 'S').subscribe((solicitante) => {
+                    if (this.inicioSolicitante) {
+                        this.solicitante = solicitante
+                    }
+                },
+            );
+        }
+        if (this.organizaciones === undefined || this.organizaciones === null) {
+            this.negocolectService.obtenerNegociacion(nCodfperf, 'O').subscribe(
+                (res: ResponseWrapper) =>  {
+                    if (this.organizaciones.length === 0 && this.inicioOrganizacion) {
+                        this.organizaciones = res.json;
+                    }
+                },
+                (res: ResponseWrapper) => this.onError(res.json)
+            );
+        }
+    }
+
+    ngOnDestroy() { }
 
     // Solo numeros
     keyPress(event: any) {
@@ -221,24 +315,6 @@ export class FormularioPerfil3Component implements OnInit, OnDestroy {
         this.organizacion.vEtapaneg = this.selectedEtapaRegistro.name;
     }
 
-    loadAll() {
-        this.load(this.solicForm.nCodfperf);
-    }
-
-    load(nCodfperf) {
-        if (this.solicitante === undefined || this.solicitante === null) {
-            this.negocolectService.obtenerNegociacionSolicitante(nCodfperf, 'S').subscribe((solicitante) =>
-                this.solicitante = solicitante,
-            );
-        }
-        if (this.organizaciones === undefined || this.organizaciones === null) {
-            this.negocolectService.obtenerNegociacion(nCodfperf, 'O').subscribe(
-                (res: ResponseWrapper) => this.organizaciones = res.json,
-                (res: ResponseWrapper) => this.onError(res.json)
-            );
-        }
-    }
-
     buscarRazonSocial() {
         this.messageList = [];
         this.messagesForm = [];
@@ -263,42 +339,34 @@ export class FormularioPerfil3Component implements OnInit, OnDestroy {
         }
     }
 
-    ngOnInit() {
-        this.loadAll();
-
-        // Iniciar Combos
-        this.ambito = [];
-        this.ambito.push(new ComboModel('Empleados de Confianza', 'EC', 0));
-        this.ambito.push(new ComboModel('Empleados', 'EM', 0));
-        this.ambito.push(new ComboModel('Obreros', 'OB', 0));
-
-        if (this.selectedAmbito === undefined || this.selectedAmbito === null) {
-            this.selectedAmbito = this.ambito[0];
-            this.selectedAmbitoRegistro = this.ambito[0];
+    guardarFormularioPerfil() {
+        if (this.solicitud !== undefined && this.solicForm !== undefined) {
+            this.messagesForm = this.formularioPerfilService.validarDatosObligatorios(this.solicitud, this.formPerfil, this.obras, this.solicitante);
+            if (this.messagesForm.length === 0) {
+                this.formularioPerfilService.guardarFormularioPerfil(this.datepipe, this.solicitud, this.solicForm,
+                    this.formPerfil, this.undNegocios, this.participacionesAccionarias, this.participacionesMercados,
+                    this.obras, this.proyectos, this.direcciones, this.organizaciones, this.solicitante,
+                    this.resultadoNegociaciones, this.responInfoFinanciera, this.responeInfoLaboral, this.anexoLaboral,
+                    this.formperfilService, this.undnegocioService, this.participaService, this.hechoinverService,
+                    this.direccionService, this.negocolectService, this.resulnegocService, this.respinformaService)
+                this.router.navigate(['./dictamenes/control-informacion/' + this.solicitud.nCodsolic]);
+            }
         }
-
-        // Iniciar Combos
-        this.etapa = [];
-        this.etapa.push(new ComboModel('Trato Directo', 'TD', 0));
-        this.etapa.push(new ComboModel('Conciliación', 'CO', 0));
-        this.etapa.push(new ComboModel('Mediación', 'ME', 0));
-        this.etapa.push(new ComboModel('Extraproceso', 'EX', 0));
-        this.etapa.push(new ComboModel('Arbitraje', 'AR', 0));
-
-        if (this.selectedEtapa === undefined || this.selectedEtapa === null) {
-            this.selectedEtapa = this.etapa[0];
-            this.selectedEtapaRegistro = this.etapa[0];
-        }
-
-        this.organizacion = new Negocolect;
-        this.displayOrganizacion = false;
-        this.editar = false;
     }
 
-    ngOnDestroy() { }
+    mostrarGuardar() {
+        this.displayGuardar = true;
+    }
 
-    previousState() {
-        window.history.back();
+    private onErrorMultiple(errorList: any) {
+        for (let i = 0; i < errorList.length; i++) {
+            this.messagesForm.push(errorList[i]);
+        }
+    }
+
+    private onError(error: any) {
+        this.messages = [];
+        this.messages.push({ severity: 'error', summary: 'Mensaje de Error', detail: error.message });
     }
 
     irPerfil4() {
@@ -314,17 +382,6 @@ export class FormularioPerfil3Component implements OnInit, OnDestroy {
     }
 
     irPerfil() {
-        this.router.navigate(['./dictamenes/formulario-perfil/1/' + this.solicForm.nCodfperf]);
-    }
-
-    private onErrorMultiple(errorList: any) {
-        for (let i = 0; i < errorList.length; i++) {
-            this.messagesForm.push(errorList[i]);
-        }
-    }
-
-    private onError(error: any) {
-        this.messages = [];
-        this.messages.push({ severity: 'error', summary: 'Mensaje de Error', detail: error.message });
+        this.router.navigate(['./dictamenes/formulario-perfil/' + this.solicForm.nCodfperf]);
     }
 }

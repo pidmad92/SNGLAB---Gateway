@@ -1,0 +1,118 @@
+<div class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
+    <div class="row">
+        <div class="col">
+            <h4 class="title">Registro de Solicitud</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card card-mtpe mb-3">
+                <div class="card-header bg-light d-sm-flex justify-content-between p-2">
+                    <h5 class="mb-0">
+                        <small>
+                            <i class="fa fa-percent" aria-hidden="true"></i>Listado de solicitud</small>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-right">
+                        <strong>Usuario Administrativo: </strong>Katherine Lorena Lopez Jara</p>
+                    <div class="form-row mb-2">
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label for="inpRuc" class="col-sm-3 col-form-label col-form-label-sm text-right">RUC</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control form-control-sm" id="inpRuc" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group row">
+                                <label for="inpRsocial" class="col-sm-3 col-form-label col-form-label-sm text-right">Razón Social</label>
+                                <div class="col-sm-9" style="display: inline-flex">
+                                    <input type="text" class="form-control form-control-sm" id="inpRsocial" placeholder="" style="margin-right:10px">
+                                    <a [routerLink]="" (click)="buscarSolicitudes()" class="btn btn-sm btn-success" style="padding-left:5px">
+                                        <i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group row">
+                                <a [routerLink]="" (click)="mostrarModalRegistro()" class="btn btn-sm btn-success" style="padding-left:5px">
+                                    <i class="fa fa-plus" aria-hidden="true"></i> Registrar Solicitud</a>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-responsive" id="Csolicitud">
+                        <thead style="text-align: center;">
+                            <tr>
+                                <th>N°</th>
+                                <th>Fecha</th>
+                                <th>Sindicato</th>
+                                <th>RUC</th>
+                                <th>Razón Social</th>
+                                <th>Arbitro</th>
+                                <th>Vigencia Desde</th>
+                                <th>Vigencia Hasta</th>
+                                <th>Voucher</th>
+                                <th>Analista Coordinador</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let solicitud of listaSolicitudes; let i = index">
+                                <tr [ngClass]="{ enviado: solicitud.vFlgest == 'E', observado: solicitud.vFlgest == 'O', conforme: solicitud.vFlgest == 'C' }">
+                                    <td>
+                                        <span>{{i+1}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{solicitud.tFecsolic | date:'dd/MM/yyyy'}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{solicitud.vSindicato}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{solicitud.vRucsol}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{solicitud.vEmpleador}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{solicitud.vArbitro}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{solicitud.tFecvigde | date:'dd/MM/yyyy'}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{solicitud.tFecvigha | date:'dd/MM/yyyy'}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{solicitud.vVoucher}}</span>
+                                    </td>
+                                    <td>
+                                        <span>Analista Coordinador</span>
+                                    </td>
+                                    <td><span>{{solicitud.vFlgest}}</span></td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+                    <p-dialog [(visible)]="display" modal="modal" width="800" [responsive]="true">
+                        <p-header>
+                            Registro de Solicitud de Dictamen Económico Laboral
+                        </p-header>
+                        <p>
+
+
+                        </p>
+                        <p-footer>
+                            <button type="button" icon="fa-check" (click)="guardarSolicitud()" label="Yes">Guardar</button>
+                            <button type="button" icon="fa-close" (click)="display = false;" label="No">Cancelar</button>
+                        </p-footer>
+                    </p-dialog>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

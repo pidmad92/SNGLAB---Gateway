@@ -40,6 +40,7 @@ import { GatewayTipoUsuarioModule } from './entities/tipo-usuario/tipo-usuario.m
 import { GatewayPermisoModule } from './entities/permiso/permiso.module';
 import { GatewayPerfilModule } from './entities/perfil/perfil.module';
 import { GatewayListadoSolicitudesModule } from './applications/dictamenes/listado-solicitudes/listado-solicitudes.module';
+import { GatewayRegistroSolicitudesModule } from './applications/dictamenes/registro-solicitudes/registro-solicitudes.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 
 import {
@@ -90,6 +91,7 @@ const LAZY_ROUTES = [
         GatewayPermisoModule,
         GatewayPerfilModule,
         GatewayListadoSolicitudesModule,
+        GatewayRegistroSolicitudesModule,
         // GatewayprimengModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],

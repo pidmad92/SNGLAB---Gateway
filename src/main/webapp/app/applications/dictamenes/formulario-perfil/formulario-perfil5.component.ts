@@ -6,17 +6,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SolicformService, Solicform } from '../../../entities/solicform/index';
 import { FormperfilService, Formperfil } from '../../../entities/formperfil/index';
 import { SolicitudService, Solicitud } from '../../../entities/solicitud/index';
-import { SessionStorage } from 'ng2-webstorage';
-import { Undnegocio } from '../../../entities/undnegocio/index';
-import { Participa } from '../../../entities/participa/index';
-import { Hechoinver } from '../../../entities/hechoinver/index';
-import { Direccion } from '../../../entities/direccion/index';
-import { Negocolect } from '../../../entities/negocolect/index';
+import { SessionStorage, LocalStorage } from 'ng2-webstorage';
+import { Undnegocio, UndnegocioService } from '../../../entities/undnegocio/index';
+import { Participa, ParticipaService } from '../../../entities/participa/index';
+import { Hechoinver, HechoinverService } from '../../../entities/hechoinver/index';
+import { Direccion, DireccionService } from '../../../entities/direccion/index';
+import { Negocolect, NegocolectService } from '../../../entities/negocolect/index';
 import { RespinformaService, Respinforma } from '../../../entities/respinforma/index';
-import { Resulnegoc } from '../../../entities/resulnegoc/index';
+import { Resulnegoc, ResulnegocService } from '../../../entities/resulnegoc/index';
 import { Message } from 'primeng/components/common/api';
 import { Persona } from '../../general/servicesmodel/persona.model';
 import { FormularioPerfilService } from './index';
+import { ModelAnexo } from '../../../entities/anexlaboral/modelanexo.model';
+import { AnexlaboralService } from '../../../entities/anexlaboral/index';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'jhi-formulario-perfil5',
@@ -36,40 +39,48 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
 
     block: boolean;
     editar: boolean;
+    @LocalStorage('inicioFinanciero')
+    inicioFinanciero: boolean;
+    @LocalStorage('inicioLaboral')
+    inicioLaboral: boolean;
 
     persona: Persona;
 
+    displayGuardar: boolean;
+
     // Datos de Perfil
-    @SessionStorage('solicitud')
+    @LocalStorage('solicitud')
     solicitud: Solicitud;
-    @SessionStorage('solicform')
+    @LocalStorage('solicform')
     solicForm: Solicform;
-    @SessionStorage('formperfil')
+    @LocalStorage('formperfil')
     formPerfil: Formperfil;
 
     // Listados de dato
-    @SessionStorage('undNegocios')
+    @LocalStorage('undNegocios')
     undNegocios: Undnegocio[];
-    @SessionStorage('participacionesAccionarias')
+    @LocalStorage('participacionesAccionarias')
     participacionesAccionarias: Participa[];
-    @SessionStorage('participacionesMercado')
+    @LocalStorage('participacionesMercado')
     participacionesMercados: Participa[];
-    @SessionStorage('obras')
+    @LocalStorage('obras')
     obras: Hechoinver[];
-    @SessionStorage('proyectos')
+    @LocalStorage('proyectos')
     proyectos: Hechoinver[];
-    @SessionStorage('direcciones')
+    @LocalStorage('direcciones')
     direcciones: Direccion[];
-    @SessionStorage('solicitante')
+    @LocalStorage('solicitante')
     solicitante: Negocolect;
-    @SessionStorage('organizaciones')
+    @LocalStorage('organizaciones')
     organizaciones: Negocolect[];
-    @SessionStorage('resultadoNegociaciones')
+    @LocalStorage('resultadoNegociaciones')
     resultadoNegociaciones: Resulnegoc[];
-    @SessionStorage('responInfoFinanciera')
+    @LocalStorage('responInfoFinanciera')
     responInfoFinanciera: Respinforma;
-    @SessionStorage('responeInfoLaboral')
+    @LocalStorage('responeInfoLaboral')
     responeInfoLaboral: Respinforma;
+    @LocalStorage('anexoLaboral')
+    anexoLaboral: ModelAnexo[];
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -82,8 +93,16 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
         private solicitudService: SolicitudService,
         private formperfilService: FormperfilService,
         private solicfromService: SolicformService,
+        private direccionService: DireccionService,
+        private undnegocioService: UndnegocioService,
+        private participaService: ParticipaService,
+        private hechoinverService: HechoinverService,
+        private negocolectService: NegocolectService,
+        private resulnegocService: ResulnegocService,
         private respinformaService: RespinformaService,
+        private anexlaboralService: AnexlaboralService,
         private formularioPerfilService: FormularioPerfilService,
+        private datepipe: DatePipe,
     ) { }
 
     buscarNombreFinanciero() {
@@ -146,16 +165,35 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
         }
     }
 
+    iniciarDatos() {
+        if (this.inicioFinanciero === null || this.inicioFinanciero === undefined) {
+            this.inicioFinanciero = true;
+        } else {
+            this.inicioFinanciero = false;
+        }
+        if (this.inicioLaboral === null || this.inicioLaboral === undefined) {
+            this.inicioLaboral = true;
+        } else {
+            this.inicioLaboral = false;
+        }
+    }
+
     loadAll() {
         this.load(this.formPerfil.nCodfperf);
     }
 
     load(nCodfperf) {
-        this.respinformaService.obtenerResponsableInformacion(nCodfperf, 'F').subscribe((responInfoFinanciera) =>
-             this.responInfoFinanciera = responInfoFinanciera,
+        this.respinformaService.obtenerResponsableInformacion(nCodfperf, 'F').subscribe((responInfoFinanciera) => {
+                if (this.inicioFinanciero) {
+                    this.responInfoFinanciera = responInfoFinanciera;
+                }
+            },
         );
-        this.respinformaService.obtenerResponsableInformacion(nCodfperf, 'L').subscribe((responeInfoLaboral) =>
-            this.responeInfoLaboral = responeInfoLaboral,
+        this.respinformaService.obtenerResponsableInformacion(nCodfperf, 'L').subscribe((responeInfoLaboral) => {
+                if (this.inicioLaboral) {
+                    this.responeInfoLaboral = responeInfoLaboral;
+                }
+            },
         );
         if (this.responInfoFinanciera === null) {
             this.responInfoFinanciera = new Respinforma;
@@ -166,13 +204,41 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.iniciarDatos();
         this.loadAll();
+        this.displayGuardar = false;
     }
 
     ngOnDestroy() { }
 
-    previousState() {
-        window.history.back();
+    guardarFormularioPerfil() {
+        if (this.solicitud !== undefined && this.solicForm !== undefined) {
+            this.messagesForm = this.formularioPerfilService.validarDatosObligatorios(this.solicitud, this.formPerfil, this.obras, this.solicitante);
+            if (this.messagesForm.length === 0) {
+                this.formularioPerfilService.guardarFormularioPerfil(this.datepipe, this.solicitud, this.solicForm,
+                    this.formPerfil, this.undNegocios, this.participacionesAccionarias, this.participacionesMercados,
+                    this.obras, this.proyectos, this.direcciones, this.organizaciones, this.solicitante,
+                    this.resultadoNegociaciones, this.responInfoFinanciera, this.responeInfoLaboral, this.anexoLaboral,
+                    this.formperfilService, this.undnegocioService, this.participaService, this.hechoinverService,
+                    this.direccionService, this.negocolectService, this.resulnegocService, this.respinformaService)
+                this.router.navigate(['./dictamenes/control-informacion/' + this.solicitud.nCodsolic]);
+            }
+        }
+    }
+
+    mostrarGuardar() {
+        this.displayGuardar = true;
+    }
+
+    private onErrorMultiple(errorList: any) {
+        for (let i = 0; i < errorList.length; i++) {
+            this.messagesForm.push(errorList[i]);
+        }
+    }
+
+    private onError(error: any) {
+        this.messages = [];
+        this.messages.push({ severity: 'error', summary: 'Mensaje de Error', detail: error.message });
     }
 
     irPerfil6() {
@@ -199,14 +265,4 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
         this.router.navigate(['./dictamenes/formulario-perfil/' + this.solicForm.nCodfperf]);
     }
 
-    private onErrorMultiple(errorList: any) {
-        for (let i = 0; i < errorList.length; i++) {
-            this.messagesForm.push(errorList[i]);
-        }
-    }
-
-    private onError(error: any) {
-        this.messages = [];
-        this.messages.push({ severity: 'error', summary: 'Mensaje de Error', detail: error.message });
-    }
 }

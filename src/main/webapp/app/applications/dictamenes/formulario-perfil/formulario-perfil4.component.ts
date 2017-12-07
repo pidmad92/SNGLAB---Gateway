@@ -6,15 +6,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SolicformService, Solicform } from '../../../entities/solicform/index';
 import { FormperfilService, Formperfil } from '../../../entities/formperfil/index';
 import { SolicitudService, Solicitud } from '../../../entities/solicitud/index';
-import { SessionStorage } from 'ng2-webstorage';
-import { Undnegocio } from '../../../entities/undnegocio/index';
-import { Participa } from '../../../entities/participa/index';
-import { Hechoinver } from '../../../entities/hechoinver/index';
-import { Direccion } from '../../../entities/direccion/index';
-import { Negocolect } from '../../../entities/negocolect/index';
+import { SessionStorage, LocalStorage } from 'ng2-webstorage';
+import { Undnegocio, UndnegocioService } from '../../../entities/undnegocio/index';
+import { Participa, ParticipaService } from '../../../entities/participa/index';
+import { Hechoinver, HechoinverService } from '../../../entities/hechoinver/index';
+import { Direccion, DireccionService } from '../../../entities/direccion/index';
+import { Negocolect, NegocolectService } from '../../../entities/negocolect/index';
 import { Resulnegoc, ResulnegocService } from '../../../entities/resulnegoc/index';
 import { Message } from 'primeng/components/common/api';
-import { Respinforma } from '../../../entities/respinforma/index';
+import { Respinforma, RespinformaService } from '../../../entities/respinforma/index';
+import { ModelAnexo } from '../../../entities/anexlaboral/modelanexo.model';
+import { AnexlaboralService } from '../../../entities/anexlaboral/index';
+import { DatePipe } from '@angular/common';
+import { FormularioPerfilService } from './index';
 
 @Component({
     selector: 'jhi-formulario-perfil4',
@@ -34,40 +38,45 @@ export class FormularioPerfil4Component implements OnInit, OnDestroy {
 
     block: boolean;
     editar: boolean;
+    @LocalStorage('inicioResultado')
+    inicioResultado: boolean;
 
     // Datos de Perfil
-    @SessionStorage('solicitud')
+    @LocalStorage('solicitud')
     solicitud: Solicitud;
-    @SessionStorage('solicform')
+    @LocalStorage('solicform')
     solicForm: Solicform;
-    @SessionStorage('formperfil')
+    @LocalStorage('formperfil')
     formPerfil: Formperfil;
 
     // Listados de dato
-    @SessionStorage('undNegocios')
+    @LocalStorage('undNegocios')
     undNegocios: Undnegocio[];
-    @SessionStorage('participacionesAccionarias')
+    @LocalStorage('participacionesAccionarias')
     participacionesAccionarias: Participa[];
-    @SessionStorage('participacionesMercado')
+    @LocalStorage('participacionesMercado')
     participacionesMercados: Participa[];
-    @SessionStorage('obras')
+    @LocalStorage('obras')
     obras: Hechoinver[];
-    @SessionStorage('proyectos')
+    @LocalStorage('proyectos')
     proyectos: Hechoinver[];
-    @SessionStorage('direcciones')
+    @LocalStorage('direcciones')
     direcciones: Direccion[];
-    @SessionStorage('solicitante')
+    @LocalStorage('solicitante')
     solicitante: Negocolect;
-    @SessionStorage('organizaciones')
+    @LocalStorage('organizaciones')
     organizaciones: Negocolect[];
-    @SessionStorage('resultadoNegociaciones')
+    @LocalStorage('resultadoNegociaciones')
     resultadoNegociaciones: Resulnegoc[];
-    @SessionStorage('responInfoFinanciera')
+    @LocalStorage('responInfoFinanciera')
     responInfoFinanciera: Respinforma;
-    @SessionStorage('responeInfoLaboral')
+    @LocalStorage('responeInfoLaboral')
     responeInfoLaboral: Respinforma;
+    @LocalStorage('anexoLaboral')
+    anexoLaboral: ModelAnexo[];
 
     displayResultado: boolean;
+    displayGuardar: boolean;
     resultadoRegistro: Resulnegoc;
 
     constructor(
@@ -81,8 +90,54 @@ export class FormularioPerfil4Component implements OnInit, OnDestroy {
         private solicitudService: SolicitudService,
         private formperfilService: FormperfilService,
         private solicfromService: SolicformService,
-        private resulNegocService: ResulnegocService,
+        private direccionService: DireccionService,
+        private undnegocioService: UndnegocioService,
+        private participaService: ParticipaService,
+        private hechoinverService: HechoinverService,
+        private negocolectService: NegocolectService,
+        private resulnegocService: ResulnegocService,
+        private respinformaService: RespinformaService,
+        private anexlaboralService: AnexlaboralService,
+        private datepipe: DatePipe,
+        private formularioPerfilService: FormularioPerfilService,
     ) { }
+
+    ngOnInit() {
+        this.iniciarDatos();
+        this.loadAll();
+        this.resultadoRegistro = new Resulnegoc;
+        this.displayResultado = false;
+        this.block = false;
+        this.editar = false;
+        this.displayGuardar = false;
+    }
+
+    iniciarDatos() {
+        if (this.inicioResultado === null || this.inicioResultado === undefined) {
+            this.inicioResultado = true;
+        } else {
+            this.inicioResultado = false;
+        }
+    }
+
+    loadAll() {
+        this.load(this.formPerfil.nCodfperf);
+    }
+
+    load(nCodfperf) {
+        if (this.resultadoNegociaciones === undefined && this.resultadoNegociaciones === null) {
+            this.resulnegocService.obtenerResultadoNegociaciones(nCodfperf).subscribe(
+                (res: ResponseWrapper) =>  {
+                    if (this.resultadoNegociaciones.length === 0 && this.inicioResultado) {
+                        this.resultadoNegociaciones = res.json;
+                    }
+                },
+                (res: ResponseWrapper) => this.onError(res.json)
+            );
+        }
+    }
+
+    ngOnDestroy() { }
 
     showResultado() {
         this.resultadoRegistro = new Resulnegoc;
@@ -164,31 +219,34 @@ export class FormularioPerfil4Component implements OnInit, OnDestroy {
         return error;
     }
 
-    loadAll() {
-        this.load(this.formPerfil.nCodfperf);
-    }
-
-    load(nCodfperf) {
-        if (this.resultadoNegociaciones === undefined && this.resultadoNegociaciones === null) {
-            this.resulNegocService.obtenerResultadoNegociaciones(nCodfperf).subscribe(
-                (res: ResponseWrapper) => this.resultadoNegociaciones = res.json,
-                (res: ResponseWrapper) => this.onError(res.json)
-            );
+    guardarFormularioPerfil() {
+        if (this.solicitud !== undefined && this.solicForm !== undefined) {
+            this.messagesForm = this.formularioPerfilService.validarDatosObligatorios(this.solicitud, this.formPerfil, this.obras, this.solicitante);
+            if (this.messagesForm.length === 0) {
+                this.formularioPerfilService.guardarFormularioPerfil(this.datepipe, this.solicitud, this.solicForm,
+                    this.formPerfil, this.undNegocios, this.participacionesAccionarias, this.participacionesMercados,
+                    this.obras, this.proyectos, this.direcciones, this.organizaciones, this.solicitante,
+                    this.resultadoNegociaciones, this.responInfoFinanciera, this.responeInfoLaboral, this.anexoLaboral,
+                    this.formperfilService, this.undnegocioService, this.participaService, this.hechoinverService,
+                    this.direccionService, this.negocolectService, this.resulnegocService, this.respinformaService)
+                this.router.navigate(['./dictamenes/control-informacion/' + this.solicitud.nCodsolic]);
+            }
         }
     }
 
-    ngOnInit() {
-        this.loadAll();
-        this.resultadoRegistro = new Resulnegoc;
-        this.displayResultado = false;
-        this.block = false;
-        this.editar = false;
+    mostrarGuardar() {
+        this.displayGuardar = true;
     }
 
-    ngOnDestroy() { }
+    private onErrorMultiple(errorList: any) {
+        for (let i = 0; i < errorList.length; i++) {
+            this.messagesForm.push(errorList[i]);
+        }
+    }
 
-    previousState() {
-        window.history.back();
+    private onError(error: any) {
+        this.messages = [];
+        this.messages.push({ severity: 'error', summary: 'Mensaje de Error', detail: error.message });
     }
 
     irPerfil5() {
@@ -211,14 +269,4 @@ export class FormularioPerfil4Component implements OnInit, OnDestroy {
         this.router.navigate(['./dictamenes/formulario-perfil/' + this.solicForm.nCodfperf]);
     }
 
-    private onErrorMultiple(errorList: any) {
-        for (let i = 0; i < errorList.length; i++) {
-            this.messagesForm.push(errorList[i]);
-        }
-    }
-
-    private onError(error: any) {
-        this.messages = [];
-        this.messages.push({ severity: 'error', summary: 'Mensaje de Error', detail: error.message });
-    }
 }

@@ -58,7 +58,7 @@
                 <div class="y-progress-line"></div>
               </div>
               <div class="y-content">
-                <a [routerLink]="" (click)="previousState()" class="btn-y">
+                <a [routerLink]="" (click)="irPerfil3()" class="btn-y">
                   <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
                     <i class="fa fa-plane" aria-hidden="true"></i>
                   </div>
@@ -157,7 +157,7 @@
             <div class="col-12 text-sm-right">
               <a [routerLink]="" (click)="irPerfil3()" class="btn btn-sm m-1 btn-success">
                 <i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
-              <a [routerLink]="" class="btn btn-sm m-1 btn-secondary">
+              <a [routerLink]=""  (click)="mostrarGuardar()" class="btn btn-sm m-1 btn-secondary">
                 <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
               <a [routerLink]="" (click)="irPerfil5()" class="btn btn-sm m-1 btn-success">
                 <i class="fa fa-chevron-right" aria-hidden="true"></i> Siguiente</a>
@@ -243,5 +243,17 @@
       <i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
     <a class="btn btn-sm btn-warning" (click)="guardarResultado()">
       <i class="fa fa-plus" aria-hidden="true"></i> Guardar</a>
+  </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayGuardar" modal="modal" width="500" [responsive]="true">
+  <p-header>
+    Guardar
+  </p-header>
+  <p>¿Desea guardar los datos del formulario perfil?</p>
+  <p-messages [(value)]="messagesForm"></p-messages>
+  <p-footer>
+    <button type="button" icon="fa-check" (click)="displayGuardar = false">Cancelar</button>
+    <button type="submit" icon="fa-close" (click)="guardarFormularioPerfil()">Guardar</button>
   </p-footer>
 </p-dialog>

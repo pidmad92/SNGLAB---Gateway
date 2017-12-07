@@ -13,7 +13,8 @@ export class Direccion implements BaseEntity {
         public vCodDist?: string,
         public vDireccion?: string,
         public vReferen?: string,
-        public nNotifica?: boolean,
+        public nNotifica?: number,
+        public bNotifica?: boolean,
         public vUsuareg?: string,
         public tFecreg?: any,
         public nFlgactivo?: boolean,
@@ -31,7 +32,8 @@ export class Direccion implements BaseEntity {
         this.vCodDist = '';
         this.vDireccion = '';
         this.vReferen = '';
-        this.nNotifica = false;
+        this.nNotifica = 0;
+        this.bNotifica = false;
         this.nFlgactivo = true;
     }
 }

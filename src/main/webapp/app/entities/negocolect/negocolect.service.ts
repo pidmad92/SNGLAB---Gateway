@@ -57,6 +57,7 @@ export class NegocolectService {
 
     private convertResponse(res: Response): ResponseWrapper {
         const jsonResponse = res.json();
+        console.log('res.json(): ' + res.json());
         const result = [];
         for (let i = 0; i < jsonResponse.length; i++) {
             result.push(this.convertItemFromServer(jsonResponse[i]));
@@ -113,5 +114,15 @@ export class NegocolectService {
                     return this.convertItemFromServer(jsonResponse);
                 }
             );
+    }
+
+    eliminar(codFormPerfil: number) {
+        const options = createRequestOption();
+        const url = SERVER_API_URL + 'api/eliminarNego';
+        return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
+            .map((res: Response) => {
+                const jsonResponse = res.json();
+                return Object.assign(Number, jsonResponse);
+        });
     }
 }

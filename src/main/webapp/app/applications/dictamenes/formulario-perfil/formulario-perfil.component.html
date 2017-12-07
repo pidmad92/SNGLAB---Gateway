@@ -136,7 +136,7 @@
             </div>
           </div>
           <div class="form-group row mb-2">
-            <label for="inpPartida" class="col-sm-2 col-form-label col-form-label-sm">Nro Partida Registral (*)</label>
+            <label for="inpPartida" class="col-sm-2 col-form-label col-form-label-sm">N° Partida Registral (*)</label>
             <div class="col-sm-10">
               <input type="text" (keypress)="keyPress($event)" class="form-control form-control-sm" id="inpPartida" maxlength="50" [(ngModel)]="formPerfil.vPartreg">
             </div>
@@ -178,7 +178,7 @@
                     <span>
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input [(ngModel)]="direccion.nNotifica" type="checkbox" name="nNotifica" id="idNotificar">
+                          <input [(ngModel)]="direccion.bNotifica" (change)="onChangeNotificacion(direccion)" type="checkbox" name="nNotifica" id="idNotificar">
                         </label>
                       </div>
                     </span>
@@ -199,7 +199,7 @@
           </table>
           <div class="row">
             <div class="col-12 text-sm-right">
-              <a [routerLink]="" class="btn btn-sm m-1 btn-secondary">
+              <a style="color:white" (click)="mostrarGuardar()" class="btn btn-sm m-1 btn-secondary">
                 <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
               <a [routerLink]="" (click)="irPerfil2()" class="btn btn-sm m-1 btn-success">
                 <i class="fa fa-chevron-right" aria-hidden="true"></i> Siguiente</a>
@@ -261,3 +261,14 @@
   </p-footer>
 </p-dialog>
 
+<p-dialog [(visible)]="displayGuardar" modal="modal" width="500" [responsive]="true">
+  <p-header>
+    Guardar
+  </p-header>
+  <p>¿Desea guardar los datos del formulario perfil?</p>
+  <p-messages [(value)]="messagesForm"></p-messages>
+  <p-footer>
+    <button type="button" icon="fa-check" (click)="displayGuardar = false">Cancelar</button>
+    <button type="submit" icon="fa-close" (click)="guardarFormularioPerfil()">Guardar</button>
+  </p-footer>
+</p-dialog>
