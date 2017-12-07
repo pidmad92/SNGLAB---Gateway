@@ -1,3 +1,3 @@
-export * from './formregdenuncia.service';
-export * from './formregdenuncia.component';
-export * from './formregdenuncia.route';
+export * from './regdenu.service';
+export * from './regdenu.component';
+export * from './regdenu.route';
