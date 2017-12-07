@@ -7,12 +7,12 @@ import { DialogModule } from 'primeng/primeng';
 import { MessageService } from 'primeng/components/common/messageservice';
 
 import {
-    AtencionLegajoComponent,
-    AtencionLegajoRoute
+    ReporteLegajoComponent,
+    ReporteLegajoRoute
 } from './';
 
 const ENTITY_STATES = [
-    ...AtencionLegajoRoute
+    ...ReporteLegajoRoute
 ];
 
 @NgModule({
@@ -24,14 +24,14 @@ const ENTITY_STATES = [
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
-        AtencionLegajoComponent
+        ReporteLegajoComponent
     ],
     entryComponents: [
-        AtencionLegajoComponent
+        ReporteLegajoComponent
     ],
     providers: [
         MessageService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AtencionLegajoModule { }
+export class ReporteLegajoModule { }

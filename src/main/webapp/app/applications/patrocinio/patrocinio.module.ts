@@ -16,6 +16,9 @@ import { GatewayTipresolucModule } from '../../entities/tipresoluc/tipresoluc.mo
 
 import { RegistroLegajoModule } from './legajo-registro/legajo-registro.module';
 import { AtencionLegajoModule } from './atencion-legajo/atencion-legajo.module';
+import { ReporteLegajoModule } from './legajo-reportes/reportes-legajo.module';
+// import { GatewayMateriaModule } from './legajo-mantenimiento/materia.module';
+// import { GatewayMateriaModule } from './legajo-mantenimiento/materia/materia.module';
 
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
@@ -34,7 +37,8 @@ import { AtencionLegajoModule } from './atencion-legajo/atencion-legajo.module';
         GatewayTipdiligencModule,
         GatewayTipresolucModule,
         RegistroLegajoModule,
-        AtencionLegajoModule
+        AtencionLegajoModule,
+        ReporteLegajoModule
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

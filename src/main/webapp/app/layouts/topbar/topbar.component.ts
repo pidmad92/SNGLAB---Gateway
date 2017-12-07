@@ -61,7 +61,7 @@ export class TopbarComponent implements OnInit {
         } else if (this.ruta === '8') {
             this.router.navigate(['/dictamenes/listado-solicitudes']);
         } else if (this.ruta === '5') {
-            this.router.navigate(['/patrocinio/legajo-registro']);
+            this.router.navigate(['/patrocinio/legajo/registro' , { outlets: { wizard: ['seleccion-legajo'] } }]);
         } else if (this.ruta === '3') {
             this.router.navigate(['/defensa/expediente/registro' , { outlets: { wizard: ['datos-pase'] } }]);
         } else if (this.ruta === '4') {

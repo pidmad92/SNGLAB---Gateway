@@ -5,14 +5,15 @@ import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } f
 
 // import { LegajoRegistroService } from './legajo-registro.service';
 
-import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../shared';
+import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../../shared';
+// import { BienvenidatComponent } from './index';
 
 @Component({
-    selector: 'jhi-atencion-legajo',
-    templateUrl: './legajo-atencion.component.html'
+    selector: 'jhi-datos-abogado',
+    templateUrl: './datos-abogado.component.html'
 })
 
-export class AtencionLegajoComponent implements OnInit {
+export class DatosAbogadoComponent implements OnInit {
     currentAccount: any;
     eventSubscriber: Subscription;
     currentSearch: string;

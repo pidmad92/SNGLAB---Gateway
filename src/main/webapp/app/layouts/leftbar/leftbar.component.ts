@@ -26,7 +26,9 @@ export class LeftbarComponent implements OnInit {
     version: string;
     aplicacion: string;
     accordionDefensa = 'expediente';
+    accordionPatrocinio= 'legajo';
     menuDefensa = [ 'expediente', 'audiencia', 'reportes', 'mantenimiento']
+    menuPatrocinio = [ 'consulta', 'legajo', 'reportes', 'mantenimiento', 'atencion']
     private modules = ['consultas', 'defensa', 'liquidaciones', 'sindicatos', 'dictamenes', 'denuncias', 'seguridad', 'patrocinio'];
 
     constructor(
@@ -47,8 +49,9 @@ export class LeftbarComponent implements OnInit {
         console.log(url);
         for (const module of this.modules) {
             if (url.indexOf(module) === 1) {
-                if (module === 'defensa') {
+                if (module === 'defensa' || module === 'patrocinio') {
                     this.menuDefensaActive(url);
+                    this.menuPatrocinioActive(url);
                 }
                 this.aplicacion = module;
             }
@@ -85,4 +88,13 @@ export class LeftbarComponent implements OnInit {
             }
         }
     }
+
+    menuPatrocinioActive(url) {
+        for (const menu of this.menuPatrocinio) {
+            if (url.indexOf(menu) !== -1) {
+                this.accordionPatrocinio = menu;
+            }
+        }
+    }
+
 }

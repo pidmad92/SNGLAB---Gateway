@@ -31,24 +31,70 @@
     </div>
 <!-- PATROCINIO- LEFTBAR -->
 <div class="my-2" *ngIf="aplicacion == 'patrocinio'">
-    <ul class="level-one p-0" id="accordion">
-        <li routerLinkActive="active">
-            <a routerLink="patrocinio/legajo-registro" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
-                <i class="fa fa-user-plus px-2" aria-hidden="true"></i> <span>Registro de Legajo</span>
-            </a>
-        </li>
-        <li>
-            <a role="button" data-role="disabled" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
-                <i class="fa fa-group px-2" aria-hidden="true"></i> <span>Atenciones</span>
-            </a>
-        </li>
-        <li routerLinkActive="active">
-            <a routerLink="patrocinio/atencion-legajo" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
-                <i class="fa fa-eye px-2" aria-hidden="true"></i> <span>Consulta de Legajos</span>
-            </a>
-        </li>
-    </ul>
+    <ngb-accordion #leftAcc="ngbAccordion" destroyOnHide="false" class="level-one mt-2 p-0" id="accordion" activeIds="{{accordionPatrocinio}}" [closeOthers]="true">
+        <ngb-panel id="{{menuPatrocinio[0]}}">
+            <ng-template ngbPanelTitle>
+                <li routerLinkActive="active">
+                    <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                        <i class="fa fa-address-book-o px-2" aria-hidden="true"></i> <span>Pases/Legajos</span>
+                        <span class="fa fa-chevron-down ml-auto"></span>
+                    </a>
+                </li>
+            </ng-template>
+            <ng-template ngbPanelContent>
+                <div class="level-two p-0">
+                    <li routerLinkActive="active"><a [routerLink]="['/patrocinio/legajo/registro' , { outlets: { wizard: ['seleccion-legajo'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro Legajo</span></a></li>
+                    <li routerLinkActive="active"><a routerLink="defensa/expediente/consulta-notificaciones" class="a-menu d-sm-flex align-items-sm-center "><span>Registro Documento</span></a></li>
+                    <li routerLinkActive="active"><a routerLink="defensa/expediente/consulta-notificaciones" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta Legajo</span></a></li>
+                </div>
+            </ng-template>
+        </ngb-panel>
+        <ngb-panel id="{{menuPatrocinio[1]}}">
+            <ng-template ngbPanelTitle>
+                <li >
+                    <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                        <i class="fa fa-group px-2" aria-hidden="true"></i> <span>Atenciones</span>
+                        <span class="fa fa-chevron-down ml-auto"></span>
+                    </a>
+                </li>
+            </ng-template>
+            <ng-template ngbPanelContent>
+                <div class="level-two p-0">
+                    <li routerLinkActive="active"><a routerLink="patrocinio/atencion/legajo" class="a-menu d-sm-flex align-items-sm-center "><span>Registro de Atenciones</span></a></li>
+                </div>
+            </ng-template>
+        </ngb-panel>
+        <ngb-panel id="{{menuPatrocinio[2]}}">
+            <ng-template ngbPanelTitle>
+                <li routerLinkActive="active">
+                    <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                        <i class="fa fa-edit px-2" aria-hidden="true"></i> <span>Mantenimiento</span>
+                        <span class="fa fa-chevron-down ml-auto"></span>
+                    </a>
+                </li>
+            </ng-template>
+            <ng-template ngbPanelContent>
+                <div class="level-two p-0">
+                    <li routerLinkActive="active"><a routerLink="patrocinio/materia" class="a-menu d-sm-flex align-items-sm-center "><span>Materia</span></a></li>
+                    <li routerLinkActive="active"><a routerLink="defensa/mantenimiento/audiencias" class="a-menu d-sm-flex align-items-sm-center "><span>Tipo Documento</span></a></li>
+                    <li routerLinkActive="active"><a routerLink="defensa/mantenimiento/audiencias" class="a-menu d-sm-flex align-items-sm-center "><span>Tipo Resoluci&oacute;n</span></a></li>
+                </div>
+            </ng-template>
+        </ngb-panel>
+        <ngb-panel id="{{menuPatrocinio[3]}}">
+            <ng-template ngbPanelTitle>
+                <li routerLinkActive="active">
+                    <a routerLink="patrocinio/reporte/legajo" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                        <i class="fa fa-print px-2" aria-hidden="true"></i> <span>Reportes</span>
+                    </a>
+                </li>
+            </ng-template>
+            <ng-template ngbPanelContent>
+            </ng-template>
+        </ngb-panel>
+    </ngb-accordion>
 </div>
+
 
 
     <div class="my-2" *ngIf="aplicacion == 'defensa'">

@@ -1,0 +1,190 @@
+    <div class="row">
+      <div class="col">
+        <div class="card card-panel mb-3">
+          <div class="card-body">
+            <div class="row no-gutters y-steps">
+              <div class="col d-flex justify-content-center y-step active">
+                <div class="y-progress">
+                  <div class="y-progress-line"></div>
+                </div>
+                <div class="y-content">
+                  <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                    </div>
+                  <p class="text-center">Selecci&oacute;n</p>
+                </div>
+              </div>
+              <div class="col d-flex justify-content-center y-step">
+                <div class="y-progress">
+                  <div class="y-progress-line"></div>
+                </div>
+                <div class="y-content">
+                  <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                    
+                  </div>
+                  <p class="text-center">Datos del Trabajador</p>
+                </div>
+              </div>
+              <div class="col d-flex justify-content-center y-step">
+                <div class="y-progress">
+                  <div class="y-progress-line"></div>
+                </div>
+                <div class="y-content">
+                  <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                    
+                  </div>
+                  <p class="text-center">Datos del Empleador</p>
+                </div>
+              </div>
+              <div class="col d-flex justify-content-center y-step">
+                <div class="y-progress">
+                  <div class="y-progress-line"></div>
+                </div>
+                <div class="y-content">
+                  <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                    
+                  </div>
+                  <p class="text-center">Asignar Abogado</p>
+                </div>
+              </div>
+              <div class="col d-flex justify-content-center y-step">
+                <div class="y-progress">
+                  <div class="y-progress-line"></div>
+                </div>
+                <div class="y-content">
+                  <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
+                    
+                  </div>
+                  <p class="text-center">Resumen</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card card-panel mb-3">
+          <div class="card-header d-sm-flex justify-content-between">
+            <h5>Seleccion de Pases/ Legajos</h5>
+          </div>
+          <div class="card-body">
+       
+            <fieldset class="col">     
+              <legend>Legajos/ Pases</legend>
+              
+              <div class="panel">
+                <div class="panel-body">
+                  <form>
+                    <div class="form-row">
+                      <div class="col-md">
+                        <div class="form-group row">
+                          <label for="inpTipo" class="col-sm-5 col-form-label">Num. de documento</label>
+                          <div class="col-sm-7">
+                            <input type="text" class="form-control form-control-sm" id="inpnumdoc" placeholder="" value="" required>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md">
+                        <div class="form-group row">
+                          <label for="inpNumero" class="col-sm-3 col-form-label">Fecha</label>
+                          <div class="col-sm-9">
+                            <input type="date" class="form-control form-control-sm" id="inpNumero" placeholder="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md">
+                        <div class="form-group row">
+                          <div class="col-sm-9">
+                            <a href="#" class="btn btn-sm btn-secondary"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <form>                         
+                    <div class="row">
+                      <div class="col-12 mb-3">
+                        
+                        <table class="table table-striped table-bordered table-responsive list">
+                          <thead>
+                            <tr>
+                              <th>Codigo</th>
+                              <th>Tipo</th>
+                              <th>Fecha Pase/Legajo</th>
+                              <th>Ruc - Razon social del Empleador</th>
+                              <th>Num. Doc. Trabajador</th>
+                              <th>Apellidos y Nombres de Emp.</th>
+                              <th>Of. de Derivaci&oacute;n</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>PAS5412</td>
+                              <td>Pase</td>
+                              <td>02/01/18</td>
+                              <td>209584411010 - ALICORP S.A.</td>
+                              <td>20584751</td>
+                              <td>Giacomo Guilizon</td>
+                              <td>Consultas Laborales</td>
+                              
+                            </tr>
+                            <tr>
+                             <td>LEG1243</td>
+                              <td>Legajo</td>
+                              <td>03/01/18</td>
+                              <td>20187654321 - TELEFONICA S.A.</td>
+                              <td>10490450</td>
+                              <td>Reyes Centurion Luis Alberto</td>
+                              <td>Liquidaciones</td>
+                             
+                            </tr>
+                          </tbody>
+                        </table>
+                        <a href="#" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus" aria-hidden="true"></i> Ver Legajo</a>
+                        <a href="#" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo Legajo</a>
+                      </div>
+                      
+                    </div>
+                  </form>
+                </div>
+              </div>
+              
+            </fieldset>
+            
+            
+          </div>
+          <div class="card-footer text-center">
+            <button class="btn mx-1 btn-light" type="submit"><i class="fa fa-eraser" aria-hidden="true"></i> Limpiar</button>
+            <a href="#/patrocinio/legajo/registro/(wizard:datos-trabajador)" class="btn mx-1 btn-dark">Siguiente <i class="fa fa-chevron-right" aria-hidden="true" ></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-danger">
+          <h5 class="modal-title text-white" id="exampleModalLabel">upload the document</h5>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="inpTitle">Title</label>
+              <input type="email" class="form-control" id="inpTitle" aria-describedby="emailHelp" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="inpCountry">Country</label>
+              <input type="email" class="form-control" id="inpCountry" aria-describedby="emailHelp" placeholder="Enter country">
+            </div>
+            <div class="form-group">
+              <label for="inpDocuments">Documents</label>
+              <input type="file" class="form-control-file" id="inpDocuments">
+            </div>
+            <button type="submit" class="btn btn-block btn-warning text-white"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+          </form>
+        </div>
+      </div>
+    </div>

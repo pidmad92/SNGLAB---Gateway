@@ -10,6 +10,11 @@ import {
     RegistroLegajoComponent,
     registroLegajoRoute
 } from './';
+import { SeleccionLegajoComponent } from './legajo-registro-wizard/seleccion-legajo.component';
+import { DatosTrabajadorComponent } from './legajo-registro-wizard/datos-trabajador.component';
+import { DatosEmpleadorComponent } from './legajo-registro-wizard/datos-empleador.component';
+import { DatosAbogadoComponent } from './legajo-registro-wizard/datos-abogado.component';
+import { DatosResumenComponent } from './legajo-registro-wizard/datos-resumen.component';
 
 const ENTITY_STATES = [
     ...registroLegajoRoute
@@ -24,10 +29,20 @@ const ENTITY_STATES = [
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
-        RegistroLegajoComponent
+        RegistroLegajoComponent,
+        DatosTrabajadorComponent,
+        DatosEmpleadorComponent,
+        SeleccionLegajoComponent,
+        DatosAbogadoComponent,
+        DatosResumenComponent
     ],
     entryComponents: [
-        RegistroLegajoComponent
+        RegistroLegajoComponent,
+        DatosTrabajadorComponent,
+        DatosEmpleadorComponent,
+        SeleccionLegajoComponent,
+        DatosAbogadoComponent,
+        DatosResumenComponent
     ],
     providers: [
         MessageService

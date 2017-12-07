@@ -8,11 +8,11 @@ import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } f
 import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../shared';
 
 @Component({
-    selector: 'jhi-atencion-legajo',
-    templateUrl: './legajo-atencion.component.html'
+    selector: 'jhi-reportes-legajo',
+    templateUrl: './reportes-legajo.component.html'
 })
 
-export class AtencionLegajoComponent implements OnInit {
+export class ReporteLegajoComponent implements OnInit {
     currentAccount: any;
     eventSubscriber: Subscription;
     currentSearch: string;
