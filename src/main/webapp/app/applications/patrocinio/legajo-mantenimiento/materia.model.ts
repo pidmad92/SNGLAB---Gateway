@@ -1,4 +1,4 @@
- import { BaseEntity } from './';
+import { BaseEntity } from './../../../shared';
 
 export class Materia implements BaseEntity {
     constructor(
