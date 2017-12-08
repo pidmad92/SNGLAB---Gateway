@@ -59,7 +59,11 @@
                                         <p-header>Pases</p-header>
                                         <p-column [style]="{'width':'38px'}" selectionMode="single"></p-column>
                                         <!-- <p-column field="codPase" header="Cod. Pase"></p-column> -->
-                                        <p-column field="tFecreg" header="Fecha de Pase"></p-column>
+                                        <p-column  header="Fecha de Pase">
+                                            <ng-template let-data="rowData" pTemplate="body">
+                                                <span style="text-align:center">{{data.tFecreg | date:'dd-MM-yyyy'}}</span>
+                                            </ng-template>
+                                        </p-column>
                                         <p-column field="atencion.datlab.empleador.perjuridica.vNumdoc" header="RUC Empleador"></p-column>
                                         <p-column field="atencion.datlab.empleador.perjuridica.vRazsocial" header="Razón Social del Empleador"></p-column>
                                         <p-column field="atencion.datlab.trabajador.pernatural.vNumdoc" header="Nro. Documento Trabajador"></p-column>

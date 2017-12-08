@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationStart, Event as NavigationEvent  } from '@angular/router';
 import { RegistroExpedienteWizardService } from './registro-expediente-wizard/registro-expediente-wizard.service';
 import { MenuItem, Message } from 'primeng/primeng';
 import { Pasegl } from './';
@@ -16,8 +16,8 @@ import { Pasegl } from './';
 })
 export class RegistroExpedienteComponent implements OnInit, OnChanges {
 
-    pasegl: Pasegl;
-
+    pasegl = new Pasegl();
+    currentUrl = '/';
     items: MenuItem[];
     msgs: Message[] = [];
     private routeExp = '/defensa/expediente/registro';
@@ -30,6 +30,12 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
     constructor( router: Router, private data: RegistroExpedienteWizardService) {
         this.router = router;
         this.activeIndex = this.getStepCurrent(router.url);
+        router.events.forEach((event: NavigationEvent) => {
+            if (event instanceof NavigationStart) {
+                this.currentUrl = event.url;
+                this.activeIndex = this.getStepCurrent(this.currentUrl);
+            }
+        });
     }
 
     ngOnInit() {
@@ -90,8 +96,11 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
     }
 
     isPaseSelect() {
-        console.log('RetPase' + JSON.stringify(this.pasegl));
-        return this.pasegl;
+        if (typeof this.pasegl.id === 'undefined') {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     getStepCurrent(url) {

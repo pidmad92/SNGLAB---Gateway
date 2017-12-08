@@ -1057,6 +1057,16 @@ body .ui-tabview.ui-tabview-left .ui-tabview-nav li:not(.ui-state-active):not(.u
   width: 60%;
 }
 
+body .ui-datatable .ui-datatable-data tr.ui-datatable-even.ui-state-highlight{
+  background: #dadada;
+  color: black;
+  border-color: #b3b0b0;
+}
+body .ui-datatable .ui-datatable-data tr.ui-state-highlight{
+  background: #dadada;
+  color: black;
+  border-color: #b3b0b0;
+}
 p-inputmask{
   display: inherit;
 }

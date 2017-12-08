@@ -36,11 +36,16 @@
                 <form>
                     <div class="row">
                         <div class="col-md-12">
-                            <p-dataTable [value]="motivos" dataKey="codigoMotivos">
+                            <p-dataTable [value]="motatenofic" [editable]="true" [(selection)]="selectmotatenofic" (onEditComplete)="saveObservacion($event)" (onRowSelect)="saveMotivPase($event)" (onRowUnselect)="deleteMotivpase($event)" scrollable="true" scrollHeight="220px" dataKey="Motateno.id">
                                 <p-header>Motivos de la Conciliación</p-header>
                                 <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
-                                <p-column field="descripcion" header="Descripción"></p-column>
-                                <p-column field="observacion" header="Observación"></p-column>
+                                <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
+                                    <ng-template let-i="rowIndex" pTemplate="body">
+                                        <span style="text-align:center">{{i+1}}</span>
+                                    </ng-template>
+                                </p-column>
+                                <p-column field="Motateno.motate.vDesmotate" header="Descripción"></p-column>
+                                <p-column [style]="{'text-align':'left'}" field="observacion" header="Observación" [editable]="true"></p-column>
                             </p-dataTable>
                         </div>
                     </div>

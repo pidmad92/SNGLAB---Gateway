@@ -1,4 +1,3 @@
-
 import { Pasegl } from './../pasegl.model';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
@@ -9,18 +8,99 @@ import { ResponseWrapper, createRequestOption } from '../../../../shared';
 import {ComboModel} from '../../../general/combobox.model';
 import { Tipdocident } from '../../../../entities/tipdocident';
 import { Dirpernat } from './../dirpernat.model';
+import { Dirperjuri } from './../dirperjuri.model';
+import { Motatenofic } from './../motatenofic.model';
+import { Motivpase } from './../motivpase.model';
 
 @Injectable()
 export class DatosWizardService {
     private resourceTipoDoc = '/defensa/api/tipdocidents';
     private resourceDefensa = '/defensa/api';
     private resourceDirec = '/defensa/api/dirpernats';
+    private resourceDirecPerJur = '/defensa/api/dirperjuris';
+
+    private resourceMotivOfic = '/defensa/api/motatenofics/ofic';
+    private resourceMotivPases = '/defensa/api/motivpases';
+
     private resourceDepa = '/defensa/api/departamentos';
     private resourceProv = '/defensa/api/provincias';
     private resourceDist = '/defensa/api/distritos';
     private resourcePersonaValidarServicio = '//localhost:8020/api/validarpersonaservicio';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils, private datePipe: DatePipe) { }
+
+    createMotivPase(motivPase: Motivpase): Observable<Motivpase> {
+        motivPase.nUsuareg = 1;
+        motivPase.nFlgactivo = true;
+        motivPase.nSedereg = 1;
+        const copy = this.convertMotiv(motivPase);
+        return this.http.post(this.resourceMotivPases, copy).map((res: Response) => {
+            const jsonResponse = res.json();
+            this.convertItemFromServer(jsonResponse);
+            return jsonResponse;
+        });
+    }
+    updateMotivPase(motivPase: Motivpase): Observable<Motivpase> {
+        motivPase.nFlgactivo = true;
+        // const copy = this.convertMotiv(motivPase);
+        return this.http.put(this.resourceMotivPases, motivPase).map((res: Response) => {
+            const jsonResponse = res.json();
+            this.convertItemFromServer(jsonResponse);
+            return jsonResponse;
+        });
+    }
+    private convertMotiv(motivpase: Motivpase): Motivpase {
+        const copy: Motivpase = Object.assign({}, motivpase);
+        copy.tFecreg = this.dateUtils.toDate(motivpase.tFecreg);
+        copy.tFecupd = this.dateUtils.toDate(motivpase.tFecupd);
+        return copy;
+    }
+
+    deleteMotivPase(id: number): Observable<Response> {
+        return this.http.delete(`${this.resourceMotivPases}/${id}`);
+    }
+
+    consultaMotivOfic(id: any): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceMotivOfic}/${id}`)
+            .map((res: Response) => this.convertResponseOficPase(res));
+    }
+    private convertResponseOficPase(res: Response): ResponseWrapper {
+        const jsonResponse = res.json();
+        const result = [];
+        for (let i = 0; i < jsonResponse.length; i++) {
+            result.push(this.convertItemMotivOficFromServer(jsonResponse[i]));
+        }
+        return new ResponseWrapper(res.headers, result, res.status);
+    }
+    private convertItemMotivOficFromServer(json: any): Motatenofic {
+        const entity: Motatenofic = Object.assign(new Motatenofic(), json);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
+        return entity;
+    }
+
+    consultaMotivPases(query?: any): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceMotivPases}/${query}`)
+            .map((res: Response) => this.convertResponseMotivPase(res));
+    }
+    private convertResponseMotivPase(res: Response): ResponseWrapper {
+        const jsonResponse = res.json();
+        const result = [];
+        for (let i = 0; i < jsonResponse.length; i++) {
+            result.push(this.convertItemMotivPaseFromServer(jsonResponse[i]));
+        }
+        return new ResponseWrapper(res.headers, result, res.status);
+    }
+    private convertItemMotivPaseFromServer(json: any): Motivpase {
+        const entity: Motivpase = Object.assign(new Motivpase(), json);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
+        return entity;
+    }
 
     consultaTipoDocIdentidad(): Observable<ResponseWrapper> {
         return this.http.get(this.resourceTipoDoc, null)
@@ -56,12 +136,12 @@ export class DatosWizardService {
     }
     private convertItemFromServer(json: any): Pasegl {
         const entity: Pasegl = Object.assign(new Pasegl(), json);
-        entity.tFecreg = this.datePipe
-            // .convertDateTimeFromServer(json.tFecreg);
-            .transform(json.tFecreg, 'dd-MM-yyyy');
-        entity.tFecupd = this.datePipe
-            // .convertDateTimeFromServer(json.tFecupd);
-            .transform(json.tFecupd, 'dd-MM-yyyy');
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+            // .transform(json.tFecreg, 'dd-MM-yyyy');
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
+            // .transform(json.tFecupd, 'dd-MM-yyyy');
         return entity;
     }
 
@@ -79,6 +159,26 @@ export class DatosWizardService {
     }
     private convertItemDirFromServer(json: any): Dirpernat {
         const entity: Dirpernat = Object.assign(new Dirpernat(), json);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
+        return entity;
+    }
+    buscarDireccionesPerJur(id: number): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceDefensa}/dirperjuris/perjuridica/${id}`)
+            .map((res: Response) => this.convertDirPerJuResponse(res));
+    }
+    private convertDirPerJuResponse(res: Response): ResponseWrapper {
+        const jsonResponse = res.json();
+        const result = [];
+        for (let i = 0; i < jsonResponse.length; i++) {
+            result.push(this.convertItemPerJuDirFromServer(jsonResponse[i]));
+        }
+        return new ResponseWrapper(res.headers, result, res.status);
+    }
+    private convertItemPerJuDirFromServer(json: any): Dirperjuri {
+        const entity: Dirperjuri = Object.assign(new Dirperjuri(), json);
         entity.tFecreg = this.dateUtils
             .convertDateTimeFromServer(json.tFecreg);
         entity.tFecupd = this.dateUtils
@@ -128,6 +228,25 @@ export class DatosWizardService {
     updateDir(dirpernat: Dirpernat): Observable<Dirpernat> {
         const copy = this.convert(dirpernat);
         return this.http.put(this.resourceDirec, copy).map((res: Response) => {
+            const jsonResponse = res.json();
+            return this.convertItemFromServer(jsonResponse);
+        });
+    }
+
+    createDirPerJu(dirperjuri: Dirperjuri): Observable<Dirperjuri> {
+        dirperjuri.nUsuareg = 1;
+        dirperjuri.nFlgactivo = true;
+        dirperjuri.nSedereg = 1;
+        const copy = this.convert(dirperjuri);
+        return this.http.post(this.resourceDirecPerJur, copy).map((res: Response) => {
+            const jsonResponse = res.json();
+            return this.convertItemFromServer(jsonResponse);
+        });
+    }
+
+    updateDirPerJu(dirperjuri: Dirperjuri): Observable<Dirperjuri> {
+        const copy = this.convert(dirperjuri);
+        return this.http.put(this.resourceDirecPerJur, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });

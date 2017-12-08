@@ -37,6 +37,7 @@ export class DatosPaseComponent implements OnInit {
         this.data.cambiarPase(event.data);
     }
     onRowUnselect(event) {
+        this.data.cambiarPase(new Pasegl());
     }
 
     constructor(
