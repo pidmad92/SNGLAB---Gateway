@@ -55,18 +55,19 @@ export class ConciliaService {
             .map((res: any) => this.convertResponse(res));
     }
 
-    SearfechaVar(fecha?: any): Observable<ResponseWrapper> {
+    SearfechaVar(fecha?: string): Observable<ResponseWrapper> {
         return this.http.get(`${this.resourceUrlFecha}/${fecha}`)
             .map((res: any) => this.convertResponse(res));
     }
 
-    Searfecha(fecha?: any): Observable<ResponseWrapper> {
+    searfecha(fecha?: any): Observable<ResponseWrapper> {
         return this.http.get(this.resourceUrlFecha)
             .map((res: any) => this.convertResponse(res));
     }
 
     private convertResponse(res: Response): ResponseWrapper {
         const jsonResponse = res.json();
+        console.log('Convert');
         const result = [];
         for (let i = 0; i < jsonResponse.length; i++) {
             result.push(this.convertItemFromServer(jsonResponse[i]));

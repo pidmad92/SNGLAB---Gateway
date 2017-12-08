@@ -71,7 +71,7 @@
                       <div class="y-progress-line"></div>
                     </div>
                     <div class="y-content">
-                      <a [routerLink]="" (click)="previousState()" class="btn-y">
+                      <a [routerLink]="" (click)="irPerfil4()" class="btn-y">
                         <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
                           <i class="fa fa-balance-scale" aria-hidden="true"></i>
                         </div>
@@ -84,7 +84,7 @@
                       <div class="y-progress-line"></div>
                     </div>
                     <div class="y-content">
-                      <a [routerLink]="" class="btn-y">
+                      <a [routerLink]="" (click)="irPerfil5()" class="btn-y">
                         <div class="y-content-circle m-auto d-flex justify-content-center align-items-center">
                           <i class="fa fa-usd" aria-hidden="true"></i>
                         </div>
@@ -236,10 +236,22 @@
             <div class="row">
               <div class="col-12 text-sm-right">
                 <a [routerLink]="" (click)="irPerfil4()" class="btn btn-sm m-1 btn-success"><i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
-                <a [routerLink]="" class="btn btn-sm m-1 btn-secondary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
+                <a [routerLink]=""  (click)="mostrarGuardar()" class="btn btn-sm m-1 btn-secondary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
                 <a [routerLink]="" (click)="irPerfil6()" class="btn btn-sm m-1 btn-success"><i class="fa fa-chevron-right" aria-hidden="true"></i> Siguiente</a>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <p-dialog [(visible)]="displayGuardar" modal="modal" width="500" [responsive]="true">
+        <p-header>
+          Guardar
+        </p-header>
+        <p>¿Desea guardar los datos del formulario perfil?</p>
+        <p-messages [(value)]="messagesForm"></p-messages>
+        <p-footer>
+          <button type="button" icon="fa-check" (click)="displayGuardar = false">Cancelar</button>
+          <button type="submit" icon="fa-close" (click)="guardarFormularioPerfil()">Guardar</button>
+        </p-footer>
+      </p-dialog>

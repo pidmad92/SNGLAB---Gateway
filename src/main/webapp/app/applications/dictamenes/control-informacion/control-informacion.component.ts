@@ -5,6 +5,15 @@ import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } f
 import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../shared';
 import { Solicitud, SolicitudService } from '../../../entities/solicitud/index';
 import { Solicform, SolicformService } from '../../../entities/solicform/';
+import { LocalStorage } from 'ng2-webstorage';
+import { Undnegocio } from '../../../entities/undnegocio/index';
+import { Participa } from '../../../entities/participa/index';
+import { Hechoinver } from '../../../entities/hechoinver/index';
+import { Direccion } from '../../../entities/direccion/index';
+import { Negocolect } from '../../../entities/negocolect/index';
+import { Resulnegoc } from '../../../entities/resulnegoc/index';
+import { Respinforma } from '../../../entities/respinforma/index';
+import { ModelAnexo } from '../../../entities/anexlaboral/modelanexo.model';
 
 @Component({
     selector: 'jhi-control-informacion',
@@ -19,6 +28,55 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
     currentAccount: Account;
     eventSubscriber: Subscription;
     private subscription: Subscription;
+
+    // Listados de dato
+    @LocalStorage('undNegocios')
+    undNegocios: Undnegocio[];
+    @LocalStorage('participacionesAccionarias')
+    participacionesAccionarias: Participa[];
+    @LocalStorage('participacionesMercado')
+    participacionesMercados: Participa[];
+    @LocalStorage('obras')
+    obras: Hechoinver[];
+    @LocalStorage('proyectos')
+    proyectos: Hechoinver[];
+    @LocalStorage('direcciones')
+    direcciones: Direccion[];
+    @LocalStorage('solicitante')
+    solicitante: Negocolect;
+    @LocalStorage('organizaciones')
+    organizaciones: Negocolect[];
+    @LocalStorage('resultadoNegociaciones')
+    resultadoNegociaciones: Resulnegoc[];
+    @LocalStorage('responInfoFinanciera')
+    responInfoFinanciera: Respinforma;
+    @LocalStorage('responeInfoLaboral')
+    responeInfoLaboral: Respinforma;
+    @LocalStorage('anexoLaboral')
+    anexoLaboral: ModelAnexo[];
+
+    @LocalStorage('inicioDir')
+    inicioDir: boolean;
+    @LocalStorage('inicioUnidad')
+    inicioUnidad: boolean;
+    @LocalStorage('inicioAccionaria')
+    inicioAccionaria: boolean;
+    @LocalStorage('inicioMercado')
+    inicioMercado: boolean;
+    @LocalStorage('inicioObra')
+    inicioObra: boolean;
+    @LocalStorage('inicioProyecto')
+    inicioProyecto: boolean;
+    @LocalStorage('inicioFinanciero')
+    inicioFinanciero: boolean;
+    @LocalStorage('inicioLaboral')
+    inicioLaboral: boolean;
+    @LocalStorage('inicioResultado')
+    inicioResultado: boolean;
+    @LocalStorage('inicioSolicitante')
+    inicioSolicitante: boolean;
+    @LocalStorage('inicioOrganizacion')
+    inicioOrganizacion: boolean;
 
     constructor(
         private solicitudService: SolicitudService,
@@ -43,12 +101,12 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
-        console.log('sessionStorage.getItem(ng2-webstorage|solicitud): ' + sessionStorage.getItem('ng2-webstorage|solicitud'));
-        for (let i = 0; i < sessionStorage.length; i++) {
-            console.log('sessionStorage.key(' + i + '): ' + sessionStorage.key(i));
-            console.log('sessionStorage.getItem(' + sessionStorage.key(i) + '): ' + sessionStorage.getItem(sessionStorage.key(i)));
-        }
-        this.limpiarSessionStorage();
+        /*console.log('localStorage.getItem(ng2-webstorage|solicitud): ' + localStorage.getItem('ng2-webstorage|solicitud'));
+        for (let i = 0; i < localStorage.length; i++) {
+            console.log('localStorage.key(' + i + '): ' + localStorage.key(i));
+            console.log('localStorage.getItem(' + localStorage.key(i) + '): ' + localStorage.getItem(localStorage.key(i)));
+        }*/
+        this.limpiarLocalStorage();
     }
 
     load(nCodsolic) {
@@ -65,36 +123,31 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
         });
     }
 
-    limpiarSessionStorage() {
-        sessionStorage.removeItem('ng2-webstorage|solicitud');
-        sessionStorage.removeItem('ng2-webstorage|solicform');
-        sessionStorage.removeItem('ng2-webstorage|formperfil');
-        sessionStorage.removeItem('ng2-webstorage|undNegocios');
-        sessionStorage.removeItem('ng2-webstorage|participacionesAccionarias');
-        sessionStorage.removeItem('ng2-webstorage|participacionesMercado');
-        sessionStorage.removeItem('ng2-webstorage|obras');
-        sessionStorage.removeItem('ng2-webstorage|proyectos');
-        sessionStorage.removeItem('ng2-webstorage|direcciones');
-        sessionStorage.removeItem('ng2-webstorage|solicitante');
-        sessionStorage.removeItem('ng2-webstorage|organizaciones');
-        sessionStorage.removeItem('ng2-webstorage|resultadoNegociaciones');
-        sessionStorage.removeItem('ng2-webstorage|responInfoFinanciera');
-        sessionStorage.removeItem('ng2-webstorage|responeInfoLaboral');
-
-        sessionStorage.removeItem('jhi-direcciones');
-        sessionStorage.removeItem('jhi-formperfil');
-        sessionStorage.removeItem('jhi-obras');
-        sessionStorage.removeItem('jhi-organizaciones');
-        sessionStorage.removeItem('jhi-participacionesaccionarias');
-        sessionStorage.removeItem('jhi-participacionesmercado');
-        sessionStorage.removeItem('jhi-proyectos');
-        sessionStorage.removeItem('jhi-responeinfolaboral');
-        sessionStorage.removeItem('jhi-responinfofinanciera');
-        sessionStorage.removeItem('jhi-resultadonegociaciones');
-        sessionStorage.removeItem('jhi-solicform');
-        sessionStorage.removeItem('jhi-solicitante');
-        sessionStorage.removeItem('jhi-solicitud');
-        sessionStorage.removeItem('jhi-undnegocios');
+    limpiarLocalStorage() {
+        this.undNegocios = null;
+        this.participacionesAccionarias = null;
+        this.participacionesMercados = null;
+        this.obras = null;
+        this.proyectos = null;
+        this.direcciones = null;
+        this.solicitante = null;
+        this.organizaciones = null;
+        this.resultadoNegociaciones = null;
+        this.responInfoFinanciera = null;
+        this.responeInfoLaboral = null;
+        this.anexoLaboral = null;
+        // Inicios
+        this.inicioDir = null;
+        this.inicioAccionaria = null;
+        this.inicioMercado = null;
+        this.inicioObra = null;
+        this.inicioProyecto = null;
+        this.inicioUnidad = null;
+        this.inicioFinanciero = null;
+        this.inicioLaboral = null;
+        this.inicioResultado = null;
+        this.inicioSolicitante = null;
+        this.inicioOrganizacion = null;
     }
 
     previousState() {

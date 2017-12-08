@@ -16,7 +16,6 @@ export class ValidarrucService {
     validarRuc(ruc: number): Observable<Number> {
         console.log(ruc);
         return this.http.get(`${this.resourceUrl}/${ruc}`).map((res: Response) => {
-            console.log(res);
             return res.status;
         });
 

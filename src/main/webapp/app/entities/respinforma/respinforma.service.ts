@@ -97,4 +97,14 @@ export class RespinformaService {
                 return this.convertItemFromServer(jsonResponse);
             });
     }
+
+    eliminar(codFormPerfil: number) {
+        const options = createRequestOption();
+        const url = SERVER_API_URL + 'api/eliminarResp';
+        return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
+            .map((res: Response) => {
+                const jsonResponse = res.json();
+                return Object.assign(Number, jsonResponse);
+        });
+    }
 }

@@ -81,9 +81,9 @@ export class FormperfilService {
      */
     private convert(formperfil: Formperfil): Formperfil {
         const copy: Formperfil = Object.assign({}, formperfil);
-
+        console.log('formperfil.tFecreg: ' + formperfil.tFecreg);
+        console.log('formperfil.tFecupd: ' + formperfil.tFecupd);
         copy.tFecreg = this.dateUtils.toDate(formperfil.tFecreg);
-
         copy.tFecupd = this.dateUtils.toDate(formperfil.tFecupd);
         return copy;
     }

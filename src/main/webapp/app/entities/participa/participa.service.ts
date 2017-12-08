@@ -94,4 +94,14 @@ export class ParticipaService {
         return this.http.get(url + '?codFormPerfil=' + codFormPerfil + '&tipoParticipacion=' + tipoParticipacion, options)
             .map((res: Response) => this.convertResponse(res));
     }
+
+    eliminar(codFormPerfil: number) {
+        const options = createRequestOption();
+        const url = SERVER_API_URL + 'api/eliminarParticipa';
+        return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
+            .map((res: Response) => {
+                const jsonResponse = res.json();
+                return Object.assign(Number, jsonResponse);
+        });
+    }
 }

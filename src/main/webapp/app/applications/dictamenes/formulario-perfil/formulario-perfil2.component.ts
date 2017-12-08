@@ -10,19 +10,22 @@ import { Formperfil, FormperfilService } from '../../../entities/formperfil/inde
 import { Undnegocio, UndnegocioService } from '../../../entities/undnegocio/index';
 import { Participa, ParticipaService } from '../../../entities/participa/index';
 import { Hechoinver, HechoinverService } from '../../../entities/hechoinver/index';
-import { Direccion } from '../../../entities/direccion/index';
-import { SessionStorage } from 'ng2-webstorage';
+import { Direccion, DireccionService } from '../../../entities/direccion/index';
+import { SessionStorage, LocalStorage } from 'ng2-webstorage';
 import { Message } from 'primeng/components/common/api';
 import { ComboModel } from '../../general/combobox.model';
 import { Tipdoc, TipdocService } from '../../../entities/tipdoc/index';
 import { ValidarUsuarioService } from '../../denuncias/validar-usuario/validarusuario.service';
-import { Negocolect } from '../../../entities/negocolect/index';
+import { Negocolect, NegocolectService } from '../../../entities/negocolect/index';
 import { Empresa } from '../../general/servicesmodel/empresa.model';
 import { FormularioPerfilService } from './index';
 import { Persona } from '../../general/servicesmodel/persona.model';
 import { CarnetExtranjeria } from '../../general/servicesmodel/carnetextranjeria.model';
-import { Resulnegoc } from '../../../entities/resulnegoc/index';
-import { Respinforma } from '../../../entities/respinforma/index';
+import { Resulnegoc, ResulnegocService } from '../../../entities/resulnegoc/index';
+import { Respinforma, RespinformaService } from '../../../entities/respinforma/index';
+import { ModelAnexo } from '../../../entities/anexlaboral/modelanexo.model';
+import { AnexlaboralService } from '../../../entities/anexlaboral/index';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'jhi-formulario-perfil2',
@@ -46,6 +49,16 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
     editarMercado: boolean;
     editarObra: boolean;
     editarInv: boolean;
+    @LocalStorage('inicioUnidad')
+    inicioUnidad: boolean;
+    @LocalStorage('inicioAccionaria')
+    inicioAccionaria: boolean;
+    @LocalStorage('inicioMercado')
+    inicioMercado: boolean;
+    @LocalStorage('inicioObra')
+    inicioObra: boolean;
+    @LocalStorage('inicioProyecto')
+    inicioProyecto: boolean;
 
     // Flags de dialogs
     displayUnidad: boolean;
@@ -53,38 +66,41 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
     displayPartiMercado: boolean;
     displayObras: boolean;
     displayInvProy: boolean;
+    displayGuardar: boolean;
 
     // Datos de Perfil
-    @SessionStorage('solicitud')
+    @LocalStorage('solicitud')
     solicitud: Solicitud;
-    @SessionStorage('solicform')
+    @LocalStorage('solicform')
     solicForm: Solicform;
-    @SessionStorage('formperfil')
+    @LocalStorage('formperfil')
     formPerfil: Formperfil;
 
     // Listados de dato
-    @SessionStorage('undNegocios')
+    @LocalStorage('undNegocios')
     undNegocios: Undnegocio[];
-    @SessionStorage('participacionesAccionarias')
+    @LocalStorage('participacionesAccionarias')
     participacionesAccionarias: Participa[];
-    @SessionStorage('participacionesMercado')
+    @LocalStorage('participacionesMercado')
     participacionesMercados: Participa[];
-    @SessionStorage('obras')
+    @LocalStorage('obras')
     obras: Hechoinver[];
-    @SessionStorage('proyectos')
+    @LocalStorage('proyectos')
     proyectos: Hechoinver[];
-    @SessionStorage('direcciones')
+    @LocalStorage('direcciones')
     direcciones: Direccion[];
-    @SessionStorage('solicitante')
+    @LocalStorage('solicitante')
     solicitante: Negocolect;
-    @SessionStorage('organizaciones')
+    @LocalStorage('organizaciones')
     organizaciones: Negocolect[];
-    @SessionStorage('resultadoNegociaciones')
+    @LocalStorage('resultadoNegociaciones')
     resultadoNegociaciones: Resulnegoc[];
-    @SessionStorage('responInfoFinanciera')
+    @LocalStorage('responInfoFinanciera')
     responInfoFinanciera: Respinforma;
-    @SessionStorage('responeInfoLaboral')
+    @LocalStorage('responeInfoLaboral')
     responeInfoLaboral: Respinforma;
+    @LocalStorage('anexoLaboral')
+    anexoLaboral: ModelAnexo[];
 
     // Objetos CUD
     undNegocio: Undnegocio;
@@ -117,15 +133,21 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
         private solicitudService: SolicitudService,
         private formperfilService: FormperfilService,
         private solicfromService: SolicformService,
-        private undNegocioService: UndnegocioService,
+        private direccionService: DireccionService,
+        private undnegocioService: UndnegocioService,
         private participaService: ParticipaService,
         private hechoinverService: HechoinverService,
+        private negocolectService: NegocolectService,
+        private resulnegocService: ResulnegocService,
+        private respinformaService: RespinformaService,
+        private anexlaboralService: AnexlaboralService,
         private validarUsuarioService: ValidarUsuarioService,
         private formularioPerfilService: FormularioPerfilService,
+        private datepipe: DatePipe,
     ) { }
 
     ngOnInit() {
-
+        this.iniciarDatos();
         this.loadAll();
 
         // Iniciar Combos
@@ -151,19 +173,51 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
         this.displayPartiMercado = false;
         this.displayObras = false;
         this.displayInvProy = false;
+        this.displayGuardar = false;
 
         this.undNegocio = new Undnegocio;
         this.participacionAccionaria = new Participa;
         this.participacionMercado = new Participa;
         this.obra = new Hechoinver;
         this.proyecto = new Hechoinver;
+
+        if (this.formPerfil.vSector === undefined || this.formPerfil.vSector === null) {
+            this.formPerfil.vSector = this.sector[0].value;
+        }
+
+        if (this.formPerfil.vPlancont === undefined || this.formPerfil.vPlancont === null) {
+            this.formPerfil.vPlancont = this.planContable[0].value;
+        }
     }
 
+    iniciarDatos() {
+        if (this.inicioUnidad === null || this.inicioUnidad === undefined) {
+            this.inicioUnidad = true;
+        } else {
+            this.inicioUnidad = false;
+        }
+        if (this.inicioAccionaria === null || this.inicioAccionaria === undefined) {
+            this.inicioAccionaria = true;
+        } else {
+            this.inicioAccionaria = false;
+        }
+        if (this.inicioMercado === null || this.inicioMercado === undefined) {
+            this.inicioMercado = true;
+        } else {
+            this.inicioObra = false;
+        }
+        if (this.inicioObra === null || this.inicioObra === undefined) {
+            this.inicioObra = true;
+        } else {
+            this.inicioObra = false;
+        }
+        if (this.inicioProyecto === null || this.inicioProyecto === undefined) {
+            this.inicioProyecto = true;
+        } else {
+            this.inicioProyecto = false;
+        }
+    }
     ngOnDestroy() { }
-
-    previousState() {
-        window.history.back();
-    }
 
     loadAll() {
         this.load(this.solicForm.nCodfperf);
@@ -178,24 +232,44 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
         this.obras = new Array<Hechoinver>();
         this.proyectos = new Array<Hechoinver>();
 
-        this.undNegocioService.obtenerUnidadNegocio(nCodfperf).subscribe(
-            (res: ResponseWrapper) => this.undNegocios = res.json,
+        this.undnegocioService.obtenerUnidadNegocio(nCodfperf).subscribe(
+            (res: ResponseWrapper) => {
+                if (this.undNegocios.length === 0 && this.inicioUnidad) {
+                    this.undNegocios = res.json;
+                }
+            },
             (res: ResponseWrapper) => this.onError(res.json)
         );
         this.participaService.obtenerParticipacionPorTipo(nCodfperf, 'A').subscribe(
-            (res: ResponseWrapper) => this.participacionesAccionarias = res.json,
+            (res: ResponseWrapper) => {
+                if (this.participacionesAccionarias.length === 0 && this.inicioAccionaria) {
+                    this.participacionesAccionarias = res.json;
+                }
+            },
             (res: ResponseWrapper) => this.onError(res.json)
         );
         this.participaService.obtenerParticipacionPorTipo(nCodfperf, 'M').subscribe(
-            (res: ResponseWrapper) => this.participacionesMercados = res.json,
+            (res: ResponseWrapper) => {
+                if (this.participacionesMercados.length === 0 && this.inicioMercado) {
+                    this.participacionesMercados = res.json;
+                }
+            },
             (res: ResponseWrapper) => this.onError(res.json)
         );
         this.hechoinverService.obtenerHechoInversionPorTipo(nCodfperf, 'H').subscribe(
-            (res: ResponseWrapper) => this.obras = res.json,
+            (res: ResponseWrapper) => {
+                if (this.obras.length === 0 && this.inicioObra) {
+                    this.obras = res.json;
+                }
+            },
             (res: ResponseWrapper) => this.onError(res.json)
         );
         this.hechoinverService.obtenerHechoInversionPorTipo(nCodfperf, 'I').subscribe(
-            (res: ResponseWrapper) => this.proyectos = res.json,
+            (res: ResponseWrapper) => {
+                if (this.proyectos.length === 0 && this.inicioProyecto) {
+                    this.proyectos = res.json;
+                }
+            },
             (res: ResponseWrapper) => this.onError(res.json)
         );
         this.validarUsuarioService.consultaTipoDocIdentidad().subscribe(
@@ -224,9 +298,7 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
         }
     }
 
-    actualizarPorcetanje(event: any) {
-
-    }
+    actualizarPorcetanje(event: any) {}
 
     asignarTipoDocAccionaria() {
         this.participacionAccionaria.vRazonsoc = '';
@@ -806,6 +878,37 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
         }
     }
 
+    guardarFormularioPerfil() {
+        if (this.solicitud !== undefined && this.solicForm !== undefined) {
+            this.messagesForm = this.formularioPerfilService.validarDatosObligatorios(this.solicitud, this.formPerfil, this.obras, this.solicitante);
+            if (this.messagesForm.length === 0) {
+                this.formularioPerfilService.guardarFormularioPerfil(this.datepipe, this.solicitud, this.solicForm,
+                    this.formPerfil, this.undNegocios, this.participacionesAccionarias, this.participacionesMercados,
+                    this.obras, this.proyectos, this.direcciones, this.organizaciones, this.solicitante,
+                    this.resultadoNegociaciones, this.responInfoFinanciera, this.responeInfoLaboral, this.anexoLaboral,
+                    this.formperfilService, this.undnegocioService, this.participaService, this.hechoinverService,
+                    this.direccionService, this.negocolectService, this.resulnegocService, this.respinformaService)
+                this.router.navigate(['./dictamenes/control-informacion/' + this.solicitud.nCodsolic]);
+            }
+        }
+    }
+
+    mostrarGuardar() {
+        this.displayGuardar = true;
+    }
+
+    // Error
+     private onErrorMultiple(errorList: any) {
+        for (let i = 0; i < errorList.length; i++) {
+            this.messagesForm.push(errorList[i]);
+        }
+    }
+
+    private onError(error: any) {
+        this.messages = [];
+        this.messages.push({ severity: 'error', summary: 'Mensaje de Error', detail: error.message });
+    }
+
     // Router
     irPerfil3() {
         this.router.navigate(['./dictamenes/formulario-perfil3']);
@@ -817,17 +920,5 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
 
     irPerfil() {
         this.router.navigate(['./dictamenes/formulario-perfil/' + this.solicForm.nCodfperf]);
-    }
-
-    // Error
-    private onErrorMultiple(errorList: any) {
-        for (let i = 0; i < errorList.length; i++) {
-            this.messagesForm.push(errorList[i]);
-        }
-    }
-
-    private onError(error: any) {
-        this.messages = [];
-        this.messages.push({ severity: 'error', summary: 'Mensaje de Error', detail: error.message });
     }
 }

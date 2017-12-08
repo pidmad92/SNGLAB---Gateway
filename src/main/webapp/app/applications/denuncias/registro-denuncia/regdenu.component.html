@@ -1,0 +1,321 @@
+<p-blockUI [blocked]="block"></p-blockUI>
+<p-tabView [activeIndex]="indexTab">
+    <p-tabPanel [disabled]="disableTab1" header="Datos del empleador" style="height: 500" leftIcon="fa-id-card">
+        <p-messages [(value)]="messagesEmpleador"></p-messages>
+        <div class="row">
+            <div class="col-md-1">
+                <label>Ruc</label>
+            </div>
+            <div class="col-md-6">
+                <input name="nRuc" [(ngModel)]="nRuc" placeholder="Ingresar el RUC de la empresa" class="form-control" type="text" />
+            </div>
+            <div class="col-md-4">
+                <button class="" (click)="validarRuc()" type="button">Buscar</button>
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-md-12">
+                <label>Razón Social</label>
+                <input [(ngModel)]="formregdenu.ddpnombre" readonly="readonly" name="ddpnombre" class="form-control" type="text" />
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-md-6">
+                <label>Dirección Fiscal</label>
+            </div>
+            <div class="ui-md-2">
+                <label>Departamento</label>
+            </div>
+            <div class="ui-md-2">
+                <label>Provincia</label>
+            </div>
+            <div class="ui-md-2">
+                <label>Distrito</label>
+            </div>
+            <div class="ui-md-6">
+                {{formregdenu.domicilioLegal}}
+            </div>
+            <div class="ui-md-2">
+                {{formregdenu.descdep}}
+            </div>
+            <div class="ui-md-2">
+                {{formregdenu.descprov}}
+            </div>
+            <div class="ui-md-2">
+                {{formregdenu.descdist}}
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-md-12">
+                <button class="btn btn-primary" (click)="nextDatosTrabajo()" type="button">Siguiente</button>
+            </div>
+        </div>
+    </p-tabPanel>
+    <p-tabPanel header="Datos del centro de trabajo" leftIcon="fa-podcast" [disabled]="disableTab2">
+        <p-messages [(value)]="messagesTrabajo"></p-messages>
+        <div class="ui-g">
+            <div class="ui-md-12">
+                <table class="table">
+                    <tr>
+                        <td colspan="5">
+                            Direcciones registradas del empleador
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            Direccion
+                        </td>
+                        <td>
+                            Departamento
+                        </td>
+                        <td>
+                            Provincia
+                        </td>
+                        <td>
+                            Distrito
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p-radioButton name="groupDirselect" value="0" [(ngModel)]="formregdenu.flagOtradireccion"></p-radioButton>
+                        </td>
+                        <td>
+                            {{formregdenu.domicilioLegal}}
+                        </td>
+                        <td>
+                            {{formregdenu.descdep}}
+                        </td>
+                        <td>
+                            {{formregdenu.descprov}}
+                        </td>
+                        <td>
+                            {{formregdenu.descdist}}
+                        </td>
+                    </tr>
+                    <tr *ngIf="formregdenu.flagOtradireccion == true">
+                        <td>
+                            <p-radioButton name="groupDirselect" value="1" [(ngModel)]="formregdenu.flagOtradireccion"></p-radioButton>
+                        </td>
+                        <td>
+                            {{formregdenu.domicilioLegal_c}}
+                        </td>
+                        <td>
+                            {{formregdenu.descdep_c}}
+                        </td>
+                        <td>
+                            {{formregdenu.descprov_c}}
+                        </td>
+                        <td>
+                            {{formregdenu.descdist_c}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="ui-md-12">
+                <button (click)="displayModalDireccion()" class="btn btn-primary" type="button">Agregar otra dirección</button>
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-md-3">
+                <label>Fecha de inicio de trabajo:</label>
+                <br />
+                <p-calendar [(ngModel)]="formregdenu.fechainitrabajo" name="fechainitrabajo" [locale]="es" dateFormat="dd/mm/yy"></p-calendar>
+            </div>
+            <div class="ui-md-3">
+                <label>Días de trabajo:</label>
+                <br />
+                <p-checkbox [(ngModel)]="formregdenu.flaglun" name="flaglun" binary="true"></p-checkbox>Lun
+                <p-checkbox [(ngModel)]="formregdenu.flagmar" name="flagmar" binary="true"></p-checkbox>Mar
+                <p-checkbox [(ngModel)]="formregdenu.flagmie" name="flagmie" binary="true"></p-checkbox>Mie
+                <p-checkbox [(ngModel)]="formregdenu.flagjue" name="flagjue" binary="true"></p-checkbox>Jue
+                <p-checkbox [(ngModel)]="formregdenu.flagvie" name="flagvie" binary="true"></p-checkbox>Vie
+                <p-checkbox [(ngModel)]="formregdenu.flagsab" name="flagsab" binary="true"></p-checkbox>Sab
+                <p-checkbox [(ngModel)]="formregdenu.flagdom" name="flagdom" binary="true"></p-checkbox>Dom
+            </div>
+            <div class="ui-md-3">
+                <label>Hora inicio trabajo:</label>
+                <p-calendar [(ngModel)]="formregdenu.horainicio" name="horainicio" [timeOnly]="true"></p-calendar>
+            </div>
+            <div class="ui-md-3">
+                <label>Hora fin trabajo:</label>
+                <p-calendar [(ngModel)]="formregdenu.horafin" name="horafin" [timeOnly]="true"></p-calendar>
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-md-3">
+                <label>¿Estas trabajando?</label>
+                <br />
+                <p-inputSwitch onLabel="Si" offLabel="No" [(ngModel)]="formregdenu.flagtrabajando" name="flagtrabajando"></p-inputSwitch>
+            </div>
+            <div class="ui-md-3">
+                <label>¿Es representate sindical?</label>
+                <br />
+                <p-inputSwitch onLabel="Si" offLabel="No" [(ngModel)]="formregdenu.flaggruposindical" name="flaggruposindical"></p-inputSwitch>
+            </div>
+            <div class="ui-md-3">
+                <label>Telefono trabajador</label>
+                <input type="text" class="form-control" [(ngModel)]="formregdenu.numerotrabajado" name="numerotrabajado" />
+            </div>
+            <div class="ui-md-3">
+                <label>Correo trabajador</label>
+                <input type="email" class="form-control" [(ngModel)]="formregdenu.correotrabajador" name="correotrabajador" />
+            </div>
+        </div>
+        <div class="ui-g">
+            <div *ngIf="formregdenu.flagtrabajando == false" class="ui-md-3">
+                <label>Fecha Cese</label>
+                <p-calendar [(ngModel)]="formregdenu.fechacese" name="fechacese" [locale]="es" dateFormat="dd/mm/yy"></p-calendar>
+            </div>
+            <div *ngIf="formregdenu.flaggruposindical == true" class="ui-md-9">
+                <label>Organizacion Sindical</label>
+                <input type="text" class="form-control" [(ngModel)]="formregdenu.organizacionsindical" name="organizacionsindical" />
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-md-12">
+                <button (click)="backPerJuridica()" class="btn btn-second" type="button">Atras</button>
+                <button (click)="nextDatosDenuncia()" class="btn btn-primary" type="button">Siguiente</button>
+            </div>
+        </div>
+    </p-tabPanel>
+    <p-tabPanel header="Datos de la denuncia" leftIcon="fa-podcast" [disabled]="disableTab3">
+        <p-messages [(value)]="messagesDenuncia"></p-messages>
+        <div class="ui-g">
+            <div class="ui-md-3">
+                Hora ideonea de la visita inspectiva:
+            </div>
+            <div class="ui-md-9">
+                <p-calendar [(ngModel)]="formregdenu.horainiinspec" name="horainiinspec" [timeOnly]="true"></p-calendar> - 
+                <p-calendar [(ngModel)]="formregdenu.horafininspec" name="horainiinspec" [timeOnly]="true"></p-calendar>
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-md-3">
+                Motivo de la denuncia
+            </div>
+            <div class="ui-md-9">
+                <p-dropdown appendTo="body" [options]="formregdenu.listamotivos" [(ngModel)]="formregdenu.selectmotivos" name="selectmotivos"
+                    [style]="{'width':'150px'}" editable="true" placeholder="Seleccione el motivo"></p-dropdown>
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-md-3">
+                Detalle especifico
+            </div>
+            <div class="ui-md-9">
+                <p-dropdown appendTo="body" [options]="formregdenu.listadetalle" [(ngModel)]="formregdenu.selectdetalle" name="selectdetalle"
+                    [style]="{'width':'150px'}" editable="true" placeholder="Seleccione el detalle"></p-dropdown>
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-md-3">
+                Descripción denuncia
+            </div>
+            <div class="ui-md-9">
+                <textarea pInputTextarea [(ngModel)]="formregdenu.observadenuncia" name="observadenuncia"></textarea>
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-md-3">
+                Detalle si presento su denuncia en otro organo del estado
+            </div>
+            <div class="ui-md-9">
+                <textarea pInputTextarea [(ngModel)]="formregdenu.observadenunciadetalle" name="observadenunciadetalle"></textarea>
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-md-3">
+                Adjuntar archivo
+            </div>
+            <div class="ui-md-9">
+                <input type="file" class="form-control" [(ngModel)]="formregdenu.filedenuncia" name="filedenuncia" />
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-md-3">
+                Su denuncia será con la reserva de indentidad
+            </div>
+            <div class="ui-md-9">
+                <p-inputSwitch onLabel="Si" offLabel="No" [(ngModel)]="formregdenu.flagreservaidentidad" name="flagreservaidentidad"></p-inputSwitch>
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-md-12">
+                <p-checkbox name="flagDeclaracionVerdadera" [(ngModel)]="formregdenu.flagdeclaracionverdadera"></p-checkbox>
+                Declaro que toda la información consignada en el registro de la denuncia laboral es verdadera.
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-md-12">
+                <button (click)="backDatosTrabajo()" class="btn btn-second" type="button">Atras</button>
+                <button (click)="validarDatosDenuncias()" class="btn btn-primary" type="button">Finalizar denuncia laboral</button>
+            </div>
+        </div>
+    </p-tabPanel>
+</p-tabView>
+<p-dialog header="Nueva Dirección" [(visible)]="displayNuevaDireccion" modal="modal" width="600" height="500" [responsive]="true">
+    <p-messages [(value)]="messagesDireccion"></p-messages>
+    <div class="ui-g">
+        <div class="ui-md-4">
+            <label>Tipo Via</label>
+            <p-dropdown [options]="tviasLista" name="selectVia" [(ngModel)]="formregdenu.selectVia" [style]="{'width':'140px'}" placeholder="Seleccione via"
+                optionLabel="name"></p-dropdown>
+        </div>
+        <div class="ui-md-8">
+            <label>Descripcion via</label>
+            <input class="form-control" placeholder="Descripción de la via" [(ngModel)]="formregdenu.ddpnomvia_c" name="ddpnomvia_c"
+                type="text" value="" />
+        </div>
+    </div>
+    <div class="ui-g">
+        <div class="ui-md-4">
+            <label>Tipo Zona</label>
+            <p-dropdown [options]="tzonasLista" name="selectZona" [(ngModel)]="formregdenu.selectZona" [style]="{'width':'140px'}" placeholder="Seleccione zona"
+                optionLabel="name"></p-dropdown>
+        </div>
+        <div class="ui-md-8">
+            <label>Descripcion zona</label>
+            <input class="form-control" placeholder="Descripción de la zona" [(ngModel)]="formregdenu.ddpnomzon_c" name="ddpnomzon_c"
+                type="text" value="" />
+        </div>
+    </div>
+    <div class="ui-g">
+        <div class="ui-md-12">
+            <label>Dirección</label>
+            <input class="form-control" #inputdir (keyup)="onKeyDireccion(inputdir.value)" placeholder="Dirección completa" [(ngModel)]="formregdenu.domicilio_c"
+                name="domicilio_c" type="text" value="" />
+        </div>
+    </div>
+    <div class="ui-g">
+        <div class="ui-md-12">
+            <label>Dirección preliminar a notificar</label>
+            <br>
+            <span>{{formregdenu.domicilioLegal_c}}</span>
+        </div>
+    </div>
+    <div class="ui-g">
+        <div class="ui-md-4">
+            <label>Departamento:</label>
+            <p-dropdown appendTo="body" [options]="departs" name="selectDepa" [(ngModel)]="formregdenu.selectDepa" [style]="{'width':'140px'}"
+                placeholder="Seleccione departamento." filter="true" (onChange)="onChangeDepartamento()" optionLabel="name"></p-dropdown>
+        </div>
+        <div class="ui-md-4">
+            <label>Provincia:</label>
+            <p-dropdown appendTo="body" [options]="provins" name="selectProv" [(ngModel)]="formregdenu.selectProv" [style]="{'width':'140px'}"
+                placeholder="Seleccione provincia." filter="true" (onChange)="onChangeProvincia()" optionLabel="name"></p-dropdown>
+        </div>
+        <div class="ui-md-4">
+            <label>Distrito:</label>
+            <p-dropdown appendTo="body" [options]="distris" name="selectDist" [(ngModel)]="formregdenu.selectDist" [style]="{'width':'140px'}"
+                placeholder="Seleccione distrito." filter="true" optionLabel="name"></p-dropdown>
+        </div>
+    </div>
+    <div class="ui-g">
+        <div class="ui-md-12">
+            <button (click)="cancelarAgregaDireccion()" class="btn btn-primary" type="button">Cancelar</button>
+            <button (click)="agregarDireccion()" class="btn btn-primary" type="button">Guardar</button>
+        </div>
+    </div>
+</p-dialog>

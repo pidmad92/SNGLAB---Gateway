@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, } from '@angular/core';
 import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
 import { Principal, ResponseWrapper } from '../../../shared/index';
 import { Subscription } from 'rxjs/Subscription';
@@ -8,16 +8,20 @@ import { DireccionService, Direccion } from '../../../entities/direccion';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Formperfil, FormperfilService } from '../../../entities/formperfil';
 import { Actiecon, ActieconService } from '../../../entities/actiecon/index';
-import { SessionStorage } from 'ng2-webstorage';
+import { SessionStorage, LocalStorage } from 'ng2-webstorage';
 import { ComboModel } from '../../general/combobox.model';
 import { Message } from 'primeng/components/common/api';
 import { ValidarUsuarioService } from '../../denuncias/validar-usuario/validarusuario.service';
-import { Undnegocio } from '../../../entities/undnegocio/index';
-import { Participa } from '../../../entities/participa/index';
-import { Hechoinver } from '../../../entities/hechoinver/index';
-import { Negocolect } from '../../../entities/negocolect/index';
-import { Resulnegoc } from '../../../entities/resulnegoc/index';
-import { Respinforma } from '../../../entities/respinforma/index';
+import { Undnegocio, UndnegocioService } from '../../../entities/undnegocio/index';
+import { Participa, ParticipaService } from '../../../entities/participa/index';
+import { Hechoinver, HechoinverService } from '../../../entities/hechoinver/index';
+import { Negocolect, NegocolectService } from '../../../entities/negocolect/index';
+import { Resulnegoc, ResulnegocService } from '../../../entities/resulnegoc/index';
+import { Respinforma, RespinformaService } from '../../../entities/respinforma/index';
+import { ModelAnexo } from '../../../entities/anexlaboral/modelanexo.model';
+import { AnexlaboralService } from '../../../entities/anexlaboral/index';
+import { DatePipe } from '@angular/common';
+import { FormularioPerfilService } from './index';
 
 @Component({
     selector: 'jhi-formulario-perfil',
@@ -32,6 +36,7 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     displayDireccion: boolean;
     direccionRegistro: Direccion;
     private subscription: Subscription;
+    displayGuardar: boolean;
 
     // Mensajes
     messages: Message[] = [];
@@ -40,6 +45,8 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
 
     block: boolean;
     editar: boolean;
+    @LocalStorage('inicio')
+    inicioDir: boolean;
 
     departs: ComboModel[];
     provins: ComboModel[];
@@ -49,41 +56,52 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     selectedProvins: ComboModel;
     selectedDistris: ComboModel;
 
-    // Listados de dato
-    @SessionStorage('solicitud')
+    // Datos de Perfil
+    @LocalStorage('solicitud')
     solicitud: Solicitud;
-    @SessionStorage('solicform')
+    @LocalStorage('solicform')
     solicForm: Solicform;
-    @SessionStorage('formperfil')
+    @LocalStorage('formperfil')
     formPerfil: Formperfil;
-    @SessionStorage('undNegocios')
+
+    // Listados de dato
+    @LocalStorage('undNegocios')
     undNegocios: Undnegocio[];
-    @SessionStorage('participacionesAccionarias')
+    @LocalStorage('participacionesAccionarias')
     participacionesAccionarias: Participa[];
-    @SessionStorage('participacionesMercado')
+    @LocalStorage('participacionesMercado')
     participacionesMercados: Participa[];
-    @SessionStorage('obras')
+    @LocalStorage('obras')
     obras: Hechoinver[];
-    @SessionStorage('proyectos')
+    @LocalStorage('proyectos')
     proyectos: Hechoinver[];
-    @SessionStorage('direcciones')
+    @LocalStorage('direcciones')
     direcciones: Direccion[];
-    @SessionStorage('solicitante')
+    @LocalStorage('solicitante')
     solicitante: Negocolect;
-    @SessionStorage('organizaciones')
+    @LocalStorage('organizaciones')
     organizaciones: Negocolect[];
-    @SessionStorage('resultadoNegociaciones')
+    @LocalStorage('resultadoNegociaciones')
     resultadoNegociaciones: Resulnegoc[];
-    @SessionStorage('responInfoFinanciera')
+    @LocalStorage('responInfoFinanciera')
     responInfoFinanciera: Respinforma;
-    @SessionStorage('responeInfoLaboral')
+    @LocalStorage('responeInfoLaboral')
     responeInfoLaboral: Respinforma;
+    @LocalStorage('anexoLaboral')
+    anexoLaboral: ModelAnexo[];
 
     constructor(
         private solicitudService: SolicitudService,
         private formperfilService: FormperfilService,
         private solicfromService: SolicformService,
         private direccionService: DireccionService,
+        private undnegocioService: UndnegocioService,
+        private participaService: ParticipaService,
+        private hechoinverService: HechoinverService,
+        private negocolectService: NegocolectService,
+        private resulnegocService: ResulnegocService,
+        private respinformaService: RespinformaService,
+        private anexlaboralService: AnexlaboralService,
         private actieconService: ActieconService,
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
@@ -91,6 +109,8 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
         private route: ActivatedRoute,
         private router: Router,
         private validarUsuarioService: ValidarUsuarioService,
+        private datepipe: DatePipe,
+        private formularioPerfilService: FormularioPerfilService,
     ) { }
 
     loadAll() {
@@ -106,7 +126,9 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
         this.provins = new Array<ComboModel>();
         this.distris = new Array<ComboModel>();
         this.displayDireccion = false;
+        this.displayGuardar = false;
         this.direccionRegistro = new Direccion;
+        this.iniciarDatos();
         this.loadAll();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
@@ -116,34 +138,95 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     ngOnDestroy() { }
 
     load(nCodfperf) {
-        if (this.solicitud == null) {
-            this.solicfromService.find(nCodfperf).subscribe((solicForm) => {
-                this.solicForm = solicForm;
-                const nCodsolic = solicForm.nCodsolic;
+        this.solicfromService.find(nCodfperf).subscribe((solicForm) => {
+            this.solicForm = solicForm;
+            const nCodsolic = solicForm.nCodsolic;
 
-                if (this.solicitud == null) {
-                    // tslint:disable-next-line:no-shadowed-variable
-                    const nCodfperf = solicForm.nCodfperf;
-                    this.solicitudService.find(nCodsolic).subscribe((solicitud) => {
-                        this.solicitud = solicitud;
-                    });
-                }
-                if (this.formPerfil == null) {
-                    this.formperfilService.find(nCodfperf).subscribe((formPerfil) => {
-                        this.formPerfil = formPerfil;
-                    });
+            if (this.solicitud === null) {
+                // tslint:disable-next-line:no-shadowed-variable
+                const nCodfperf = solicForm.nCodfperf;
+                this.solicitudService.find(nCodsolic).subscribe((solicitud) => {
+                    this.solicitud = solicitud;
+                });
+            }
+            if (this.formPerfil === null) {
+                this.formperfilService.find(nCodfperf).subscribe((formPerfil) => {
+                    this.formPerfil = formPerfil;
+                    this.formPerfil.tFecreg = this.datepipe.transform((this.formPerfil.tFecreg), 'yyyy-MM-dd HH:mm:ss')
+                });
+            }
+            this.direccionService.obtenerDireccion(nCodfperf).subscribe(
+                (res: ResponseWrapper) => {
+                    if (this.direcciones.length === 0 && this.inicioDir) {
+                        this.direcciones = res.json;
+                    } else {
+                        /*const direccionesTmp: Direccion[] = res.json;
+                        for (let i = 0; i < direccionesTmp.length; i++) {
+                            const direccionGuardado: Direccion = this.direcciones.find((x) => x.nCoddirec === direccionesTmp[i].nCoddirec);
+                            console.log('direccionGuardado: ' + direccionGuardado);
+                            console.log('direccionesTmp[i].nCoddirec: ' + direccionesTmp[i].nCoddirec);
+                            if (direccionGuardado === undefined || direccionGuardado === null) {
+                                this.direcciones.push(direccionesTmp[i]);
+                            }
+                        }*/
+                    }
+                    for (let i = 0; i < this.direcciones.length; i++) {
+                        this.direcciones[i].id = i;
+                        this.direcciones[i].bNotifica = this.direcciones[i].nNotifica === 1 ? true : false;
+                    }
+                },
+                (res: ResponseWrapper) => this.onError(res.json)
+            );
 
-                    this.direccionService.obtenerDireccion(nCodfperf).subscribe(
-                        (res: ResponseWrapper) => this.direcciones = res.json,
-                        (res: ResponseWrapper) => this.onError(res.json)
-                    );
-                }
-            });
-        }
+        });
         this.actieconService.query().subscribe(
             (res: ResponseWrapper) => this.actiecon = res.json,
             (res: ResponseWrapper) => this.onError(res.json)
         );
+    }
+
+    iniciarDatos() {
+        if (this.undNegocios === undefined || this.undNegocios === null) {
+            this.undNegocios = [];
+        }
+        if (this.participacionesAccionarias === undefined || this.participacionesAccionarias === null) {
+            this.participacionesAccionarias = [];
+        }
+        if (this.participacionesMercados === undefined || this.participacionesMercados === null) {
+            this.participacionesMercados = [];
+        }
+        if (this.obras === undefined || this.obras === null) {
+            this.obras = [];
+        }
+        if (this.proyectos === undefined || this.proyectos === null) {
+            this.proyectos = [];
+        }
+        if (this.direcciones === undefined || this.direcciones === null) {
+            this.direcciones = [];
+        }
+        if (this.solicitante === undefined || this.solicitante === null) {
+            this.solicitante = new Negocolect;
+        }
+        if (this.organizaciones === undefined || this.organizaciones === null) {
+            this.organizaciones = [];
+        }
+        if (this.resultadoNegociaciones === undefined || this.resultadoNegociaciones === null) {
+            this.resultadoNegociaciones = [];
+        }
+        if (this.responInfoFinanciera === undefined || this.responInfoFinanciera === null) {
+            this.responInfoFinanciera = new Respinforma;
+        }
+        if (this.responeInfoLaboral === undefined || this.responeInfoLaboral === null) {
+            this.responeInfoLaboral = new Respinforma;
+        }
+        if (this.anexoLaboral === undefined || this.anexoLaboral === null) {
+            this.anexoLaboral = [];
+        }
+        if (this.inicioDir === null || this.inicioDir === undefined) {
+            this.inicioDir = true;
+        } else {
+            this.inicioDir = false;
+        }
     }
 
     // Solo numeros
@@ -151,9 +234,22 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
         const pattern = /[0-9]/;
         const inputChar = String.fromCharCode(event.charCode);
         if (!pattern.test(inputChar)) {
-          event.preventDefault();
+            event.preventDefault();
         }
-      }
+    }
+
+    onChangeNotificacion(obj: Direccion) {
+        if (obj.bNotifica) {
+            obj.nNotifica = 1;
+        } else {
+            obj.nNotifica = 0;
+        }
+        const direccionGuardado: Direccion = this.direcciones.find((x) => x.id === obj.id);
+        if (direccionGuardado !== undefined) {
+            const index = this.direcciones.indexOf(direccionGuardado);
+            this.direcciones[index] = obj;
+        }
+    }
 
     onChangeDepartamento() {
         this.block = true;
@@ -205,11 +301,9 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
         this.selectedDistris = undefined;
     }
 
-    previousState() {
-        window.history.back();
-    }
-
     showDialogDireccion() {
+        this.messageList = [];
+        this.messagesForm = [];
         this.editar = false;
         this.validarUsuarioService.consultaDepas().subscribe(
             (deps: any) => {
@@ -282,6 +376,7 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
         this.onErrorMultiple(this.messageList);
         return error;
     }
+
     cancelarDireccion() {
         this.direccionRegistro = new Direccion;
         this.displayDireccion = false;
@@ -300,13 +395,13 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
         this.direccionRegistro.id = obj.id;
 
         if (this.selectedDeparts != null) {
-            this.selectedDeparts.value = this.direccionRegistro.vCodDepa;
+            this.selectedDeparts.name = this.direccionRegistro.vDepart;
         }
         if (this.selectedProvins != null) {
-            this.selectedProvins.value = this.direccionRegistro.vCodProv;
+            this.selectedProvins.name = this.direccionRegistro.vProvincia;
         }
         if (this.selectedDistris != null) {
-            this.selectedDistris.value = this.direccionRegistro.vCodDist;
+            this.selectedDistris.name = this.direccionRegistro.vDistrito;
         }
         this.displayDireccion = true;
     }
@@ -315,8 +410,22 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
         this.direcciones.splice(this.direcciones.indexOf(obj), 1);
     }
 
-    irPerfil2() {
-        this.router.navigate(['./dictamenes/formulario-perfil2']);
+    guardarFormularioPerfil() {
+        if (this.solicitud !== undefined && this.solicForm !== undefined) {
+            this.messagesForm = this.formularioPerfilService.validarDatosObligatorios(this.solicitud, this.formPerfil, this.obras, this.solicitante);
+            if (this.messagesForm.length === 0) {
+                this.formularioPerfilService.guardarFormularioPerfil(this.datepipe, this.solicitud, this.solicForm,
+                    this.formPerfil, this.undNegocios, this.participacionesAccionarias, this.participacionesMercados,
+                    this.obras, this.proyectos, this.direcciones, this.organizaciones, this.solicitante,
+                    this.resultadoNegociaciones, this.responInfoFinanciera, this.responeInfoLaboral, this.anexoLaboral,
+                    this.formperfilService, this.undnegocioService, this.participaService, this.hechoinverService,
+                    this.direccionService, this.negocolectService, this.resulnegocService, this.respinformaService)
+                this.router.navigate(['./dictamenes/control-informacion/' + this.solicitud.nCodsolic]);
+            }
+        }
+    }
+    mostrarGuardar() {
+        this.displayGuardar = true;
     }
 
     private onErrorMultiple(errorList: any) {
@@ -329,4 +438,9 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
         this.messages = [];
         this.messages.push({ severity: 'error', summary: 'Mensaje de Error', detail: error.message });
     }
+
+    irPerfil2() {
+        this.router.navigate(['./dictamenes/formulario-perfil2']);
+    }
+
 }

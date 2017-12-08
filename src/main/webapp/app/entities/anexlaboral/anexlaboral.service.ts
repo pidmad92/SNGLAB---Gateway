@@ -141,4 +141,14 @@ export class AnexlaboralService {
         return this.http.get(url + '?codFormPerfil=' + codFormPerfil + '&tipo=' + tipo + '&anio=' + anio + '&descripcion=' + descripcion, options)
             .map((res: Response) => this.convertResponseAnexo(res));
     }
+
+    eliminar(codFormPerfil: number) {
+        const options = createRequestOption();
+        const url = SERVER_API_URL + 'api/eliminarAnexo';
+        return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
+            .map((res: Response) => {
+                const jsonResponse = res.json();
+                return Object.assign(Number, jsonResponse);
+        });
+    }
 }
