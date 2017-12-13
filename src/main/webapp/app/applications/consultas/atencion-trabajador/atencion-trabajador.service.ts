@@ -1,18 +1,23 @@
+
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
+import { Atencion } from './atencion.model';
 import { Trabajador } from './trabajador.model';
 import { ResponseWrapper, createRequestOption } from '../../../shared';
+import {ComboModel} from '../../general/combobox.model';
 
 import { Tipdocident } from './tipdocident.model';
 
 @Injectable()
 export class AtencionTrabajadorService {
 
-    private resourceUrl = '/consultas/api/trabajador';
+    private resourceTipoDoc = '/consultas/api/tipdocidents';
+    private resourceUrl = '/consultas/api/trabajadors';
+    private resourceUrlAtencion = '/consultas/api/atencions';
     private resourceSearchUrl = '/consultas/api/_search/trabajador';
     private resource_tipdocident_url = '/consultas/api/tipdocident';
 
@@ -41,12 +46,48 @@ export class AtencionTrabajadorService {
         });
     }
 
+    consultaTipoDocIdentidad(): Observable<ResponseWrapper> {
+        return this.http.get(this.resourceTipoDoc, null)
+            .map((res: Response) => this.convertResponseTipoDocIdentidad(res));
+    }
+    private convertResponseTipoDocIdentidad(res: Response): ResponseWrapper {
+        const jsonResponse = res.json();
+        const result = [];
+
+        for (let i = 0; i < jsonResponse.length; i++) {
+
+            const cm: Tipdocident = this.convertTipoDocFromServer(jsonResponse[i]);
+            result.push(new ComboModel(cm.vDescorta, cm.id.toString(), cm.nNumdigi));
+        }
+        return new ResponseWrapper(res.headers, result, res.status);
+    }
+    private convertTipoDocFromServer(json: any): Tipdocident {
+        const entity: Tipdocident = Object.assign(new Tipdocident(), json);
+        return entity;
+    }
+
 // JH: inicio
+
     findTrabajadorByDocIdent(tipodoc: number, numdoc: String): Observable<Trabajador> {
-        return this.http.get(`${this.resourceUrl}/tipdoc/${tipodoc}/numdoc/${numdoc}`).map((res: Response) => {
-            const jsonResponse = res.json();
-            return this.convertItemFromServer(jsonResponse);
-        });
+        return this.http.get(`${this.resourceUrl}/tipdoc/${tipodoc}/numdoc/${numdoc}`)
+            .map((res: Response) => {
+                const jsonResponse = res.json();
+                return this.convertItemFromServer(jsonResponse);
+            });
+    }
+    findTrabajadorsByDocIdent(tipodoc: number, numdoc: String): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceUrl}/tipdoc/${tipodoc}/numdocs/${numdoc}`)
+            .map((res: Response) => this.convertResponse(res));
+    }
+
+    findTrabajadorsByName(nombres: String, apellidopat: String, apellidomat: String): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceUrl}/nombres/${nombres}/apellidopat/${apellidopat}/apellidomat/${apellidomat}`)
+            .map((res: Response) => this.convertResponse(res));
+    }
+
+    findAtencionsByTrabajador(id: String): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceUrlAtencion}/atenpase/trabajador/id/${id}`)
+            .map((res: Response) => this.convertResponseAtencion(res));
     }
 // JH: final
 
@@ -64,6 +105,27 @@ export class AtencionTrabajadorService {
         const options = createRequestOption(req);
         return this.http.get(this.resourceSearchUrl, options)
             .map((res: any) => this.convertResponse(res));
+    }
+
+    private convertResponseAtencion(res: Response): ResponseWrapper {
+        const jsonResponse = res.json();
+        const result = [];
+        for (let i = 0; i < jsonResponse.length; i++) {
+            result.push(this.convertItemFromServerAtencion(jsonResponse[i]));
+        }
+        return new ResponseWrapper(res.headers, result, res.status);
+    }
+
+    /**
+     * Convert a returned JSON object to Atencion.
+     */
+    private convertItemFromServerAtencion(json: any): Atencion {
+        const entity: Atencion = Object.assign(new Atencion(), json);
+        entity.tFecreg = this.dateUtils
+            .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+            .convertDateTimeFromServer(json.tFecupd);
+        return entity;
     }
 
     private convertResponse(res: Response): ResponseWrapper {

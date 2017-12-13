@@ -19,7 +19,7 @@ import { ResponseWrapper } from '../../../../shared';
     templateUrl: './datos-empleador.component.html'
 })
 // export class DatosEmpleadorComponent implements OnInit, OnDestroy {
-    export class DatosEmpleadorComponent {
+    export class DatosEmpleadorComponent implements OnInit {
     trabajador: Trabajador;
     pernatural: Pernatural;
     listadocident: Tipdocident[];
@@ -39,6 +39,9 @@ import { ResponseWrapper } from '../../../../shared';
         private cartrabService: CartrabService,
         private route: ActivatedRoute
     ) {
+    }
+
+    ngOnInit() {
     }
 
     // ngOnInit() {
