@@ -79,6 +79,7 @@ public class ServiciosExternosResource {
                 Ciuperjuridica ciuperjuridica = ciuperjuridicaRepository.GetCiiu(bean.getDdp_ciiu());
                 Sectorecoperjuridica sectorecoperjuridica = sectorecoperjuridicaRepository.GetSector(ciuperjuridica.getvCodsec());
                 bean.setDesc_sectoeco(sectorecoperjuridica.getvDessec());
+                bean.ddp_sector = sectorecoperjuridica.getvCodsec();
         return bean;
     }
 

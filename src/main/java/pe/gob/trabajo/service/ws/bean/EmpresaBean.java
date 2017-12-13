@@ -18,6 +18,7 @@ public class EmpresaBean implements Serializable {
   private String cod_dist;
   private String cod_prov;
   private String ddp_ciiu;
+  public String ddp_sector;
   private String ddp_doble;
   private String ddp_estado;
   private String ddp_fecact;
