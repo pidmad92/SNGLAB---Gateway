@@ -37,41 +37,41 @@ import { customHttpProvider } from '../../blocks/interceptor/http.provider';
 // import { GatewayMotatenoficModule } from '../../entities/motatenofic/motatenofic.module';
 // import { GatewaySubregilaboModule } from '../../entities/subregilabo/subregilabo.module';
 
-import { GatewayTipvinculoModule } from '../../entities/tipvinculo/tipvinculo.module';
-import { GatewayTippersonaModule } from '../../entities/tippersona/tippersona.module';
-import { GatewayTipmotatenModule } from '../../entities/tipmotaten/tipmotaten.module';
-import { GatewayTipdocidentModule } from '../../entities/tipdocident/tipdocident.module';
-import { GatewayTipdocModule } from '../../entities/tipdoc/tipdoc.module';
-import { GatewayTipatencionModule } from '../../entities/tipatencion/tipatencion.module';
-import { GatewaySucesorModule } from '../../entities/sucesor/sucesor.module';
-import { GatewayRegimenlabModule } from '../../entities/regimenlab/regimenlab.module';
-import { GatewayPernaturalModule } from '../../entities/pernatural/pernatural.module';
-import { GatewayPerjuridicaModule } from '../../entities/perjuridica/perjuridica.module';
-import { GatewayPaseglModule } from '../../entities/pasegl/pasegl.module';
-import { GatewayOficinaModule } from '../../entities/oficina/oficina.module';
-import { GatewayMotivpaseModule } from '../../entities/motivpase/motivpase.module';
-import { GatewayMotceseModule } from '../../entities/motcese/motcese.module';
-import { GatewayMotateselecModule } from '../../entities/motateselec/motateselec.module';
-import { GatewayMotatenoficModule } from '../../entities/motatenofic/motatenofic.module';
-import { GatewayMotateModule } from '../../entities/motate/motate.module';
-import { GatewayModcontratoModule } from '../../entities/modcontrato/modcontrato.module';
-import { GatewayEmpleadorModule } from '../../entities/empleador/empleador.module';
-import { GatewayDocumentoModule } from '../../entities/documento/documento.module';
-import { GatewayDocpresateModule } from '../../entities/docpresate/docpresate.module';
-import { GatewayDocinperdlbModule } from '../../entities/docinperdlb/docinperdlb.module';
-import { GatewayDocingrperModule } from '../../entities/docingrper/docingrper.module';
-import { GatewayDiscapateModule } from '../../entities/discapate/discapate.module';
-import { GatewayDiscapModule } from '../../entities/discap/discap.module';
-import { GatewayDirpernatModule } from '../../entities/dirpernat/dirpernat.module';
-import { GatewayDirperjuriModule } from '../../entities/dirperjuri/dirperjuri.module';
-import { GatewayDirecalterModule } from '../../entities/direcalter/direcalter.module';
-import { GatewayDatlabModule } from '../../entities/datlab/datlab.module';
-import { GatewayCartrabModule } from '../../entities/cartrab/cartrab.module';
-import { GatewayAtencionModule } from '../../entities/atencion/atencion.module';
-import { GatewayActieconModule } from '../../entities/actiecon/actiecon.module';
-import { GatewayAccionadopModule } from '../../entities/accionadop/accionadop.module';
-import { GatewayAccadoateModule } from '../../entities/accadoate/accadoate.module';
-import { GatewayTrabajadorModule } from '../../entities/trabajador/trabajador.module';
+// import { GatewayTipvinculoModule } from '../../entities/tipvinculo/tipvinculo.module';
+// import { GatewayTippersonaModule } from '../../entities/tippersona/tippersona.module';
+// import { GatewayTipmotatenModule } from '../../entities/tipmotaten/tipmotaten.module';
+// import { GatewayTipdocidentModule } from '../../entities/tipdocident/tipdocident.module';
+// import { GatewayTipdocModule } from '../../entities/tipdoc/tipdoc.module';
+// import { GatewayTipatencionModule } from '../../entities/tipatencion/tipatencion.module';
+// import { GatewaySucesorModule } from '../../entities/sucesor/sucesor.module';
+// import { GatewayRegimenlabModule } from '../../entities/regimenlab/regimenlab.module';
+// import { GatewayPernaturalModule } from '../../entities/pernatural/pernatural.module';
+// import { GatewayPerjuridicaModule } from '../../entities/perjuridica/perjuridica.module';
+// import { GatewayPaseglModule } from '../../entities/pasegl/pasegl.module';
+// import { GatewayOficinaModule } from '../../entities/oficina/oficina.module';
+// import { GatewayMotivpaseModule } from '../../entities/motivpase/motivpase.module';
+// import { GatewayMotceseModule } from '../../entities/motcese/motcese.module';
+// import { GatewayMotateselecModule } from '../../entities/motateselec/motateselec.module';
+// import { GatewayMotatenoficModule } from '../../entities/motatenofic/motatenofic.module';
+// import { GatewayMotateModule } from '../../entities/motate/motate.module';
+// import { GatewayModcontratoModule } from '../../entities/modcontrato/modcontrato.module';
+// import { GatewayEmpleadorModule } from '../../entities/empleador/empleador.module';
+// import { GatewayDocumentoModule } from '../../entities/documento/documento.module';
+// import { GatewayDocpresateModule } from '../../entities/docpresate/docpresate.module';
+// import { GatewayDocinperdlbModule } from '../../entities/docinperdlb/docinperdlb.module';
+// import { GatewayDocingrperModule } from '../../entities/docingrper/docingrper.module';
+// import { GatewayDiscapateModule } from '../../entities/discapate/discapate.module';
+// import { GatewayDiscapModule } from '../../entities/discap/discap.module';
+// import { GatewayDirpernatModule } from '../../entities/dirpernat/dirpernat.module';
+// import { GatewayDirperjuriModule } from '../../entities/dirperjuri/dirperjuri.module';
+// import { GatewayDirecalterModule } from '../../entities/direcalter/direcalter.module';
+// import { GatewayDatlabModule } from '../../entities/datlab/datlab.module';
+// import { GatewayCartrabModule } from '../../entities/cartrab/cartrab.module';
+// import { GatewayAtencionModule } from '../../entities/atencion/atencion.module';
+// import { GatewayActieconModule } from '../../entities/actiecon/actiecon.module';
+// import { GatewayAccionadopModule } from '../../entities/accionadop/accionadop.module';
+// import { GatewayAccadoateModule } from '../../entities/accadoate/accadoate.module';
+// import { GatewayTrabajadorModule } from '../../entities/trabajador/trabajador.module';
 
 import { AtencionTrabajadorModule } from './atencion-trabajador/atencion-trabajador.module';
 import { AtencionEmpleadorModule } from './atencion-empleador/atencion-empleador.module';
@@ -114,41 +114,41 @@ import { AtencionEmpleadorModule } from './atencion-empleador/atencion-empleador
         // GatewayTrabajadorModule,
         // GatewayMotatenoficModule,
         // GatewaySubregilaboModule,
-        GatewayTipvinculoModule,
-        GatewayTippersonaModule,
-        GatewayTipmotatenModule,
-        GatewayTipdocidentModule,
-        GatewayTipdocModule,
-        GatewayTipatencionModule,
-        GatewaySucesorModule,
-        GatewayRegimenlabModule,
-        GatewayPernaturalModule,
-        GatewayPerjuridicaModule,
-        GatewayPaseglModule,
-        GatewayOficinaModule,
-        GatewayMotivpaseModule,
-        GatewayMotceseModule,
-        GatewayMotateselecModule,
-        GatewayMotatenoficModule,
-        GatewayMotateModule,
-        GatewayModcontratoModule,
-        GatewayEmpleadorModule,
-        GatewayDocumentoModule,
-        GatewayDocpresateModule,
-        GatewayDocinperdlbModule,
-        GatewayDocingrperModule,
-        GatewayDiscapateModule,
-        GatewayDiscapModule,
-        GatewayDirpernatModule,
-        GatewayDirperjuriModule,
-        GatewayDirecalterModule,
-        GatewayDatlabModule,
-        GatewayCartrabModule,
-        GatewayAtencionModule,
-        GatewayActieconModule,
-        GatewayAccionadopModule,
-        GatewayAccadoateModule,
-        GatewayTrabajadorModule,
+        // GatewayTipvinculoModule,
+        // GatewayTippersonaModule,
+        // GatewayTipmotatenModule,
+        // GatewayTipdocidentModule,
+        // GatewayTipdocModule,
+        // GatewayTipatencionModule,
+        // GatewaySucesorModule,
+        // GatewayRegimenlabModule,
+        // GatewayPernaturalModule,
+        // GatewayPerjuridicaModule,
+        // GatewayPaseglModule,
+        // GatewayOficinaModule,
+        // GatewayMotivpaseModule,
+        // GatewayMotceseModule,
+        // GatewayMotateselecModule,
+        // GatewayMotatenoficModule,
+        // GatewayMotateModule,
+        // GatewayModcontratoModule,
+        // GatewayEmpleadorModule,
+        // GatewayDocumentoModule,
+        // GatewayDocpresateModule,
+        // GatewayDocinperdlbModule,
+        // GatewayDocingrperModule,
+        // GatewayDiscapateModule,
+        // GatewayDiscapModule,
+        // GatewayDirpernatModule,
+        // GatewayDirperjuriModule,
+        // GatewayDirecalterModule,
+        // GatewayDatlabModule,
+        // GatewayCartrabModule,
+        // GatewayAtencionModule,
+        // GatewayActieconModule,
+        // GatewayAccionadopModule,
+        // GatewayAccadoateModule,
+        // GatewayTrabajadorModule,
         AtencionTrabajadorModule,
         AtencionEmpleadorModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */

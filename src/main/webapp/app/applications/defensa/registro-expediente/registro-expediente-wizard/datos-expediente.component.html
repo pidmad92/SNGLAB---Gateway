@@ -44,36 +44,40 @@
                                         <span style="text-align:center">{{i+1}}</span>
                                     </ng-template>
                                 </p-column>
-                                <p-column field="Motateno.motate.vDesmotate" header="Descripción"></p-column>
+                                <p-column [style]="{'width':'30%'}" field="Motateno.motate.vDesmotate" header="Descripción"></p-column>
                                 <p-column [style]="{'text-align':'left'}" field="observacion" header="Observación" [editable]="true"></p-column>
                             </p-dataTable>
                         </div>
                     </div>
                     <div class="row mt-4">
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <p-dataTable [value]="documentos" dataKey="codigoDocumentos">
                                 <p-header>Documentos Presentados</p-header>
                                 <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
                                 <p-column field="descripcion" header="Descripción"></p-column>
                                 <p-column field="observacion" header="Observación"></p-column>
                             </p-dataTable>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="col-md-12 mb-2">
-                                <div class="ui-g">
-                                    <label for="inpFechaAudiencia" class="col-form-label ui-g-12 pl-0 py-1">Fecha de Audiencia:</label>
-                                    <p-calendar name="fechaAudiencia" [(ngModel)]="fechaAudiencia" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                        </div> -->
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3 mb-2">
+                                    <div class="ui-g">
+                                        <label for="inpFechaAudiencia" class="col-form-label ui-g-6 pl-0 py-1">Fecha de Audiencia:</label>
+                                        <p-calendar name="fechaAudiencia" [(ngModel)]="fechaAudiencia" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12 mb-2">
-                                <div class="ui-g">
-                                    <label for="inpHoraConciliacion" class="col-form-label ui-g-12 pl-0 py-1">Hora de Conciliación:</label>
-                                    <p-dropdown name="hora" [options]="hora" [(ngModel)]="selectedHora"></p-dropdown>
+                                <div class="col-md-3 mb-2">
+                                    <div class="ui-g">
+                                        <label for="inpHoraConciliacion" class="col-form-label ui-g-6 pl-0 py-1">Hora de Conciliación:</label>
+                                        <p-dropdown name="hora" [options]="hora" [(ngModel)]="selectedHora"></p-dropdown>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12 mb-2">
-                                    <label for="inpObservacion" class="col-form-label col-form-label-sm">Observación:</label>
-                                    <textarea class="form-control"></textarea>
+                                <div class="col-md-12 mb-2">
+                                    <div class="ui-g">
+                                        <label for="inpObservacion" class="col-form-label  ui-g-3 col-form-label-sm">Observación:</label>
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

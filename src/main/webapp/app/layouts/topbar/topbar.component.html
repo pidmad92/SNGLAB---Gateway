@@ -11,7 +11,7 @@
                 <a href="javascript:void(0);" (click)="toggleNavbar()" class="toggle-bars"><i class="fa fa-bars" aria-hidden="true"></i></a>
             </div>
             <div class="col-auto ml-auto d-none d-sm-block">
-                <select (change)="updateModule($event)" [(ngModel)]="ruta" class="form-control select-aplicativo" id="selectAplicativos">
+                <select (change)="updateModule()" [(ngModel)]="ruta" class="form-control select-aplicativo" id="selectAplicativos">
                     <option value="0">Aplicativo de Seguridad</option>
                     <option value="1">Aplicativo de Cálculo de Beneficios Sociales y Liquidaciones</option>
                     <option value="2">Aplicativo de consultas laborales</option>

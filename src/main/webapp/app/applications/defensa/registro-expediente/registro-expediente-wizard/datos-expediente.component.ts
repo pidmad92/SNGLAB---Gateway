@@ -76,6 +76,8 @@ export class DatosExpedienteComponent implements OnInit {
         if (event.data.idmotpase !== null) {
             this.subscribeToSaveResponse(
                 this.datosWizardService.updateMotivPase(this.motivp));
+        } else {
+            this.loadMotivOfic(this.pasegl.id);
         }
     }
 
@@ -83,7 +85,7 @@ export class DatosExpedienteComponent implements OnInit {
         console.log(event.data);
         console.log(this.pasegl);
         this.motivp = new Motivpase();
-        this.motivp.vObsmotpas = 'test';
+        // this.motivp.vObsmotpas = 'test';
         this.motivp.motatenofic = event.data.Motateno;
         this.motivp.pasegl = this.pasegl;
         this.subscribeToSaveResponse(

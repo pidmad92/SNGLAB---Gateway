@@ -1,7 +1,8 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { StepsModule } from 'primeng/primeng';
-import {DataTableModule, SharedModule} from 'primeng/primeng';
+import { TabViewModule, DataTableModule, SharedModule, CalendarModule, RadioButtonModule, DialogModule, DropdownModule, MessagesModule, MessageModule } from 'primeng/primeng';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 import { GatewaySharedModule } from '../../../shared';
 import { DatosTrabajadorComponent } from './atencion-trabajador-wizard/datos-trabajador.component';
@@ -31,8 +32,17 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         GatewaySharedModule,
+        TabViewModule,
+        MessagesModule,
+        MessageModule,
         StepsModule,
         DataTableModule,
+        CalendarModule,
+        DialogModule,
+        RadioButtonModule,
+        DropdownModule,
+        MessagesModule,
+        MessageModule,
         SharedModule,
         RouterModule.forChild(ENTITY_STATES),
         // FormsModule
@@ -63,6 +73,7 @@ const ENTITY_STATES = [
         // AccionadopDeletePopupComponent,
     ],
     providers: [
+        MessageService,
         AtencionTrabajadorService,
         TipdocidentService,
         CartrabService,
