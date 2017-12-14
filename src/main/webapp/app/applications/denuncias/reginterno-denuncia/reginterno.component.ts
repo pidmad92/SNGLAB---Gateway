@@ -301,7 +301,7 @@ export class ReginternoComponent implements OnInit {
                 this.formregdenu.coddist = this.formregdenu.coddist;
             }
             console.log(this.formregdenu);
-            this.regdenuService.guardarDenunciaExterna({
+            this.reginternoService.guardarDenunciaInterna({
                 numruc: this.formregdenu.numruc,
                 ddpnombre: this.formregdenu.ddpnombre,
                 domicilioLegal: this.formregdenu.domicilioLegal,
@@ -341,10 +341,14 @@ export class ReginternoComponent implements OnInit {
                 flagOtradireccion: this.formregdenu.flagOtradireccion,
                 numerotrabajado: this.formregdenu.numerotrabajado,
                 correotrabajador: this.formregdenu.correotrabajador,
-                flagreservaidentidad: this.formregdenu.flagreservaidentidad
+                flagreservaidentidad: this.formregdenu.flagreservaidentidad,
+                codOrigendenu: Number(this.formregdenu.selectOridenu.value),
+                listaCalifica: lista,
+                observaCalifica: this.formregdenu.observaCalifica.trim(),
+                fileString: this.formregdenu.fileString
             }).subscribe(
                 (dato: ResponseWrapper) => {
-                    console.log(dato);
+                    this.block = false;
                 },
                 (dato: ResponseWrapper) => { console.log(dato); this.onErrorDatosTrabajo(dato.json); this.block = false; }
                 );
@@ -541,6 +545,19 @@ export class ReginternoComponent implements OnInit {
         }
         dir += this.formregdenu.domicilio_c;
         this.formregdenu.domicilioLegal_c = dir;
+    }
+
+    handleInputChange(e) {
+        const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = this._handleReaderLoaded.bind(this);
+        reader.readAsDataURL(file);
+    }
+
+    _handleReaderLoaded(e) {
+        const reader = e.target;
+        this.formregdenu.fileString = reader.result.split(',')[1];
+        console.log(this.formregdenu.fileString);
     }
 
     private onErrorEmpleador(error: any) {

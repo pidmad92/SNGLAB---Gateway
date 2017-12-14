@@ -11,6 +11,7 @@ export class ReginternoService {
     private resourceDetalleMotivoDenuncia = '/denuncias/api/detmotdens';
     private resourceOridenuncia = '/denuncias/api/oridenus';
     private resourceSaveDenuExterna = '/denuncias/api/denunciasexterna';
+    private resourceSaveDenuInterna = '/denuncias/api/denunciasinterna';
     private resourceSearchUrl = '/consultas/api/_search/empleador';
     private resourceValidarRUC = '//localhost:8020/api/validarserviciosunat';
 
@@ -18,6 +19,13 @@ export class ReginternoService {
 
     guardarDenunciaExterna(denuncia: any): any {
         return this.http.post(`${this.resourceSaveDenuExterna}`, denuncia).map((res: Response) => {
+            const jsonResponse = res.json();
+            return jsonResponse;
+        });
+    }
+
+    guardarDenunciaInterna(denuncia: any): any {
+        return this.http.post(`${this.resourceSaveDenuInterna}`, denuncia).map((res: Response) => {
             const jsonResponse = res.json();
             return jsonResponse;
         });

@@ -238,7 +238,7 @@
                 Adjuntar archivo
             </div>
             <div class="ui-md-9">
-                <input type="file" class="form-control" [(ngModel)]="formregdenu.filedenuncia" name="filedenuncia" />
+                <input (change)="handleInputChange($event)" type="file" class="form-control" [(ngModel)]="formregdenu.filedenuncia" name="filedenuncia" />
             </div>
         </div>
         <div class="ui-g">

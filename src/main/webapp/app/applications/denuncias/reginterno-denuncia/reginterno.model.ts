@@ -78,8 +78,9 @@ export class ReginternoModel implements BaseEntity {
         public codVia?: number,
         public codZona?: number,
         public selectCalifica?: ComboModel[],
-        public selectOridenu?: ComboModel[],
-        public observaCalifica?: string
+        public selectOridenu?: ComboModel,
+        public observaCalifica?: string,
+        public fileString?: string
     ) {
         this.flagtrabajando = true;
         this.flaggruposindical = false;
