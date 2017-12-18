@@ -5,6 +5,8 @@ import { ValidarUsuarioModule } from './validar-usuario/validarusuario.module';
 import { RegdenuModule } from './registro-denuncia/Regdenu.module';
 import { CalifiModule } from './califi-denuncia/califi.module';
 import { ReginternoModule } from './reginterno-denuncia/reginterno.module';
+import { ConsinterModule } from './consulta-interna/consinter.module';
+import { ConsintercaliModule } from './consultar-internacali/consintercali.module';
 
 @NgModule({
     imports: [
@@ -12,7 +14,9 @@ import { ReginternoModule } from './reginterno-denuncia/reginterno.module';
         ValidarUsuarioModule,
         RegdenuModule,
         CalifiModule,
-        ReginternoModule
+        ReginternoModule,
+        ConsinterModule,
+        ConsintercaliModule
     ],
     declarations: [],
     entryComponents: [],

@@ -1,0 +1,62 @@
+<p-blockUI [blocked]="block"></p-blockUI>
+<div class="row mt-3">
+    <div class="col">
+        <div class="card card-panel mb-3">
+            <div class="card-header d-sm-flex justify-content-between">
+                <h5>Consulta de Denuncias Laborales</h5>
+            </div>
+            <div class="card-body">
+                <fieldset class="col">
+                    <legend>Criterio de búsqueda</legend>
+                    <div class="ui-g">
+                        <div class="ui-md-12">
+                            <p-radioButton name="groupDirselect" value="0" [(ngModel)]="criterioBus"></p-radioButton> Empleador
+                            <p-radioButton name="groupDirselect" value="1" [(ngModel)]="criterioBus"></p-radioButton> Denunciante
+                            <p-radioButton name="groupDirselect" value="2" [(ngModel)]="criterioBus"></p-radioButton> Fechas
+                            <p-radioButton name="groupDirselect" value="3" [(ngModel)]="criterioBus"></p-radioButton> Origen
+                        </div>
+                    </div>
+                    <div class="ui-g">
+                        <div *ngIf="criterioBus == 0" class="ui-md-10">
+                            <div class="ui-md-6">
+                                <label>Tipo Doc.</label>
+                                <select class="form-control" [(ngModel)]="criterioTipoDoc" name="criterioTipoDoc">
+                                    <option>RUC</option>
+                                </select>
+                            </div>
+                            <div class="ui-md-6">
+                                <input class="form-control" type="text" name="criterioNumDoc" [(ngModel)]="criterioNumDoc" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-md-2">
+                        <button (click)="buscarDenuncias()" class="btn btn-primary" type="button">Buscar</button>
+                        <button class="btn btn-primary" type="button">Nueva Denuncia</button>
+                    </div>
+                </fieldset>
+                <form>
+                    <p-dataTable [value]="listaResultado" 
+                    [(selection)]="selectedResultado" 
+                    rowGroupMode="subheader" 
+                    groupField="groupheader" 
+                    expandableRowGroups="true"
+                    [sortableRowGroup]="false"
+                    dataKey="serialize">
+                        <p-header>Resultado de la consulta</p-header>
+                        <ng-template pTemplate="rowgroupheader" let-rowData>{{rowData['groupheader']}}</ng-template>
+                        <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+                        <p-column field="codDenuncia" header="Codigo"></p-column>
+                        <p-column field="denunciante" header="Denunciante"></p-column>
+                        <p-column field="origen" header="Origen denuncia"></p-column>
+                        <p-column field="sectorEconomico" header="Sector Economico"></p-column>
+                        <p-column field="remipe" header="REMIPE"></p-column>
+                        <p-column field="motivo" header="Motivo"></p-column>
+                        <p-column field="motivoDetalle" header="Mot. Detalle"></p-column>
+                        <p-column field="fecha" header="Fecha"></p-column>
+                        <p-column field="estado" header="Estado"></p-column>
+                    </p-dataTable>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

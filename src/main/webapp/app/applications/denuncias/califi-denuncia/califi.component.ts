@@ -18,6 +18,7 @@ import { UbigeodepaModel } from '../../general/ubigeodepa.model';
 import { UbigeoprovModel } from '../../general/ubigeoprov.model';
 import { UbigeodistModel } from '../../general/ubigeodist.model';
 import { ES } from './../../applications.constant';
+import { LocalStorageService, LocalStorage } from 'ng2-webstorage';
 
 @Component({
     selector: 'jhi-calififormregdenuncia',
@@ -64,6 +65,8 @@ export class CalifiComponent implements OnInit {
         private regdenuService: RegdenuService,
         private califiService: CalifiService,
         private validarUsuarioService: ValidarUsuarioService,
+        private storage: LocalStorageService,
+        private router: Router
     ) {
     }
 
@@ -80,8 +83,9 @@ export class CalifiComponent implements OnInit {
         this.tviasLista = [];
         this.tzonasLista = [];
         this.block = true;
+        console.log(this.storage.retrieve('serialize'));
         this.califiService.getDenuncia({
-            CodDenuncia: 115552
+            CodDenuncia: this.storage.retrieve('serialize')
         }).subscribe(
             (res: any) => {
                 this.nRuc = res.perjuridica.vNumdoc;
@@ -313,7 +317,7 @@ export class CalifiComponent implements OnInit {
                 codDenuncia: this.formregdenu.id
             }).subscribe(
                 (res: any) => {
-                    console.log(res);
+                    this.router.navigate(['/denuncias/formconsinternocali']);
                     this.block = false;
                 },
                 (res: any) => {
@@ -339,7 +343,6 @@ export class CalifiComponent implements OnInit {
                             ddp_numruc: this.nRuc
                         }).subscribe(
                             (res: any) => {
-                                console.log(res);
                                 this.formregdenu.numruc = this.nRuc;
                                 this.formregdenu.descciiu = res.desc_ciiu;
                                 this.formregdenu.descsectoeco = res.desc_sectoeco;

@@ -76,7 +76,8 @@ export class RegdenuModel implements BaseEntity {
         public filedenuncia?: any[],
         public numtrabajadores?: number,
         public codVia?: number,
-        public codZona?: number
+        public codZona?: number,
+        public fileString?: string
     ) {
         this.flagtrabajando = true;
         this.flaggruposindical = false;

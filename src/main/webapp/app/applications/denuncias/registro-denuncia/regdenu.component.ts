@@ -471,6 +471,19 @@ export class RegdenuComponent implements OnInit {
         this.formregdenu.domicilioLegal_c = dir;
     }
 
+    handleInputChange(e) {
+        const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = this._handleReaderLoaded.bind(this);
+        reader.readAsDataURL(file);
+    }
+
+    _handleReaderLoaded(e) {
+        const reader = e.target;
+        this.formregdenu.fileString = reader.result.split(',')[1];
+        console.log(this.formregdenu.fileString);
+    }
+
     private onErrorEmpleador(error: any) {
         this.messagesEmpleador = [];
         this.messagesEmpleador.push({ severity: 'error', summary: 'Mensaje de Error', detail: error });
