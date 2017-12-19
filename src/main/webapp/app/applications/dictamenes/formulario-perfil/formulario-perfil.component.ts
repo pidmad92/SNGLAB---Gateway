@@ -11,7 +11,6 @@ import { Actiecon, ActieconService } from '../../../entities/actiecon/index';
 import { SessionStorage, LocalStorage } from 'ng2-webstorage';
 import { ComboModel } from '../../general/combobox.model';
 import { Message } from 'primeng/components/common/api';
-import { ValidarUsuarioService } from '../../denuncias/validar-usuario/validarusuario.service';
 import { Undnegocio, UndnegocioService } from '../../../entities/undnegocio/index';
 import { Participa, ParticipaService } from '../../../entities/participa/index';
 import { Hechoinver, HechoinverService } from '../../../entities/hechoinver/index';
@@ -22,6 +21,9 @@ import { ModelAnexo } from '../../../entities/anexlaboral/modelanexo.model';
 import { AnexlaboralService } from '../../../entities/anexlaboral/index';
 import { DatePipe } from '@angular/common';
 import { FormularioPerfilService } from './index';
+import { Formulario } from './formulario.model';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { PerreglabService } from '../../../entities/perreglab/index';
 
 @Component({
     selector: 'jhi-formulario-perfil',
@@ -30,31 +32,32 @@ import { FormularioPerfilService } from './index';
 })
 
 export class FormularioPerfilComponent implements OnInit, OnDestroy {
-    actiecon: Actiecon[];
     currentAccount: Account;
     eventSubscriber: Subscription;
-    displayDireccion: boolean;
-    direccionRegistro: Direccion;
-    private subscription: Subscription;
-    displayGuardar: boolean;
+    subscription: Subscription;
 
     // Mensajes
     messages: Message[] = [];
     messagesForm: Message[] = [];
     messageList: any;
 
+    // Variables de edicion y bloqueo
     block: boolean;
     editar: boolean;
-    @LocalStorage('inicio')
-    inicioDir: boolean;
 
+    // Combos de Ubigeo
     departs: ComboModel[];
     provins: ComboModel[];
     distris: ComboModel[];
 
+    // Seleccion de Ubigeo
     selectedDeparts: ComboModel;
     selectedProvins: ComboModel;
     selectedDistris: ComboModel;
+
+    // Flags de dialogs
+    displayDireccion: boolean;
+    displayGuardar: boolean;
 
     // Datos de Perfil
     @LocalStorage('solicitud')
@@ -88,9 +91,25 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     @LocalStorage('responeInfoLaboral')
     responeInfoLaboral: Respinforma;
     @LocalStorage('anexoLaboral')
-    anexoLaboral: ModelAnexo[];
+    formulario: Formulario[];
+    @LocalStorage('regimenLaboral')
+    selectedRegimen: ComboModel[];
+
+    // Flags de Inicio
+    @LocalStorage('inicioDir')
+    inicioDir: boolean;
+
+    // Objetos CUD
+    actiecon: Actiecon[];
+    direccionRegistro: Direccion;
 
     constructor(
+        private jhiAlertService: JhiAlertService,
+        private eventManager: JhiEventManager,
+        private principal: Principal,
+        private route: ActivatedRoute,
+        private router: Router,
+        // Servicios
         private solicitudService: SolicitudService,
         private formperfilService: FormperfilService,
         private solicfromService: SolicformService,
@@ -103,14 +122,10 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
         private respinformaService: RespinformaService,
         private anexlaboralService: AnexlaboralService,
         private actieconService: ActieconService,
-        private jhiAlertService: JhiAlertService,
-        private eventManager: JhiEventManager,
-        private principal: Principal,
-        private route: ActivatedRoute,
-        private router: Router,
-        private validarUsuarioService: ValidarUsuarioService,
-        private datepipe: DatePipe,
         private formularioPerfilService: FormularioPerfilService,
+        private perreglabService: PerreglabService,
+        private fb: FormBuilder,
+        private datepipe: DatePipe,
     ) { }
 
     loadAll() {
@@ -120,25 +135,76 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.editar = false;
-        this.block = false;
-        this.departs = new Array<ComboModel>();
-        this.provins = new Array<ComboModel>();
-        this.distris = new Array<ComboModel>();
-        this.displayDireccion = false;
-        this.displayGuardar = false;
-        this.direccionRegistro = new Direccion;
-        this.iniciarDatos();
+        this.inicializarVariables();
         this.loadAll();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
     }
 
-    ngOnDestroy() { }
+    inicializarVariables() {
+        // Variables de edicion y bloqueo
+        this.editar = false;
+        this.block = false;
+        // Combos de Ubigeo
+        this.departs = new Array<ComboModel>();
+        this.provins = new Array<ComboModel>();
+        this.distris = new Array<ComboModel>();
+        // Flags de dialogs
+        this.displayDireccion = false;
+        this.displayGuardar = false;
+
+        // Objetos CUD
+        this.direccionRegistro = new Direccion;
+        this.undNegocios = this.iniciarArrayAny(this.undNegocios);
+        this.participacionesAccionarias = this.iniciarArrayAny(this.participacionesAccionarias);
+        this.participacionesMercados = this.iniciarArrayAny(this.participacionesMercados);
+        this.obras = this.iniciarArrayAny(this.obras);
+        this.proyectos = this.iniciarArrayAny(this.proyectos);
+        this.direcciones = this.iniciarArrayAny(this.direcciones);
+        this.organizaciones = this.iniciarArrayAny(this.organizaciones);
+        this.resultadoNegociaciones = this.iniciarArrayAny(this.resultadoNegociaciones);
+        this.proyectos = this.iniciarArrayAny(this.proyectos);
+        this.proyectos = this.iniciarArrayAny(this.proyectos);
+        this.formulario = this.iniciarArray(this.formulario, new Array<Formulario>());
+        this.solicitante = this.iniciarCUD(this.solicitante, new Negocolect());
+        this.responInfoFinanciera = this.iniciarCUD(this.responInfoFinanciera, new Respinforma());
+        this.responeInfoLaboral = this.iniciarCUD(this.responeInfoLaboral, new Respinforma());
+        this.inicioDir = this.iniciarFlags(this.inicioDir);
+    }
+
+    iniciarFlags(flg: boolean): boolean {
+        if (flg === null || flg === undefined) {
+            flg = true;
+        } else {
+            flg = false;
+        }
+        return flg;
+    }
+
+    iniciarArrayAny(arr: any[]): any[] {
+        if (arr === undefined || arr === null) {
+            arr = [];
+        }
+        return arr;
+    }
+
+    iniciarArray(list: any[], arr: Array<any>): Array<any> {
+        if (list === undefined || list === null) {
+            list = arr;
+        }
+        return list;
+    }
+
+    iniciarCUD(obj: any, objnew: any): any {
+        if (obj === undefined || obj === null) {
+            obj = objnew;
+        }
+        return obj;
+    }
 
     load(nCodfperf) {
-        this.solicfromService.find(nCodfperf).subscribe((solicForm) => {
+        this.solicfromService.obtenerSolicitudFormulario(nCodfperf).subscribe((solicForm) => {
             this.solicForm = solicForm;
             const nCodsolic = solicForm.nCodsolic;
 
@@ -155,28 +221,19 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
                     this.formPerfil.tFecreg = this.datepipe.transform((this.formPerfil.tFecreg), 'yyyy-MM-dd HH:mm:ss')
                 });
             }
-            this.direccionService.obtenerDireccion(nCodfperf).subscribe(
-                (res: ResponseWrapper) => {
-                    if (this.direcciones.length === 0 && this.inicioDir) {
+            if (this.inicioDir) {
+                this.direcciones = new Array<Direccion>();
+                this.direccionService.obtenerDireccion(nCodfperf).subscribe(
+                    (res: ResponseWrapper) => {
                         this.direcciones = res.json;
-                    } else {
-                        /*const direccionesTmp: Direccion[] = res.json;
-                        for (let i = 0; i < direccionesTmp.length; i++) {
-                            const direccionGuardado: Direccion = this.direcciones.find((x) => x.nCoddirec === direccionesTmp[i].nCoddirec);
-                            console.log('direccionGuardado: ' + direccionGuardado);
-                            console.log('direccionesTmp[i].nCoddirec: ' + direccionesTmp[i].nCoddirec);
-                            if (direccionGuardado === undefined || direccionGuardado === null) {
-                                this.direcciones.push(direccionesTmp[i]);
-                            }
-                        }*/
-                    }
-                    for (let i = 0; i < this.direcciones.length; i++) {
-                        this.direcciones[i].id = i;
-                        this.direcciones[i].bNotifica = this.direcciones[i].nNotifica === 1 ? true : false;
-                    }
-                },
-                (res: ResponseWrapper) => this.onError(res.json)
-            );
+                        for (let i = 0; i < this.direcciones.length; i++) {
+                            this.direcciones[i].id = i;
+                            this.direcciones[i].bNotifica = this.direcciones[i].nNotifica === 1 ? true : false;
+                        }
+                    },
+                    (res: ResponseWrapper) => this.onError(res.json)
+                );
+            }
 
         });
         this.actieconService.query().subscribe(
@@ -184,51 +241,7 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
             (res: ResponseWrapper) => this.onError(res.json)
         );
     }
-
-    iniciarDatos() {
-        if (this.undNegocios === undefined || this.undNegocios === null) {
-            this.undNegocios = [];
-        }
-        if (this.participacionesAccionarias === undefined || this.participacionesAccionarias === null) {
-            this.participacionesAccionarias = [];
-        }
-        if (this.participacionesMercados === undefined || this.participacionesMercados === null) {
-            this.participacionesMercados = [];
-        }
-        if (this.obras === undefined || this.obras === null) {
-            this.obras = [];
-        }
-        if (this.proyectos === undefined || this.proyectos === null) {
-            this.proyectos = [];
-        }
-        if (this.direcciones === undefined || this.direcciones === null) {
-            this.direcciones = [];
-        }
-        if (this.solicitante === undefined || this.solicitante === null) {
-            this.solicitante = new Negocolect;
-        }
-        if (this.organizaciones === undefined || this.organizaciones === null) {
-            this.organizaciones = [];
-        }
-        if (this.resultadoNegociaciones === undefined || this.resultadoNegociaciones === null) {
-            this.resultadoNegociaciones = [];
-        }
-        if (this.responInfoFinanciera === undefined || this.responInfoFinanciera === null) {
-            this.responInfoFinanciera = new Respinforma;
-        }
-        if (this.responeInfoLaboral === undefined || this.responeInfoLaboral === null) {
-            this.responeInfoLaboral = new Respinforma;
-        }
-        if (this.anexoLaboral === undefined || this.anexoLaboral === null) {
-            this.anexoLaboral = [];
-        }
-        if (this.inicioDir === null || this.inicioDir === undefined) {
-            this.inicioDir = true;
-        } else {
-            this.inicioDir = false;
-        }
-    }
-
+    // --------------------------- Eventos ------------------------------------
     // Solo numeros
     keyPress(event: any) {
         const pattern = /[0-9]/;
@@ -259,7 +272,7 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
             this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar un departamento' }]);
             this.block = false;
         } else {
-            this.validarUsuarioService.consultaProvs(this.selectedDeparts.value).subscribe(
+            this.formularioPerfilService.consultaProvs(this.selectedDeparts.value).subscribe(
                 (tprovs: ResponseWrapper) => {
                     this.provins = [];
                     // tslint:disable-next-line:forin
@@ -286,7 +299,7 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
             this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar una provincia' }]);
             this.block = false;
         } else {
-            this.validarUsuarioService.consultaDists(this.selectedDeparts.value, this.selectedProvins.value).subscribe(
+            this.formularioPerfilService.consultaDists(this.selectedDeparts.value, this.selectedProvins.value).subscribe(
                 (tdists: ResponseWrapper) => {
                     this.distris = [];
                     // tslint:disable-next-line:forin
@@ -300,12 +313,12 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
         }
         this.selectedDistris = undefined;
     }
-
+    // --------------------------- Direccion ------------------------------------
     showDialogDireccion() {
         this.messageList = [];
         this.messagesForm = [];
         this.editar = false;
-        this.validarUsuarioService.consultaDepas().subscribe(
+        this.formularioPerfilService.consultaDepas().subscribe(
             (deps: any) => {
                 this.departs = [];
                 // tslint:disable-next-line:forin
@@ -321,6 +334,7 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
         this.selectedDistris = undefined;
         this.displayDireccion = true;
     }
+
     guardarDireccion() {
 
         if (this.validarDireccion()) {
@@ -410,6 +424,10 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
         this.direcciones.splice(this.direcciones.indexOf(obj), 1);
     }
 
+    mostrarGuardar() {
+        this.displayGuardar = true;
+    }
+    // --------------------------- Guardar Formulario Perfil ------------------------------------
     guardarFormularioPerfil() {
         if (this.solicitud !== undefined && this.solicForm !== undefined) {
             this.messagesForm = this.formularioPerfilService.validarDatosObligatorios(this.solicitud, this.formPerfil, this.obras, this.solicitante);
@@ -417,17 +435,14 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
                 this.formularioPerfilService.guardarFormularioPerfil(this.datepipe, this.solicitud, this.solicForm,
                     this.formPerfil, this.undNegocios, this.participacionesAccionarias, this.participacionesMercados,
                     this.obras, this.proyectos, this.direcciones, this.organizaciones, this.solicitante,
-                    this.resultadoNegociaciones, this.responInfoFinanciera, this.responeInfoLaboral, this.anexoLaboral,
+                    this.resultadoNegociaciones, this.responInfoFinanciera, this.responeInfoLaboral, this.formulario, this.selectedRegimen,
                     this.formperfilService, this.undnegocioService, this.participaService, this.hechoinverService,
-                    this.direccionService, this.negocolectService, this.resulnegocService, this.respinformaService)
+                    this.direccionService, this.negocolectService, this.resulnegocService, this.respinformaService, this.anexlaboralService, this.perreglabService);
                 this.router.navigate(['./dictamenes/control-informacion/' + this.solicitud.nCodsolic]);
             }
         }
     }
-    mostrarGuardar() {
-        this.displayGuardar = true;
-    }
-
+    // --------------------------- Errores ------------------------------------
     private onErrorMultiple(errorList: any) {
         for (let i = 0; i < errorList.length; i++) {
             this.messagesForm.push(errorList[i]);
@@ -443,4 +458,9 @@ export class FormularioPerfilComponent implements OnInit, OnDestroy {
         this.router.navigate(['./dictamenes/formulario-perfil2']);
     }
 
+    verControlInformacion() {
+        this.router.navigate(['../../dictamenes/control-informacion/' + this.solicitud.nCodsolic])
+    }
+
+    ngOnDestroy() { }
 }

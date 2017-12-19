@@ -1,3 +1,4 @@
+<p-blockUI [blocked]="block"></p-blockUI>
 <div class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
     <div class="row">
         <div class="col">
@@ -21,7 +22,8 @@
                             <div class="form-group row">
                                 <label for="inpRuc" class="col-sm-3 col-form-label col-form-label-sm text-right">RUC</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control form-control-sm" id="inpRuc" placeholder="">
+                                    <input type="text" (keypress)="keyPress($event)" maxlength="15" class="form-control form-control-sm" id="inpRuc" [(ngModel)]="rucSearch"
+                                        placeholder="">
                                 </div>
                             </div>
                         </div>
@@ -29,20 +31,21 @@
                             <div class="form-group row">
                                 <label for="inpRsocial" class="col-sm-3 col-form-label col-form-label-sm text-right">Razón Social</label>
                                 <div class="col-sm-9" style="display: inline-flex">
-                                    <input type="text" class="form-control form-control-sm" id="inpRsocial" placeholder="" style="margin-right:10px">
-                                    <a [routerLink]="" (click)="buscarSolicitudes()" class="btn btn-sm btn-success" style="padding-left:5px">
+                                    <input type="text" class="form-control form-control-sm" id="inpRsocial" placeholder="" style="margin-right:10px" [(ngModel)]="razonSocialSearch">
+                                    <a (click)="buscarSolicitudes(rucSearch)" class="btn btn-sm btn-info" style="padding-left:5px;color:white;">
                                         <i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                    <div class="form-row mb-2">
                         <div class="col-md-8">
-                            <div class="form-group row">
-                                <a [routerLink]="" (click)="mostrarModalRegistro()" class="btn btn-sm btn-success" style="padding-left:5px">
-                                    <i class="fa fa-plus" aria-hidden="true"></i> Registrar Solicitud</a>
-                            </div>
+                            <a [routerLink]="" (click)="mostrarModalRegistro()" class="btn btn-sm btn-info" style="padding-left:5px">
+                                <i class="fa fa-plus" aria-hidden="true"></i> Registrar Solicitud</a>
                         </div>
                     </div>
-                    <table class="table table-responsive" id="Csolicitud">
+                    <table class="table table-responsive table-bordered table-hover" id="Csolicitud">
                         <thead style="text-align: center;">
                             <tr>
                                 <th>N°</th>
@@ -54,8 +57,10 @@
                                 <th>Vigencia Desde</th>
                                 <th>Vigencia Hasta</th>
                                 <th>Voucher</th>
-                                <th>Analista Coordinador</th>
+                                <!--<th>Analista Coordinador</th>-->
                                 <th>Estado</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -88,26 +93,164 @@
                                     <td>
                                         <span>{{solicitud.vVoucher}}</span>
                                     </td>
+                                    <!--<td>
+                                        <span>{{solicitud.vNombres}}</span>
+                                    </td>-->
                                     <td>
-                                        <span>Analista Coordinador</span>
+                                        <span *ngIf="solicitud.vFlgest == 'P'">
+                                            PENDIENTE
+                                        </span>
+                                        <span *ngIf="solicitud.vFlgest == 'E'">
+                                            ENVIADO
+                                        </span>
+                                        <span *ngIf="solicitud.vFlgest == 'O'">
+                                            OBSERVADO
+                                        </span>
+                                        <span *ngIf="solicitud.vFlgest == 'C'">
+                                            CONFORME
+                                        </span>
                                     </td>
-                                    <td><span>{{solicitud.vFlgest}}</span></td>
+                                    <td>
+                                        <a class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-sm btn-danger" (click)="mostrarModalEliminar(solicitud)">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             </ng-container>
                         </tbody>
                     </table>
-
-                    <p-dialog [(visible)]="display" modal="modal" width="800" [responsive]="true">
+                    <p-blockUI [target]="pnldialog" [blocked]="blockDialog"></p-blockUI>
+                    <p-dialog id="pnldialog" [(visible)]="display" modal="modal" width="810" [responsive]="true">
                         <p-header>
                             Registro de Solicitud de Dictamen Económico Laboral
                         </p-header>
                         <p>
-
-
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <p-fieldset legend="Sindicato">
+                                        <div class="form-group row mb-2">
+                                            <label for="inpDNI" class="col-sm-3 col-form-label col-form-label-sm">Numero de Documento</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" (keypress)="keyPress($event)" class="form-control form-control-sm" name="txtDNI" id="inpDNI" [(ngModel)]="sindicato.cDesdocruc">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <a style="color:white;" class="btn btn-sm btn-info" (click)="buscarSindicato()">
+                                                    <i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mb-2">
+                                            <label for="inpDNI" class="col-sm-3 col-form-label col-form-label-sm">Sindicato</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" disabled class="form-control form-control-sm" name="txtDNI" id="inpDNI" [(ngModel)]="sindicato.vDesorgani">
+                                            </div>
+                                        </div>
+                                    </p-fieldset>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <p-fieldset legend="Empresa">
+                                        <div class="form-group row mb-2">
+                                            <label for="inpDNI" class="col-sm-3 col-form-label col-form-label-sm">Numero de Documento</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" (keypress)="keyPress($event)" class="form-control form-control-sm" name="txtDNI" id="inpDNI" [(ngModel)]="empresa.ddp_numruc">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <a style="color:white;" class="btn btn-sm btn-info" (click)="buscarEmpresaRuc()">
+                                                    <i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mb-2">
+                                            <label for="inpDNI" class="col-sm-3 col-form-label col-form-label-sm">Empresa</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" disabled class="form-control form-control-sm" name="txtDNI" id="inpDNI" [(ngModel)]="nombreEmpresa">
+                                            </div>
+                                        </div>
+                                    </p-fieldset>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <p-fieldset legend="Árbitro">
+                                        <div class="form-group row mb-2">
+                                            <label for="inpDNI" class="col-sm-3 col-form-label col-form-label-sm">Numero de Documento</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" (keypress)="keyPress($event)" class="form-control form-control-sm" name="txtDNI" id="inpDNI" [(ngModel)]="arbitro.ddp_numruc">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <a style="color:white;" class="btn btn-sm btn-info" (click)="buscarArbitroRuc()">
+                                                    <i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mb-2">
+                                            <label for="inpDNI" class="col-sm-3 col-form-label col-form-label-sm">Árbitro</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" disabled class="form-control form-control-sm" name="txtDNI" id="inpDNI" [(ngModel)]="nombreArbitro">
+                                            </div>
+                                        </div>
+                                    </p-fieldset>
+                                </div>
+                            </div>
+                            <br/>
+                            <!--<div class="form-row">
+                                <div class="col-md-12">
+                                    <p-fieldset legend="Coordinador">
+                                        <div class="form-group row mb-2">
+                                            <label for="inpDNI" class="col-sm-3 col-form-label col-form-label-sm">Numero de Documento</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" (keypress)="keyPress($event)" class="form-control form-control-sm" name="txtDNI" id="inpDNI" [(ngModel)]="numdoc">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <a style="color:white;" class="btn btn-sm btn-info">
+                                                    <i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mb-2">
+                                            <label for="inpDNI" class="col-sm-3 col-form-label col-form-label-sm">Coordinador</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" disabled class="form-control form-control-sm" name="txtDNI" id="inpDNI" [(ngModel)]="nombreCoordinador">
+                                            </div>
+                                        </div>
+                                    </p-fieldset>
+                                </div>
+                            </div>
+                            <br/>-->
+                            <div class="form-group row mb-2">
+                                <label for="inpRUC" class="col-sm-3 col-form-label col-form-label-sm">Vigencia Inicio</label>
+                                <div class="col-sm-3">
+                                    <input type="date" class="form-control form-control-sm" id="inpRUC" [(ngModel)]="vigenciaInicio">
+                                </div>
+                                <label for="inpRUC" class="col-sm-3 col-form-label col-form-label-sm">Vigencia Hasta</label>
+                                <div class="col-sm-3">
+                                    <input type="date" class="form-control form-control-sm" id="inpRUC" [(ngModel)]="vigenciaFinal">
+                                </div>
+                            </div>
+                            <p-messages [(value)]="messagesForm"></p-messages>
                         </p>
                         <p-footer>
-                            <button type="button" icon="fa-check" (click)="guardarSolicitud()" label="Yes">Guardar</button>
-                            <button type="button" icon="fa-close" (click)="display = false;" label="No">Cancelar</button>
+                            <a style="color:white;" class="btn btn-sm btn-info" (click)="guardarSolicitud()">
+                                <i class="fa fa-check" aria-hidden="true"></i> Guardar</a>
+                            <a style="color:white;" class="btn btn-sm btn-danger" (click)="display = false;">
+                                <i class="fa fa-close" aria-hidden="true"></i> Cancelar</a>
+                        </p-footer>
+                    </p-dialog>
+
+                    <p-dialog [(visible)]="displayEliminar" modal="modal" width="500" [responsive]="true">
+                        <p-header>
+                            Guardar
+                        </p-header>
+                        <p>¿Desea eliminar la Solicitud?</p>
+                        <p-messages [(value)]="messagesForm"></p-messages>
+                        <p-footer>
+                            <button type="button" icon="fa-check" (click)="displayEliminar = false">Cancelar</button>
+                            <button type="submit" icon="fa-close" (click)="eliminarSolicitud()">Eliminar</button>
                         </p-footer>
                     </p-dialog>
 

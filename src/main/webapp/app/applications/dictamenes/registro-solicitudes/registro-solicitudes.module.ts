@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { GatewaySharedModule } from '../../../shared';
-import {DialogModule, TabViewModule, DropdownModule, MessagesModule, MessageModule, BlockUIModule} from 'primeng/primeng';
+import {DialogModule, TabViewModule, DropdownModule, MessagesModule, BlockUIModule, FieldsetModule, BlockableUI, ProgressBarModule} from 'primeng/primeng';
 import { RegistroSolicitudesRoute
        , RegistroSolicitudesComponent
        , RegistroSolicitudesService } from './';
@@ -20,6 +20,13 @@ const ENTITY_STATES = [
         GatewaySharedModule,
         RouterModule.forChild(ENTITY_STATES),
         DialogModule,
+        FieldsetModule,
+        TabViewModule,
+        DropdownModule,
+        MessagesModule,
+        BlockUIModule,
+        ProgressBarModule
+
     ],
     entryComponents: [
         RegistroSolicitudesComponent,

@@ -1,11 +1,9 @@
 import { BaseEntity } from './../../shared';
 
-export class Ususol implements BaseEntity {
+export class Perreglab implements BaseEntity {
     constructor(
         public id?: number,
-        public vNombres?: string,
-        public vTipousu?: string,
-        public tFecenvio?: any,
+        public PerreglabId?: BaseEntity,
         public vUsuareg?: string,
         public tFecreg?: any,
         public nFlgactivo?: boolean,
@@ -13,9 +11,5 @@ export class Ususol implements BaseEntity {
         public vUsuaupd?: string,
         public tFecupd?: any,
         public nSedeupd?: number,
-        public ususolId?: BaseEntity,
-        public solicitud?: BaseEntity
-    ) {
-        this.nFlgactivo = true;
-    }
+    ) {}
 }

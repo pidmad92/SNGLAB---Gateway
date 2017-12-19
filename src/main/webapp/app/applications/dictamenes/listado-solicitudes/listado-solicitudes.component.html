@@ -1,3 +1,4 @@
+<p-blockUI [blocked]="block"></p-blockUI>
 <div class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
     <div class="row">
         <div class="col">
@@ -15,8 +16,8 @@
                 </div>
                 <div class="card-body">
                     <p class="text-right">
-                        <strong>Empleador: </strong>Empresa</p>
-                    <table class="table table-responsive" id="Csolicitud">
+                        <strong>Empleador: </strong>BBVA BANCO CONTINENTAL</p>
+                    <table class="table table-responsive table-bordered table-hover" id="Csolicitud">
                         <thead style="text-align: center;">
                             <tr>
                                 <th>N°</th>
@@ -87,31 +88,6 @@
                                             <a [routerLink]="['../reporteres', solicitud.reporteRes?.id ]">{{solicitud.reporteRes?.vNombre}}</a>
                                         </div>
                                     </td>
-
-                                    <!--<td class="text-right">
-                              <div class="btn-group flex-btn-group-container">
-                                  <button type="submit"
-                                          [routerLink]="['../solicitud', solicitud.id ]"
-                                          class="btn btn-info btn-sm">
-                                      <span class="fa fa-eye"></span>
-                                      <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                                  </button>
-                                  <button type="submit"
-                                          [routerLink]="['/', { outlets: { popup: 'solicitud/'+ solicitud.id + '/edit'} }]"
-                                          replaceUrl="true"
-                                          class="btn btn-primary btn-sm">
-                                      <span class="fa fa-pencil"></span>
-                                      <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                                  </button>
-                                  <button type="submit"
-                                          [routerLink]="['/', { outlets: { popup: 'solicitud/'+ solicitud.id + '/delete'} }]"
-                                          replaceUrl="true"
-                                          class="btn btn-danger btn-sm">
-                                      <span class="fa fa-remove"></span>
-                                      <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                                  </button>
-                              </div>
-                          </td>-->
                                 </tr>
                             </ng-container>
                         </tbody>

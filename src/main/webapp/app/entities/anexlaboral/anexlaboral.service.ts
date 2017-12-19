@@ -13,8 +13,8 @@ import { ModelAnexoDetalle } from './index';
 @Injectable()
 export class AnexlaboralService {
 
-    private resourceUrl = SERVER_API_URL + 'api/listarAnexoLaboral';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/listarAnexoLaboral';
+    private resourceUrl = SERVER_API_URL + 'api/anexlaborals';
+    private resourceSearchUrl = SERVER_API_URL + 'api/_search/anexlaborals';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -114,34 +114,6 @@ export class AnexlaboralService {
         return <ModelAnexo>entity;
     }
 
-    obtenerAnios(codFormPerfil: number): Observable<ResponseWrapper> {
-        const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/obtenerAnios';
-        return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
-            .map((res: Response) => this.convertResponse(res));
-    }
-
-    obtenerDecretosPorTipoAnio(codFormPerfil: number, tipo: string, anio: number): Observable<ResponseWrapper> {
-        const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/obtenerDecretosPorTipoAnio';
-        return this.http.get(url + '?codFormPerfil=' + codFormPerfil + '&tipo=' + tipo + '&anio=' + anio, options)
-            .map((res: Response) => this.convertResponse(res));
-    }
-
-    obtenerDescripcionPorTipoAnio(codFormPerfil: number, tipo: string, anio: number): Observable<ResponseWrapper> {
-        const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/obtenerDescripcionPorTipoAnio';
-        return this.http.get(url + '?codFormPerfil=' + codFormPerfil + '&tipo=' + tipo + '&anio=' + anio, options)
-            .map((res: Response) => this.convertResponse(res));
-    }
-
-    obtenerCantidadPorTipoAnioDescripcion(codFormPerfil: number, tipo: string, anio: number, descripcion: string): Observable<ResponseWrapper> {
-        const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/obtenerCantidadPorTipoAnioDescripcion';
-        return this.http.get(url + '?codFormPerfil=' + codFormPerfil + '&tipo=' + tipo + '&anio=' + anio + '&descripcion=' + descripcion, options)
-            .map((res: Response) => this.convertResponseAnexo(res));
-    }
-
     eliminar(codFormPerfil: number) {
         const options = createRequestOption();
         const url = SERVER_API_URL + 'api/eliminarAnexo';
@@ -149,6 +121,13 @@ export class AnexlaboralService {
             .map((res: Response) => {
                 const jsonResponse = res.json();
                 return Object.assign(Number, jsonResponse);
-        });
+            });
+    }
+
+    obtenerDatosAnexo(anio: number, tipo: string, declegal: string, componente: string): Observable<Anexlaboral> {
+        return this.http.get(SERVER_API_URL + 'api/obtenerDatosAnexo?anio=' + anio + '&tipo=' + tipo + '&declegal=' + declegal
+            + '&componente=' + componente).map((res: Response) => {
+                return res.text() ? this.convertItemFromServer(res.json()) : null;
+            }).first();
     }
 }

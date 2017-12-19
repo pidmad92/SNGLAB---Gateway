@@ -5,34 +5,34 @@ import { SERVER_API_URL } from '../../app.constants';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
-import { Formperfil } from './formperfil.model';
+import { Reglaboral } from './reglaboral.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
 
 @Injectable()
-export class FormperfilService {
+export class ReglaboralService {
 
-    private resourceUrl = SERVER_API_URL + 'api/formperfils';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/formperfils';
+    private resourceUrl = SERVER_API_URL + 'api/reglaborals';
+    private resourceSearchUrl = SERVER_API_URL + 'api/_search/reglaborals';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
-    create(formperfil: Formperfil): Observable<Formperfil> {
-        const copy = this.convert(formperfil);
+    create(reglaboral: Reglaboral): Observable<Reglaboral> {
+        const copy = this.convert(reglaboral);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-    update(formperfil: Formperfil): Observable<Formperfil> {
-        const copy = this.convert(formperfil);
+    update(reglaboral: Reglaboral): Observable<Reglaboral> {
+        const copy = this.convert(reglaboral);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-    find(id: number): Observable<Formperfil> {
+    find(id: number): Observable<Reglaboral> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
@@ -65,10 +65,10 @@ export class FormperfilService {
     }
 
     /**
-     * Convert a returned JSON object to Formperfil.
+     * Convert a returned JSON object to Reglaboral.
      */
-    private convertItemFromServer(json: any): Formperfil {
-        const entity: Formperfil = Object.assign(new Formperfil(), json);
+    private convertItemFromServer(json: any): Reglaboral {
+        const entity: Reglaboral = Object.assign(new Reglaboral(), json);
         entity.tFecreg = this.dateUtils
             .convertDateTimeFromServer(json.tFecreg);
         entity.tFecupd = this.dateUtils
@@ -77,13 +77,32 @@ export class FormperfilService {
     }
 
     /**
-     * Convert a Formperfil to a JSON which can be sent to the server.
+     * Convert a Reglaboral to a JSON which can be sent to the server.
      */
-    private convert(formperfil: Formperfil): Formperfil {
-        const copy: Formperfil = Object.assign({}, formperfil);
-        copy.tFecreg = this.dateUtils.toDate(formperfil.tFecreg);
-        copy.tFecupd = this.dateUtils.toDate(formperfil.tFecupd);
+    private convert(reglaboral: Reglaboral): Reglaboral {
+        const copy: Reglaboral = Object.assign({}, reglaboral);
+
+        copy.tFecreg = this.dateUtils.toDate(reglaboral.tFecreg);
+
+        copy.tFecupd = this.dateUtils.toDate(reglaboral.tFecupd);
         return copy;
     }
 
+    obtenerRegimenesLaboralesPrivado(): Observable<ResponseWrapper> {
+        const options = createRequestOption();
+        return this.http.get('/api/obtenerRegimenesLaboralesPrivado', options)
+            .map((res: Response) => this.convertResponse(res));
+    }
+
+    obtenerRegimenesLaboralesPublico(): Observable<ResponseWrapper> {
+        const options = createRequestOption();
+        return this.http.get('/api/obtenerRegimenesLaboralesPublico', options)
+            .map((res: Response) => this.convertResponse(res));
+    }
+
+    obtenerRegimenesLaboralesOtros(): Observable<ResponseWrapper> {
+        const options = createRequestOption();
+        return this.http.get('/api/obtenerRegimenesLaboralesOtros', options)
+            .map((res: Response) => this.convertResponse(res));
+    }
 }

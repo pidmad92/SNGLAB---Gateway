@@ -3,29 +3,22 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
 
-import { Solicitud } from './solicitud.model';
-import { SolicitudService } from './solicitud.service';
+import { Perreglab } from './perreglab.model';
+import { PerreglabService } from './perreglab.service';
 import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../shared';
 
 @Component({
-    selector: 'jhi-solicitud',
-    templateUrl: './solicitud.component.html',
-    styleUrls: ['./solicitud.component.css']
+    selector: 'jhi-perreglab',
+    templateUrl: './perreglab.component.html'
 })
-export class SolicitudComponent implements OnInit, OnDestroy {
-    solicituds: Solicitud[];
+export class PerreglabComponent implements OnInit, OnDestroy {
+perreglabs: Perreglab[];
     currentAccount: any;
     eventSubscriber: Subscription;
     currentSearch: string;
 
-    display = false;
-
-    showDialog() {
-        this.display = true;
-    }
-
     constructor(
-        private solicitudService: SolicitudService,
+        private perreglabService: PerreglabService,
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
         private activatedRoute: ActivatedRoute,
@@ -36,57 +29,55 @@ export class SolicitudComponent implements OnInit, OnDestroy {
 
     loadAll() {
         if (this.currentSearch) {
-            this.solicitudService.search({
+            this.perreglabService.search({
                 query: this.currentSearch,
                 }).subscribe(
-                    (res: ResponseWrapper) => this.solicituds = res.json,
+                    (res: ResponseWrapper) => this.perreglabs = res.json,
                     (res: ResponseWrapper) => this.onError(res.json)
                 );
             return;
        }
-        this.solicitudService.query().subscribe(
+        this.perreglabService.query().subscribe(
             (res: ResponseWrapper) => {
-                this.solicituds = res.json;
+                this.perreglabs = res.json;
                 this.currentSearch = '';
             },
             (res: ResponseWrapper) => this.onError(res.json)
         );
     }
 
+    search(query) {
+        if (!query) {
+            return this.clear();
+        }
+        this.currentSearch = query;
+        this.loadAll();
+    }
+
+    clear() {
+        this.currentSearch = '';
+        this.loadAll();
+    }
     ngOnInit() {
         this.loadAll();
-        this.display = false;
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
+        this.registerChangeInPerreglabs();
     }
 
     ngOnDestroy() {
         this.eventManager.destroy(this.eventSubscriber);
     }
 
+    trackId(index: number, item: Perreglab) {
+        return item.id;
+    }
+    registerChangeInPerreglabs() {
+        this.eventSubscriber = this.eventManager.subscribe('perreglabListModification', (response) => this.loadAll());
+    }
+
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
-    }
-
-    obtenerListaSolicitud() {
-        this.solicitudService.obtenerlistaSolicitudes().subscribe(
-            (res: ResponseWrapper) => this.solicituds = res.json,
-            (res: ResponseWrapper) => this.onError(res.json),
-        );
-    }
-
-    setColor() {
-        let estadoSolicitud: string;
-        estadoSolicitud = 'E';
-        if (estadoSolicitud = 'P') {
-            return '';
-        }else if (estadoSolicitud = 'E') {
-            return 'yellow';
-        }else if (estadoSolicitud = 'O') {
-            return 'red';
-        }else {
-            return 'green';
-        }
     }
 }

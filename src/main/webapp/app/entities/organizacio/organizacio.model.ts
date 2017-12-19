@@ -8,7 +8,7 @@ export class Organizacio implements BaseEntity {
         public tFecregist?: any,
         public vDessiglas?: string,
         public vNumresolu?: string,
-        public cDesdocruc?: number,
+        public cDesdocruc?: string,
         public tFecpresen?: any,
         public tFecconsta?: any,
         public vCorreo?: string,
@@ -50,6 +50,8 @@ export class Organizacio implements BaseEntity {
         public afiliados?: BaseEntity[],
         public calificacio?: BaseEntity,
     ) {
+        this.cDesdocruc = '';
+        this.vDesorgani = '';
         this.nFlgactivo = false;
     }
 }

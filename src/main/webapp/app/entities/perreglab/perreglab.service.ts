@@ -1,38 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { SERVER_API_URL } from '../../app.constants';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
-import { Formperfil } from './formperfil.model';
+import { Perreglab } from './perreglab.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
 
 @Injectable()
-export class FormperfilService {
+export class PerreglabService {
 
-    private resourceUrl = SERVER_API_URL + 'api/formperfils';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/formperfils';
+    private resourceUrl = '/api/perreglabs';
+    private resourceSearchUrl = '/api/_search/perreglabs';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
-    create(formperfil: Formperfil): Observable<Formperfil> {
-        const copy = this.convert(formperfil);
+    create(perreglab: Perreglab): Observable<Perreglab> {
+        const copy = this.convert(perreglab);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-    update(formperfil: Formperfil): Observable<Formperfil> {
-        const copy = this.convert(formperfil);
+    update(perreglab: Perreglab): Observable<Perreglab> {
+        const copy = this.convert(perreglab);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-    find(id: number): Observable<Formperfil> {
+    find(id: number): Observable<Perreglab> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
@@ -65,10 +64,10 @@ export class FormperfilService {
     }
 
     /**
-     * Convert a returned JSON object to Formperfil.
+     * Convert a returned JSON object to Perreglab.
      */
-    private convertItemFromServer(json: any): Formperfil {
-        const entity: Formperfil = Object.assign(new Formperfil(), json);
+    private convertItemFromServer(json: any): Perreglab {
+        const entity: Perreglab = Object.assign(new Perreglab(), json);
         entity.tFecreg = this.dateUtils
             .convertDateTimeFromServer(json.tFecreg);
         entity.tFecupd = this.dateUtils
@@ -77,13 +76,25 @@ export class FormperfilService {
     }
 
     /**
-     * Convert a Formperfil to a JSON which can be sent to the server.
+     * Convert a Perreglab to a JSON which can be sent to the server.
      */
-    private convert(formperfil: Formperfil): Formperfil {
-        const copy: Formperfil = Object.assign({}, formperfil);
-        copy.tFecreg = this.dateUtils.toDate(formperfil.tFecreg);
-        copy.tFecupd = this.dateUtils.toDate(formperfil.tFecupd);
+    private convert(perreglab: Perreglab): Perreglab {
+        const copy: Perreglab = Object.assign({}, perreglab);
+        copy.tFecreg = this.dateUtils.toDate(perreglab.tFecreg);
+        copy.tFecupd = this.dateUtils.toDate(perreglab.tFecupd);
         return copy;
+    }
+
+    obtenerRegimenesSeleccionados(codPerfil: number, codRegimen: number): Observable<ResponseWrapper> {
+        const options = createRequestOption();
+        return this.http.get('api/obtenerRegimenesSeleccionados?codPerfil=' + codPerfil + '&codRegimen=' + codRegimen, options)
+            .map((res: any) => this.convertResponse(res));
+    }
+
+    eliminarRegimenes(codPerfil: number, codRegimen: number): Observable<ResponseWrapper> {
+        const options = createRequestOption();
+        return this.http.get('api/eliminarRegimenes?codPerfil=' + codPerfil + '&codRegimen=' + codRegimen, options)
+            .map((res: any) => this.convertResponse(res));
     }
 
 }

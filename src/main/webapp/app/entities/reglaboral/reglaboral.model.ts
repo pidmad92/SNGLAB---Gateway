@@ -1,16 +1,14 @@
 import { BaseEntity } from './../../shared';
 
-export class Anexlaboral implements BaseEntity {
+export class Reglaboral implements BaseEntity {
     constructor(
         public id?: number,
-        public nCodanexo?: number,
-        public nCodfperf?: number,
-        public nAnioanex?: number,
-        public vTipocont?: string,
-        public vDeclegal?: string,
-        public vDesanexo?: string,
-        public nCantlabo?: number,
-        public vComponen?: string,
+        public nCodreglab?: number,
+        public vDescreglab?: string,
+        public vDesabrreg?: string,
+        public nFlgpriv?: boolean,
+        public nFlgpub?: boolean,
+        public nOtros?: boolean,
         public vUsuareg?: string,
         public tFecreg?: any,
         public nFlgactivo?: boolean,
@@ -20,6 +18,6 @@ export class Anexlaboral implements BaseEntity {
         public nSedeupd?: number,
         public formperfil?: BaseEntity,
     ) {
-        this.nFlgactivo = false;
+        this.nFlgactivo = true;
     }
 }

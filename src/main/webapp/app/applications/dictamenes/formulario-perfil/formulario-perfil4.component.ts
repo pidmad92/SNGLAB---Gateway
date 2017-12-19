@@ -19,6 +19,10 @@ import { ModelAnexo } from '../../../entities/anexlaboral/modelanexo.model';
 import { AnexlaboralService } from '../../../entities/anexlaboral/index';
 import { DatePipe } from '@angular/common';
 import { FormularioPerfilService } from './index';
+import { Formulario } from './formulario.model';
+import { FormGroup } from '@angular/forms';
+import { PerreglabService } from '../../../entities/perreglab/index';
+import { ComboModel } from '../../general/combobox.model';
 
 @Component({
     selector: 'jhi-formulario-perfil4',
@@ -35,11 +39,13 @@ export class FormularioPerfil4Component implements OnInit, OnDestroy {
     messages: Message[] = [];
     messagesForm: Message[] = [];
     messageList: any;
-
+    // Variables de edicion y bloqueo
     block: boolean;
     editar: boolean;
-    @LocalStorage('inicioResultado')
-    inicioResultado: boolean;
+
+    // Flag de Modals
+    displayResultado: boolean;
+    displayGuardar: boolean;
 
     // Datos de Perfil
     @LocalStorage('solicitud')
@@ -73,10 +79,15 @@ export class FormularioPerfil4Component implements OnInit, OnDestroy {
     @LocalStorage('responeInfoLaboral')
     responeInfoLaboral: Respinforma;
     @LocalStorage('anexoLaboral')
-    anexoLaboral: ModelAnexo[];
+    formulario: Formulario[];
+    @LocalStorage('regimenLaboral')
+    selectedRegimen: ComboModel[];
 
-    displayResultado: boolean;
-    displayGuardar: boolean;
+    // Flags de Inicio
+    @LocalStorage('inicioResultado')
+    inicioResultado: boolean;
+
+    // Objetos CUD
     resultadoRegistro: Resulnegoc;
 
     constructor(
@@ -85,7 +96,6 @@ export class FormularioPerfil4Component implements OnInit, OnDestroy {
         private principal: Principal,
         private route: ActivatedRoute,
         private router: Router,
-
         // Servicios
         private solicitudService: SolicitudService,
         private formperfilService: FormperfilService,
@@ -100,12 +110,13 @@ export class FormularioPerfil4Component implements OnInit, OnDestroy {
         private anexlaboralService: AnexlaboralService,
         private datepipe: DatePipe,
         private formularioPerfilService: FormularioPerfilService,
+        private perreglabService: PerreglabService,
     ) { }
 
     ngOnInit() {
         this.iniciarDatos();
         this.loadAll();
-        this.resultadoRegistro = new Resulnegoc;
+        this.resultadoRegistro = new Negocolect();
         this.displayResultado = false;
         this.block = false;
         this.editar = false;
@@ -125,12 +136,11 @@ export class FormularioPerfil4Component implements OnInit, OnDestroy {
     }
 
     load(nCodfperf) {
-        if (this.resultadoNegociaciones === undefined && this.resultadoNegociaciones === null) {
+        if (this.inicioResultado) {
+            this.resultadoNegociaciones = new Array<Resulnegoc>();
             this.resulnegocService.obtenerResultadoNegociaciones(nCodfperf).subscribe(
-                (res: ResponseWrapper) =>  {
-                    if (this.resultadoNegociaciones.length === 0 && this.inicioResultado) {
-                        this.resultadoNegociaciones = res.json;
-                    }
+                (res: ResponseWrapper) => {
+                    this.resultadoNegociaciones = res.json;
                 },
                 (res: ResponseWrapper) => this.onError(res.json)
             );
@@ -226,9 +236,9 @@ export class FormularioPerfil4Component implements OnInit, OnDestroy {
                 this.formularioPerfilService.guardarFormularioPerfil(this.datepipe, this.solicitud, this.solicForm,
                     this.formPerfil, this.undNegocios, this.participacionesAccionarias, this.participacionesMercados,
                     this.obras, this.proyectos, this.direcciones, this.organizaciones, this.solicitante,
-                    this.resultadoNegociaciones, this.responInfoFinanciera, this.responeInfoLaboral, this.anexoLaboral,
+                    this.resultadoNegociaciones, this.responInfoFinanciera, this.responeInfoLaboral, this.formulario, this.selectedRegimen,
                     this.formperfilService, this.undnegocioService, this.participaService, this.hechoinverService,
-                    this.direccionService, this.negocolectService, this.resulnegocService, this.respinformaService)
+                    this.direccionService, this.negocolectService, this.resulnegocService, this.respinformaService, this.anexlaboralService, this.perreglabService);
                 this.router.navigate(['./dictamenes/control-informacion/' + this.solicitud.nCodsolic]);
             }
         }

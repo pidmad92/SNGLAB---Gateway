@@ -14,6 +14,10 @@ import { Negocolect } from '../../../entities/negocolect/index';
 import { Resulnegoc } from '../../../entities/resulnegoc/index';
 import { Respinforma } from '../../../entities/respinforma/index';
 import { ModelAnexo } from '../../../entities/anexlaboral/modelanexo.model';
+import { Formperfil } from '../../../entities/formperfil/index';
+import { ComboModel } from '../../general/combobox.model';
+import { Formulario } from '../formulario-perfil/formulario.model';
+import { FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'jhi-control-informacion',
@@ -28,6 +32,14 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
     currentAccount: Account;
     eventSubscriber: Subscription;
     private subscription: Subscription;
+
+    // Datos de Perfil
+    @LocalStorage('solicitud')
+    solicitudLS: Solicitud;
+    @LocalStorage('solicform')
+    solicForm: Solicform;
+    @LocalStorage('formperfil')
+    formPerfil: Formperfil;
 
     // Listados de dato
     @LocalStorage('undNegocios')
@@ -53,7 +65,7 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
     @LocalStorage('responeInfoLaboral')
     responeInfoLaboral: Respinforma;
     @LocalStorage('anexoLaboral')
-    anexoLaboral: ModelAnexo[];
+    formulario: Formulario[];
 
     @LocalStorage('inicioDir')
     inicioDir: boolean;
@@ -77,6 +89,8 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
     inicioSolicitante: boolean;
     @LocalStorage('inicioOrganizacion')
     inicioOrganizacion: boolean;
+    @LocalStorage('regimenLaboral')
+    selectedRegimen: ComboModel[];
 
     constructor(
         private solicitudService: SolicitudService,
@@ -101,11 +115,6 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
-        /*console.log('localStorage.getItem(ng2-webstorage|solicitud): ' + localStorage.getItem('ng2-webstorage|solicitud'));
-        for (let i = 0; i < localStorage.length; i++) {
-            console.log('localStorage.key(' + i + '): ' + localStorage.key(i));
-            console.log('localStorage.getItem(' + localStorage.key(i) + '): ' + localStorage.getItem(localStorage.key(i)));
-        }*/
         this.limpiarLocalStorage();
     }
 
@@ -124,6 +133,9 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
     }
 
     limpiarLocalStorage() {
+        this.solicitudLS = null;
+        this.solicForm = null;
+        this.formPerfil = null;
         this.undNegocios = null;
         this.participacionesAccionarias = null;
         this.participacionesMercados = null;
@@ -135,7 +147,8 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
         this.resultadoNegociaciones = null;
         this.responInfoFinanciera = null;
         this.responeInfoLaboral = null;
-        this.anexoLaboral = null;
+        this.formulario = null;
+        this.selectedRegimen = null;
         // Inicios
         this.inicioDir = null;
         this.inicioAccionaria = null;

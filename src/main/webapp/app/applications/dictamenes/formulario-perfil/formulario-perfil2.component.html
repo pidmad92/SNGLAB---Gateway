@@ -1,3 +1,4 @@
+<p-blockUI [blocked]="block"></p-blockUI>
 <div *ngIf="formPerfil&&solicitud"  class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
   <div class="row">
     <div class="col">
@@ -9,7 +10,7 @@
       <div class="form-group row">
         <label for="inpRuc" class="col-sm-3 col-form-label col-form-label-sm text-right">RUC</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control form-control-sm" id="inpRuc" [(ngModel)]="solicitud.vRucsol">
+          <input type="text" disabled class="form-control form-control-sm" id="inpRuc" [(ngModel)]="solicitud.vRucsol">
         </div>
       </div>
     </div>
@@ -17,7 +18,7 @@
       <div class="form-group row">
         <label for="inpRsocial" class="col-sm-3 col-form-label col-form-label-sm text-right" value="1047792455654">Razón Social</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control form-control-sm" id="inpRsocial" [(ngModel)]="solicitud.vEmpleador">
+          <input type="text" disabled class="form-control form-control-sm" id="inpRsocial" [(ngModel)]="solicitud.vEmpleador">
         </div>
       </div>
     </div>
@@ -288,7 +289,7 @@
                 <div class="form-group row mb-2">
                   <label for="selectedSector" class="col-sm-4 col-form-label col-form-label-sm">Sector (*)</label>
                   <div class="col-sm-8">
-                      <p-dropdown class="form-control form-control-sm" [options]="sector" name="selectedSector" [(ngModel)]="selectedSector" [style]="{'width':'100%'}" 
+                      <p-dropdown class="form-control form-control-sm" (onChange)="onChangeSector(event)" [options]="sector" name="selectedSector" [(ngModel)]="selectedSector" [style]="{'width':'100%'}" 
                       optionLabel="name"> 
                     </p-dropdown>
                   </div>
@@ -298,9 +299,7 @@
                 <div class="form-group row mb-2">
                   <label for="selectDocumento" class="col-sm-4 col-form-label col-form-label-sm">Regimen Laboral</label>
                   <div class="col-sm-8">
-                    <select class="form-control form-control-sm" id="selectDocumento">
-                      <option>Regimen Común</option>
-                    </select>
+                    <p-multiSelect class="form-control form-control-sm" [options]="regimenLaboral" name="selectedRegimen" [(ngModel)]="selectedRegimen" [style]="{'width':'100%'}" optionLabel="name"></p-multiSelect>
                   </div>
                 </div>
               </div>

@@ -21,7 +21,7 @@ import { UsusolService, UsusolComponent } from '../../entities/ususol/index';
     providers: [
         customHttpProvider(),
         SolicitudService,
-        UsusolService,
+        UsusolService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -24,6 +24,7 @@ export class Usuario implements BaseEntity {
         public usuarioGrupos?: BaseEntity[],
         public usuarioHorarios?: BaseEntity[],
         public usuPers?: BaseEntity[],
+        public pernatural?: BaseEntity,
     ) {
     }
 }
