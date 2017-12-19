@@ -2,6 +2,9 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { GatewaySharedModule } from '../../../shared';
+import { MessagesModule } from 'primeng/primeng';
+import { MessageModule } from 'primeng/primeng';
+import { MessageService } from 'primeng/components/common/messageservice';
 import {
     AudienciaComponent,
     AudienciaConsultaComponent,
@@ -22,6 +25,9 @@ import {
     AudienciaRegistroResultadoPopupService,
     ConciliaService,
     ExpedienteService,
+    AbogadoService,
+    HoraconService,
+    ResulconciService,
     audienciaRoute } from './';
 import { TabViewModule, DataTableModule, CheckboxModule, DropdownModule, CalendarModule } from 'primeng/primeng';
 
@@ -33,6 +39,8 @@ const ENTITY_STATES = [
     imports: [
         GatewaySharedModule,
         TabViewModule,
+        MessageModule,
+        MessagesModule,
         DataTableModule,
         CheckboxModule,
         DropdownModule,
@@ -74,7 +82,11 @@ const ENTITY_STATES = [
         AudienciaRegistroEscritoPopupService,
         AudienciaReprogramacionPopupService,
         ConciliaService,
-        ExpedienteService
+        ExpedienteService,
+        MessageService,
+        AbogadoService,
+        ResulconciService,
+        HoraconService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

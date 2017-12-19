@@ -13,6 +13,7 @@ export class ConciliaService {
     private resourceUrl = '/defensa/api/concilias';
     private resourceSearchUrl = '/defensa/api/_search/concilias';
     private resourceUrlFecha = '/defensa/api/concilias/fecha';
+    private resourceUrlResultado = '/defensa/api/concilias/resul';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -62,6 +63,26 @@ export class ConciliaService {
 
     searfecha(fecha?: any): Observable<ResponseWrapper> {
         return this.http.get(this.resourceUrlFecha)
+            .map((res: any) => this.convertResponse(res));
+    }
+
+    searchresultado(fecha?: any): Observable<ResponseWrapper> {
+        return this.http.get(this.resourceUrlResultado)
+            .map((res: any) => this.convertResponse(res));
+    }
+
+    searchresultadofecha(fecha?: string): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceUrlResultado}/${fecha}`)
+            .map((res: any) => this.convertResponse(res));
+    }
+
+    searchreprogramacion(fecha?: any): Observable<ResponseWrapper> {
+        return this.http.get(this.resourceUrlResultado)
+            .map((res: any) => this.convertResponse(res));
+    }
+
+    searchreprogramacionfecha(fecha?: string): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceUrlResultado}/${fecha}`)
             .map((res: any) => this.convertResponse(res));
     }
 

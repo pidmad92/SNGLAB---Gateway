@@ -17,6 +17,7 @@ export class Concilia implements BaseEntity {
         public nrodoctrab ?: string,
         public fullnameemp?: string,
         public nrodocemp ?: string,
+        public fechahoraconci?: String,
         public expediente?: BaseEntity,
         public abogado?: BaseEntity,
         public horacon?: BaseEntity,
