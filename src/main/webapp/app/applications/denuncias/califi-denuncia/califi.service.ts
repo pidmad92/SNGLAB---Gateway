@@ -5,8 +5,10 @@ import { JhiDateUtils } from 'ng-jhipster';
 import { ResponseWrapper, createRequestOption } from '../../../shared';
 
 @Injectable()
-export class RegdenuService {
-    private resourceUrl = '/denuncias/api/validarruc';
+export class CalifiService {
+    private resourceUrl = '/denuncias/api/califidenuncia';
+    private resourceUrlCalificas= '/denuncias/api/calificas';
+    private resourceRegCalifica= '/denuncias/api/califidenunciareg';
     private resourceMotivoDenuncia = '/denuncias/api/motidenuns';
     private resourceDetalleMotivoDenuncia = '/denuncias/api/detmotdens';
     private resourceSaveDenuExterna = '/denuncias/api/denunciasexterna';
@@ -15,29 +17,24 @@ export class RegdenuService {
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
-    guardarDenunciaExterna(denuncia: any): any {
-        return this.http.post(`${this.resourceSaveDenuExterna}`, denuncia).map((res: Response) => {
+    getDenuncia(denuncia: any): any {
+        return this.http.post(`${this.resourceUrl}`, denuncia).map((res: Response) => {
             const jsonResponse = res.json();
             return jsonResponse;
         });
     }
 
-    validarserviciosunat(empresaBean: any): any {
-        return this.http.post(`${this.resourceValidarRUC}`, empresaBean).map((res: Response) => {
+    getCalificas(): any {
+        return this.http.get(`${this.resourceUrlCalificas}`).map((res: Response) => {
             const jsonResponse = res.json();
             return jsonResponse;
         });
     }
 
-    getMotivosDenuncia(): any {
-        return this.http.get(`${this.resourceMotivoDenuncia}`).map((res: Response) => {
-            return res.json();
-        });
-    }
-
-    getDetalleMotivosDenuncia(cod: number): any {
-        return this.http.get(`${this.resourceDetalleMotivoDenuncia}/${cod}`).map((res: Response) => {
-            return res.json();
+    regCalificacion(califica: any): any {
+        return this.http.post(`${this.resourceRegCalifica}`, califica).map((res: Response) => {
+            const jsonResponse = res.json();
+            return jsonResponse;
         });
     }
 }

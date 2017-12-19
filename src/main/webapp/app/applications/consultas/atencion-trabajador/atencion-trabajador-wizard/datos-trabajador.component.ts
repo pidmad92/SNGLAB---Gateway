@@ -18,7 +18,7 @@ import { ResponseWrapper } from '../../../../shared';
     selector: 'jhi-datos-trabajador',
     templateUrl: './datos-trabajador.component.html'
 })
-export class DatosTrabajadorComponent implements OnInit, OnDestroy {
+export class DatosTrabajadorComponent implements OnInit {
     // export class DatosTrabajadorComponent {
 
     trabajador: Trabajador;
@@ -31,6 +31,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
     buscatipo: number;
     cars: any[];
     cols: any[];
+    routeSub: any;
     // fechoy: Date;
 
     constructor(
@@ -43,9 +44,18 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        // this.fechoy = new Date();
         this.trabajador = new Trabajador();
         this.trabajador.pernatural = new Pernatural();
+        this.routeSub = this.route.params.subscribe((params) => {
+            if ( params['id'] ) {
+                this.atencionTrabajadorService.find(params['id']).subscribe((trabajador) => {
+                    console.log('Trabajador: ' + JSON.stringify(trabajador));
+                    this.trabajador =  trabajador;
+                    this.trabajador.pernatural = trabajador.pernatural;
+                });
+            }
+        });
+        // this.fechoy = new Date();
         // this.listadocident = null;
         // this.listacargo = null;
         this.tipdocidentService.findListaDocIdent()
@@ -86,10 +96,10 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
         window.history.back();
     }
 
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
-        this.eventManager.destroy(this.eventSubscriber);
-    }
+    // ngOnDestroy() {
+    //     this.subscription.unsubscribe();
+    //     this.eventManager.destroy(this.eventSubscriber);
+    // }
 
     registerChangeInAccionadops() {
         this.eventSubscriber = this.eventManager.subscribe(

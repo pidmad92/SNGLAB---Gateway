@@ -47,6 +47,15 @@ export const atencionTrabajadorRoute: Routes = [
                 outlet: 'wizard'
             },
             {
+                path: 'datos-trabajador/:id',
+                component: DatosTrabajadorComponent,
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'global.menu.entities.atencionTra'
+                },
+                outlet: 'wizard'
+            },
+            {
                 path: 'motivos-consulta',
                 component: MotivosConsultaComponent,
                 data: {

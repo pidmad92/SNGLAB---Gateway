@@ -1,134 +1,171 @@
 <div>
-    <h4 class="title my-3">
-        <span>Consulta del Trabajador</span>
-    </h4>
-    <fieldset class="col">     
-        <legend>Criterios de Búsqueda</legend>
-        
-        <div class="panel">
-          <div class="panel-body">
-            <form>
-              <div class="form-row">
-                <div class="col-md">
-                    <!-- <div class="row"> -->
-                    <div class="form-group radio">
-                        <div class="col-12">
-                            <input type="radio"> Documento de Identidad
-                        </div>
-                        <div class="col-12">
-                            <input type="radio"> Nombres y Apellidos
-                        </div>
-                        <!-- <label class="center-block"><input type="radio" formControlName="docident" value="0">Documento de Identidad</label>
-                        <label class="center-block"><input type="radio" formControlName="docident" value="1">Nombres y Apellidos</label> -->
-                    </div>
-                  <div class="form-group row">
-                    <label for="inpTipo" class="col-sm-5 col-form-label">Tipo de documentos</label>
-                    <div class="col-sm-7">
-                      <select class="form-control form-control-sm" id="inpTipo">
-                        <option>DNI</option>
-                        <option>RUC</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md">
-                  <div class="form-group row">
-                    <label for="inpNumero" class="col-sm-3 col-form-label">Número</label>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control form-control-sm" id="inpNumero" placeholder="">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md">
-                  <div class="form-group row">
-                    <div class="col-sm-9">
-                      <a href="#" class="btn btn-sm btn-secondary"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </form>
-            
-          </div>
-        </div>
-    </fieldset>
-    <br><br>
-    <button class="btn btn-primary jh-create-entity create-accionadop" [routerLink]="['/consultas/registro-atencion-trabajador', { outlets: { wizard: ['datos-trabajador'] } }]">
-        <span class="fa fa-plus"></span>
-        <span class="hidden-sm-down">
-        Registrar Atención
-        </span>
-    </button>
-    <jhi-alert></jhi-alert>
     <div class="row">
-        <div class="col-sm-12">
-            <form name="searchForm" class="form-inline">
-                <div class="input-group w-100 mt-3">
-                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gatewayApp.accionadop.home.search' | translate }}">
-                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
-                        <span class="fa fa-search"></span>
-                    </button>
-                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
-                        <span class="fa fa-trash-o"></span>
-                    </button>
-                </div>
-            </form>
+        <div class="col">
+            <h4 class="title my-3">
+                <span>Consulta del Trabajador</span>
+            </h4>
         </div>
     </div>
-    <br/>
-    <div class="table-responsive" *ngIf="trabajador">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-            <th><span >ID</span></th>
-            <th><span >V Descripcion</span></th>
-            <th><span >V Usuarioreg</span></th>
-            <th><span >D Fechareg</span></th>
-            <th><span >N Eliminar</span></th>
-            <th><span >N Sedereg</span></th>
-            <th><span >V Usuarioupd</span></th>
-            <th><span >D Fechaupd</span></th>
-            <th><span >N Sedeupd</span></th>
-            <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let accionadop of trabajador ;trackBy: trackId">
-                <td><a [routerLink]="['../accionadop', accionadop.id ]">{{accionadop.id}}</a></td>
-                <td>{{accionadop.vDescripcion}}</td>
-                <td>{{accionadop.vUsuarioreg}}</td>
-                <td>{{accionadop.dFechareg | date:'medium'}}</td>
-                <td>{{accionadop.nEliminar}}</td>
-                <td>{{accionadop.nSedereg}}</td>
-                <td>{{accionadop.vUsuarioupd}}</td>
-                <td>{{accionadop.dFechaupd | date:'medium'}}</td>
-                <td>{{accionadop.nSedeupd}}</td>
-                <td class="text-right">
-                    <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                [routerLink]="['../accionadop', accionadop.id ]"
-                                class="btn btn-info btn-sm">
-                            <span class="fa fa-eye"></span>
-                            <span class="d-none d-md-inline" >View</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/consultas', { outlets: { popup: 'accionadop/'+ accionadop.id + '/edit'} }]"
-                                replaceUrl="true"
-                                class="btn btn-primary btn-sm">
-                            <span class="fa fa-pencil"></span>
-                            <span class="d-none d-md-inline" >Edit</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/consultas', { outlets: { popup: 'accionadop/'+ accionadop.id + '/delete'} }]"
-                                replaceUrl="true"
-                                class="btn btn-danger btn-sm">
-                            <span class="fa fa-remove"></span>
-                            <span class="d-none d-md-inline" >Delete</span>
-                        </button>
+    <div class="row">
+        <div class="col">
+            <div class="card card-mtpe mb-3">
+                <div class="card-header bg-light d-sm-flex justify-content-between p-1">
+                    <h5 class="mb-0"><small><i class="fa fa-user" aria-hidden="true"></i> Consulta del Trabajador</small></h5>
+                </div>
+                <div class="card-body">
+                    <div class="consultas-laborales mb-2">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p-radioButton name="groupname" value="1" label="Documento de Identidad" [(ngModel)]="tipoBusqueda"></p-radioButton>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p-radioButton name="groupname" value="2" label="Nombres y Apellidos" [(ngModel)]="tipoBusqueda"></p-radioButton>        
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="tipoBusqueda==='1'" class="col-md-8">
+                                <div class="form-group row">
+                                    <label for="inpTipo" class="col-sm-3 col-form-label">Tipo de documento:</label>
+                                    <div class="col-sm-4 px-0">
+                                        <p-dropdown [options]="tipodocs" name="selectedTipodoc" [(ngModel)]="selectedTipodoc" [style]="{'width':'140px'}" placeholder="Seleccione" optionLabel="name"></p-dropdown>
+                                    </div>
+                                    <label for="inpNumero" class="col-sm-2 col-form-label">Número:</label>
+                                    <div class="col-sm-3 px-0">
+                                        <input class="form-control form-control-sm" type="text" [(ngModel)]="vNumdoc" name="vNumdoc" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="tipoBusqueda==='2'" class="col-md-8">
+                                <div class="form-group row">
+                                    <label for="inpTipo" class="col-sm-2 col-form-label">Ape. Paterno:</label>
+                                    <div class="col-sm-2 px-0">
+                                            <input class="form-control form-control-sm" type="text" [(ngModel)]="vApaterno" name="vApaterno" />
+                                    </div>
+                                    <label for="inpTipo" class="col-sm-2 col-form-label">Ape. Materno:</label>
+                                    <div class="col-sm-2 px-0">
+                                            <input class="form-control form-control-sm" type="text" [(ngModel)]="vAmaterno" name="vAmaterno" />
+                                    </div>
+                                    <label for="inpTipo" class="col-sm-2 col-form-label">Nombres:</label>
+                                    <div class="col-sm-2 px-0">
+                                            <input class="form-control form-control-sm" type="text" [(ngModel)]="vNombre" name="vNombre" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                    <button (click)="buscarTrabajador()" class="btn btn-sm btn-secondary px-3"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-1">
+                                <p-dataTable [value]="trabajadores" [(selection)]="trabajadorSelec" selectionMode="single" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" dataKey="id">
+                                        <p-header>Trabajadores</p-header>
+                                        <p-column [style]="{'width':'38px'}" selectionMode="single"></p-column>
+                                        <!-- <p-column field="codPase" header="Cod. Pase"></p-column> -->
+                                        <p-column field="pernatural.tipdocident.vDescorta" header="Tipo Doc."></p-column>
+                                        <p-column field="pernatural.vNumdoc" header="Núm. Doc."></p-column>
+                                        <p-column field="pernatural.vApepat" header="Ape. Paterno"></p-column>
+                                        <p-column field="pernatural.vApemat" header="Ape. Materno"></p-column>
+                                        <p-column field="pernatural.vNombres" header="Nombres"></p-column>
+                                        <p-column field="pernatural.vTelefono" header="Telefono"></p-column>
+                                </p-dataTable>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 my-3">
+                                <button [routerLink]="['/consultas/registro-atencion-trabajador', { outlets: { wizard: ['datos-trabajador'] } }]" class="btn btn-sm btn-success "><i class="fa fa-archive" aria-hidden="true"></i> Registrar Atención</button>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <p-tabView>
+                                    <p-tabPanel header="Atenciones" [selected]="true">
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-md-12 mb-3">
+                                                    <p-dataTable selectionMode="single" [value]="trabajadores" dataKey="codexpediente">
+                                                        <p-header>Expedientes</p-header>
+                                                        <p-column field="item" header="Fecha"></p-column>
+                                                        <p-column field="estado" header="Num. Ticket"></p-column>
+                                                        <p-column field="codexpediente" header="Tipo Doc."></p-column>
+                                                        <p-column field="fecha" header="Num. Doc."></p-column>
+                                                        <p-column field="conciliador" header="Razón Social"></p-column>
+                                                        <p-column field="ruc" header="Área"></p-column>
+                                                        <p-column field="empleador" header="Localidad"></p-column>
+                                                        <p-column field="nrotra" header="Consultor"></p-column>
+                                                    </p-dataTable>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </p-tabPanel>
+                                    <p-tabPanel header="Pases">
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-md-12 mb-3">
+                                                    <p-dataTable [value]="trabajadores" dataKey="codexpediente">
+                                                            <p-header>Expedientes</p-header>
+                                                            <p-column field="item" header="Item"></p-column>
+                                                            <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+                                                            <p-column field="codexpediente" header="Nro. Expediente"></p-column>
+                                                            <p-column field="fecha" header="Fecha de Registro"></p-column>
+                                                            <p-column field="conciliador" header="Conciliador"></p-column>
+                                                            <p-column field="ruc" header="Razón Nro. RUC"></p-column>
+                                                            <p-column field="empleador" header="Empleador"></p-column>
+                                                    </p-dataTable>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </p-tabPanel>
+                                    <p-tabPanel header="Direcciones">
+                                            <form>
+                                                <div class="row">
+                                                    <div class="col-md-12 mb-3">
+                                                        <p-dataTable [value]="trabajadores" dataKey="codexpediente">
+                                                                <p-header>Expedientes</p-header>
+                                                                <p-column field="item" header="Item"></p-column>
+                                                                <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+                                                                <p-column field="codexpediente" header="Nro. Expediente"></p-column>
+                                                                <p-column field="fecha" header="Fecha de Registro"></p-column>
+                                                                <p-column field="conciliador" header="Conciliador"></p-column>
+                                                                <p-column field="ruc" header="Razón Nro. RUC"></p-column>
+                                                                <p-column field="empleador" header="Empleador"></p-column>
+                                                        </p-dataTable>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </p-tabPanel>
+                                </p-tabView>
+
+                            </div>
+                        </div>
+                        <p-dialog [width]="800" header="Registros Laborales:" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+                            <div>
+                                <p-dataTable selectionMode="single" [(selection)]="selecAten" [value]="atenciones" dataKey="aten.id">
+                                    <p-header>Registros</p-header>
+                                    <p-column field="aten.datlab.dFecvincul" header="Fecha Inicio"></p-column>
+                                    <p-column field="aten.datlab.empleador.perjuridica.vRazsocial" header="Empleador"></p-column>
+                                    <p-column field="codexpediente" header="Última Atención"></p-column>
+                                    <p-column field="fecha" header="Motivo de Atención"></p-column>
+                                    <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Pase">
+                                        <ng-template let-data="rowData" pTemplate="body">
+                                            <span style="text-align:center">{{ (data.pase===null)?'No':'Si' }}</span>
+                                        </ng-template>
+                                    </p-column>
+                                    <p-column field="pase.vObspase" header="Motivo del Pase"></p-column>
+                                </p-dataTable>
+                            </div>
+                            <p-footer>
+                                <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                                    
+                                    <button (click)="cancelar()" class="btn btn-sm btn-dark "><i class="fa fa-ban" aria-hidden="true"></i> Cancelar</button>
+                                    <button (click)="cargarRegistroAtencion()" class="btn btn-sm btn-success "><i class="fa fa-cloud-download" aria-hidden="true"></i> Cargar</button>
+                                </div>
+                            </p-footer>
+                        </p-dialog>
                     </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                </div>
+            </div>
+        </div>
     </div>
+    
+    <jhi-alert></jhi-alert>
 </div>

@@ -28,7 +28,8 @@ export class ValidarrucComponent implements OnInit {
     constructor(
         private eventManager: JhiEventManager,
         private validarrucService: ValidarrucService,
-        private messageService: MessageService
+        private messageService: MessageService,
+        private router: Router,
     ) {
     }
 
@@ -55,11 +56,11 @@ export class ValidarrucComponent implements OnInit {
             this.validarrucService.validarRuc(Number(this.validarruc.nRuc))
             .subscribe((data) => {
                 if (data === 200) {
-                    this.onError({ message : 'Si es compentencia'});
+                    this.router.navigate(['/denuncias/validarusuario']);
                 } else {
+                    this.validarruc.nRuc = '';
                     this.abrirModalSunafil();
                 }
-                this.validarruc.nRuc = 'Ingrese un dato';
             });
         }
     }

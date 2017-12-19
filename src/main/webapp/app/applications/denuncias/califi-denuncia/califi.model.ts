@@ -2,7 +2,7 @@ import { BaseEntity } from './../../../shared';
 import { Perjuridica } from './../../../entities/perjuridica';
 import { ComboModel } from '../../general/combobox.model';
 
-export class RegdenuModel implements BaseEntity {
+export class CalifiModel implements BaseEntity {
     constructor(
         public id?: number,
         public numruc?: string,
@@ -77,7 +77,9 @@ export class RegdenuModel implements BaseEntity {
         public numtrabajadores?: number,
         public codVia?: number,
         public codZona?: number,
-        public fileString?: string
+        public descripOrigen?: string,
+        public selectCalifica?: ComboModel[],
+        public observaCalifica?: string
     ) {
         this.flagtrabajando = true;
         this.flaggruposindical = false;

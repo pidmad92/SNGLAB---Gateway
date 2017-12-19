@@ -9,25 +9,28 @@ import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../shared';
 import { Message } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { ValidarrucService } from '../validar-ruc/validarruc.service';
-import { RegdenuService } from './regdenu.service';
+import { RegdenuService } from '../registro-denuncia/regdenu.service';
+import { CalifiService } from './califi.service';
 import { ValidarUsuarioService } from '../validar-usuario/validarusuario.service';
-import { RegdenuModel } from './regdenu.model';
+import { CalifiModel } from './califi.model';
 import { ComboModel } from '../../general/combobox.model';
 import { UbigeodepaModel } from '../../general/ubigeodepa.model';
 import { UbigeoprovModel } from '../../general/ubigeoprov.model';
 import { UbigeodistModel } from '../../general/ubigeodist.model';
 import { ES } from './../../applications.constant';
+import { LocalStorageService, LocalStorage } from 'ng2-webstorage';
 
 @Component({
-    selector: 'jhi-formregdenuncia',
-    templateUrl: './regdenu.component.html',
+    selector: 'jhi-calififormregdenuncia',
+    templateUrl: './califi.component.html',
 })
 
-export class RegdenuComponent implements OnInit {
+export class CalifiComponent implements OnInit {
     messagesEmpleador: Message[] = [];
     messagesTrabajo: Message[] = [];
     messagesDireccion: Message[] = [];
     messagesDenuncia: Message[] = [];
+    messagesCalifica: Message[] = [];
     currentAccount: any;
     eventSubscriber: Subscription;
     currentSearch: string;
@@ -40,8 +43,9 @@ export class RegdenuComponent implements OnInit {
     disableTab1: boolean;
     disableTab2: boolean;
     disableTab3: boolean;
+    disableTab4: boolean;
     nRuc: string;
-    formregdenu: RegdenuModel;
+    formregdenu: CalifiModel;
     displayNuevaDireccion: boolean;
     departs: ComboModel[];
     provins: ComboModel[];
@@ -50,6 +54,7 @@ export class RegdenuComponent implements OnInit {
     tzonasLista: ComboModel[];
     listamotivos: ComboModel[];
     listadetalle: ComboModel[];
+    listacalifica: ComboModel[];
     messageList: any;
     es: any;
 
@@ -58,7 +63,10 @@ export class RegdenuComponent implements OnInit {
         private messageService: MessageService,
         private validarrucService: ValidarrucService,
         private regdenuService: RegdenuService,
+        private califiService: CalifiService,
         private validarUsuarioService: ValidarUsuarioService,
+        private storage: LocalStorageService,
+        private router: Router
     ) {
     }
 
@@ -66,19 +74,67 @@ export class RegdenuComponent implements OnInit {
         this.es = ES;
         this.indexTab = 0;
         this.block = false;
-        this.formregdenu = new RegdenuModel();
+        this.formregdenu = new CalifiModel();
         this.disableTab1 = false;
         this.disableTab2 = true;
         this.disableTab3 = true;
+        this.disableTab4 = true;
         this.displayNuevaDireccion = false;
         this.tviasLista = [];
         this.tzonasLista = [];
+        this.block = true;
+        console.log(this.storage.retrieve('serialize'));
+        this.califiService.getDenuncia({
+            CodDenuncia: this.storage.retrieve('serialize')
+        }).subscribe(
+            (res: any) => {
+                this.nRuc = res.perjuridica.vNumdoc;
+                this.validarRuc();
+                this.formregdenu.id = res.id;
+                this.formregdenu.flagOtradireccion = res.nFlgotradi;
+                this.formregdenu.fechainitrabajo = new Date(res.tFecinitra);
+                this.formregdenu.flaglun = res.nFlaglun;
+                this.formregdenu.flagmar = res.nFlagmar;
+                this.formregdenu.flagmie = res.nFlagmie;
+                this.formregdenu.flagjue = res.nFlagjue;
+                this.formregdenu.flagvie = res.nFlagvie;
+                this.formregdenu.flagsab = res.nFlagsab;
+                this.formregdenu.flagdom = res.nFlagdom;
+                this.formregdenu.horainicio = new Date(res.tHorainit);
+                this.formregdenu.horafin = new Date(res.tHorafint);
+                this.formregdenu.flagtrabajando = res.vFlgtraba;
+                this.formregdenu.flaggruposindical = res.vFlgrepre;
+                this.formregdenu.numerotrabajado = res.vTelefemp;
+                this.formregdenu.correotrabajador = res.vEmailemp;
+                if (!this.formregdenu.flagtrabajando) {
+                    this.formregdenu.fechacese = new Date(res.tFeccese);
+                }
+                this.formregdenu.organizacionsindical = res.vDesrepre;
+                this.formregdenu.numtrabajadores = res.nNumtrabaf;
+                this.formregdenu.horainiinspec = new Date(res.cHorainiin);
+                this.formregdenu.horafininspec = new Date(res.cHorafinin);
+                this.formregdenu.selectmotivos = new ComboModel('', String(res.nCoddetmod), 0);
+                this.formregdenu.selectdetalle = new ComboModel('', String(res.nCodmotden), 0);
+                this.formregdenu.observadenuncia = res.vObsdenu;
+                this.formregdenu.observadenunciadetalle = res.vObsdenude;
+                this.formregdenu.flagreservaidentidad = res.nFlgridenti;
+                this.formregdenu.descripOrigen = res.oridenu.vDescripcion;
+
+                console.log(res);
+                this.block = false;
+            },
+            (res: any) => {
+                console.log(res);
+                this.onErrorEmpleador(res);
+                this.block = false;
+            });
     }
 
     backPerJuridica() {
         this.disableTab1 = false;
         this.disableTab2 = true;
         this.disableTab3 = true;
+        this.disableTab4 = true;
         this.indexTab = 0;
     }
 
@@ -86,7 +142,16 @@ export class RegdenuComponent implements OnInit {
         this.disableTab1 = true;
         this.disableTab2 = false;
         this.disableTab3 = true;
+        this.disableTab4 = true;
         this.indexTab = 1;
+    }
+
+    backDatosDenuncia() {
+        this.disableTab1 = true;
+        this.disableTab2 = true;
+        this.disableTab3 = false;
+        this.disableTab4 = true;
+        this.indexTab = 2;
     }
 
     nextDatosTrabajo() {
@@ -94,6 +159,7 @@ export class RegdenuComponent implements OnInit {
             this.disableTab1 = true;
             this.disableTab2 = false;
             this.disableTab3 = true;
+            this.disableTab4 = true;
             this.indexTab = 1;
         }
     }
@@ -106,11 +172,19 @@ export class RegdenuComponent implements OnInit {
                     this.listamotivos = [];
                     // tslint:disable-next-line:forin
                     for (const i in res) {
+                        if (this.formregdenu.selectmotivos.value === String(res[i].id)) {
+                            this.formregdenu.selectmotivos = new ComboModel(res[i].vDescrip, String(res[i].id), 0);
+                        }
+
                         this.listamotivos.push(new ComboModel(res[i].vDescrip, String(res[i].id), 0));
                     }
+
+                    this.onChangeMotivodenuncia();
+
                     this.disableTab1 = true;
                     this.disableTab2 = true;
                     this.disableTab3 = false;
+                    this.disableTab4 = true;
                     this.indexTab = 2;
                     this.block = false;
                 },
@@ -133,11 +207,16 @@ export class RegdenuComponent implements OnInit {
                     this.listadetalle = [];
                     // tslint:disable-next-line:forin
                     for (const i in res) {
+                        if (this.formregdenu.selectdetalle.value === String(res[i].id)) {
+                            this.formregdenu.selectdetalle = new ComboModel(res[i].vDescrip, String(res[i].id), 0);
+                        }
+
                         this.listadetalle.push(new ComboModel(res[i].vDescrip, res[i].id, 0));
                     }
                     this.disableTab1 = true;
                     this.disableTab2 = true;
                     this.disableTab3 = false;
+                    this.disableTab4 = true;
                     this.indexTab = 2;
                     this.block = false;
                 },
@@ -198,84 +277,53 @@ export class RegdenuComponent implements OnInit {
     }
 
     validarDatosDenuncias() {
-        if (this.formregdenu.flaggruposindical === true && this.formregdenu.numtrabajadores === undefined) {
-            this.onErrorDenuncia('Debe ingresar el número de trabajadores afectados.');
-        } else if (this.formregdenu.horainiinspec === undefined) {
-            this.onErrorDenuncia('Debe ingresar la hora de inicio de la inspección.');
-        } else if (this.formregdenu.horafininspec === undefined) {
-            this.onErrorDenuncia('Debe ingresar la hora de fin de la inspección.');
-        } else if (this.formregdenu.selectmotivos === undefined) {
-            this.onErrorDenuncia('Debe seleccionar el motivo de la inspección.');
-        } else if (this.formregdenu.selectdetalle === undefined) {
-            this.onErrorDenuncia('Debe seleccionar el detalle del motivo de la inspección.');
-        } else if (this.formregdenu.observadenuncia === undefined) {
-            this.onErrorDenuncia('Debe ingresar la observación de la denuncia.');
-        } else if (this.formregdenu.flagdeclaracionverdadera === undefined) {
-            this.onErrorDenuncia('Debe aceptar que la información ingresada es valida.');
+        this.block = true;
+        this.califiService.getCalificas().subscribe(
+            (res: any) => {
+                console.log(res);
+                this.listacalifica = [];
+                // tslint:disable-next-line:forin
+                for (const i in res) {
+                    this.listacalifica.push(new ComboModel(res[i].vDescripcion, res[i].id, 0));
+                }
+                this.disableTab1 = true;
+                this.disableTab2 = true;
+                this.disableTab3 = true;
+                this.disableTab4 = false;
+                this.indexTab = 3;
+                this.block = false;
+            },
+            (res: any) => {
+                this.onErrorDenuncia(res);
+                this.block = false;
+            });
+    }
+
+    validarDatosCalifica() {
+        if (this.formregdenu.selectCalifica === undefined || this.formregdenu.selectCalifica.length === 0) {
+            this.onErrorCalifica('Debe seleccionar como minimo un tipo de calificación');
+        } else if (this.formregdenu.observaCalifica === undefined || this.formregdenu.observaCalifica.length === 0) {
+            this.onErrorCalifica('Debe ingresar una observación para la calificación.');
         } else {
-            if (this.formregdenu.flagOtradireccion) {
-                this.formregdenu.domicilio = this.formregdenu.domicilio_c;
-                this.formregdenu.codVia = Number(this.formregdenu.selectVia.value);
-                this.formregdenu.codZona = Number(this.formregdenu.selectZona.value);
-                this.formregdenu.coddep = this.formregdenu.coddep_c;
-                this.formregdenu.codprov = this.formregdenu.codprov_c;
-                this.formregdenu.coddist = this.formregdenu.coddist_c;
-            } else {
-                this.formregdenu.codVia = Number(this.formregdenu.ddptipvia);
-                this.formregdenu.codZona = Number(this.formregdenu.ddptipzon);
-                this.formregdenu.domicilio = this.formregdenu.domicilioLegal;
-                this.formregdenu.coddep = this.formregdenu.coddep;
-                this.formregdenu.codprov = this.formregdenu.codprov;
-                this.formregdenu.coddist = this.formregdenu.coddist;
+            this.block = true;
+            const lista: number[] = [];
+            // tslint:disable-next-line:forin
+            for (const i in this.formregdenu.selectCalifica) {
+                lista.push(Number(this.formregdenu.selectCalifica[i].value));
             }
-            console.log(this.formregdenu);
-            this.regdenuService.guardarDenunciaExterna({
-                numruc: this.formregdenu.numruc,
-                ddpnombre: this.formregdenu.ddpnombre,
-                domicilioLegal: this.formregdenu.domicilioLegal,
-                fechainitrabajo: this.formregdenu.fechainitrabajo,
-                flaglun: this.formregdenu.flaglun,
-                flagmar: this.formregdenu.flagmar,
-                flagmie: this.formregdenu.flagmie,
-                flagjue: this.formregdenu.flagjue,
-                flagvie: this.formregdenu.flagvie,
-                flagsab: this.formregdenu.flagsab,
-                flagdom: this.formregdenu.flagdom,
-                horainicio: this.formregdenu.horainicio,
-                horafin: this.formregdenu.horafin,
-                flagtrabajando: this.formregdenu.flagtrabajando,
-                flaggruposindical: this.formregdenu.flaggruposindical,
-                fechacese: this.formregdenu.fechacese,
-                organizacionsindical: this.formregdenu.organizacionsindical,
-                codVia: this.formregdenu.codVia,
-                codZona: this.formregdenu.codZona,
-                ddpnomvia: this.formregdenu.ddpnomvia,
-                ddpnomzon: this.formregdenu.ddpnomzon,
-                domicilio: this.formregdenu.domicilio,
-                codciiu: this.formregdenu.ddpciiu,
-                coddep: this.formregdenu.coddep,
-                codprov: this.formregdenu.codprov,
-                coddist: this.formregdenu.coddist,
-                numtrabajadores: this.formregdenu.numtrabajadores,
-                descciiu: this.formregdenu.descciiu,
-                descsectoeco: this.formregdenu.descsectoeco,
-                codsececo: this.formregdenu.ddpsector,
-                horainicioinsp: this.formregdenu.horainiinspec,
-                horafininsp: this.formregdenu.horafininspec,
-                observadenuncia: this.formregdenu.observadenuncia,
-                observadenunciadetalle: this.formregdenu.observadenunciadetalle,
-                codmotivodenu: this.formregdenu.selectmotivos.value,
-                coddetmotivodenu: this.formregdenu.selectdetalle.value,
-                flagOtradireccion: this.formregdenu.flagOtradireccion,
-                numerotrabajado: this.formregdenu.numerotrabajado,
-                correotrabajador: this.formregdenu.correotrabajador,
-                flagreservaidentidad: this.formregdenu.flagreservaidentidad
+            this.califiService.regCalificacion({
+                observaCalifica: this.formregdenu.observaCalifica,
+                listaCalifica: lista,
+                codDenuncia: this.formregdenu.id
             }).subscribe(
-                (dato: ResponseWrapper) => {
-                    console.log(dato);
+                (res: any) => {
+                    this.router.navigate(['/denuncias/formconsinternocali']);
+                    this.block = false;
                 },
-                (dato: ResponseWrapper) => { console.log(dato); this.onErrorDatosTrabajo(dato.json); this.block = false; }
-            );
+                (res: any) => {
+                    this.onErrorCalifica(res);
+                    this.block = false;
+                });
         }
     }
 
@@ -295,7 +343,6 @@ export class RegdenuComponent implements OnInit {
                             ddp_numruc: this.nRuc
                         }).subscribe(
                             (res: any) => {
-                                console.log(res);
                                 this.formregdenu.numruc = this.nRuc;
                                 this.formregdenu.descciiu = res.desc_ciiu;
                                 this.formregdenu.descsectoeco = res.desc_sectoeco;
@@ -471,19 +518,6 @@ export class RegdenuComponent implements OnInit {
         this.formregdenu.domicilioLegal_c = dir;
     }
 
-    handleInputChange(e) {
-        const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-        const reader = new FileReader();
-        reader.onload = this._handleReaderLoaded.bind(this);
-        reader.readAsDataURL(file);
-    }
-
-    _handleReaderLoaded(e) {
-        const reader = e.target;
-        this.formregdenu.fileString = reader.result.split(',')[1];
-        console.log(this.formregdenu.fileString);
-    }
-
     private onErrorEmpleador(error: any) {
         this.messagesEmpleador = [];
         this.messagesEmpleador.push({ severity: 'error', summary: 'Mensaje de Error', detail: error });
@@ -499,5 +533,9 @@ export class RegdenuComponent implements OnInit {
     private onErrorDenuncia(error: any) {
         this.messagesDenuncia = [];
         this.messagesDenuncia.push({ severity: 'error', summary: 'Mensaje de Error', detail: error });
+    }
+    private onErrorCalifica(error: any) {
+        this.messagesCalifica = [];
+        this.messagesCalifica.push({ severity: 'error', summary: 'Mensaje de Error', detail: error });
     }
 }

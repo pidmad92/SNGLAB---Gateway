@@ -195,7 +195,7 @@
                 Hora ideonea de la visita inspectiva:
             </div>
             <div class="ui-md-9">
-                <p-calendar [(ngModel)]="formregdenu.horainiinspec" name="horainiinspec" [timeOnly]="true"></p-calendar> - 
+                <p-calendar [(ngModel)]="formregdenu.horainiinspec" name="horainiinspec" [timeOnly]="true"></p-calendar> -
                 <p-calendar [(ngModel)]="formregdenu.horafininspec" name="horafininspec" [timeOnly]="true"></p-calendar>
             </div>
         </div>
@@ -204,10 +204,8 @@
                 Motivo de la denuncia
             </div>
             <div class="ui-md-9">
-                <p-dropdown appendTo="body" [options]="listamotivos" [(ngModel)]="formregdenu.selectmotivos" name="selectmotivos"
-                (onChange)="onChangeMotivodenuncia()" [style]="{'width':'150px'}" editable="true" placeholder="Seleccione el motivo"
-                optionLabel="name"
-                ></p-dropdown>
+                <p-dropdown appendTo="body" [options]="listamotivos" [(ngModel)]="formregdenu.selectmotivos" name="selectmotivos" (onChange)="onChangeMotivodenuncia()"
+                    [style]="{'width':'150px'}" editable="true" placeholder="Seleccione el motivo" optionLabel="name"></p-dropdown>
             </div>
         </div>
         <div class="ui-g">
@@ -215,10 +213,8 @@
                 Detalle especifico
             </div>
             <div class="ui-md-9">
-                <p-dropdown appendTo="body" [options]="listadetalle" [(ngModel)]="formregdenu.selectdetalle" name="selectdetalle"
-                    [style]="{'width':'150px'}" editable="true" placeholder="Seleccione el detalle"
-                    optionLabel="name"
-                    ></p-dropdown>
+                <p-dropdown appendTo="body" [options]="listadetalle" [(ngModel)]="formregdenu.selectdetalle" name="selectdetalle" [style]="{'width':'150px'}"
+                    editable="true" placeholder="Seleccione el detalle" optionLabel="name"></p-dropdown>
             </div>
         </div>
         <div class="ui-g">
@@ -263,6 +259,41 @@
             <div class="ui-md-12">
                 <button (click)="backDatosTrabajo()" class="btn btn-second" type="button">Atras</button>
                 <button (click)="validarDatosDenuncias()" class="btn btn-primary" type="button">Finalizar denuncia laboral</button>
+            </div>
+        </div>
+    </p-tabPanel>
+    <p-tabPanel header="Calificación de la denuncia" leftIcon="fa-podcast" [disabled]="disableTab4">
+        <p-messages [(value)]="messagesCalifica"></p-messages>
+        <div class="ui-g">
+            <div class="ui-md-3">
+                Origen de la denuncia
+            </div>
+            <div class="ui-md-9">
+                <p-dropdown appendTo="body" [options]="listaorigendenu" [(ngModel)]="formregdenu.selectOridenu" name="selectOridenu" [style]="{'width':'150px'}"
+                    editable="true" placeholder="Seleccione el origen" optionLabel="name"></p-dropdown>
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-md-3">
+                Calificación
+            </div>
+            <div class="ui-md-9">
+                <p-multiSelect appendTo="body" [options]="listacalifica" [(ngModel)]="formregdenu.selectCalifica" name="selectCalifica" [style]="{'width':'100%'}"
+                    editable="true" placeholder="Seleccione el detalle" optionLabel="name"></p-multiSelect>
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-md-3">
+                Detalle si presento su denuncia en otro organo del estado
+            </div>
+            <div class="ui-md-9">
+                <textarea pInputTextarea [(ngModel)]="formregdenu.observaCalifica" name="observaCalifica"></textarea>
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-md-12">
+                <button (click)="backDatosDenuncia()" class="btn btn-second" type="button">Atras</button>
+                <button (click)="validarDatosCalifica()" class="btn btn-primary" type="button">Calificar denuncia laboral</button>
             </div>
         </div>
     </p-tabPanel>
