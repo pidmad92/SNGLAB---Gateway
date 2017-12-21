@@ -65,15 +65,15 @@ export class AtencionTrabajadorComponent implements OnInit, OnDestroy {
     }
 
     loadAll() {
-        if (this.currentSearch) {
-            this.atencionTrabajadorService.search({
-                query: this.currentSearch,
-                }).subscribe(
-                    (res: ResponseWrapper) => this.trabajador = res.json,
-                    (res: ResponseWrapper) => this.onError(res.json)
-                );
-            return;
-       }
+    //     if (this.currentSearch) {
+    //         this.atencionTrabajadorService.search({
+    //             query: this.currentSearch,
+    //             }).subscribe(
+    //                 (res: ResponseWrapper) => this.trabajador = res.json,
+    //                 (res: ResponseWrapper) => this.onError(res.json)
+    //             );
+    //         return;
+    //    }
        this.atencionTrabajadorService.consultaTipoDocIdentidad().subscribe(
             (res: ResponseWrapper) => {
                 this.tipodocs = res.json;
