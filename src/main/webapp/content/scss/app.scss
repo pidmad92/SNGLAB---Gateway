@@ -780,6 +780,9 @@ table.list tbody{
 }
 .consultas-laborales{
   font-size:13px;
+  .form-check-input{
+    margin-top: 0.25rem;
+  }
 }
 
 
@@ -1239,4 +1242,8 @@ p-inputmask{
   padding: 10px 15px;
   margin-bottom:10px;
   font-size:14px;
+}
+
+label.ui-chkbox-label{
+  margin-bottom: 0;
 }

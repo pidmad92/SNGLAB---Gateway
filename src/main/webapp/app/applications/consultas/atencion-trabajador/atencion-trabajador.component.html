@@ -29,7 +29,7 @@
                                 <div class="form-group row">
                                     <label for="inpTipo" class="col-sm-3 col-form-label">Tipo de documento:</label>
                                     <div class="col-sm-4 px-0">
-                                        <p-dropdown [options]="tipodocs" name="selectedTipodoc" [(ngModel)]="selectedTipodoc" [style]="{'width':'140px'}" placeholder="Seleccione" optionLabel="name"></p-dropdown>
+                                        <p-dropdown [options]="tipodocs" name="selectedTipodoc" [(ngModel)]="selectedTipodoc" [style]="{'width':'140px'}" placeholder="Seleccione" optionLabel="vDescorta" dataKey="id"></p-dropdown>
                                     </div>
                                     <label for="inpNumero" class="col-sm-2 col-form-label">Número:</label>
                                     <div class="col-sm-3 px-0">
@@ -74,7 +74,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 my-3">
-                                <button [routerLink]="['/consultas/registro-atencion-trabajador', { outlets: { wizard: ['datos-trabajador'] } }]" class="btn btn-sm btn-success "><i class="fa fa-archive" aria-hidden="true"></i> Registrar Atención</button>
+                                <button (click)="cargarRegistroAtencion('1')" class="btn btn-sm btn-success "><i class="fa fa-archive" aria-hidden="true"></i> Registrar Atención</button>
                             </div>
                             <div class="col-md-12 mb-3">
                                 <p-tabView>
@@ -157,7 +157,7 @@
                                 <div class="ui-dialog-buttonpane ui-helper-clearfix">
                                     
                                     <button (click)="cancelar()" class="btn btn-sm btn-dark "><i class="fa fa-ban" aria-hidden="true"></i> Cancelar</button>
-                                    <button (click)="cargarRegistroAtencion()" class="btn btn-sm btn-success "><i class="fa fa-cloud-download" aria-hidden="true"></i> Cargar</button>
+                                    <button (click)="cargarRegistroAtencion('2')" class="btn btn-sm btn-success "><i class="fa fa-cloud-download" aria-hidden="true"></i> Cargar</button>
                                 </div>
                             </p-footer>
                         </p-dialog>
