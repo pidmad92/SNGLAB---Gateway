@@ -22,7 +22,6 @@ export class SolicitudComponent implements OnInit, OnDestroy {
 
     showDialog() {
         this.display = true;
-        console.log('1')
     }
 
     constructor(

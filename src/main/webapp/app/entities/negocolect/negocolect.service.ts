@@ -57,7 +57,6 @@ export class NegocolectService {
 
     private convertResponse(res: Response): ResponseWrapper {
         const jsonResponse = res.json();
-        console.log('res.json(): ' + res.json());
         const result = [];
         for (let i = 0; i < jsonResponse.length; i++) {
             result.push(this.convertItemFromServer(jsonResponse[i]));
@@ -104,16 +103,11 @@ export class NegocolectService {
             .map((res: Response) => this.convertResponse(res));
     }
 
-    obtenerNegociacionSolicitante(codFormPerfil: number, tipo: string): Observable<Negocolect> {
+    obtenerNegociacionSolicitante(codFormPerfil: number, tipo: string): Observable<ResponseWrapper> {
         const options = createRequestOption();
         const url = SERVER_API_URL + 'api/listarNegociacionColectiva';
         return this.http.get(url + '?tipo=' + tipo + '&codFormPerfil=' + codFormPerfil, options)
-            .map(
-                (res: Response) => {
-                    const jsonResponse = res.text() ? res.json() : res;
-                    return this.convertItemFromServer(jsonResponse);
-                }
-            );
+            .map((res: Response) => this.convertResponse(res));
     }
 
     eliminar(codFormPerfil: number) {

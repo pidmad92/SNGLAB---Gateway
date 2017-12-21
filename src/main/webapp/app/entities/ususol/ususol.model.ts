@@ -3,6 +3,7 @@ import { BaseEntity } from './../../shared';
 export class Ususol implements BaseEntity {
     constructor(
         public id?: number,
+        public vNombres?: string,
         public vTipousu?: string,
         public tFecenvio?: any,
         public vUsuareg?: string,

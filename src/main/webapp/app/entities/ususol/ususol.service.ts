@@ -58,6 +58,10 @@ export class UsusolService {
      */
     private convertItemFromServer(json: any): Ususol {
         const entity: Ususol = Object.assign(new Ususol(), json);
+        entity.tFecreg = this.dateUtils
+        .convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils
+        .convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 
@@ -66,12 +70,21 @@ export class UsusolService {
      */
     private convert(ususol: Ususol): Ususol {
         const copy: Ususol = Object.assign({}, ususol);
+        copy.tFecreg = this.dateUtils.toDate(ususol.tFecreg);
+        copy.tFecupd = this.dateUtils.toDate(ususol.tFecupd);
         return copy;
     }
 
-    obtenerUsuarioPorTipo(codSolicitud: number, tipoUsuario: string): Observable<ResponseWrapper> {
+    obtenerUsuarioPorTipo(codSolicitud: number, tipoUsuario: string): Observable<Ususol> {
         const options = createRequestOption();
         return this.http.get('/api/obtenerUsuarioPorTipo?codSolicitud=' + codSolicitud + '&tipoUsuario=' + tipoUsuario, options)
-            .map((res: any) => this.convertResponse(res));
+            .map((res: Response) => {
+                try {
+                    const jsonResponse = res.json();
+                    return this.convertItemFromServer(jsonResponse);
+                }catch (e) {
+                    return undefined;
+                }
+            });
     }
 }

@@ -32,12 +32,16 @@ export class ListadoSolicitudesComponent implements OnInit, OnDestroy {
     currentSearch: string;
     display = false;
 
+    block: boolean;
+
     vCodigo: string;
     vNumRecibo1: string;
     vNumRecibo2: string;
     vNumRecibo3: string;
     vNumRecibo4: string;
     tFecPago: any;
+
+    ruc: string;
 
     showDialog(obj: Solicitud) {
         this.display = true;
@@ -51,30 +55,15 @@ export class ListadoSolicitudesComponent implements OnInit, OnDestroy {
         private activatedRoute: ActivatedRoute,
         private principal: Principal,
         private router: Router,
-    ) {
-        this.currentSearch = activatedRoute.snapshot.params['search'] ? activatedRoute.snapshot.params['search'] : '';
-    }
+    ) {}
 
     loadAll() {
-        if (this.currentSearch) {
-            this.solicitudService.search({
-                query: this.currentSearch,
-                }).subscribe(
-                    (res: ResponseWrapper) => this.solicituds = res.json,
-                    (res: ResponseWrapper) => this.onError(res.json)
-                );
-            return;
-       }
-        this.solicitudService.query().subscribe(
-            (res: ResponseWrapper) => {
-                this.solicituds = res.json;
-                this.currentSearch = '';
-            },
-            (res: ResponseWrapper) => this.onError(res.json)
-        );
+        this.obtenerListaSolicitud();
     }
 
     ngOnInit() {
+        this.block = false;
+        this.ruc = '20100130204';
         this.loadAll();
         this.display = false;
         this.principal.identity().then((account) => {
@@ -92,10 +81,10 @@ export class ListadoSolicitudesComponent implements OnInit, OnDestroy {
     }
 
     obtenerListaSolicitud() {
-        /*this.solicitudService.obtenerlistaSolicitudes().subscribe(
+        this.solicitudService.obtenerlistaSolicitudesPorRuc(this.ruc).subscribe(
             (res: ResponseWrapper) => this.solicituds = res.json,
             (res: ResponseWrapper) => this.onError(res.json),
-        );*/
+        );
     }
 
     setColor() {
@@ -132,10 +121,6 @@ export class ListadoSolicitudesComponent implements OnInit, OnDestroy {
     enviarVoucher() {}
 
     verControlInformacion(obj: Solicitud) {
-        /*for (let i = 0; i < this.router.config.length; i++) {
-            const routePath = this.router.config[i].path;
-            console.log(routePath);
-        }*/
-        this.router.navigate(['../../dictamenes/control-informacion/' + obj.vCodsolic])
+        this.router.navigate(['../../dictamenes/control-informacion/' + obj.nCodsolic])
     }
 }

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ES } from './../../applications.constant';
 import { DatePipe } from '@angular/common'
+import { Subscription } from 'rxjs/Rx';
+import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
 
 import { Concilia } from './concilia.model';
 import { Expediente } from './expediente.model';
@@ -13,6 +15,8 @@ import { Empleador } from './empleador.model';
 import { Perjuridica } from './perjuridica.model';
 import { Pernatural } from './pernatural.model';
 import { Trabajador } from './trabajador.model';
+import { Horacon } from './horacon.model';
+import { Resulconci} from './resulconci.model';
 import { ConciliaService } from './concilia.service';
 import { ResponseWrapper } from '../../../shared';
 
@@ -34,6 +38,9 @@ export class AudienciaComponent implements OnInit {
     pernaturalEMP: Pernatural;
     pernaturalTRA: Pernatural;
     trabajador: Trabajador;
+    horacon: Horacon;
+    resulconci: Resulconci;
+    eventSubscriber: Subscription;
 
     id = '14';
     currentUrl: String;
@@ -43,6 +50,8 @@ export class AudienciaComponent implements OnInit {
 
     constructor(
         private router: Router,
+        private jhiAlertService: JhiAlertService,
+        private eventManager: JhiEventManager,
         private activatedRoute: ActivatedRoute,
         private conciliaService: ConciliaService,
         public datepipe: DatePipe
@@ -54,6 +63,7 @@ export class AudienciaComponent implements OnInit {
         this.es = ES;
         this.currentUrl = this.router.url;
         this.loadAll();
+        this.registerChangeInConcilia();
     }
 
     search(query) {
@@ -76,20 +86,31 @@ export class AudienciaComponent implements OnInit {
         this.loadAll();
     }
 
-    SelecUrl() {
-        switch (this.currentUrl) {
-            case '/defensa/audiencia/asignacion-abogado' : {this.AsignarAbogado();
-                                                           }
-        }
-    }
     loadAll() {
         this.SelecUrl();
+    }
+
+    SelecUrl() {
+        switch (this.currentUrl) {
+            case '/defensa/audiencia/asignacion-abogado' : {
+                this.AsignarAbogado();
+                break;
+            }
+            case '/defensa/audiencia/registrar-resultado' : {
+                this.AsignarResultado();
+                break;
+            }
+            case '/defensa/audiencia/reprogramacion' : {
+                console.log('asignar reprogramacion');
+                this.AsignarReprogramacion();
+                break;
+            }
+        }
     }
 
     AsignarAbogado() {
         //  console.log(this.datepipe.transform(this.fechaAudiencia, 'dd/MM/yyyy'));
         if (this.fechaAudiencia) {
-            console.log('Probando la fecha: ' + this.datepipe.transform(this.fechaAudiencia, 'dd-MM-yyyy'))
             let fechabusqueda = '';
             fechabusqueda = this.datepipe.transform(this.fechaAudiencia, 'dd-MM-yyyy');
             this.conciliaService.SearfechaVar(fechabusqueda
@@ -123,6 +144,86 @@ export class AudienciaComponent implements OnInit {
 
     }
 
+    AsignarResultado() {
+        //  console.log(this.datepipe.transform(this.fechaAudiencia, 'dd/MM/yyyy'));
+        if (this.fechaAudiencia) {
+            let fechabusqueda = '';
+            fechabusqueda = this.datepipe.transform(this.fechaAudiencia, 'dd-MM-yyyy');
+            this.conciliaService.searchresultadofecha(fechabusqueda
+                ).subscribe(
+                    (res: ResponseWrapper) => {
+                        this.concilias = res.json;
+                        console.log(this.concilias);
+                        this.concilias.forEach((item, index) => {
+                            this.DatosFaltantes(item, index);
+                        });
+
+                        this.fechaAudiencia = null;
+                    },
+                    (res: ResponseWrapper) => this.onError(res.json)
+                );
+            return;
+       }
+        this.conciliaService.searchresultado().subscribe(
+            (res: ResponseWrapper) => {
+                console.log(res.json);
+                this.concilias = res.json;
+                console.log(this.concilias);
+                this.concilias.forEach((item, index) => {
+                    this.DatosFaltantes(item, index);
+                });
+
+                this.fechaAudiencia = null;
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+
+    }
+
+    AsignarReprogramacion() {
+        //  console.log(this.datepipe.transform(this.fechaAudiencia, 'dd/MM/yyyy'));
+        if (this.fechaAudiencia) {
+            let fechabusqueda = '';
+            fechabusqueda = this.datepipe.transform(this.fechaAudiencia, 'dd-MM-yyyy');
+            this.conciliaService.searchreprogramacionfecha(fechabusqueda
+                ).subscribe(
+                    (res: ResponseWrapper) => {
+                        this.concilias = res.json;
+                        console.log(this.concilias);
+                        this.concilias.forEach((item, index) => {
+                            this.DatosFaltantes(item, index);
+                        });
+
+                        this.fechaAudiencia = null;
+                    },
+                    (res: ResponseWrapper) => this.onError(res.json)
+                );
+            return;
+       }
+        this.conciliaService.searchreprogramacion().subscribe(
+            (res: ResponseWrapper) => {
+                console.log(res.json);
+                this.concilias = res.json;
+                console.log(this.concilias);
+                this.concilias.forEach((item, index) => {
+                    this.DatosFaltantes(item, index);
+                });
+
+                this.fechaAudiencia = null;
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+
+    }
+
+    onRowSelect(event) {
+        this.id = String(event.data.id);
+    }
+
+    registerChangeInConcilia() {
+        this.eventSubscriber = this.eventManager.subscribe('conciliaListModification', (response) => this.loadAll());
+    }
+
     private onError(error) {
         // console.log('error' + error.message);
         // this.jhiAlertService.error(error.message, null, null);
@@ -132,6 +233,7 @@ export class AudienciaComponent implements OnInit {
         const concilia = item;
         console.log(concilia);
         this.expediente = concilia.expediente;
+        this.resulconci = concilia.resulconci;
         this.pasegl = this.expediente.pasegl;
         this.atencion = this.pasegl.atencion;
         this.datlab = this.atencion.datlab;
@@ -140,6 +242,7 @@ export class AudienciaComponent implements OnInit {
         this.pernaturalEMP = this.empleador.pernatural;
         this.trabajador = this.datlab.trabajador;
         this.pernaturalTRA = this.trabajador.pernatural;
+        this.horacon = concilia.horacon;
         if (this.perjuridica != null) {
             this.concilias[index].nrodocemp = this.perjuridica.vNumdoc;
             this.concilias[index].fullnameemp = this.perjuridica.vRazsocial;
@@ -151,6 +254,8 @@ export class AudienciaComponent implements OnInit {
         }
         this.concilias[index].nrodoctrab = this.pernaturalTRA.vNumdoc;
         this.concilias[index].fullnametrab = this.pernaturalTRA.vNombres + ' ' + this.pernaturalTRA.vApepat + ' ' + this.pernaturalTRA.vApemat ;
+        this.concilias[index].fechahoraconci = this.datepipe.transform(concilia.dFecconci, 'dd/MM/yyyy') +
+        ' ' + this.horacon.vDescrip + ':00';
     }
 
 }

@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
 import { Principal, ResponseWrapper } from '../../../shared/index';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TabViewModule } from 'primeng/primeng';
+import { TabViewModule, MultiSelectModule } from 'primeng/primeng';
 import { Solicitud, SolicitudService } from '../../../entities/solicitud/index';
 import { Solicform, SolicformService } from '../../../entities/solicform/index';
 import { Formperfil, FormperfilService } from '../../../entities/formperfil/index';
@@ -15,7 +15,6 @@ import { SessionStorage, LocalStorage } from 'ng2-webstorage';
 import { Message } from 'primeng/components/common/api';
 import { ComboModel } from '../../general/combobox.model';
 import { Tipdoc, TipdocService } from '../../../entities/tipdoc/index';
-import { ValidarUsuarioService } from '../../denuncias/validar-usuario/validarusuario.service';
 import { Negocolect, NegocolectService } from '../../../entities/negocolect/index';
 import { Empresa } from '../../general/servicesmodel/empresa.model';
 import { FormularioPerfilService } from './index';
@@ -26,6 +25,10 @@ import { Respinforma, RespinformaService } from '../../../entities/respinforma/i
 import { ModelAnexo } from '../../../entities/anexlaboral/modelanexo.model';
 import { AnexlaboralService } from '../../../entities/anexlaboral/index';
 import { DatePipe } from '@angular/common';
+import { ReglaboralService, Reglaboral } from '../../../entities/reglaboral/index';
+import { Formulario } from './formulario.model';
+import { FormGroup } from '@angular/forms';
+import { PerreglabService } from '../../../entities/perreglab/index';
 
 @Component({
     selector: 'jhi-formulario-perfil2',
@@ -36,29 +39,33 @@ import { DatePipe } from '@angular/common';
 export class FormularioPerfil2Component implements OnInit, OnDestroy {
     currentAccount: Account;
     eventSubscriber: Subscription;
-    private subscription: Subscription;
+    subscription: Subscription;
 
     // Mensajes
     messages: Message[] = [];
     messagesForm: Message[] = [];
     messageList: any;
 
+    // Variables de edicion y bloqueo
     block: boolean;
     editarUnd: boolean;
     editarAccion: boolean;
     editarMercado: boolean;
     editarObra: boolean;
     editarInv: boolean;
-    @LocalStorage('inicioUnidad')
-    inicioUnidad: boolean;
-    @LocalStorage('inicioAccionaria')
-    inicioAccionaria: boolean;
-    @LocalStorage('inicioMercado')
-    inicioMercado: boolean;
-    @LocalStorage('inicioObra')
-    inicioObra: boolean;
-    @LocalStorage('inicioProyecto')
-    inicioProyecto: boolean;
+
+    // Combos de Sector, Plan Contable y Tipo Documento
+    sector: ComboModel[];
+    planContable: ComboModel[];
+    regimenLaboral: ComboModel[];
+    tipodocs: ComboModel[];
+
+    // Seleccion de Sector, Plan Contable y Tipo Documento
+    selectedSector: ComboModel;
+    selectedPlan: ComboModel;
+    selectedDoc: ComboModel;
+    @LocalStorage('regimenLaboral')
+    selectedRegimen: ComboModel[];
 
     // Flags de dialogs
     displayUnidad: boolean;
@@ -100,7 +107,19 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
     @LocalStorage('responeInfoLaboral')
     responeInfoLaboral: Respinforma;
     @LocalStorage('anexoLaboral')
-    anexoLaboral: ModelAnexo[];
+    formulario: Formulario[];
+
+    // Flags de Inicio
+    @LocalStorage('inicioUnidad')
+    inicioUnidad: boolean;
+    @LocalStorage('inicioAccionaria')
+    inicioAccionaria: boolean;
+    @LocalStorage('inicioMercado')
+    inicioMercado: boolean;
+    @LocalStorage('inicioObra')
+    inicioObra: boolean;
+    @LocalStorage('inicioProyecto')
+    inicioProyecto: boolean;
 
     // Objetos CUD
     undNegocio: Undnegocio;
@@ -108,17 +127,6 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
     participacionMercado: Participa;
     obra: Hechoinver;
     proyecto: Hechoinver;
-
-    // Combos
-    sector: ComboModel[];
-    selectedSector: ComboModel;
-
-    planContable: ComboModel[];
-    selectedPlan: ComboModel;
-
-    tipodocs: ComboModel[];
-    selectedDoc: ComboModel;
-
     empresa: Empresa;
     persona: Persona;
     carnetExtranjeria: CarnetExtranjeria;
@@ -141,25 +149,36 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
         private resulnegocService: ResulnegocService,
         private respinformaService: RespinformaService,
         private anexlaboralService: AnexlaboralService,
-        private validarUsuarioService: ValidarUsuarioService,
         private formularioPerfilService: FormularioPerfilService,
+        private reglaboralService: ReglaboralService,
+        private perreglabService: PerreglabService,
         private datepipe: DatePipe,
     ) { }
 
     ngOnInit() {
-        this.iniciarDatos();
+        this.inicializarVariables();
         this.loadAll();
+    }
 
+    inicializarVariables() {
         // Iniciar Combos
         this.sector = [];
         this.sector.push(new ComboModel('Privado', '1', 0));
         this.sector.push(new ComboModel('Público', '2', 0));
+        this.sector.push(new ComboModel('Otros', '3', 0));
+
+        this.selectedSector = new ComboModel('Privado', '1', 0);
 
         // Iniciar Combos
         this.planContable = [];
         this.planContable.push(new ComboModel('Plan Contable General Empresarial-PCGE', 'PCGE', 0));
         this.planContable.push(new ComboModel('Plan Contable del Sistema Financiero-PCSF', 'PCSF', 0));
         this.planContable.push(new ComboModel('Plan Contable Gubernamental-PCG', 'PCG', 0));
+
+        this.selectedPlan = new ComboModel('Plan Contable General Empresarial-PCGE', 'PCGE', 0);
+
+        this.regimenLaboral = new Array<ComboModel>();
+        this.obtenerRegLaboral();
 
         this.editarUnd = false;
         this.editarAccion = false;
@@ -188,36 +207,67 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
         if (this.formPerfil.vPlancont === undefined || this.formPerfil.vPlancont === null) {
             this.formPerfil.vPlancont = this.planContable[0].value;
         }
+
+        this.inicioAccionaria = this.iniciarFlags(this.inicioAccionaria);
+        this.inicioMercado = this.iniciarFlags(this.inicioMercado);
+        this.inicioObra = this.iniciarFlags(this.inicioObra);
+        this.inicioProyecto = this.iniciarFlags(this.inicioProyecto);
     }
 
-    iniciarDatos() {
-        if (this.inicioUnidad === null || this.inicioUnidad === undefined) {
-            this.inicioUnidad = true;
+    iniciarFlags(flg: boolean): boolean {
+        if (flg === null || flg === undefined) {
+            flg = true;
         } else {
-            this.inicioUnidad = false;
+            flg = false;
         }
-        if (this.inicioAccionaria === null || this.inicioAccionaria === undefined) {
-            this.inicioAccionaria = true;
-        } else {
-            this.inicioAccionaria = false;
-        }
-        if (this.inicioMercado === null || this.inicioMercado === undefined) {
-            this.inicioMercado = true;
-        } else {
-            this.inicioObra = false;
-        }
-        if (this.inicioObra === null || this.inicioObra === undefined) {
-            this.inicioObra = true;
-        } else {
-            this.inicioObra = false;
-        }
-        if (this.inicioProyecto === null || this.inicioProyecto === undefined) {
-            this.inicioProyecto = true;
-        } else {
-            this.inicioProyecto = false;
+        return flg;
+    }
+
+    onChangeSector() {
+        this.obtenerRegLaboral();
+    }
+
+    obtenerRegLaboral() {
+        switch (this.selectedSector.value) {
+            case '1':
+                this.reglaboralService.obtenerRegimenesLaboralesPrivado().subscribe(
+                    (res: ResponseWrapper) => {
+                        this.regimenLaboral = [];
+                        const obj: Reglaboral[] = res.json;
+                        for (let i = 0; i < obj.length; i++) {
+                            this.regimenLaboral.push(new ComboModel(obj[i].vDesabrreg, obj[i].nCodreglab.toString(), 0));
+                        }
+                    },
+                    (res: ResponseWrapper) => this.onError(res.json),
+                );
+                break;
+            case '2':
+                this.reglaboralService.obtenerRegimenesLaboralesPublico().subscribe(
+                    (res: ResponseWrapper) => {
+                        this.regimenLaboral = [];
+                        const obj: Reglaboral[] = res.json;
+                        for (let i = 0; i < obj.length; i++) {
+                            this.regimenLaboral.push(new ComboModel(obj[i].vDesabrreg, obj[i].nCodreglab.toString(), 0));
+                        }
+                    },
+                    (res: ResponseWrapper) => this.onError(res.json),
+                );
+                break;
+            case '3':
+                this.reglaboralService.obtenerRegimenesLaboralesOtros().subscribe(
+                    (res: ResponseWrapper) => {
+                        this.regimenLaboral = [];
+                        const obj: Reglaboral[] = res.json;
+                        for (let i = 0; i < obj.length; i++) {
+                            this.regimenLaboral.push(new ComboModel(obj[i].vDesabrreg, obj[i].nCodreglab.toString(), 0));
+                        }
+                    },
+                    (res: ResponseWrapper) => this.onError(res.json),
+                );
+                break;
+            default: break;
         }
     }
-    ngOnDestroy() { }
 
     loadAll() {
         this.load(this.solicForm.nCodfperf);
@@ -226,53 +276,62 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
     load(nCodfperf) {
 
         // Inicializacion de listados
-        this.undNegocios = new Array<Undnegocio>();
-        this.participacionesAccionarias = new Array<Participa>();
-        this.participacionesMercados = new Array<Participa>();
-        this.obras = new Array<Hechoinver>();
-        this.proyectos = new Array<Hechoinver>();
-
-        this.undnegocioService.obtenerUnidadNegocio(nCodfperf).subscribe(
-            (res: ResponseWrapper) => {
-                if (this.undNegocios.length === 0 && this.inicioUnidad) {
-                    this.undNegocios = res.json;
-                }
-            },
-            (res: ResponseWrapper) => this.onError(res.json)
-        );
-        this.participaService.obtenerParticipacionPorTipo(nCodfperf, 'A').subscribe(
-            (res: ResponseWrapper) => {
-                if (this.participacionesAccionarias.length === 0 && this.inicioAccionaria) {
-                    this.participacionesAccionarias = res.json;
-                }
-            },
-            (res: ResponseWrapper) => this.onError(res.json)
-        );
-        this.participaService.obtenerParticipacionPorTipo(nCodfperf, 'M').subscribe(
-            (res: ResponseWrapper) => {
-                if (this.participacionesMercados.length === 0 && this.inicioMercado) {
-                    this.participacionesMercados = res.json;
-                }
-            },
-            (res: ResponseWrapper) => this.onError(res.json)
-        );
-        this.hechoinverService.obtenerHechoInversionPorTipo(nCodfperf, 'H').subscribe(
-            (res: ResponseWrapper) => {
-                if (this.obras.length === 0 && this.inicioObra) {
-                    this.obras = res.json;
-                }
-            },
-            (res: ResponseWrapper) => this.onError(res.json)
-        );
-        this.hechoinverService.obtenerHechoInversionPorTipo(nCodfperf, 'I').subscribe(
-            (res: ResponseWrapper) => {
-                if (this.proyectos.length === 0 && this.inicioProyecto) {
-                    this.proyectos = res.json;
-                }
-            },
-            (res: ResponseWrapper) => this.onError(res.json)
-        );
-        this.validarUsuarioService.consultaTipoDocIdentidad().subscribe(
+        if (this.inicioUnidad) {
+            this.undNegocios = new Array<Undnegocio>();
+            this.undnegocioService.obtenerUnidadNegocio(nCodfperf).subscribe(
+                (res: ResponseWrapper) => {
+                    if (this.undNegocios.length === 0 && this.inicioUnidad) {
+                        this.undNegocios = res.json;
+                    }
+                },
+                (res: ResponseWrapper) => this.onError(res.json)
+            );
+        }
+        if (this.inicioAccionaria) {
+            this.participacionesAccionarias = new Array<Participa>();
+            this.participaService.obtenerParticipacionPorTipo(nCodfperf, 'A').subscribe(
+                (res: ResponseWrapper) => {
+                    if (this.participacionesAccionarias.length === 0 && this.inicioAccionaria) {
+                        this.participacionesAccionarias = res.json;
+                    }
+                },
+                (res: ResponseWrapper) => this.onError(res.json)
+            );
+        }
+        if (this.inicioMercado) {
+            this.participacionesMercados = new Array<Participa>();
+            this.participaService.obtenerParticipacionPorTipo(nCodfperf, 'M').subscribe(
+                (res: ResponseWrapper) => {
+                    if (this.participacionesMercados.length === 0 && this.inicioMercado) {
+                        this.participacionesMercados = res.json;
+                    }
+                },
+                (res: ResponseWrapper) => this.onError(res.json)
+            );
+        }
+        if (this.inicioObra) {
+            this.obras = new Array<Hechoinver>();
+            this.hechoinverService.obtenerHechoInversionPorTipo(nCodfperf, 'H').subscribe(
+                (res: ResponseWrapper) => {
+                    if (this.obras.length === 0 && this.inicioObra) {
+                        this.obras = res.json;
+                    }
+                },
+                (res: ResponseWrapper) => this.onError(res.json)
+            );
+        }
+        if (this.inicioProyecto) {
+            this.proyectos = new Array<Hechoinver>();
+            this.hechoinverService.obtenerHechoInversionPorTipo(nCodfperf, 'I').subscribe(
+                (res: ResponseWrapper) => {
+                    if (this.proyectos.length === 0 && this.inicioProyecto) {
+                        this.proyectos = res.json;
+                    }
+                },
+                (res: ResponseWrapper) => this.onError(res.json)
+            );
+        }
+        this.formularioPerfilService.consultaTipoDocIdentidad().subscribe(
             (res: ResponseWrapper) => {
                 this.tipodocs = res.json;
                 this.block = false;
@@ -298,7 +357,7 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
         }
     }
 
-    actualizarPorcetanje(event: any) {}
+    actualizarPorcetanje(event: any) { }
 
     asignarTipoDocAccionaria() {
         this.participacionAccionaria.vRazonsoc = '';
@@ -773,7 +832,7 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
                         this.carnetExtranjeria = <CarnetExtranjeria>res.json[0];
                         if (this.carnetExtranjeria.strNombres !== undefined && this.carnetExtranjeria.strNombres !== null) {
                             this.participacionAccionaria.vRazonsoc = this.carnetExtranjeria.strPrimerApellido + ' ' +
-                            this.carnetExtranjeria.strSegundoApellido + ' ' + this.carnetExtranjeria.strNombres;
+                                this.carnetExtranjeria.strSegundoApellido + ' ' + this.carnetExtranjeria.strNombres;
                         } else {
                             this.messageList.push({
                                 severity: 'error', summary: 'Mensaje de Error', detail: 'No se encontraron ' +
@@ -860,7 +919,7 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
                         this.carnetExtranjeria = <CarnetExtranjeria>res.json[0];
                         if (this.carnetExtranjeria.strNombres !== undefined && this.carnetExtranjeria.strNombres !== null) {
                             this.participacionMercado.vRazonsoc = this.carnetExtranjeria.strPrimerApellido + ' ' +
-                            this.carnetExtranjeria.strSegundoApellido + ' ' + this.carnetExtranjeria.strNombres;
+                                this.carnetExtranjeria.strSegundoApellido + ' ' + this.carnetExtranjeria.strNombres;
                         } else {
                             this.messageList.push({
                                 severity: 'error', summary: 'Mensaje de Error', detail: 'No se encontraron ' +
@@ -885,9 +944,9 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
                 this.formularioPerfilService.guardarFormularioPerfil(this.datepipe, this.solicitud, this.solicForm,
                     this.formPerfil, this.undNegocios, this.participacionesAccionarias, this.participacionesMercados,
                     this.obras, this.proyectos, this.direcciones, this.organizaciones, this.solicitante,
-                    this.resultadoNegociaciones, this.responInfoFinanciera, this.responeInfoLaboral, this.anexoLaboral,
+                    this.resultadoNegociaciones, this.responInfoFinanciera, this.responeInfoLaboral, this.formulario, this.selectedRegimen,
                     this.formperfilService, this.undnegocioService, this.participaService, this.hechoinverService,
-                    this.direccionService, this.negocolectService, this.resulnegocService, this.respinformaService)
+                    this.direccionService, this.negocolectService, this.resulnegocService, this.respinformaService, this.anexlaboralService, this.perreglabService);
                 this.router.navigate(['./dictamenes/control-informacion/' + this.solicitud.nCodsolic]);
             }
         }
@@ -898,7 +957,7 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
     }
 
     // Error
-     private onErrorMultiple(errorList: any) {
+    private onErrorMultiple(errorList: any) {
         for (let i = 0; i < errorList.length; i++) {
             this.messagesForm.push(errorList[i]);
         }
@@ -921,4 +980,6 @@ export class FormularioPerfil2Component implements OnInit, OnDestroy {
     irPerfil() {
         this.router.navigate(['./dictamenes/formulario-perfil/' + this.solicForm.nCodfperf]);
     }
+
+    ngOnDestroy() { }
 }

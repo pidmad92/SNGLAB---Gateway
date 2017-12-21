@@ -94,4 +94,14 @@ export class SolicformService {
         return this.http.get(url + '?flgObligatorio=' + flgObligatorio + '&codSolicitud=' + nCodsolic, options)
             .map((res: Response) => this.convertResponse(res));
     }
+
+    obtenerSolicitudFormulario(codFormPerfil: number): Observable<Solicform> {
+        const options = createRequestOption();
+        const url = SERVER_API_URL + 'api/obtenerSolicitudFormulario';
+        return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
+            .map((res: Response) => {
+                const jsonResponse = res.json();
+                return this.convertItemFromServer(jsonResponse);
+            });
+    }
 }

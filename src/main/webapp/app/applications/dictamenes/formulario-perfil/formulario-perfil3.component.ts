@@ -21,6 +21,9 @@ import { Respinforma, RespinformaService } from '../../../entities/respinforma/i
 import { ModelAnexo } from '../../../entities/anexlaboral/modelanexo.model';
 import { AnexlaboralService } from '../../../entities/anexlaboral/index';
 import { DatePipe } from '@angular/common';
+import { Formulario } from './formulario.model';
+import { FormGroup } from '@angular/forms';
+import { PerreglabService } from '../../../entities/perreglab/index';
 
 @Component({
     selector: 'jhi-formulario-perfil3',
@@ -31,19 +34,26 @@ import { DatePipe } from '@angular/common';
 export class FormularioPerfil3Component implements OnInit, OnDestroy {
     currentAccount: Account;
     eventSubscriber: Subscription;
-    private subscription: Subscription;
+    subscription: Subscription;
 
     // Mensajes
     messages: Message[] = [];
     messagesForm: Message[] = [];
     messageList: any;
 
+    // Variables de edicion y bloqueo
     block: boolean;
     editar: boolean;
-    @LocalStorage('inicioSolicitante')
-    inicioSolicitante: boolean;
-    @LocalStorage('inicioOrganizacion')
-    inicioOrganizacion: boolean;
+
+    // Combos de Ambito y Etapa
+    ambito: ComboModel[];
+    etapa: ComboModel[];
+
+    // Seleccion de Ambito y Etapa
+    selectedAmbito: ComboModel;
+    selectedAmbitoRegistro: ComboModel;
+    selectedEtapa: ComboModel;
+    selectedEtapaRegistro: ComboModel;
 
     // Flag de Modals
     displayOrganizacion: boolean;
@@ -81,20 +91,18 @@ export class FormularioPerfil3Component implements OnInit, OnDestroy {
     @LocalStorage('responeInfoLaboral')
     responeInfoLaboral: Respinforma;
     @LocalStorage('anexoLaboral')
-    anexoLaboral: ModelAnexo[];
+    formulario: Formulario[];
+    @LocalStorage('regimenLaboral')
+    selectedRegimen: ComboModel[];
 
-    // Organizacion
+    // Flags de Inicio
+    @LocalStorage('inicioSolicitante')
+    inicioSolicitante: boolean;
+    @LocalStorage('inicioOrganizacion')
+    inicioOrganizacion: boolean;
+
+    // Objetos CUD
     organizacion: Negocolect;
-
-    // Combos
-    ambito: ComboModel[];
-    selectedAmbito: ComboModel;
-    selectedAmbitoRegistro: ComboModel;
-
-    etapa: ComboModel[];
-    selectedEtapa: ComboModel;
-    selectedEtapaRegistro: ComboModel;
-
     empresa: Empresa;
 
     constructor(
@@ -117,32 +125,33 @@ export class FormularioPerfil3Component implements OnInit, OnDestroy {
         private respinformaService: RespinformaService,
         private anexlaboralService: AnexlaboralService,
         private formularioPerfilService: FormularioPerfilService,
+        private perreglabService: PerreglabService,
         private datepipe: DatePipe,
     ) { }
 
     ngOnInit() {
-        this.iniciarDatos();
+        this.inicializarVariables();
         this.loadAll();
+    }
 
+    inicializarVariables() {
         // Iniciar Combos
         this.ambito = [];
         this.ambito.push(new ComboModel('Empleados de Confianza', 'EC', 0));
         this.ambito.push(new ComboModel('Empleados', 'EM', 0));
         this.ambito.push(new ComboModel('Obreros', 'OB', 0));
-
-        if (this.selectedAmbito === undefined || this.selectedAmbito === null) {
-            this.selectedAmbito = this.ambito[0];
-            this.selectedAmbitoRegistro = this.ambito[0];
-            this.solicitante.vAmbsubje = this.selectedAmbitoRegistro.value;
-        }
-
-        // Iniciar Combos
         this.etapa = [];
         this.etapa.push(new ComboModel('Trato Directo', 'TD', 0));
         this.etapa.push(new ComboModel('Conciliación', 'CO', 0));
         this.etapa.push(new ComboModel('Mediación', 'ME', 0));
         this.etapa.push(new ComboModel('Extraproceso', 'EX', 0));
         this.etapa.push(new ComboModel('Arbitraje', 'AR', 0));
+
+        if (this.selectedAmbito === undefined || this.selectedAmbito === null) {
+            this.selectedAmbito = this.ambito[0];
+            this.selectedAmbitoRegistro = this.ambito[0];
+            this.solicitante.vAmbsubje = this.selectedAmbitoRegistro.value;
+        }
 
         if (this.selectedEtapa === undefined || this.selectedEtapa === null) {
             this.selectedEtapa = this.etapa[0];
@@ -154,19 +163,17 @@ export class FormularioPerfil3Component implements OnInit, OnDestroy {
         this.displayOrganizacion = false;
         this.editar = false;
         this.displayGuardar = false;
+        this.inicioSolicitante = this.iniciarFlags(this.inicioSolicitante);
+        this.inicioOrganizacion = this.iniciarFlags(this.inicioOrganizacion);
     }
 
-    iniciarDatos() {
-        if (this.inicioSolicitante === null || this.inicioSolicitante === undefined) {
-            this.inicioSolicitante = true;
+    iniciarFlags(flg: boolean): boolean {
+        if (flg === null || flg === undefined) {
+            flg = true;
         } else {
-            this.inicioSolicitante = false;
+            flg = false;
         }
-        if (this.inicioOrganizacion === null || this.inicioOrganizacion === undefined) {
-            this.inicioOrganizacion = true;
-        } else {
-            this.inicioOrganizacion = false;
-        }
+        return flg;
     }
 
     loadAll() {
@@ -174,19 +181,26 @@ export class FormularioPerfil3Component implements OnInit, OnDestroy {
     }
 
     load(nCodfperf) {
-        if (this.solicitante === undefined || this.solicitante === null) {
-            this.negocolectService.obtenerNegociacionSolicitante(nCodfperf, 'S').subscribe((solicitante) => {
-                    if (this.inicioSolicitante) {
-                        this.solicitante = solicitante
+        if (this.inicioSolicitante) {
+            this.negocolectService.obtenerNegociacionSolicitante(nCodfperf, 'S').subscribe(
+                (res: ResponseWrapper) => {
+                    if (res.json[0] !== null && res.json[0] !== undefined) {
+                        this.solicitante = res.json[0];
+                    } else {
+                        this.solicitante = new Negocolect();
                     }
                 },
+                (res: ResponseWrapper) => this.onError(res.json),
             );
         }
-        if (this.organizaciones === undefined || this.organizaciones === null) {
+        if (this.inicioOrganizacion) {
             this.negocolectService.obtenerNegociacion(nCodfperf, 'O').subscribe(
-                (res: ResponseWrapper) =>  {
-                    if (this.organizaciones.length === 0 && this.inicioOrganizacion) {
+                (res: ResponseWrapper) => {
+                    console.log(res.json);
+                    if (res.json !== undefined && res.json !== null && res.json !== []) {
                         this.organizaciones = res.json;
+                    } else {
+                        this.organizaciones = new Array<Negocolect>();
                     }
                 },
                 (res: ResponseWrapper) => this.onError(res.json)
@@ -194,16 +208,14 @@ export class FormularioPerfil3Component implements OnInit, OnDestroy {
         }
     }
 
-    ngOnDestroy() { }
-
     // Solo numeros
     keyPress(event: any) {
         const pattern = /[0-9]/;
         const inputChar = String.fromCharCode(event.charCode);
         if (!pattern.test(inputChar)) {
-          event.preventDefault();
+            event.preventDefault();
         }
-      }
+    }
 
     // Organizaciones
     showOrganizacion() {
@@ -321,12 +333,12 @@ export class FormularioPerfil3Component implements OnInit, OnDestroy {
         this.empresa = new Empresa;
         if (this.organizacion.vRucneg !== undefined && this.organizacion.vRucneg !== null && this.organizacion.vRucneg !== '') {
             this.formularioPerfilService.obtenerDatosGenerales(this.organizacion.vRucneg)
-            .subscribe(
+                .subscribe(
                 (res: ResponseWrapper) => {
                     this.empresa = <Empresa>res.json[0];
                     if (this.empresa.ddp_nombre !== undefined && this.empresa.ddp_nombre !== null) {
                         this.organizacion.vRazonsoc = this.empresa.ddp_nombre;
-                    }else {
+                    } else {
                         this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'No se encontraron datos con el RUC ' + this.organizacion.vRucneg + '.' });
                         this.onErrorMultiple(this.messageList);
                     }
@@ -346,9 +358,9 @@ export class FormularioPerfil3Component implements OnInit, OnDestroy {
                 this.formularioPerfilService.guardarFormularioPerfil(this.datepipe, this.solicitud, this.solicForm,
                     this.formPerfil, this.undNegocios, this.participacionesAccionarias, this.participacionesMercados,
                     this.obras, this.proyectos, this.direcciones, this.organizaciones, this.solicitante,
-                    this.resultadoNegociaciones, this.responInfoFinanciera, this.responeInfoLaboral, this.anexoLaboral,
+                    this.resultadoNegociaciones, this.responInfoFinanciera, this.responeInfoLaboral, this.formulario, this.selectedRegimen,
                     this.formperfilService, this.undnegocioService, this.participaService, this.hechoinverService,
-                    this.direccionService, this.negocolectService, this.resulnegocService, this.respinformaService)
+                    this.direccionService, this.negocolectService, this.resulnegocService, this.respinformaService, this.anexlaboralService, this.perreglabService);
                 this.router.navigate(['./dictamenes/control-informacion/' + this.solicitud.nCodsolic]);
             }
         }
@@ -384,4 +396,6 @@ export class FormularioPerfil3Component implements OnInit, OnDestroy {
     irPerfil() {
         this.router.navigate(['./dictamenes/formulario-perfil/' + this.solicForm.nCodfperf]);
     }
+
+    ngOnDestroy() { }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy  } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
 import { Principal, ResponseWrapper } from '../../../shared/index';
@@ -20,6 +20,10 @@ import { FormularioPerfilService } from './index';
 import { ModelAnexo } from '../../../entities/anexlaboral/modelanexo.model';
 import { AnexlaboralService } from '../../../entities/anexlaboral/index';
 import { DatePipe } from '@angular/common';
+import { Formulario } from './formulario.model';
+import { FormGroup } from '@angular/forms';
+import { PerreglabService } from '../../../entities/perreglab/index';
+import { ComboModel } from '../../general/combobox.model';
 
 @Component({
     selector: 'jhi-formulario-perfil5',
@@ -37,15 +41,11 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
     messagesForm: Message[] = [];
     messageList: any;
 
+    // Variables de edicion y bloqueo
     block: boolean;
     editar: boolean;
-    @LocalStorage('inicioFinanciero')
-    inicioFinanciero: boolean;
-    @LocalStorage('inicioLaboral')
-    inicioLaboral: boolean;
 
-    persona: Persona;
-
+    // Flag de Modals
     displayGuardar: boolean;
 
     // Datos de Perfil
@@ -80,7 +80,18 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
     @LocalStorage('responeInfoLaboral')
     responeInfoLaboral: Respinforma;
     @LocalStorage('anexoLaboral')
-    anexoLaboral: ModelAnexo[];
+    formulario: Formulario[];
+    @LocalStorage('regimenLaboral')
+    selectedRegimen: ComboModel[];
+
+    // Flags de Inicio
+    @LocalStorage('inicioFinanciero')
+    inicioFinanciero: boolean;
+    @LocalStorage('inicioLaboral')
+    inicioLaboral: boolean;
+
+    // Objetos CUD
+    persona: Persona;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -88,7 +99,6 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
         private principal: Principal,
         private route: ActivatedRoute,
         private router: Router,
-
         // Servicios
         private solicitudService: SolicitudService,
         private formperfilService: FormperfilService,
@@ -102,6 +112,7 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
         private respinformaService: RespinformaService,
         private anexlaboralService: AnexlaboralService,
         private formularioPerfilService: FormularioPerfilService,
+        private perreglabService: PerreglabService,
         private datepipe: DatePipe,
     ) { }
 
@@ -183,18 +194,22 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
     }
 
     load(nCodfperf) {
-        this.respinformaService.obtenerResponsableInformacion(nCodfperf, 'F').subscribe((responInfoFinanciera) => {
+        if (this.inicioFinanciero) {
+            this.respinformaService.obtenerResponsableInformacion(nCodfperf, 'F').subscribe((responInfoFinanciera) => {
                 if (this.inicioFinanciero) {
                     this.responInfoFinanciera = responInfoFinanciera;
                 }
             },
-        );
-        this.respinformaService.obtenerResponsableInformacion(nCodfperf, 'L').subscribe((responeInfoLaboral) => {
+            );
+        }
+        if (this.inicioLaboral) {
+            this.respinformaService.obtenerResponsableInformacion(nCodfperf, 'L').subscribe((responeInfoLaboral) => {
                 if (this.inicioLaboral) {
                     this.responeInfoLaboral = responeInfoLaboral;
                 }
             },
-        );
+            );
+        }
         if (this.responInfoFinanciera === null) {
             this.responInfoFinanciera = new Respinforma;
         }
@@ -218,9 +233,9 @@ export class FormularioPerfil5Component implements OnInit, OnDestroy {
                 this.formularioPerfilService.guardarFormularioPerfil(this.datepipe, this.solicitud, this.solicForm,
                     this.formPerfil, this.undNegocios, this.participacionesAccionarias, this.participacionesMercados,
                     this.obras, this.proyectos, this.direcciones, this.organizaciones, this.solicitante,
-                    this.resultadoNegociaciones, this.responInfoFinanciera, this.responeInfoLaboral, this.anexoLaboral,
+                    this.resultadoNegociaciones, this.responInfoFinanciera, this.responeInfoLaboral, this.formulario, this.selectedRegimen,
                     this.formperfilService, this.undnegocioService, this.participaService, this.hechoinverService,
-                    this.direccionService, this.negocolectService, this.resulnegocService, this.respinformaService)
+                    this.direccionService, this.negocolectService, this.resulnegocService, this.respinformaService, this.anexlaboralService, this.perreglabService);
                 this.router.navigate(['./dictamenes/control-informacion/' + this.solicitud.nCodsolic]);
             }
         }

@@ -10,7 +10,7 @@
       <div class="form-group row">
         <label for="inpRuc" class="col-sm-3 col-form-label col-form-label-sm text-right">RUC</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control form-control-sm" id="inpRuc" placeholder="" [(ngModel)]="solicitud.vRucsol">
+          <input type="text" disabled class="form-control form-control-sm" id="inpRuc" placeholder="" [(ngModel)]="solicitud.vRucsol">
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
       <div class="form-group row">
         <label for="inpRsocial" class="col-sm-3 col-form-label col-form-label-sm text-right" value="1047792455654">Razón Social</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control form-control-sm" id="inpRsocial" placeholder="" [(ngModel)]="solicitud.vEmpleador">
+          <input type="text" disabled  class="form-control form-control-sm" id="inpRsocial" placeholder="" [(ngModel)]="solicitud.vEmpleador">
         </div>
       </div>
     </div>
@@ -199,6 +199,8 @@
           </table>
           <div class="row">
             <div class="col-12 text-sm-right">
+                <a style="color:white" (click)="verControlInformacion()" class="btn btn-sm m-1 btn-primary">
+                    <i class="fa fa-floppy-o" aria-hidden="true"></i> Volver</a>
               <a style="color:white" (click)="mostrarGuardar()" class="btn btn-sm m-1 btn-secondary">
                 <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
               <a [routerLink]="" (click)="irPerfil2()" class="btn btn-sm m-1 btn-success">

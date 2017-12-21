@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { GatewaySharedModule } from '../../../shared';
-import {DialogModule, TabViewModule, DropdownModule, MessagesModule, MessageModule, BlockUIModule} from 'primeng/primeng';
+import {DialogModule, TabViewModule, DropdownModule, MessagesModule, MessageModule, BlockUIModule, MultiSelectModule} from 'primeng/primeng';
 
 import {
     SolicitudService,
@@ -53,14 +53,14 @@ import { UndnegocioComponent, UndnegocioService } from '../../../entities/undneg
 import { HechoinverService, HechoinverComponent } from '../../../entities/hechoinver/index';
 import { ParticipaService, ParticipaComponent } from '../../../entities/participa/index';
 import { NegocolectService, NegocolectComponent } from '../../../entities/negocolect/index';
-import { ValidarUsuarioService } from '../../denuncias/validar-usuario/validarusuario.service';
-import { ValidarUsuarioComponent } from '../../denuncias/validar-usuario/index';
 import { ResulnegocService, ResulnegocComponent } from '../../../entities/resulnegoc/index';
 import { RespinformaService, RespinformaComponent } from '../../../entities/respinforma/index';
 import { AnexlaboralService, AnexlaboralComponent } from '../../../entities/anexlaboral/index';
 import { DecimalMask } from '../../general/decimal.directive';
 import { TipdocService, TipdocComponent } from '../../../entities/tipdoc/index';
 import { Empresa } from '../../general/servicesmodel/empresa.model';
+import { ReglaboralService } from '../../../entities/reglaboral/index';
+import { PerreglabService } from '../../../entities/perreglab/index';
 
 const ENTITY_STATES = [
     ...ListadoSolicitudesRoute,
@@ -85,7 +85,6 @@ const ENTITY_STATES = [
         ActieconComponent,
         UndnegocioComponent,
         NegocolectComponent,
-        // ValidarUsuarioComponent,
         ResulnegocComponent,
         RespinformaComponent,
         AnexlaboralComponent,
@@ -103,6 +102,9 @@ const ENTITY_STATES = [
         MessagesModule,
         MessageModule,
         BlockUIModule,
+        MultiSelectModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
     entryComponents: [
         ListadoSolicitudesComponent,
@@ -118,12 +120,13 @@ const ENTITY_STATES = [
         FormperfilService,
         ActieconService,
         NegocolectService,
-        // ValidarUsuarioService,
         ResulnegocService,
         RespinformaService,
         AnexlaboralService,
         TipdocService,
         FormularioPerfilService,
+        ReglaboralService,
+        PerreglabService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

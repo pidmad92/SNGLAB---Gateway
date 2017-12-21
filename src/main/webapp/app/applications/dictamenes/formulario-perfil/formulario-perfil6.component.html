@@ -1,3 +1,4 @@
+<p-blockUI [blocked]="block"></p-blockUI>
 <div *ngIf="formPerfil&&solicitud" class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
   <div class="row">
     <div class="col">
@@ -9,7 +10,7 @@
       <div class="form-group row">
         <label for="inpRuc" class="col-sm-3 col-form-label col-form-label-sm text-right">RUC</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control form-control-sm" id="inpRuc" placeholder="">
+          <input type="text" disabled class="form-control form-control-sm" id="inpRuc" [(ngModel)]="solicitud.vRucsol">
         </div>
       </div>
     </div>
@@ -17,7 +18,7 @@
       <div class="form-group row">
         <label for="inpRsocial" class="col-sm-3 col-form-label col-form-label-sm text-right" value="1047792455654">Razón Social</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control form-control-sm" id="inpRsocial" placeholder="" value="CYH Solutions SAC">
+          <input type="text" disabled class="form-control form-control-sm" id="inpRsocial" [(ngModel)]="solicitud.vEmpleador">
         </div>
       </div>
     </div>
@@ -121,117 +122,153 @@
                   <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">2012</a>
                 </nav>-->
           <p-tabView class="tab-content p-2 border border-mtpe border-top-0" id="nav-tabContent">
-            <p-tabPanel *ngFor="let anio of anios; let i = index" [header]="anio.nAnioanex" [selected]="i==0">
-              <p>Contratación Laboral Directa</p>
-              <table class="table table-hover">
-                <thead>
+            <p-tabPanel *ngFor="let formu of formulario; let a = index"  [header]="formu.anio" [selected]="a===0">
+              <form [formGroup]="completeForm">
+                <p>
+                  <strong>
+                    <h6>CONTRATACION LABORAL DIRECTA</h6>
+                  </strong>
+                </p>
+                <table class="table table-hover">
+                  <thead>
 
-                  <tr>
-                    <th>Descripción</th>
-                    <ng-container *ngFor="let decreto of decretos; let i = index">
-                      <th>{{decreto.vDeclegal}}</th>
-                    </ng-container>
-                  </tr>
+                    <tr>
+                      <th>Descripción</th>
+                      <ng-container *ngFor="let regimen of selectedRegimen; let b = index">
+                        <th>{{regimen.name}}</th>
+                      </ng-container>
+                    </tr>
 
-                </thead>
-                <tbody>
-                  
-                    <ng-container *ngFor="let des of descripciones; let i = index">
+                  </thead>
+                  <tbody>
+                    <ng-container *ngFor="let contratadirecta of formu.listaContrataDirecta; let c = index">
                         <tr>
-                        <td>{{des.vDesanexo}}</td>
-                        
-                        <td>
-                            <input type="text" class="form-control form-control-sm" >
-                        </td>
-                        <td>
-                            <input type="text" class="form-control form-control-sm" >
-                        </td>
+                          <td>{{contratadirecta.descripcion}}</td>
+                          <ng-container *ngIf="c!==7">
+                            <td *ngFor="let controldirecto of contratadirecta.componentes; let d = index">
+                              <input style="text-align:right;" type="text" [formControl]="completeForm.controls[controldirecto.componente]" maxlength="6" id="{{controldirecto.componente}}" (keyup)="keyUpDirecta($event)" (keypress)="keyPress($event)" class="form-control form-control-sm">
+                            </td>
+                          </ng-container>
+                          <ng-container *ngIf="c===7">
+                            <td *ngFor="let total of contratadirecta.componentes; let e = index">
+                              <label style="text-align:right;width:100%;">{{total.cantidad}}</label>
+                            </td>
+                          </ng-container>
                         </tr>
                     </ng-container>
-                  
-                    <td>TOTAL</td>
-                    <td class="text-right">
-                      <label for="" class="col-form-label col-form-label-sm">0</label>
-                    </td>
-                    <td class="text-right">
-                      <label for="" class="col-form-label col-form-label-sm">0</label>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <p>Contratación Laboral Indirecta</p>
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>Descripción</th>
-                    <th>DL N° 276</th>
-                    <th>DL N° 728</th>
-                    <th>DL N° 1057</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>TRABAJADORES POR TERCEROS</td>
-                    <td>
-                      <input type="text" class="form-control form-control-sm" name="" id="">
-                    </td>
-                    <td>
-                      <input type="text" class="form-control form-control-sm" name="" id="">
-                    </td>
-                    <td>
-                      <input type="text" class="form-control form-control-sm" name="" id="">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>EMPRESAS DE SERVICIOS ESPECIALES (SERVICES)</td>
-                    <td>
-                      <input type="text" class="form-control form-control-sm" name="" id="">
-                    </td>
-                    <td>
-                      <input type="text" class="form-control form-control-sm" name="" id="">
-                    </td>
-                    <td>
-                      <input type="text" class="form-control form-control-sm" name="" id="">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>EMPLEADOS</td>
-                    <td>
-                      <input type="text" class="form-control form-control-sm" name="" id="">
-                    </td>
-                    <td>
-                      <input type="text" class="form-control form-control-sm" name="" id="">
-                    </td>
-                    <td>
-                      <input type="text" class="form-control form-control-sm" name="" id="">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>OBREROS</td>
-                    <td>
-                      <input type="text" class="form-control form-control-sm" name="" id="">
-                    </td>
-                    <td>
-                      <input type="text" class="form-control form-control-sm" name="" id="">
-                    </td>
-                    <td>
-                      <input type="text" class="form-control form-control-sm" name="" id="">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>TOTAL</td>
-                    <td class="text-right">
-                      <label for="" class="col-form-label col-form-label-sm">0</label>
-                    </td>
-                    <td class="text-right">
-                      <label for="" class="col-form-label col-form-label-sm">0</label>
-                    </td>
-                    <td class="text-right">
-                      <label for="" class="col-form-label col-form-label-sm">0</label>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                  </tbody>
+                </table>
+                <br/>
+                <ng-container *ngIf="flgdecreto">
+                  <p>
+                    <strong>
+                      <h6>CONTRATACIÓN LABORAL INDIRECTA - TRABAJADORES POR TERCEROS</h6>
+                    </strong>
+                  </p>
+
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th colspan="2">
+                          <strong>EMPRESAS DE SERVICIOS ESPECIALES (SERVICES)</strong>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let contrataindirecta1 of formu.listaContrataIndirecta1; let f = index">
+                            <tr>
+                              <td>{{contrataindirecta1.descripcion}}</td>
+                              <ng-container *ngIf="f!==2">
+                                <td style="width:300px" *ngFor="let controlind1 of contrataindirecta1.componentes; let g = index">
+                                  <input style="text-align:right;" type="text" [formControl]="completeForm.controls[controlind1.componente]" maxlength="6" id="{{controlind1.componente}}" (keyup)="keyUpIndirecta1($event)" (keypress)="keyPress($event)" class="form-control form-control-sm">
+                                </td>
+                              </ng-container>
+                              <ng-container *ngIf="f===2">
+                                <td style="width:300px">
+                                  <label style="text-align:right;width:100%;">{{formu.totalIndirecta1}}</label>
+                                </td>
+                              </ng-container>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                  </table>
+
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th colspan="2">
+                          <strong>EMPRESAS TERCERIZADORAS (OUTSOURCING)</strong>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let contrataindirecta2 of formu.listaContrataIndirecta2; let i = index">
+                            <tr>
+                              <td>{{contrataindirecta2.descripcion}}</td>
+                              <ng-container *ngIf="i!==2">
+                                <td  style="width:300px" *ngFor="let controlind2 of contrataindirecta2.componentes; let j = index">
+                                  <input style="text-align:right;" type="text" [formControl]="completeForm.controls[controlind2.componente]" maxlength="6" id="{{controlind2.componente}}" (keyup)="keyUpIndirecta2($event)" (keypress)="keyPress($event)" class="form-control form-control-sm">
+                                </td>
+                              </ng-container>
+                              <ng-container *ngIf="i===2">
+                                <td  style="width:300px">
+                                  <label style="text-align:right;width:100%;">{{formu.totalIndirecta2}}</label>
+                                </td>
+                              </ng-container>
+                            </tr>
+                            <ng-container *ngIf="i===2">
+                              <tr>
+                                <td>
+                                  <strong>TOTAL CONTRATACIÓN LABORAL INDIRECTA</strong>
+                                </td>
+                                <td class="text-right">{{formu.totalIndirecta}}</td>
+                              </tr>
+                            </ng-container>
+                        </ng-container>
+                      
+                    </tbody>
+                  </table>
+                </ng-container>
+                <br/>
+                <p>
+                  <strong>
+                    <h6>CONTRATACIÓN NO LABORAL</h6>
+                  </strong>
+                </p>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th colspan="2">Descripción</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <ng-container *ngFor="let contratanolaboral of formu.listaContrataNoLaboral; let l = index">
+                          <tr>
+                            <td>{{contratanolaboral.descripcion}}</td>
+                            <ng-container *ngIf="l!==2">
+                              <td  style="width:300px" *ngFor="let controlnolab of contratanolaboral.componentes; let m = index">
+                                <input style="text-align:right;" type="text" [formControl]="completeForm.controls[controlnolab.componente]" maxlength="6" id="{{controlnolab.componente}}" (keyup)="keyUpNoLaboral($event)" (keypress)="keyPress($event)" class="form-control form-control-sm">
+                              </td>
+                            </ng-container>
+                            <ng-container *ngIf="l===2">
+                              <td style="width:300px">
+                                <label style="text-align:right;width:100%;">{{formu.totalNoLaboral}}</label>
+                              </td>
+                            </ng-container>
+                          </tr>
+                          <ng-container *ngIf="l===2">
+                            <tr>
+                              <td>
+                                <strong>TOTAL CONTRATACIÓN LABORAL DIRECTA, INDIRECTA Y NO LABORAL</strong>
+                              </td>
+                              <td class="text-right" >{{formu.total}}</td>
+                            </tr>
+                          </ng-container>
+                      </ng-container>
+                    
+                  </tbody>
+                </table>
+              </form>
             </p-tabPanel>
           </p-tabView>
         </div>
@@ -239,7 +276,7 @@
           <div class="col-12 text-sm-right">
             <a [routerLink]="" (click)="irPerfil5()" class="btn btn-sm m-1 btn-success">
               <i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
-            <a [routerLink]=""  (click)="mostrarGuardar()" class="btn btn-sm m-1 btn-secondary">
+            <a [routerLink]="" (click)="mostrarGuardar()" class="btn btn-sm m-1 btn-secondary">
               <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
           </div>
         </div>

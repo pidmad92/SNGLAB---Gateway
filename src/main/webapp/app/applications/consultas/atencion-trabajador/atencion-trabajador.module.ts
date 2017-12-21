@@ -1,7 +1,9 @@
+
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { StepsModule } from 'primeng/primeng';
-import { TabViewModule, DataTableModule, SharedModule, CalendarModule, RadioButtonModule, DialogModule, DropdownModule, MessagesModule, MessageModule } from 'primeng/primeng';
+import { TabViewModule, DataTableModule, CheckboxModule, SharedModule, CalendarModule,
+    RadioButtonModule, DialogModule, DropdownModule, MessagesModule, MessageModule } from 'primeng/primeng';
 import { MessageService } from 'primeng/components/common/messageservice';
 
 import { GatewaySharedModule } from '../../../shared';
@@ -11,6 +13,7 @@ import { DatosEmpleadorComponent } from './atencion-trabajador-wizard/datos-empl
 import { VinculoLaboralComponent } from './atencion-trabajador-wizard/vinculo-laboral.component';
 import { DocumentosPresentadosComponent } from './atencion-trabajador-wizard/documentos-presentados.component';
 import { AccionesRealizarComponent } from './atencion-trabajador-wizard/acciones-realizar.component';
+import { RegistroAtencionWizardService } from './atencion-trabajador-wizard/registro-atencion-wizard.service';
 import { AtencionTrabajadorService,
     AtencionTrabajadorComponent,
     AtencionTrabajadorWizardComponent,
@@ -37,6 +40,7 @@ const ENTITY_STATES = [
         MessageModule,
         StepsModule,
         DataTableModule,
+        CheckboxModule,
         CalendarModule,
         DialogModule,
         RadioButtonModule,
@@ -78,6 +82,7 @@ const ENTITY_STATES = [
         TipdocidentService,
         CartrabService,
         MotatenoficService,
+        RegistroAtencionWizardService,
         AccionadopService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

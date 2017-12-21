@@ -7,7 +7,7 @@
                     <span [ngSwitch]="currentUrl">
                         <small *ngSwitchCase="'/defensa/asignacion-abogado'" class="ml-3">Asignación de Abogados</small>
                         <small *ngSwitchCase="'/defensa/resultado-audiencia'" class="ml-3">Resultado de Audiencia</small>
-                        <small *ngSwitchCase="'/defensa/reprogramacion-audiencia'" class="ml-3">Reprog. de Audiencia</small>
+                        <small *ngSwitchCase="'/defensa/reprogramacion'" class="ml-3">Reprog. de Audiencia</small>
                         <small *ngSwitchCase="'/defensa/registrar-escrito'" class="ml-3">Registrar Escrito</small>
                     </span>
                 </h5>
@@ -61,21 +61,21 @@
                 <form>
                     <div class="row">
                         <div class="col-md-12 mb-3">
-                            <p-dataTable selectionMode="single" [value]="concilias" dataKey="id">
+                            <p-dataTable selectionMode="single" [value]="concilias" dataKey="id" (onRowSelect)="onRowSelect($event)">
                                 <p-header>Expedientes</p-header>
                                 <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
                                     <ng-template let-i="rowIndex" pTemplate="body">
                                         <span style="text-align:center">{{i+1}}</span>
                                     </ng-template>
                                 </p-column>
-                                <p-column field="expediente.estexpedien.vDescrip" header="Estado"></p-column>
                                 <p-column field="expediente.vNumexp" header="Nro. Expediente"></p-column>
-                                <p-column field="dFecconci" header="Fecha de Conciliación"></p-column>
-                                <p-column field="abogado.vNomabogad" header="Conciliador"></p-column>
                                 <p-column field="nrodocemp" header="Razón Nro. RUC"></p-column>
                                 <p-column field="fullnameemp" header="Empleador"></p-column>
                                 <p-column field="nrodoctrab" header="Nro. Documento"></p-column>
                                 <p-column field="fullnametrab" header="Trabajador"></p-column>
+                                <p-column field="fechahoraconci" header="Fecha de Conciliación"></p-column>
+                                <p-column field="abogado.vNomabogad" header="Conciliador"></p-column>
+                                <p-column field="resulconci.vDescrip" header="Resultado"></p-column>
                             </p-dataTable>
                         </div>
                     </div>

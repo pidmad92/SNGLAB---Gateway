@@ -14,7 +14,7 @@ export class Solicitud implements BaseEntity {
         public vArbitro?: string,
         public vCodsolic?: string,
         public vCodemple?: string,
-        public vCodaindi?: string,
+        public vCodsindi?: string,
         public vCodarbit?: string,
         public tFecvigde?: any,
         public tFecvigha?: any,
@@ -31,6 +31,8 @@ export class Solicitud implements BaseEntity {
         public nSedeupd?: number,
         public reporteRes?: BaseEntity,
         public solFormularios?: BaseEntity[],
+        public usuSolicitud?: BaseEntity[],
+        public vNombres?: string,
     ) {
         this.nFlgactivo = false;
     }

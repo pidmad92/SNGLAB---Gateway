@@ -10,6 +10,7 @@ export class Anexlaboral implements BaseEntity {
         public vDeclegal?: string,
         public vDesanexo?: string,
         public nCantlabo?: number,
+        public vComponen?: string,
         public vUsuareg?: string,
         public tFecreg?: any,
         public nFlgactivo?: boolean,
