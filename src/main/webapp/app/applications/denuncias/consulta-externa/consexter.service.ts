@@ -5,10 +5,11 @@ import { JhiDateUtils } from 'ng-jhipster';
 import { ResponseWrapper, createRequestOption } from '../../../shared';
 
 @Injectable()
-export class ConsinterService {
+export class ConsexterService {
     private resourceUrlFiltro = '/denuncias/api/denunciasbycriterio';
     private resourceUrlFiltroInfoSoli = '/denuncias/api/infosolisfiltro';
     private resourceUrlReg = '/denuncias/api/infosolis';
+    private resourceUrlUpd = '/denuncias/api/infosolisupd';
     private resourceUrlAtenderDenu= '/denuncias/api/atenderdenu';
     private resourceUrlFiltroMotFin = '/denuncias/api/motfins';
     private resourceUrlFinalizaDenu = '/denuncias/api/finalizadenu';
@@ -35,8 +36,8 @@ export class ConsinterService {
         });
     }
 
-    regInfoSoli(infosoli: any): any {
-        return this.http.post(`${this.resourceUrlReg}`, infosoli).map((res: Response) => {
+    regInfoRespuesta(infosoli: any): any {
+        return this.http.post(`${this.resourceUrlUpd}`, infosoli).map((res: Response) => {
             const jsonResponse = res.json();
             return jsonResponse;
         });

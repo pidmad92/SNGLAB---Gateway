@@ -18,33 +18,31 @@
                         </div>
                     </div>
                     <div class="ui-g">
-                        <div *ngIf="criterioBus == 0" class="ui-md-10">
-                            <div class="ui-md-6">
-                                <label>Tipo Doc.</label>
-                                <select class="form-control" [(ngModel)]="criterioTipoDoc" name="criterioTipoDoc">
-                                    <option>RUC</option>
-                                </select>
-                            </div>
-                            <div class="ui-md-6">
-                                <input class="form-control" type="text" name="criterioNumDoc" [(ngModel)]="criterioNumDoc" />
+                        <div *ngIf="criterioBus == 0" class="ui-md-12">
+                            <div class="ui-g">
+                                <div class="ui-md-6">
+                                    <label for="criterioTipoDoc">Tipo Doc.</label>
+                                    <select class="form-control" [(ngModel)]="criterioTipoDoc" name="criterioTipoDoc">
+                                        <option>RUC</option>
+                                    </select>
+                                </div>
+                                <div class="ui-md-6">
+                                    <label for="criterioNumDoc">Num. Doc.</label>
+                                    <input class="form-control" type="text" name="criterioNumDoc" [(ngModel)]="criterioNumDoc" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="ui-md-2">
-                        <button (click)="buscarDenuncias()" class="btn btn-primary" type="button">Buscar</button>
-                        <button class="btn btn-primary" type="button">Nueva Denuncia</button>
+                        <div class="ui-md-12">
+                            <button (click)="buscarDenuncias()" class="btn btn-primary" type="button">Buscar</button>
+                            <button (click)="nuevaDenuncia()" class="btn btn-primary" type="button">Nueva Denuncia</button>
+                        </div>
                     </div>
                 </fieldset>
                 <button (click)="consultaInformacionAdicional()" class="btn btn-default" type="button">Solicitar Información Adicional</button>
                 <button (click)="registrarCalificacion()" class="btn btn-default" type="button">Registrar Calificación</button>
                 <form>
-                    <p-dataTable [value]="listaResultado" 
-                    [(selection)]="selectedResultado" 
-                    rowGroupMode="subheader" 
-                    groupField="groupheader" 
-                    expandableRowGroups="true"
-                    [sortableRowGroup]="false"
-                    dataKey="serialize">
+                    <p-dataTable [value]="listaResultado" [(selection)]="selectedResultado" rowGroupMode="subheader" groupField="groupheader"
+                        expandableRowGroups="true" [sortableRowGroup]="false" dataKey="serialize">
                         <p-header>Resultado de la consulta</p-header>
                         <ng-template pTemplate="rowgroupheader" let-rowData>{{rowData['groupheader']}}</ng-template>
                         <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
@@ -80,8 +78,7 @@
 
             </p-tabPanel>
             <p-tabPanel header="Respuestas" style="height: 500" leftIcon="fa-id-card">
-                <p-dataTable [value]="listaRespuestas"  
-                dataKey="serialize">
+                <p-dataTable [value]="listaRespuestas" dataKey="serialize">
                     <p-header>Resultado de la consulta</p-header>
                     <p-column field="mensajeSolicitado" header="Codigo"></p-column>
                     <p-column field="mensajeRespuesta" header="Denunciante"></p-column>

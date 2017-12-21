@@ -85,6 +85,10 @@ export class ConsintercaliComponent implements OnInit {
         }
     }
 
+    nuevaDenuncia() {
+        this.router.navigate(['/denuncias/formregdenu']);
+    }
+
     enviarConsulta() {
         if (this.infoSolicitada === undefined || this.infoSolicitada.length === 0) {
             this.onErrorSolicitaMensaje('Debe ingresar la informacion solicitada.');
@@ -100,7 +104,7 @@ export class ConsintercaliComponent implements OnInit {
                     this.consultaInformacionAdicional();
                 },
                 (res: any) => {
-                    this.onError(res);
+                    this.onErrorSolicitaMensaje(res);
                     this.block = false;
                 });
         }

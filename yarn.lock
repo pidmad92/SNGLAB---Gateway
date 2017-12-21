@@ -2962,6 +2962,10 @@ file-loader@^0.8.1:
   dependencies:
     loader-utils "~0.2.5"
 
+file-saver@1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/file-saver/-/file-saver-1.3.3.tgz#cdd4c44d3aa264eac2f68ec165bc791c34af1232"
+
 filename-regex@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/filename-regex/-/filename-regex-2.0.1.tgz#c1c4b9bee3e09725ddb106b75c1e301fe2f18b26"
@@ -5513,6 +5517,10 @@ ncname@1.0.x:
 negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
+
+ng-excel@1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/ng-excel/-/ng-excel-1.0.5.tgz#23de708c9251f6e896942247adf5cfd8e0b8a308"
 
 ng-jhipster@0.2.12:
   version "0.2.12"

@@ -2,7 +2,7 @@ import { BaseEntity } from './../../../shared';
 import { Perjuridica } from './../../../entities/perjuridica';
 import { ComboModel } from '../../general/combobox.model';
 
-export class ConsinterModel implements BaseEntity {
+export class ConsexterModel implements BaseEntity {
     constructor(
         public id?: number,
         public serialize?: number,

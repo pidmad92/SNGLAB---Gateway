@@ -11,9 +11,9 @@ import { MessageService } from 'primeng/components/common/messageservice';
 import { ValidarrucService } from '../validar-ruc/validarruc.service';
 import { RegdenuService } from '../registro-denuncia/regdenu.service';
 import { CalifiService } from '../califi-denuncia/califi.service';
-import { ConsinterService } from './consinter.service';
+import { ConsexterService } from './consexter.service';
 import { ValidarUsuarioService } from '../validar-usuario/validarusuario.service';
-import { ConsinterModel } from './consinter.model';
+import { ConsexterModel } from './consexter.model';
 import { ComboModel } from '../../general/combobox.model';
 import { UbigeodepaModel } from '../../general/ubigeodepa.model';
 import { UbigeoprovModel } from '../../general/ubigeoprov.model';
@@ -21,11 +21,11 @@ import { UbigeodistModel } from '../../general/ubigeodist.model';
 import { ES } from './../../applications.constant';
 
 @Component({
-    selector: 'jhi-formreginterno',
-    templateUrl: './consinter.component.html',
+    selector: 'jhi-formregexterno',
+    templateUrl: './consexter.component.html',
 })
 
-export class ConsinterComponent implements OnInit {
+export class ConsexterComponent implements OnInit {
     block: boolean;
     messageList: any;
     messagesSolicitaInformacion: any;
@@ -34,9 +34,9 @@ export class ConsinterComponent implements OnInit {
     criterioBus: number;
     criterioTipoDoc: string;
     criterioNumDoc: string;
-    listaResultado: ConsinterModel[];
-    selectedResultado: ConsinterModel[];
-    listaRespuestas: ConsinterModel[];
+    listaResultado: ConsexterModel[];
+    selectedResultado: ConsexterModel[];
+    listaRespuestas: ConsexterModel[];
     es: any;
     @LocalStorage('serialize')
     serialize: number;
@@ -47,6 +47,9 @@ export class ConsinterComponent implements OnInit {
     listaMotfin: ComboModel[];
     selectMotfin: ComboModel;
     infoObsFin: string;
+    flagResponder: boolean;
+    mensajeSolicitado: string;
+    serializeCod: number;
 
     constructor(
         private eventManager: JhiEventManager,
@@ -54,7 +57,7 @@ export class ConsinterComponent implements OnInit {
         private validarrucService: ValidarrucService,
         private regdenuService: RegdenuService,
         private califiService: CalifiService,
-        private consinterService: ConsinterService,
+        private consexterService: ConsexterService,
         private validarUsuarioService: ValidarUsuarioService,
         private router: Router,
     ) {
@@ -72,6 +75,12 @@ export class ConsinterComponent implements OnInit {
         this.displayFinalizarDenuncias = false;
         this.listaMotfin = [];
         this.infoObsFin = '';
+        this.flagResponder = false;
+        this.serializeCod = 0;
+    }
+
+    nuevaDenuncia() {
+        this.router.navigate(['/denuncias/formregdenu']);
     }
 
     consultaInformacionAdicional() {
@@ -79,11 +88,20 @@ export class ConsinterComponent implements OnInit {
             this.onError('Debe seleccionar una sola denuncia.');
         } else {
             this.block = true;
-            this.consinterService.getFiltroInfoSoli({
+            this.consexterService.getFiltroInfoSoli({
                 nCoddenu: this.selectedResultado[0].serialize
             }).subscribe(
                 (res: any) => {
                     this.listaRespuestas = res;
+                    // tslint:disable-next-line:forin
+                    for (const i in this.listaRespuestas) {
+                        if (this.listaRespuestas[i].mensajeRespuesta === undefined || this.listaRespuestas[i].mensajeRespuesta === null) {
+                            this.flagResponder = true;
+                            this.mensajeSolicitado = this.listaRespuestas[i].mensajeSolicitado;
+                            this.serializeCod = this.listaRespuestas[i].serialize;
+                            break;
+                        }
+                    }
                     this.infoSolicitada = '';
                     this.block = false;
                     this.displayInfoAdicional = true;
@@ -102,7 +120,7 @@ export class ConsinterComponent implements OnInit {
                     this.onError('Debe ingresar el numero de RUC del empleado');
                 } else {
                     this.block = true;
-                    this.consinterService.getFiltro({
+                    this.consexterService.getFiltro({
                         criterio: this.criterioBus,
                         tipoDoc: '',
                         numDoc: this.criterioNumDoc
@@ -120,18 +138,21 @@ export class ConsinterComponent implements OnInit {
         }
     }
 
-    enviarConsulta() {
+    responderConsulta() {
         if (this.infoSolicitada === undefined || this.infoSolicitada.length === 0) {
             this.onErrorSolicitaMensaje('Debe ingresar la informacion solicitada.');
         } else {
             this.block = true;
-            this.consinterService.regInfoSoli({
-                vInfosoli: this.infoSolicitada,
-                nCoddenu: this.selectedResultado[0].serialize,
-                tFecsoli: new Date()
+            this.consexterService.regInfoRespuesta({
+                id: this.serializeCod,
+                vRespuesta: this.infoSolicitada.trim(),
+                tFecsoli: new Date(),
+                vInfosoli: this.infoSolicitada.trim()
             }).subscribe(
                 (res: any) => {
                     this.block = false;
+                    this.serializeCod = undefined;
+                    this.infoSolicitada = undefined;
                     this.consultaInformacionAdicional();
                 },
                 (res: any) => {
@@ -150,7 +171,7 @@ export class ConsinterComponent implements OnInit {
             for (const i in this.selectedResultado) {
                 codList.push(this.selectedResultado[i].serialize);
             }
-            this.consinterService.regAtenderDenu({
+            this.consexterService.regAtenderDenu({
                 codSerialize: codList
             }).subscribe(
                 (res: any) => {
@@ -178,7 +199,7 @@ export class ConsinterComponent implements OnInit {
             this.onError('Debe seleccionar como minimo una denuncia.');
         } else {
             this.block = true;
-            this.consinterService.getFiltroMotFin().subscribe(
+            this.consexterService.getFiltroMotFin().subscribe(
                 (res: any) => {
                     this.listaMotfin = [];
                     // tslint:disable-next-line:forin
@@ -204,7 +225,7 @@ export class ConsinterComponent implements OnInit {
             this.onErrorFinalizaDenu('Debe ingresar una observación para la finalización.');
         } else {
             this.block = true;
-            this.consinterService.regFinalizaDenu({
+            this.consexterService.regFinalizaDenu({
                 CodDenuncia: this.selectedResultado[0].serialize,
                 codFinaliza: this.selectMotfin.value,
                 obsFinaliza: this.infoObsFin
@@ -219,6 +240,13 @@ export class ConsinterComponent implements OnInit {
                     this.block = false;
                 });
         }
+    }
+
+    customRowClass(rowData, rowIndex): string {
+        if (rowData.cantInfosoli > 0) {
+            return 'rowAmarillo';
+        }
+        return '';
     }
 
     private onError(error: any) {

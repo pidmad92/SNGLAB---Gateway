@@ -19,31 +19,28 @@
                     </div>
                     <div class="ui-g">
                         <div *ngIf="criterioBus == 0" class="ui-md-10">
-                            <div class="ui-g">
-                                <div class="ui-md-6">
-                                    <label for="criterioTipoDoc">Tipo Doc.</label>
-                                    <select class="form-control" [(ngModel)]="criterioTipoDoc" name="criterioTipoDoc">
-                                        <option>RUC</option>
-                                    </select>
-                                </div>
-                                <div class="ui-md-6">
-                                    <label for="criterioNumDoc">Num. Doc.</label>
-                                    <input class="form-control" type="text" name="criterioNumDoc" [(ngModel)]="criterioNumDoc" />
-                                </div>
+                            <div class="ui-md-6">
+                                <label>Tipo Doc.</label>
+                                <select class="form-control" [(ngModel)]="criterioTipoDoc" name="criterioTipoDoc">
+                                    <option>RUC</option>
+                                </select>
+                            </div>
+                            <div class="ui-md-6">
+                                <input class="form-control" type="text" name="criterioNumDoc" [(ngModel)]="criterioNumDoc" />
                             </div>
                         </div>
                     </div>
                     <div class="ui-md-12">
                         <button (click)="buscarDenuncias()" class="btn btn-primary" type="button">Buscar</button>
-                        <button class="btn btn-primary" type="button">Nueva Denuncia</button>
+                        <button (click)="nuevaDenuncia()" class="btn btn-primary" type="button">Nueva Denuncia</button>
                     </div>
                 </fieldset>
-                <button (click)="consultaInformacionAdicional()" class="btn btn-default" type="button">Solicitar Información Adicional</button>
+                <button (click)="consultaInformacionAdicional()" class="btn btn-default" type="button">Responder Información Adicional</button>
                 <button (click)="atenderDenuncia()" class="btn btn-default" type="button">Atender Denuncia</button>
                 <button (click)="finalizaDenuncia()" class="btn btn-default" type="button">Finalizar Denuncia</button>
                 <form>
-                    <p-dataTable [value]="listaResultado" [(selection)]="selectedResultado" rowGroupMode="subheader" groupField="groupheader"
-                        expandableRowGroups="true" [sortableRowGroup]="false" dataKey="serialize">
+                    <p-dataTable [value]="listaResultado" [rowStyleClass]="customRowClass" [(selection)]="selectedResultado" rowGroupMode="subheader"
+                        groupField="groupheader" expandableRowGroups="true" [sortableRowGroup]="false" dataKey="serialize">
                         <p-header>Resultado de la consulta</p-header>
                         <ng-template pTemplate="rowgroupheader" let-rowData>{{rowData['groupheader']}}</ng-template>
                         <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
@@ -67,26 +64,35 @@
         <p-tabView [activeIndex]="0">
             <p-tabPanel header="Solicitar Información" style="height: 500" leftIcon="fa-id-card">
                 <p-messages [(value)]="messagesSolicitaInformacion"></p-messages>
-                <div class="row">
+                <div *ngIf="flagResponder" class="row">
                     <div class="col-md-12">
-                        <textarea rows="5" cols="130" autoResize="autoResize" pInputTextarea [(ngModel)]="infoSolicitada" name="infoSolicitada"></textarea>
+                        Mensaje:
+                        <br />
+                        <span>{{mensajeSolicitado}}</span>
+                    </div>
+                    <div class="col-md-12">
+                        <textarea rows="5" cols="130" pInputTextarea [(ngModel)]="infoSolicitada" name="infoSolicitada"></textarea>
                     </div>
                     <div class="col-md-12">
                         <button (click)="displayInfoAdicional = false" class="btn btn-primary" type="button">Cancelar</button>
-                        <button (click)="enviarConsulta()" class="btn btn-primary" type="button">Guardar</button>
+                        <button (click)="responderConsulta()" class="btn btn-primary" type="button">Guardar</button>
                     </div>
                 </div>
-
+                <div *ngIf="flagResponder == false" class="row">
+                    <div class="col-md-12">
+                        <span>No tiene mas solicitudes de información adicional</span>
+                    </div>
+                </div>
             </p-tabPanel>
             <p-tabPanel header="Respuestas" style="height: 500" leftIcon="fa-id-card">
                 <div class="row">
                     <div class="col-md-12">
                         <p-dataTable [value]="listaRespuestas" dataKey="serialize">
                             <p-header>Resultado de la consulta</p-header>
-                            <p-column field="mensajeSolicitado" header="Codigo"></p-column>
-                            <p-column field="mensajeRespuesta" header="Denunciante"></p-column>
-                            <p-column field="fechaRespuesta" header="Origen denuncia"></p-column>
-                            <p-column field="fechaSolicitada" header="Sector Economico"></p-column>
+                            <p-column field="mensajeSolicitado" header="Mensaje solicitado"></p-column>
+                            <p-column field="fechaSolicitada" header="Fecha solicitud"></p-column>
+                            <p-column field="mensajeRespuesta" header="Mensaje Respuesta"></p-column>
+                            <p-column field="fechaRespuesta" header="Fecha Respuesta"></p-column>
                         </p-dataTable>
                     </div>
                 </div>
@@ -123,7 +129,7 @@
         <div class="col-md-12">
             <label>Ingrese una observación</label>
             <br />
-            <textarea rows="5" cols="130" pInputTextarea [(ngModel)]="infoObsFin" name="infoObsFin"></textarea>
+            <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="infoObsFin" name="infoObsFin"></textarea>
         </div>
         <div class="col-md-12">
             <button (click)="displayFinalizarDenuncias = false" class="btn btn-primary" type="button">Cancelar</button>

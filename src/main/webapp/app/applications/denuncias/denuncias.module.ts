@@ -7,6 +7,7 @@ import { CalifiModule } from './califi-denuncia/califi.module';
 import { ReginternoModule } from './reginterno-denuncia/reginterno.module';
 import { ConsinterModule } from './consulta-interna/consinter.module';
 import { ConsintercaliModule } from './consultar-internacali/consintercali.module';
+import { ConsexterModule } from './consulta-externa/consexter.module';
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { ConsintercaliModule } from './consultar-internacali/consintercali.modul
         CalifiModule,
         ReginternoModule,
         ConsinterModule,
-        ConsintercaliModule
+        ConsintercaliModule,
+        ConsexterModule
     ],
     declarations: [],
     entryComponents: [],
