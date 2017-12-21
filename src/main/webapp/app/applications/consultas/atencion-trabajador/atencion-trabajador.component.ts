@@ -5,9 +5,11 @@ import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } f
 
 import { Atencion } from './atencion.model';
 import { Trabajador } from './trabajador.model';
+import { Tipdocident } from './tipdocident.model';
 import { ComboModel } from '../../general/combobox.model';
 import { AtencionTrabajadorService } from './atencion-trabajador.service';
 import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../shared';
+import { RegistroAtencionWizardService } from './atencion-trabajador-wizard/registro-atencion-wizard.service';
 
 @Component({
     selector: 'jhi-atencion-trabajador',
@@ -20,13 +22,14 @@ export class AtencionTrabajadorComponent implements OnInit, OnDestroy {
     currentAccount: any;
     eventSubscriber: Subscription;
     currentSearch: string;
+    selectedSucesion: any;
 
     trabajadorSelec: Object;
     trabajadores: Trabajador;
 
     tipoBusqueda = '1';
-    tipodocs: ComboModel[];
-    selectedTipodoc: ComboModel;
+    tipodocs: Tipdocident[];
+    selectedTipodoc: Tipdocident;
     vNumdoc: string;
     vNombre: string;
     vApaterno: string;
@@ -40,7 +43,8 @@ export class AtencionTrabajadorComponent implements OnInit, OnDestroy {
         private eventManager: JhiEventManager,
         private activatedRoute: ActivatedRoute,
         private router: Router,
-        private principal: Principal
+        private principal: Principal,
+        private registroAtencionWizardService: RegistroAtencionWizardService
     ) {
         this.currentSearch = activatedRoute.snapshot.params['search'] ? activatedRoute.snapshot.params['search'] : '';
     }
@@ -92,11 +96,11 @@ export class AtencionTrabajadorComponent implements OnInit, OnDestroy {
 
     buscarTrabajador() {
         if (this.tipoBusqueda === '1') {
-            console.log(this.selectedTipodoc.value + '|' + this.vNumdoc);
-            if (this.selectedTipodoc.value === undefined || this.vNumdoc === undefined) {
+            console.log(JSON.stringify(this.selectedTipodoc.id) + '|' + this.vNumdoc);
+            if (this.selectedTipodoc.id === undefined || this.vNumdoc === undefined) {
                 return;
             }
-            this.atencionTrabajadorService.findTrabajadorsByDocIdent(Number(this.selectedTipodoc.value), this.vNumdoc ).subscribe(
+            this.atencionTrabajadorService.findTrabajadorsByDocIdent(Number(this.selectedTipodoc.id), this.vNumdoc ).subscribe(
                 (res: ResponseWrapper)  => {
                     console.log(res.json);
                     this.trabajadores = res.json;
@@ -115,8 +119,15 @@ export class AtencionTrabajadorComponent implements OnInit, OnDestroy {
     cancelar() {
         this.displayDialog = false;
     }
-    cargarRegistroAtencion() {
-        this.router.navigate(['/consultas/registro-atencion-trabajador', { outlets: { wizard: ['datos-trabajador' , this.selecAten.aten.id] } }]);
+    cargarRegistroAtencion(actividad: string) {
+        // Validar si se envia una nueva atención una seleccionada
+        const atencion: Atencion = (actividad === '1') ?  new Atencion() : this.selecAten.aten;
+        console.log('NuevoReg: ' + actividad);
+        console.log('Nuevo1' + JSON.stringify(atencion));
+        this.registroAtencionWizardService.cambiarActividad(actividad);
+        this.registroAtencionWizardService.cambiarAtencion(atencion);
+        this.router.navigate(['/consultas/registro-atencion-trabajador', { outlets: { wizard: ['datos-trabajador'] } }]);
+        console.log('Nuevo2');
     }
 
     search(query) {
