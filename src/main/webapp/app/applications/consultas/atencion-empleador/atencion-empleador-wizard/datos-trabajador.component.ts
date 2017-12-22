@@ -6,7 +6,9 @@ import { Subscription, Observable } from 'rxjs/Rx';
 import { JhiEventManager } from 'ng-jhipster';
 
 import { Trabajador } from '../../models/trabajador.model';
-import { AtencionTrabajadorService } from './../atencion-trabajador.service';
+import { AtencionEmpleadorService } from './../atencion-empleador.service';
+// import { TipdocidentService } from '../tipdocident.service';
+// import { CartrabService } from '../cartrab.service';
 import { RegistroAtencionWizardService } from './registro-atencion-wizard.service';
 import { SelectItem } from 'primeng/primeng';
 
@@ -51,16 +53,17 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
 
     constructor(
         private eventManager: JhiEventManager,
-        private atencionTrabajadorService: AtencionTrabajadorService,
+        private atencionEmpleadorService: AtencionEmpleadorService,
         private router: Router,
         private registroAtencionWizard: RegistroAtencionWizardService,
+        // private tipdocidentService: TipdocidentService,
         // private cartrabService: CartrabService,
         private route: ActivatedRoute
     ) {
     }
 
     loadTipoDoc() {
-        this.atencionTrabajadorService.consultaTipoDocIdentidad().subscribe(
+        this.atencionEmpleadorService.consultaTipoDocIdentidad().subscribe(
             (res: ResponseWrapper) => {
                 this.tipodocs = res.json;
             },
@@ -68,7 +71,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
         );
     }
     loadDirecPerNatu(id: any) {
-        this.atencionTrabajadorService.buscarDireccionesPerNat(id).subscribe(
+        this.atencionEmpleadorService.buscarDireccionesPerNat(id).subscribe(
             (res: ResponseWrapper) => {
                 this.dirpernat = res.json;
             },
@@ -88,8 +91,8 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
             this.registroAtencionWizard.atenSeleccionado.subscribe((atencion) => {
                 this.atencion = atencion;
                 if (this.actividadSelec === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
-                    this.router.navigate(['/consultas/atencion-trabajador']);
-                } else if (this.actividadSelec === '1') { // Si el flujo es generado al clickear el boton nuevo registro se instanciaran los datos en blanco
+                    this.router.navigate(['/consultas/atencion-empleador']);
+                } else if (this.actividadSelec === '1') { // Si el flujo es generado al presionar el boton nuevo registro se instanciaran los datos en blanco
                     this.trabajador = new Trabajador();
                     this.trabajador.pernatural = new Pernatural();
                 } else {
@@ -106,6 +109,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                         this.trabajador.pernatural = this.atencion.trabajador.pernatural;
                     }
                 }
+                console.log('Atencion');
             });
         });
     }
@@ -114,17 +118,17 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
     }
 
     load(id) {
-        this.atencionTrabajadorService.findTrabajadorById(id).subscribe((trabajador) => {
+        this.atencionEmpleadorService.findTrabajadorById(id).subscribe((trabajador) => {
             this.trabajador = trabajador;
         });
     }
     loadDepartamentos() {
-        this.atencionTrabajadorService.consDep().subscribe((departamentos) => {
+        this.atencionEmpleadorService.consDep().subscribe((departamentos) => {
             this.departs = departamentos.json;
         });
     }
     loadProvincias(init: boolean, idDept) {
-        this.atencionTrabajadorService.consProv(this.padWithZero(idDept)).subscribe((provincias) => {
+        this.atencionEmpleadorService.consProv(this.padWithZero(idDept)).subscribe((provincias) => {
             this.provins = provincias.json;
             if (init) {
                 this.dirper.nCodprov = Number(this.provins[0].vCodpro);
@@ -133,7 +137,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
         });
     }
     loadDistritos(init: boolean, idProv) {
-        this.atencionTrabajadorService.consDis(this.padWithZero(this.dirper.nCoddepto), this.padWithZero(idProv)).subscribe((distritos) => {
+        this.atencionEmpleadorService.consDis(this.padWithZero(this.dirper.nCoddepto), this.padWithZero(idProv)).subscribe((distritos) => {
             this.distris = distritos.json;
             if (init) {
                 this.dirper.nCoddist = Number(this.distris[0].vCoddis);
@@ -152,12 +156,13 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
         this.displayDialog = true;
     }
     save() {
+        console.log('Grabar: ' + JSON.stringify(this.dirper));
         if (this.newDirec) {
             this.subscribeToSaveResponse(
-                 this.atencionTrabajadorService.createDirPerNat(this.dirper));
+                 this.atencionEmpleadorService.createDirPerNat(this.dirper));
         } else {
             this.subscribeToSaveResponse(
-                this.atencionTrabajadorService.updateDirPerNat(this.dirper));
+                this.atencionEmpleadorService.updateDirPerNat(this.dirper));
         }
         this.dirper = new Dirpernat();
     }
@@ -197,9 +202,16 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
         return item.vDescartra;
     }
     buscaTrabajadorByDocIdent() {
-         const tipodoc = 1;
+        console.log(JSON.stringify(this.selectedTipodoc.id) + '|' + this.vNumdocumento);
+        if (this.selectedTipodoc.id === undefined || this.vNumdocumento === undefined) {
+            return;
+        }
+         const tipodoc = this.selectedTipodoc.id; // 1;
          const numdoc =  this.vNumdocumento; //  '12345678';
-        this.atencionTrabajadorService.findTrabajadorByDocIdent(tipodoc, numdoc).subscribe((trabajador) => {
+         console.log(tipodoc);
+         console.log(numdoc);
+        this.atencionEmpleadorService.findTrabajadorByDocIdent(tipodoc, numdoc).subscribe((trabajador) => {
+            console.log(trabajador);
             this.trabajador = trabajador;
         });
     }
