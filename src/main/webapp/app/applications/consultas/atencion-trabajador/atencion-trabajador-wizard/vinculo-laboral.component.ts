@@ -8,7 +8,7 @@ import { ResponseWrapper } from '../../../../shared';
 import { Datlab } from '../../models/datlab.model';
 import { Docinperdlb } from '../../models/docinperdlb.model';
 import { Docingrper } from '../../models/docingrper.model';
-import { Motivocese } from '../../models/motivocese.model';
+import { Motcese } from '../../models/motcese.model';
 import { Regimenlab } from '../../models/regimenlab.model';
 import { AtencionTrabajadorService } from './../atencion-trabajador.service';
 import { RegistroAtencionWizardService } from './registro-atencion-wizard.service';
@@ -24,7 +24,7 @@ export class VinculoLaboralComponent implements OnInit, OnDestroy {
 
     atencion: any;
     datosLab: Datlab;
-    motivcese: Motivocese[];
+    motivcese: Motcese[];
     regimenlab: Regimenlab[];
 
     documentoIngSelecs: Docinperdlb[];

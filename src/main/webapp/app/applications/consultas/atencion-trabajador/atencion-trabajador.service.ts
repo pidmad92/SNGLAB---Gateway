@@ -17,11 +17,10 @@ import { Docinperdlb } from '../models/docinperdlb.model';
 import { Docingrper } from '../models/docingrper.model';
 import { Cartrab } from '../models/cartrab.model';
 import { Regimenlab } from '../models/regimenlab.model';
-import { Motivocese } from '../models/motivocese.model';
+import { Motcese } from '../models/motcese.model';
 import { ResponseWrapper, createRequestOption } from '../../../shared';
 import {ComboModel} from '../../general/combobox.model';
 import { Tipdocident } from '../models/tipdocident.model';
-import { Motcese } from '../../../entities/motcese/index';
 
 @Injectable()
 export class AtencionTrabajadorService {
