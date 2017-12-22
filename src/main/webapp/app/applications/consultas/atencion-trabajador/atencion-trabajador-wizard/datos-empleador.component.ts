@@ -4,20 +4,18 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription, Observable } from 'rxjs/Rx';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { Trabajador } from './../trabajador.model';
+import { Trabajador } from '../../models/trabajador.model';
 import { AtencionTrabajadorService } from './../atencion-trabajador.service';
-import { TipdocidentService } from '../tipdocident.service';
-import { CartrabService } from '../cartrab.service';
 import { SelectItem } from 'primeng/primeng';
 
-import { Atencion } from './../atencion.model';
-import { Empleador } from './../empleador.model';
-import { Dirpernat } from './../dirpernat.model';
-import { Dirperjuri } from './../dirperjuri.model';
-import { Perjuridica } from './../perjuridica.model';
-import { Pernatural } from './../pernatural.model';
-import { Tipdocident } from './../tipdocident.model';
-import { Cartrab } from './../cartrab.model';
+import { Atencion } from '../../models/atencion.model';
+import { Empleador } from '../../models/empleador.model';
+import { Dirpernat } from '../../models/dirpernat.model';
+import { Dirperjuri } from '../../models/dirperjuri.model';
+import { Perjuridica } from '../../models/perjuridica.model';
+import { Pernatural } from '../../models/pernatural.model';
+import { Tipdocident } from '../../models/tipdocident.model';
+import { Cartrab } from '../../models/cartrab.model';
 import { ResponseWrapper } from '../../../../shared';
 import { RegistroAtencionWizardService } from './registro-atencion-wizard.service';
 
@@ -55,13 +53,12 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
     dirper = new Dirperjuri();
     selecDirper: Dirperjuri;
     // fechoy: Date;
+    actividadSelec: string;
 
     constructor(
         private router: Router,
         private eventManager: JhiEventManager,
         private atencionTrabajadorService: AtencionTrabajadorService,
-        private tipdocidentService: TipdocidentService,
-        private cartrabService: CartrabService,
         private route: ActivatedRoute,
         private registroAtencionWizard: RegistroAtencionWizardService
     ) {
@@ -93,33 +90,31 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
         this.atencion = new Atencion();
         this.empleador = new Empleador();
         this.empleador.perjuridica = new Perjuridica();
-        this.subscription = this.registroAtencionWizard.atenSeleccionado.subscribe((atencion) => {
-            this.atencion = atencion;
-            if (atencion.datlab !== undefined ) {
-                console.log('NRO1');
-                this.empleador =  this.atencion.datlab.empleador;
-                console.log('EMP: ' + JSON.stringify(this.empleador));
-                this.empleador.perjuridica = this.atencion.datlab.empleador.perjuridica;
-                this.selectedTipodoc = this.atencion.datlab.empleador.perjuridica.tipdocident;
-                this.vNumdocumento = this.atencion.datlab.empleador.perjuridica.vNumdoc;
-                this.dirper = new Dirperjuri();
-                this.dirper.perjuridica = this.empleador.perjuridica;
-                this.loadDirecPerJuri(this.empleador.id);
-            } else if (atencion.empleador !== undefined) {
-                console.log('NRO2');
-                this.empleador =  this.atencion.empleador;
-                this.empleador.perjuridica = this.atencion.empleador.perjuridica;
-            } else if (atencion.vObsatenci === 'newAten') {
-                console.log('NRO3');
-                this.atencion.vObsatenci = '';
-                this.empleador = new Empleador();
-                this.empleador.perjuridica = new Perjuridica();
-            } else {
-                console.log('NRO4');
-                // this.router.navigate(['/consultas/atencion-trabajador']);
-            }
-        });
 
+        this.subscription = this.registroAtencionWizard.actividadSelec.subscribe((actividadSelect) => {
+            this.actividadSelec = actividadSelect;
+            this.registroAtencionWizard.atenSeleccionado.subscribe((atencion) => {
+                this.atencion = atencion;
+                if (this.actividadSelec === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
+                    this.router.navigate(['/consultas/atencion-trabajador']);
+                } else if (this.actividadSelec === '1') { // Si el flujo es generado al presionar el boton nuevo registro se instanciaran los datos en blanco
+                } else {
+                    if (atencion.datlab !== undefined ) { // Si la atencion datos laborales se obtienen los datos del trabajador de esta entidad
+                        this.empleador =  this.atencion.datlab.empleador;
+                        this.empleador.perjuridica = this.atencion.datlab.empleador.perjuridica;
+                        this.selectedTipodoc = this.atencion.datlab.empleador.perjuridica.tipdocident;
+                        this.vNumdocumento = this.atencion.datlab.empleador.perjuridica.vNumdoc;
+                        this.dirper = new Dirperjuri();
+                        this.dirper.perjuridica = this.empleador.perjuridica;
+                        this.loadDirecPerJuri(this.empleador.id);
+                    } else { // Si la atención no tiene datos laborales se carga la información de la propia atención.
+                        this.empleador =  this.atencion.empleador;
+                        this.empleador.perjuridica = this.atencion.empleador.perjuridica;
+                    }
+                }
+
+            });
+        });
     }
 
     ngOnDestroy() {
@@ -162,20 +157,18 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
     onRowSelect(event) {
         this.newDirec = false;
         this.dirper = this.cloneDirec(event.data.direc);
-        console.log('EventaDataRow' + JSON.stringify(event.data));
-        console.log('DirperRow' + JSON.stringify(this.dirper));
+        // console.log('EventaDataRow' + JSON.stringify(event.data));
+        // console.log('DirperRow' + JSON.stringify(this.dirper));
         this.loadProvincias(false, this.dirper.nCoddepto);
         this.loadDistritos(false, this.dirper.nCodprov);
         this.displayDialog = true;
     }
     save() {
-        console.log('Grabar: ' + JSON.stringify(this.dirper));
+        // console.log('Grabar: ' + JSON.stringify(this.dirper));
         if (this.newDirec) {
-            console.log('Insertar');
             this.subscribeToSaveResponse(
                  this.atencionTrabajadorService.createDirPerJuri(this.dirper));
         } else {
-            console.log('Actualizar');
             this.subscribeToSaveResponse(
                 this.atencionTrabajadorService.updateDirPerjuri(this.dirper));
         }

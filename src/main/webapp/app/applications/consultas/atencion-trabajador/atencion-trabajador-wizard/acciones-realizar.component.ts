@@ -5,8 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { Accionadop } from './../accionadop.model';
-import { AccionadopService } from './../accionadop.service';
+import { Accionadop } from '../../models/accionadop.model';
 import { AtencionTrabajadorService } from './../atencion-trabajador.service';
 
 import { ResponseWrapper } from '../../../../shared';
@@ -22,7 +21,7 @@ import { ResponseWrapper } from '../../../../shared';
     constructor(
         private eventManager: JhiEventManager,
         private atencionTrabajadorService: AtencionTrabajadorService,
-        private accionadopService: AccionadopService,
+        // private accionadopService: AccionadopService,
         private route: ActivatedRoute
     ) {
     }

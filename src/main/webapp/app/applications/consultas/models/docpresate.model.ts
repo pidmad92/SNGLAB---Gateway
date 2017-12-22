@@ -1,8 +1,9 @@
-import { BaseEntity } from './../../../shared';
+import { BaseEntity } from '../../../shared';
 
-export class Motatenofic implements BaseEntity {
+export class Docpresate implements BaseEntity {
     constructor(
         public id?: number,
+        public vObsdopate?: string,
         public nUsuareg?: number,
         public tFecreg?: any,
         public nFlgactivo?: boolean,
@@ -10,10 +11,8 @@ export class Motatenofic implements BaseEntity {
         public nUsuaupd?: number,
         public tFecupd?: any,
         public nSedeupd?: number,
-        public motate?: BaseEntity,
-        public oficina?: BaseEntity,
-        public motateselecs?: BaseEntity[],
-        public motivpases?: BaseEntity[],
+        public atencion?: BaseEntity,
+        public documento?: BaseEntity,
     ) {
         this.nFlgactivo = false;
     }

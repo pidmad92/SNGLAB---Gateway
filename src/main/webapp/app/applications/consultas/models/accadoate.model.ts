@@ -1,11 +1,8 @@
-import { BaseEntity } from './../../../shared';
+import { BaseEntity } from '../../../shared';
 
-export class Tipdocident implements BaseEntity {
+export class Accadoate implements BaseEntity {
     constructor(
         public id?: number,
-        public vDesdocide?: string,
-        public nNumdigi?: number,
-        public vDescorta?: string,
         public nUsuareg?: number,
         public tFecreg?: any,
         public nFlgactivo?: boolean,
@@ -13,8 +10,8 @@ export class Tipdocident implements BaseEntity {
         public nUsuaupd?: number,
         public tFecupd?: any,
         public nSedeupd?: number,
-        public pernaturals?: BaseEntity[],
-        public perjuridicas?: BaseEntity[],
+        public atencion?: BaseEntity,
+        public accionadop?: BaseEntity,
     ) {
         this.nFlgactivo = false;
     }

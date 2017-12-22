@@ -1,9 +1,8 @@
-import { BaseEntity } from './../../../shared';
+import { BaseEntity } from '../../../shared';
 
-export class Cartrab implements BaseEntity {
+export class Motatenofic implements BaseEntity {
     constructor(
         public id?: number,
-        public vDesCartra?: string,
         public nUsuareg?: number,
         public tFecreg?: any,
         public nFlgactivo?: boolean,
@@ -11,7 +10,10 @@ export class Cartrab implements BaseEntity {
         public nUsuaupd?: number,
         public tFecupd?: any,
         public nSedeupd?: number,
-        public trabajadors?: BaseEntity[],
+        public motate?: BaseEntity,
+        public oficina?: BaseEntity,
+        public motateselecs?: BaseEntity[],
+        public motivpases?: BaseEntity[],
     ) {
         this.nFlgactivo = false;
     }

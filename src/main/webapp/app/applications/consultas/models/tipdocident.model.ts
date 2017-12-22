@@ -1,9 +1,11 @@
-import { BaseEntity } from './../../../shared';
+import { BaseEntity } from '../../../shared';
 
-export class Docpresate implements BaseEntity {
+export class Tipdocident implements BaseEntity {
     constructor(
         public id?: number,
-        public vObsdopate?: string,
+        public vDesdocide?: string,
+        public nNumdigi?: number,
+        public vDescorta?: string,
         public nUsuareg?: number,
         public tFecreg?: any,
         public nFlgactivo?: boolean,
@@ -11,8 +13,8 @@ export class Docpresate implements BaseEntity {
         public nUsuaupd?: number,
         public tFecupd?: any,
         public nSedeupd?: number,
-        public atencion?: BaseEntity,
-        public documento?: BaseEntity,
+        public pernaturals?: BaseEntity[],
+        public perjuridicas?: BaseEntity[],
     ) {
         this.nFlgactivo = false;
     }

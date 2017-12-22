@@ -6,10 +6,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { Motate } from './../motate.model';
-import { Motatenofic } from './../motatenofic.model';
-import { Motateselec } from './../motateselec.model';
-import { MotatenoficService } from './../motatenofic.service';
+import { Motate } from '../../models/motate.model';
+import { Motatenofic } from '../../models/motatenofic.model';
+import { Motateselec } from '../../models/motateselec.model';
 import { AtencionTrabajadorService } from './../atencion-trabajador.service';
 
 import { ResponseWrapper } from '../../../../shared';
@@ -37,17 +36,16 @@ export class MotivosConsultaComponent implements OnInit, OnDestroy {
     constructor(
         private eventManager: JhiEventManager,
         private atencionTrabajadorService: AtencionTrabajadorService,
-        private motatenoficService: MotatenoficService,
         private route: ActivatedRoute,
         private router: Router,
         private registroAtencionWizard: RegistroAtencionWizardService
     ) {
     }
     loadMotivOfic(idofic) {
-        this.motatenoficService.findListaMotatenOfic(idofic).subscribe(
+        this.atencionTrabajadorService.findListaMotatenOfic(idofic).subscribe(
             (res: ResponseWrapper) => {
                 this.motatenofic = res.json;
-                console.log('Motivofic: ' + JSON.stringify(this.motatenofic));
+                console.log('Motivofic: ' + JSON.stringify(this.motatenofic[0]));
             },
             (res: ResponseWrapper) => { this.onError(res.json); }
         );
@@ -59,14 +57,22 @@ export class MotivosConsultaComponent implements OnInit, OnDestroy {
                 if (this.actividadSelec === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
                     this.router.navigate(['/consultas/atencion-trabajador']);
                 } else if (this.actividadSelec === '3') {
-                    // this.atencionTrabajadorService
+                    // Consultar los motivos generales por oficina y los motivos marcados
+                    this.atencionTrabajadorService.findListaMotateSelec(atencion.id, 5).subscribe(() => {
+
+                    });
                 } else {
                     // Cargar los motivos por el código de la oficina de consultas laborales '5'
                     this.loadMotivOfic(5);
                     // Consultar de forma interna por los motivos seleccionados
                     this.registroAtencionWizard.motateSeleccionado.subscribe((motatesel) => {
-                        console.log('MOTATESEL' + JSON.stringify(motatesel));
                         this.motsels = motatesel;
+                        this.selectmotatenofic = [];
+                        if (motatesel.length !== 0) {
+                            for (const selmot of motatesel) {
+                                this.selectmotatenofic.push(selmot.motatenofic)
+                            }
+                        }
                     });
                 }
             });
@@ -78,7 +84,7 @@ export class MotivosConsultaComponent implements OnInit, OnDestroy {
     }
 
     saveObservacion(event) {
-        console.log('EDIT1' + JSON.stringify(event));
+        // console.log('EDIT1' + JSON.stringify(event));
         // console.log('EDIT2' + JSON.stringify(this.motsels));
         let motivocheck = false;
         for (const valid of this.checkedsel) {
@@ -86,7 +92,7 @@ export class MotivosConsultaComponent implements OnInit, OnDestroy {
                 motivocheck = true;
             }
         }
-        console.log('MotivoCheck: ' + motivocheck);
+        // console.log('MotivoCheck: ' + motivocheck);
         if (motivocheck === true) {
             for (const mots of this.motsels) {
                 if ( mots.motatenofic.id === event.data.id) {
@@ -96,21 +102,24 @@ export class MotivosConsultaComponent implements OnInit, OnDestroy {
         }else {
             event.data.observacion = '';
         }
-        console.log('Mod' + JSON.stringify(this.motsels));
+        // console.log('Mod' + JSON.stringify(this.motsels));
     }
 
     saveMotSel(event: any) {
         console.log('Save1:' + JSON.stringify(event));
         this.motsel = new Motateselec();
         this.motsel.motatenofic = event.data;
+        if (this.motsels.length === 0) {
+            this.motsels = [];
+        }
         this.motsels.push(this.motsel);
         this.checkedsel.push(event.data.id);
-        console.log('Array1:' + this.checkedsel);
+        // console.log('Array1:' + this.checkedsel);
     }
 
     deleteMotSel(event: any) {
-        console.log('DEL1' + JSON.stringify(event.data));
-        console.log('DEL2' + JSON.stringify(this.motsels));
+        // console.log('DEL1' + JSON.stringify(event.data));
+        // console.log('DEL2' + JSON.stringify(this.motsels));
         let index = 0;
         for (const mots of this.motsels) {
             if ( mots.motatenofic.id === event.data.id) {
@@ -118,11 +127,11 @@ export class MotivosConsultaComponent implements OnInit, OnDestroy {
             }
             index++;
         }
-            console.log('DEL3' + index);
+        // console.log('DEL3' + index);
         this.motsels.splice(index, 1);
         this.checkedsel.splice(index, 1);
-        console.log('DEL4' + JSON.stringify(this.motsels));
-        console.log('Array2:' + this.checkedsel);
+        // console.log('DEL4' + JSON.stringify(this.motsels));
+        // console.log('Array2:' + this.checkedsel);
         // this.moduloEntidadService.delete(id).subscribe((response) => {});
     }
 

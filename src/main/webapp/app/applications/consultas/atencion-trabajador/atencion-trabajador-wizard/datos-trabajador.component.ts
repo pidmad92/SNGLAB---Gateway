@@ -5,18 +5,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription, Observable } from 'rxjs/Rx';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { Trabajador } from './../trabajador.model';
+import { Trabajador } from '../../models/trabajador.model';
 import { AtencionTrabajadorService } from './../atencion-trabajador.service';
-import { TipdocidentService } from '../tipdocident.service';
-import { CartrabService } from '../cartrab.service';
 import { RegistroAtencionWizardService } from './registro-atencion-wizard.service';
 import { SelectItem } from 'primeng/primeng';
 
-import { Atencion } from './../atencion.model';
-import { Dirpernat } from './../dirpernat.model';
-import { Pernatural } from './../pernatural.model';
-import { Tipdocident } from './../tipdocident.model';
-import { Cartrab } from './../cartrab.model';
+import { Atencion } from '../../models/atencion.model';
+import { Dirpernat } from '../../models/dirpernat.model';
+import { Pernatural } from '../../models/pernatural.model';
+import { Tipdocident } from '../../models/tipdocident.model';
+import { Cartrab } from '../../models/cartrab.model';
 import { ComboModel } from '../../../general/combobox.model';
 import { ResponseWrapper } from '../../../../shared';
 
@@ -56,8 +54,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
         private atencionTrabajadorService: AtencionTrabajadorService,
         private router: Router,
         private registroAtencionWizard: RegistroAtencionWizardService,
-        private tipdocidentService: TipdocidentService,
-        private cartrabService: CartrabService,
+        // private cartrabService: CartrabService,
         private route: ActivatedRoute
     ) {
     }
@@ -92,7 +89,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                 this.atencion = atencion;
                 if (this.actividadSelec === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
                     this.router.navigate(['/consultas/atencion-trabajador']);
-                } else if (this.actividadSelec === '1') { // Si el flujo es generado al presionar el boton nuevo registro se instanciaran los datos en blanco
+                } else if (this.actividadSelec === '1') { // Si el flujo es generado al clickear el boton nuevo registro se instanciaran los datos en blanco
                     this.trabajador = new Trabajador();
                     this.trabajador.pernatural = new Pernatural();
                 } else {
@@ -109,7 +106,6 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                         this.trabajador.pernatural = this.atencion.trabajador.pernatural;
                     }
                 }
-                console.log('Atencion');
             });
         });
     }
@@ -156,7 +152,6 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
         this.displayDialog = true;
     }
     save() {
-        console.log('Grabar: ' + JSON.stringify(this.dirper));
         if (this.newDirec) {
             this.subscribeToSaveResponse(
                  this.atencionTrabajadorService.createDirPerNat(this.dirper));
@@ -204,10 +199,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
     buscaTrabajadorByDocIdent() {
          const tipodoc = 1;
          const numdoc =  this.vNumdocumento; //  '12345678';
-         console.log(tipodoc);
-         console.log(numdoc);
         this.atencionTrabajadorService.findTrabajadorByDocIdent(tipodoc, numdoc).subscribe((trabajador) => {
-            console.log(trabajador);
             this.trabajador = trabajador;
         });
     }
