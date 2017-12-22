@@ -19,10 +19,6 @@ import { AtencionTrabajadorService,
     AtencionTrabajadorWizardComponent,
     atencionTrabajadorRoute,
     accionadopPopupRoute,
-    TipdocidentService,
-    CartrabService,
-    MotatenoficService,
-    AccionadopService
 } from './';
 
 // import { FormsModule } from '@angular/forms';
@@ -79,11 +75,7 @@ const ENTITY_STATES = [
     providers: [
         MessageService,
         AtencionTrabajadorService,
-        TipdocidentService,
-        CartrabService,
-        MotatenoficService,
         RegistroAtencionWizardService,
-        AccionadopService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

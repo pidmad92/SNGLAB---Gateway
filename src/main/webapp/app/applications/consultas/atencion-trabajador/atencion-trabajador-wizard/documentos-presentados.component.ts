@@ -5,8 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { Docpresate } from './../docpresate.model';
-import { DocpresateService } from './../docpresate.service';
+import { Docpresate } from '../../models/docpresate.model';
 import { AtencionTrabajadorService } from './../atencion-trabajador.service';
 
 import { ResponseWrapper } from '../../../../shared';
@@ -26,7 +25,7 @@ import { ResponseWrapper } from '../../../../shared';
     constructor(
         private eventManager: JhiEventManager,
         private atencionTrabajadorService: AtencionTrabajadorService,
-        private docpresateService: DocpresateService,
+        // private docpresateService: DocpresateService,
         private route: ActivatedRoute
     ) {
     }

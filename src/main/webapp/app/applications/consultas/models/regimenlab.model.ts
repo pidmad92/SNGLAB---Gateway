@@ -1,9 +1,9 @@
-import { BaseEntity } from './../../../shared';
+import { BaseEntity } from '../../../shared';
 
-export class Motate implements BaseEntity {
+export class Regimenlab implements BaseEntity {
     constructor(
         public id?: number,
-        public vDesmotate?: string,
+        public vDesreglab?: string,
         public nUsuareg?: number,
         public tFecreg?: any,
         public nFlgactivo?: boolean,
@@ -11,8 +11,7 @@ export class Motate implements BaseEntity {
         public nUsuaupd?: number,
         public tFecupd?: any,
         public nSedeupd?: number,
-        public motatenofics?: BaseEntity[],
-        public tipmotaten?: BaseEntity,
+        public datlabs?: BaseEntity[],
     ) {
         this.nFlgactivo = false;
     }

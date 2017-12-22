@@ -1,14 +1,9 @@
-import { BaseEntity } from './../../../shared';
+import { BaseEntity } from '../../../shared';
 
-export class Dirpernat implements BaseEntity {
+export class Trabajador implements BaseEntity {
     constructor(
         public id?: number,
-        public nCoddepto?: number,
-        public nCodprov?: number,
-        public nCoddist?: number,
-        public vDircomple?: string,
-        public vReferen?: string,
-        public nFlgnotifi?: boolean,
+        public nFlgsuces?: boolean,
         public nUsuareg?: number,
         public tFecreg?: any,
         public nFlgactivo?: boolean,
@@ -16,9 +11,14 @@ export class Dirpernat implements BaseEntity {
         public nUsuaupd?: number,
         public tFecupd?: any,
         public nSedeupd?: number,
+        public cartrab?: BaseEntity,
         public pernatural?: BaseEntity,
+        public expedientes?: BaseEntity[],
+        public datlabs?: BaseEntity[],
+        public atencions?: BaseEntity[],
+        public sucesors?: BaseEntity[],
     ) {
-        this.nFlgnotifi = false;
+        this.nFlgsuces = false;
         this.nFlgactivo = false;
     }
 }

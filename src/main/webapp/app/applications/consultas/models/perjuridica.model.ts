@@ -1,17 +1,14 @@
-import { BaseEntity } from './../../../shared';
+import { BaseEntity } from '../../../shared';
 
-export class Pernatural implements BaseEntity {
+export class Perjuridica implements BaseEntity {
     constructor(
         public id?: number,
-        public vNombres?: string,
-        public vApepat?: string,
-        public vApemat?: string,
+        public vRazsocial?: string,
+        public vNomalter?: string,
         public vNumdoc?: string,
+        public vEmail?: string,
         public vTelefono?: string,
-        public vCelular?: string,
-        public vEmailper?: string,
-        public dFecnac?: any,
-        public vsexoper?: string,
+        public vFaxperju?: string,
         public vEstado?: string,
         public nUsuareg?: number,
         public tFecreg?: any,
@@ -20,11 +17,10 @@ export class Pernatural implements BaseEntity {
         public nUsuaupd?: number,
         public tFecupd?: any,
         public nSedeupd?: number,
-        public denuntes?: BaseEntity[],
-        public dirpernats?: BaseEntity[],
+        public actiecon?: BaseEntity,
+        public denuncias?: BaseEntity[],
+        public dirperjuris?: BaseEntity[],
         public empleadors?: BaseEntity[],
-        public trabajadors?: BaseEntity[],
-        public sucesors?: BaseEntity[],
         public tipdocident?: BaseEntity,
     ) {
         this.nFlgactivo = false;
