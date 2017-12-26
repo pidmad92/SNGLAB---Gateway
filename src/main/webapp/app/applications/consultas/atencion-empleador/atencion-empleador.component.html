@@ -51,25 +51,36 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 mb-1" *ngIf="tippersona==='1'">
+                            <div class="col-md-12 mb-1" *ngIf="tippersona==='0'">
+                                <!-- <p-dataTable [value]="empleadores" [(selection)]="empleadorSelec" selectionMode="single" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" dataKey="id">
+                                        <p-header>Empleadores</p-header>
+                                        <p-column [style]="{'width':'38px'}" selectionMode="single"></p-column> -->
+                                        <!-- <p-column field="codPase" header="Cod. Pase"></p-column> -->
+                                        <!-- <p-column field="EmpleadorPernaturalTipdocident_vDescorta" header="Tipo Doc."></p-column>
+                                        <p-column field="EmpleadorPernatural_vNumdoc" header="Núm. Doc."></p-column>
+                                        <p-column field="NombEmpleador" header="Empleador"></p-column>
+                                        <p-column field="EmpleadorPernatural_vTelefono" header="Telefono"></p-column>
+                                </p-dataTable> -->
+
                                 <p-dataTable [value]="empleadores" [(selection)]="empleadorSelec" selectionMode="single" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" dataKey="id">
                                         <p-header>Empleadores</p-header>
                                         <p-column [style]="{'width':'38px'}" selectionMode="single"></p-column>
                                         <!-- <p-column field="codPase" header="Cod. Pase"></p-column> -->
                                         <p-column field="pernatural.tipdocident.vDescorta" header="Tipo Doc."></p-column>
                                         <p-column field="pernatural.vNumdoc" header="Núm. Doc."></p-column>
-                                        <!-- <p-column field="pernatural.vNombres" + "pernatural.vApepat" + "pernatural.vApemat" header="Empleador"></p-column> -->
+                                        <p-column field="NombEmpleador" header="Empleador"></p-column>
                                         <p-column field="pernatural.vTelefono" header="Telefono"></p-column>
                                 </p-dataTable>
                             </div>
-                            <div class="col-md-12 mb-1" *ngIf="tippersona==='0'">
+                            <div class="col-md-12 mb-1" *ngIf="tippersona==='1'">
                                 <p-dataTable [value]="empleadores" [(selection)]="empleadorSelec" selectionMode="single" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" dataKey="id">
                                         <p-header>Empleadores</p-header>
                                         <p-column [style]="{'width':'38px'}" selectionMode="single"></p-column>
                                         <!-- <p-column field="codPase" header="Cod. Pase"></p-column> -->
                                         <p-column field="perjuridica.tipdocident.vDescorta" header="Tipo Doc."></p-column>
                                         <p-column field="perjuridica.vNumdoc" header="Núm. Doc."></p-column>
-                                        <p-column field="perjuridica.vRazsocial" header="Empleador"></p-column>
+                                        <!-- <p-column field="perjuridica.vRazsocial" header="Empleador"></p-column> -->
+                                        <p-column field="NombEmpleador" header="Empleador"></p-column>
                                         <p-column field="perjuridica.vTelefono" header="Telefono"></p-column>
                                 </p-dataTable>
                             </div>

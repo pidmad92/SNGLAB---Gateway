@@ -9,6 +9,7 @@ import { Tipdocident } from '../models/tipdocident.model';
 import { ComboModel } from '../../general/combobox.model';
 import { AtencionEmpleadorService } from './atencion-empleador.service';
 import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../shared';
+import { RegistroAtencionWizardService } from './atencion-empleador-wizard/registro-atencion-wizard.service';
 
 @Component({
     selector: 'jhi-atencion-empleador',
@@ -43,6 +44,7 @@ export class AtencionEmpleadorComponent implements OnInit, OnDestroy {
         private activatedRoute: ActivatedRoute,
         private principal: Principal,
         private router: Router,
+        private registroAtencionWizardService: RegistroAtencionWizardService
     ) {
         this.currentSearch = activatedRoute.snapshot.params['search'] ? activatedRoute.snapshot.params['search'] : '';
     }
@@ -101,9 +103,9 @@ export class AtencionEmpleadorComponent implements OnInit, OnDestroy {
                 return;
             }
             if (this.selectedTipodoc.vDescorta === 'RUC') {
-                this.tippersona = '0';
-            } else {
                 this.tippersona = '1';
+            } else {
+                this.tippersona = '0';
             }
 
             this.atencionEmpleadorService.findConsultaEmpleadorsByDocIdent(Number(this.selectedTipodoc.id), this.vNumdoc, Number(this.tippersona)).subscribe(
@@ -128,13 +130,13 @@ export class AtencionEmpleadorComponent implements OnInit, OnDestroy {
     }
 
     cargarRegistroAtencion(actividad: string) {
-        // // Validar si se envia una nueva atención una seleccionada
-        // const atencion: Atencion = (actividad === '1') ?  new Atencion() : this.selecAten.aten;
+        // Validar si se envia una nueva atención una seleccionada
+        const atencion: Atencion = (actividad === '1') ?  new Atencion() : this.selecAten.aten;
         // console.log('NuevoReg: ' + actividad);
         // console.log('Nuevo1' + JSON.stringify(atencion));
-        // this.registroAtencionWizardService.cambiarActividad(actividad);
-        // this.registroAtencionWizardService.cambiarAtencion(atencion);
-        // this.router.navigate(['/consultas/registro-atencion-trabajador', { outlets: { wizard: ['datos-trabajador'] } }]);
+        this.registroAtencionWizardService.cambiarActividad(actividad);
+        this.registroAtencionWizardService.cambiarAtencion(atencion);
+        this.router.navigate(['/consultas/registro-atencion-empleador', { outlets: { wizard: ['datos-trabajador-representante'] } }]);
         // console.log('Nuevo2');
     }
 

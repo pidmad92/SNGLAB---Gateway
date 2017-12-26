@@ -6,6 +6,10 @@ import { TabViewModule, DataTableModule, CheckboxModule, SharedModule, CalendarM
 import { MessageService } from 'primeng/components/common/messageservice';
 
 import { DatosEmpleadorComponent } from './atencion-empleador-wizard/datos-empleador.component';
+import { DatosRepresentanteComponent } from './atencion-empleador-wizard/datos-representante.component';
+import { DatosTrabajadorComponent } from './atencion-empleador-wizard/datos-trabajador.component';
+import { MotivosConsultaComponent } from './atencion-empleador-wizard/motivos-consulta.component';
+import { DocumentosPresentadosComponent } from './atencion-empleador-wizard/documentos-presentados.component';
 import { RegistroAtencionWizardService } from './atencion-empleador-wizard/registro-atencion-wizard.service';
 
 import { GatewaySharedModule } from '../../../shared';
@@ -13,12 +17,12 @@ import { AtencionEmpleadorService,
     AtencionEmpleadorComponent,
     AtencionEmpleadorWizardComponent,
     atencionEmpleadorRoute,
-    // accionadopPopupRoute,
+    accionadopPopupRoute,
 } from './';
 
 const ENTITY_STATES = [
     ...atencionEmpleadorRoute,
-    // ...accionadopPopupRoute,
+    ...accionadopPopupRoute,
 ];
 
 @NgModule({
@@ -43,6 +47,10 @@ const ENTITY_STATES = [
         AtencionEmpleadorComponent,
         AtencionEmpleadorWizardComponent,
         DatosEmpleadorComponent,
+        DocumentosPresentadosComponent,
+        MotivosConsultaComponent,
+        DatosTrabajadorComponent,
+        DatosRepresentanteComponent,
         // AccionadopDetailComponent,
         // AccionadopDialogComponent,
         // AccionadopDeleteDialogComponent,
@@ -53,6 +61,10 @@ const ENTITY_STATES = [
         AtencionEmpleadorComponent,
         AtencionEmpleadorWizardComponent,
         DatosEmpleadorComponent,
+        DocumentosPresentadosComponent,
+        MotivosConsultaComponent,
+        DatosTrabajadorComponent,
+        DatosRepresentanteComponent,
         // AccionadopDialogComponent,
         // AccionadopPopupComponent,
         // AccionadopDeleteDialogComponent,

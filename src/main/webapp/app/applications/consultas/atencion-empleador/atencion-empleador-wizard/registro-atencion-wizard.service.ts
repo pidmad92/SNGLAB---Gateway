@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Atencion } from '../../models/atencion.model';
 import { Motateselec } from '../../models/motateselec.model';
+import { Docinperdlb } from '../../models/docinperdlb.model';
+import { Accionadop } from '../../models/accionadop.model';
 
 @Injectable()
 export class RegistroAtencionWizardService {
@@ -15,6 +17,9 @@ export class RegistroAtencionWizardService {
 
   private motateSelSource = new BehaviorSubject<Motateselec []>([]);
   motateSeleccionado = this.motateSelSource.asObservable();
+
+  private docingSelSource = new BehaviorSubject<Docinperdlb []>([]);
+  docingSeleccionado = this.docingSelSource.asObservable();
 
   constructor() { }
 
@@ -29,4 +34,9 @@ export class RegistroAtencionWizardService {
   cambiarMotivos(motateselec: Motateselec[]) {
     this.motateSelSource.next(motateselec)
   }
+
+  cambiarDocumentosIng(documentosIng: Docinperdlb[]) {
+    this.docingSelSource.next(documentosIng);
+  }
+
 }
