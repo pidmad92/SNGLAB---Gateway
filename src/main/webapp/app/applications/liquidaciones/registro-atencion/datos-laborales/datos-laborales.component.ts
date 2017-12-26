@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } from 'ng-jhipster';
-import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../shared';
+import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../../shared';
 import { Message } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
 
 @Component({
-    selector: 'jhi-registro-atencion',
-    templateUrl: './registro-atencion.component.html'
+    selector: 'jhi-datos-laborales',
+    templateUrl: './datos-laborales.component.html'
 })
 
-export class RegistroAtencionComponent implements OnInit {
+export class DatosLaboralesComponent implements OnInit {
     messages: Message[] = [];
     currentAccount: any;
     eventSubscriber: Subscription;
