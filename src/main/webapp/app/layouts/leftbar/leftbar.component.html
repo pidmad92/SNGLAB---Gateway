@@ -331,18 +331,18 @@
     <div class="my-2" *ngIf="aplicacion == 'liquidaciones'">
         <ul class="level-one mt-2 p-0" id="accordion">
             <li routerLinkActive="active">
-                <a routerLink="liquidaciones/registro-atencion/trabajador" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
-                    <i class="fa fa-user-plus px-2" aria-hidden="true"></i> <span>Registro de Atención</span>
+                <a routerLink="/liquidaciones/registro-atencion/trabajador" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                    <i class="fa fa-user-plus px-2" aria-hidden="true"></i> <span class="text-left">Registro de Atención</span>
                 </a>
             </li>
-            <li>
-                <a role="button" data-role="disabled" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+            <li routerLinkActive="active">
+                <a routerLink="/liquidaciones/calculo-liquidacion/cts" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
                     <i class="fa fa-percent px-2" aria-hidden="true"></i> <span class="text-left">Cálculo de Beneficios Sociales & Liquidaciones</span>
                 </a>
             </li>
             <li routerLinkActive="active">
-                <a routerLink="liquidaciones/consulta-liquidacion" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
-                    <i class="fa fa-eye px-2" aria-hidden="true"></i> <span>Consulta de Liquidaciones</span>
+                <a routerLink="/liquidaciones/consultas/trabajador" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                    <i class="fa fa-eye px-2" aria-hidden="true"></i> <span class="text-left">Consulta de Liquidaciones</span>
                 </a>
             </li>
         </ul>
