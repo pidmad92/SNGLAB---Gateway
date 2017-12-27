@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 import { Expediente } from './../../../entities/expediente/expediente.model';
-// import { AbogadoService } from './abogado.service';
+import { Concilia } from './concilia.model';
+import { ConciliaService } from './concilia.service';
 
 @Injectable()
 export class AudienciaConsultaPopupService {
@@ -13,7 +14,7 @@ export class AudienciaConsultaPopupService {
         private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
-        // private abogadoService: AbogadoService
+        private conciliaService: ConciliaService
 
     ) {
         this.ngbModalRef = null;
@@ -27,14 +28,23 @@ export class AudienciaConsultaPopupService {
             }
 
             if (id) {
-                // this.abogadoService.find(id).subscribe((abogado) => {
-                //     this.ngbModalRef = this.abogadoModalRef(component, abogado);
-                //     resolve(this.ngbModalRef);
-                // });
-                setTimeout(() => {
-                    this.ngbModalRef = this.audienciaModalRef(component, new Expediente());
+                this.conciliaService.find(id).subscribe((concilia) => {
+                    /*concilia.tFecreg = this.datePipe
+                        .transform(concilia.tFecreg, 'yyyy-MM-ddTHH:mm:ss');*/
+                        if (concilia.dFecconci) {
+                            concilia.dFecconci = {
+                                year: concilia.dFecconci.getFullYear(),
+                                month: concilia.dFecconci.getMonth() + 1,
+                                day: concilia.dFecconci.getDate()
+                            };
+                        }
+                        concilia.tFecreg = this.datePipe
+                            .transform(concilia.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                        concilia.tFecupd = this.datePipe
+                            .transform(concilia.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
+                    this.ngbModalRef = this.audienciaModalRef(component, concilia);
                     resolve(this.ngbModalRef);
-                }, 0);
+                });
             } else {
                 // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
                 setTimeout(() => {
@@ -45,9 +55,9 @@ export class AudienciaConsultaPopupService {
         });
     }
 
-    audienciaModalRef(component: Component, expediente: Expediente): NgbModalRef {
+    audienciaModalRef(component: Component, concilia: Concilia): NgbModalRef {
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
-        modalRef.componentInstance.expediente = expediente;
+        modalRef.componentInstance.concilia = concilia;
         modalRef.result.then((result) => {
             this.router.navigate(['defensa/audiencia/consulta'], { replaceUrl: true });
             this.ngbModalRef = null;

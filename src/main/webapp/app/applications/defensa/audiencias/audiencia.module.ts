@@ -28,8 +28,10 @@ import {
     AbogadoService,
     HoraconService,
     ResulconciService,
+    DirperjuriService,
+    DirpernatService,
     audienciaRoute } from './';
-import { TabViewModule, DataTableModule, CheckboxModule, DropdownModule, CalendarModule } from 'primeng/primeng';
+import { TabViewModule, DataTableModule, CheckboxModule, DropdownModule, CalendarModule, RadioButtonModule } from 'primeng/primeng';
 
 const ENTITY_STATES = [
     ...audienciaRoute
@@ -45,6 +47,7 @@ const ENTITY_STATES = [
         CheckboxModule,
         DropdownModule,
         CalendarModule,
+        RadioButtonModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
@@ -86,7 +89,9 @@ const ENTITY_STATES = [
         MessageService,
         AbogadoService,
         ResulconciService,
-        HoraconService
+        HoraconService,
+        DirperjuriService,
+        DirpernatService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

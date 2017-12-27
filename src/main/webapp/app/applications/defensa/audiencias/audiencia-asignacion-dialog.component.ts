@@ -153,7 +153,7 @@ export class AudienciaAsignacionDialogComponent implements OnInit {
 
     validarPersonaAbogado(): boolean {
         if (this.selectedAbogado === undefined) {
-            this.onErrorAbogado('Debe seleccionar un tipo de abogado');
+            this.onErrorAbogado('Debe seleccionar un abogado');
             return false;
         }   else {
             return true;
