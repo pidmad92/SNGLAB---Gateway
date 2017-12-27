@@ -6,8 +6,12 @@ import { JhiPaginationUtil } from 'ng-jhipster';
 
 import { AtencionEmpleadorComponent } from './atencion-empleador.component';
 import { AtencionEmpleadorWizardComponent } from './atencion-empleador-wizard.component';
+import { DatosRepresentanteComponent } from './atencion-empleador-wizard/datos-representante.component';
 import { DatosEmpleadorComponent } from './atencion-empleador-wizard/datos-empleador.component'
-// import { DatosTrabajadorComponent } from './atencion-trabajador-wizard/datos-trabajador.component';
+import { DatosTrabajadorComponent } from './atencion-empleador-wizard/datos-trabajador.component';
+import { AccionesRealizarComponent } from './atencion-empleador-wizard/acciones-realizar.component';
+import { DocumentosPresentadosComponent } from './atencion-empleador-wizard/documentos-presentados.component';
+import { MotivosConsultaComponent } from './atencion-empleador-wizard/motivos-consulta.component';
 // import { AccionadopDetailComponent } from './accionadop-detail.component';
 // import { AccionadopPopupComponent } from './accionadop-dialog.component';
 // import { AccionadopDeletePopupComponent } from './accionadop-delete-dialog.component';
@@ -45,6 +49,15 @@ export const accionadopPopupRoute: Routes = [
         canActivate: [UserRouteAccessService],
         children: [
             {
+                path: 'datos-trabajador-representante',
+                component: DatosRepresentanteComponent,
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'global.menu.entities.atencionTra'
+                },
+                outlet: 'wizard'
+            },
+            {
                 path: 'datos-empleador',
                 component: DatosEmpleadorComponent,
                 data: {
@@ -53,33 +66,24 @@ export const accionadopPopupRoute: Routes = [
                 },
                 outlet: 'wizard'
             },
-            // {
-            //     path: 'datos-trabajador',
-            //     component: DatosTrabajadorComponent,
-            //     data: {
-            //         authorities: ['ROLE_USER'],
-            //         pageTitle: 'global.menu.entities.atencionTra'
-            //     },
-            //     outlet: 'wizard'
-            // },
-            // {
-            //     path: 'datos-trabajador/:id',
-            //     component: DatosTrabajadorComponent,
-            //     data: {
-            //         authorities: ['ROLE_USER'],
-            //         pageTitle: 'global.menu.entities.atencionTra'
-            //     },
-            //     outlet: 'wizard'
-            // },
-            // {
-            //     path: 'motivos-consulta',
-            //     component: MotivosConsultaComponent,
-            //     data: {
-            //         authorities: ['ROLE_USER'],
-            //         pageTitle: 'global.menu.entities.atencionTra'
-            //     },
-            //     outlet: 'wizard'
-            // },
+            {
+                path: 'datos-trabajador',
+                component: DatosTrabajadorComponent,
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'global.menu.entities.atencionTra'
+                },
+                outlet: 'wizard'
+            },
+            {
+                path: 'motivos-consulta',
+                component: MotivosConsultaComponent,
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'global.menu.entities.atencionTra'
+                },
+                outlet: 'wizard'
+            },
             // {
             //     path: 'vinculo-laboral',
             //     component: VinculoLaboralComponent,
@@ -89,15 +93,15 @@ export const accionadopPopupRoute: Routes = [
             //     },
             //     outlet: 'wizard'
             // },
-            // {
-            //     path: 'documentos-presentados',
-            //     component: DocumentosPresentadosComponent,
-            //     data: {
-            //         authorities: ['ROLE_USER'],
-            //         pageTitle: 'global.menu.entities.atencionTra'
-            //     },
-            //     outlet: 'wizard'
-            // },
+            {
+                path: 'documentos-presentados',
+                component: DocumentosPresentadosComponent,
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'global.menu.entities.atencionTra'
+                },
+                outlet: 'wizard'
+            },
             // {
             //     path: 'acciones-realizar',
             //     component: AccionesRealizarComponent,

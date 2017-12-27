@@ -3,7 +3,7 @@
 	<div class="col">
 		<div class="card card-mtpe mb-3">
 			<div class="card-header bg-light d-sm-flex justify-content-between p-1">
-				<h5 class="mb-0"><small><i class="fa fa-user" aria-hidden="true"></i> Registro de Atención del Trabajador</small></h5>
+				<h5 class="mb-0"><small><i class="fa fa-user" aria-hidden="true"></i> Registro de Atención del Empleador</small></h5>
 			</div>
 			<div class="card-body">
 				<div class="consultas-laborales mb-2">
@@ -38,7 +38,7 @@
 					</form>
 					<div class="card">
 						<div class="card-header bg-secondary text-white d-sm-flex justify-content-between p-1">
-							<h6 class="mb-0"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Datos del Trabajador</h6>
+							<h6 class="mb-0"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Datos del Empleador</h6>
 						</div>
 						<div class="card-body">
 						<form>
@@ -81,7 +81,7 @@
 							</div>
 							<div class="row">
 							<div class="col-md-6 mb-3">
-								<div *ngIf="tippersona==='0'">
+								<div *ngIf="tippersona==='1'">
 									<p-dataTable [value]="dirperjuri" [scrollable]="true" scrollHeight="100px" selectionMode="single" [(selection)]="selecDirper"  (onRowSelect)="onRowSelect($event)" dataKey="direc.id">
 										<p-header>Direcciones</p-header>
 										<p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
@@ -98,7 +98,7 @@
 										</p-footer>
 									</p-dataTable>
 								</div>
-								<div *ngIf="tippersona==='1'">
+								<div *ngIf="tippersona==='0'">
 									<p-dataTable [value]="dirpernat" [scrollable]="true" scrollHeight="100px" selectionMode="single" [(selection)]="selecDirper"  (onRowSelect)="onRowSelect($event)" dataKey="direc.id">
 										<p-header>Direcciones</p-header>
 										<p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
