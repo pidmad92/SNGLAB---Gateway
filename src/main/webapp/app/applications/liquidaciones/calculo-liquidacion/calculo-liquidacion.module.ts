@@ -9,6 +9,11 @@ import { MessageService } from 'primeng/components/common/messageservice';
 import { CalculoLiquidacionRoute } from './calculo-liquidacion.route';
 
 import { CtsComponent } from './cts/cts.component';
+import { GratificacionesComponent } from './gratificaciones/gratificaciones.component';
+import { IndemnizacionesComponent } from './indemnizaciones/indemnizaciones.component';
+import { RemuneracionesInsolutasComponent } from './remuneraciones-insolutas/remuneraciones-insolutas.component';
+import { ResumenComponent } from './resumen/resumen.component';
+import { VacacionesComponent } from './vacaciones/vacaciones.component';
 
 const ENTITY_STATES = [
     ...CalculoLiquidacionRoute
@@ -23,7 +28,12 @@ const ENTITY_STATES = [
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
-        CtsComponent
+        CtsComponent,
+        GratificacionesComponent,
+        IndemnizacionesComponent,
+        RemuneracionesInsolutasComponent,
+        ResumenComponent,
+        VacacionesComponent
     ],
     entryComponents: [
     ],
