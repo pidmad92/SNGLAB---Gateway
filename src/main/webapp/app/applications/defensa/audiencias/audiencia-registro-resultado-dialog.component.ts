@@ -119,7 +119,6 @@ export class AudienciaRegistroResultadoDialogComponent implements OnInit {
             (res: ResponseWrapper) => {
                 this.resultados = [];
                 this.resultados = res.json;
-                // this.selectedAbogado = new ComboModel(this.abogado.vNomabogad, '' + this.abogado.id, 0);
             },
             (res: ResponseWrapper) => { this.onError(res.json); }
         );
@@ -154,7 +153,6 @@ export class AudienciaRegistroResultadoDialogComponent implements OnInit {
     }
 
     private onSaveSuccess(result: Concilia) {
-        console.log('broadcast');
         this.eventManager.broadcast({ name: 'conciliaListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);

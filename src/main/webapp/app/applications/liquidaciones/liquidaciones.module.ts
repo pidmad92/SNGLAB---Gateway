@@ -7,10 +7,14 @@ import { MessageModule } from 'primeng/primeng';
 import { DialogModule } from 'primeng/primeng';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { RegistroAtencionModule } from './registro-atencion/registro-atencion.module';
+import { ConsultasModule } from './consultas/consultas.module';
+import { CalculoLiquidacionModule } from './calculo-liquidacion/calculo-liquidacion.module';
 
 @NgModule({
     imports: [
         RegistroAtencionModule,
+        ConsultasModule,
+        CalculoLiquidacionModule
     ],
     declarations: [],
     entryComponents: [],

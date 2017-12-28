@@ -25,7 +25,7 @@ export class TopbarComponent implements OnInit {
     ruta: any;
     private modules: { id: string, nombre: string, ruta: any }[] = [
         { 'id': '0', 'nombre': 'seguridad', 'ruta': ['/'] },
-        { 'id': '1', 'nombre': 'liquidaciones', 'ruta': ['/liquidaciones/registro-atencion'] },
+        { 'id': '1', 'nombre': 'liquidaciones', 'ruta': ['/liquidaciones/registro-atencion/trabajador'] },
         { 'id': '2', 'nombre': 'consultas', 'ruta': ['consultas/atencion-trabajador'] },
         { 'id': '3', 'nombre': 'conciliacion', 'ruta': ['/defensa/expediente/registro' , { outlets: { wizard: ['datos-pase'] } }] },
         { 'id': '4', 'nombre': 'defensa', 'ruta': ['/defensa/expediente/registro' , { outlets: { wizard: ['datos-pase'] } }] },

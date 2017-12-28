@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Rx';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
+import { Pasegl } from '../models/pasegl.model';
 import { Atencion } from '../models/atencion.model';
 import { Empleador } from '../models/empleador.model';
 import { ResponseWrapper, createRequestOption } from '../../../shared';
@@ -29,6 +30,7 @@ export class AtencionEmpleadorService {
     private resource = '/consultas/api/';
 
 // RUTAS POR ENTIDAD
+    private resourcePasegl    = this.resource + 'pasegls';
     private resourceAtencion    = this.resource + 'atencions';
     private resourceTipoDoc     = this.resource + 'tipdocidents';
     private resourceTrabajador  = this.resource + 'trabajadors';
@@ -108,7 +110,7 @@ export class AtencionEmpleadorService {
         }
 
         /**
-         * Grabar direcciòn persona natural
+         * Grabar dirección persona natural
          * @param  {Dirpernat} dirpernat
          * @returns Observable
          */
@@ -124,7 +126,7 @@ export class AtencionEmpleadorService {
         }
 
         /**
-         * Actualizar direcciòn persona natural
+         * Actualizar dirección persona natural
          * @param  {Dirpernat} dirpernat
          * @returns Observable
          */
@@ -149,7 +151,7 @@ export class AtencionEmpleadorService {
         }
 
         /**
-         * Grabar direcciòn persona jurìdica
+         * Grabar dirección persona jurìdica
          * @param  {Dirperjuri} dirperjuri
          * @returns Observable
          */
@@ -165,7 +167,7 @@ export class AtencionEmpleadorService {
         }
 
         /**
-         * Grabar direccòn persona jurìdica
+         * Grabar direccón persona jurìdica
          * @param  {Dirperjuri} dirperjuri
          * @returns Observable
          */
@@ -238,7 +240,7 @@ export class AtencionEmpleadorService {
 // -- ATENCION
 
         /**
-         * Buscar atencìòn por còdigo
+         * Buscar atencìón por código
          * @param  {any} id
          * @returns Observable
          */
@@ -250,7 +252,7 @@ export class AtencionEmpleadorService {
         }
 
         /**
-         * Buscar Atenciones por còdigo de trabajador
+         * Buscar Atenciones por código de trabajador
          * @param  {String} id
          * @returns Observable
          */
@@ -260,13 +262,25 @@ export class AtencionEmpleadorService {
         }
 
         /**
-         * Buscar Atenciones por còdigo de trabajador
+         * Buscar Atenciones por código de trabajador
          * @param  {String} id
          * @returns Observable
          */
         findAtencionsByEmpleador(id: String): Observable<ResponseWrapper> {
             return this.http.get(`${this.resourceAtencion}/empleador/id/${id}`)
                 .map((res: Response) => this.convertResponseAtencion(res));
+        }
+
+// PASES
+
+        /**
+         * Buscar Pases por código de Empleador
+         * @param  {String} id
+         * @returns Observable
+         */
+        findPasesByEmpleador(id: number): Observable<ResponseWrapper> {
+            return this.http.get(`${this.resourcePasegl}/pases/empleador/${id}/oficina/5/estado/1`)
+                .map((res: Response) => this.convertResponsePase(res));
         }
 
 // TRABAJADORES
@@ -439,6 +453,21 @@ export class AtencionEmpleadorService {
     }
     private convertItemFromServerAtencion(json: any): Atencion {
         const entity: Atencion = Object.assign(new Atencion(), json);
+        entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+        return entity;
+    }
+
+    private convertResponsePase(res: Response): ResponseWrapper {
+        const jsonResponse = res.json();
+        const result = [];
+        for (let i = 0; i < jsonResponse.length; i++) {
+            result.push(this.convertItemFromServerPase(jsonResponse[i]));
+        }
+        return new ResponseWrapper(res.headers, result, res.status);
+    }
+    private convertItemFromServerPase(json: any): Pasegl {
+        const entity: Pasegl = Object.assign(new Pasegl(), json);
         entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
         entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
         return entity;

@@ -44,3 +44,7 @@ export * from './resulconci.model';
 export * from './resulconci.service';
 export * from './horacon.model';
 export * from './horacon.service';
+export * from './dirperjuri.model';
+export * from './dirperjuri.service';
+export * from './dirpernat.model';
+export * from './dirpernat.service';

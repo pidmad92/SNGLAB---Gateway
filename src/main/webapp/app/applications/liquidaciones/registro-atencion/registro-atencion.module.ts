@@ -7,9 +7,12 @@ import { DialogModule } from 'primeng/primeng';
 import { MessageService } from 'primeng/components/common/messageservice';
 
 import {
-    RegistroAtencionComponent,
     RegistroAtencionRoute
 } from './';
+
+import { TrabajadorComponent } from './trabajador/trabajador.component';
+import { EmpleadorComponent } from './empleador/empleador.component';
+import { DatosLaboralesComponent } from './datos-laborales/datos-laborales.component';
 
 const ENTITY_STATES = [
     ...RegistroAtencionRoute
@@ -24,10 +27,11 @@ const ENTITY_STATES = [
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
-        RegistroAtencionComponent
+        TrabajadorComponent,
+        EmpleadorComponent,
+        DatosLaboralesComponent
     ],
     entryComponents: [
-        RegistroAtencionComponent
     ],
     providers: [
         MessageService

@@ -26,8 +26,6 @@ export class AudienciaAsignacionPopupService {
             if (isOpen) {
                 resolve(this.ngbModalRef);
             }
-            console.log('id audiencia-asignacion-popup.service');
-            console.log(id);
             if (id) {
                 this.conciliaService.find(id).subscribe((concilia) => {
                     /*concilia.tFecreg = this.datePipe

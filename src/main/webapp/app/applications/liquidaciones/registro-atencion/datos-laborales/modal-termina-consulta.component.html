@@ -1,0 +1,42 @@
+<div class="modal fade" id="termAtencion" tabindex="-1" role="dialog" aria-labelledby="titleReg" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white p-2">
+                <h5 class="modal-title" id="titleReg">Finalizar consulta</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info" role="alert">
+                    <div class="row">
+                        <div class="col"><i class="fa fa-id-card" aria-hidden="true"></i> 79413933</div>
+                        <div class="col"><i class="fa fa-user" aria-hidden="true"></i> Maldonado Diaz Pierre David</div>
+                    </div>
+                </div>
+                <p>Ingrese los detalles de su atención</p>
+                <form>
+                    <div class="row">
+                        <div class="col-md mb-2">
+                            <label for="selectMotivo" class="col-form-label col-form-label-sm">Motivo de la atención:</label>
+                            <select class="form-control form-control-sm" id="selectMotivo">
+                    <option>Solicito consulta</option>
+                    <option>...</option>
+                  </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md mb-2">
+                            <label for="inpObs" class="col-form-label col-form-label-sm">Observación:</label>
+                            <input type="text" class="form-control form-control-sm" id="inpObs" placeholder="" value="Informe">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <a href="#" class="btn btn-sm btn-danger" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
+                <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-sign-out" aria-hidden="true"></i> Finalizar atención</a>
+            </div>
+        </div>
+    </div>
+</div>

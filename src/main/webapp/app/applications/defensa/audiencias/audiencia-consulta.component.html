@@ -7,54 +7,73 @@
             <div class="card-body">
                 <p-tabView>
                     <p-tabPanel header="Por Fecha" [selected]="true">
-                        <fieldset class="col">     
+                        <fieldset class="col">
                             <legend>Búsqueda</legend>
                             <form>
                                 <div class="form-row">
-                                    <div class="col-md-9">
-                                        <div class="form-group row">
-                                            <label for="inpTipo" class="col-sm-2 col-form-label">Fechas:</label>
-                                            <div class="col-sm-3 pl-0">
-                                                <p-calendar name="rangeDates" [(ngModel)]="rangeDates" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" selectionMode="range" readonlyInput="true"></p-calendar>
+                                    <div class="col-md-3">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p-radioButton name="groupname" value="1" label="Por: Nro. de Exp." [(ngModel)]="tipoBusqueda"></p-radioButton>
                                             </div>
-                                            <label for="inpNumero" class="col-sm-2 col-form-label">N° Expediente:</label>
-                                            <div class="col-sm-4">
-                                                <input type="text" class="form-control">
+                                            <div class="col-md-12">
+                                                <p-radioButton name="groupname" value="2" label="Por: Rango de Fechas" [(ngModel)]="tipoBusqueda"></p-radioButton>
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div *ngIf="tipoBusqueda==='1'" class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="vNumexp" class="col-sm-3 col-form-label">Nº Expediente:</label>
+                                            <div class="col-sm-4 px-0">
+                                                <input class="form-control form-control-sm" type="text" [(ngModel)]="vNumexp" name="vNumexp" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="tipoBusqueda==='2'" class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="inpTipo" class="col-sm-3 col-form-label">Fechas:</label>
+                                            <p-calendar name="rangeDates" [(ngModel)]="rangeDates" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true"
+                                                yearRange="2000:2030" selectionMode="range" readonlyInput="true"></p-calendar>
+                                        </div>
+                                    </div>
                                     <div class="col-md-3 text-center">
-                                        <a href="#" class="btn btn-sm btn-secondary "><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                                        <button (click)="buscarAudiencia()" class="btn btn-sm btn-secondary px-3"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</button>
                                     </div>
                                 </div>
                             </form>
                         </fieldset>
                         <div class="row my-2">
                             <div class="col-md-2 text-center">
-                                <a [routerLink]="['/defensa/audiencia/consulta', { outlets: { popupexp: id } }]" class="btn btn-success "><i class="fa fa-archive" aria-hidden="true"></i> Ver Audiencia</a>
+                                <a [routerLink]="['/defensa/audiencia/consulta', { outlets: { popupexp: id } }]" class="btn btn-success ">
+                                    <i class="fa fa-archive" aria-hidden="true"></i> Ver Audiencia</a>
                             </div>
                         </div>
                         <form>
                             <div class="row">
                                 <div class="col-md-12 mb-3">
-                                    <p-dataTable selectionMode="single" [value]="expedientes" dataKey="codexpediente">
+                                    <p-dataTable selectionMode="single" [value]="concilias" dataKey="id" (onRowSelect)="onRowSelect($event)">
                                         <p-header>Expedientes</p-header>
-                                        <p-column field="item" header="Item"></p-column>
-                                        <p-column field="estado" header="Estado"></p-column>
-                                        <p-column field="codexpediente" header="Nro. Expediente"></p-column>
-                                        <p-column field="fecha" header="Fecha de Registro"></p-column>
-                                        <p-column field="conciliador" header="Conciliador"></p-column>
-                                        <p-column field="ruc" header="Razón Nro. RUC"></p-column>
-                                        <p-column field="empleador" header="Empleador"></p-column>
-                                        <p-column field="nrotra" header="Nro. Documento"></p-column>
-                                        <p-column field="nomtra" header="Trabajador"></p-column>
+                                        <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
+                                            <ng-template let-i="rowIndex" pTemplate="body">
+                                                <span style="text-align:center">{{i+1}}</span>
+                                            </ng-template>
+                                        </p-column>
+                                        <p-column field="expediente.vNumexp" header="Nro. Expediente"></p-column>
+                                        <p-column field="nrodocemp" header="Razón Nro. RUC"></p-column>
+                                        <p-column field="fullnameemp" header="Empleador"></p-column>
+                                        <p-column field="nrodoctrab" header="Nro. Documento"></p-column>
+                                        <p-column field="fullnametrab" header="Trabajador"></p-column>
+                                        <p-column field="fechahoraconci" header="Fecha de Conciliación"></p-column>
+                                        <p-column field="abogado.vNomabogad" header="Conciliador"></p-column>
+                                        <p-column field="resulconci.vDescrip" header="Resultado"></p-column>
                                     </p-dataTable>
                                 </div>
                             </div>
                         </form>
                     </p-tabPanel>
                     <p-tabPanel header="Por Conciliador">
-                        <fieldset class="col">     
+                        <fieldset class="col">
                             <legend>Búsqueda</legend>
                             <form>
                                 <div class="form-row">
@@ -62,34 +81,42 @@
                                         <div class="form-group row">
                                             <label for="inpTipo" class="col-sm-3 col-form-label">Conciliador:</label>
                                             <div class="col-sm-9 pl-0">
-                                                <select class="form-control form-control-sm" id="inpTipo">
-                                                </select>
+                                                <p-dropdown [options]="abogados" name="selectedAbogado" [(ngModel)]="selectedAbogado" placeholder="Seleccione"
+                                                name="selectedAbogado" optionLabel="name" autoWidth="false" [style]="{'width':'300px'}"></p-dropdown>    
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <a href="#" class="btn btn-sm btn-secondary "><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                                        <a href="#" class="btn btn-sm btn-secondary ">
+                                            <button (click)="buscarAudienciaAbogado()" class="btn btn-sm btn-secondary px-3"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</button>
                                     </div>
                                 </div>
                             </form>
                         </fieldset>
                         <div class="row my-2">
                             <div class="col-md-2 text-center">
-                                <a [routerLink]="['/defensa/audiencia/consulta', { outlets: { popupexp: id } }]" class="btn btn-success "><i class="fa fa-archive" aria-hidden="true"></i> Ver Audiencia</a>
+                                <a [routerLink]="['/defensa/audiencia/consulta', { outlets: { popupexp: id } }]" class="btn btn-success ">
+                                    <i class="fa fa-archive" aria-hidden="true"></i> Ver Audiencia</a>
                             </div>
                         </div>
                         <form>
                             <div class="row">
                                 <div class="col-md-12 mb-3">
-                                    <p-dataTable [value]="expedientes" dataKey="codexpediente">
-                                            <p-header>Expedientes</p-header>
-                                            <p-column field="item" header="Item"></p-column>
-                                            <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
-                                            <p-column field="codexpediente" header="Nro. Expediente"></p-column>
-                                            <p-column field="fecha" header="Fecha de Registro"></p-column>
-                                            <p-column field="conciliador" header="Conciliador"></p-column>
-                                            <p-column field="ruc" header="Razón Nro. RUC"></p-column>
-                                            <p-column field="empleador" header="Empleador"></p-column>
+                                    <p-dataTable selectionMode="single" [value]="concilias2" dataKey="id" (onRowSelect)="onRowSelect($event)">
+                                        <p-header>Expedientes</p-header>
+                                        <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
+                                            <ng-template let-i="rowIndex" pTemplate="body">
+                                                <span style="text-align:center">{{i+1}}</span>
+                                            </ng-template>
+                                        </p-column>
+                                        <p-column field="expediente.vNumexp" header="Nro. Expediente"></p-column>
+                                        <p-column field="nrodocemp" header="Razón Nro. RUC"></p-column>
+                                        <p-column field="fullnameemp" header="Empleador"></p-column>
+                                        <p-column field="nrodoctrab" header="Nro. Documento"></p-column>
+                                        <p-column field="fullnametrab" header="Trabajador"></p-column>
+                                        <p-column field="fechahoraconci" header="Fecha de Conciliación"></p-column>
+                                        <p-column field="abogado.vNomabogad" header="Conciliador"></p-column>
+                                        <p-column field="resulconci.vDescrip" header="Resultado"></p-column>
                                     </p-dataTable>
                                 </div>
                             </div>
@@ -101,4 +128,3 @@
     </div>
 </div>
 <router-outlet name="popupexp"></router-outlet>
-
