@@ -87,8 +87,8 @@ export class ValidarUsuarioComponent implements OnInit {
         this.displayNuevoUsuario = false;
         this.block = false;
         this.indexTab = 0;
-        this.disableTab1 = true;
-        this.disableTab2 = false;
+        this.disableTab1 = false;
+        this.disableTab2 = true;
         this.cambiaDir = false;
         this.pernatural = new Pernatural();
         this.dirdenunDirec = new Dirdenun();
@@ -100,9 +100,7 @@ export class ValidarUsuarioComponent implements OnInit {
     }
 
     validarDatoPersona() {
-        this.block = true;
         this.messageList = [];
-
         if (this.selectedTipodoc === undefined) {
             this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar un tipo de documento.' });
         } else if (this.pernatural.vNumdoc === '') {
@@ -122,48 +120,71 @@ export class ValidarUsuarioComponent implements OnInit {
         } else if (this.pernatural.vCelular === '') {
             this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar su celular.' });
         } else {
-            this.messageList = [];
-            this.validarUsuarioService.consultaPersonaValidaServicio(
-                {
-                    TipoDoc: this.selectedTipodoc.name,
-                    vApepat: this.pernatural.vApepat,
-                    vApemat: this.pernatural.vApemat,
-                    vNombres: this.pernatural.vNombres,
-                    vNumdoc: this.pernatural.vNumdoc,
-                    vTelefono: this.pernatural.vTelefono,
-                    vCelular: this.pernatural.vCelular,
-                    vEmailper: this.pernatural.vEmailper
-                }).subscribe(
-                (res: Pernatural) => {
-                    this.pernatural = res;
-                    if (this.pernatural.Resultado) {
-                        this.validarUsuarioService.consultaDepa(this.pernatural.coddep).subscribe(
-                            (dep: any) => {
-                                this.validarUsuarioService.consultaProv(this.pernatural.coddep, this.pernatural.codpro).subscribe(
-                                    (prov: any) => {
-                                        this.validarUsuarioService.consultaDist(this.pernatural.coddep, this.pernatural.codpro, this.pernatural.coddist).subscribe(
-                                            (dist: any) => {
-                                                this.dirdenunDirec.vCoddepartDes = (dep.length > 0) ? dep[0].vDesdep : '';
-                                                this.dirdenunDirec.vCodprovinDes = (prov.length > 0) ? prov[0].vDespro : '';
-                                                this.dirdenunDirec.vCoddistriDes = (dist.length > 0) ? dist[0].vDesdis : '';
-                                                this.block = false;
-                                                this.avanzarVentana();
-                                            },
-                                            (dist: ResponseWrapper) => {
-                                                this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: prov }]);
-                                                this.block = false;
-                                            });
-                                    },
-                                    (prov: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: prov }]); this.block = false; });
-                            },
-                            (dep: ResponseWrapper) => this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: res }]));
-                    } else {
-                        this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: 'Los datos del documento de identidad no corresponden a los ingresados.' }])
-                        this.block = false;
-                    }
-                },
-                (res: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: res.json }]); this.block = false; }
-                );
+            console.log(this.pernatural.vApepat);
+            console.log(this.pernatural.vApemat);
+            console.log(this.pernatural.vNombres);
+            if (this.pernatural.vApepat === undefined || this.pernatural.vApepat.trim() === '') {
+                this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar su apellido paterno' });
+                this.block = false;
+            } else if (this.pernatural.vApemat === undefined || this.pernatural.vApemat.trim() === '') {
+                this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar su apellido materno' });
+                this.block = false;
+            } else if (this.pernatural.vNombres === undefined || this.pernatural.vNombres.trim() === '') {
+                this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar su nombre completo' });
+                this.block = false;
+            } else {
+                this.block = true;
+                this.messageList = [];
+                this.validarUsuarioService.consultaPersonaValidaServicio(
+                    {
+                        TipoDoc: this.selectedTipodoc.name,
+                        vApepat: this.pernatural.vApepat,
+                        vApemat: this.pernatural.vApemat,
+                        vNombres: this.pernatural.vNombres,
+                        vNumdoc: this.pernatural.vNumdoc,
+                        vTelefono: this.pernatural.vTelefono,
+                        vCelular: this.pernatural.vCelular,
+                        vEmailper: this.pernatural.vEmailper
+                    }).subscribe(
+                    (res: Pernatural) => {
+                        this.pernatural = res;
+                        if (this.pernatural.Resultado) {
+                            this.validarUsuarioService.consultaDepa(this.pernatural.coddep).subscribe(
+                                (dep: any) => {
+                                    this.validarUsuarioService.consultaProv(this.pernatural.coddep, this.pernatural.codpro).subscribe(
+                                        (prov: any) => {
+                                            this.validarUsuarioService.consultaDist(this.pernatural.coddep, this.pernatural.codpro, this.pernatural.coddist).subscribe(
+                                                (dist: any) => {
+                                                    this.dirdenunDirec.vCoddepartDes = (dep.length > 0) ? dep[0].vDesdep : '';
+                                                    this.dirdenunDirec.vCodprovinDes = (prov.length > 0) ? prov[0].vDespro : '';
+                                                    this.dirdenunDirec.vCoddistriDes = (dist.length > 0) ? dist[0].vDesdis : '';
+                                                    this.block = false;
+                                                    this.avanzarVentana();
+                                                },
+                                                (dist: ResponseWrapper) => {
+                                                    this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: prov }]);
+                                                    this.block = false;
+                                                });
+                                        },
+                                        (prov: ResponseWrapper) => {
+                                            this.onErrorMultiple([{
+                                                severity: 'error',
+                                                summary: 'Mensaje de Error', detail: prov
+                                            }]); this.block = false;
+                                        });
+                                },
+                                (dep: ResponseWrapper) => this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: res }]));
+                        } else {
+                            this.onErrorMultiple([{
+                                severity: 'error', summary: 'Mensaje de Error',
+                                detail: 'Los datos del documento de identidad no corresponden a los ingresados.'
+                            }])
+                            this.block = false;
+                        }
+                    },
+                    (res: ResponseWrapper) => { this.onErrorMultiple([{ severity: 'error', summary: 'Mensaje de Error', detail: res.json }]); this.block = false; }
+                    );
+            }
         }
         this.onErrorMultiple(this.messageList);
     }
@@ -186,17 +207,16 @@ export class ValidarUsuarioComponent implements OnInit {
         } else if (this.cambiaDir === true && (this.dirdenunDirec.vDireccion === '' || this.dirdenunDirec.vDesvia === undefined)) {
             this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe ingresar su dirección completa' });
             this.block = false;
-        }  else if (this.cambiaDir === true && this.selectedDeparts === undefined) {
+        } else if (this.cambiaDir === true && this.selectedDeparts === undefined) {
             this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar el departamento.' });
             this.block = false;
-        }  else if (this.cambiaDir === true && this.selectedProvins === undefined) {
+        } else if (this.cambiaDir === true && this.selectedProvins === undefined) {
             this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar la provincia' });
             this.block = false;
-        }  else if (this.cambiaDir === true && this.selectedDistris === undefined) {
+        } else if (this.cambiaDir === true && this.selectedDistris === undefined) {
             this.messageList.push({ severity: 'error', summary: 'Mensaje de Error', detail: 'Debe seleccionar el distrito' });
             this.block = false;
         } else {
-            console.log(this.pernatural);
             this.pernatural.fecNacimiento = this.pernatural.dFecnac;
             this.pernatural.dFecnac = null;
             this.pernatural.vEstado = '1';
@@ -248,7 +268,6 @@ export class ValidarUsuarioComponent implements OnInit {
                     this.block = false;
                 });
         }
-
         this.onErrorMultiple(this.messageList);
     }
 

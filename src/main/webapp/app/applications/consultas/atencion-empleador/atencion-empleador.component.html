@@ -18,10 +18,10 @@
                             <div class="col-md-2">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <p-radioButton name="groupname" value="1" label="Documento de Identidad" [(ngModel)]="tipoBusqueda"></p-radioButton>
+                                        <p-radioButton name="groupname" value="1" label="Documento de Identidad" [(ngModel)]="tipoBusqueda" (onClick)="inicializarFormulario()"></p-radioButton>
                                     </div>
                                     <div class="col-md-12">
-                                        <p-radioButton name="groupname" value="2" label="Razón Social" [(ngModel)]="tipoBusqueda"></p-radioButton>        
+                                        <p-radioButton name="groupname" value="2" label="Razón Social" [(ngModel)]="tipoBusqueda" (onClick)="inicializarFormulario()"></p-radioButton>        
                                     </div>
                                 </div>
                             </div>
@@ -29,7 +29,7 @@
                                 <div class="form-group row">
                                     <label for="inpTipo" class="col-sm-3 col-form-label">Tipo de documento:</label>
                                     <div class="col-sm-4 px-0">
-                                        <p-dropdown [options]="tipodocs" name="selectedTipodoc" [(ngModel)]="selectedTipodoc" [style]="{'width':'140px'}" placeholder="Seleccione" optionLabel="vDescorta" dataKey="id"></p-dropdown>
+                                        <p-dropdown [options]="tipodocs" name="selectedTipodoc" [(ngModel)]="selectedTipodoc" [style]="{'width':'140px'}" placeholder="Seleccione" optionLabel="vDescorta" dataKey="id" (onChange)="inicializarFormulario()"></p-dropdown>
                                     </div>
                                     <label for="inpNumero" class="col-sm-2 col-form-label">Número:</label>
                                     <div class="col-sm-3 px-0">
@@ -42,7 +42,7 @@
                                 <div class="form-group row">
                                     <label for="inpTipo" class="col-sm-2 col-form-label">Razón Social:</label>
                                     <div class="col-sm-2 px-0">
-                                            <input class="form-control form-control-sm" type="text" [(ngModel)]="vRazsocial" name="vRazsocial" />
+                                            <input class="form-control form-control-sm" type="text" [(ngModel)]="vRazsocial" name="vRazsocial" style="width: 250px; text-transform: uppercase"/>
                                     </div>
                                 </div>
                             </div>
@@ -59,29 +59,29 @@
                                         <!-- <p-column field="EmpleadorPernaturalTipdocident_vDescorta" header="Tipo Doc."></p-column>
                                         <p-column field="EmpleadorPernatural_vNumdoc" header="Núm. Doc."></p-column>
                                         <p-column field="NombEmpleador" header="Empleador"></p-column>
-                                        <p-column field="EmpleadorPernatural_vTelefono" header="Telefono"></p-column>
+                                        <p-column field="EmpleadorPernatural_vTelefono" header="Teléfono"></p-column>
                                 </p-dataTable> -->
 
-                                <p-dataTable [value]="empleadores" [(selection)]="empleadorSelec" selectionMode="single" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" dataKey="id">
+                                <p-dataTable #Templeadores [value]="empleadores" [(selection)]="empleadorSelec" selectionMode="single" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" dataKey="empleador.id">
                                         <p-header>Empleadores</p-header>
                                         <p-column [style]="{'width':'38px'}" selectionMode="single"></p-column>
                                         <!-- <p-column field="codPase" header="Cod. Pase"></p-column> -->
-                                        <p-column field="pernatural.tipdocident.vDescorta" header="Tipo Doc."></p-column>
-                                        <p-column field="pernatural.vNumdoc" header="Núm. Doc."></p-column>
+                                        <p-column field="empleador.pernatural.tipdocident.vDescorta" header="Tipo Doc."></p-column>
+                                        <p-column field="empleador.pernatural.vNumdoc" header="Núm. Doc."></p-column>
                                         <p-column field="NombEmpleador" header="Empleador"></p-column>
-                                        <p-column field="pernatural.vTelefono" header="Telefono"></p-column>
+                                        <p-column field="empleador.pernatural.vTelefono" header="Teléfono"></p-column>
                                 </p-dataTable>
                             </div>
                             <div class="col-md-12 mb-1" *ngIf="tippersona==='1'">
-                                <p-dataTable [value]="empleadores" [(selection)]="empleadorSelec" selectionMode="single" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" dataKey="id">
+                                <p-dataTable #Templeadores [value]="empleadores" [(selection)]="empleadorSelec" selectionMode="single" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" dataKey="empleador.id">
                                         <p-header>Empleadores</p-header>
                                         <p-column [style]="{'width':'38px'}" selectionMode="single"></p-column>
                                         <!-- <p-column field="codPase" header="Cod. Pase"></p-column> -->
-                                        <p-column field="perjuridica.tipdocident.vDescorta" header="Tipo Doc."></p-column>
-                                        <p-column field="perjuridica.vNumdoc" header="Núm. Doc."></p-column>
-                                        <!-- <p-column field="perjuridica.vRazsocial" header="Empleador"></p-column> -->
+                                        <p-column field="empleador.perjuridica.tipdocident.vDescorta" header="Tipo Doc."></p-column>
+                                        <p-column field="empleador.perjuridica.vNumdoc" header="Núm. Doc."></p-column>
+                                        <!-- <p-column field="empleador.perjuridica.vRazsocial" header="Empleador"></p-column> -->
                                         <p-column field="NombEmpleador" header="Empleador"></p-column>
-                                        <p-column field="perjuridica.vTelefono" header="Telefono"></p-column>
+                                        <p-column field="empleador.perjuridica.vTelefono" header="Teléfono"></p-column>
                                 </p-dataTable>
                             </div>
                         </div>
@@ -95,16 +95,27 @@
                                         <form>
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
-                                                    <p-dataTable selectionMode="single" [value]="empleadores" dataKey="codexpediente">
-                                                        <p-header>Expedientes</p-header>
-                                                        <p-column field="item" header="Fecha"></p-column>
-                                                        <p-column field="estado" header="Num. Ticket"></p-column>
-                                                        <p-column field="codexpediente" header="Tipo Doc."></p-column>
-                                                        <p-column field="fecha" header="Num. Doc."></p-column>
-                                                        <p-column field="conciliador" header="Razón Social"></p-column>
-                                                        <p-column field="ruc" header="Área"></p-column>
-                                                        <p-column field="empleador" header="Localidad"></p-column>
-                                                        <p-column field="nrotra" header="Consultor"></p-column>
+                                                    <p-dataTable #Tatenciones selectionMode="single" [value]="atenciones" dataKey="aten.id">
+                                                        <p-header>Atenciones</p-header>
+                                                        <p-column header="Fecha">
+                                                            <ng-template let-data="rowData" pTemplate="body">
+                                                                <span>{{ data.aten.tFecreg | date: 'dd/MM/yyyy' }}</span>
+                                                            </ng-template>
+                                                        </p-column>
+                                                        <p-column field="aten.vNumticket" header="Num. Ticket"></p-column>
+                                                        <!-- <div *ngIf="tippersona==='0'">
+                                                            <p-column field="aten.datlab.empleador.pernatural.tipdocident.vDescorta" header="Tipo Doc."></p-column>
+                                                            <p-column field="aten.datlab.empleador.pernatural.vNumdoc" header="Num. Doc."></p-column>
+                                                            <p-column field="aten.datlab.empleador.pernatural.vNombres" header="Empleador"></p-column>
+                                                        </div>
+                                                        <div *ngIf="tippersona==='1'">
+                                                            <p-column field="aten.datlab.empleador.perjuridica.tipdocident.vDescorta" header="Tipo Doc."></p-column>
+                                                            <p-column field="aten.datlab.empleador.perjuridica.vNumdoc" header="Num. Doc."></p-column>
+                                                            <p-column field="aten.datlab.empleador.perjuridica.vRazsocial" header="Empleador"></p-column>
+                                                        </div> -->
+                                                        <p-column field="aten.oficina.vDesofic" header="Área"></p-column>
+                                                        <p-column field="aten.nSedereg" header="Localidad"></p-column>
+                                                        <p-column field="aten.nUsuareg" header="Consultor"></p-column>
                                                     </p-dataTable>
                                                 </div>
                                             </div>
@@ -114,33 +125,43 @@
                                         <form>
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
-                                                    <p-dataTable [value]="empleadores" dataKey="codexpediente">
-                                                            <p-header>Expedientes</p-header>
-                                                            <p-column field="item" header="Item"></p-column>
-                                                            <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
-                                                            <p-column field="codexpediente" header="Nro. Expediente"></p-column>
-                                                            <p-column field="fecha" header="Fecha de Registro"></p-column>
-                                                            <p-column field="conciliador" header="Conciliador"></p-column>
-                                                            <p-column field="ruc" header="Razón Nro. RUC"></p-column>
-                                                            <p-column field="empleador" header="Empleador"></p-column>
+                                                    <p-dataTable #Tpases [value]="pases" dataKey="pases.id_pasegl">
+                                                            <p-header>Pases</p-header>
+                                                            <p-column header="Fecha">
+                                                                <ng-template let-data="rowData" pTemplate="body">
+                                                                    <span>{{ pases.tFecreg | date: 'dd/MM/yyyy' }}</span>
+                                                                </ng-template>
+                                                            </p-column>
+                                                            <p-column field="pases.aten.vNumticket" header="Num. Ticket"></p-column>
+                                                            <p-column field="pases.oficinaOrigen" header="Origen"></p-column>
+                                                            <p-column field="pases.oficinaDestino" header="Destino"></p-column>
+                                                            <p-column field="pases.tipdoc" header="Tipo Doc."></p-column>
+                                                            <p-column field="pases.vNumdoc" header="Num. Doc."></p-column>
+                                                            <p-column field="pases.nomrepre" header="Representante"></p-column>
+                                                            <p-column field="pases.nSedereg" header="Localidad"></p-column>
+                                                            <p-column field="pases.nUsuareg" header="Consultor"></p-column>
                                                     </p-dataTable>
                                                 </div>
                                             </div>
                                         </form>
                                     </p-tabPanel>
+                                    <!-- <p-tabPanel header="Direcciones" (click)="ConsultaDirecciones()"> -->
                                     <p-tabPanel header="Direcciones">
                                             <form>
                                                 <div class="row">
                                                     <div class="col-md-12 mb-3">
-                                                        <p-dataTable [value]="empleadores" dataKey="codexpediente">
-                                                                <p-header>Expedientes</p-header>
-                                                                <p-column field="item" header="Item"></p-column>
-                                                                <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
-                                                                <p-column field="codexpediente" header="Nro. Expediente"></p-column>
-                                                                <p-column field="fecha" header="Fecha de Registro"></p-column>
-                                                                <p-column field="conciliador" header="Conciliador"></p-column>
-                                                                <p-column field="ruc" header="Razón Nro. RUC"></p-column>
-                                                                <p-column field="empleador" header="Empleador"></p-column>
+                                                        <p-dataTable #Tdirecciones [value]="direcciones" dataKey="direc.id">
+                                                                <p-header>Direcciones</p-header>
+                                                                <p-column field="dpto" header="Departamento"></p-column>
+                                                                <p-column field="prov" header="Provincia"></p-column>
+                                                                <p-column field="dist" header="Distrito"></p-column>
+                                                                <p-column field="direc.vDircomple" header="Dirección"></p-column>
+                                                                <!-- <p-column field="direc.nFlgnotifi" header="Notificar"> -->
+                                                                <p-column header="Notificar">
+                                                                    <ng-template let-data="rowData" pTemplate="body">
+                                                                        <span style="text-align:center">{{ (data.direc.nFlgnotifi===false)?'':'SI' }}</span>
+                                                                    </ng-template>
+                                                                </p-column>
                                                         </p-dataTable>
                                                     </div>
                                                 </div>
