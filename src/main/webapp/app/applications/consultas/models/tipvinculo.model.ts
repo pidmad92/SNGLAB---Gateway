@@ -1,9 +1,9 @@
 import { BaseEntity } from '../../../shared';
 
-export class Accionadop implements BaseEntity {
+export class Tipvinculo implements BaseEntity {
     constructor(
         public id?: number,
-        public vDesaccdop?: string,
+        public vDestipvin?: string,
         public nUsuareg?: number,
         public tFecreg?: any,
         public nFlgactivo?: boolean,
@@ -11,7 +11,7 @@ export class Accionadop implements BaseEntity {
         public nUsuaupd?: number,
         public tFecupd?: any,
         public nSedeupd?: number,
-        public accadoates?: BaseEntity,
+        public datlabs?: BaseEntity[],
     ) {
         this.nFlgactivo = false;
     }
