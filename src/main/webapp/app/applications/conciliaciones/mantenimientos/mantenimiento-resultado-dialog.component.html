@@ -1,0 +1,65 @@
+<div>
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAbogadoLabel">Registrar Resultado de Conciliacion</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <div class="modal-body">
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" hidden>
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                            [(ngModel)]="resulconci.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipresconc">Tipo de Resultado de Conciliación</label>
+                    <select class="form-control" id="field_tipresconc" name="tipresconc" [(ngModel)]="resulconci.tipresconc" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="tipresconcOption.id === resulconci.tipresconc?.id ? resulconci.tipresconc : tipresconcOption" *ngFor="let tipresconcOption of tipresconcs; trackBy: trackTipresconcById">{{tipresconcOption.vDescrip}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_vDescrip">Descripción</label>
+                    <input type="text" class="form-control" name="vDescrip" id="field_vDescrip"
+                        [(ngModel)]="resulconci.vDescrip" required maxlength="100" />
+                    <div [hidden]="!(editForm.controls.vDescrip?.dirty && editForm.controls.vDescrip?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.vDescrip?.errors?.required" >
+                            Este cambo es requerido
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.vDescrip?.errors?.maxlength" translateValues="{ max: 100 }">
+                            Este campo no puede ser mayor a 100 caracteres
+                        </small>
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gatewayApp.resulconci.nUsuareg" for="field_nUsuareg">N Usuareg</label>
+                    <input type="number" class="form-control" name="nUsuareg" id="field_nUsuareg"
+                        [(ngModel)]="resulconci.nUsuareg" required />
+                    <div [hidden]="!(editForm.controls.nUsuareg?.dirty && editForm.controls.nUsuareg?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.nUsuareg?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.nUsuareg?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div> -->
+        
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+                    <span class="fa fa-ban"></span>&nbsp;<span>Cancelar</span>
+                </button>
+                <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <span class="fa fa-save"></span>&nbsp;<span>Grabar</span>
+                </button>
+            </div>
+        </form>
+    

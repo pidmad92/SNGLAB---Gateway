@@ -12,6 +12,7 @@ export class ConsinterService {
     private resourceUrlAtenderDenu= '/denuncias/api/atenderdenu';
     private resourceUrlFiltroMotFin = '/denuncias/api/motfins';
     private resourceUrlFinalizaDenu = '/denuncias/api/finalizadenu';
+    private resourceOridenuncia = '/denuncias/api/oridenus';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -53,6 +54,12 @@ export class ConsinterService {
         return this.http.post(`${this.resourceUrlFinalizaDenu}`, denu).map((res: Response) => {
             const jsonResponse = res.json();
             return jsonResponse;
+        });
+    }
+
+    getOrigendenuncia(): any {
+        return this.http.get(`${this.resourceOridenuncia}`).map((res: Response) => {
+            return res.json();
         });
     }
 }

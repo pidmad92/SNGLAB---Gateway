@@ -1,0 +1,223 @@
+
+    <div class="row">
+        <div class="col">
+            <div class="card card-mtpe mb-3">
+                <div class="card-header bg-light d-sm-flex justify-content-between p-1">
+                    <h5 class="mb-0"><small><i class="fa fa-user" aria-hidden="true"></i> Registro de Atención del Empleador</small></h5>
+                </div>
+                <div class="card-body">
+                    <div class="consultas-laborales mb-2">
+                        <form>
+                            <div class="form-row mb-2">
+                                <div class="col-md">
+                                <div class="form-group row">
+                                    <label for="inpTicket" class="col-sm-3 col-form-label">Ticket</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control form-control-sm" id="inpTicket" name="atencion.vNumticket" [(ngModel)]="atencion.vNumticket" placeholder="">
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-group row">
+                                        <label for="inpLocal" class="col-sm-3 col-form-label">Local</label>
+                                        <div class="col-sm-9">
+                                        <input type="text" class="form-control form-control-sm" id="inpLocal" value="LIMA CENTRO">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                <div class="form-group row">
+                                    <label for="inpFecha" class="col-sm-3 col-form-label">Fecha</label>
+                                    <div class="col-sm-9">
+                                    <!-- <input type="date" class="form-control form-control-sm" id="inpFecha" [(ngModel)]="fechoy"> -->
+                                    <input type="date" class="form-control form-control-sm" id="inpFecha">
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="card">
+                            <div class="card-header bg-secondary text-white d-sm-flex justify-content-between p-1">
+                                <h6 class="mb-0"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Datos del Representante</h6>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="form-row">
+                                        <div class="col-lg-4 ">
+                                            <div class="form-group row">
+                                                <label for="inpTipo" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo de documentos</label>
+                                                <div class="col-sm-6">
+                                                    <p-dropdown [options]="tipodocs" name="selectedTipodoc" [(ngModel)]="selectedTipodoc" [style]="{'width':'140px'}" placeholder="Seleccione"
+                                                    optionLabel="vDescorta" dataKey="id"></p-dropdown>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="form-group row">
+                                                <label for="inpNumero" class="col-sm-4 col-form-label col-form-label-sm text-sm-right">Número</label>
+                                                <div class="col-sm-8">
+                                                    <input type="number" class="form-control form-control-sm" id="inpNumero" name="vNumdocumento" [(ngModel)]="vNumdocumento">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <p-checkbox name="selectedSucesion" class="px-2" binary="true" label="Sucesión Intestada" [(ngModel)]="trabajador.nFlgsuces" inputId="ny"></p-checkbox>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group row">
+                                                <div class="col-sm-9">
+                                                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" (click)="buscaTrabajadorByDocIdent()">
+                                                            <span></span>&nbsp;<span><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <hr>
+                                <form>
+                                    <div *ngIf="trabajador.nFlgsuces" class="form-row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group row">
+                                                <label for="inpNumero" class="col-sm-2 col-form-label col-form-label-sm ">Trabajador</label>
+                                                <div class="col-sm-8">
+                                                    <input type="number" class="form-control form-control-sm" id="inpTrabajador" name="trabajador">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3 mb-3">
+                                            <label for="inpAP">Apellido Paterno:</label>
+                                            <input type="text" class="form-control form-control-sm" id="inpAP" name="vApepaterno" readonly required [(ngModel)]="trabajador.pernatural.vApepat">
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label for="inpAM">Apellido Materno:</label>
+                                            <input type="text" class="form-control form-control-sm" id="inpAM"  name="vApematerno" readonly required [(ngModel)]="trabajador.pernatural.vApemat">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="inpN">Nombres:</label>
+                                            <input type="text" class="form-control form-control-sm" id="inpN" name="vNombres" readonly required [(ngModel)]="trabajador.pernatural.vNombres">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3 mb-3">
+                                            <label for="inpFN">Fecha de Nacimiento</label>
+                                            <input type="date" class="form-control form-control-sm" id="inpFN" name="dFecnacimiento" [(ngModel)]="trabajador.pernatural.dFecnac">
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label for="selSexo">Sexo:</label>
+                                            <select class="form-control form-control-sm" id="selSexo">
+                                            <option value="M">Masculino</option>
+                                            <option value="F">Femenino</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label for="inpTelefono">Telefono:</label>
+                                            <input type="text" class="form-control form-control-sm" id="inpTelefono" name="vTelefono" readonly [(ngModel)]="trabajador.pernatural.vTelefono">
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label for="inpCelular">Celular</label>
+                                            <input type="text" class="form-control form-control-sm" id="inpCelular" name="vCelular"  readonly [(ngModel)]="trabajador.pernatural.vCelular">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <p-dataTable [value]="dirpernat" [scrollable]="true" scrollHeight="100px" selectionMode="single" [(selection)]="selecDirper"  (onRowSelect)="onRowSelect($event)" dataKey="direc.id">
+                                                <p-header>Direcciones</p-header>
+                                                <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
+                                                    <ng-template let-i="rowIndex" pTemplate="body">
+                                                        <span style="text-align:center">{{i+1}}</span>
+                                                    </ng-template>
+                                                </p-column>
+                                                <p-column field="dpto" header="Departamento"></p-column>
+                                                <p-column field="prov" header="Provincia"></p-column>
+                                                <p-column field="dist" header="Distrito"></p-column>
+                                                <p-column field="direc.vDircomple" [style]="{'text-align':'left'}" header="Dirección"></p-column>
+                                                <p-footer><div class="ui-helper-clearfix" style="width:100%">
+                                                    <button type="button" class="btn btn-sm btn-primary" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Añadir Dirección"></button></div>
+                                                </p-footer>
+                                            </p-dataTable>
+                                            <p-dialog [width]="500" header="Dirección:" [closable]="false" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+                                                <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+                                                <div class="ui-grid ui-grid-responsive ui-fluid" style="height:200px;">
+                                                    <input type="hidden" class="form-control" name="dirper.id" [(ngModel)]="dirper.id" readonly />
+                                                    <input type="hidden" name="dirper.pernatural" [(ngModel)]="dirper.pernatural">
+                                                    <div class="ui-grid-row form-group">
+                                                        <div class="ui-grid-col-4"><label for="vin">Departamento</label></div>
+                                                        <div class="ui-grid-col-8">
+                                                            <select (change)="loadProvincias(true, $event.target.value)" required class="form-control" id="field_codDepto" name="dirper.nCoddepto" [(ngModel)]="dirper.nCoddepto" >
+                                                                <option value="{{departamentos.vCoddep | number:'1.0'}}" *ngFor="let departamentos of departs;">{{departamentos.vDesdep}}</option>
+                                                            </select>
+                                                            <!-- <p-dropdown [(ngModel)]="dirper.nCoddepto" name="dirper.nCoddepto" [style]="{'width':'150px'}" dataKey="dirper.vcoddep" optionLabel="vdesdep" [options]="departs"></p-dropdown> -->
+                                                        </div>
+                                                    </div>
+                                                    <div class="ui-grid-row form-group">
+                                                        <div class="ui-grid-col-4"><label for="year">Provincia</label></div>
+                                                        <div class="ui-grid-col-8">
+                                                            <select (change)="loadDistritos(true, $event.target.value)" required class="form-control" id="field_codDepto" name="dirper.nCodprov" [(ngModel)]="dirper.nCodprov" >
+                                                                <option value="{{provincias.vCodpro | number:'1.0'}}" *ngFor="let provincias of provins;">{{provincias.vDespro}}</option>
+                                                            </select>
+                                                            <!-- <p-dropdown [(ngModel)]="dirper.nCodprov" name="dirper.nCodprov" [style]="{'width':'150px'}" dataKey="vcodpro" optionLabel="vdespro" [options]="provins"></p-dropdown> -->
+                                                        </div>
+                                                    </div>
+                                                    <div class="ui-grid-row form-group">
+                                                        <div class="ui-grid-col-4"><label for="year">Distrito</label></div>
+                                                        <div class="ui-grid-col-8">
+                                                            <select required class="form-control" id="field_codDepto" name="dirper.nCoddist" [(ngModel)]="dirper.nCoddist" >
+                                                                <option value="{{distritos.vCoddis | number:'1.0'}}" *ngFor="let distritos of distris;">{{distritos.vDesdis}}</option>
+                                                            </select>
+                                                            <!-- <p-dropdown [(ngModel)]="dirper.nCoddist" name="dirper.nCoddist" [style]="{'width':'150px'}" dataKey="dirper.vcoddis" optionLabel="vdesdis" [options]="distris"></p-dropdown> -->
+                                                        </div>
+                                                    </div>
+                                                    <div class="ui-grid-row form-group">
+                                                            <div class="ui-grid-col-4"><label for="year">Dirección</label></div>
+                                                            <div class="ui-grid-col-8"><input type="text" name="dirper.vDircomple" [(ngModel)]="dirper.vDircomple" class="form-control"  id="direccion" /></div>
+                                                    </div>
+                                                </div>
+                                                <p-footer>
+                                                    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                                                        <button type="button" pButton icon="fa-close" (click)="close()" label="Cancelar"></button>
+                                                        <button pButton icon="fa-check" type="submit" label="Grabar"></button>
+                                                    </div>
+                                                </p-footer>
+                                                </form>
+                                            </p-dialog>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="row">
+                                                <div class="col mb-3">
+                                                    <label for="inpCorreo">Correo Electrónico:</label>
+                                                    <input type="text" class="form-control form-control-sm" id="inpCorreo" placeholder="" name="vEmail" readonly [(ngModel)]="trabajador.pernatural.vEmailper">
+                                                </div>
+                                            </div>
+                                            <div *ngIf="!trabajador.nFlgsuces" class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="selCargo">Presenta Discapacidad:</label>
+                                                    <select class="form-control form-control-sm" id="selCargo" name="discapacidad">
+                                                            <option value="1">Si</option>
+                                                            <option value="0">No</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="inpCelular">Presenta Embarazo</label>
+                                                    <select class="form-control form-control-sm" id="selEmbarazo" name="embarazo">
+                                                            <option value="1">Si</option>
+                                                            <option value="0">No</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!-- <div class="card-footer text-center">
+                    <button class="btn mx-1 btn-light" type="submit"><i class="fa fa-eraser" aria-hidden="true"></i> Limpiar</button>
+                    <a href="consultas-empleador2.html" class="btn mx-1 btn-dark">Siguiente <i class="fa fa-chevron-right" aria-hidden="true" ></i></a>
+                </div> -->
+        </div>
+    </div>

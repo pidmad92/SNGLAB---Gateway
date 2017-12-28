@@ -1,9 +1,9 @@
- import { BaseEntity } from '../../../shared';
+import { BaseEntity } from './../../../shared';
 
 export class Cartrab implements BaseEntity {
     constructor(
         public id?: number,
-        public vDesCartra?: string,
+        public vDescartra?: string,
         public nUsuareg?: number,
         public tFecreg?: any,
         public nFlgactivo?: boolean,

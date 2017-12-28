@@ -36,6 +36,11 @@ import { NegocolectService, NegocolectComponent } from '../../../entities/negoco
 import { ResulnegocService, ResulnegocComponent } from '../../../entities/resulnegoc/index';
 import { RespinformaService, RespinformaComponent } from '../../../entities/respinforma/index';
 import { AnexlaboralComponent, AnexlaboralService } from '../../../entities/anexlaboral/index';
+import { FormularioFinancieroN1Component,
+    FormularioFinancieroAnexo1AComponent,
+    FormularioFinancieroAnexo1BComponent,
+    FormularioFinancieroAnexo1CComponent,
+    FormularioFinancieroAnexo1DComponent } from '../formulario-financiero/index';
 
 const ENTITY_STATES = [
     ...ControlInformacionRoute,
@@ -54,6 +59,11 @@ const ENTITY_STATES = [
         FormularioPerfil4Component,
         FormularioPerfil5Component,
         FormularioPerfil6Component,
+        FormularioFinancieroN1Component,
+        FormularioFinancieroAnexo1AComponent,
+        FormularioFinancieroAnexo1BComponent,
+        FormularioFinancieroAnexo1CComponent,
+        FormularioFinancieroAnexo1DComponent,
         ActieconComponent,
         NegocolectComponent,
         ResulnegocComponent,

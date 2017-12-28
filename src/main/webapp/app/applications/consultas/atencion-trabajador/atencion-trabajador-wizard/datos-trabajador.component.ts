@@ -196,7 +196,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
     }
 
     trackCargos(index: number, item: Cartrab) {
-        return item.vDesCartra;
+        return item.vDescartra;
     }
     buscaTrabajadorByDocIdent() {
          const tipodoc = 1;
