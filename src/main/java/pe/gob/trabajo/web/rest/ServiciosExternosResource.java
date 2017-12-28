@@ -46,10 +46,8 @@ public class ServiciosExternosResource {
     private final SectorecoperjuridicaRepository sectorecoperjuridicaRepository;
     private final CiuperjuridicaRepository ciuperjuridicaRepository;
 
-    public ServiciosExternosResource(
-        SectorecoperjuridicaRepository sectorecoperjuridicaRepository,
-        CiuperjuridicaRepository ciuperjuridicaRepository
-    ) {
+    public ServiciosExternosResource(SectorecoperjuridicaRepository sectorecoperjuridicaRepository,
+            CiuperjuridicaRepository ciuperjuridicaRepository) {
         this.sectorecoperjuridicaRepository = sectorecoperjuridicaRepository;
         this.ciuperjuridicaRepository = ciuperjuridicaRepository;
     }
@@ -61,56 +59,59 @@ public class ServiciosExternosResource {
         switch (personaNatural.getTipoDoc()) {
         case "DNI":
             PersonaBean personaBean = ReniecClient.getConsolidada(personaNatural.getvNumdoc());
-            this.ValidarConvertirObjetoReniec(personaNatural,personaBean);
+            this.ValidarConvertirObjetoReniec(personaNatural, personaBean);
         }
-        
+
         return personaNatural;
     }
 
     @PostMapping("/validarserviciosunat")
     @Timed
-    public EmpresaBean validarserviciosunat(@RequestBody EmpresaBean empresaBean)
-            throws SOAPException, IOException {
-                EmpresaBean bean = SunatClient.getDatosPrincipales(empresaBean.getDdp_numruc());
-                System.out.println("-------------");
-                System.out.println(bean);
-                System.out.println(bean.getDdp_ciiu());
-                System.out.println("-------------");
-                Ciuperjuridica ciuperjuridica = ciuperjuridicaRepository.GetCiiu(bean.getDdp_ciiu());
-                Sectorecoperjuridica sectorecoperjuridica = sectorecoperjuridicaRepository.GetSector(ciuperjuridica.getvCodsec());
-                bean.setDesc_sectoeco(sectorecoperjuridica.getvDessec());
-                bean.ddp_sector = sectorecoperjuridica.getvCodsec();
+    public EmpresaBean validarserviciosunat(@RequestBody EmpresaBean empresaBean) throws SOAPException, IOException {
+        EmpresaBean bean = SunatClient.getDatosPrincipales(empresaBean.getDdp_numruc());
+        System.out.println("-------------");
+        System.out.println(bean);
+        System.out.println(bean.getDdp_ciiu());
+        System.out.println("-------------");
+        Ciuperjuridica ciuperjuridica = ciuperjuridicaRepository.GetCiiu(bean.getDdp_ciiu());
+        Sectorecoperjuridica sectorecoperjuridica = sectorecoperjuridicaRepository
+                .GetSector(ciuperjuridica.getvCodsec());
+        bean.setDesc_sectoeco(sectorecoperjuridica.getvDessec());
+        bean.ddp_sector = sectorecoperjuridica.getvCodsec();
         return bean;
     }
 
     private PersonaValidarServicioDTO ValidarConvertirObjetoReniec(PersonaValidarServicioDTO dto, PersonaBean persona) {
-        
-        if(persona == null){
+
+        if (persona == null) {
             dto.setResultado(false);
         } else {
-            if(dto.getvApepat().trim().toUpperCase().equals(persona.getApellidoPaterno())
-                && dto.getvApemat().trim().toUpperCase().equals(persona.getApellidoMaterno())
-                && dto.getvNombres().trim().toUpperCase().equals(persona.getNombres())
-            ) {
-            dto.setResultado(true);
-            dto.setvApemat(persona.getApellidoMaterno());
-            dto.setvApepat(persona.getApellidoPaterno());
-            dto.setvNombres(persona.getNombres());
-            dto.setdFecnac(persona.getFechaNacimiento());
-            dto.setGenero(persona.getGenero());
-            dto.setEstadoCivil(persona.getEstadoCivil());
-            dto.setCodigo(persona.getCodigo());
-            dto.setCoddep(persona.getCoddep());
-            dto.setCodpro(persona.getCodpro());
-            dto.setCoddist(persona.getCoddist());
-            dto.setDireccion(persona.getDireccion());
-            dto.setdFecnac(persona.getFechaNacimiento());
-            dto.setGenero(persona.getGenero());
-            dto.vSexoper = (persona.getGenero().trim() == "1") ? "M" : "F";
-            dto.nCodtdiden = 1;
-            }
-            else{
+            if (persona.getApellidoPaterno() == null || persona.getApellidoMaterno() == null
+                    || persona.getNombres() == null) {
                 dto.setResultado(false);
+            } else {
+                if (dto.getvApepat().trim().toUpperCase().equals(persona.getApellidoPaterno())
+                        && dto.getvApemat().trim().toUpperCase().equals(persona.getApellidoMaterno())
+                        && dto.getvNombres().trim().toUpperCase().equals(persona.getNombres())) {
+                    dto.setResultado(true);
+                    dto.setvApemat(persona.getApellidoMaterno());
+                    dto.setvApepat(persona.getApellidoPaterno());
+                    dto.setvNombres(persona.getNombres());
+                    dto.setdFecnac(persona.getFechaNacimiento());
+                    dto.setGenero(persona.getGenero());
+                    dto.setEstadoCivil(persona.getEstadoCivil());
+                    dto.setCodigo(persona.getCodigo());
+                    dto.setCoddep(persona.getCoddep());
+                    dto.setCodpro(persona.getCodpro());
+                    dto.setCoddist(persona.getCoddist());
+                    dto.setDireccion(persona.getDireccion());
+                    dto.setdFecnac(persona.getFechaNacimiento());
+                    dto.setGenero(persona.getGenero());
+                    dto.vSexoper = (persona.getGenero().trim() == "1") ? "M" : "F";
+                    dto.nCodtdiden = 1;
+                } else {
+                    dto.setResultado(false);
+                }
             }
         }
         return dto;

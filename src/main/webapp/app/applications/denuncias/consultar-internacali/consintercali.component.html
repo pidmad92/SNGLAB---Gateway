@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="ui-g">
-                        <div *ngIf="criterioBus == 0" class="ui-md-12">
+                        <div *ngIf="criterioBus == 0" class="ui-md-10">
                             <div class="ui-g">
                                 <div class="ui-md-6">
                                     <label for="criterioTipoDoc">Tipo Doc.</label>
@@ -32,10 +32,49 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="ui-md-12">
-                            <button (click)="buscarDenuncias()" class="btn btn-primary" type="button">Buscar</button>
-                            <button (click)="nuevaDenuncia()" class="btn btn-primary" type="button">Nueva Denuncia</button>
+                        <div *ngIf="criterioBus == 1" class="ui-md-10">
+                            <div class="ui-g">
+                                <div class="ui-md-6">
+                                    <label for="criterioTipoDocDenu">Tipo Doc.</label>
+                                    <select class="form-control" [(ngModel)]="criterioTipoDocDenu" name="criterioTipoDocDenu">
+                                        <option>DNI</option>
+                                        <option>PASAPORTE</option>
+                                        <option>CARNET EXT.</option>
+                                    </select>
+                                </div>
+                                <div class="ui-md-6">
+                                    <label for="criterioNumDocDenu">Num. Doc.</label>
+                                    <input class="form-control" type="text" name="criterioNumDocDenu" [(ngModel)]="criterioNumDocDenu" />
+                                </div>
+                            </div>
                         </div>
+                        <div *ngIf="criterioBus == 2" class="ui-md-10">
+                            <div class="ui-g">
+                                <div class="ui-md-6">
+                                    <label for="criterioTipoDocDenu">Fecha Inicio.</label>
+                                    <p-calendar [(ngModel)]="fechaInicio" name="fechaInicio" [locale]="es" dateFormat="dd/mm/yy"></p-calendar>
+                                </div>
+                                <div class="ui-md-6">
+                                    <label for="criterioNumDocDenu">Fecha Fin.</label>
+                                    <p-calendar [(ngModel)]="fechaFin" name="fechaFin" [locale]="es" dateFormat="dd/mm/yy"></p-calendar>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="criterioBus == 3" class="ui-md-10">
+                            <div class="ui-g">
+                                <div class="ui-md-6">
+                                    <label for="criterioTipoDocDenu">Origen de la Denuncia</label>
+                                    <p-dropdown appendTo="body" [options]="listaOrigen" [(ngModel)]="selectOrigen" name="selectOrigen" [style]="{'width':'150px'}"
+                                        editable="true" placeholder="Seleccione el origen" optionLabel="name"></p-dropdown>
+                                </div>
+                                <div class="ui-md-6">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-md-12">
+                        <button (click)="buscarDenuncias()" class="btn btn-primary" type="button">Buscar</button>
+                        <button (click)="nuevaDenuncia()" class="btn btn-primary" type="button">Nueva Denuncia</button>
                     </div>
                 </fieldset>
                 <button (click)="consultaInformacionAdicional()" class="btn btn-default" type="button">Solicitar Información Adicional</button>
