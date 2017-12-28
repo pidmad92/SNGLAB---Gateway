@@ -26,10 +26,12 @@ export class LeftbarComponent implements OnInit {
     version: string;
     aplicacion: string;
     accordionDefensa = 'expediente';
+    accordionConciliaciones = 'expediente';
     accordionPatrocinio= 'legajo';
-    menuDefensa = [ 'expediente', 'audiencia', 'reportes', 'mantenimiento']
+    menuConciliaciones = [ 'expediente', 'audiencia', 'reportes', 'mantenimiento']
+    menuDefensa = [ 'expediente', 'audiencia', 'reportes']
     menuPatrocinio = [ 'consulta', 'legajo', 'reportes', 'mantenimiento', 'atencion']
-    private modules = ['consultas', 'defensa', 'liquidaciones', 'sindicatos', 'dictamenes', 'denuncias', 'seguridad', 'patrocinio'];
+    private modules = ['consultas', 'defensa', 'conciliaciones', 'liquidaciones', 'sindicatos', 'dictamenes', 'denuncias', 'seguridad', 'patrocinio'];
     accordionDictamen = 'dictamen';
     menuDictamen = ['dictamen'];
 
@@ -48,6 +50,7 @@ export class LeftbarComponent implements OnInit {
     }
 
     getRoute(url) {
+        console.log(url);
         for (const module of this.modules) {
             if (url === '/') {
                 this.aplicacion = 'seguridad';

@@ -1,0 +1,157 @@
+<div class="row mt-3">
+    <div class="col">
+        <div class="card card-panel mb-3">
+            <div class="card-header d-sm-flex justify-content-between">
+                <h5>Reportes</h5>
+            </div>
+            <div class="card-body">
+                <p-tabView orientation="left">
+                    <p-tabPanel class="tableft" header="Estadística de Audiencias por Rango de Fechas" [selected]="true">
+                        <form>
+                            <div class="form-row">
+                                <div class="col-md-3">
+                                    <!-- <p-toggleButton name="checked2" [(ngModel)]="checked2" onLabel="Por: N° Documentos" offLabel="Por: Rango de Fechas"></p-toggleButton> -->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p-radioButton name="groupname" value="fechas" label="Rango de Fechas" [(ngModel)]="tipoBusqueda"></p-radioButton>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p-radioButton name="groupname" value="periodo" label="Periodo" [(ngModel)]="tipoBusqueda"></p-radioButton>        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="tipoBusqueda=='fechas'" class="col-md-9">
+                                    <div class="form-group row">
+                                        <label for="inpTipo" class="col-sm-4 col-form-label">Fechas:</label>
+                                        <p-calendar name="rangeDates" [(ngModel)]="rangeDates" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" selectionMode="range" readonlyInput="true"></p-calendar>
+                                    </div>
+                                </div>
+                                <div *ngIf="tipoBusqueda=='periodo'" class="col-md-9">
+                                    <div class="row">
+                                        <label for="inpTipo" class="col-sm-2 col-form-label">Año:</label>
+                                        <div class="col-sm-3 pl-0">
+                                            <input type="number" class="form-control">
+                                        </div>
+                                        <label for="inpNumero" class="col-sm-2 col-form-label">Mes:</label>
+                                        <div class="col-sm-3">
+                                            <select class="form-control">
+                                                <option>Enero</option>
+                                                <option>Febrero</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </p-tabPanel>
+                    <p-tabPanel class="tableft" header="Estadística de Audiencias Conciliadas por Rango de Fechas">
+                        <form>
+                            <div class="form-row">
+                                <div class="col-md-3">
+                                    <!-- <p-toggleButton name="checked2" [(ngModel)]="checked2" onLabel="Por: N° Documentos" offLabel="Por: Rango de Fechas"></p-toggleButton> -->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p-radioButton name="groupname" value="fechas" label="Rango de Fechas" [(ngModel)]="tipoBusqueda"></p-radioButton>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p-radioButton name="groupname" value="periodo" label="Periodo" [(ngModel)]="tipoBusqueda"></p-radioButton>        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="tipoBusqueda=='fechas'" class="col-md-9">
+                                    <div class="form-group row">
+                                        <label for="inpTipo" class="col-sm-4 col-form-label">Fechas:</label>
+                                        <p-calendar name="rangeDates" [(ngModel)]="rangeDates" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" selectionMode="range" readonlyInput="true"></p-calendar>
+                                    </div>
+                                </div>
+                                <div *ngIf="tipoBusqueda=='periodo'" class="col-md-9">
+                                    <div class="row">
+                                        <label for="inpTipo" class="col-sm-2 col-form-label">Año:</label>
+                                        <div class="col-sm-3 pl-0">
+                                            <input type="number" class="form-control">
+                                        </div>
+                                        <label for="inpNumero" class="col-sm-2 col-form-label">Mes:</label>
+                                        <div class="col-sm-3">
+                                            <select class="form-control">
+                                                <option>Enero</option>
+                                                <option>Febrero</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </p-tabPanel>
+                    <p-tabPanel class="tableft" header="Estadística de Motivos por Rango de Fechas y Resultado">
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <!-- <p-toggleButton name="checked2" [(ngModel)]="checked2" onLabel="Por: N° Documentos" offLabel="Por: Rango de Fechas"></p-toggleButton> -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p-radioButton name="groupname" value="fechas" label="Rango de Fechas" [(ngModel)]="tipoBusqueda"></p-radioButton>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p-radioButton name="groupname" value="periodo" label="Periodo" [(ngModel)]="tipoBusqueda"></p-radioButton>        
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="tipoBusqueda=='fechas'" class="col-md-9">
+                                <div class="form-group row">
+                                    <label for="inpTipo" class="col-sm-4 col-form-label">Fechas:</label>
+                                    <div class="col-sm-8">
+                                        <p-calendar name="rangeDates" [(ngModel)]="rangeDates" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" selectionMode="range" readonlyInput="true"></p-calendar>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inpTipo" class="col-sm-4 col-form-label">Resultado:</label>
+                                    <div class="col-xs-8 col-sm-6">
+                                        <select class="form-control form-control-sm">                                        
+                                        </select>
+                                    </div>                                    
+                                </div>
+                            </div>
+                            <div *ngIf="tipoBusqueda=='periodo'" class="col-md-9">
+                                <div class="row">
+                                    <label for="inpTipo" class="col-sm-2 col-form-label">Año:</label>
+                                    <div class="col-sm-3 pl-0">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                    <label for="inpNumero" class="col-sm-2 col-form-label">Mes:</label>
+                                    <div class="col-sm-3">
+                                        <select class="form-control">
+                                            <option>Enero</option>
+                                            <option>Febrero</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </p-tabPanel>
+                    <p-tabPanel class="tableft" header="Reporte por Tipo de Informe">
+                        <div class="form-group row pl-2">
+                            <label for="inpTipo" class="col-sm-4 col-form-label">Informe:</label>
+                            <div class="col-xs-8 col-sm-6">
+                                <select class="form-control form-control-sm">                                        
+                                </select>
+                            </div>                                    
+                        </div>
+                        <div class="form-group row pl-2">
+                            <label for="inpTipo" class="col-sm-4 col-form-label">Fecha:</label>
+                            <div class="col-sm-8">
+                                <p-calendar name="rangeDates" [(ngModel)]="rangeDates" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                            </div>
+                        </div>
+                    </p-tabPanel>
+                </p-tabView>
+                <div class="row mt-2">
+                    <div class="col-md-12 text-center">
+                        <a href="#" class="btn btn-sm btn-warning "><i class="fa fa-eye" aria-hidden="true"></i> Previsualizar</a>
+                        <a href="#" class="btn btn-sm btn-primary "><i class="fa fa-print" aria-hidden="true"></i> Imprimir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet name="popupexp"></router-outlet>
+
