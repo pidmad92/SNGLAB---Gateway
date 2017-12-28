@@ -9,6 +9,7 @@ export * from '../models/perjuridica.model';
 export * from '../models/docpresate.model';
 export * from '../models/motate.model';
 export * from '../models/accionadop.model';
+export * from '../models/pasegl.model';
 
 // export * from './cartrab.service';
 // export * from './tipdocident.service';
