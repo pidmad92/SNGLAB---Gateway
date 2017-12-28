@@ -61,6 +61,12 @@ import { TipdocService, TipdocComponent } from '../../../entities/tipdoc/index';
 import { Empresa } from '../../general/servicesmodel/empresa.model';
 import { ReglaboralService } from '../../../entities/reglaboral/index';
 import { PerreglabService } from '../../../entities/perreglab/index';
+import { FormularioFinancieroN1Component,
+    FormularioFinancieroAnexo1AComponent,
+    FormularioFinancieroAnexo1BComponent,
+    FormularioFinancieroAnexo1CComponent,
+    FormularioFinancieroAnexo1DComponent,
+    FormularioFinancieroService} from '../formulario-financiero/index';
 
 const ENTITY_STATES = [
     ...ListadoSolicitudesRoute,
@@ -78,6 +84,11 @@ const ENTITY_STATES = [
         FormularioPerfil4Component,
         FormularioPerfil5Component,
         FormularioPerfil6Component,
+        FormularioFinancieroN1Component,
+        FormularioFinancieroAnexo1AComponent,
+        FormularioFinancieroAnexo1BComponent,
+        FormularioFinancieroAnexo1CComponent,
+        FormularioFinancieroAnexo1DComponent,
         DireccionComponent,
         HechoinverComponent,
         ParticipaComponent,
@@ -127,6 +138,7 @@ const ENTITY_STATES = [
         FormularioPerfilService,
         ReglaboralService,
         PerreglabService,
+        FormularioFinancieroService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
