@@ -1,0 +1,13 @@
+
+	
+<p-steps [model]="items" [(activeIndex)]="activeIndex"></p-steps>
+
+<router-outlet name="wizard"></router-outlet>
+<div class="card card-panel mb-3">
+	<div class="card-footer text-center">
+		<button type="button" *ngIf="activeIndex > 0" class="btn mx-1 btn-dark float-left"
+			(click)="previous()" label="Previous"><i class="fa fa-chevron-left" aria-hidden="true"></i>Anterior</button>
+		<button type="button" *ngIf="activeIndex < items.length - 1" class="btn mx-1 btn-dark float-right"
+			(click)="next()" label="Next">Siguiente <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+	</div>
+</div>

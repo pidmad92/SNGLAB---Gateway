@@ -9,6 +9,7 @@ export class ConsintercaliService {
     private resourceUrlFiltro = '/denuncias/api/denunciasbycriteriocalif';
     private resourceUrlFiltroInfoSoli = '/denuncias/api/infosolisfiltro';
     private resourceUrlReg = '/denuncias/api/infosolis';
+    private resourceOridenuncia = '/denuncias/api/oridenus';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -30,6 +31,12 @@ export class ConsintercaliService {
         return this.http.post(`${this.resourceUrlReg}`, infosoli).map((res: Response) => {
             const jsonResponse = res.json();
             return jsonResponse;
+        });
+    }
+
+    getOrigendenuncia(): any {
+        return this.http.get(`${this.resourceOridenuncia}`).map((res: Response) => {
+            return res.json();
         });
     }
 }

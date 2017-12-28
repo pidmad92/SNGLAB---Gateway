@@ -1,0 +1,67 @@
+<div class="row">
+	<div class="col">
+		<div class="card card-mtpe mb-3">
+			<div class="card-header bg-light d-sm-flex justify-content-between p-1">
+				<h5 class="mb-0"><small><i class="fa fa-user" aria-hidden="true"></i> Registro de Atención del Empleador</small></h5>
+			</div>
+			<div class="card-body">
+				<form>
+					<div class="form-row mb-2">
+						<div class="col-md">
+						<div class="form-group row">
+							<label for="inpTicket" class="col-sm-3 col-form-label">Ticket</label>
+							<div class="col-sm-9">
+							<input type="text" class="form-control form-control-sm" id="inpTicket" placeholder="">
+							</div>
+						</div>
+						</div>
+						<div class="col-md">
+						<div class="form-group row">
+							<label for="inpLocal" class="col-sm-3 col-form-label">Local</label>
+							<div class="col-sm-9">
+							<input type="text" class="form-control form-control-sm" id="inpLocal" value="LIMA CENTRO">
+							</div>
+						</div>
+						</div>
+						<div class="col-md">
+						<div class="form-group row">
+							<label for="inpFecha" class="col-sm-3 col-form-label">Fecha</label>
+							<div class="col-sm-9">
+							<!-- <input type="date" class="form-control form-control-sm" id="inpFecha" [(ngModel)]="fechoy"> -->
+							<input type="date" class="form-control form-control-sm" id="inpFecha">
+							</div>
+						</div>
+						</div>
+					</div>
+				</form>
+				<div class="card">
+					<div class="card-header bg-secondary text-white d-sm-flex justify-content-between p-1">
+						<h6 class="mb-0"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Motivos de consulta</h6>
+					</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-12">
+								<p-dataTable [value]="motatenofic" [editable]="true" [(selection)]="selectmotatenofic" (onEditComplete)="saveObservacion($event)" (onRowSelect)="saveMotSel($event)" (onRowUnselect)="deleteMotSel($event)" scrollable="true" scrollHeight="220px" dataKey="motate.id">
+									<p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+									<p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
+										<ng-template let-i="rowIndex" pTemplate="body">
+											<span style="text-align:center">{{i+1}}</span>
+										</ng-template>
+									</p-column>
+									<p-column [style]="{'width':'30%'}" field="motate.vDesmotate" header="Descripción"></p-column>
+									<p-column [style]="{'text-align':'left'}" field="observacion" header="Observación" [editable]="true"></p-column>
+									<p-column [style]="{'text-align':'left'}" [hidden]="true" field="check" header="Checked"></p-column>
+								</p-dataTable>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="card-footer text-center">
+				<a href="consultas-empleador2.html" class="btn mx-1 btn-dark"><i class="fa fa-chevron-left" aria-hidden="true"></i> Anterior</a>
+				<a href="consultas-empleador5.html" class="btn mx-1 btn-dark">Siguiente <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+			</div> -->
+		</div>
+	</div>
+
+</div>

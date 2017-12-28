@@ -14,6 +14,9 @@ export class ConciliaService {
     private resourceSearchUrl = '/defensa/api/_search/concilias';
     private resourceUrlFecha = '/defensa/api/concilias/fecha';
     private resourceUrlResultado = '/defensa/api/concilias/resul';
+    private resourceDefensa = '/defensa/api';
+    private resourceMotivOfic = '/defensa/api/motatenofics/ofic';
+    private resourceExpediente = '/defensa/api/concilias/exp';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -84,6 +87,21 @@ export class ConciliaService {
     searchreprogramacionfecha(fecha?: string): Observable<ResponseWrapper> {
         return this.http.get(`${this.resourceUrlResultado}/${fecha}`)
             .map((res: any) => this.convertResponse(res));
+    }
+
+    consultaAudiencia(query: string): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceDefensa}/${query}`)
+            .map((res: Response) => this.convertResponse(res));
+    }
+
+    consultaMotivOfic(id: any): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceMotivOfic}/${id}`)
+            .map((res: Response) => this.convertResponse(res));
+    }
+
+    consultaAudienciaExpediente(id: any): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceExpediente}/${id}`)
+            .map((res: Response) => this.convertResponse(res));
     }
 
     private convertResponse(res: Response): ResponseWrapper {

@@ -67,6 +67,7 @@ export class ReginternoComponent implements OnInit {
         private califiService: CalifiService,
         private reginternoService: ReginternoService,
         private validarUsuarioService: ValidarUsuarioService,
+        private router: Router,
     ) {
     }
 
@@ -203,18 +204,26 @@ export class ReginternoComponent implements OnInit {
         } else if (this.formregdenu.horafin === undefined) {
             this.onErrorDatosTrabajo('Debe ingresar la hora de fin de trabajo.');
             return false;
+        } else if (this.formregdenu.horafin.getTime() < this.formregdenu.horainicio.getTime()) {
+            this.onErrorDatosTrabajo('La hora de fin de la jornada de trabajo debe ser mayor a la hora de inicio.');
+            return false;
         } else if (this.formregdenu.numerotrabajado === undefined) {
             this.onErrorDatosTrabajo('Debe ingresar el número de trabajo.');
             return false;
         } else if (this.formregdenu.correotrabajador === undefined) {
             this.onErrorDatosTrabajo('Debe ingresar el correo de trabajo.');
             return false;
-        } else if (this.formregdenu.flagtrabajando === false && this.formregdenu.fechacese === undefined) {
-            this.onErrorDatosTrabajo('Debe ingresar la fecha de cese.');
-            return false;
         } else if (this.formregdenu.flaggruposindical === true && this.formregdenu.organizacionsindical === undefined) {
             this.onErrorDatosTrabajo('Debe ingresar la descripción de la organización sindical.');
             return false;
+        } else if (this.formregdenu.flagtrabajando === false) {
+            if (this.formregdenu.fechacese === undefined) {
+                this.onErrorDatosTrabajo('Debe ingresar la fecha de cese.');
+                return false;
+            } else if ((this.formregdenu.fechainitrabajo > this.formregdenu.fechacese)) {
+                this.onErrorDatosTrabajo('La fecha de inicio de trabajo debe ser menor a la fecha de cese.');
+                return false;
+            }
         }
         return true;
     }
@@ -226,6 +235,8 @@ export class ReginternoComponent implements OnInit {
             this.onErrorDenuncia('Debe ingresar la hora de inicio de la inspección.');
         } else if (this.formregdenu.horafininspec === undefined) {
             this.onErrorDenuncia('Debe ingresar la hora de fin de la inspección.');
+        } else if (this.formregdenu.horainiinspec > this.formregdenu.horafininspec) {
+            this.onErrorDenuncia('La hora de fin de la inspección no puede ser mayor a la hora de inicio.');
         } else if (this.formregdenu.selectmotivos === undefined) {
             this.onErrorDenuncia('Debe seleccionar el motivo de la inspección.');
         } else if (this.formregdenu.selectdetalle === undefined) {
@@ -284,7 +295,6 @@ export class ReginternoComponent implements OnInit {
             for (const i in this.formregdenu.selectCalifica) {
                 lista.push(Number(this.formregdenu.selectCalifica[i].value));
             }
-            console.log(this.formregdenu);
             if (this.formregdenu.flagOtradireccion) {
                 this.formregdenu.domicilio = this.formregdenu.domicilio_c;
                 this.formregdenu.codVia = Number(this.formregdenu.selectVia.value);
@@ -300,7 +310,6 @@ export class ReginternoComponent implements OnInit {
                 this.formregdenu.codprov = this.formregdenu.codprov;
                 this.formregdenu.coddist = this.formregdenu.coddist;
             }
-            console.log(this.formregdenu);
             this.reginternoService.guardarDenunciaInterna({
                 numruc: this.formregdenu.numruc,
                 ddpnombre: this.formregdenu.ddpnombre,
@@ -349,8 +358,9 @@ export class ReginternoComponent implements OnInit {
             }).subscribe(
                 (dato: ResponseWrapper) => {
                     this.block = false;
+                    this.router.navigate(['/denuncias/formconsinterno']);
                 },
-                (dato: ResponseWrapper) => { console.log(dato); this.onErrorDatosTrabajo(dato.json); this.block = false; }
+                (dato: ResponseWrapper) => { this.onErrorDatosTrabajo(dato.json); this.block = false; }
                 );
         }
     }

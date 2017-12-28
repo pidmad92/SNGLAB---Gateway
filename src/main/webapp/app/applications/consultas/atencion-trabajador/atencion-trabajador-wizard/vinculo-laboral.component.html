@@ -71,6 +71,9 @@
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="inpN">Regimen:</label>
+                                                <select required class="form-control form-control-sm" id="field_regimenlab" name="regimenlab" [(ngModel)]="atencion.datlab.regimenlab" >
+                                                    <option [ngValue]="regimenlabo.id === atencion.datlab.regimenlab?.id ? atencion.datlab.regimenlab : regimenlabo" *ngFor="let regimenlabo of regimenlab;">{{regimenlabo.vDesreglab}}</option>
+                                                </select>
                                                 <select class="form-control form-control-sm"></select>
                                             </div>
                                         </div>
@@ -79,11 +82,12 @@
                                         <div class="row ">
                                             <div class="col-md-6 mb-3">
                                                 <label for="inpN">Fecha de Ingreso:</label>
-                                                <input type="text" class="form-control form-control-sm" id="inpN" name="vNombres" required >
+                                                {{atencion.datlab.dFecvincul}}
+                                                <input type="date" class="form-control form-control-sm" id="inpN" name="dFecvincul" [(ngModel)]="atencion.datlab.dFecvincul" required >
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                     <label for="inpN">Fecha de Cese:</label>
-                                                    <input type="text" class="form-control form-control-sm" id="inpN" name="vNombres" required >
+                                                    <input type="date" class="form-control form-control-sm" id="inpN" name="dFeccese" [(ngModel)]="atencion.datlab.dFeccese" required >
                                                 </div>
                                         </div>
                                     </div>
@@ -93,7 +97,9 @@
                                         <div class="row ">
                                             <div class="col-md-6 mb-3">
                                                 <label for="inpN">Motivo de Cese:</label>
-                                                <select class="form-control form-control-sm"></select>
+                                                <select required class="form-control form-control-sm" id="field_motcese" name="motcese" [(ngModel)]="atencion.datlab.motcese" >
+                                                    <option [ngValue]="motivocese.id === atencion.datlab.motcese?.id ? atencion.datlab.motcese : motivocese" *ngFor="let motivocese of motivcese;">{{motivocese.vDesmotces}}</option>
+                                                </select>
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                     <label for="inpN">Otro Motivo:</label>
@@ -109,7 +115,7 @@
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="inpN">Fecha Fin del Contrato:</label>
-                                                <select class="form-control form-control-sm"></select>
+                                                <input type="date" class="form-control form-control-sm" id="inpN" name="dFecfincon" [(ngModel)]="atencion.datlab.dFecfincon" required >
                                             </div>
                                         </div>
                                     </div>
@@ -118,10 +124,10 @@
                             <form>
                                 <div class="row">
                                     <div class="col-md-12 mb-3">
-                                        <p-dataTable [value]="documentosIngresos" [editable]="true" [(selection)]="selDocumentos" (onRowSelect)="saveDoc($event)" (onRowUnselect)="deleteDoc($event)" scrollable="true" scrollHeight="220px" dataKey="motate.id">
+                                        <p-dataTable [value]="listDocumentosIng" [editable]="true" [(selection)]="selectListDocumentoIng" (onRowSelect)="saveDoc($event)" (onRowUnselect)="deleteDoc($event)" scrollable="true" scrollHeight="220px" dataKey="id">
                                             <p-header>Ingresos percibidos por:</p-header>
                                             <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
-                                            <p-column [style]="{'width':'30%'}" field="motate.vDesmotate" header="Descripción"></p-column>
+                                            <p-column [style]="{'width':'30%'}" field="vDesdocing" header="Descripción"></p-column>
                                             <p-column [style]="{'text-align':'left'}" [hidden]="true" field="check" header="Checked"></p-column>
                                             <ng-template pTemplate="emptymessage">
                                                     No se han encontrado registros

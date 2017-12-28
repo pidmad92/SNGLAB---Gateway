@@ -40,6 +40,12 @@ export class ConsintercaliComponent implements OnInit {
     serialize: number;
     displayInfoAdicional: boolean;
     infoSolicitada: string;
+    listaOrigen: ComboModel[];
+    selectOrigen: ComboModel;
+    criterioTipoDocDenu: string;
+    criterioNumDocDenu: string;
+    fechaInicio: Date;
+    fechaFin: Date;
 
     constructor(
         private eventManager: JhiEventManager,
@@ -55,13 +61,28 @@ export class ConsintercaliComponent implements OnInit {
 
     ngOnInit() {
         this.es = ES;
-        this.block = false;
-        this.criterioBus = 0;
-        this.listaResultado = [];
-        this.listaRespuestas = [];
-        this.selectedResultado = [];
-        this.serialize = 0;
-        this.displayInfoAdicional = false;
+        this.block = true;
+        this.consintercaliService.getOrigendenuncia().subscribe(
+            (res: any) => {
+                this.listaOrigen = [];
+                // tslint:disable-next-line:forin
+                for (const i in res) {
+                    this.listaOrigen.push(new ComboModel(res[i].vDescripcion, String(res[i].id), 0));
+                }
+                this.selectOrigen = undefined;
+                this.block = false;
+                this.criterioBus = 0;
+                this.criterioBus = 0;
+                this.listaResultado = [];
+                this.listaRespuestas = [];
+                this.selectedResultado = [];
+                this.serialize = 0;
+                this.displayInfoAdicional = false;
+            },
+            (res: any) => {
+                this.onError(res);
+                this.block = false;
+            });
     }
 
     consultaInformacionAdicional() {
@@ -86,7 +107,7 @@ export class ConsintercaliComponent implements OnInit {
     }
 
     nuevaDenuncia() {
-        this.router.navigate(['/denuncias/formregdenu']);
+        this.router.navigate(['/denuncias/formreginterno']);
     }
 
     enviarConsulta() {
@@ -120,12 +141,13 @@ export class ConsintercaliComponent implements OnInit {
     }
 
     buscarDenuncias() {
-        switch (this.criterioBus) {
+        console.log(this.criterioBus);
+        switch (Number(this.criterioBus)) {
             case 0:
                 if (this.criterioTipoDoc === undefined) {
-                    this.onError('Debe seleccionar el tipo de documento.');
+                    this.onError('Debe seleccionar el tipo de documento');
                 } else if (this.criterioNumDoc === undefined || this.criterioNumDoc.trim().length === 0) {
-                    this.onError('Debe ingresar el numero de RUC del empleado.');
+                    this.onError('Debe ingresar el numero de RUC del empleado');
                 } else {
                     this.block = true;
                     this.consintercaliService.getFiltro({
@@ -143,7 +165,81 @@ export class ConsintercaliComponent implements OnInit {
                         });
                 }
                 break;
+            case 1:
+                if (this.criterioTipoDocDenu === undefined) {
+                    this.onError('Debe seleccionar el tipo de documento del denunciante');
+                } else if (this.criterioNumDocDenu === undefined || this.criterioNumDocDenu.trim().length === 0) {
+                    this.onError('Debe ingresar el numero de documento del denunciante');
+                } else {
+                    this.block = true;
+                    this.consintercaliService.getFiltro({
+                        criterio: this.criterioBus,
+                        tipoDoc: this.criterioTipoDocDenu,
+                        numDoc: this.criterioNumDocDenu
+                    }).subscribe(
+                        (res: any) => {
+                            this.listaResultado = res;
+                            this.block = false;
+                        },
+                        (res: any) => {
+                            this.onError(res);
+                            this.block = false;
+                        });
+                }
+                break;
+            case 2:
+                if (this.fechaInicio === undefined) {
+                    this.onError('Debe ingresar la fecha de inicio');
+                } else if (this.fechaFin === undefined) {
+                    this.onError('Debe ingresar la fecha de fin');
+                } else {
+                    this.block = true;
+                    this.consintercaliService.getFiltro({
+                        criterio: this.criterioBus,
+                        fecInicio: this.formattedDate(this.fechaInicio),
+                        fecFin: this.formattedDate(this.fechaFin)
+                    }).subscribe(
+                        (res: any) => {
+                            this.listaResultado = res;
+                            this.block = false;
+                        },
+                        (res: any) => {
+                            this.onError(res);
+                            this.block = false;
+                        });
+                }
+                break;
+            case 3:
+                if (this.selectOrigen === undefined) {
+                    this.onError('Debe seleccionar el tipo de origen de la denuncia');
+                } else {
+                    this.block = true;
+                    this.consintercaliService.getFiltro({
+                        criterio: this.criterioBus,
+                        serialize: this.selectOrigen.value
+                    }).subscribe(
+                        (res: any) => {
+                            this.listaResultado = res;
+                            this.block = false;
+                        },
+                        (res: any) => {
+                            this.onError(res);
+                            this.block = false;
+                        });
+                }
+                break;
         }
+    }
+
+    formattedDate(d: Date): string {
+        let month = String(d.getMonth() + 1);
+        let day = String(d.getDate());
+        const year = String(d.getFullYear());
+
+        if (month.length < 2) { month = '0' + month; }
+        if (day.length < 2) { day = '0' + day; }
+
+        return `${day}/${month}/${year}`;
     }
 
     private onError(error: any) {

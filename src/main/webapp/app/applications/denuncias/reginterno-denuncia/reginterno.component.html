@@ -135,11 +135,11 @@
                 <p-checkbox [(ngModel)]="formregdenu.flagdom" name="flagdom" binary="true"></p-checkbox>Dom
             </div>
             <div class="ui-md-3">
-                <label>Hora inicio trabajo:</label>
+                <label>Hora inicio trabajo:</label><br />
                 <p-calendar [(ngModel)]="formregdenu.horainicio" name="horainicio" [timeOnly]="true"></p-calendar>
             </div>
             <div class="ui-md-3">
-                <label>Hora fin trabajo:</label>
+                <label>Hora fin trabajo:</label><br />
                 <p-calendar [(ngModel)]="formregdenu.horafin" name="horafin" [timeOnly]="true"></p-calendar>
             </div>
         </div>
@@ -165,7 +165,7 @@
         </div>
         <div class="ui-g">
             <div *ngIf="formregdenu.flagtrabajando == false" class="ui-md-3">
-                <label>Fecha Cese</label>
+                <label>Fecha Cese</label><br />
                 <p-calendar [(ngModel)]="formregdenu.fechacese" name="fechacese" [locale]="es" dateFormat="dd/mm/yy"></p-calendar>
             </div>
             <div *ngIf="formregdenu.flaggruposindical == true" class="ui-md-9">
@@ -222,7 +222,7 @@
                 Descripción denuncia
             </div>
             <div class="ui-md-9">
-                <textarea pInputTextarea [(ngModel)]="formregdenu.observadenuncia" name="observadenuncia"></textarea>
+                <textarea [rows]="5" [cols]="100" pInputTextarea [(ngModel)]="formregdenu.observadenuncia" name="observadenuncia"></textarea>
             </div>
         </div>
         <div class="ui-g">
@@ -230,7 +230,7 @@
                 Detalle si presento su denuncia en otro organo del estado
             </div>
             <div class="ui-md-9">
-                <textarea pInputTextarea [(ngModel)]="formregdenu.observadenunciadetalle" name="observadenunciadetalle"></textarea>
+                <textarea [rows]="5" [cols]="100" pInputTextarea [(ngModel)]="formregdenu.observadenunciadetalle" name="observadenunciadetalle"></textarea>
             </div>
         </div>
         <div class="ui-g">
@@ -258,7 +258,7 @@
         <div class="ui-g">
             <div class="ui-md-12">
                 <button (click)="backDatosTrabajo()" class="btn btn-second" type="button">Atras</button>
-                <button (click)="validarDatosDenuncias()" class="btn btn-primary" type="button">Finalizar denuncia laboral</button>
+                <button (click)="validarDatosDenuncias()" class="btn btn-primary" type="button">Calificar denuncia laboral</button>
             </div>
         </div>
     </p-tabPanel>
@@ -284,10 +284,10 @@
         </div>
         <div class="ui-g">
             <div class="ui-md-3">
-                Detalle si presento su denuncia en otro organo del estado
+                Observación de la calificación
             </div>
             <div class="ui-md-9">
-                <textarea pInputTextarea [(ngModel)]="formregdenu.observaCalifica" name="observaCalifica"></textarea>
+                <textarea [rows]="5" [cols]="100" pInputTextarea [(ngModel)]="formregdenu.observaCalifica" name="observaCalifica"></textarea>
             </div>
         </div>
         <div class="ui-g">

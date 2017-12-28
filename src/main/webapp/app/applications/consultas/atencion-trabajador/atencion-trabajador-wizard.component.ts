@@ -116,6 +116,8 @@ export class AtencionTrabajadorWizardComponent implements OnInit, OnChanges  {
         // Mostrar / ocultar steps y emitir el label seleccionado
         if (this.activeIndex === 2) {
             this.eventManager.broadcast({ name: 'saveMotivos', content: 'OK'});
+        } else if (this.activeIndex === 3) {
+            this.eventManager.broadcast({ name: 'saveDocing', content: 'OK'});
         }
         this.ngOnChanges({
             activeIndex: {
