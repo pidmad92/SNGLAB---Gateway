@@ -16,6 +16,7 @@ import { FormularioFinancieroN1Component,
          FormularioFinancieroAnexo1BComponent,
          FormularioFinancieroAnexo1CComponent,
          FormularioFinancieroAnexo1DComponent } from '../formulario-financiero/index';
+import { FormularioFinancieroN2Component } from '../formulario-financiero/formulario-financiero-n2.component';
 
 export const ControlInformacionRoute: Routes = [
     {
@@ -61,5 +62,8 @@ export const ControlInformacionRoute: Routes = [
     }, {
         path: 'dictamenes/formulario-financiero-anexo1d/:nCodffina',
         component: FormularioFinancieroAnexo1DComponent,
+    }, {
+        path: 'dictamenes/formulario-financiero-n2/:nCodffina',
+        component: FormularioFinancieroN2Component,
     },
 ];

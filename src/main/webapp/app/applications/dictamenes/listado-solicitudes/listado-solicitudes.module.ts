@@ -67,6 +67,7 @@ import { FormularioFinancieroN1Component,
     FormularioFinancieroAnexo1CComponent,
     FormularioFinancieroAnexo1DComponent,
     FormularioFinancieroService} from '../formulario-financiero/index';
+import { FormularioFinancieroN2Component } from '../formulario-financiero/formulario-financiero-n2.component';
 
 const ENTITY_STATES = [
     ...ListadoSolicitudesRoute,
@@ -89,6 +90,7 @@ const ENTITY_STATES = [
         FormularioFinancieroAnexo1BComponent,
         FormularioFinancieroAnexo1CComponent,
         FormularioFinancieroAnexo1DComponent,
+        FormularioFinancieroN2Component,
         DireccionComponent,
         HechoinverComponent,
         ParticipaComponent,

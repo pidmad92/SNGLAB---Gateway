@@ -10,8 +10,8 @@
         <div class="col">
             <div class="card card-mtpe mb-3">
                 <div class="card-body">
-                    <p>&nbsp; Importada
-                        <a href="#" class="btn btn-sm btn-dark" style="float:right;" data-toggle="modal" data-target="#exampleModal">
+                    <p>&nbsp; Nacional
+                        <a (click)="mostrarDialogMPNacional()" class="btn btn-sm btn-dark" style="float:right;color:white;">
                             <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
                     </p>
                     </p>
@@ -20,76 +20,52 @@
                             <tr style="font-size:8.5pt;">
                                 <td rowspan="2">Descripción(2)</td>
                                 <td rowspan="2">Unidad de Medida</td>
-                                <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">2014</td>
-                                <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">2015</td>
-                                <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">2016</td>
-                                <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">2017</td>
+                                <ng-container *ngFor="let anio of anios">
+                                    <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">{{anio}}</td>
+                                </ng-container>
                                 <td rowspan="2">Acción</td>
                             </tr>
                             <tr style="font-size:7.5pt;">
-
-                                <td>Cantidad Consumida</td>
-                                <td>Precio de Compra</td>
-                                <td style="border-right: 1px white solid;">Costo Total(1)</td>
-                                <td>Cantidad Consumida</td>
-                                <td>Precio de Compra</td>
-                                <td style="border-right: 1px white solid;">Costo Total(1)</td>
-                                <td>Cantidad Consumida</td>
-                                <td>Precio de Compra</td>
-                                <td style="border-right: 1px white solid;">Costo Total(1)</td>
-                                <td>Cantidad Consumida</td>
-                                <td>Precio de Compra</td>
-                                <td style="border-right: 1px white solid;">Costo Total(1)</td>
-
+                                <ng-container *ngFor="let a of anios">
+                                    <td>Cantidad Consumida</td>
+                                    <td>Precio Promedio de Compra</td>
+                                    <td style="border-right: 1px white solid;">Costo Total(1)</td>
+                                </ng-container>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td style="text-align: center;width: 10%">
-                                    <a href="" class="btn btn-sm btn-warning">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="" class="btn btn-sm btn-danger">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                            <ng-container *ngFor="let lista of formulario.listaMPNacional;">
+                                <tr>
+                                    <td>{{lista.descripcion}}</td>
+                                    <td>{{lista.unidadmedida}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes;">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteMPNacional(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteMPNacional(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
                             <tr>
                                 <td>SUBTOTAL</td>
                                 <td></td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                                <ng-container *ngFor="let lista of formulario.subtotalMPNacional;">
+                                    <ng-container *ngFor="let comp of lista.componentes;">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                </ng-container>
                                 <td></td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <p>&nbsp; Nacional
-                        <a href="#" class="btn btn-sm btn-dark" style="float:right;" data-toggle="modal" data-target="#exampleModal">
+                    <p>&nbsp; Importada
+                        <a (click)="mostrarDialogMPImportada()" class="btn btn-sm btn-dark" style="float:right;color:white;">
                             <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
                     </p>
                     </p>
@@ -98,77 +74,73 @@
                             <tr style="font-size:8.5pt;">
                                 <td rowspan="2">Descripción(2)</td>
                                 <td rowspan="2">Unidad de Medida</td>
-                                <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">2014</td>
-                                <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">2015</td>
-                                <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">2016</td>
-                                <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">2017</td>
+                                <ng-container *ngFor="let anio of anios">
+                                    <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">{{anio}}</td>
+                                </ng-container>
                                 <td rowspan="2">Acción</td>
                             </tr>
                             <tr style="font-size:7.5pt;">
-
-                                <td>Cantidad Consumida</td>
-                                <td>Precio de Compra</td>
-                                <td style="border-right: 1px white solid;">Costo Total(1)</td>
-                                <td>Cantidad Consumida</td>
-                                <td>Precio de Compra</td>
-                                <td style="border-right: 1px white solid;">Costo Total(1)</td>
-                                <td>Cantidad Consumida</td>
-                                <td>Precio de Compra</td>
-                                <td style="border-right: 1px white solid;">Costo Total(1)</td>
-                                <td>Cantidad Consumida</td>
-                                <td>Precio de Compra</td>
-                                <td style="border-right: 1px white solid;">Costo Total(1)</td>
-
+                                <ng-container *ngFor="let a of anios">
+                                    <td>Cantidad Consumida</td>
+                                    <td>Precio Promedio de Compra</td>
+                                    <td style="border-right: 1px white solid;">Costo Total(1)</td>
+                                </ng-container>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td style="text-align: center;width: 10%">
-                                    <a href="" class="btn btn-sm btn-warning">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="" class="btn btn-sm btn-danger">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                            <ng-container *ngFor="let lista of formulario.listaMPImportada;">
+                                <tr>
+                                    <td>{{lista.descripcion}}</td>
+                                    <td>{{lista.unidadmedida}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes;">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteMPImportada(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteMPImportada(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
                             <tr>
                                 <td>SUBTOTAL</td>
                                 <td></td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                                <ng-container *ngFor="let lista of formulario.subtotalMPImportada;">
+                                    <ng-container *ngFor="let comp of lista.componentes;">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                </ng-container>
                                 <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-responsive table-bordered table-hover">
+
+                        <tbody>
+                            <tr>
+                                <td class="concepto" style="width:150px">
+                                    <strong>COSTOS TOTAL (3)</strong>
+                                </td>
+                                <ng-container *ngFor="let lista of formulario.ingresoTotalMP;">
+                                    <ng-container *ngFor="let comp of lista.componentes;">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                </ng-container>
+                                <td style="width: 10%"></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+            
         </div>
     </div>
+
+    
     <div class="row">
         <div class="col" style="text-align:center;">
             <h5 class="title">GASTOS DE FABRICACIÓN</h5>
@@ -177,8 +149,8 @@
     </div>
     <div class="card card-mtpe mb-3">
         <div class="card-body">
-            <p>&nbsp; Importada
-                <a href="#" class="btn btn-sm btn-dark" style="float:right;" data-toggle="modal" data-target="#exampleModal2">
+            <p>
+                <a (click)="mostrarDialogGastosFinancieros()" class="btn btn-sm btn-dark" style="float:right;color:white;">
                     <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
             </p>
             </p>
@@ -187,168 +159,50 @@
                     <tr style="font-size:8.5pt;">
                         <td rowspan="2">Descripción(2)</td>
                         <td rowspan="2">Unidad de Medida</td>
-                        <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">2014</td>
-                        <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">2015</td>
-                        <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">2016</td>
-                        <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">2017</td>
+                        <ng-container *ngFor="let anio of anios">
+                            <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">{{anio}}</td>
+                        </ng-container>
                         <td rowspan="2">Acción</td>
                     </tr>
                     <tr style="font-size:7.5pt;">
-
-                        <td>Cantidad Consumida</td>
-                        <td>Precio de Compra</td>
-                        <td style="border-right: 1px white solid;">Costo Total(1)</td>
-                        <td>Cantidad Consumida</td>
-                        <td>Precio de Compra</td>
-                        <td style="border-right: 1px white solid;">Costo Total(1)</td>
-                        <td>Cantidad Consumida</td>
-                        <td>Precio de Compra</td>
-                        <td style="border-right: 1px white solid;">Costo Total(1)</td>
-                        <td>Cantidad Consumida</td>
-                        <td>Precio de Compra</td>
-                        <td style="border-right: 1px white solid;">Costo Total(1)</td>
-
+                        <ng-container *ngFor="let a of anios">
+                            <td>Cantidad o Servicio Consumido</td>
+                            <td>Costo Promedio Unitario</td>
+                            <td style="border-right: 1px white solid;">Costo Total(1)</td>
+                        </ng-container>
                     </tr>
                 </thead>
                 <tbody>
+                    <ng-container *ngFor="let lista of formulario.listaGastosFinancieros;">
+                        <tr>
+                            <td>{{lista.descripcion}}</td>
+                            <td>{{lista.unidadmedida}}</td>
+                            <ng-container *ngFor="let comp of lista.componentes;">
+                                <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                            </ng-container>
+                            <td style="text-align: center;width: 10%">
+                                <a [routerLink]="" (click)="editarComponenteGastosFinancieros(lista)" class="btn btn-sm btn-warning">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </a>
+                                <a [routerLink]="" (click)="eliminarComponenteGastosFinancieros(lista)" class="btn btn-sm btn-danger">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </ng-container>
                     <tr>
+                        <td>COSTOS TOTAL (3)</td>
                         <td></td>
-                        <td></td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td style="text-align: center;width: 10%">
-                            <a href="" class="btn btn-sm btn-warning">
-                                <i class="fa fa-pencil" aria-hidden="true"></i>
-                            </a>
-                            <a href="" class="btn btn-sm btn-danger">
-                                <i class="fa fa-times" aria-hidden="true"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>SUBTOTAL</td>
-                        <td></td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <p>&nbsp; Nacional
-                <a href="#" class="btn btn-sm btn-dark" style="float:right;" data-toggle="modal" data-target="#exampleModal2">
-                    <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
-            </p>
-            </p>
-            <table class="table table-responsive table-bordered table-hover cabecera">
-                <thead>
-                    <tr style="font-size:8.5pt;">
-                        <td rowspan="2">Descripción(2)</td>
-                        <td rowspan="2">Unidad de Medida</td>
-                        <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">2014</td>
-                        <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">2015</td>
-                        <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">2016</td>
-                        <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">2017</td>
-                        <td rowspan="2">Acción</td>
-                    </tr>
-                    <tr style="font-size:7.5pt;">
-
-                        <td>Cantidad Consumida</td>
-                        <td>Precio de Compra</td>
-                        <td style="border-right: 1px white solid;">Costo Total(1)</td>
-                        <td>Cantidad Consumida</td>
-                        <td>Precio de Compra</td>
-                        <td style="border-right: 1px white solid;">Costo Total(1)</td>
-                        <td>Cantidad Consumida</td>
-                        <td>Precio de Compra</td>
-                        <td style="border-right: 1px white solid;">Costo Total(1)</td>
-                        <td>Cantidad Consumida</td>
-                        <td>Precio de Compra</td>
-                        <td style="border-right: 1px white solid;">Costo Total(1)</td>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td style="text-align: center;width: 10%">
-                            <a href="" class="btn btn-sm btn-warning">
-                                <i class="fa fa-pencil" aria-hidden="true"></i>
-                            </a>
-                            <a href="" class="btn btn-sm btn-danger">
-                                <i class="fa fa-times" aria-hidden="true"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>SUBTOTAL</td>
-                        <td></td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                        <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                        <ng-container *ngFor="let lista of formulario.subtotalGastosFinancieros;">
+                            <ng-container *ngFor="let comp of lista.componentes;">
+                                <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                            </ng-container>
+                        </ng-container>
                         <td></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <table class="table table-responsive table-bordered table-hover">
-
-            <tbody>
-                <tr>
-                    <td class="concepto" style="width:150px">
-                        <strong>INGRESO TOTAL (3)</strong>
-                    </td>
-                    <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                    <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                    <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                    <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-
-                    <td style="width: 10%"></td>
-                </tr>
-            </tbody>
-        </table>
 
         <div style="font-size:9pt;padding:5px;">
             <br/>
@@ -372,9 +226,9 @@
     </div>
     <div class="row">
         <div class="col-12 text-sm-right">
-            <a href="#" class="btn btn-sm m-1 btn-success">
+            <a (click)="verControlInformacion()" class="btn btn-sm m-1 btn-success">
                 <i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
-            <a href="#" class="btn btn-sm m-1 btn-secondary">
+            <a (click)="guardarFormulario()" class="btn btn-sm m-1 btn-secondary">
                 <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
         </div>
     </div>
@@ -382,265 +236,364 @@
 
 </section>
 
-<footer class="row flex-nowrap">
-    <div class="left-col active col-2 col-sm-2 col-md-2 col-lg-2">
-        <div class="aside-footer row">
-        </div>
-    </div>
-    <div class="footer d-flex justify-content-center align-items-center right-col col-10 col-sm-10 col-md-10 col-lg-10">
-        <p class="text-center my-1">MTPE © 2017 Todos los derechos reservados</p>
-    </div>
-    <div id="scroll">
-        <i class="fa fa-chevron-up" aria-hidden="true"></i>
-    </div>
-</footer>
-
 </div>
 
-<!-- Modal Direccion-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="titleReg" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="margin: 30px 20%">
-        <div class="modal-content" style="width:900px;">
-            <div class="modal-header text-white bg-warning p-2">
-                <h5 class="modal-title" id="titleReg">Materia Prima Consumida en el Proceso de Produccion</h5>
-                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="row">
-                        <div class="col">
-                            <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
-                            <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="">
-                        </div>
-                        <div class="col">
-                            <label for="inpDireccion" class="col-form-label col-form-label-sm">Unidad de Medida:</label>
-                            <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="">
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="row">
-                        <div class="col">
-                            <fieldset>
-                                <legend>2014</legend>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">Cantidad Consumida:</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="0">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio de Compra:</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="">
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="col">
-                            <fieldset>
-                                <legend>2015</legend>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">Cantidad Consumida:</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="0">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio de Compra:</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="">
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="row">
-                        <div class="col">
-                            <fieldset>
-                                <legend>2016</legend>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">Cantidad Consumida:</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="0">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio de Compra:</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="">
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="col">
-                            <fieldset>
-                                <legend>2017</legend>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">Cantidad Consumida:</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="0">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio de Compra:</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="">
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="card-footer text-center">
-                <a href="#" class="btn btn-sm btn-danger" data-dismiss="modal">
-                    <i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
-                <a href="#" class="btn btn-sm btn-warning">
-                    <i class="fa fa-plus" aria-hidden="true"></i> Añadir</a>
-            </div>
-        </div>
-    </div>
-</div>
+<p-dialog [(visible)]="displayMPNacional" modal="modal" width="800" [responsive]="true">
+    <p-header>
+        Registro de Materia Prima Nacional consumida en el Proceso de Producción
+    </p-header>
+    <p>
 
-<!-- Modal Direccion-->
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="titleReg2" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="margin: 30px 20%">
-        <div class="modal-content" style="width:900px;">
-            <div class="modal-header text-white bg-warning p-2">
-                <h5 class="modal-title" id="titleReg2">Gastos de Fabricación</h5>
-                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Producto y/o Servicio:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ventasMPNacionales.producto">
+                </div>
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Unidad de Medida:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ventasMPNacionales.unidadMedida">
+                </div>
             </div>
-            <div class="modal-body">
-                <form>
-                    <div class="row">
-                        <div class="col">
-                            <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
-                            <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="">
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[0]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" min="0"
+                                    max="999999" [(ngModel)]="ventasMPNacionales.anioAvolumenfisico">
+                            </div>
                         </div>
-                        <div class="col">
-                            <label for="inpDireccion" class="col-form-label col-form-label-sm">Unidad de Medida:</label>
-                            <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="">
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasMPNacionales.anioApromedio">
+                            </div>
                         </div>
-                    </div>
-                    <br/>
-                    <div class="row">
-                        <div class="col">
-                            <fieldset>
-                                <legend>2014</legend>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">Cantidad Consumida:</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="0">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio de Compra:</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="">
-                                    </div>
-                                </div>
-                            </fieldset>
+                    </fieldset>
+                </div>
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[1]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" min="0"
+                                    max="999999" [(ngModel)]="ventasMPNacionales.anioBvolumenfisico">
+                            </div>
                         </div>
-                        <div class="col">
-                            <fieldset>
-                                <legend>2015</legend>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">Cantidad Consumida:</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="0">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio de Compra:</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="">
-                                    </div>
-                                </div>
-                            </fieldset>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasMPNacionales.anioBpromedio">
+                            </div>
                         </div>
-                    </div>
-                    <br/>
-                    <div class="row">
-                        <div class="col">
-                            <fieldset>
-                                <legend>2016</legend>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">Cantidad Consumida:</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="0">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio de Compra:</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="">
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="col">
-                            <fieldset>
-                                <legend>2017</legend>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">Cantidad Consumida:</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="0">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio de Compra:</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="">
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-                    </div>
-                </form>
+                    </fieldset>
+                </div>
             </div>
-            <div class="card-footer text-center">
-                <a href="#" class="btn btn-sm btn-danger" data-dismiss="modal">
-                    <i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
-                <a href="#" class="btn btn-sm btn-warning">
-                    <i class="fa fa-plus" aria-hidden="true"></i> Añadir</a>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[2]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" min="0"
+                                    max="999999" [(ngModel)]="ventasMPNacionales.anioCvolumenfisico">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasMPNacionales.anioCpromedio">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[3]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" min="0"
+                                    max="999999" [(ngModel)]="ventasMPNacionales.anioDvolumenfisico">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasMPNacionales.anioDpromedio">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalMPNacional()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalMPNacional()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayMPImportada" modal="modal" width="800" [responsive]="true">
+    <p-header>
+        Registro de Materia Prima Importada consumida en el Proceso de Producción
+    </p-header>
+    <p>
+
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Producto y/o Servicio:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ventasMPImportadas.producto">
+                </div>
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Unidad de Medida:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ventasMPImportadas.unidadMedida">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[0]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" min="0"
+                                    max="999999" [(ngModel)]="ventasMPImportadas.anioAvolumenfisico">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasMPImportadas.anioApromedio">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[1]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" min="0"
+                                    max="999999" [(ngModel)]="ventasMPImportadas.anioBvolumenfisico">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasMPImportadas.anioBpromedio">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[2]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" min="0"
+                                    max="999999" [(ngModel)]="ventasMPImportadas.anioCvolumenfisico">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasMPImportadas.anioCpromedio">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[3]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" min="0"
+                                    max="999999" [(ngModel)]="ventasMPImportadas.anioDvolumenfisico">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasMPImportadas.anioDpromedio">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalMPImportada()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalMPImportada()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayGastosFinancieros" modal="modal" width="800" [responsive]="true">
+    <p-header>
+        Registro de Gastos de Fabricacion
+    </p-header>
+    <p>
+
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Producto y/o Servicio:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ventasGastosFinancieros.producto">
+                </div>
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Unidad de Medida:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ventasGastosFinancieros.unidadMedida">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[0]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" min="0"
+                                    max="999999" [(ngModel)]="ventasGastosFinancieros.anioAvolumenfisico">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasGastosFinancieros.anioApromedio">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[1]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" min="0"
+                                    max="999999" [(ngModel)]="ventasGastosFinancieros.anioBvolumenfisico">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasGastosFinancieros.anioBpromedio">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[2]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" min="0"
+                                    max="999999" [(ngModel)]="ventasGastosFinancieros.anioCvolumenfisico">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasGastosFinancieros.anioCpromedio">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[3]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" min="0"
+                                    max="999999" [(ngModel)]="ventasGastosFinancieros.anioDvolumenfisico">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasGastosFinancieros.anioDpromedio">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalGastosFinancieros()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalGastosFinancieros()">Añadir</button>
+    </p-footer>
+</p-dialog>

@@ -10,7 +10,7 @@
             <div class="card card-mtpe mb-3">
                 <div class="card-body">
                     <p>GASTOS DE VENTAS Y DISTRIBUCIÓN (*)
-                        <a href="#" class="btn btn-sm btn-dark" style="float:right;" data-toggle="modal" data-target="#exampleModal">
+                        <a (click)="mostrarDialogGastosVentasDistribucion()" class="btn btn-sm btn-dark" style="float:right;color:white;">
                             <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
                     </p>
                     </p>
@@ -18,35 +18,34 @@
                         <thead>
                             <tr style="font-size:8.5pt;">
                                 <td>Descripción(2)</td>
-                                <td>2014</td>
-                                <td>2015</td>
-                                <td>2016</td>
-                                <td>2017</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
                                 <td>Acción</td>
                             </tr>
                         </thead>
                         <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaGastosVentasDistribucion;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteGastosVentasDistribucion(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteGastosVentasDistribucion(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
                             <tr>
-                                <td></td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td style="text-align: center;width: 10%">
-                                    <a href="" class="btn btn-sm btn-warning">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="" class="btn btn-sm btn-danger">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>TOTAL</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                                <td class="dinamico">{{formulario.totalGastosVentasDistribucion.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalGastosVentasDistribucion.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -54,7 +53,7 @@
 
                     <p>DENTRO DE LOS GASTOS DE VENTAS Y DISTRIBUCIÓN:</p>
                     <p>&nbsp; Gastos por servicios Prestados por terceros
-                        <a href="#" class="btn btn-sm btn-dark" style="float:right;" data-toggle="modal" data-target="#exampleModal">
+                        <a (click)="mostrarDialogGastosVenDistriServPorTerceros()" class="btn btn-sm btn-dark" style="float:right;color:white;">
                             <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
                     </p>
                     </p>
@@ -62,42 +61,41 @@
                         <thead>
                             <tr style="font-size:8.5pt;">
                                 <td>Descripción(2)</td>
-                                <td>2014</td>
-                                <td>2015</td>
-                                <td>2016</td>
-                                <td>2017</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
                                 <td>Acción</td>
                             </tr>
                         </thead>
                         <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaGastosVenDistriServPorTerceros;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteGastosVenDistriServPorTerceros(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteGastosVenDistriServPorTerceros(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
                             <tr>
-                                <td></td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td style="text-align: center;width: 10%">
-                                    <a href="" class="btn btn-sm btn-warning">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="" class="btn btn-sm btn-danger">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>TOTAL</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                                <td class="dinamico">{{formulario.totalGastosVenDistriServPorTerceros.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalGastosVenDistriServPorTerceros.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
                                 <td></td>
                             </tr>
                         </tbody>
                     </table>
 
                     <p>&nbsp; Gastos por Cargos Diversos de Gestión
-                        <a href="#" class="btn btn-sm btn-dark" style="float:right;" data-toggle="modal" data-target="#exampleModal">
+                        <a (click)="mostrarDialogGastosDiversionGestion()" class="btn btn-sm btn-dark" style="float:right;color:white;">
                             <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
                     </p>
                     </p>
@@ -105,42 +103,41 @@
                         <thead>
                             <tr style="font-size:8.5pt;">
                                 <td>Descripción(2)</td>
-                                <td>2014</td>
-                                <td>2015</td>
-                                <td>2016</td>
-                                <td>2017</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
                                 <td>Acción</td>
                             </tr>
                         </thead>
                         <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaGastosDiversionGestion;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteGastosDiversionGestion(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteGastosDiversionGestion(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
                             <tr>
-                                <td></td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td style="text-align: center;width: 10%">
-                                    <a href="" class="btn btn-sm btn-warning">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="" class="btn btn-sm btn-danger">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>TOTAL</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                                <td class="dinamico">{{formulario.totalGastosDiversionGestion.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalGastosDiversionGestion.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
                                 <td></td>
                             </tr>
                         </tbody>
                     </table>
 
                     <p>&nbsp; Provisiones
-                        <a href="#" class="btn btn-sm btn-dark" style="float:right;" data-toggle="modal" data-target="#exampleModal">
+                        <a (click)="mostrarDialogProvisiones()" class="btn btn-sm btn-dark" style="float:right;color:white;">
                             <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
                     </p>
                     </p>
@@ -148,42 +145,41 @@
                         <thead>
                             <tr style="font-size:8.5pt;">
                                 <td>Descripción(2)</td>
-                                <td>2014</td>
-                                <td>2015</td>
-                                <td>2016</td>
-                                <td>2017</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
                                 <td>Acción</td>
                             </tr>
                         </thead>
                         <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaProvisiones;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteProvisiones(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteProvisiones(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
                             <tr>
-                                <td></td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td style="text-align: center;width: 10%">
-                                    <a href="" class="btn btn-sm btn-warning">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="" class="btn btn-sm btn-danger">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>TOTAL</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                                <td class="dinamico">{{formulario.totalProvisiones.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalProvisiones.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
                                 <td></td>
                             </tr>
                         </tbody>
                     </table>
 
                     <p>GASTOS DE ADMINISTRACIÓN (*)
-                        <a href="#" class="btn btn-sm btn-dark" style="float:right;" data-toggle="modal" data-target="#exampleModal">
+                        <a (click)="mostrarDialogGastosAdministracion()" class="btn btn-sm btn-dark" style="float:right;color:white;">
                             <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
                     </p>
                     </p>
@@ -191,42 +187,41 @@
                         <thead>
                             <tr style="font-size:8.5pt;">
                                 <td>Descripción(2)</td>
-                                <td>2014</td>
-                                <td>2015</td>
-                                <td>2016</td>
-                                <td>2017</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
                                 <td>Acción</td>
                             </tr>
                         </thead>
                         <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaGastosAdministracion;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteGastosAdministracion(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteGastosAdministracion(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
                             <tr>
-                                <td></td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td style="text-align: center;width: 10%">
-                                    <a href="" class="btn btn-sm btn-warning">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="" class="btn btn-sm btn-danger">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>TOTAL</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                                <td class="dinamico">{{formulario.totalGastosAdministracion.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalGastosAdministracion.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
                                 <td></td>
                             </tr>
                         </tbody>
                     </table>
                     <p>DENTRO DE LOS GASTOS ADMINISTRACIÓN:</p>
                     <p>&nbsp; Gastos por servicios Prestados por terceros
-                        <a href="#" class="btn btn-sm btn-dark" style="float:right;" data-toggle="modal" data-target="#exampleModal">
+                        <a (click)="mostrarDialogGastosDentroAdminServPorTerceros()"class="btn btn-sm btn-dark" style="float:right;color:white;">
                             <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
                     </p>
                     </p>
@@ -234,42 +229,41 @@
                         <thead>
                             <tr style="font-size:8.5pt;">
                                 <td>Descripción(2)</td>
-                                <td>2014</td>
-                                <td>2015</td>
-                                <td>2016</td>
-                                <td>2017</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
                                 <td>Acción</td>
                             </tr>
                         </thead>
                         <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaGastosDentroAdminServPorTerceros;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteGastosDentroAdminServPorTerceros(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteGastosDentroAdminServPorTerceros(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
                             <tr>
-                                <td></td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td style="text-align: center;width: 10%">
-                                    <a href="" class="btn btn-sm btn-warning">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="" class="btn btn-sm btn-danger">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>TOTAL</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                                <td class="dinamico">{{formulario.totalGastosDentroAdminServPorTerceros.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalGastosDentroAdminServPorTerceros.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
                                 <td></td>
                             </tr>
                         </tbody>
                     </table>
 
                     <p>INGRESOS FINANCIEROS
-                        <a href="#" class="btn btn-sm btn-dark" style="float:right;" data-toggle="modal" data-target="#exampleModal">
+                        <a (click)="mostrarDialogIngresosFinancieros()" class="btn btn-sm btn-dark" style="float:right;color:white;">
                             <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
                     </p>
                     </p>
@@ -277,42 +271,41 @@
                         <thead>
                             <tr style="font-size:8.5pt;">
                                 <td>Descripción(2)</td>
-                                <td>2014</td>
-                                <td>2015</td>
-                                <td>2016</td>
-                                <td>2017</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
                                 <td>Acción</td>
                             </tr>
                         </thead>
                         <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaIngresosFinancieros;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteIngresosFinancieros(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteIngresosFinancieros(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
                             <tr>
-                                <td></td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td style="text-align: center;width: 10%">
-                                    <a href="" class="btn btn-sm btn-warning">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="" class="btn btn-sm btn-danger">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>TOTAL</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                                <td class="dinamico">{{formulario.totalIngresosFinancieros.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalIngresosFinancieros.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
                                 <td></td>
                             </tr>
                         </tbody>
                     </table>
 
                     <p>GASTOS FINANCIEROS
-                        <a href="#" class="btn btn-sm btn-dark" style="float:right;" data-toggle="modal" data-target="#exampleModal">
+                        <a (click)="mostrarDialogGastosFinancieros()" class="btn btn-sm btn-dark" style="float:right;color:white;">
                             <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
                     </p>
                     </p>
@@ -320,42 +313,41 @@
                         <thead>
                             <tr style="font-size:8.5pt;">
                                 <td>Descripción(2)</td>
-                                <td>2014</td>
-                                <td>2015</td>
-                                <td>2016</td>
-                                <td>2017</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
                                 <td>Acción</td>
                             </tr>
                         </thead>
                         <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaGastosFinancieros;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteGastosFinancieros(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteGastosFinancieros(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
                             <tr>
-                                <td></td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td style="text-align: center;width: 10%">
-                                    <a href="" class="btn btn-sm btn-warning">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="" class="btn btn-sm btn-danger">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>TOTAL</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                                <td class="dinamico">{{formulario.totalGastosFinancieros.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalGastosFinancieros.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
                                 <td></td>
                             </tr>
                         </tbody>
                     </table>
 
                     <p>OTROS INGRESOS
-                        <a href="#" class="btn btn-sm btn-dark" style="float:right;" data-toggle="modal" data-target="#exampleModal">
+                        <a (click)="mostrarDialogOtrosIngresos()" class="btn btn-sm btn-dark" style="float:right;color:white;">
                             <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
                     </p>
                     </p>
@@ -363,42 +355,41 @@
                         <thead>
                             <tr style="font-size:8.5pt;">
                                 <td>Descripción(2)</td>
-                                <td>2014</td>
-                                <td>2015</td>
-                                <td>2016</td>
-                                <td>2017</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
                                 <td>Acción</td>
                             </tr>
                         </thead>
                         <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaOtrosIngresos;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteOtrosIngresos(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteOtrosIngresos(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
                             <tr>
-                                <td></td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td style="text-align: center;width: 10%">
-                                    <a href="" class="btn btn-sm btn-warning">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="" class="btn btn-sm btn-danger">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>TOTAL</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                                <td class="dinamico">{{formulario.totalOtrosIngresos.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalOtrosIngresos.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
                                 <td></td>
                             </tr>
                         </tbody>
                     </table>
 
                     <p>OTROS EGRESOS
-                        <a href="#" class="btn btn-sm btn-dark" style="float:right;" data-toggle="modal" data-target="#exampleModal">
+                        <a (click)="mostrarDialogOtrosEgresos()" class="btn btn-sm btn-dark" style="float:right;color:white;">
                             <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
                     </p>
                     </p>
@@ -406,35 +397,34 @@
                         <thead>
                             <tr style="font-size:8.5pt;">
                                 <td>Descripción(2)</td>
-                                <td>2014</td>
-                                <td>2015</td>
-                                <td>2016</td>
-                                <td>2017</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
                                 <td>Acción</td>
                             </tr>
                         </thead>
                         <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaOtrosEgresos;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteOtrosEgresos(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteOtrosEgresos(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
                             <tr>
-                                <td></td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td style="text-align: center;width: 10%">
-                                    <a href="" class="btn btn-sm btn-warning">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="" class="btn btn-sm btn-danger">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>TOTAL</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                                <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                                <td class="dinamico">{{formulario.totalOtrosEgresos.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalOtrosEgresos.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -461,95 +451,603 @@
     </div>
     <div class="row">
         <div class="col-12 text-sm-right">
-            <a href="#" class="btn btn-sm m-1 btn-success">
+            <a (click)="verControlInformacion()" class="btn btn-sm m-1 btn-success">
                 <i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
-            <a href="#" class="btn btn-sm m-1 btn-secondary">
+            <a (click)="guardarFormulario()" class="btn btn-sm m-1 btn-secondary">
                 <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
         </div>
     </div>
 </div>
-
 </section>
 
-<footer class="row flex-nowrap">
-    <div class="left-col active col-2 col-sm-2 col-md-2 col-lg-2">
-        <div class="aside-footer row">
-        </div>
-    </div>
-    <div class="footer d-flex justify-content-center align-items-center right-col col-10 col-sm-10 col-md-10 col-lg-10">
-        <p class="text-center my-1">MTPE © 2017 Todos los derechos reservados</p>
-    </div>
-    <div id="scroll">
-        <i class="fa fa-chevron-up" aria-hidden="true"></i>
-    </div>
-</footer>
-
 </div>
 
-<!-- Modal Direccion-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="titleReg" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="margin: 30px 30%">
-        <div class="modal-content" style="width:700px;">
-            <div class="modal-header text-white bg-warning p-2">
-                <h5 class="modal-title" id="titleReg">Registro</h5>
-                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+<p-dialog [(visible)]="displayGastosVentasDistribucion" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos de Ventas y Distribución
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosVentasDistribucion.descripcion">
+                </div>
             </div>
-            <div class="modal-body">
-                <form>
-                    <div class="row">
-                        <div class="col">
-                            <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
-                            <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="">
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosVentasDistribucion.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosVentasDistribucion.anioB">
+                            </div>
                         </div>
-                    </div>
-                    <br/>
-                    <div class="row">
-                        <div class="col">
-                            <fieldset>
-                                <legend>Monto</legend>
-                                <div class="row">
-                                    <div class="col col-sm-2">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="0">
-                                    </div>
-                                    <div class="col col-sm-2">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="0">
-                                    </div>
-                                </div>
-                                <br/>
-                                <br/>
-                                <div class="row">
-                                    <div class="col col-sm-2">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="">
-                                    </div>
-                                    <div class="col col-sm-2">
-                                        <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" value="0">
-                                    </div>
-                                </div>
-                            </fieldset>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosVentasDistribucion.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosVentasDistribucion.anioD">
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </div>
-            <div class="card-footer text-center">
-                <a href="#" class="btn btn-sm btn-danger" data-dismiss="modal">
-                    <i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
-                <a href="#" class="btn btn-sm btn-warning">
-                    <i class="fa fa-plus" aria-hidden="true"></i> Añadir</a>
+                    </fieldset>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalGastosVentasDistribucion()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalGastosVentasDistribucion()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayGastosVenDistriServPorTerceros" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos por servicios Prestados por terceros
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosVenDistriServPorTerceros.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosVenDistriServPorTerceros.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosVenDistriServPorTerceros.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosVenDistriServPorTerceros.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosVenDistriServPorTerceros.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalGastosVenDistriServPorTerceros()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalGastosVenDistriServPorTerceros()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayGastosDiversionGestion" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos por Cargos Diversos de Gestión
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosDiversionGestion.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosDiversionGestion.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosDiversionGestion.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosDiversionGestion.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosDiversionGestion.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalGastosDiversionGestion()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalGastosDiversionGestion()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayProvisiones" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Provisiones
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="provisiones.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="provisiones.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="provisiones.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="provisiones.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="provisiones.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalProvisiones()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalProvisiones()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayGastosAdministracion" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos de Administración
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosAdministracion.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosAdministracion.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosAdministracion.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosAdministracion.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosAdministracion.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalGastosAdministracion()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalGastosAdministracion()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayGastosDentroAdminServPorTerceros" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos por servicios Prestados por terceros - DENTRO DE LOS GASTOS ADMINISTRACIÓN
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosDentroAdminServPorTerceros.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosDentroAdminServPorTerceros.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosDentroAdminServPorTerceros.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosDentroAdminServPorTerceros.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosDentroAdminServPorTerceros.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalGastosDentroAdminServPorTerceros()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalGastosDentroAdminServPorTerceros()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayIngresosFinancieros" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Ingresos Financieros
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ingresosFinancieros.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ingresosFinancieros.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ingresosFinancieros.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ingresosFinancieros.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ingresosFinancieros.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalIngresosFinancieros()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalIngresosFinancieros()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayGastosFinancieros" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos Financieros
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosFinancieros.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosFinancieros.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosFinancieros.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosFinancieros.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosFinancieros.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalGastosFinancieros()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalGastosFinancieros()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayOtrosIngresos" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Otros Ingresos
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosIngresos.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosIngresos.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosIngresos.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosIngresos.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosIngresos.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalOtrosIngresos()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalOtrosIngresos()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayOtrosEgresos" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Otros Egresos
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosEgresos.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosEgresos.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosEgresos.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosEgresos.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosEgresos.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalOtrosEgresos()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalOtrosEgresos()">Añadir</button>
+    </p-footer>
+</p-dialog>

@@ -1,0 +1,227 @@
+<div class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
+  <div class="row">
+    <div class="col" style="text-align:center;">
+      <h5 class="title">FORMULARIO Nº 2</h5>
+      <h5 class="title">ESTADO DE SITUACIÓN FINANCIERA(*)</h5>
+      <h6 class="title">(Soles)</h6>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card card-mtpe mb-3">
+        <div class="card-body">
+          <p>ACTIVO</p>
+          <p>&nbsp;&nbsp;ACTIVO CORRIENTE</p>
+          <table class="table table-responsive table-bordered table-hover cabecera">
+            <thead>
+              <tr>
+                <td class="concepto">Concepto</td>
+                <ng-container *ngFor="let a of anios">
+                  <td>{{a}}</td>
+                </ng-container>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let lista of formulario.listaActivoCorriente; let k = index; let total = count">
+                <tr>
+                  <td class="concepto">{{lista.descripcion}}</td>
+                  <ng-container *ngFor="let comp of lista.componentes">
+                    <ng-container *ngIf="k < (total - 1)">
+                      <td>
+                        <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                          id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalActivoCorriente($event)" (keypress)="keyPress($event)" maxlength="6">
+                      </td>
+                    </ng-container>
+                    <ng-container *ngIf="k === (total - 1)">
+                      <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+
+          <p>&nbsp;&nbsp;ACTIVO NO CORRIENTE</p>
+          <table class="table table-responsive table-bordered table-hover cabecera">
+            <thead>
+              <tr>
+                <td class="concepto">Concepto</td>
+                <ng-container *ngFor="let a of anios">
+                  <td>{{a}}</td>
+                </ng-container>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let lista of formulario.listaActivoNoCorriente; let k = index; let total = count">
+                <tr>
+                  <td class="concepto">{{lista.descripcion}}</td>
+                  <ng-container *ngFor="let comp of lista.componentes">
+                    <ng-container *ngIf="k < (total - 1)">
+                      <td>
+                        <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                          id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalActivoNoCorriente($event)" (keypress)="keyPress($event)" maxlength="6">
+                      </td>
+                    </ng-container>
+                    <ng-container *ngIf="k === (total - 1)">
+                      <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+
+          <table class="table table-responsive table-bordered table-hover cabecera">
+            <tbody>
+              <tr>
+                <td class="concepto">{{formulario.totalActivos.descripcion}}</td>
+                <ng-container *ngFor="let comp of formulario.totalActivos.componentes">
+                  <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                </ng-container>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <p>PASIVO</p>
+          <p>&nbsp;&nbsp;PASIVO CORRIENTE</p>
+          <table class="table table-responsive table-bordered table-hover cabecera">
+            <thead>
+              <tr>
+                <td class="concepto">Concepto</td>
+                <ng-container *ngFor="let a of anios">
+                  <td>{{a}}</td>
+                </ng-container>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let lista of formulario.listaPasivoCorriente; let k = index; let total = count">
+                <tr>
+                  <td class="concepto">{{lista.descripcion}}</td>
+                  <ng-container *ngFor="let comp of lista.componentes">
+                    <ng-container *ngIf="k < (total - 1)">
+                      <td>
+                        <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                          id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalPasivoCorriente($event)" (keypress)="keyPress($event)" maxlength="6">
+                      </td>
+                    </ng-container>
+                    <ng-container *ngIf="k === (total - 1)">
+                      <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+
+          <p>&nbsp;&nbsp;PASIVO NO CORRIENTE</p>
+          <table class="table table-responsive table-bordered table-hover cabecera">
+            <thead>
+              <tr>
+                <td class="concepto">Concepto</td>
+                <ng-container *ngFor="let a of anios">
+                  <td>{{a}}</td>
+                </ng-container>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let lista of formulario.listaPasivoNoCorriente; let k = index; let total = count">
+                <tr>
+                  <td class="concepto">{{lista.descripcion}}</td>
+                  <ng-container *ngFor="let comp of lista.componentes">
+                    <ng-container *ngIf="k < (total - 1)">
+                      <td>
+                        <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                          id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalPasivoNoCorriente($event)" (keypress)="keyPress($event)" maxlength="6">
+                      </td>
+                    </ng-container>
+                    <ng-container *ngIf="k === (total - 1)">
+                      <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+
+          <table class="table table-responsive table-bordered table-hover cabecera">
+            <tbody>
+              <tr>
+                <td class="concepto">{{formulario.totalPasivos.descripcion}}</td>
+                <ng-container *ngFor="let comp of formulario.totalPasivos.componentes">
+                  <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                </ng-container>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>PATRIMONIO</p>
+          <table class="table table-responsive table-bordered table-hover cabecera">
+            <thead>
+              <tr>
+                <td class="concepto">Concepto</td>
+                <ng-container *ngFor="let a of anios">
+                  <td>{{a}}</td>
+                </ng-container>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let lista of formulario.listaPatrimonio; let k = index; let total = count">
+                <tr>
+                  <td class="concepto">{{lista.descripcion}}</td>
+                  <ng-container *ngFor="let comp of lista.componentes">
+                    <ng-container *ngIf="k < (total - 1)">
+                      <td>
+                        <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                          id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalPatrimonio($event)" (keypress)="keyPress($event)" maxlength="6">
+                      </td>
+                    </ng-container>
+                    <ng-container *ngIf="k === (total - 1)">
+                      <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                    </ng-container>
+                  </ng-container>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+
+          <table class="table table-responsive table-bordered table-hover cabecera">
+            <tbody>
+              <tr>
+                <td class="concepto">{{formulario.totalPasivoPatrimonio.descripcion}}</td>
+                <ng-container *ngFor="let comp of formulario.totalPasivoPatrimonio.componentes">
+                  <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                </ng-container>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="font-size:9pt;">
+            <p>(*) También denominado Balance General</p>
+            <br/>
+
+            <p>
+              INSTRUCCIONES:
+              <br/> -La información de la columna 2014, 2015 y 2016 muestra la situación financiera correspondiente al día final
+              de los tres últimos años terminados.
+              <br/> -La columna 2017 contiene información preliminar hasta el último periodo mensual declarado a la SUNAT (PDT
+              621) del ejercicio vigente (especificar mes y año).
+              <br/> -La columna 2014, 2015 y 2016 se debe llenar con la información de la Declaración del Pago Anual por el Impuesto
+              a la Renta Tercera Categoría presentada a SUNAT.
+              <br/> (1) Desagregar la información en el Anexo 2 C.
+              <br/>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-sm-right">
+          <a (click)="verControlInformacion()" class="btn btn-sm m-1 btn-success">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
+          <a (click)="guardarFormulario()" class="btn btn-sm m-1 btn-secondary">
+            <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -170,6 +170,12 @@ export class FormularioFinancieroN1Component implements OnInit, OnDestroy {
                 }
             }
         }
+        if (!this.editar) {
+            suma1 += Number(this.empresaServicio.anioA);
+            suma2 += Number(this.empresaServicio.anioB);
+            suma3 += Number(this.empresaServicio.anioC);
+            suma4 += Number(this.empresaServicio.anioD);
+        }
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalServicios.componentes[0].cantidad = suma1 + this.empresaServicio.anioA;
         this.formulario.totalServicios.componentes[1].cantidad = suma2 + this.empresaServicio.anioB;
@@ -764,6 +770,10 @@ export class FormularioFinancieroN1Component implements OnInit, OnDestroy {
     private onError(error: any) {
         this.messages = [];
         this.messages.push({ severity: 'error', summary: 'Mensaje de Error', detail: error.message });
+    }
+
+    guardarFormulario() {
+        this.verControlInformacion();
     }
 
     verControlInformacion() {
