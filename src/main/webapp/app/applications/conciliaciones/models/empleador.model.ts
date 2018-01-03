@@ -1,0 +1,25 @@
+import { BaseEntity } from '../../../shared';
+
+export class Empleador implements BaseEntity {
+    constructor(
+        public id?: number,
+        public nUsuareg?: number,
+        public tFecreg?: any,
+        public nFlgactivo?: boolean,
+        public nSedereg?: number,
+        public nUsuaupd?: number,
+        public tFecupd?: any,
+        public nSedeupd?: number,
+        public legajos?: BaseEntity[],
+        public pasepjs?: BaseEntity[],
+        public falsoexps?: BaseEntity[],
+        public expedientes?: BaseEntity[],
+        public datlabs?: BaseEntity[],
+        public atencions?: BaseEntity[],
+        public perjuridica?: BaseEntity,
+        public pernatural?: BaseEntity,
+        public tippersona?: BaseEntity,
+    ) {
+        this.nFlgactivo = false;
+    }
+}

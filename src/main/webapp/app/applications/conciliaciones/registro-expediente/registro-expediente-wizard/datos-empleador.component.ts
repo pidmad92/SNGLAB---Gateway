@@ -19,11 +19,9 @@ import { RegistroExpedienteWizardService } from './registro-expediente-wizard.se
 })
 export class DatosEmpleadorComponent implements OnInit {
 
-    departamentos: SelectItem[];
     displayDialog: boolean;
     newDirec: boolean;
     tipoPerNat = false;
-    direcciones: any;
 
     messages: Message[] = [];
     messagesForm: Message[] = [];
@@ -115,18 +113,6 @@ export class DatosEmpleadorComponent implements OnInit {
                 this.router.navigate(['/conciliaciones/expediente/registro' , { outlets: { wizard: ['datos-pase'] } }]);
             }
         });
-        this.departamentos = [
-            {label: 'Seleccione el Dpto.', value: null},
-            {label: 'Lima', value: {id: 1, name: 'New York', code: 'NY'}},
-            {label: 'Rome', value: {id: 2, name: 'Rome', code: 'RM'}},
-            {label: 'London', value: {id: 3, name: 'London', code: 'LDN'}},
-            {label: 'Istanbul', value: {id: 4, name: 'Istanbul', code: 'IST'}}
-        ];
-        this.direcciones = [
-            {departamento : 'Lima', provincia: 'Lima', distrito: 'Rimac',  direccion: 'Ministerio de Trabajo'},
-            {departamento : 'Lima', provincia: 'Huaura', distrito: 'Huaral', direccion: 'Apple S.A.C.'},
-            {departamento : 'Lima', provincia: 'Huaura', distrito: 'Huaura', direccion: 'Apple S.A.C.'},
-        ]
         this.sexo = [
             {name: 'Masculino', value: 'M'},
             {name: 'Femenino', value: 'F'}
@@ -135,24 +121,24 @@ export class DatosEmpleadorComponent implements OnInit {
     loadDepartamentos() {
         this.datosWizardService.consDep().subscribe((departamentos) => {
             this.departs = departamentos.json;
-            // console.log('Dpto' + JSON.stringify(this.departs));
         });
     }
     loadProvincias(init: boolean, idDept) {
         this.datosWizardService.consProv(this.padWithZero(idDept)).subscribe((provincias) => {
             this.provins = provincias.json;
-            console.log('LOADDATAPROV' + this.provins)
+            if (init) {
+                this.dirper.nCodprov = Number(this.provins[0].vCodpro);
+                this.loadDistritos(true, this.provins[0].vCodpro);
+            }
         });
-        if (init) {
-            this.loadDistritos(0);
-        }
     }
-    loadDistritos(idProv) {
-        console.log()
+    loadDistritos(init: boolean, idProv) {
         this.datosWizardService.consDis(this.padWithZero(this.dirper.nCoddepto), this.padWithZero(idProv)).subscribe((distritos) => {
             this.distris = distritos.json;
-            console.log('LOADDATAdist' + this.distris)
-    });
+            if (init) {
+                this.dirper.nCoddist = Number(this.distris[0].vCoddis);
+            }
+        });
     }
 
     showDialogToAdd() {
@@ -170,14 +156,12 @@ export class DatosEmpleadorComponent implements OnInit {
         this.newDirec = false;
         this.dirper = this.cloneDirec(event.data.direc);
         this.loadProvincias(false, this.dirper.nCoddepto);
-        this.loadDistritos(this.dirper.nCodprov);
+        this.loadDistritos(false, this.dirper.nCodprov);
         this.displayDialog = true;
     }
     save() {
         console.log('Grabar: ' + JSON.stringify(this.dirper));
-        // const dirpernat = [...this.dirpernat];
         if (this.newDirec) {
-            // dirpernat.push(this.dirper);
             if (this.tipoPerNat) {
                 this.subscribeToSaveResponse(
                     this.datosWizardService.createDir(this.dirper));
@@ -186,7 +170,6 @@ export class DatosEmpleadorComponent implements OnInit {
                     this.datosWizardService.createDirPerJu(this.dirper));
             }
         } else {
-            // dirpernat[this.findSelectedDirecIndex()] = this.dirper;
             if (this.tipoPerNat) {
                 this.subscribeToSaveResponse(
                     this.datosWizardService.updateDir(this.dirper));
@@ -201,6 +184,9 @@ export class DatosEmpleadorComponent implements OnInit {
         } else {
             this.dirper = new Dirperjuri();
         }
+    }
+    close() {
+        this.displayDialog = false;
     }
     delete() {
         this.displayDialog = false;

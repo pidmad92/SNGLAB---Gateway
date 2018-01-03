@@ -167,6 +167,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
         this.dirper.pernatural = this.trabajador.pernatural;
         this.displayDialog = false;
     }
+    delete() {}
     registerChangeInTrabajador() {
         this.eventSubscriber = this.eventManager.subscribe('saveTrabajador',
         (response) => {
