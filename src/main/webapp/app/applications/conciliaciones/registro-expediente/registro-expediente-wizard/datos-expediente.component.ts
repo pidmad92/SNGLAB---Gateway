@@ -6,9 +6,9 @@ import { SelectItem } from 'primeng/components/common/selectitem';
 import { ResponseWrapper } from '../../../../shared';
 import { DatosWizardService } from './datos-wizard.service';
 import { RegistroExpedienteWizardService } from './registro-expediente-wizard.service';
-import { Motatenofic } from './../motatenofic.model';
-import { Motivpase } from './../motivpase.model';
-import { Pasegl } from './../pasegl.model';
+import { Motatenofic } from '../../models/motatenofic.model';
+import { Motivpase } from '../../models/motivpase.model';
+import { Pasegl } from '../../models/pasegl.model';
 
 @Component({
     selector: 'jhi-datos-expediente',

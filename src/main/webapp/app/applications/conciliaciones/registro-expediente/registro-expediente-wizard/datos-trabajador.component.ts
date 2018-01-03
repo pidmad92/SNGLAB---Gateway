@@ -99,25 +99,24 @@ export class DatosTrabajadorComponent implements OnInit {
     loadDepartamentos() {
         this.datosWizardService.consDep().subscribe((departamentos) => {
             this.departs = departamentos.json;
-            console.log(this.departs);
         });
     }
     loadProvincias(init: boolean, idDept) {
-        console.log('LoadProv' + this.padWithZero(idDept));
         this.datosWizardService.consProv(this.padWithZero(idDept)).subscribe((provincias) => {
             this.provins = provincias.json;
-            console.log('LOADDATAPROV' + this.provins)
+            if (init) {
+                this.dirper.nCodprov = Number(this.provins[0].vCodpro);
+                this.loadDistritos(true, this.provins[0].vCodpro);
+            }
         });
-        if (init) {
-            this.loadDistritos(0);
-        }
     }
-    loadDistritos(idProv) {
-        console.log('Loaddist' + this.padWithZero(idProv));
+    loadDistritos(init: boolean, idProv) {
         this.datosWizardService.consDis(this.padWithZero(this.dirper.nCoddepto), this.padWithZero(idProv)).subscribe((distritos) => {
             this.distris = distritos.json;
-            console.log('LOADDATAdist' + this.distris)
-    });
+            if (init) {
+                this.dirper.nCoddist = Number(this.distris[0].vCoddis);
+            }
+        });
     }
     showDialogToAdd() {
         this.newDirec = true;
@@ -128,7 +127,7 @@ export class DatosTrabajadorComponent implements OnInit {
         this.dirper = this.cloneDirec(event.data.direc);
         console.log(this.dirper);
         this.loadProvincias(false, this.dirper.nCoddepto);
-        this.loadDistritos(this.dirper.nCodprov);
+        this.loadDistritos(false, this.dirper.nCodprov);
         this.displayDialog = true;
     }
     cloneDirec(dir: Dirpernat): Dirpernat {
@@ -151,20 +150,19 @@ export class DatosTrabajadorComponent implements OnInit {
 
     save() {
         console.log('Grabar: ' + JSON.stringify(this.dirper));
-        // const dirpernat = [...this.dirpernat];
         if (this.newDirec) {
-            // dirpernat.push(this.dirper);
             this.subscribeToSaveResponse(
                  this.datosWizardService.createDir(this.dirper));
         } else {
-            // dirpernat[this.findSelectedDirecIndex()] = this.dirper;
             this.subscribeToSaveResponse(
                 this.datosWizardService.updateDir(this.dirper));
         }
-        // this.dirpernat = dirpernat;
         this.dirper = new Dirpernat();
     }
     delete() {
+        this.displayDialog = false;
+    }
+    close() {
         this.displayDialog = false;
     }
 

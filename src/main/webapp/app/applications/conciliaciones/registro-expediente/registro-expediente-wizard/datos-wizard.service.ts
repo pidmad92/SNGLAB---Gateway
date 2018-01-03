@@ -1,4 +1,4 @@
-import { Pasegl } from './../pasegl.model';
+import { Pasegl } from '../../models/pasegl.model';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
@@ -7,24 +7,25 @@ import { DatePipe } from '@angular/common';
 import { ResponseWrapper, createRequestOption } from '../../../../shared';
 import {ComboModel} from '../../../general/combobox.model';
 import { Tipdocident } from '../../../../entities/tipdocident';
-import { Dirpernat } from './../dirpernat.model';
-import { Dirperjuri } from './../dirperjuri.model';
-import { Motatenofic } from './../motatenofic.model';
-import { Motivpase } from './../motivpase.model';
+import { Dirpernat } from '../../models/dirpernat.model';
+import { Dirperjuri } from '../../models/dirperjuri.model';
+import { Motatenofic } from '../../models/motatenofic.model';
+import { Motivpase } from '../../models/motivpase.model';
 
 @Injectable()
 export class DatosWizardService {
-    private resourceTipoDoc = '/defensa/api/tipdocidents';
-    private resourceDefensa = '/defensa/api';
-    private resourceDirec = '/defensa/api/dirpernats';
-    private resourceDirecPerJur = '/defensa/api/dirperjuris';
 
-    private resourceMotivOfic = '/defensa/api/motatenofics/ofic';
-    private resourceMotivPases = '/defensa/api/motivpases';
+    private resource = '/defensa/api/';
 
-    private resourceDepa = '/defensa/api/departamentos';
-    private resourceProv = '/defensa/api/provincias';
-    private resourceDist = '/defensa/api/distritos';
+    private resourceTipoDoc     = this.resource + 'tipdocidents';
+    private resourceDPerNatu    = this.resource + 'dirpernats';
+    private resourceDPerJuri    = this.resource + 'dirperjuris';
+    private resourceMotivOfic   = this.resource + 'motatenofics/ofic';
+    private resourceMotivPases  = this.resource + 'motivpases';
+
+    private resourceDepa        = this.resource + 'departamentos';
+    private resourceProv        = this.resource + 'provincias';
+    private resourceDist        = this.resource + 'distritos';
     private resourcePersonaValidarServicio = '//localhost:8020/api/validarpersonaservicio';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils, private datePipe: DatePipe) { }
@@ -123,7 +124,7 @@ export class DatosWizardService {
     }
 
     consultaPaseGL(query: string): Observable<ResponseWrapper> {
-        return this.http.get(`${this.resourceDefensa}/${query}`)
+        return this.http.get(`${this.resource}/${query}`)
             .map((res: Response) => this.convertResponse(res));
     }
     private convertResponse(res: Response): ResponseWrapper {
@@ -146,7 +147,7 @@ export class DatosWizardService {
     }
 
     buscarDirecciones(id: number): Observable<ResponseWrapper> {
-        return this.http.get(`${this.resourceDefensa}/dirpernats/pernatural/${id}`)
+        return this.http.get(`${this.resourceDPerNatu}/pernatural/${id}`)
             .map((res: Response) => this.convertDirResponse(res));
     }
     private convertDirResponse(res: Response): ResponseWrapper {
@@ -166,7 +167,7 @@ export class DatosWizardService {
         return entity;
     }
     buscarDireccionesPerJur(id: number): Observable<ResponseWrapper> {
-        return this.http.get(`${this.resourceDefensa}/dirperjuris/perjuridica/${id}`)
+        return this.http.get(`${this.resourceDPerJuri}/perjuridica/${id}`)
             .map((res: Response) => this.convertDirPerJuResponse(res));
     }
     private convertDirPerJuResponse(res: Response): ResponseWrapper {
@@ -189,27 +190,17 @@ export class DatosWizardService {
     consDep(req?: any): Observable<ResponseWrapper> {
         const options = createRequestOption(req);
         return this.http.get(this.resourceDepa, options)
-            .map((res: Response) => this.convertResponseDep(res));
+            .map((res: Response) => this.convertResponseUbigeo(res));
     }
-    private convertResponseDep(res: Response): ResponseWrapper {
-        const jsonResponse = res.json();
-        return new ResponseWrapper(res.headers, jsonResponse, res.status);
-    }
-
     consProv(id: string): Observable<ResponseWrapper> {
         return this.http.get(`${this.resourceProv}/${id}`)
-            .map((res: Response) => this.convertResponseProv(res));
+            .map((res: Response) => this.convertResponseUbigeo(res));
     }
-    private convertResponseProv(res: Response): ResponseWrapper {
-        const jsonResponse = res.json();
-        return new ResponseWrapper(res.headers, jsonResponse, res.status);
-    }
-
     consDis(id: string, idprov: string): Observable<ResponseWrapper> {
         return this.http.get(`${this.resourceDist}/${id}/${idprov}`)
-            .map((res: Response) => this.convertResponseDis(res));
+            .map((res: Response) => this.convertResponseUbigeo(res));
     }
-    private convertResponseDis(res: Response): ResponseWrapper {
+    private convertResponseUbigeo(res: Response): ResponseWrapper {
         const jsonResponse = res.json();
         return new ResponseWrapper(res.headers, jsonResponse, res.status);
     }
@@ -219,7 +210,7 @@ export class DatosWizardService {
         dirpernat.nFlgactivo = true;
         dirpernat.nSedereg = 1;
         const copy = this.convert(dirpernat);
-        return this.http.post(this.resourceDirec, copy).map((res: Response) => {
+        return this.http.post(this.resourceDPerNatu, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
@@ -227,7 +218,7 @@ export class DatosWizardService {
 
     updateDir(dirpernat: Dirpernat): Observable<Dirpernat> {
         const copy = this.convert(dirpernat);
-        return this.http.put(this.resourceDirec, copy).map((res: Response) => {
+        return this.http.put(this.resourceDPerNatu, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
@@ -238,7 +229,7 @@ export class DatosWizardService {
         dirperjuri.nFlgactivo = true;
         dirperjuri.nSedereg = 1;
         const copy = this.convert(dirperjuri);
-        return this.http.post(this.resourceDirecPerJur, copy).map((res: Response) => {
+        return this.http.post(this.resourceDPerJuri, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
@@ -246,7 +237,7 @@ export class DatosWizardService {
 
     updateDirPerJu(dirperjuri: Dirperjuri): Observable<Dirperjuri> {
         const copy = this.convert(dirperjuri);
-        return this.http.put(this.resourceDirecPerJur, copy).map((res: Response) => {
+        return this.http.put(this.resourceDPerJuri, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
@@ -260,47 +251,4 @@ export class DatosWizardService {
         copy.tFecupd = this.dateUtils.toDate(dirpernat.tFecupd);
         return copy;
     }
-
-    // consultaDepas(): any {
-    //     return this.http.get(`${this.resourceDepa}`).map((res: Response) => {
-    //         const jsonResponse = res.json();
-    //         return jsonResponse;
-    //     });
-    // }
-
-    // consultaDepa(depas: any): any {
-    //     return this.http.get(`${this.resourceDepa}/${depas}`).map((res: Response) => {
-    //         const jsonResponse = res.json();
-    //         return jsonResponse;
-    //     });
-    // }
-
-    // consultaProvs(depas: any): any {
-    //     return this.http.get(`${this.resourceProv}/${depas}`).map((res: Response) => {
-    //         const jsonResponse = res.json();
-    //         return jsonResponse;
-    //     });
-    // }
-
-    // consultaProv(depas: any, prov: any): any {
-    //     return this.http.get(`${this.resourceProv}/${depas}/${prov}`).map((res: Response) => {
-    //         const jsonResponse = res.json();
-    //         return jsonResponse;
-    //     });
-    // }
-
-    // consultaDist(depas: any, prov: any, dist: any): any {
-    //     return this.http.get(`${this.resourceDist}/${depas}/${prov}/${dist}`).map((res: Response) => {
-    //         const jsonResponse = res.json();
-    //         return jsonResponse;
-    //     });
-    // }
-
-    // consultaDists(depas: any, prov: any): any {
-    //     return this.http.get(`${this.resourceDist}/${depas}/${prov}`).map((res: Response) => {
-    //         const jsonResponse = res.json();
-    //         return jsonResponse;
-    //     });
-    // }
-
 }

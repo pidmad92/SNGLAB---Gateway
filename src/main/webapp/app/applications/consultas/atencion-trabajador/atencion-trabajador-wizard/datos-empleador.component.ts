@@ -149,7 +149,7 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
                 this.dirper.nCoddist = Number(this.distris[0].vCoddis);
             }
             // console.log('LOADDATAdist' + this.distris)
-    });
+        });
     }
     showDialogToAdd() {
         this.newDirec = true;
@@ -173,6 +173,8 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
             this.subscribeToSaveResponse(
                 this.atencionTrabajadorService.updateDirPerjuri(this.dirper));
         }
+    }
+    delete() {
     }
     private subscribeToSaveResponse(result: Observable<Dirperjuri>) {
         result.subscribe((res: Dirperjuri) =>

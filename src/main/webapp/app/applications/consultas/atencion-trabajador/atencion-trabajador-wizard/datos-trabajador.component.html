@@ -180,8 +180,10 @@
                                                 </div>
                                                 <p-footer>
                                                     <div class="ui-dialog-buttonpane ui-helper-clearfix">
-                                                        <button type="button" pButton icon="fa-close" (click)="close()" label="Cancelar"></button>
-                                                        <button pButton icon="fa-check" type="submit" label="Grabar"></button>
+                                                        {{distris}}
+                                                        <button pButton class="ui-button-info" icon="fa-close" type="button" (click)="close()" label="Cancelar"></button>
+                                                        <button pButton class="ui-button-danger" icon="fa-trash-o" type="button" (click)="delete()" label="Eliminar"></button>
+                                                        <button pButton class="ui-button-success" icon="fa-save" type="submit" label="Grabar"></button>
                                                     </div>
                                                 </p-footer>
                                                 </form>
