@@ -97,9 +97,9 @@
 
 
 
-    <div class="my-2" *ngIf="aplicacion == 'defensa'">
-        <ngb-accordion #leftAcc="ngbAccordion" destroyOnHide="false" class="level-one mt-2 p-0" id="accordion" activeIds="{{accordionDefensa}}" [closeOthers]="true">
-            <ngb-panel id="{{menuDefensa[0]}}">
+    <div class="my-2" *ngIf="aplicacion == 'conciliaciones'">
+        <ngb-accordion #leftAcc="ngbAccordion" destroyOnHide="false" class="level-one mt-2 p-0" id="accordion" activeIds="{{accordionConciliaciones}}" [closeOthers]="true">
+            <ngb-panel id="{{menuConciliaciones[0]}}">
                 <ng-template ngbPanelTitle>
                     <li routerLinkActive="active">
                         <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
@@ -110,14 +110,14 @@
                 </ng-template>
                 <ng-template ngbPanelContent>
                     <div class="level-two p-0">
-                        <li routerLinkActive="active"><a [routerLink]="['/defensa/expediente/registro' , { outlets: { wizard: ['datos-pase'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro Expedientes</span></a></li>
-                        <li routerLinkActive="active"><a [routerLink]="['/defensa/expediente/envio-notificacion' , { outlets: { wizard: ['seleccion-expediente'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro de Notificaciones</span></a></li>
-                        <li routerLinkActive="active"><a routerLink="defensa/expediente/consulta" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Expedientes</span></a></li>
-                        <li routerLinkActive="active"><a routerLink="defensa/expediente/consulta-notificaciones" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Notificaciones</span></a></li>
+                        <li routerLinkActive="active"><a [routerLink]="['/conciliaciones/expediente/registro' , { outlets: { wizard: ['datos-pase'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro Expedientes</span></a></li>
+                        <li routerLinkActive="active"><a [routerLink]="['/conciliaciones/expediente/envio-notificacion' , { outlets: { wizard: ['seleccion-expediente'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro de Notificaciones</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="conciliaciones/expediente/consulta" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Expedientes</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="conciliaciones/expediente/consulta-notificaciones" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Notificaciones</span></a></li>
                     </div>
                 </ng-template>
             </ngb-panel>
-            <ngb-panel id="{{menuDefensa[1]}}">
+            <ngb-panel id="{{menuConciliaciones[1]}}">
                 <ng-template ngbPanelTitle>
                     <li>
                         <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
@@ -128,15 +128,15 @@
                 </ng-template>
                 <ng-template ngbPanelContent>
                     <div class="level-two p-0">
-                        <li routerLinkActive="active"><a routerLink="defensa/audiencia/asignacion-abogado" class="a-menu d-sm-flex align-items-sm-center "><span>Asignación de Abogados</span></a></li>
-                        <li routerLinkActive="active"><a routerLink="defensa/audiencia/registrar-resultado" class="a-menu d-sm-flex align-items-sm-center "><span>Resultado de Audiencia</span></a></li>
-                        <li routerLinkActive="active"><a routerLink="defensa/audiencia/reprogramacion" class="a-menu d-sm-flex align-items-sm-center "><span>Reprog. de Audiencia</span></a></li>
-                        <li routerLinkActive="active"><a routerLink="defensa/audiencia/registrar-escrito" class="a-menu d-sm-flex align-items-sm-center "><span>Registrar Escrito</span></a></li>
-                        <li routerLinkActive="active"><a routerLink="defensa/audiencia/consulta" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Audiencias</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="conciliaciones/audiencia/asignacion-abogado" class="a-menu d-sm-flex align-items-sm-center "><span>Asignación de Abogados</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="conciliaciones/audiencia/registrar-resultado" class="a-menu d-sm-flex align-items-sm-center "><span>Resultado de Audiencia</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="conciliaciones/audiencia/reprogramacion" class="a-menu d-sm-flex align-items-sm-center "><span>Reprog. de Audiencia</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="conciliaciones/audiencia/registrar-escrito" class="a-menu d-sm-flex align-items-sm-center "><span>Registrar Escrito</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="conciliaciones/audiencia/consulta" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Audiencias</span></a></li>
                     </div>
                 </ng-template>
             </ngb-panel>
-            <ngb-panel id="{{menuDefensa[2]}}">
+            <ngb-panel id="{{menuConciliaciones[2]}}">
                 <ng-template ngbPanelTitle>
                     <li routerLinkActive="active">
                         <a routerLink="defensa/reportes/conciliaciones" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
@@ -147,7 +147,7 @@
                 <ng-template ngbPanelContent>
                 </ng-template>
             </ngb-panel>
-            <ngb-panel id="{{menuDefensa[3]}}">
+            <ngb-panel id="{{menuConciliaciones[3]}}">
                 <ng-template ngbPanelTitle>
                     <li routerLinkActive="active">
                         <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
@@ -158,8 +158,8 @@
                 </ng-template>
                 <ng-template ngbPanelContent>
                     <div class="level-two p-0">
-                        <li routerLinkActive="active"><a routerLink="defensa/mantenimiento/resultados" class="a-menu d-sm-flex align-items-sm-center "><span>Resultados</span></a></li>
-                        <li routerLinkActive="active"><a routerLink="defensa/mantenimiento/audiencias" class="a-menu d-sm-flex align-items-sm-center "><span>Audiencias</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="conciliaciones/mantenimiento/resultados" class="a-menu d-sm-flex align-items-sm-center "><span>Resultados</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="conciliaciones/mantenimiento/audiencias" class="a-menu d-sm-flex align-items-sm-center "><span>Audiencias</span></a></li>
                     </div>
                 </ng-template>
             </ngb-panel>
@@ -212,38 +212,55 @@
             </li>
         </ul>
     </div>
-    <div class="my-2" *ngIf="aplicacion == 'conciliacion'">
-        <li routerLinkActive="active">
-            <a href="index.html" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
-                <i class="fa fa-tachometer px-2" aria-hidden="true"></i> <span>Dashboard</span>
-            </a>
-        </li>
-        <li routerLinkActive="active">
-            <a href="#" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
-                <i class="fa fa-commenting-o px-2" aria-hidden="true"></i> <span>Forms</span> <span class="fa fa-chevron-down ml-auto"></span>
-            </a>
-            <ul class="level-two p-0">
-                <li><a href="general.html"><span>General Elements</span></a></li>
-                <li class="active-submenu"><a href="advanced.html"><span>Advanced Elements</span></a></li>
-                <li><a href="editors.html"><span>Editors</span></a></li>
-            </ul>
-        </li>
-        <li routerLinkActive="active">
-            <a href="widgets.html" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
-                <i class="fa fa-th-large px-2" aria-hidden="true"></i> <span>Widgets</span>
-            </a>
-        </li>
-        <li>
-            <a href="#" class="a-menu d-sm-flex align-items-sm-center px-2 py-3">
-                <i class="fa fa-commenting-o px-2" aria-hidden="true"></i> <span>Validaciones</span> <span class="fa fa-chevron-down ml-auto"></span>
-            </a>
-            <ul class="level-two p-0">
-                <li><a href="validacion.html"><span>Validación</span></a></li>
-                <li><a href="#"><span>Seccion2</span></a></li>
-                <li><a href="#"><span>Seccion3</span></a></li>
-            </ul>
-        </li>
-        </ul>
+    <div class="my-2" *ngIf="aplicacion == 'defensa'">
+        <ngb-accordion #leftAcc="ngbAccordion" destroyOnHide="false" class="level-one mt-2 p-0" id="accordion" activeIds="{{accordionDefensa}}" [closeOthers]="true">
+            <ngb-panel id="{{menuDefensa[0]}}">
+                <ng-template ngbPanelTitle>
+                    <li routerLinkActive="active">
+                        <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                            <i class="fa fa-address-book-o px-2" aria-hidden="true"></i> <span>Expedientes</span>
+                            <span class="fa fa-chevron-down ml-auto"></span>
+                        </a>
+                    </li>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <div class="level-two p-0">
+                        <!-- <li routerLinkActive="active"><a [routerLink]="['/conciliaciones/expediente/registro' , { outlets: { wizard: ['datos-pase'] } }]" class="a-menu d-sm-flex align-items-sm-center "><span>Registro Expedientes</span></a></li> -->
+                        <li routerLinkActive="active"><a routerLink="defensa/expediente/consulta" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Expedientes</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="defensa/expediente/accion" class="a-menu d-sm-flex align-items-sm-center "><span>Accion de Expedientes</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="defensa/expediente/asignar-resolutor" class="a-menu d-sm-flex align-items-sm-center "><span>Asignar Resolutor</span></a></li>
+                        <!-- <li routerLinkActive="active"><a routerLink="defensa/expediente/consulta-notificaciones" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Notificaciones</span></a></li> -->
+                    </div>
+                </ng-template>
+            </ngb-panel>
+            <ngb-panel id="{{menuDefensa[1]}}">
+                <ng-template ngbPanelTitle>
+                    <li>
+                        <a class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                            <i class="fa fa-group px-2" aria-hidden="true"></i> <span>Audiencias</span>
+                            <span class="fa fa-chevron-down ml-auto"></span>
+                        </a>
+                    </li>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <div class="level-two p-0">
+                        <li routerLinkActive="active"><a routerLink="defensa/audiencia/reprogramacion" class="a-menu d-sm-flex align-items-sm-center "><span>Reprog. de Audiencia</span></a></li>
+                        <li routerLinkActive="active"><a routerLink="defensa/audiencia/consulta" class="a-menu d-sm-flex align-items-sm-center "><span>Consulta de Audiencias</span></a></li>
+                    </div>
+                </ng-template>
+            </ngb-panel>
+            <ngb-panel id="{{menuDefensa[2]}}">
+                <ng-template ngbPanelTitle>
+                    <li routerLinkActive="active">
+                        <a routerLink="defensa/reportes/conciliaciones" class="a-menu d-flex align-items-center flex-column flex-lg-row px-2 py-3">
+                            <i class="fa fa-print px-2" aria-hidden="true"></i> <span>Reportes</span>
+                        </a>
+                    </li>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                </ng-template>
+            </ngb-panel>
+        </ngb-accordion>
     </div>
 
     <div class="my-2" *ngIf="aplicacion == 'sindicatos'">

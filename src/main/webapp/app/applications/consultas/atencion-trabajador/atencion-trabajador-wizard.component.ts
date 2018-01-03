@@ -111,22 +111,35 @@ export class AtencionTrabajadorWizardComponent implements OnInit, OnChanges  {
     }
 
     public next() {
-        this.activeIndex++;
-        this.router.navigate(['/consultas/registro-atencion-trabajador', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
+        if (this.activeIndex === 5) {
+            this.eventManager.broadcast({ name: 'saveAtencion', content: 'OK'});
+        } else {
+            this.activeIndex++;
+            console.log('Cambio de Rutas:' + this.activeIndex);
+            this.router.navigate(['/consultas/registro-atencion-trabajador', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
+            this.ngOnChanges({
+                activeIndex: {
+                    currentValue: this.activeIndex,
+                    previousValue: this.activeIndex - 1,
+                    firstChange: false,
+                    isFirstChange: () => false
+                }
+            });
+        }
         // Mostrar / ocultar steps y emitir el label seleccionado
-        if (this.activeIndex === 2) {
+        console.log(this.activeIndex);
+        if (this.activeIndex === 1) {
+            this.eventManager.broadcast({ name: 'saveTrabajador', content: 'OK'});
+        } else if (this.activeIndex === 2) {
             this.eventManager.broadcast({ name: 'saveMotivos', content: 'OK'});
         } else if (this.activeIndex === 3) {
+            this.eventManager.broadcast({ name: 'saveEmpleador', content: 'OK'});
+        } else if (this.activeIndex === 4) {
             this.eventManager.broadcast({ name: 'saveDocing', content: 'OK'});
+        } else if (this.activeIndex === 5) {
+            this.eventManager.broadcast({ name: 'saveDocpre', content: 'OK'});
         }
-        this.ngOnChanges({
-            activeIndex: {
-                currentValue: this.activeIndex,
-                previousValue: this.activeIndex - 1,
-                firstChange: false,
-                isFirstChange: () => false
-            }
-        });
+
     }
 
     public previous() {

@@ -46,35 +46,21 @@
                                     <div class="col-sm-6">
                                         <div class="row">
                                             <div class="col-md-6 py-2 px-4">
-                                                <!-- <div class="form-check form-check-inline">
-                                                    <label class="form-check-label">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Con Vínculo Laboral
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <label class="form-check-label">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Sin Vínculo Laboral
-                                                    </label>
-                                                </div> -->
-                                                <div class="form-check mb-2">
-                                                    <label class="form-check-label">
-                                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                                        Con Vínculo Laboral
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                                        Sin Vínculo Laboral
-                                                    </label>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <p-radioButton name="groupname" value="1" label="Con Vínculo Laboral" [(ngModel)]="atencion.datlab.nFlgsitlab"></p-radioButton>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <p-radioButton name="groupname" value="2" label="Sin Vínculo Laboral" [(ngModel)]="atencion.datlab.nFlgsitlab"></p-radioButton>        
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="inpN">Regimen:</label>
-                                                <select required class="form-control form-control-sm" id="field_regimenlab" name="regimenlab" [(ngModel)]="atencion.datlab.regimenlab" >
-                                                    <option [ngValue]="regimenlabo.id === atencion.datlab.regimenlab?.id ? atencion.datlab.regimenlab : regimenlabo" *ngFor="let regimenlabo of regimenlab;">{{regimenlabo.vDesreglab}}</option>
+                                                <select required class="form-control form-control-sm " id="field_regimenlab" name="regimenlab" [(ngModel)]="atencion.datlab.regimenlab" >
+                                                    <option [ngValue]="regimenlabo.id === atencion.datlab.regimenlab?.id ? atencion.datlab.regimenlab : regimenlabo" *ngFor="let regimenlabo of regimenlab;">{{regimenlabo.vDesreglab   }}</option>
                                                 </select>
-                                                <select class="form-control form-control-sm"></select>
+                                                <!-- <select class="form-control form-control-sm"></select> -->
                                             </div>
                                         </div>
                                     </div>
@@ -97,21 +83,32 @@
                                         <div class="row ">
                                             <div class="col-md-6 mb-3">
                                                 <label for="inpN">Motivo de Cese:</label>
-                                                <select required class="form-control form-control-sm" id="field_motcese" name="motcese" [(ngModel)]="atencion.datlab.motcese" >
+                                                <select (change)="selectMotivCese($event.target)" required class="form-control form-control-sm " id="field_motcese" name="motcese" [(ngModel)]="atencion.datlab.motcese" >
+                                                    <option value="0">OTROS</option>
                                                     <option [ngValue]="motivocese.id === atencion.datlab.motcese?.id ? atencion.datlab.motcese : motivocese" *ngFor="let motivocese of motivcese;">{{motivocese.vDesmotces}}</option>
                                                 </select>
+                                                
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                    <label for="inpN">Otro Motivo:</label>
-                                                    <select class="form-control form-control-sm"></select>
+                                            <div class="col-md-6 mb-3" *ngIf="viewAnotherMotiv">
+                                                <label for="inpN">Otro Motivo:</label>
+                                                <div class="row">
+                                                    <div class="col-sm-9 pr-0">
+                                                        <input type="text" name="nuevoMotivo" [(ngModel)]="nuevoMotivo" class="form-control form-control-sm ">
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <button (click)="saveMotivCese()" class="btn btn-sm btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>    
+                                                    </div>
                                                 </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="row ">
                                             <div class="col-md-6 mb-3">
                                                 <label for="inpN">Tipo de Contrato:</label>
-                                                <select class="form-control form-control-sm"></select>
+                                                <select required class="form-control form-control-sm " id="field_modcontrato    " name="modcontrato " [(ngModel)]="atencion.datlab.modcontrato   " >
+                                                        <option [ngValue]="modcontratol.id === atencion.datlab.modcontrato?.id ? atencion.datlab.modcontrato : modcontratol" *ngFor="let modcontratol of modcontrato;">{{ modcontratol.vDesmodcon }}</option>
+                                                </select>
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="inpN">Fecha Fin del Contrato:</label>
@@ -131,7 +128,7 @@
                                             <p-column [style]="{'text-align':'left'}" [hidden]="true" field="check" header="Checked"></p-column>
                                             <ng-template pTemplate="emptymessage">
                                                     No se han encontrado registros
-                                                </ng-template>
+                                            </ng-template>
                                         </p-dataTable>
                                     </div>
                                 </div>

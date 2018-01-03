@@ -43,7 +43,7 @@
                                             </td>
                                             <td>
                                                 <span *ngIf="solicForm.vTipoform == 'G'">GENERAL</span>
-                                                <span *ngIf="solicForm.vTipoform == 'F'">FINANCIERO</span>
+                                                <span *ngIf="solicForm.vTipoform.substr(0,1) == 'F'">FINANCIERO</span>
                                                 <span *ngIf="solicForm.vTipoform == 'L'">LABORAL</span>
                                                 <span *ngIf="solicForm.vTipoform == 'A'">ARCHIVO</span>
                                             </td>

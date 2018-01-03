@@ -11,6 +11,11 @@ import { FormularioPerfil3Component } from '../formulario-perfil/formulario-perf
 import { FormularioPerfil4Component } from '../formulario-perfil/formulario-perfil4.component';
 import { FormularioPerfil5Component } from '../formulario-perfil/formulario-perfil5.component';
 import { FormularioPerfil6Component } from '../formulario-perfil/formulario-perfil6.component';
+import { FormularioFinancieroN1Component,
+         FormularioFinancieroAnexo1AComponent,
+         FormularioFinancieroAnexo1BComponent,
+         FormularioFinancieroAnexo1CComponent,
+         FormularioFinancieroAnexo1DComponent } from '../formulario-financiero/index';
 
 export const ControlInformacionRoute: Routes = [
     {
@@ -41,5 +46,20 @@ export const ControlInformacionRoute: Routes = [
     }, {
         path: 'dictamenes/formulario-perfil6',
         component: FormularioPerfil6Component,
-    }
+    }, {
+        path: 'dictamenes/formulario-financiero-n1/:nCodffina',
+        component: FormularioFinancieroN1Component,
+    }, {
+        path: 'dictamenes/formulario-financiero-anexo1a/:nCodffina',
+        component: FormularioFinancieroAnexo1AComponent,
+    }, {
+        path: 'dictamenes/formulario-financiero-anexo1b/:nCodffina',
+        component: FormularioFinancieroAnexo1BComponent,
+    }, {
+        path: 'dictamenes/formulario-financiero-anexo1c/:nCodffina',
+        component: FormularioFinancieroAnexo1CComponent,
+    }, {
+        path: 'dictamenes/formulario-financiero-anexo1d/:nCodffina',
+        component: FormularioFinancieroAnexo1DComponent,
+    },
 ];

@@ -110,17 +110,18 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.limpiarLocalStorage();
         this.loadAll();
         // this.solicitudService.obtenerlistaFormulariosObligatorios();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
-        this.limpiarLocalStorage();
     }
 
     load(nCodsolic) {
         this.solicitudService.find(nCodsolic).subscribe((solicitud) => {
             this.solicitud = solicitud;
+            this.solicitudLS = solicitud;
             this.formperfilService.obtenerlistaFormulariosObligatorios(1, this.solicitud.nCodsolic).subscribe(
                 (res: ResponseWrapper) => this.solicFormsObligatorio = res.json,
                 (res: ResponseWrapper) => this.onError(res.json)
@@ -181,7 +182,17 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
         if (obj.vTipoform === 'G' && obj.nCodfperf != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
             // Formulario Perfil
             this.router.navigate(['../../dictamenes/formulario-perfil/' + obj.nCodfperf])
-        }else {
+        } else if (obj.vTipoform === 'F' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
+            this.router.navigate(['../../dictamenes/formulario-financiero-n1/' + obj.nCodffina])
+        } else if (obj.vTipoform === 'F1A' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
+            this.router.navigate(['../../dictamenes/formulario-financiero-anexo1a/' + obj.nCodffina])
+        } else if (obj.vTipoform === 'F1B' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
+            this.router.navigate(['../../dictamenes/formulario-financiero-anexo1b/' + obj.nCodffina])
+        } else if (obj.vTipoform === 'F1C' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
+            this.router.navigate(['../../dictamenes/formulario-financiero-anexo1c/' + obj.nCodffina])
+        } else if (obj.vTipoform === 'F1D' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
+            this.router.navigate(['../../dictamenes/formulario-financiero-anexo1d/' + obj.nCodffina])
+        } else {
             this.router.navigate(['./dictamenes/control-informacion/' + obj.nCodsolic])
         }
     }

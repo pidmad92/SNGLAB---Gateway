@@ -52,7 +52,7 @@ export class ReginternoModel implements BaseEntity {
         public horafin?: Date,
         public numerotrabajado?: string,
         public correotrabajador?: string,
-        public fechacese?: any,
+        public fechacese?: Date,
         public organizacionsindical?: string,
         public flagtrabajando?: boolean,
         public flaggruposindical?: boolean,
@@ -69,7 +69,7 @@ export class ReginternoModel implements BaseEntity {
         public observadenunciadetalle?: string,
         public flagreservaidentidad?: boolean,
         public flagdeclaracionverdadera?: boolean,
-        public fechainitrabajo?: any,
+        public fechainitrabajo?: Date,
         // a
         public horainiinspec?: Date,
         public horafininspec?: Date,

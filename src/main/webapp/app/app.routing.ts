@@ -45,6 +45,10 @@ export const defensaRoute: Route = {
     path: 'defensa',
     loadChildren: './applications/defensa/defensa.module#GatewayDefensaModule'
 };
+export const conciliacionesRoute: Route = {
+    path: 'conciliaciones',
+    loadChildren: './applications/conciliaciones/conciliaciones.module#GatewayConciliacionesModule'
+};
 
 export const loginRoute: Route = {
     path: 'login',

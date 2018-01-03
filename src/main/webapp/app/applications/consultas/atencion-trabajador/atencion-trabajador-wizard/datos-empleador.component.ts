@@ -114,6 +114,7 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
                 }
 
             });
+            this.registerChangeInEmpleador();
         });
     }
 
@@ -195,12 +196,12 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
     previousState() {
         window.history.back();
     }
-
-    registerChangeInAccionadops() {
-        this.eventSubscriber = this.eventManager.subscribe(
-            'datosTrabajadorListModification',
-            (response) => this.load(this.trabajador.id)
-        );
+    registerChangeInEmpleador() {
+        this.eventSubscriber = this.eventManager.subscribe('saveEmpleador',
+        (response) => {
+            console.log('PasarEmpleador' + JSON.stringify(this.empleador));
+            this.registroAtencionWizard.cambiarEmpleador(this.empleador);
+        });
     }
     cloneDirec(dir: Dirperjuri): Dirperjuri {
         const direc = new Dirperjuri();
