@@ -1,5 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GatewaySharedModule } from '../../../../shared';
 import { MessagesModule, MessageModule, DialogModule } from 'primeng/primeng';
 import { MessageService } from 'primeng/components/common/messageservice';
@@ -18,7 +19,6 @@ const ENTITY_STATES = [
         MessageModule,
         DialogModule,
         GatewaySharedModule
-        /*RouterModule.forChild(ENTITY_STATES)*/
     ],
     declarations: [
         TrabajadorComponent

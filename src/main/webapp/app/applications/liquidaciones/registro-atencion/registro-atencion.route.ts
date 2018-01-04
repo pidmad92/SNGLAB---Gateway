@@ -23,7 +23,18 @@ export const RegistroAtencionRoute: Routes = [
                     authorities: ['ROLE_USER'],
                     pageTitle: 'global.menu.entities.atencionTra'
                 },
-                canActivate: [UserRouteAccessService]
+                canActivate: [UserRouteAccessService],
+                /*children: [
+                    {
+                        path: ':id',
+                        component: ModalBusquedaTrabajadorComponent,
+                        data: {
+                            authorities: ['ROLE_USER'],
+                            pageTitle: 'global.menu.entities.consultaExpediente'
+                        },
+                        outlet: 'popup-vinculos-laborales'
+                    }
+                ]*/
             },
             {
                 path: 'empleador',
