@@ -20,7 +20,9 @@ export class TrabajadorComponent implements OnInit {
 
     formBusquedaTrabajador: FormGroup;
     showFormularioDatosTrabajador: boolean;
+    showImputTextNumPartidaSucesion: boolean;
 
+    /* Simula la lista de tipo de documentos */
     listaTipDocs: any/*: {codTipDoc: string, tipDoc: string}[]*/ = [
       {
         codTipDoc: '0',
@@ -53,6 +55,7 @@ export class TrabajadorComponent implements OnInit {
           })
       });
       this.showFormularioDatosTrabajador = false;
+      this.showImputTextNumPartidaSucesion = false;
     }
     ngOnInit() {
     }
@@ -68,7 +71,7 @@ export class TrabajadorComponent implements OnInit {
         Num.Doc: ${formBusquedaTrabajador.value.documento.numDoc}`);
       console.log(formBusquedaTrabajador);
 
-      this.showFormularioDatosTrabajador = true;
+      this.mostrarFormularioDatosTrabajador();
       /* Reset a los campos de busqueda del trabajador
       this.formBusquedaTrabajador.reset({
         documento: {
@@ -76,4 +79,15 @@ export class TrabajadorComponent implements OnInit {
           numDoc: ''
       }});*/
     }
+
+    // Funciones Utilitarias:
+
+    mostrarFormularioDatosTrabajador() {
+      this.showFormularioDatosTrabajador = true;
+    }
+
+    mostrarImputTextNumPartidaSucesion() {
+      this.showImputTextNumPartidaSucesion = true;
+    }
+
 }
