@@ -72,10 +72,9 @@
                                 <div class="form-group row" [ngClass]="{'has-danger': !formBusquedaTrabajador.controls['documento'].controls['tipDoc'].valid && formBusquedaTrabajador.get('documento.tipDoc').touched}">
                                     <label for="inpTipo" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo de documento</label>
                                     <div class="col-sm-7">
-                                        <select class="form-control form-control-sm" id="inpTipo" formControlName="tipDoc">
-                                          <option>DNI</option>
-                                          <option>Carné de Extrangería</option>
-                                          <option>Pasaporte</option>
+                                        <select class="form-control form-control-sm" id="inpTipo" formControlName="tipDoc" ngModel name="tipDoc">
+                                          <option value="">Seleccione un Documento</option>
+                                          <option *ngFor="let tipDoc of listaTipDocs" [value]="tipDoc.codTipDoc">{{tipDoc.desTipDoc}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -109,7 +108,7 @@
                             </div>
                         </div>
                     </form>
-                    <form>
+                    <form *ngIf="showFormularioDatosTrabajador == true">
                         <div class="row">
                             <div class="col-md-2 mb-2">
                                 <label for="inpAP" class="col-form-label col-form-label-sm">Apellido Paterno:</label>

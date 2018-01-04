@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms' /* Necesario*/
+import { FormGroup, FormControl, Validators, FormArray, NgForm } from '@angular/forms' /* Necesario*/
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } from 'ng-jhipster';
@@ -19,13 +19,22 @@ export class TrabajadorComponent implements OnInit {
     currentSearch: string;
 
     formBusquedaTrabajador: FormGroup;
+    showFormularioDatosTrabajador: boolean;
 
-    trabajador: any = {
-      documento: {
-        tipDoc: '',
-        numDoc: '',
+    listaTipDocs: any/*: {codTipDoc: string, tipDoc: string}[]*/ = [
+      {
+        codTipDoc: '0',
+        desTipDoc: 'DNI'
       },
-    };
+      {
+        codTipDoc: '1',
+        desTipDoc: 'Carné de Extrangería'
+      },
+      {
+        codTipDoc: '2',
+        desTipDoc: 'Pasaporte'
+      },
+    ];
 
     constructor(
         private eventManager: JhiEventManager,
@@ -33,16 +42,17 @@ export class TrabajadorComponent implements OnInit {
     ) {
       this.formBusquedaTrabajador = new FormGroup({
         'documento': new FormGroup({
-          'tipDoc': new FormControl(this.trabajador.documento.tipDoc,
-            Validators.required/*Regla de Validacion,Regla de Validacion Asincrona*/),
-          'numDoc': new FormControl('', [
+          'tipDoc': new FormControl(null,
+            Validators.required),
+          'numDoc': new FormControl(null, [
             Validators.required,
             Validators.pattern('[0-9]+'),
             Validators.minLength(8),
-            Validators.maxLength(15)
+            Validators.maxLength(15) // http://www2.sunat.gob.pe/pdt/pdtModulos/independientes/p695/TipoDoc.htm
             ])
           })
       });
+      this.showFormularioDatosTrabajador = false;
     }
     ngOnInit() {
     }
@@ -52,9 +62,13 @@ export class TrabajadorComponent implements OnInit {
     }
 
     buscarTrabajador(formBusquedaTrabajador: FormGroup) {
-      console.log(`Buscó al Trabajador:
+      console.log(
+        `Buscó al Trabajador:
         Tip.Doc: ${formBusquedaTrabajador.value.documento.tipDoc}
         Num.Doc: ${formBusquedaTrabajador.value.documento.numDoc}`);
+      console.log(formBusquedaTrabajador);
+
+      this.showFormularioDatosTrabajador = true;
       /* Reset a los campos de busqueda del trabajador
       this.formBusquedaTrabajador.reset({
         documento: {
@@ -62,5 +76,4 @@ export class TrabajadorComponent implements OnInit {
           numDoc: ''
       }});*/
     }
-
 }
