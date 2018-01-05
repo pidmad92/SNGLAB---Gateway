@@ -21,7 +21,8 @@ export class ConsinterModel implements BaseEntity {
         public mensajeSolicitado?: string,
         public mensajeRespuesta?: string,
         public fechaRespuesta?: string,
-        public fechaSolicitada?: string
+        public fechaSolicitada?: string,
+        public observacion?: string,
     ) {
     }
 }

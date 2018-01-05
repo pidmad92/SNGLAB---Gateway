@@ -35,6 +35,13 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 import javax.xml.soap.SOAPException;
+import pe.gob.trabajo.service.wsstd.ErrorDeServicio;
+import pe.gob.trabajo.service.wsstd.HojaDeRutaEllipse;
+import pe.gob.trabajo.service.wsstd.Serviciosstd;
+import pe.gob.trabajo.service.wsstd.Serviciosstd_Service;
+import pe.gob.trabajo.service.wstramite.ExpedienteWSDto;
+import pe.gob.trabajo.service.wstramite.Situacionmitramite;
+import pe.gob.trabajo.service.wstramite.Situacionmitramite_Service;
 
 @RestController
 @RequestMapping("/api")
@@ -52,6 +59,22 @@ public class ServiciosExternosResource {
         this.ciuperjuridicaRepository = ciuperjuridicaRepository;
     }
 
+    @GetMapping("/valida")
+    @Timed
+    public PersonaValidarServicioDTO valida() throws ErrorDeServicio, pe.gob.trabajo.service.wstramite.ErrorDeServicio {
+        Situacionmitramite_Service servicio_tramite = new Situacionmitramite_Service();
+        Serviciosstd_Service servicio_std = new Serviciosstd_Service();
+        Serviciosstd port_std = servicio_std.getServiciosSTDPort();
+        Situacionmitramite port_tramite = servicio_tramite.getSituaciondemitramiteSTDPort();
+        
+        HojaDeRutaEllipse expedienteEllipse = port_std.expedienteEllipse("T-001239-2017");
+        System.out.println(expedienteEllipse.getAsunto());
+        
+        ExpedienteWSDto consultaExpediente = port_tramite.consultaExpediente(2017, "001239");
+        System.out.println(consultaExpediente.getAsunto());
+                
+        return null;
+    }
     @PostMapping("/validarpersonaservicio")
     @Timed
     public PersonaValidarServicioDTO ValidarPersonaNatural(@RequestBody PersonaValidarServicioDTO personaNatural)
@@ -65,20 +88,53 @@ public class ServiciosExternosResource {
         return personaNatural;
     }
 
+    @PostMapping("/personaservicio")
+    @Timed
+    public PersonaValidarServicioDTO PersonaNatural(@RequestBody PersonaValidarServicioDTO personaNatural)
+            throws SOAPException, IOException {
+        switch (personaNatural.getTipoDoc()) {
+        case "DNI":
+            PersonaBean personaBean = ReniecClient.getConsolidada(personaNatural.getvNumdoc());
+            this.ConvertirObjetoReniec(personaNatural, personaBean);
+        }
+
+        return personaNatural;
+    }
+
     @PostMapping("/validarserviciosunat")
     @Timed
     public EmpresaBean validarserviciosunat(@RequestBody EmpresaBean empresaBean) throws SOAPException, IOException {
         EmpresaBean bean = SunatClient.getDatosPrincipales(empresaBean.getDdp_numruc());
-        System.out.println("-------------");
-        System.out.println(bean);
-        System.out.println(bean.getDdp_ciiu());
-        System.out.println("-------------");
         Ciuperjuridica ciuperjuridica = ciuperjuridicaRepository.GetCiiu(bean.getDdp_ciiu());
         Sectorecoperjuridica sectorecoperjuridica = sectorecoperjuridicaRepository
                 .GetSector(ciuperjuridica.getvCodsec());
         bean.setDesc_sectoeco(sectorecoperjuridica.getvDessec());
         bean.ddp_sector = sectorecoperjuridica.getvCodsec();
         return bean;
+    }
+
+    private PersonaValidarServicioDTO ConvertirObjetoReniec(PersonaValidarServicioDTO dto, PersonaBean persona) {
+        if (persona == null) {
+            dto.setResultado(false);
+        } else {
+            dto.setResultado(true);
+            dto.setvApemat(persona.getApellidoMaterno());
+            dto.setvApepat(persona.getApellidoPaterno());
+            dto.setvNombres(persona.getNombres());
+            dto.setdFecnac(persona.getFechaNacimiento());
+            dto.setGenero(persona.getGenero());
+            dto.setEstadoCivil(persona.getEstadoCivil());
+            dto.setCodigo(persona.getCodigo());
+            dto.setCoddep(persona.getCoddep());
+            dto.setCodpro(persona.getCodpro());
+            dto.setCoddist(persona.getCoddist());
+            dto.setDireccion(persona.getDireccion());
+            dto.setdFecnac(persona.getFechaNacimiento());
+            dto.setGenero(persona.getGenero());
+            dto.vSexoper = (persona.getGenero().trim().equals("1")) ? "M" : "F";
+            dto.nCodtdiden = 1;
+        }
+        return dto;
     }
 
     private PersonaValidarServicioDTO ValidarConvertirObjetoReniec(PersonaValidarServicioDTO dto, PersonaBean persona) {

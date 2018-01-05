@@ -243,22 +243,33 @@ export class ConsinterComponent implements OnInit {
             this.onError('Debe seleccionar como minimo una denuncia.');
         } else {
             const codList: number[] = [];
+            let flag = true;
+            let objeto = [];
             // tslint:disable-next-line:forin
             for (const i in this.selectedResultado) {
-                codList.push(this.selectedResultado[i].serialize);
+                if (this.selectedResultado[i].observacion === undefined) {
+                    flag = false;
+                    objeto = [];
+                    break;
+                } else {
+                    objeto.push({ CodDenuncia: this.selectedResultado[i].serialize,
+                        observadenuncia: this.selectedResultado[i].observacion});
+                }
             }
-            this.consinterService.regAtenderDenu({
-                codSerialize: codList
-            }).subscribe(
-                (res: any) => {
-                    this.block = false;
-                    this.displayAtenderDenuncias = false;
-                    this.buscarDenuncias();
-                },
-                (res: any) => {
-                    this.onErrorAtenderDenu(res);
-                    this.block = false;
-                });
+            if (flag === true) {
+                if (objeto.length > 0) {
+                    this.consinterService.regAtenderDenu(objeto).subscribe(
+                        (res: any) => {
+                            this.block = false;
+                            this.displayAtenderDenuncias = false;
+                            this.buscarDenuncias();
+                        },
+                        (res: any) => {
+                            this.onErrorAtenderDenu(res);
+                            this.block = false;
+                        });
+                }
+            }
         }
     }
 

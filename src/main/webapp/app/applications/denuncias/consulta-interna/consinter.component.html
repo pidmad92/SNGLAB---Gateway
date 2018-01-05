@@ -138,12 +138,22 @@
     <div class="row">
         <div class="col-md-12">
             <p-messages [(value)]="messagesAtenderdenu"></p-messages>
-            <p-dataTable [scrollable]="true" scrollHeight="300px" [responsive]="true" [value]="selectedResultado" dataKey="serialize">
+            <p-dataTable [scrollable]="true" scrollHeight="300px" [responsive]="true" [value]="selectedResultado" dataKey="serialize"
+                [editable]="true">
                 <p-header>Resultado de la consulta</p-header>
-                <p-column field="empleador" header="Empleador"></p-column>
-                <p-column field="denunciante" header="Denunciante"></p-column>
-                <p-column field="motivo" header="Motivo"></p-column>
-                <p-column field="codDenuncia" header="Código"></p-column>
+                <p-column field="empleador" header="Empleador" [editable]="false"></p-column>
+                <p-column field="denunciante" header="Denunciante" [editable]="false"></p-column>
+                <p-column field="motivo" header="Motivo" [editable]="false"></p-column>
+                <p-column field="codDenuncia" header="Código" [editable]="false"></p-column>
+                <p-column field="observacion" header="Observación" [editable]="true">
+                    <ng-template let-col let-car="rowData" pTemplate="body">
+                        {{car[col.field]}}
+                    </ng-template>
+                    <ng-template let-col let-car="rowData" pTemplate="editor">
+                        <textarea pInputTextarea [(ngModel)]="car[col.field]" rows="4" cols="15" pInputTextarea [(ngModel)]="infoSolicitada" name="infoSolicitada">
+                        </textarea>
+                    </ng-template>
+                </p-column>
             </p-dataTable>
         </div>
         <div class="col-md-12">
@@ -152,8 +162,8 @@
         </div>
     </div>
 </p-dialog>
-<p-dialog appendTo="body" [draggable]="true" header="Finalizar Denuncias" [(visible)]="displayFinalizarDenuncias" modal="modal" width="600"
-    height="400" [responsive]="true">
+<p-dialog appendTo="body" [draggable]="true" header="Finalizar Denuncias" [(visible)]="displayFinalizarDenuncias" modal="modal"
+    width="600" height="400" [responsive]="true">
     <div class="row">
         <div class="col-md-12">
             <p-messages [(value)]="messagesFinalizadenu"></p-messages>

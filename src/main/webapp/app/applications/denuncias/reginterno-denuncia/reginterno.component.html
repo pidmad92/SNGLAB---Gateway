@@ -1,5 +1,49 @@
 <p-blockUI [blocked]="block"></p-blockUI>
 <p-tabView [activeIndex]="indexTab">
+    <p-tabPanel [disabled]="disableTab0" header="Datos del denunciante" style="height: 500" leftIcon="fa-id-card">
+        <p-messages [(value)]="messagesDenu"></p-messages>
+        <div class="row">
+            <div class="col-md-3">
+                <label>Tipo Doc.</label>
+                <select class="form-control" [(ngModel)]="tipoDocDenu" name="tipoDocDenu" placeholder="Seleccione el tipo de doc.">
+                    <option>DNI</option>
+                    <option>CARNET EXT.</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label>Numero Doc.</label>
+                <input (change)="validRegDenunte = false" class="form-control" [(ngModel)]="numDocDenu" name="numDocDenu" type="text" placeholder="Numero de doc."
+                />
+            </div>
+            <div class="col-md-2">
+                <br />
+                <button class="btn btn-default" (click)="buscarDenu()" type="button">Buscar</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ui-md-12">
+                <label>Nombre completo</label>
+                <input class="form-control" readonly="readonly" [(ngModel)]="nombreDenu" name="nombreDenu" type="text" placeholder="Nombre completo"
+                />
+            </div>
+        </div>
+        <div class="row">
+            <div class="ui-md-6">
+                <label>Numero telefono</label>
+                <input class="form-control" [(ngModel)]="numTelefonoDenu" name="numTelefonoDenu" type="text" placeholder="Numero telefono"
+                />
+            </div>
+            <div class="ui-md-6">
+                <label>Correo electronico</label>
+                <input class="form-control" [(ngModel)]="correoDenu" name="correoDenu" type="text" placeholder="Correo" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="ui-md-12">
+                <button class="btn btn-primary" (click)="nextPerJuridica()" type="button">Siguiente</button>
+            </div>
+        </div>
+    </p-tabPanel>
     <p-tabPanel [disabled]="disableTab1" header="Datos del empleador" style="height: 500" leftIcon="fa-id-card">
         <p-messages [(value)]="messagesEmpleador"></p-messages>
         <div class="row">
@@ -7,7 +51,8 @@
                 <label>Ruc</label>
             </div>
             <div class="col-md-6">
-                <input name="nRuc" [(ngModel)]="nRuc" placeholder="Ingresar el RUC de la empresa" class="form-control" type="text" />
+                <input (change)="validReg = false" name="nRuc" [(ngModel)]="nRuc" placeholder="Ingresar el RUC de la empresa" class="form-control"
+                    type="text" />
             </div>
             <div class="col-md-4">
                 <button class="" (click)="validarRuc()" type="button">Buscar</button>
@@ -47,6 +92,7 @@
         </div>
         <div class="ui-g">
             <div class="ui-md-12">
+                <button class="btn btn-default" (click)="backDenunciante()" type="button">Atras</button>
                 <button class="btn btn-primary" (click)="nextDatosTrabajo()" type="button">Siguiente</button>
             </div>
         </div>
@@ -135,11 +181,13 @@
                 <p-checkbox [(ngModel)]="formregdenu.flagdom" name="flagdom" binary="true"></p-checkbox>Dom
             </div>
             <div class="ui-md-3">
-                <label>Hora inicio trabajo:</label><br />
+                <label>Hora inicio trabajo:</label>
+                <br />
                 <p-calendar [(ngModel)]="formregdenu.horainicio" name="horainicio" [timeOnly]="true"></p-calendar>
             </div>
             <div class="ui-md-3">
-                <label>Hora fin trabajo:</label><br />
+                <label>Hora fin trabajo:</label>
+                <br />
                 <p-calendar [(ngModel)]="formregdenu.horafin" name="horafin" [timeOnly]="true"></p-calendar>
             </div>
         </div>
@@ -165,7 +213,8 @@
         </div>
         <div class="ui-g">
             <div *ngIf="formregdenu.flagtrabajando == false" class="ui-md-3">
-                <label>Fecha Cese</label><br />
+                <label>Fecha Cese</label>
+                <br />
                 <p-calendar [(ngModel)]="formregdenu.fechacese" name="fechacese" [locale]="es" dateFormat="dd/mm/yy"></p-calendar>
             </div>
             <div *ngIf="formregdenu.flaggruposindical == true" class="ui-md-9">
@@ -238,7 +287,8 @@
                 Adjuntar archivo
             </div>
             <div class="ui-md-9">
-                <input (change)="handleInputChange($event)" type="file" class="form-control" [(ngModel)]="formregdenu.filedenuncia" name="filedenuncia" />
+                <input #fileDenuncia accept="application/pdf" (change)="handleInputChange($event)" type="file" class="form-control" [(ngModel)]="formregdenu.filedenuncia" name="filedenuncia"
+                />
             </div>
         </div>
         <div class="ui-g">
@@ -246,7 +296,7 @@
                 Su denuncia será con la reserva de indentidad
             </div>
             <div class="ui-md-9">
-                <p-inputSwitch onLabel="Si" offLabel="No" [(ngModel)]="formregdenu.flagreservaidentidad" name="flagreservaidentidad"></p-inputSwitch>
+                <p-inputSwitch [disabled]="validReserva" onLabel="Si" offLabel="No" [(ngModel)]="formregdenu.flagreservaidentidad" name="flagreservaidentidad"></p-inputSwitch>
             </div>
         </div>
         <div class="ui-g">

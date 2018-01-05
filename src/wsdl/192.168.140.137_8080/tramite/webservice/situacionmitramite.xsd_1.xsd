@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.3-b02-. --><xs:schema xmlns:tns="http://ws.web.bs.std.mef.gob.pe/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.web.bs.std.mef.gob.pe/">
+
+<xs:element name="ErrorDeServicio" nillable="true" type="tns:errorInfo"></xs:element>
+
+<xs:complexType name="expedienteWSDto">
+<xs:sequence>
+<xs:element name="anexos" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="asunto" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="courier" type="tns:msgDocumentosHojasEnvioWsDto" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+<xs:element name="fechahoradeiniciodetramite" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fechahoradeldocumento" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fechahorarecepcion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="movimientos" type="tns:movimientoWSDto" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+<xs:element name="noexpediente" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numerodedocumento" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numerodefolios" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="procedimiento" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="remitente" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="responsableArea" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="responsableUsuario" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="situacionactual" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipodedocumento" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tupa" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="msgDocumentosHojasEnvioWsDto">
+<xs:sequence>
+<xs:element name="direcciontxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doAnio" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="doDesc" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doId" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="doNodoc" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doNohe" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doNohetxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doNoordenpedido" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="estadotxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fechaCrea" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="movimientoWSDto">
+<xs:sequence>
+<xs:element name="apellidoMaternoDestino" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="apellidoPaternoDestino" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="estado" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fechadederivacion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fechadeestado" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nombreDestino" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="observacion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="observacionAtencion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="perfil" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="remitente" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="unidaddestino" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="usuarioDestino" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="errorInfo">
+<xs:sequence>
+<xs:element name="codigo" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="mensaje" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="message" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

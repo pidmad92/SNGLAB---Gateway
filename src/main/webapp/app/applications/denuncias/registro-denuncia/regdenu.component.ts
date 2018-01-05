@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } from 'ng-jhipster';
@@ -52,6 +53,10 @@ export class RegdenuComponent implements OnInit {
     listadetalle: ComboModel[];
     messageList: any;
     es: any;
+    validReg: boolean;
+    validReserva: boolean;
+    @ViewChild('fileDenuncia')
+    fileDenuncia: any;
 
     constructor(
         private eventManager: JhiEventManager,
@@ -74,6 +79,8 @@ export class RegdenuComponent implements OnInit {
         this.displayNuevaDireccion = false;
         this.tviasLista = [];
         this.tzonasLista = [];
+        this.validReg = false;
+        this.validReserva = true;
     }
 
     backPerJuridica() {
@@ -113,6 +120,13 @@ export class RegdenuComponent implements OnInit {
                     this.disableTab2 = true;
                     this.disableTab3 = false;
                     this.indexTab = 2;
+                    /* */
+                    if (this.formregdenu.flagtrabajando === true) {
+                        this.formregdenu.flagreservaidentidad = true;
+                    } else if (this.formregdenu.flagtrabajando === false) {
+                        this.formregdenu.flagreservaidentidad = false;
+                    }
+                    /* */
                     this.block = false;
                 },
                 (res: any) => {
@@ -155,6 +169,9 @@ export class RegdenuComponent implements OnInit {
             this.onErrorEmpleador('Debe ingresar el número RUC de la empresa.');
             return false;
         } else if (this.formregdenu.ddpnombre === undefined) {
+            this.onErrorEmpleador('Debe ingresar el número RUC de la empresa valido.');
+            return false;
+        } else if (this.validReg === false) {
             this.onErrorEmpleador('Debe ingresar el número RUC de la empresa valido.');
             return false;
         } else {
@@ -286,7 +303,7 @@ export class RegdenuComponent implements OnInit {
                     this.router.navigate(['/denuncias/formconsexterno']);
                 },
                 (dato: ResponseWrapper) => { console.log(dato); this.onErrorDatosTrabajo(dato.json); this.block = false; }
-            );
+                );
         }
     }
 
@@ -306,7 +323,7 @@ export class RegdenuComponent implements OnInit {
                             ddp_numruc: this.nRuc
                         }).subscribe(
                             (res: any) => {
-                                console.log(res);
+                                this.validReg = true;
                                 this.formregdenu.numruc = this.nRuc;
                                 this.formregdenu.descciiu = res.desc_ciiu;
                                 this.formregdenu.descsectoeco = res.desc_sectoeco;
@@ -331,12 +348,14 @@ export class RegdenuComponent implements OnInit {
                             },
                             (res: any) => {
                                 this.nRuc = '';
+                                this.validReg = false;
                                 this.onErrorEmpleador(res);
                                 this.block = false;
                             });
                     } else {
                         this.nRuc = '';
                         this.block = false;
+                        this.validReg = false;
                         this.onErrorEmpleador('Esta empresa no es parte de la competencia del Ministerio de trabajo y promocion del empleo.');
                     }
                 },
@@ -463,7 +482,7 @@ export class RegdenuComponent implements OnInit {
             this.formregdenu.ddptipzon_c = this.formregdenu.selectZona.value;
             this.displayNuevaDireccion = false;
             this.formregdenu.flagOtradireccion = true;
-            this.block = true;
+            this.block = false;
         }
     }
 
@@ -484,15 +503,41 @@ export class RegdenuComponent implements OnInit {
 
     handleInputChange(e) {
         const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-        const reader = new FileReader();
-        reader.onload = this._handleReaderLoaded.bind(this);
-        reader.readAsDataURL(file);
+
+        if (file.size > 0) {
+            if ((Number(file.size) / 1000) < 5000) {
+                const reader = new FileReader();
+                reader.onload = this._handleReaderLoaded.bind(this);
+                reader.readAsDataURL(file);
+            } else {
+                this.fileDenuncia.nativeElement.value = '';
+                this.onErrorDenuncia('El archivo no puede ser mayor de 5 megas.');
+            }
+        }
     }
 
     _handleReaderLoaded(e) {
         const reader = e.target;
         this.formregdenu.fileString = reader.result.split(',')[1];
-        console.log(this.formregdenu.fileString);
+    }
+
+    getSwitchReserva(e) {
+        const isChecked = e.checked;
+        console.log(e);
+        console.log(isChecked);
+        if (this.formregdenu.flagtrabajando === true && isChecked === true) {
+            // e.originalEvent().defaultPrevented = true
+            e.checked = true;
+        } else if (this.formregdenu.flagtrabajando === true && isChecked === false) {
+            // e.originalEvent().defaultPrevented = true
+            e.checked = true;
+        } else if (this.formregdenu.flagtrabajando === false && isChecked === true) {
+            // e.originalEvent().defaultPrevented = true
+            e.checked = false;
+        } else if (this.formregdenu.flagtrabajando === false && isChecked === false) {
+            // e.originalEvent().defaultPrevented = true
+            e.checked = false;
+        }
     }
 
     private onErrorEmpleador(error: any) {
