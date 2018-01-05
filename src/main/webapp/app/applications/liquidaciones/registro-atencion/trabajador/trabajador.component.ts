@@ -7,6 +7,14 @@ import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../../shared';
 import { Message } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
 
+// Modelos
+
+import { Tipdocident } from '../../models/tipdocident.model';
+
+// Servicios
+
+import { TrabajadorService } from './tabajador.service';
+
 @Component({
     selector: 'jhi-trabajador',
     templateUrl: './trabajador.component.html'
@@ -18,29 +26,22 @@ export class TrabajadorComponent implements OnInit {
     eventSubscriber: Subscription;
     currentSearch: string;
 
+    // Variables de control de la pagina
+
     formBusquedaTrabajador: FormGroup;
     showFormularioDatosTrabajador: boolean;
     showImputTextNumPartidaSucesion: boolean;
 
-    /* Simula la lista de tipo de documentos */
-    listaTipDocs: any/*: {codTipDoc: string, tipDoc: string}[]*/ = [
-      {
-        codTipDoc: '0',
-        desTipDoc: 'DNI'
-      },
-      {
-        codTipDoc: '1',
-        desTipDoc: 'Carné de Extrangería'
-      },
-      {
-        codTipDoc: '2',
-        desTipDoc: 'Pasaporte'
-      },
-    ];
+    // Variables de Modelo - Entidad
+
+    listaTipdocident: Tipdocident[];
+
+    // Constructor
 
     constructor(
         private eventManager: JhiEventManager,
         private messageService: MessageService,
+        private trabajadorService:  TrabajadorService
     ) {
       this.formBusquedaTrabajador = new FormGroup({
         'documento': new FormGroup({
@@ -57,30 +58,53 @@ export class TrabajadorComponent implements OnInit {
       this.showFormularioDatosTrabajador = false;
       this.showImputTextNumPartidaSucesion = false;
     }
-    ngOnInit() {
-    }
+
     private onError(error: any) {
         this.messages = [];
         this.messages.push({ severity: 'error', summary: 'Mensaje de Error', detail: error.message });
     }
 
-    buscarTrabajador(formBusquedaTrabajador: FormGroup) {
-      console.log(
-        `Buscó al Trabajador:
-        Tip.Doc: ${formBusquedaTrabajador.value.documento.tipDoc}
-        Num.Doc: ${formBusquedaTrabajador.value.documento.numDoc}`);
-      console.log(formBusquedaTrabajador);
+    // Al cargar la pagina:
 
-      this.mostrarFormularioDatosTrabajador();
-      /* Reset a los campos de busqueda del trabajador
-      this.formBusquedaTrabajador.reset({
-        documento: {
-          tipDoc: '',
-          numDoc: ''
-      }});*/
+    ngOnInit() {
+      this.cargarListaComboTipoDocumento();
     }
 
-    // Funciones Utilitarias:
+    // Al hacer click en el boton para buscar el trabajador
+
+    buscarTrabajador(formBusquedaTrabajador: FormGroup) {
+      console.log(`Buscó al Trabajador:
+        Tip.Doc: ${formBusquedaTrabajador.value.documento.tipDoc}
+        Num.Doc: ${formBusquedaTrabajador.value.documento.numDoc}`);
+        console.log(formBusquedaTrabajador);
+        this.mostrarFormularioDatosTrabajador();
+    }
+
+    // Al hacer un cambio en el combo
+
+    resetFormularioTrabajador() {
+      this.limpiarImputNumeroDocumento();
+      this.ocultarFormularioDatosTrabajador();
+      this.ocultarImputTextNumPartidaSucesion();
+    };
+
+    // Funciones Utilitarias - Busqueda Trabajador - I --------------------------------------------------------------------
+
+    // Al iniciar - llamar el servicio para llenar el combo del tipo de documento para la busqueda del trabajador
+
+    cargarListaComboTipoDocumento() {
+      this.trabajadorService.consultaTipoDocIdentidad().subscribe(
+        (res: ResponseWrapper) => {
+            this.listaTipdocident = res.json;
+            /*console.log(`Resjson:
+              ${JSON.stringify(res.json)}`);*/
+            this.currentSearch = '';
+        },
+        (res: ResponseWrapper) => {
+          this.onError(res.json);
+        }
+      );
+    }
 
     mostrarFormularioDatosTrabajador() {
       this.showFormularioDatosTrabajador = true;
@@ -90,4 +114,23 @@ export class TrabajadorComponent implements OnInit {
       this.showImputTextNumPartidaSucesion = true;
     }
 
+    ocultarFormularioDatosTrabajador() {
+      this.showFormularioDatosTrabajador = false;
+    }
+
+    ocultarImputTextNumPartidaSucesion() {
+      this.showImputTextNumPartidaSucesion = false;
+    }
+
+    // Limpia todo (combo e input) y le asigna al combo la ultima opcion seleccionada
+
+    limpiarImputNumeroDocumento() {
+      this.formBusquedaTrabajador.reset({
+        documento: {
+          tipDoc: this.formBusquedaTrabajador.value.documento.tipDoc,
+          numDoc: ''
+      }});
+    }
+
+    // Funciones Utilitarias - Busqueda Trabajador - F --------------------------------------------------------------------
 }

@@ -14,6 +14,8 @@ import { DatosLaboralesComponent } from './datos-laborales/datos-laborales.compo
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { TrabajadorService } from './trabajador/tabajador.service';
+
 const ENTITY_STATES = [
     ...RegistroAtencionRoute
 ];
@@ -36,7 +38,8 @@ const ENTITY_STATES = [
     entryComponents: [
     ],
     providers: [
-        MessageService
+        MessageService,
+        TrabajadorService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
