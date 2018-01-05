@@ -1,0 +1,52 @@
+<div class="row mt-3">
+    <div class="col">
+        <div class="card card-panel mb-3">
+            <div class="card-header d-sm-flex justify-content-between">
+                <h5>Consulta de Notificaciones</h5>
+            </div>
+            <div class="card-body">
+                <fieldset class="col">     
+                    <legend>Búsqueda</legend>
+                    <form>
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <label for="inpTipo" class="col-sm-3 col-form-label">Fechas:</label>
+                                    <p-calendar name="rangeDates" [(ngModel)]="rangeDates" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" selectionMode="range" readonlyInput="true"></p-calendar>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <label for="inpTipo" class="col-sm-3 col-form-label">Nro Expediente:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <a href="#" class="btn btn-sm btn-secondary "><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+                <form>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <p-dataTable [value]="expedientes" dataKey="codexpediente">
+                                    <p-header>Expedientes</p-header>
+                                    <p-column field="item" header="Item"></p-column>
+                                    <p-column field="codexpediente" header="Hoja de Envió"></p-column>
+                                    <p-column field="fecha" header="Fecha de Registro"></p-column>
+                                    <p-column field="conciliador" header="Conciliador"></p-column>
+                                    <p-column field="ruc" header="Razón Nro. RUC"></p-column>
+                                    <p-column field="" header=""></p-column>
+                            </p-dataTable>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet name="popupexp"></router-outlet>
+

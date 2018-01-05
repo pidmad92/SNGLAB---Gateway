@@ -1,0 +1,247 @@
+
+<div>
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAbogadoLabel">Consulta Expediente</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <p-tabView>
+            <p-tabPanel header="Datos del Expediente" [selected]="true">
+                <div class="ui-g">
+                    <div class="ui-g-4 ui-g-nopad">
+                        <div class="ui-g">
+                            <label class="col-for-label ui-g-6" for="field_vUsuarioreg">Expediente:</label>
+                            <div class="ui-g-6">
+                                <input type="text" class="form-control form-control-sm" name="numero_exp" id="numero_exp" [(ngModel)]="numero_exp" [disabled]="true"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-4 ui-g-nopad">
+                        <div class="ui-g">
+                            <label class="col-for-label ui-g-6" for="field_vUsuarioreg">Registro:</label>
+                            <div class="ui-g-6 ">
+                                <input type="text" class="form-control form-control-sm" name="varfechaexp" id="varfechaexp" [(ngModel)]="varfechaexp" [disabled]="true"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-4 ui-g-nopad">
+                        <div class="ui-g">
+                            <label class="col-for-label ui-g-4" for="field_vUsuarioreg">Pase:</label>
+                            <div class="ui-g-8 ">
+                                <input type="text" class="form-control form-control-sm" name="vUsuarioreg" id="field_vUsuarioreg" required maxlength="20"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-4 ui-g-nopad">
+                        <div class="ui-g">
+                            <label class="col-for-label ui-g-6" for="field_vUsuarioreg">{{tipdocemp}}</label>
+                            <div class="ui-g-6">
+                                <input type="text" class="form-control form-control-sm" name="numdocemp" id="numdocemp" [(ngModel)]="numdocemp" [disabled]="true"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-8 ui-g-nopad">
+                        <div class="ui-g">
+                            <label class="col-for-label ui-g-3" for="field_vUsuarioreg">Empresa:</label>
+                            <div class="ui-g-9">
+                                <input type="text" class="form-control form-control-sm" name="expediente.vNomemplea" id="expediente.vNomemplea" [(ngModel)]="expediente.vNomemplea"
+                                    [disabled]="true" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-4 ui-g-nopad">
+                        <div class="ui-g">
+                            <label class="col-for-label ui-g-6" for="field_vUsuarioreg">{{tipdocidentTRA.vDescorta + ':'}}</label>
+                            <div class="ui-g-6">
+                                <input type="text" class="form-control form-control-sm" name="pernaturalTRA.vNumdoc" id="pernaturalTRA.vNumdoc" [(ngModel)]="pernaturalTRA.vNumdoc"
+                                    [disabled]="true" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-8 ui-g-nopad">
+                        <div class="ui-g">
+                            <label class="col-for-label ui-g-3" for="field_vUsuarioreg">Trabajador:</label>
+                            <div class="ui-g-9">
+                                <input type="text" class="form-control form-control-sm" name="expediente.vNomtrabaj" id="expediente.vNomtrabaj" [(ngModel)]="expediente.vNomtrabaj"
+                                    [disabled]="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class=" ui-g">
+                    <div class="ui-g-4 ui-g-nopad">
+                        <div class="ui-g">
+                            <label class="col-for-label ui-g-6" for="field_vUsuarioreg">Exp. Observado:</label>
+                            <div class="ui-g-6">
+                                <p-checkbox name="groupname" value="val1" [(ngModel)]="expediente.nFlgexpobs" binary="true" [disabled]="true" ></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-4 ui-g-nopad">
+                        <div class="ui-g">
+                            <label class="col-for-label ui-g-6" for="field_vUsuarioreg">Fecha de Audiencia:</label>
+                            <div class="ui-g-6">
+                                <input type="text" class="form-control form-control-sm" name="varfecconci" id="varfecconci" [(ngModel)]="varfecconci" [disabled]="true"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-4 ui-g-nopad">
+                        <div class="ui-g">
+                            <label class="col-for-label ui-g-6" for="field_vUsuarioreg">Hora de Conciliacion:</label>
+                            <div class="ui-g-6">
+                                <input type="text" class="form-control form-control-sm" name="varhorconci" id="varhorconci" [(ngModel)]="varhorconci" [disabled]="true"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-4 ui-g-nopad">
+                        <div class="ui-g">
+                            <label class="col-for-label ui-g-6" for="field_vUsuarioreg">Audiencia Desistida:</label>
+                            <div class="ui-g-6">
+                                <p-checkbox name="groupname" value="val1" [(ngModel)]="concilia.nFlgaudres" binary="true" [disabled]="true"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-4 ui-g-nopad">
+                        <div class="ui-g">
+                            <label class="col-for-label ui-g-6" for="field_vUsuarioreg">Registro de M.P.:</label>
+                            <div class="ui-g-6">
+                                    <input type="text" class="form-control form-control-sm" name="expediente.vRegmespar" id="expediente.vRegmespar" [(ngModel)]="expediente.vRegmespar" [disabled]="true"
+                                    />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-4 ui-g-nopad">
+                        <div class="ui-g">
+                            <label class="col-for-label ui-g-6" for="field_vUsuarioreg">Archivo:</label>
+                            <div class="ui-g-6">
+                                <p-checkbox name="groupname" value="val1" [(ngModel)]="expediente.nFlgarchiv" binary="true" [disabled]="true"></p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-4 ui-g-nopad">
+                        <div class="ui-g">
+                            <label class="col-for-label ui-g-6" for="field_vUsuarioreg">Fecha M.P.:</label>
+                            <div class="ui-g-6">
+                                    <input type="text" class="form-control form-control-sm" name="varfecmp" id="varfecmp" [(ngModel)]="varfecmp" [disabled]="true"
+                                    />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-g-nopad">
+                        <div class="ui-g">
+                            <label class="col-for-label ui-g-2" for="field_vUsuarioreg">Observacion</label>
+                            <div class="ui-g-10">
+                                <textarea pInputTextarea  class="form-control form-control-sm"  [(ngModel)]="expediente.vObservac" [disabled]="true">
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="Direcciones">
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <p-dataTable *ngIf="banPersona === '1'" [value]="dirperjuris" selectionMode="single" >
+                            <p-header>Empleador</p-header>
+                            <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
+                                <ng-template let-i="rowIndex" pTemplate="body">
+                                    <span style="text-align:center">{{i+1}}</span>
+                                </ng-template>
+                            </p-column>
+                            <p-column field="dpto" header="Departamento"></p-column>
+                            <p-column field="prov" header="Provincia"></p-column>
+                            <p-column field="dist" header="Distrito"></p-column>
+                            <p-column field="direc.vDircomple" [style]="{'text-align':'left'}" header="Dirección"></p-column>
+                        </p-dataTable>  
+                        <p-dataTable *ngIf="banPersona === '2'" [value]="dirpernatsEmp" selectionMode="single" >
+                            <p-header>Empleador</p-header>
+                            <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
+                                <ng-template let-i="rowIndex" pTemplate="body">
+                                    <span style="text-align:center">{{i+1}}</span>
+                                </ng-template>
+                            </p-column>
+                            <p-column field="dpto" header="Departamento"></p-column>
+                            <p-column field="prov" header="Provincia"></p-column>
+                            <p-column field="dist" header="Distrito"></p-column>
+                            <p-column field="direc.vDircomple" [style]="{'text-align':'left'}" header="Dirección"></p-column>
+                        </p-dataTable>                         
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <p-dataTable [value]="dirpernatsTra" dataKey="codPase">
+                            <p-header>Trabajador</p-header>
+                            <p-column field="dpto" header="Departamento"></p-column>
+                            <p-column field="prov" header="Provincia"></p-column>
+                            <p-column field="dist" header="Distrito"></p-column>
+                            <p-column field="direc.vDircomple" header="Dirección"></p-column>
+                        </p-dataTable>
+                    </div>
+                </div>
+
+            </p-tabPanel>
+            <p-tabPanel header="Motivo de Conciliación">
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <div class="col-md-12">
+                            <p-dataTable [value]="motatenofics" [editable]="true"  scrollHeight="220px" dataKey="Motateno.id">
+                                <p-header>Motivos de la Conciliación</p-header>
+                                <p-column [style]="{'width':'50px', 'text-align':'center'}" field="idmotpase">
+                                    <ng-template pTemplate="body" let-col let-car="rowData"pTemplate="body">
+                                        <p-checkbox [(ngModel)]="car.motivselec" binary="true" [disabled]="true" ></p-checkbox>
+                                    </ng-template>
+                                </p-column>
+                                <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
+                                    <ng-template let-i="rowIndex" pTemplate="body">
+                                        <span style="text-align:center">{{i+1}}</span>
+                                    </ng-template>
+                                </p-column>
+                                <p-column [style]="{'width':'30%'}" field="Motateno.motate.vDesmotate" header="Descripción"></p-column>
+                                <p-column [style]="{'text-align':'left'}" field="observacion" header="Observación" [editable]="true"></p-column>
+                            </p-dataTable>
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="Audiencia">
+                <p-dataTable [value]="conciliasCon" dataKey="item">
+                    <p-header>Audiencias</p-header>
+                    <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
+                        <ng-template let-i="rowIndex" pTemplate="body">
+                            <span style="text-align:center">{{i+1}}</span>
+                        </ng-template>
+                    </p-column>
+                    <p-column field="fechaconci" header="Fecha"></p-column>
+                    <p-column field="horaconci" header="Hora"></p-column>
+                    <p-column field="abogado.vNomabogad" header="Conciliador"></p-column>
+                    <p-column field="resulconci.vDescrip" header="Resultado"></p-column>
+                    <p-column field="resulconci.tipresconc.vDescrip" header="Tipo de Resultado"></p-column>
+                </p-dataTable>
+            </p-tabPanel>
+        </p-tabView>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-black" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-check"></span>&nbsp;
+            <span>Aceptar</span>
+        </button>
+    </div>
+</div>

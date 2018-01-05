@@ -107,6 +107,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                     }
                 }
             });
+            this.registerChangeInTrabajador();
         });
     }
     ngOnDestroy() {
@@ -166,6 +167,14 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
         this.dirper.pernatural = this.trabajador.pernatural;
         this.displayDialog = false;
     }
+    delete() {}
+    registerChangeInTrabajador() {
+        this.eventSubscriber = this.eventManager.subscribe('saveTrabajador',
+        (response) => {
+            console.log('PasarAtencion' + JSON.stringify(this.trabajador));
+            this.registroAtencionWizard.cambiarTrabajador(this.trabajador);
+        });
+    }
 
     private subscribeToSaveResponse(result: Observable<Dirpernat>) {
         result.subscribe((res: Dirpernat) =>
@@ -182,12 +191,6 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
 
     previousState() {
         window.history.back();
-    }
-    registerChangeInAccionadops() {
-        this.eventSubscriber = this.eventManager.subscribe(
-            'datosTrabajadorListModification',
-            (response) => this.load(this.trabajador.id)
-        );
     }
     trackTipoDocumentoIdentidad(index: number, item: Tipdocident) {
         return item.vDescorta;

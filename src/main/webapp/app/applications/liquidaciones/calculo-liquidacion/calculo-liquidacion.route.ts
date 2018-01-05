@@ -23,8 +23,8 @@ export const CalculoLiquidacionRoute: Routes = [
                 path: 'cts',
                 component: CtsComponent,
                 data: {
-                    authorities: ['ROLE_USER'],
-                    pageTitle: 'global.menu.entities.atencionTra'
+                  authorities: ['ROLE_USER'],
+                  pageTitle: 'global.menu.entities.atencionTra'
                 },
                 canActivate: [UserRouteAccessService]
             },
@@ -32,8 +32,8 @@ export const CalculoLiquidacionRoute: Routes = [
                 path: 'gratificaciones',
                 component: GratificacionesComponent,
                 data: {
-                    authorities: ['ROLE_USER'],
-                    pageTitle: 'global.menu.entities.atencionTra'
+                  authorities: ['ROLE_USER'],
+                  pageTitle: 'global.menu.entities.atencionTra'
                 },
                 canActivate: [UserRouteAccessService]
             },
@@ -41,8 +41,8 @@ export const CalculoLiquidacionRoute: Routes = [
                 path: 'vacaciones',
                 component: VacacionesComponent,
                 data: {
-                    authorities: ['ROLE_USER'],
-                    pageTitle: 'global.menu.entities.atencionTra'
+                  authorities: ['ROLE_USER'],
+                  pageTitle: 'global.menu.entities.atencionTra'
                 },
                 canActivate: [UserRouteAccessService]
             },
@@ -50,17 +50,17 @@ export const CalculoLiquidacionRoute: Routes = [
                 path: 'indemnizaciones',
                 component: IndemnizacionesComponent,
                 data: {
-                    authorities: ['ROLE_USER'],
-                    pageTitle: 'global.menu.entities.atencionTra'
-                },
+                  authorities: ['ROLE_USER'],
+                  pageTitle: 'global.menu.entities.atencionTra'
+                  },
                 canActivate: [UserRouteAccessService]
             },
             {
                 path: 'remuneraciones-insolutas',
                 component: RemuneracionesInsolutasComponent,
                 data: {
-                    authorities: ['ROLE_USER'],
-                    pageTitle: 'global.menu.entities.atencionTra'
+                  authorities: ['ROLE_USER'],
+                  pageTitle: 'global.menu.entities.atencionTra'
                 },
                 canActivate: [UserRouteAccessService]
             },
@@ -68,8 +68,8 @@ export const CalculoLiquidacionRoute: Routes = [
                 path: 'resumen',
                 component: ResumenComponent,
                 data: {
-                    authorities: ['ROLE_USER'],
-                    pageTitle: 'global.menu.entities.atencionTra'
+                  authorities: ['ROLE_USER'],
+                  pageTitle: 'global.menu.entities.atencionTra'
                 },
                 canActivate: [UserRouteAccessService]
             }

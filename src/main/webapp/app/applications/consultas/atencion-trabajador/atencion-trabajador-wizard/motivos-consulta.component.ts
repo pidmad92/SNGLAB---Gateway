@@ -20,8 +20,9 @@ import { ResponseWrapper } from '../../../../shared';
 export class MotivosConsultaComponent implements OnInit, OnDestroy {
 
     private subscription: Subscription;
+    private subscriptionLista: Subscription;
     private eventSubscriber: Subscription;
-    motatenofic: Motatenofic[];
+    motatenofic: any = [];
     selectmotatenofic: Motatenofic[];
     motsel: Motateselec;
     motsels: Motateselec[];
@@ -45,10 +46,31 @@ export class MotivosConsultaComponent implements OnInit, OnDestroy {
         this.atencionTrabajadorService.findListaMotatenOfic(idofic).subscribe(
             (res: ResponseWrapper) => {
                 this.motatenofic = res.json;
-                console.log('Motivofic: ' + JSON.stringify(this.motatenofic[0]));
+                this.loadMotivSelec();
+                // console.log('Motivofic2: ' + JSON.stringify(this.motatenofic));
             },
             (res: ResponseWrapper) => { this.onError(res.json); }
         );
+    }
+    loadMotivSelec() {
+        this.subscriptionLista = this.registroAtencionWizard.motateSeleccionado.subscribe((motatesel) => {
+            this.motsels = motatesel;
+            // console.log('Motatesel1:' + JSON.stringify(motatesel));
+            this.selectmotatenofic = [];
+            if (motatesel.length !== 0) {
+                for (const selmot of motatesel) {
+                    let index = 0;
+                    for (const motlist of this.motatenofic) {
+                        if (motlist.id === selmot.motatenofic.id) {
+                            this.motatenofic[index].observacion = selmot.vObsmoseat;
+                        }
+                        index++;
+                    }
+                    this.selectmotatenofic.push(selmot.motatenofic)
+                    this.checkedsel.push(selmot.motatenofic.id);
+                }
+            }
+        });
     }
     ngOnInit() {
         this.subscription = this.registroAtencionWizard.actividadSelec.subscribe((actividadSelect) => {
@@ -56,7 +78,7 @@ export class MotivosConsultaComponent implements OnInit, OnDestroy {
             this.registroAtencionWizard.atenSeleccionado.subscribe((atencion) => {
                 if (this.actividadSelec === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
                     this.router.navigate(['/consultas/atencion-trabajador']);
-                } else if (this.actividadSelec === '3') {
+                } else if ( this.actividadSelec === '3' ) {
                     // Consultar los motivos generales por oficina y los motivos marcados
                     this.atencionTrabajadorService.findListaMotateSelec(atencion.id, 5).subscribe(() => {
 
@@ -65,15 +87,6 @@ export class MotivosConsultaComponent implements OnInit, OnDestroy {
                     // Cargar los motivos por el código de la oficina de consultas laborales '5'
                     this.loadMotivOfic(5);
                     // Consultar de forma interna por los motivos seleccionados
-                    this.registroAtencionWizard.motateSeleccionado.subscribe((motatesel) => {
-                        this.motsels = motatesel;
-                        this.selectmotatenofic = [];
-                        if (motatesel.length !== 0) {
-                            for (const selmot of motatesel) {
-                                this.selectmotatenofic.push(selmot.motatenofic)
-                            }
-                        }
-                    });
                 }
             });
         });
@@ -81,6 +94,7 @@ export class MotivosConsultaComponent implements OnInit, OnDestroy {
     }
     ngOnDestroy() {
         this.subscription.unsubscribe();
+        this.eventSubscriber.unsubscribe();
     }
 
     saveObservacion(event) {
@@ -106,7 +120,7 @@ export class MotivosConsultaComponent implements OnInit, OnDestroy {
     }
 
     saveMotSel(event: any) {
-        console.log('Save1:' + JSON.stringify(event));
+        // console.log('Save1:' + JSON.stringify(event));
         this.motsel = new Motateselec();
         this.motsel.motatenofic = event.data;
         if (this.motsels.length === 0) {
@@ -114,7 +128,7 @@ export class MotivosConsultaComponent implements OnInit, OnDestroy {
         }
         this.motsels.push(this.motsel);
         this.checkedsel.push(event.data.id);
-        // console.log('Array1:' + this.checkedsel);
+        // console.log('Array1:' + JSON.stringify(this.selectmotatenofic));
     }
 
     deleteMotSel(event: any) {

@@ -24,8 +24,9 @@ import {
     liquidacionesRoute,
     loginRoute,
     sindicatosRoute,
+    conciliacionesRoute,
 } from './app.routing';
-import { GatewayprimengModule } from './primeng/primeng.module';
+// import { GatewayprimengModule } from './primeng/primeng.module';
 
 import { GatewayTipoEntidadModule } from './entities/tipo-entidad/tipo-entidad.module';
 import { GatewayUsuarioHorarioModule } from './entities/usuario-horario/usuario-horario.module';
@@ -63,6 +64,7 @@ const LAZY_ROUTES = [
     loginRoute,
     sindicatosRoute,
     consultasRoute,
+    conciliacionesRoute,
     liquidacionesRoute,
     defensaRoute,
     patrocinioRoute,

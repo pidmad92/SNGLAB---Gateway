@@ -2,7 +2,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { StepsModule } from 'primeng/primeng';
-import { TabViewModule, DataTableModule, CheckboxModule, SharedModule, CalendarModule,
+import { TabViewModule, DataTableModule, CheckboxModule, SharedModule, CalendarModule, ConfirmDialogModule,
     RadioButtonModule, DialogModule, DropdownModule, MessagesModule, MessageModule } from 'primeng/primeng';
 import { MessageService } from 'primeng/components/common/messageservice';
 
@@ -44,6 +44,7 @@ const ENTITY_STATES = [
         MessagesModule,
         MessageModule,
         SharedModule,
+        ConfirmDialogModule,
         RouterModule.forChild(ENTITY_STATES),
         // FormsModule
     ],

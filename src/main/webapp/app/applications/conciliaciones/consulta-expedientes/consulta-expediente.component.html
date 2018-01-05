@@ -1,0 +1,131 @@
+<div class="row mt-3">
+    <div class="col">
+        <div class="card card-panel mb-3">
+            <div class="card-header d-sm-flex justify-content-between">
+                <h5>Consulta de Expediente</h5>
+            </div>
+            <div class="card-body">
+                <p-tabView>
+                    <p-tabPanel header="Por Datos Generales" [selected]="true">
+                        <fieldset class="col">     
+                            <legend>Búsqueda</legend>
+                            <form>
+                                <div class="form-row">
+                                    <div class="col-md-9">
+                                        <div class="form-group row">
+                                            <label for="inpTipo" class="col-sm-3 col-form-label">Ubicación:</label>
+                                            <div class="col-sm-3 pl-0">
+                                                <select class="form-control form-control-sm" id="inpTipo">
+                                                    <option>DNI</option>
+                                                    <option>RUC</option>
+                                                </select>
+                                            </div>
+                                            <label for="inpNumero" class="col-sm-2 col-form-label">Conciliador:</label>
+                                            <div class="col-sm-4">
+                                                <select class="form-control form-control-sm" id="inpTipo">
+                                                    <option>DNI</option>
+                                                    <option>RUC</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inpTipo" class="col-sm-3 col-form-label">Resultado de Aud.:</label>
+                                            <div class="col-sm-9 pl-0">
+                                                <select class="form-control form-control-sm" id="inpTipo">
+                                                    <option>DNI</option>
+                                                    <option>RUC</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <a href="#" class="btn btn-sm btn-secondary "><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </fieldset>
+                        <div class="row my-2">
+                            <div class="col-md-2 text-center">
+                                <button [routerLink]="['/conciliaciones/expediente/consulta', { outlets: { popupexp: 'archivar/'+ id } }]" class="btn btn-success "><i class="fa fa-archive" aria-hidden="true"></i> Enviar al archivo</button>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <button [routerLink]="['/conciliaciones/expediente/consulta', { outlets: { popupexp: 'observar/'+ id } }]" class="btn btn-warning px-4"><i class="fa fa-sticky-note" aria-hidden="true"></i> Observar</button>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <button [routerLink]="['/conciliaciones/expediente/consulta', { outlets: { popupexp:  id } }]" class="btn btn-info"><i class="fa fa-sticky-note" aria-hidden="true"></i> Ver datos del Exp.</button>
+                            </div>
+                        </div>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <p-dataTable selectionMode="single" [value]="expedientes" dataKey="codexpediente">
+                                        <p-header>Expedientes</p-header>
+                                        <p-column field="item" header="Item"></p-column>
+                                        <p-column field="estado" header="Estado"></p-column>
+                                        <p-column field="codexpediente" header="Nro. Expediente"></p-column>
+                                        <p-column field="fecha" header="Fecha de Registro"></p-column>
+                                        <p-column field="conciliador" header="Conciliador"></p-column>
+                                        <p-column field="ruc" header="Razón Nro. RUC"></p-column>
+                                        <p-column field="empleador" header="Empleador"></p-column>
+                                        <p-column field="nrotra" header="Nro. Documento"></p-column>
+                                        <p-column field="nomtra" header="Trabajador"></p-column>
+                                    </p-dataTable>
+                                </div>
+                            </div>
+                        </form>
+                    </p-tabPanel>
+                    <p-tabPanel header="Por Trabajadores">
+                        <fieldset class="col">     
+                            <legend>Búsqueda</legend>
+                            <form>
+                                <div class="form-row">
+                                    <div class="col-md-9">
+                                        <div class="form-group row">
+                                            <label for="inpTipo" class="col-sm-3 col-form-label">Trabajador:</label>
+                                            <div class="col-sm-9 pl-0">
+                                                <select class="form-control form-control-sm" id="inpTipo">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <a href="#" class="btn btn-sm btn-secondary "><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </fieldset>
+                        <div class="row my-2">
+                            <div class="col-md-2 text-center">
+                                <button [routerLink]="['/conciliaciones/expediente/consulta', { outlets: { popupexp: 'archivar/'+ id } }]" class="btn btn-success "><i class="fa fa-archive" aria-hidden="true"></i> Enviar al archivo</button>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <button [routerLink]="['/conciliaciones/expediente/consulta', { outlets: { popupexp: 'observar/'+ id } }]" class="btn btn-warning px-4"><i class="fa fa-sticky-note" aria-hidden="true"></i> Observar</button>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <button [routerLink]="['/conciliaciones/expediente/consulta', { outlets: { popupexp:  id } }]" class="btn btn-info"><i class="fa fa-sticky-note" aria-hidden="true"></i> Ver datos del Exp.</button>
+                            </div>
+                        </div>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <p-dataTable [value]="expedientes" dataKey="codexpediente">
+                                            <p-header>Expedientes</p-header>
+                                            <p-column field="item" header="Item"></p-column>
+                                            <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+                                            <p-column field="codexpediente" header="Nro. Expediente"></p-column>
+                                            <p-column field="fecha" header="Fecha de Registro"></p-column>
+                                            <p-column field="conciliador" header="Conciliador"></p-column>
+                                            <p-column field="ruc" header="Razón Nro. RUC"></p-column>
+                                            <p-column field="empleador" header="Empleador"></p-column>
+                                    </p-dataTable>
+                                </div>
+                            </div>
+                        </form>
+                    </p-tabPanel>
+                </p-tabView>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet name="popupexp"></router-outlet>
+

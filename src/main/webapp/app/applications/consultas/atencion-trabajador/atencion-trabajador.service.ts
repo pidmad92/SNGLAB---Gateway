@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
@@ -6,18 +5,22 @@ import { Observable } from 'rxjs/Rx';
 import { JhiDateUtils } from 'ng-jhipster';
 
 import { Atencion } from '../models/atencion.model';
+import { Datlab } from '../models/datlab.model';
 import { Dirpernat } from '../models/dirpernat.model';
 import { Dirperjuri } from '../models/dirperjuri.model';
 import { Trabajador } from '../models/trabajador.model';
 import { Motatenofic } from '../models/motatenofic.model';
 import { Motateselec } from '../models/motateselec.model';
+import { Accadoate } from '../models/accadoate.model';
 import { Accionadop } from '../models/accionadop.model';
 import { Docpresate } from '../models/docpresate.model';
+import { Documento } from '../models/documento.model';
 import { Docinperdlb } from '../models/docinperdlb.model';
 import { Docingrper } from '../models/docingrper.model';
 import { Cartrab } from '../models/cartrab.model';
 import { Regimenlab } from '../models/regimenlab.model';
 import { Motcese } from '../models/motcese.model';
+import { Modcontrato } from '../models/modcontrato.model';
 import { ResponseWrapper, createRequestOption } from '../../../shared';
 import {ComboModel} from '../../general/combobox.model';
 import { Tipdocident } from '../models/tipdocident.model';
@@ -29,6 +32,7 @@ export class AtencionTrabajadorService {
 
     // RUTAS POR ENTIDAD
     private resourceAtencion    = this.resource + 'atencions';
+    private resourceDatoslab    = this.resource + 'datlabs';
     private resourceTipoDoc     = this.resource + 'tipdocidents';
     private resourceTrabajador  = this.resource + 'trabajadors';
     private resourceEmpleador   = this.resource + 'empleadors';
@@ -37,12 +41,15 @@ export class AtencionTrabajadorService {
     private resourceMotateOfi   = this.resource + 'motatenofics';
     private resourceMotateSelec = this.resource + 'motateselecs';
     private resourceDocpresa    = this.resource + 'docpresates';
+    private resourceDocumento   = this.resource + 'documentos';
     private resourceDocingper   = this.resource + 'docinperdlbs';
     private resourceDocingtot   = this.resource + 'docingrpers';
     private resourceCargoTrab   = this.resource + 'cartrabs';
+    private resourceAccadoate   = this.resource + 'accadoates';
     private resourceAccionadop  = this.resource + 'accionadops';
     private resourceMotcese     = this.resource + 'motcese';
     private resourceRegimenlab  = this.resource + 'regimenlabs';
+    private resourceModcontrato = this.resource + 'modcontratoes';
 
     // RUTAS DE UBIGEO
     private resourceDepa = this.resource + 'departamentos';
@@ -233,6 +240,17 @@ export class AtencionTrabajadorService {
 
     // -- ATENCION
 
+        createAtencion(atencion: Atencion): Observable<Atencion> {
+            atencion.nUsuareg = 1;
+            atencion.nFlgactivo = true;
+            atencion.nSedereg = 1;
+            const copy = this.convertAtencion(atencion);
+            return this.http.post(this.resourceAtencion, copy).map((res: Response) => {
+                const jsonResponse = res.json();
+                return this.convertItemFromServerAtencion(jsonResponse);
+            });
+        }
+
         /**
          * Buscar atencìòn por còdigo
          * @param  {any} id
@@ -256,6 +274,20 @@ export class AtencionTrabajadorService {
         }
     // --
 
+    // -- DATOS LABORALES
+        createDatoslab(datlab: Datlab): Observable<Datlab> {
+            datlab.nUsuareg = 1;
+            datlab.nFlgactivo = true;
+            datlab.nSedereg = 1;
+            const copy = this.convertDatlab(datlab);
+            return this.http.post(this.resourceDatoslab, copy).map((res: Response) => {
+                const jsonResponse = res.json();
+                return this.convertItemFromServerDatlab(jsonResponse);
+            });
+        }
+
+    // --
+
     // -- MOTIVOS - OFICINA
         /**
          * Busca la lista de motivos por el id de la Oficina
@@ -269,6 +301,17 @@ export class AtencionTrabajadorService {
     // --
 
     // -- MOTIVOS SELECCIONADOS
+        createMotateselec(motateselec: Motateselec): Observable<Motateselec> {
+            motateselec.nUsuareg = 1;
+            motateselec.nFlgactivo = true;
+            motateselec.nSedereg = 1;
+            const copy = this.convertMotateselec(motateselec);
+            return this.http.post(this.resourceMotateSelec, copy).map((res: Response) => {
+                const jsonResponse = res.json();
+                return this.convertItemFromServerMotateselec(jsonResponse);
+            });
+        }
+
         /**
          * Busca la lista de motivos seleccionados en el caso de cargar una atención grabada anteriormente.
          * @param  {number} idAtencion
@@ -281,8 +324,25 @@ export class AtencionTrabajadorService {
         }
     // --
 
+    // -- DOCUMENTOS TABLA MAESTRA
+        findListaDocumentosActivos(): Observable<ResponseWrapper> {
+            return this.http.get(this.resourceDocumento)
+            .map((res: Response) => this.convertResponseDocumento(res));
+        }
+    // --
+
     // -- lISTAR LOS DOCUMENTOS PRESENTADOS
-        findListaDocpresate(): Observable<ResponseWrapper> {
+        createDocpresate(docpresate: Docpresate): Observable<Docpresate> {
+            docpresate.nUsuareg = 1;
+            docpresate.nFlgactivo = true;
+            docpresate.nSedereg = 1;
+            const copy = this.convertDocpresate(docpresate);
+            return this.http.post(this.resourceDocpresa, copy).map((res: Response) => {
+                const jsonResponse = res.json();
+                return this.convertItemFromServerDocpresate(jsonResponse);
+            });
+        }
+        findListaDocpresateActivos(): Observable<ResponseWrapper> {
             return this.http.get(this.resourceDocpresa)
             .map((res: Response) => this.convertResponseDocpresate(res));
         }
@@ -296,6 +356,16 @@ export class AtencionTrabajadorService {
     // --
 
     // -- lISTAR LOS ACCIONES ADOPTADAS
+        createAccadoate(accadoate: Accadoate): Observable<Accadoate> {
+            accadoate.nUsuareg = 1;
+            accadoate.nFlgactivo = true;
+            accadoate.nSedereg = 1;
+            const copy = this.convertAccadoate(accadoate);
+            return this.http.post(this.resourceAccadoate, copy).map((res: Response) => {
+                const jsonResponse = res.json();
+                return this.convertItemFromServerAccadoate(jsonResponse);
+            });
+        }
         findListaAccionadop(): Observable<ResponseWrapper> {
             return this.http.get(this.resourceAccionadop)
             .map((res: Response) => this.convertResponseAccionadop(res));
@@ -303,6 +373,17 @@ export class AtencionTrabajadorService {
     // --
 
     // -- LISTAR DE DOCUMENTO DE INGRESOS
+        createDocinperdlb(docinperdlb: Docinperdlb): Observable<Docinperdlb> {
+            docinperdlb.nUsuareg = 1;
+            docinperdlb.nFlgactivo = true;
+            docinperdlb.nSedereg = 1;
+            const copy = this.convertDocinperdlb(docinperdlb);
+            return this.http.post(this.resourceDocingper, copy).map((res: Response) => {
+                const jsonResponse = res.json();
+                return this.convertItemFromServerDocingper(jsonResponse);
+            });
+        }
+
         findListaDocumentosPercibidosActivos(): Observable<ResponseWrapper> {
             return this.http.get(this.resourceDocingtot + '/activos')
             .map((res: Response) => this.convertResponseDocingper(res));
@@ -316,18 +397,37 @@ export class AtencionTrabajadorService {
         }
     // --
 
-    // -- lISTAR LOS MOTIVOS DE CESE
-    findListaMotivcese(): Observable<ResponseWrapper> {
-        return this.http.get(this.resourceMotcese + '/activos')
-        .map((res: Response) => this.convertResponseMotcese(res));
-    }
+    // -- MOTIVOS DE CESE
+
+        createMotivCese(motcese: Motcese): Observable<Motcese> {
+            motcese.nUsuareg = 1;
+            motcese.nFlgactivo = true;
+            motcese.nSedereg = 1;
+            const copy = this.convertMotivcese(motcese);
+            return this.http.post(this.resourceMotcese, copy).map((res: Response) => {
+                const jsonResponse = res.json();
+                return this.convertItemFromServerMotcese(jsonResponse);
+            });
+        }
+
+        findListaMotivcese(): Observable<ResponseWrapper> {
+            return this.http.get(this.resourceMotcese + '/activos')
+            .map((res: Response) => this.convertResponseMotcese(res));
+        }
     // --
 
-    // -- lISTAR LOS REGIMENES LABORALES
-    findListaRegimenlab(): Observable<ResponseWrapper> {
-        return this.http.get(this.resourceRegimenlab + '/activos')
-        .map((res: Response) => this.convertResponseMotcese(res));
-    }
+    // -- REGIMENES LABORALES
+        findListaRegimenlab(): Observable<ResponseWrapper> {
+            return this.http.get(this.resourceRegimenlab + '/activos')
+            .map((res: Response) => this.convertResponseMotcese(res));
+        }
+    // --
+
+    // -- MODALIDAD CONTRATO
+        findListaModContrato(): Observable<ResponseWrapper> {
+            return this.http.get(this.resourceModcontrato + '/activos')
+            .map((res: Response) => this.convertResponseModContrato(res));
+        }
     // --
 
     // CONVERT RESPONSE FORMATED ELEMENT DATES
@@ -385,6 +485,21 @@ export class AtencionTrabajadorService {
         }
         private convertItemFromServerAtencion(json: any): Atencion {
             const entity: Atencion = Object.assign(new Atencion(), json);
+            entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+            entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+            return entity;
+        }
+
+        private convertResponseDatlab(res: Response): ResponseWrapper {
+            const jsonResponse = res.json();
+            const result = [];
+            for (let i = 0; i < jsonResponse.length; i++) {
+                result.push(this.convertItemFromServerDatlab(jsonResponse[i]));
+            }
+            return new ResponseWrapper(res.headers, result, res.status);
+        }
+        private convertItemFromServerDatlab(json: any): Datlab {
+            const entity: Datlab = Object.assign(new Datlab(), json);
             entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
             entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
             return entity;
@@ -465,6 +580,21 @@ export class AtencionTrabajadorService {
             return entity;
         }
 
+        private convertResponseAccadoate(res: Response): ResponseWrapper {
+            const jsonResponse = res.json();
+            const result = [];
+            for (let i = 0; i < jsonResponse.length; i++) {
+                result.push(this.convertItemFromServerAccadoate(jsonResponse[i]));
+            }
+            return new ResponseWrapper(res.headers, result, res.status);
+        }
+        private convertItemFromServerAccadoate(json: any): Accadoate {
+            const entity: Accadoate = Object.assign(new Accadoate(), json);
+            entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+            entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+            return entity;
+        }
+
         private convertResponseDocpresate(res: Response): ResponseWrapper {
             const jsonResponse = res.json();
             const result = [];
@@ -475,6 +605,21 @@ export class AtencionTrabajadorService {
         }
         private convertItemFromServerDocpresate(json: any): Docpresate {
             const entity: Docpresate = Object.assign(new Docpresate(), json);
+            entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+            entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+            return entity;
+        }
+
+        private convertResponseDocumento(res: Response): ResponseWrapper {
+            const jsonResponse = res.json();
+            const result = [];
+            for (let i = 0; i < jsonResponse.length; i++) {
+                result.push(this.convertItemFromServerDocumento(jsonResponse[i]));
+            }
+            return new ResponseWrapper(res.headers, result, res.status);
+        }
+        private convertItemFromServerDocumento(json: any): Documento {
+            const entity: Documento = Object.assign(new Documento(), json);
             entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
             entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
             return entity;
@@ -525,11 +670,62 @@ export class AtencionTrabajadorService {
             return entity;
         }
 
+        private convertResponseModContrato(res: Response): ResponseWrapper {
+            const jsonResponse = res.json();
+            const result = [];
+            for (let i = 0; i < jsonResponse.length; i++) {
+                result.push(this.convertItemFromServerModContrato(jsonResponse[i]));
+            }
+            return new ResponseWrapper(res.headers, result, res.status);
+        }
+        private convertItemFromServerModContrato(json: any): Modcontrato {
+            const entity: Modcontrato = Object.assign(new Modcontrato(), json);
+            entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+            entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+            return entity;
+        }
+
         private convertResponseUbigeo(res: Response): ResponseWrapper {
             const jsonResponse = res.json();
             return new ResponseWrapper(res.headers, jsonResponse, res.status);
         }
 
+        private convertAtencion(atencion: Atencion): Atencion {
+            const copy: Atencion = Object.assign({}, atencion);
+            copy.tFecreg = this.dateUtils.toDate(atencion.tFecreg);
+            copy.tFecupd = this.dateUtils.toDate(atencion.tFecupd);
+            return copy;
+        }
+        private convertDatlab(datlab: Datlab): Datlab {
+            const copy: Datlab = Object.assign({}, datlab);
+            copy.tFecreg = this.dateUtils.toDate(datlab.tFecreg);
+            copy.tFecupd = this.dateUtils.toDate(datlab.tFecupd);
+            return copy;
+        }
+        private convertMotateselec(motateselec: Motateselec): Motateselec {
+            const copy: Motateselec = Object.assign({}, motateselec);
+            copy.tFecreg = this.dateUtils.toDate(motateselec.tFecreg);
+            copy.tFecupd = this.dateUtils.toDate(motateselec.tFecupd);
+            return copy;
+        }
+        private convertAccadoate(accadoate: Accadoate): Accadoate {
+            const copy: Accadoate = Object.assign({}, accadoate);
+            copy.tFecreg = this.dateUtils.toDate(accadoate.tFecreg);
+            copy.tFecupd = this.dateUtils.toDate(accadoate.tFecupd);
+            return copy;
+        }
+        private convertDocinperdlb(docinperdlb: Docinperdlb): Docinperdlb {
+            const copy: Docinperdlb = Object.assign({}, docinperdlb);
+            copy.tFecreg = this.dateUtils.toDate(docinperdlb.tFecreg);
+            copy.tFecupd = this.dateUtils.toDate(docinperdlb.tFecupd);
+            return copy;
+        }
+        private convertDocpresate(docpresate: Docpresate): Docpresate {
+            const copy: Docpresate = Object.assign({}, docpresate);
+            copy.tFecreg = this.dateUtils.toDate(docpresate.tFecreg);
+            copy.tFecupd = this.dateUtils.toDate(docpresate.tFecupd);
+            return copy;
+        }
         private convertTrabajador(trabajador: Trabajador): Trabajador {
             const copy: Trabajador = Object.assign({}, trabajador);
             copy.tFecreg = this.dateUtils.toDate(trabajador.tFecreg);
@@ -546,6 +742,12 @@ export class AtencionTrabajadorService {
             const copy: Dirperjuri = Object.assign({}, dirperjuri);
             copy.tFecreg = this.dateUtils.toDate(dirperjuri.tFecreg);
             copy.tFecupd = this.dateUtils.toDate(dirperjuri.tFecupd);
+            return copy;
+        }
+        private convertMotivcese(motivcese: Motcese): Motcese {
+            const copy: Motcese = Object.assign({}, motivcese);
+            copy.tFecreg = this.dateUtils.toDate(motivcese.tFecreg);
+            copy.tFecupd = this.dateUtils.toDate(motivcese.tFecupd);
             return copy;
         }
 }
