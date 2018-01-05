@@ -41,6 +41,8 @@ import { FormularioFinancieroN1Component,
     FormularioFinancieroAnexo1BComponent,
     FormularioFinancieroAnexo1CComponent,
     FormularioFinancieroAnexo1DComponent } from '../formulario-financiero/index';
+import { FormfinancService, FormfinancDetalleService } from '../entities/index';
+
 
 const ENTITY_STATES = [
     ...ControlInformacionRoute,
@@ -91,6 +93,8 @@ const ENTITY_STATES = [
         ResulnegocService,
         RespinformaService,
         AnexlaboralService,
+        FormfinancService,
+        FormfinancDetalleService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

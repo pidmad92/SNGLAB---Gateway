@@ -194,6 +194,14 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
             this.router.navigate(['../../dictamenes/formulario-financiero-anexo1d/' + obj.nCodffina])
         } else if (obj.vTipoform === 'F2' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
             this.router.navigate(['../../dictamenes/formulario-financiero-n2/' + obj.nCodffina])
+        } else if (obj.vTipoform === 'F2A' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
+            this.router.navigate(['../../dictamenes/formulario-financiero-anexo2a/' + obj.nCodffina])
+        } else if (obj.vTipoform === 'F2B' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
+            this.router.navigate(['../../dictamenes/formulario-financiero-anexo2b/' + obj.nCodffina])
+        } else if (obj.vTipoform === 'F2C' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
+            this.router.navigate(['../../dictamenes/formulario-financiero-anexo2c/' + obj.nCodffina])
+        } else if (obj.vTipoform === 'F3' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
+            this.router.navigate(['../../dictamenes/formulario-financiero-n3/' + obj.nCodffina])
         } else {
             this.router.navigate(['./dictamenes/control-informacion/' + obj.nCodsolic])
         }

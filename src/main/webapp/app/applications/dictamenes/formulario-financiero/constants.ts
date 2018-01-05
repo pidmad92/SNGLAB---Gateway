@@ -54,6 +54,7 @@ export class Constants {
     public readonly FORM1_COD_SUBTOTAL_PRODUCCION = 'f1_subtotalprod';
 
     //  II. EMPRESAS DE SERVICIOS O COMERCIALIZADORA (1)
+    public readonly FORM1_COD_SERVICIOS = 'f1_componenteserv'
     public readonly FORM1_COD_SUBTOTAL_SERVICIOS = 'f1_subtotalserv';
     public readonly FORM1_COD_TOTAL_COSTOS_TOTALES_VENTAS_OPERACIONES_SERVICIOS = 'f1_tcostvopser';
     public readonly FORM1_COD_UTILIDAD_BRUTA = 'f1_utibruta';
@@ -79,13 +80,15 @@ export class Constants {
     // -----------------------------------------------------------------
     // Formulario 1 - ANEXO 1A - INGRESOS POR VENTAS NETAS Y/O SERVICIOS
     // -----------------------------------------------------------------
-    public readonly FORM1ANEX1A_COD_NAC_VOLUMEN_FISICO = 'f1anex1a_nacvolfisi';
-    public readonly FORM1ANEX1A_COD_NAC_PRECIO_PROMEDIO = 'f1anex1a_nacpreprom';
-    public readonly FORM1ANEX1A_COD_NAC_INGRESOS = 'f1anex1a_nacingresos';
+    public readonly FORM1ANEX1A_COD_NAC_VOLUMEN_FISICO = 'f1anex1a_nac1volfisi';
+    public readonly FORM1ANEX1A_COD_NAC_PRECIO_PROMEDIO = 'f1anex1a_nac2preprom';
+    public readonly FORM1ANEX1A_COD_NAC_INGRESOS = 'f1anex1a_nac3ingresos';
 
-    public readonly FORM1ANEX1A_COD_INT_VOLUMEN_FISICO = 'f1anex1a_intvolfisi';
-    public readonly FORM1ANEX1A_COD_INT_PRECIO_PROMEDIO = 'f1anex1a_intpreprom';
-    public readonly FORM1ANEX1A_COD_INT_INGRESOS = 'f1anex1a_intingresos';
+    public readonly FORM1ANEX1A_COD_INT_VOLUMEN_FISICO = 'f1anex1a_int1volfisi';
+    public readonly FORM1ANEX1A_COD_INT_PRECIO_PROMEDIO = 'f1anex1a_int2preprom';
+    public readonly FORM1ANEX1A_COD_INT_INGRESOS = 'f1anex1a_int3ingresos';
+
+    public readonly FORM1ANEX1A_COD_TOTAL = 'f1anex1a_total';
 
     // -----------------------------------------------------------------
     // Formulario 1 - ANEXO 1C - INGRESOS POR VENTAS NETAS Y/O SERVICIOS
@@ -267,4 +270,273 @@ export class Constants {
     public readonly FORM2_COD_TOTAL_ACTIVOS = 'form2_totalactivos';
     public readonly FORM2_COD_TOTAL_PASIVOS = 'form2_totalpasivos';
     public readonly FORM2_COD_TOTAL_PASIVOS_PATRIMONIO = 'form2_totalpasivospatrimonio';
+
+    // -----------------------------------------------------------------
+    // Formulario 2 - Anexo 2A - ESTADOS DE FLUJOS DE EFECTIVO
+    // -----------------------------------------------------------------
+
+    // FLUJOS DE EFECTIVO DE ACTIVIDAD DE OPERACIÓN
+    // Clases de cobros en efectivo por actividades de operación
+    public readonly FORM2ANEX2A_FEAOC1 = 'Cobros procedentes de las ventas de bienes y prestación de servicios';
+    public readonly FORM2ANEX2A_FEAOC2 = 'Cobros procedentes de regalías, cuotas, comisiones y otros ingresos de actividades ordinarias';
+    public readonly FORM2ANEX2A_FEAOC3 = 'Cobros derivados de contratos mantenidos para intermediación o para negociar con ellos';
+    public readonly FORM2ANEX2A_FEAOC4 = 'Arredamiento y posterior venta de esos activos';
+    public readonly FORM2ANEX2A_FEAOC5 = 'Otros cobros por actividades de operación';
+    // Clases de pagos en efectivo por actividades de operación
+    public readonly FORM2ANEX2A_FEAOP1 = 'Pagos a proveedores por el suministro de bienes y servicios';
+    public readonly FORM2ANEX2A_FEAOP2 = 'Pagos procedentes de contratos mantenidos para intermediación o para negociar';
+    public readonly FORM2ANEX2A_FEAOP3 = 'Pagos a y por cuenta de los empleados';
+    public readonly FORM2ANEX2A_FEAOP4 = 'Pagos por producir o adquirir activos mant. para arrendar a terc. y post.e mant.s para la venta';
+    public readonly FORM2ANEX2A_FEAOP5 = 'Otros pagos por actividades de operación';
+    // Flujos de efectivo y equivalente al efectivo procedente de (utilizados en) operaciones
+    public readonly FORM2ANEX2A_FEAOEE1 = 'Intereses recibidos (no incluidos en la Actividad de Inversión)';
+    public readonly FORM2ANEX2A_FEAOEE2 = 'Intereses pagados (no incluidos en la Actividad de Financiación)';
+    public readonly FORM2ANEX2A_FEAOEE3 = 'Dividendos Recibidos (no incluidos en la Actividad de Inversión)';
+    public readonly FORM2ANEX2A_FEAOEE4 = 'Dividendos pagados(no incluidos en la Actividad de Financiación)';
+    public readonly FORM2ANEX2A_FEAOEE5 = 'Impuestos a las ganancias (pagados) reembolsados';
+    public readonly FORM2ANEX2A_FEAOEE6 = 'Otras entradas (salidas) de efectivo';
+
+    // FLUJOS DE EFECTIVO DE ACTIVIDAD DE INVERSIÓN
+    // Clases de cobros en efectivo por actividades de inversión
+    public readonly FORM2ANEX2A_FEAIC1 = 'Anticipos de efectivo y préstamos concedidos a terceros';
+    public readonly FORM2ANEX2A_FEAIC2 = 'Flujos de efectivo procedentes de la pérdida de control de subsidiarias u otros negocios';
+    public readonly FORM2ANEX2A_FEAIC3 = 'Cobros procedentes del reembolso de préstamos concedidos a entidades relacionadas';
+    public readonly FORM2ANEX2A_FEAIC4 = 'Venta de  Instrumentos Financieros de Patrimonio o Deuda de Otras Entidades';
+    public readonly FORM2ANEX2A_FEAIC5 = 'Contratos Derivados (futuro, a término, opciones)';
+    public readonly FORM2ANEX2A_FEAIC6 = 'Cobros por la venta de Participaciones en Negocios Conjuntos, Neto del Efectivo Desapropiado';
+    public readonly FORM2ANEX2A_FEAIC7 = 'Venta de Propiedades, Planta y Equipo';
+    public readonly FORM2ANEX2A_FEAIC8 = 'Venta de Activos Intangibles';
+    public readonly FORM2ANEX2A_FEAIC9 = 'Recursos por ventas de otros activos a largo plazo';
+    public readonly FORM2ANEX2A_FEAIC10 = 'Importes procedentes de subvenciones del gobierno';
+    public readonly FORM2ANEX2A_FEAIC11 = 'Intereses Recibidos';
+    public readonly FORM2ANEX2A_FEAIC12 = 'Dividendos Recibidos';
+    // Clases de pagos en efectivo por actividades de inversión
+    public readonly FORM2ANEX2A_FEAIP1 = 'Anticipos y Prestamos Concedidos a Terceros';
+    public readonly FORM2ANEX2A_FEAIP2 = 'Flujos de efectivo utilizados para obtener el control de subsidiarias u otros negocios';
+    public readonly FORM2ANEX2A_FEAIP3 = 'Prestamos concedidos a entidades relacionadas';
+    public readonly FORM2ANEX2A_FEAIP4 = 'Compra de Instrumentos Financieros de Patrimonio o Deuda de Otras Entidades';
+    public readonly FORM2ANEX2A_FEAIP5 = 'Pagos derivados de contratos de futuro, a término, de opciones y de permuta financiera';
+    public readonly FORM2ANEX2A_FEAIP6 = 'Compra de Subsidiarias, Neto del Efectivo Adquirido';
+    public readonly FORM2ANEX2A_FEAIP7 = 'Otros pagos para adquirir participaciones en negocios conjuntos, Neto del Efectivo Adquirido';
+    public readonly FORM2ANEX2A_FEAIP8 = 'Compra de Propiedades, Planta  y Equipo';
+    public readonly FORM2ANEX2A_FEAIP9 = 'Compra de Activos Intangibles';
+    public readonly FORM2ANEX2A_FEAIP10 = 'Compra de Otros Activos de largo plazo';
+    public readonly FORM2ANEX2A_FEAIP11 = 'Impuestos a las ganancias (pagados) reembolsados';
+    public readonly FORM2ANEX2A_FEAIP12 = 'Otros cobros (pagos) de efectivo relativos a la actividad de inversión';
+
+    // FLUJOS DE EFECTIVO DE ACTIVIDAD DE FINANCIACIÓN
+    // Clases de cobros en efectivo por actividades de financiación
+    public readonly FORM2ANEX2A_FEAFC1 = 'Obtención de Préstamos';
+    public readonly FORM2ANEX2A_FEAFC2 = 'Préstamos de entidades relacionadas';
+    public readonly FORM2ANEX2A_FEAFC3 = 'Recursos por cambios en las participaciones en la propiedad en subsidiarias que no dan lugar a la pérdida de control';
+    public readonly FORM2ANEX2A_FEAFC4 = 'Importes procedentes de la emisión de Acciones';
+    public readonly FORM2ANEX2A_FEAFC5 = 'Importes procedentes de la emisión de Otros Instrumentos de Patrimonio';
+    public readonly FORM2ANEX2A_FEAFC6 = 'Importes procedentes de subvenciones del gobierno';
+    // Clases de pagos en efectivo por actividades de financiación
+    public readonly FORM2ANEX2A_FEAFP1 = 'Reembolsos de préstamos';
+    public readonly FORM2ANEX2A_FEAFP2 = 'Pagos de pasivos por arrendamientos financieros';
+    public readonly FORM2ANEX2A_FEAFP3 = 'Importes procedentes de préstamos de entidades relacionadas';
+    public readonly FORM2ANEX2A_FEAFP4 = 'Pagos por cambios en las participaciones en la propiedad en subsidiarias que no dan lugar a la pérdida de control';
+    public readonly FORM2ANEX2A_FEAFP5 = 'Pagos por adquirir o rescatar las acciones de la entidad';
+    public readonly FORM2ANEX2A_FEAFP6 = 'Pagos por otras participaciones en el patrimonio';
+    public readonly FORM2ANEX2A_FEAFP7 = 'Intereses pagados';
+    public readonly FORM2ANEX2A_FEAFP8 = 'Dividendos pagados';
+    public readonly FORM2ANEX2A_FEAFP9 = 'Impuestos a las ganancias (pagados) reembolsados';
+    public readonly FORM2ANEX2A_FEAFP10 = 'Otros cobros (pagos) de efectivo relativos a la actividad de financiación';
+
+    public readonly FORM2ANEX2A_EVTCEEE1 = 'Efectos de las Variaciones en las Tasas de Cambio sobre el Efectivo y Equivalentes al Efectivo';
+    public readonly FORM2ANEX2A_EEEIE1 = 'EFECTIVO Y EQUIVALENTE AL EFECTIVO AL INICIO DEL EJERCICIO (*)';
+
+    // Totales
+    public readonly FORM2ANEX2A_TOTAL1 = 'FLUJOS DE EFECTIVO Y EQUIVALENTE AL EFECTIVO PROCEDENTE DE (UTILIZADOS EN) ACTIVIDADES DE OPERACIÓN (I)';
+    public readonly FORM2ANEX2A_TOTAL2 = 'FLUJOS DE EFECTIVO Y EQUIVALENTE AL EFECTIVO PROCEDENTE DE (UTILIZADOS EN) ACTIVIDADES DE INVERSIÓN (II)';
+    public readonly FORM2ANEX2A_TOTAL3 = 'FLUJOS DE EFECTIVO Y EQUIVALENTE AL EFECTIVO PROCEDENTE DE (UTILIZADOS EN) ACTIVIDADES DE FINANCIACIÓN (III)';
+    public readonly FORM2ANEX2A_TOTAL4 = 'AUMENTO (DISMINUCIÓN) NETO DE EFEC. Y EQUIV. AL EFECTIVO, ANTES DE LAS VAR. EN LAS TASAS DE CAMBIO (I+II+III)';
+    public readonly FORM2ANEX2A_TOTAL5 = 'INCREMENTO (DISMINUCIÓN) NETO DE EFECTIVO Y EQUIVALENTE AL EFECTIVO';
+    public readonly FORM2ANEX2A_TOTAL6 = 'EFECTIVO Y EQUIVALENTE AL EFECTIVO AL FINALIZAR EL EJERCICIO (**)';
+
+    // CODIGOS
+    public readonly FORM2ANEX2A_COD_FEAOC1 = 'f2anex2a_feaoc1';
+    public readonly FORM2ANEX2A_COD_FEAOC2 = 'f2anex2a_feaoc2';
+    public readonly FORM2ANEX2A_COD_FEAOC3 = 'f2anex2a_feaoc3';
+    public readonly FORM2ANEX2A_COD_FEAOC4 = 'f2anex2a_feaoc4';
+    public readonly FORM2ANEX2A_COD_FEAOC5 = 'f2anex2a_feaoc5';
+
+    public readonly FORM2ANEX2A_COD_FEAOP1 = 'f2anex2a_feaop1';
+    public readonly FORM2ANEX2A_COD_FEAOP2 = 'f2anex2a_feaop2';
+    public readonly FORM2ANEX2A_COD_FEAOP3 = 'f2anex2a_feaop3';
+    public readonly FORM2ANEX2A_COD_FEAOP4 = 'f2anex2a_feaop4';
+    public readonly FORM2ANEX2A_COD_FEAOP5 = 'f2anex2a_feaop5';
+
+    public readonly FORM2ANEX2A_COD_FEAOEE1 = 'f2anex2a_feaoee1';
+    public readonly FORM2ANEX2A_COD_FEAOEE2 = 'f2anex2a_feaoee2';
+    public readonly FORM2ANEX2A_COD_FEAOEE3 = 'f2anex2a_feaoee3';
+    public readonly FORM2ANEX2A_COD_FEAOEE4 = 'f2anex2a_feaoee4';
+    public readonly FORM2ANEX2A_COD_FEAOEE5 = 'f2anex2a_feaoee5';
+    public readonly FORM2ANEX2A_COD_FEAOEE6 = 'f2anex2a_feaoee6';
+
+    public readonly FORM2ANEX2A_COD_FEAIC1 = 'f2anex2a_feaic1';
+    public readonly FORM2ANEX2A_COD_FEAIC2 = 'f2anex2a_feaic2';
+    public readonly FORM2ANEX2A_COD_FEAIC3 = 'f2anex2a_feaic3';
+    public readonly FORM2ANEX2A_COD_FEAIC4 = 'f2anex2a_feaic4';
+    public readonly FORM2ANEX2A_COD_FEAIC5 = 'f2anex2a_feaic5';
+    public readonly FORM2ANEX2A_COD_FEAIC6 = 'f2anex2a_feaic6';
+    public readonly FORM2ANEX2A_COD_FEAIC7 = 'f2anex2a_feaic7';
+    public readonly FORM2ANEX2A_COD_FEAIC8 = 'f2anex2a_feaic8';
+    public readonly FORM2ANEX2A_COD_FEAIC9 = 'f2anex2a_feaic9';
+    public readonly FORM2ANEX2A_COD_FEAIC10 = 'f2anex2a_feaic10';
+    public readonly FORM2ANEX2A_COD_FEAIC11 = 'f2anex2a_feaic11';
+    public readonly FORM2ANEX2A_COD_FEAIC12 = 'f2anex2a_feaic12';
+
+    public readonly FORM2ANEX2A_COD_FEAIP1 = 'f2anex2a_feaip1';
+    public readonly FORM2ANEX2A_COD_FEAIP2 = 'f2anex2a_feaip2';
+    public readonly FORM2ANEX2A_COD_FEAIP3 = 'f2anex2a_feaip3';
+    public readonly FORM2ANEX2A_COD_FEAIP4 = 'f2anex2a_feaip4';
+    public readonly FORM2ANEX2A_COD_FEAIP5 = 'f2anex2a_feaip5';
+    public readonly FORM2ANEX2A_COD_FEAIP6 = 'f2anex2a_feaip6';
+    public readonly FORM2ANEX2A_COD_FEAIP7 = 'f2anex2a_feaip7';
+    public readonly FORM2ANEX2A_COD_FEAIP8 = 'f2anex2a_feaip8';
+    public readonly FORM2ANEX2A_COD_FEAIP9 = 'f2anex2a_feaip9';
+    public readonly FORM2ANEX2A_COD_FEAIP10 = 'f2anex2a_feaip10';
+    public readonly FORM2ANEX2A_COD_FEAIP11 = 'f2anex2a_feaip11';
+    public readonly FORM2ANEX2A_COD_FEAIP12 = 'f2anex2a_feaip12';
+
+    public readonly FORM2ANEX2A_COD_FEAFC1 = 'f2anex2a_feafc1';
+    public readonly FORM2ANEX2A_COD_FEAFC2 = 'f2anex2a_feafc2';
+    public readonly FORM2ANEX2A_COD_FEAFC3 = 'f2anex2a_feafc3';
+    public readonly FORM2ANEX2A_COD_FEAFC4 = 'f2anex2a_feafc4';
+    public readonly FORM2ANEX2A_COD_FEAFC5 = 'f2anex2a_feafc5';
+    public readonly FORM2ANEX2A_COD_FEAFC6 = 'f2anex2a_feafc6';
+
+    public readonly FORM2ANEX2A_COD_FEAFP1 = 'f2anex2a_feafp1';
+    public readonly FORM2ANEX2A_COD_FEAFP2 = 'f2anex2a_feafp2';
+    public readonly FORM2ANEX2A_COD_FEAFP3 = 'f2anex2a_feafp3';
+    public readonly FORM2ANEX2A_COD_FEAFP4 = 'f2anex2a_feafp4';
+    public readonly FORM2ANEX2A_COD_FEAFP5 = 'f2anex2a_feafp5';
+    public readonly FORM2ANEX2A_COD_FEAFP6 = 'f2anex2a_feafp6';
+    public readonly FORM2ANEX2A_COD_FEAFP7 = 'f2anex2a_feafp7';
+    public readonly FORM2ANEX2A_COD_FEAFP8 = 'f2anex2a_feafp8';
+    public readonly FORM2ANEX2A_COD_FEAFP9 = 'f2anex2a_feafp9';
+    public readonly FORM2ANEX2A_COD_FEAFP10 = 'f2anex2a_feafp10';
+
+    public readonly FORM2ANEX2A_COD_EVTCEEE1 = 'f2anex2a_evtceee1';
+    public readonly FORM2ANEX2A_COD_EEEIE1 = 'f2anex2a_eeeie1';
+
+    public readonly FORM2ANEX2A_COD_TOTAL1 = 'f2anex2a_total1';
+    public readonly FORM2ANEX2A_COD_TOTAL2 = 'f2anex2a_total2';
+    public readonly FORM2ANEX2A_COD_TOTAL3 = 'f2anex2a_total3';
+    public readonly FORM2ANEX2A_COD_TOTAL4 = 'f2anex2a_total4';
+    public readonly FORM2ANEX2A_COD_TOTAL5 = 'f2anex2a_total5';
+    public readonly FORM2ANEX2A_COD_TOTAL6 = 'f2anex2a_total6';
+
+    // -----------------------------------------------------------------
+    // Formulario 2 - ANEXO 2B - ESTADO DE CAMBIOS EN EL PATRIMONIO
+    // -----------------------------------------------------------------
+
+    public readonly FORM2ANEX2B_SALDOENE = 'Saldos al 1ero. de enero de ';
+    public readonly FORM2ANEX2B_CPC = 'Cambios en Políticas Contables';
+    public readonly FORM2ANEX2B_CE = 'Corrección de Errores';
+    public readonly FORM2ANEX2B_SIR = 'Saldo Inicial Reexpresado';
+    public readonly FORM2ANEX2B_CPRI = 'Cambios en Patrimonio - Resultado Integral';
+    public readonly FORM2ANEX2B_GNE = 'Ganancia (Pérdida) Neta del Ejercicio';
+    public readonly FORM2ANEX2B_ORI = 'Otro Resultado Integral';
+    public readonly FORM2ANEX2B_RITE = 'Resultado Integral Total del Ejercicio';
+    public readonly FORM2ANEX2B_DRDP = 'Dividendos reconocidos como distribuciones a los propietarios (incluidos los pagados en efectivo)';
+    public readonly FORM2ANEX2B_EP = 'Emisión (reducción) de patrimonio';
+    public readonly FORM2ANEX2B_RAAI = 'Reducción o Amortización de Acciones de Inversión';
+    public readonly FORM2ANEX2B_IAP = 'Incremento (Disminución) por otras Aportaciones de los Propietarios';
+    public readonly FORM2ANEX2B_DDP = 'Disminución (Incremento) por otras Distribuciones a los Propietarios';
+    public readonly FORM2ANEX2B_ICPS = 'Incremento (Disminución) por cambios en las participaciones de subsidiarias que no impliquen pérdida de control';
+    public readonly FORM2ANEX2B_ITAPC = 'Incremento (Disminución) por transacciones con acciones propias en cartera';
+    public readonly FORM2ANEX2B_ITOCP = 'Incremento (Disminución) por Transferencia y Otros Cambios de patrimonio';
+    public readonly FORM2ANEX2B_TIP = 'Total incremento (disminución) en el patrimonio';
+    public readonly FORM2ANEX2B_SALDODIC = 'Saldos al 31 de diciembre de ';
+
+    // CODIGOS
+    public readonly FORM2ANEX2B_COD_SALDOENE = 'f2anex2b_saldoene';
+    public readonly FORM2ANEX2B_COD_CPC = 'f2anex2b_cpc';
+    public readonly FORM2ANEX2B_COD_CE = 'f2anex2b_ce';
+    public readonly FORM2ANEX2B_COD_SIR = 'f2anex2b_sir';
+    public readonly FORM2ANEX2B_COD_CPRI = 'f2anex2b_cpri';
+    public readonly FORM2ANEX2B_COD_GNE = 'f2anex2b_gne';
+    public readonly FORM2ANEX2B_COD_ORI = 'f2anex2b_ori';
+    public readonly FORM2ANEX2B_COD_RITE = 'f2anex2b_rite';
+    public readonly FORM2ANEX2B_COD_DRDP = 'f2anex2b_drdp';
+    public readonly FORM2ANEX2B_COD_EP = 'f2anex2b_ep';
+    public readonly FORM2ANEX2B_COD_RAAI = 'f2anex2b_raai';
+    public readonly FORM2ANEX2B_COD_IAP = 'f2anex2b_iap';
+    public readonly FORM2ANEX2B_COD_DDP = 'f2anex2b_ddp';
+    public readonly FORM2ANEX2B_COD_ICPS = 'f2anex2b_icps';
+    public readonly FORM2ANEX2B_COD_ITAPC = 'f2anex2b_itapc';
+    public readonly FORM2ANEX2B_COD_ITOCP = 'f2anex2b_itocp';
+    public readonly FORM2ANEX2B_COD_TIP = 'f2anex2b_tip';
+    public readonly FORM2ANEX2B_COD_SALDODIC = 'f2anex2b_saldodic';
+
+    // -----------------------------------------------------------------
+    // Formulario 2 - ANEXO 2C - DETALLE DE CUENTAS
+    // -----------------------------------------------------------------
+    public readonly FORM2ANEX2C_ACCUENTASCOBRARCOMERCIALES = 'TOTAL';
+    public readonly FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALES = 'f2anex2c_total1';
+
+    public readonly FORM2ANEX2C_ACCUENTASCOBRARCOMERCIALESRELACIONADAS = 'TOTAL';
+    public readonly FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALESRELACIONADAS = 'f2anex2c_total2';
+
+    public readonly FORM2ANEX2C_ACCUENTASCOBRARDIVERSAS = 'TOTAL';
+    public readonly FORM2ANEX2C_COD_ACCUENTASCOBRARDIVERSAS = 'f2anex2c_total3';
+
+    public readonly FORM2ANEX2C_ACOTRASCUENTAS = 'TOTAL';
+    public readonly FORM2ANEX2C_COD_ACOTRASCUENTAS = 'f2anex2c_total4';
+
+    public readonly FORM2ANEX2C_ANCOTRASCUENTAS = 'TOTAL';
+    public readonly FORM2ANEX2C_COD_ANCOTRASCUENTAS = 'f2anex2c_total5';
+
+    public readonly FORM2ANEX2C_PCCUENTASPAGARCOMERCIALES = 'TOTAL';
+    public readonly FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALES = 'f2anex2c_total6';
+
+    public readonly FORM2ANEX2C_PCCUENTASPAGARCOMERCIALESRELACIONADAS = 'TOTAL';
+    public readonly FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALESRELACIONADAS = 'f2anex2c_total7';
+
+    public readonly FORM2ANEX2C_PCOBLIGACIONESFINANCIERAS = 'TOTAL';
+    public readonly FORM2ANEX2C_COD_PCOBLIGACIONESFINANCIERAS = 'f2anex2c_total8';
+
+    public readonly FORM2ANEX2C_PCPROVISIONES = 'TOTAL';
+    public readonly FORM2ANEX2C_COD_PCPROVISIONES = 'f2anex2c_total9';
+
+    public readonly FORM2ANEX2C_PCOTRASCUENTAS = 'TOTAL';
+    public readonly FORM2ANEX2C_COD_PCOTRASCUENTAS = 'f2anex2c_total10';
+
+    public readonly FORM2ANEX2C_PNCOBLIGACIONESFINANCIERAS = 'TOTAL';
+    public readonly FORM2ANEX2C_COD_PNCOBLIGACIONESFINANCIERAS = 'f2anex2c_total11';
+
+    public readonly FORM2ANEX2C_PNCOTRASCUENTAS = 'TOTAL';
+    public readonly FORM2ANEX2C_COD_PNCOTRASCUENTAS = 'f2anex2c_total12';
+
+    public readonly FORM2ANEX2C_PNCPROVISIONES = 'TOTAL';
+    public readonly FORM2ANEX2C_COD_PNCPROVISIONES = 'f2anex2c_total13';
+
+    public readonly FORM2ANEX2C_PRESULTADOSNOREALIZADOS = 'TOTAL';
+    public readonly FORM2ANEX2C_COD_PRESULTADOSNOREALIZADOS = 'f2anex2c_total14';
+
+    // -----------------------------------------------------------------------------------
+    // Formulario 3 - GASTOS DE PERSONAL RELACIONADOS AL COSTO DE PRODUCCIÓN O SERVICIOS
+    // -----------------------------------------------------------------------------------
+
+    public readonly FORM3_CR = 'CONCEPTOS REMUNERATIVOS';
+    public readonly FORM3_CNR = 'CONCEPTOS NO REMUNERATIVOS';
+    public readonly FORM3_CT = 'CONDICIONES DE TRABAJO';
+    public readonly FORM3_ACS = 'APORTACIONES Y CONTRIBUCIONES SOCIALES';
+    public readonly FORM3_CTS = 'COMPENSACION POR TIEMPO DE SERVICIOS';
+    public readonly FORM3_OB = 'OTROS BENEFICIOS (2)';
+    public readonly FORM3_GPCT = 'GASTOS DE PERSONAL POR CONTRATOS DE TERCEROS (3)';
+    public readonly FORM3_TOTAL = 'TOTAL';
+
+    public readonly FORM3_COD_CR = 'f3_cr';
+    public readonly FORM3_COD_CNR = 'f3_cnr';
+    public readonly FORM3_COD_CT = 'f3_ct';
+    public readonly FORM3_COD_ACS = 'f3_acs';
+    public readonly FORM3_COD_CTS = 'f3_cts';
+    public readonly FORM3_COD_OB = 'f3_ob';
+    public readonly FORM3_COD_GPCT = 'f3_gpct';
+    public readonly FORM3_COD_TOTAL = 'f3_total';
+
 }

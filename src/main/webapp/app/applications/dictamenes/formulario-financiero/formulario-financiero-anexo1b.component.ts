@@ -17,6 +17,7 @@ import { Tabla } from './tabla.model';
 import { Anexo1B } from './anexo1b.model';
 import { Volumen } from './volumen.model';
 import { Componente } from './componente.model';
+import { FormfinancDetalleService } from '../entities/index';
 
 @Component({
     selector: 'jhi-formulario-financiero-anexo1b',
@@ -52,6 +53,8 @@ export class FormularioFinancieroAnexo1BComponent implements OnInit, OnDestroy {
     formulario: Anexo1B;
     volumen: Volumen;
 
+    nCodffina: number;
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
@@ -61,17 +64,18 @@ export class FormularioFinancieroAnexo1BComponent implements OnInit, OnDestroy {
         private formularioLaboralService: FormularioFinancieroService,
         private fb: FormBuilder,
         private datepipe: DatePipe,
+        private formfinancdetalleService: FormfinancDetalleService,
     ) { }
 
     loadAll() {
         this.subscription = this.route.params.subscribe((params) => {
-            this.load(params['nCodfperf']);
+            this.load(params['nCodffina']);
         });
     }
 
     ngOnInit() {
-        this.inicializarVariables();
         this.loadAll();
+        this.inicializarVariables();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
@@ -91,7 +95,9 @@ export class FormularioFinancieroAnexo1BComponent implements OnInit, OnDestroy {
         this.construirFormulario();
     }
 
-    load(nCodfperf) {}
+    load(nCodffina) {
+        this.nCodffina = nCodffina;
+    }
 
     mostrarDialog() {
         this.volumen = new Volumen();
@@ -190,6 +196,7 @@ export class FormularioFinancieroAnexo1BComponent implements OnInit, OnDestroy {
     }
 
     guardarFormulario() {
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaProductos, this.nCodffina);
         this.verControlInformacion();
     }
 

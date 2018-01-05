@@ -6,6 +6,8 @@ import { GatewayListadoSolicitudesModule } from './listado-solicitudes/listado-s
 import { GatewayRegistroSolicitudesModule } from './registro-solicitudes/registro-solicitudes.module';
 import { SolicitudComponent, SolicitudService } from '../../entities/solicitud/index';
 import { UsusolService, UsusolComponent } from '../../entities/ususol/index';
+import { FormfinancService } from './entities/formfinanc.service';
+import { FormfinancDetalleService } from './entities/formfinancdetalle.service';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -21,7 +23,9 @@ import { UsusolService, UsusolComponent } from '../../entities/ususol/index';
     providers: [
         customHttpProvider(),
         SolicitudService,
-        UsusolService
+        UsusolService,
+        FormfinancService,
+        FormfinancDetalleService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

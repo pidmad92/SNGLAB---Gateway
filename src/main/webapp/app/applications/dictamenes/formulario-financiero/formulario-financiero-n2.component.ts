@@ -18,6 +18,7 @@ import { Tabla } from './tabla.model';
 import { Componente } from './componente.model';
 import { EmpresaServicio } from './empresaServicio.model';
 import { FormularioN2 } from './formulario-n2model';
+import { FormfinancDetalleService } from '../entities/index';
 
 @Component({
     selector: 'jhi-formulario-financiero-n2',
@@ -51,6 +52,8 @@ export class FormularioFinancieroN2Component implements OnInit, OnDestroy {
     formulario: FormularioN2;
     constantes: Constants;
 
+    nCodffina: number;
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
@@ -64,17 +67,20 @@ export class FormularioFinancieroN2Component implements OnInit, OnDestroy {
         private solicitudService: SolicitudService,
         private formperfilService: FormperfilService,
         private solicfromService: SolicformService,
+        private formfinancdetalleService: FormfinancDetalleService,
     ) {
         this.formGroup = this.fb.group({ 'name': ['', Validators.required] });
     }
 
     loadAll() {
         this.subscription = this.route.params.subscribe((params) => {
-            this.load(params['nCodfperf']);
+            this.load(params['nCodffina']);
         });
     }
 
-    load(nCodfperf) { }
+    load(nCodffina) {
+        this.nCodffina = nCodffina;
+     }
 
     ngOnInit() {
         this.loadAll();
@@ -236,6 +242,17 @@ export class FormularioFinancieroN2Component implements OnInit, OnDestroy {
                 t.componentes[i].codigo = cod[j] + '_' + i + '_' + this.anios[i];
                 t.componentes[i].cantidad = 0;
                 t.componentes[i].año = this.anios[i];
+                this.formfinancdetalleService.obtenerComponente(this.nCodffina, t.componentes[i].codigo).subscribe(
+                    (formfinancdetalle) => {
+                        if (formfinancdetalle !== undefined) {
+                            t.componentes[i].cantidad = formfinancdetalle.nValffina;
+                            t.componentes[i].id = formfinancdetalle.nCodfdetal;
+                            t.componentes[i].vUsureg = formfinancdetalle.vUsuareg;
+                            t.componentes[i].tFecReg = formfinancdetalle.tFecreg;
+                            t.componentes[i].nSedeReg = formfinancdetalle.nSedereg;
+                        }
+                    }
+                );
                 const fc: FormControl = new FormControl();
                 this.formGroup.addControl(cod[j] + '_' + i + '_' + this.anios[i], new FormControl);
                 this.formGroup.controls[cod[j] + '_' + i + '_' + this.anios[i]].setValue(0);
@@ -254,6 +271,17 @@ export class FormularioFinancieroN2Component implements OnInit, OnDestroy {
                 t.componentes[i].codigo = cod[j] + '_' + i + '_' + this.anios[i];
                 t.componentes[i].cantidad = 0;
                 t.componentes[i].año = this.anios[i];
+                this.formfinancdetalleService.obtenerComponente(this.nCodffina, t.componentes[i].codigo).subscribe(
+                    (formfinancdetalle) => {
+                        if (formfinancdetalle !== undefined) {
+                            t.componentes[i].cantidad = formfinancdetalle.nValffina;
+                            t.componentes[i].id = formfinancdetalle.nCodfdetal;
+                            t.componentes[i].vUsureg = formfinancdetalle.vUsuareg;
+                            t.componentes[i].tFecReg = formfinancdetalle.tFecreg;
+                            t.componentes[i].nSedeReg = formfinancdetalle.nSedereg;
+                        }
+                    }
+                );
             }
         }
         return t;
@@ -269,6 +297,17 @@ export class FormularioFinancieroN2Component implements OnInit, OnDestroy {
                 t[j].componentes[i] = new Componente();
                 t[j].componentes[i].codigo = cod[j] + '_' + i + '_' + this.anios[i];
                 t[j].componentes[i].cantidad = 0;
+                this.formfinancdetalleService.obtenerComponente(this.nCodffina, t[j].componentes[i].codigo).subscribe(
+                    (formfinancdetalle) => {
+                        if (formfinancdetalle !== undefined) {
+                            t[j].componentes[i].cantidad = formfinancdetalle.nValffina;
+                            t[j].componentes[i].id = formfinancdetalle.nCodfdetal;
+                            t[j].componentes[i].vUsureg = formfinancdetalle.vUsuareg;
+                            t[j].componentes[i].tFecReg = formfinancdetalle.tFecreg;
+                            t[j].componentes[i].nSedeReg = formfinancdetalle.nSedereg;
+                        }
+                    }
+                );
                 t[j].componentes[i].año = this.anios[i];
                 if (subtotal && j === desc.length - 1) {
                     // logica no necesaria
@@ -519,6 +558,14 @@ export class FormularioFinancieroN2Component implements OnInit, OnDestroy {
     }
 
     guardarFormulario() {
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaActivoCorriente, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaActivoNoCorriente, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPasivoCorriente, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPasivoNoCorriente, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPatrimonio, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalActivos, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPasivoPatrimonio, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPasivos, this.nCodffina);
         this.verControlInformacion();
     }
 

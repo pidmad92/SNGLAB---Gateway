@@ -68,6 +68,11 @@ import { FormularioFinancieroN1Component,
     FormularioFinancieroAnexo1DComponent,
     FormularioFinancieroService} from '../formulario-financiero/index';
 import { FormularioFinancieroN2Component } from '../formulario-financiero/formulario-financiero-n2.component';
+import { FormularioFinancieroAnexo2AComponent } from '../formulario-financiero/formulario-financiero-anexo2a.component';
+import { FormularioFinancieroAnexo2BComponent } from '../formulario-financiero/formulario-financiero-anexo2b.component';
+import { FormularioFinancieroAnexo2CComponent } from '../formulario-financiero/formulario-financiero-anexo2c.component';
+import { FormularioFinancieroN3Component } from '../formulario-financiero/formulario-financiero-n3.component';
+import { FormfinancService, FormfinancDetalleService } from '../entities/index';
 
 const ENTITY_STATES = [
     ...ListadoSolicitudesRoute,
@@ -91,6 +96,10 @@ const ENTITY_STATES = [
         FormularioFinancieroAnexo1CComponent,
         FormularioFinancieroAnexo1DComponent,
         FormularioFinancieroN2Component,
+        FormularioFinancieroAnexo2AComponent,
+        FormularioFinancieroAnexo2BComponent,
+        FormularioFinancieroAnexo2CComponent,
+        FormularioFinancieroN3Component,
         DireccionComponent,
         HechoinverComponent,
         ParticipaComponent,
@@ -141,6 +150,8 @@ const ENTITY_STATES = [
         ReglaboralService,
         PerreglabService,
         FormularioFinancieroService,
+        FormfinancService,
+        FormfinancDetalleService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

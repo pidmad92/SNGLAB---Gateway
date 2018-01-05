@@ -17,6 +17,7 @@ import { Tabla } from './tabla.model';
 import { Anexo1A } from './anexo1a.model';
 import { Componente } from './componente.model';
 import { Ventas } from './ventas.model';
+import { FormfinancDetalleService, FormfinancDetalle } from '../entities/index';
 
 @Component({
     selector: 'jhi-formulario-financiero-anexo1a',
@@ -55,6 +56,8 @@ export class FormularioFinancieroAnexo1AComponent implements OnInit, OnDestroy {
     ventasNacionales: Ventas;
     ventasInternacionales: Ventas;
 
+    nCodffina: number;
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
@@ -64,19 +67,20 @@ export class FormularioFinancieroAnexo1AComponent implements OnInit, OnDestroy {
         private formularioLaboralService: FormularioFinancieroService,
         private fb: FormBuilder,
         private datepipe: DatePipe,
+        private formfinancdetalleService: FormfinancDetalleService,
     ) { }
 
     loadAll() {
         this.displayNacional = false;
         this.displayInternacional = false;
         this.subscription = this.route.params.subscribe((params) => {
-            this.load(params['nCodfperf']);
+            this.load(params['nCodffina']);
         });
     }
 
     ngOnInit() {
-        this.inicializarVariables();
         this.loadAll();
+        this.inicializarVariables();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
@@ -97,7 +101,9 @@ export class FormularioFinancieroAnexo1AComponent implements OnInit, OnDestroy {
         this.construirFormulario();
     }
 
-    load(nCodfperf) {}
+    load(nCodffina) {
+        this.nCodffina = nCodffina;
+    }
     // Nacional ----------------------------
     mostrarDialogNacional() {
         this.ventasNacionales = new Ventas();
@@ -123,40 +129,52 @@ export class FormularioFinancieroAnexo1AComponent implements OnInit, OnDestroy {
 
         t.componentes = new Array<Componente>();
         t.componentes[0] = new Componente();
+        t.componentes[0].codigo = this.constantes.FORM1ANEX1A_COD_NAC_VOLUMEN_FISICO + '_' + this.ventasNacionales.id + '_' + this.anios[0];
         t.componentes[0].cantidad = Number(this.ventasNacionales.anioAvolumenfisico);
 
         t.componentes[1] = new Componente();
+        t.componentes[1].codigo = this.constantes.FORM1ANEX1A_COD_NAC_PRECIO_PROMEDIO + '_' + this.ventasNacionales.id + '_' + this.anios[0];
         t.componentes[1].cantidad = Number(this.ventasNacionales.anioApromedio);
 
         t.componentes[2] = new Componente();
+        t.componentes[2].codigo = this.constantes.FORM1ANEX1A_COD_NAC_INGRESOS + '_' + this.ventasNacionales.id + '_' + this.anios[0];
         t.componentes[2].cantidad = Number(this.ventasNacionales.anioAvolumenfisico) + Number(this.ventasNacionales.anioApromedio);
 
         t.componentes[3] = new Componente();
+        t.componentes[3].codigo = this.constantes.FORM1ANEX1A_COD_NAC_VOLUMEN_FISICO + '_' + this.ventasNacionales.id + '_' + this.anios[1];
         t.componentes[3].cantidad = Number(this.ventasNacionales.anioBvolumenfisico);
 
         t.componentes[4] = new Componente();
+        t.componentes[4].codigo = this.constantes.FORM1ANEX1A_COD_NAC_PRECIO_PROMEDIO + '_' + this.ventasNacionales.id + '_' + this.anios[1];
         t.componentes[4].cantidad = Number(this.ventasNacionales.anioBpromedio);
 
         t.componentes[5] = new Componente();
-        t.componentes[5].cantidad = Number(this.ventasNacionales.anioBvolumenfisico)  + Number(this.ventasNacionales.anioBpromedio);
+        t.componentes[5].codigo = this.constantes.FORM1ANEX1A_COD_NAC_INGRESOS + '_' + this.ventasNacionales.id + '_' + this.anios[1];
+        t.componentes[5].cantidad = Number(this.ventasNacionales.anioBvolumenfisico) + Number(this.ventasNacionales.anioBpromedio);
 
         t.componentes[6] = new Componente();
+        t.componentes[6].codigo = this.constantes.FORM1ANEX1A_COD_NAC_VOLUMEN_FISICO + '_' + this.ventasNacionales.id + '_' + this.anios[2];
         t.componentes[6].cantidad = Number(this.ventasNacionales.anioCvolumenfisico);
 
         t.componentes[7] = new Componente();
+        t.componentes[7].codigo = this.constantes.FORM1ANEX1A_COD_NAC_PRECIO_PROMEDIO + '_' + this.ventasNacionales.id + '_' + this.anios[2];
         t.componentes[7].cantidad = Number(this.ventasNacionales.anioCpromedio);
 
         t.componentes[8] = new Componente();
-        t.componentes[8].cantidad = Number(this.ventasNacionales.anioCvolumenfisico)  + Number(this.ventasNacionales.anioCpromedio);
+        t.componentes[8].codigo = this.constantes.FORM1ANEX1A_COD_NAC_INGRESOS + '_' + this.ventasNacionales.id + '_' + this.anios[2];
+        t.componentes[8].cantidad = Number(this.ventasNacionales.anioCvolumenfisico) + Number(this.ventasNacionales.anioCpromedio);
 
         t.componentes[9] = new Componente();
+        t.componentes[9].codigo = this.constantes.FORM1ANEX1A_COD_NAC_VOLUMEN_FISICO + '_' + this.ventasNacionales.id + '_' + this.anios[3];
         t.componentes[9].cantidad = Number(this.ventasNacionales.anioDvolumenfisico);
 
         t.componentes[10] = new Componente();
+        t.componentes[10].codigo = this.constantes.FORM1ANEX1A_COD_NAC_PRECIO_PROMEDIO + '_' + this.ventasNacionales.id + '_' + this.anios[3];
         t.componentes[10].cantidad = Number(this.ventasNacionales.anioDpromedio);
 
         t.componentes[11] = new Componente();
-        t.componentes[11].cantidad = Number(this.ventasNacionales.anioDvolumenfisico)  + Number(this.ventasNacionales.anioDpromedio);
+        t.componentes[11].codigo = this.constantes.FORM1ANEX1A_COD_NAC_INGRESOS + '_' + this.ventasNacionales.id + '_' + this.anios[3];
+        t.componentes[11].cantidad = Number(this.ventasNacionales.anioDvolumenfisico) + Number(this.ventasNacionales.anioDpromedio);
 
         if (this.editarNacional) {
             const bean: Tabla = this.formulario.listaNacional.find((x) => x.id === t.id);
@@ -275,40 +293,52 @@ export class FormularioFinancieroAnexo1AComponent implements OnInit, OnDestroy {
 
         t.componentes = new Array<Componente>();
         t.componentes[0] = new Componente();
+        t.componentes[0].codigo = this.constantes.FORM1ANEX1A_COD_INT_VOLUMEN_FISICO + '_' + this.ventasInternacionales.id + '_' + this.anios[0];
         t.componentes[0].cantidad = Number(this.ventasInternacionales.anioAvolumenfisico);
 
         t.componentes[1] = new Componente();
+        t.componentes[1].codigo = this.constantes.FORM1ANEX1A_COD_INT_PRECIO_PROMEDIO + '_' + this.ventasInternacionales.id + '_' + this.anios[0];
         t.componentes[1].cantidad = Number(this.ventasInternacionales.anioApromedio);
 
         t.componentes[2] = new Componente();
+        t.componentes[2].codigo = this.constantes.FORM1ANEX1A_COD_INT_INGRESOS + '_' + this.ventasInternacionales.id + '_' + this.anios[0];
         t.componentes[2].cantidad = Number(this.ventasInternacionales.anioAvolumenfisico) + Number(this.ventasInternacionales.anioApromedio);
 
         t.componentes[3] = new Componente();
+        t.componentes[3].codigo = this.constantes.FORM1ANEX1A_COD_INT_VOLUMEN_FISICO + '_' + this.ventasInternacionales.id + '_' + this.anios[1];
         t.componentes[3].cantidad = Number(this.ventasInternacionales.anioBvolumenfisico);
 
         t.componentes[4] = new Componente();
+        t.componentes[4].codigo = this.constantes.FORM1ANEX1A_COD_INT_PRECIO_PROMEDIO + '_' + this.ventasInternacionales.id + '_' + this.anios[1];
         t.componentes[4].cantidad = Number(this.ventasInternacionales.anioBpromedio);
 
         t.componentes[5] = new Componente();
-        t.componentes[5].cantidad = Number(this.ventasInternacionales.anioBvolumenfisico)  + Number(this.ventasInternacionales.anioBpromedio);
+        t.componentes[5].codigo = this.constantes.FORM1ANEX1A_COD_INT_INGRESOS + '_' + this.ventasInternacionales.id + '_' + this.anios[1];
+        t.componentes[5].cantidad = Number(this.ventasInternacionales.anioBvolumenfisico) + Number(this.ventasInternacionales.anioBpromedio);
 
         t.componentes[6] = new Componente();
+        t.componentes[6].codigo = this.constantes.FORM1ANEX1A_COD_INT_VOLUMEN_FISICO + '_' + this.ventasInternacionales.id + '_' + this.anios[2];
         t.componentes[6].cantidad = Number(this.ventasInternacionales.anioCvolumenfisico);
 
         t.componentes[7] = new Componente();
+        t.componentes[7].codigo = this.constantes.FORM1ANEX1A_COD_INT_PRECIO_PROMEDIO + '_' + this.ventasInternacionales.id + '_' + this.anios[2];
         t.componentes[7].cantidad = Number(this.ventasInternacionales.anioCpromedio);
 
         t.componentes[8] = new Componente();
-        t.componentes[8].cantidad = Number(this.ventasInternacionales.anioCvolumenfisico)  + Number(this.ventasInternacionales.anioCpromedio);
+        t.componentes[8].codigo = this.constantes.FORM1ANEX1A_COD_INT_INGRESOS + '_' + this.ventasInternacionales.id + '_' + this.anios[2];
+        t.componentes[8].cantidad = Number(this.ventasInternacionales.anioCvolumenfisico) + Number(this.ventasInternacionales.anioCpromedio);
 
         t.componentes[9] = new Componente();
+        t.componentes[9].codigo = this.constantes.FORM1ANEX1A_COD_INT_VOLUMEN_FISICO + '_' + this.ventasInternacionales.id + '_' + this.anios[3];
         t.componentes[9].cantidad = Number(this.ventasInternacionales.anioDvolumenfisico);
 
         t.componentes[10] = new Componente();
+        t.componentes[10].codigo = this.constantes.FORM1ANEX1A_COD_INT_PRECIO_PROMEDIO + '_' + this.ventasInternacionales.id + '_' + this.anios[3];
         t.componentes[10].cantidad = Number(this.ventasInternacionales.anioDpromedio);
 
         t.componentes[11] = new Componente();
-        t.componentes[11].cantidad = Number(this.ventasInternacionales.anioDvolumenfisico)  + Number(this.ventasInternacionales.anioDpromedio);
+        t.componentes[11].codigo = this.constantes.FORM1ANEX1A_COD_INT_INGRESOS + '_' + this.ventasInternacionales.id + '_' + this.anios[3];
+        t.componentes[11].cantidad = Number(this.ventasInternacionales.anioDvolumenfisico) + Number(this.ventasInternacionales.anioDpromedio);
 
         if (this.editarInternacional) {
             const bean: Tabla = this.formulario.listaInternacional.find((x) => x.id === t.id);
@@ -403,13 +433,13 @@ export class FormularioFinancieroAnexo1AComponent implements OnInit, OnDestroy {
 
     actualizarTotal() {
         this.formulario.ingresoTotal[0].componentes[0].cantidad = this.formulario.subtotalInternacional[0].componentes[2].cantidad
-                                                                + this.formulario.subtotalNacional[0].componentes[2].cantidad;
+            + this.formulario.subtotalNacional[0].componentes[2].cantidad;
         this.formulario.ingresoTotal[0].componentes[1].cantidad = this.formulario.subtotalInternacional[1].componentes[2].cantidad
-                                                                + this.formulario.subtotalNacional[1].componentes[2].cantidad;
+            + this.formulario.subtotalNacional[1].componentes[2].cantidad;
         this.formulario.ingresoTotal[0].componentes[2].cantidad = this.formulario.subtotalInternacional[2].componentes[2].cantidad
-                                                                + this.formulario.subtotalNacional[2].componentes[2].cantidad;
+            + this.formulario.subtotalNacional[2].componentes[2].cantidad;
         this.formulario.ingresoTotal[0].componentes[3].cantidad = this.formulario.subtotalInternacional[3].componentes[2].cantidad
-                                                                + this.formulario.subtotalNacional[3].componentes[2].cantidad;
+            + this.formulario.subtotalNacional[3].componentes[2].cantidad;
     }
     // ---------------------------------------
     // Solo numeros
@@ -423,11 +453,11 @@ export class FormularioFinancieroAnexo1AComponent implements OnInit, OnDestroy {
     // ---------------------------------------
     construirFormulario() {
         const anxNacCod: string[] = [this.constantes.FORM1ANEX1A_COD_NAC_VOLUMEN_FISICO,
-                                    this.constantes.FORM1ANEX1A_COD_NAC_PRECIO_PROMEDIO,
-                                    this.constantes.FORM1ANEX1A_COD_NAC_INGRESOS];
+        this.constantes.FORM1ANEX1A_COD_NAC_PRECIO_PROMEDIO,
+        this.constantes.FORM1ANEX1A_COD_NAC_INGRESOS];
         const anxIntCod: string[] = [this.constantes.FORM1ANEX1A_COD_INT_VOLUMEN_FISICO,
-                                    this.constantes.FORM1ANEX1A_COD_INT_PRECIO_PROMEDIO,
-                                    this.constantes.FORM1ANEX1A_COD_INT_INGRESOS];
+        this.constantes.FORM1ANEX1A_COD_INT_PRECIO_PROMEDIO,
+        this.constantes.FORM1ANEX1A_COD_INT_INGRESOS];
 
         this.formulario.listaNacional = new Array<Tabla>();
         this.formulario.listaInternacional = new Array<Tabla>();
@@ -443,28 +473,164 @@ export class FormularioFinancieroAnexo1AComponent implements OnInit, OnDestroy {
             for (let j = 0; j < anxNacCod.length; j++) {
                 this.formulario.subtotalNacional[i].componentes[j] = new Componente();
                 this.formulario.subtotalNacional[i].componentes[j].cantidad = 0;
-                this.formulario.subtotalNacional[i].componentes[j].codigo = anxNacCod[j] + '_subtotal_' + i + this.anios[i];
+                this.formulario.subtotalNacional[i].componentes[j].codigo = anxNacCod[j] + 'subtotal_' + i + '_' +  this.anios[i];
             }
 
             for (let j = 0; j < anxIntCod.length; j++) {
                 this.formulario.subtotalInternacional[i].componentes[j] = new Componente();
                 this.formulario.subtotalInternacional[i].componentes[j].cantidad = 0;
-                this.formulario.subtotalInternacional[i].componentes[j].codigo = anxIntCod[j] + '_subtotal_' + i + this.anios[i];
+                this.formulario.subtotalInternacional[i].componentes[j].codigo = anxIntCod[j] + 'subtotal_' + i + '_' + this.anios[i];
             }
 
         }
+
+        this.obtenerValores('f1anex1a_nac', true);
+
+        this.obtenerValores('f1anex1a_int', false);
+
+        this.obtenerSubtotalesValores('f1anex1a_nac', 'subtotal', true);
+        this.obtenerSubtotalesValores('f1anex1a_int', 'subtotal', false);
+
+        if ( this.formulario.listaNacional !== undefined ) {}
+
         this.formulario.ingresoTotal = new Array<Tabla>();
         this.formulario.ingresoTotal[0] = new Tabla();
         this.formulario.ingresoTotal[0].componentes = new Array<Componente>();
         this.formulario.ingresoTotal[0].componentes[0] = new Componente();
+        this.formulario.ingresoTotal[0].componentes[0].codigo = this.constantes.FORM1ANEX1A_COD_TOTAL + '_0_' + this.anios[0];
         this.formulario.ingresoTotal[0].componentes[0].cantidad = 0;
+
+        this.obtenerComponente(this.formulario.ingresoTotal, 0, this.constantes.FORM1ANEX1A_COD_TOTAL + '_0_' + this.anios[0]);
+
         this.formulario.ingresoTotal[0].componentes[1] = new Componente();
+        this.formulario.ingresoTotal[0].componentes[1].codigo = this.constantes.FORM1ANEX1A_COD_TOTAL + '_0_' + this.anios[1];
         this.formulario.ingresoTotal[0].componentes[1].cantidad = 0;
+
+        this.obtenerComponente(this.formulario.ingresoTotal, 1, this.constantes.FORM1ANEX1A_COD_TOTAL + '_0_' + this.anios[1]);
+
         this.formulario.ingresoTotal[0].componentes[2] = new Componente();
+        this.formulario.ingresoTotal[0].componentes[2].codigo = this.constantes.FORM1ANEX1A_COD_TOTAL + '_0_' + this.anios[2];
         this.formulario.ingresoTotal[0].componentes[2].cantidad = 0;
+
+        this.obtenerComponente(this.formulario.ingresoTotal, 2, this.constantes.FORM1ANEX1A_COD_TOTAL + '_0_' + this.anios[2]);
+
         this.formulario.ingresoTotal[0].componentes[3] = new Componente();
+        this.formulario.ingresoTotal[0].componentes[3].codigo = this.constantes.FORM1ANEX1A_COD_TOTAL + '_0_' + this.anios[3];
         this.formulario.ingresoTotal[0].componentes[3].cantidad = 0;
 
+        this.obtenerComponente(this.formulario.ingresoTotal, 3, this.constantes.FORM1ANEX1A_COD_TOTAL + '_0_' + this.anios[3]);
+
+    }
+
+    obtenerComponente(tabla: Tabla[], i: number, codigo: string) {
+        this.formfinancdetalleService.obtenerComponente(this.nCodffina, codigo).subscribe(
+            (formfinancdetalle) => {
+                if (formfinancdetalle !== undefined) {
+                    tabla[0].componentes[i].cantidad = formfinancdetalle.nValffina;
+                    tabla[0].componentes[i].id = formfinancdetalle.nCodfdetal;
+                    tabla[0].componentes[i].vUsureg = formfinancdetalle.vUsuareg;
+                    tabla[0].componentes[i].tFecReg = formfinancdetalle.tFecreg;
+                    tabla[0].componentes[i].nSedeReg = formfinancdetalle.nSedereg;
+                }
+            }
+        );
+    }
+
+    obtenerValores(componente: string, nacional: boolean) {
+        const excluido = 'subtotal';
+        const componentes = new Array<Componente>();
+        this.formfinancdetalleService.obtenerListaComponenteExcluido(this.nCodffina, componente, excluido).subscribe(
+            (res: ResponseWrapper) => {
+                let cont = 1;
+                let i = 0;
+                const objetos: FormfinancDetalle[] = res.json;
+                while ((cont - 1) < objetos.length) {
+                    if ( nacional ) {
+                        if (this.formulario.listaNacional[i] === undefined) {
+                            this.formulario.listaNacional[i] = new Tabla();
+                            if ( this.formulario.listaNacional[i].componentes === undefined ) {
+                                this.formulario.listaNacional[i].componentes = new Array<Componente>();
+                            }
+                        }
+                    } else {
+                        if (this.formulario.listaInternacional[i] === undefined) {
+                            this.formulario.listaInternacional[i] = new Tabla();
+                            if ( this.formulario.listaInternacional[i].componentes === undefined ) {
+                                this.formulario.listaInternacional[i].componentes = new Array<Componente>();
+                            }
+                        }
+                    }
+                    // componentes[i] = new Componente();
+                    const comp: Componente = new Componente();
+                    comp.codigo = objetos[cont - 1].vCompone;
+                    comp.cantidad = objetos[cont - 1].nValffina;
+                    comp.id = objetos[cont - 1].nCodfdetal;
+                    comp.vUsureg = objetos[cont - 1].vUsuareg;
+                    comp.tFecReg = objetos[cont - 1].tFecreg;
+                    comp.nSedeReg = objetos[cont - 1].nSedereg;
+                    if (nacional) {
+                        this.formulario.listaNacional[i].descripcion = objetos[cont - 1].vDesffina;
+                        this.formulario.listaNacional[i].unidadmedida = objetos[cont - 1].vUndffina;
+                        this.formulario.listaNacional[i].componentes.push(comp);
+                    } else {
+                        this.formulario.listaInternacional[i].descripcion = objetos[cont - 1].vDesffina;
+                        this.formulario.listaInternacional[i].unidadmedida = objetos[cont - 1].vUndffina;
+                        this.formulario.listaInternacional[i].componentes.push(comp);
+                    }
+                    if (cont % 12 === 0 && (cont - 1) !== 0) {
+                        i++;
+                    }
+                    cont++;
+                }
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+    }
+
+    obtenerSubtotalesValores(componente: string, componente2: string, nacional: boolean) {
+        const componentes = new Array<Componente>();
+        this.formfinancdetalleService.obtenerListaComponentes(this.nCodffina, componente, componente2).subscribe(
+            (res: ResponseWrapper) => {
+                let cont = 1;
+                let i = 0;
+                const objetos: FormfinancDetalle[] = res.json;
+                while ((cont - 1) < objetos.length) {
+                    if ( nacional ) {
+                        if (this.formulario.subtotalNacional[i] === undefined) {
+                            this.formulario.subtotalNacional[i] = new Tabla();
+                            if ( this.formulario.subtotalNacional[i].componentes === undefined ) {
+                                this.formulario.subtotalNacional[i].componentes = new Array<Componente>();
+                            }
+                        }
+                    } else {
+                        if (this.formulario.subtotalInternacional[i] === undefined) {
+                            this.formulario.subtotalInternacional[i] = new Tabla();
+                            if ( this.formulario.subtotalInternacional[i].componentes === undefined ) {
+                                this.formulario.subtotalInternacional[i].componentes = new Array<Componente>();
+                            }
+                        }
+                    }
+                    // componentes[i] = new Componente();
+                    const comp: Componente = new Componente();
+                    comp.codigo = objetos[cont - 1].vCompone;
+                    comp.cantidad = objetos[cont - 1].nValffina;
+                    comp.id = objetos[cont - 1].nCodfdetal;
+                    comp.vUsureg = objetos[cont - 1].vUsuareg;
+                    comp.tFecReg = objetos[cont - 1].tFecreg;
+                    comp.nSedeReg = objetos[cont - 1].nSedereg;
+                    if (nacional) {
+                        this.formulario.subtotalNacional[i].componentes.push(comp);
+                    } else {
+                        this.formulario.subtotalInternacional[i].componentes.push(comp);
+                    }
+                    if (cont % 12 === 0 && (cont - 1) !== 0) {
+                        i++;
+                    }
+                    cont++;
+                }
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
     // --------------------------- Errores ------------------------------------
@@ -480,6 +646,11 @@ export class FormularioFinancieroAnexo1AComponent implements OnInit, OnDestroy {
     }
 
     guardarFormulario() {
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaNacional, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaInternacional, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.subtotalNacional, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.subtotalInternacional, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.ingresoTotal, this.nCodffina);
         this.verControlInformacion();
     }
 

@@ -17,6 +17,7 @@ import { Constants } from './constants';
 import { Anexo1C } from './anexo1c.model';
 import { Tabla } from './tabla.model';
 import { Componente } from './componente.model';
+import { FormfinancDetalleService } from '../entities/index';
 
 @Component({
     selector: 'jhi-formulario-financiero-anexo1c',
@@ -61,6 +62,8 @@ export class FormularioFinancieroAnexo1CComponent implements OnInit, OnDestroy {
     ventasMPImportadas: Ventas;
     ventasGastosFinancieros: Ventas;
 
+    nCodffina: number;
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
@@ -70,6 +73,7 @@ export class FormularioFinancieroAnexo1CComponent implements OnInit, OnDestroy {
         private formularioLaboralService: FormularioFinancieroService,
         private fb: FormBuilder,
         private datepipe: DatePipe,
+        private formfinancdetalleService: FormfinancDetalleService,
     ) { }
 
     loadAll() {
@@ -78,13 +82,13 @@ export class FormularioFinancieroAnexo1CComponent implements OnInit, OnDestroy {
         this.displayGastosFinancieros = false;
         this.displayGFImportada = false;
         this.subscription = this.route.params.subscribe((params) => {
-            this.load(params['nCodfperf']);
+            this.load(params['nCodffina']);
         });
     }
 
     ngOnInit() {
-        this.inicializarVariables();
         this.loadAll();
+        this.inicializarVariables();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
@@ -105,7 +109,9 @@ export class FormularioFinancieroAnexo1CComponent implements OnInit, OnDestroy {
         this.construirFormulario();
     }
 
-    load(nCodfperf) { }
+    load(nCodffina) {
+        this.nCodffina = nCodffina;
+    }
 
     // Solo numeros
     keyPress(event: any) {
@@ -656,6 +662,13 @@ export class FormularioFinancieroAnexo1CComponent implements OnInit, OnDestroy {
     }
 
     guardarFormulario() {
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaMPNacional, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaMPImportada, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosFinancieros, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.ingresoTotalMP, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.subtotalGastosFinancieros, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.subtotalMPImportada, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.subtotalMPNacional, this.nCodffina);
         this.verControlInformacion();
     }
     verControlInformacion() {

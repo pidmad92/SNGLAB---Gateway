@@ -17,6 +17,7 @@ import { Anexo1D } from './anexo1d.model';
 import { Tabla } from './tabla.model';
 import { Componente } from './componente.model';
 import { DetalleCuenta } from './detallecuenta.model';
+import { FormfinancDetalleService } from '../entities/index';
 
 @Component({
     selector: 'jhi-formulario-financiero-anexo1d',
@@ -79,6 +80,8 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
     otrosIngresos: DetalleCuenta;
     otrosEgresos: DetalleCuenta;
 
+    nCodffina: number;
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
@@ -88,17 +91,18 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
         private formularioLaboralService: FormularioFinancieroService,
         private fb: FormBuilder,
         private datepipe: DatePipe,
+        private formfinancdetalleService: FormfinancDetalleService,
     ) { }
 
     loadAll() {
         this.subscription = this.route.params.subscribe((params) => {
-            this.load(params['nCodfperf']);
+            this.load(params['nCodffina']);
         });
     }
 
     ngOnInit() {
-        this.inicializarVariables();
         this.loadAll();
+        this.inicializarVariables();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
@@ -151,7 +155,9 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
         this.construirFormulario();
     }
 
-    load(nCodfperf) { }
+    load(nCodffina) {
+        this.nCodffina = nCodffina;
+    }
 
     // Solo numeros
     keyPress(event: any) {
@@ -216,7 +222,6 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
 
     }
     // ------------------------------------------------------------------------
-
     creartotales(desc: string[], cod: string[]): Tabla {
         const t = new Tabla();
         t.componentes = new Array<Componente>();
@@ -227,6 +232,17 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
                 t.componentes[i].codigo = cod[j] + '_' + i + '_' + this.anios[i];
                 t.componentes[i].cantidad = 0;
                 t.componentes[i].año = this.anios[i];
+                this.formfinancdetalleService.obtenerComponente(this.nCodffina, t.componentes[i].codigo).subscribe(
+                    (formfinancdetalle) => {
+                        if (formfinancdetalle !== undefined) {
+                            t.componentes[i].cantidad = formfinancdetalle.nValffina;
+                            t.componentes[i].id = formfinancdetalle.nCodfdetal;
+                            t.componentes[i].vUsureg = formfinancdetalle.vUsuareg;
+                            t.componentes[i].tFecReg = formfinancdetalle.tFecreg;
+                            t.componentes[i].nSedeReg = formfinancdetalle.nSedereg;
+                        }
+                    }
+                );
             }
         }
         return t;
@@ -520,12 +536,12 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        if (!this.editarGastosDiversionGestion) {
+        /*if (!this.editarGastosDiversionGestion) {
             suma1 += Number(this.gastosDiversionGestion.anioA);
             suma2 += Number(this.gastosDiversionGestion.anioB);
             suma3 += Number(this.gastosDiversionGestion.anioC);
             suma4 += Number(this.gastosDiversionGestion.anioD);
-        }
+        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalGastosDiversionGestion.componentes[0].cantidad = suma1 + Number(this.gastosDiversionGestion.anioA);
         this.formulario.totalGastosDiversionGestion.componentes[1].cantidad = suma2 + Number(this.gastosDiversionGestion.anioB);
@@ -629,12 +645,12 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        if (!this.editarProvisiones) {
+        /*if (!this.editarProvisiones) {
             suma1 += Number(this.provisiones.anioA);
             suma2 += Number(this.provisiones.anioB);
             suma3 += Number(this.provisiones.anioC);
             suma4 += Number(this.provisiones.anioD);
-        }
+        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalProvisiones.componentes[0].cantidad = suma1 + Number(this.provisiones.anioA);
         this.formulario.totalProvisiones.componentes[1].cantidad = suma2 + Number(this.provisiones.anioB);
@@ -738,12 +754,12 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        if (!this.editarGastosAdministracion) {
+        // if (!this.editarGastosAdministracion) {
             suma1 += Number(this.gastosAdministracion.anioA);
             suma2 += Number(this.gastosAdministracion.anioB);
             suma3 += Number(this.gastosAdministracion.anioC);
             suma4 += Number(this.gastosAdministracion.anioD);
-        }
+       // }
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalGastosAdministracion.componentes[0].cantidad = suma1;
         this.formulario.totalGastosAdministracion.componentes[1].cantidad = suma2;
@@ -847,12 +863,12 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        if (!this.editarGastosDentroAdminServPorTerceros) {
+       // if (!this.editarGastosDentroAdminServPorTerceros) {
             suma1 += Number(this.gastosDentroAdminServPorTerceros.anioA);
             suma2 += Number(this.gastosDentroAdminServPorTerceros.anioB);
             suma3 += Number(this.gastosDentroAdminServPorTerceros.anioC);
             suma4 += Number(this.gastosDentroAdminServPorTerceros.anioD);
-        }
+       // }
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalGastosDentroAdminServPorTerceros.componentes[0].cantidad = suma1;
         this.formulario.totalGastosDentroAdminServPorTerceros.componentes[1].cantidad = suma2;
@@ -957,12 +973,12 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
             }
         }
 
-        if (!this.editarIngresosFinancieros) {
+      //  if (!this.editarIngresosFinancieros) {
             suma1 += Number(this.ingresosFinancieros.anioA);
             suma2 += Number(this.ingresosFinancieros.anioB);
             suma3 += Number(this.ingresosFinancieros.anioC);
             suma4 += Number(this.ingresosFinancieros.anioD);
-        }
+      //  }
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalIngresosFinancieros.componentes[0].cantidad = suma1;
         this.formulario.totalIngresosFinancieros.componentes[1].cantidad = suma2;
@@ -1067,12 +1083,12 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
             }
         }
 
-        if (!this.editarGastosFinancieros) {
+      //  if (!this.editarGastosFinancieros) {
             suma1 += Number(this.gastosFinancieros.anioA);
             suma2 += Number(this.gastosFinancieros.anioB);
             suma3 += Number(this.gastosFinancieros.anioC);
             suma4 += Number(this.gastosFinancieros.anioD);
-        }
+      //  }
 
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalGastosFinancieros.componentes[0].cantidad = suma1;
@@ -1178,12 +1194,12 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
             }
         }
 
-        if (!this.editarOtrosIngresos) {
+       // if (!this.editarOtrosIngresos) {
             suma1 += Number(this.otrosIngresos.anioA);
             suma2 += Number(this.otrosIngresos.anioB);
             suma3 += Number(this.otrosIngresos.anioC);
             suma4 += Number(this.otrosIngresos.anioD);
-        }
+       // }
 
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalOtrosIngresos.componentes[0].cantidad = suma1;
@@ -1289,12 +1305,12 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
             }
         }
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
-        if (!this.editarOtrosEgresos) {
+      //  if (!this.editarOtrosEgresos) {
             suma1 += Number(this.otrosEgresos.anioA);
             suma2 += Number(this.otrosEgresos.anioB);
             suma3 += Number(this.otrosEgresos.anioC);
             suma4 += Number(this.otrosEgresos.anioD);
-        }
+      //  }
 
         this.formulario.totalOtrosEgresos.componentes[0].cantidad = suma1;
         this.formulario.totalOtrosEgresos.componentes[1].cantidad = suma2;
@@ -1340,6 +1356,26 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
     }
 
     guardarFormulario() {
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosAdministracion, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosDentroAdminServPorTerceros, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosDiversionGestion, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosFinancieros, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosVenDistriServPorTerceros, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosVentasDistribucion, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaIngresosFinancieros, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaOtrosEgresos, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaOtrosIngresos, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaProvisiones, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastosAdministracion, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastosDentroAdminServPorTerceros, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastosDiversionGestion, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastosFinancieros, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastosVenDistriServPorTerceros, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastosVentasDistribucion, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalIngresosFinancieros, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalOtrosEgresos, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalOtrosIngresos, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalProvisiones, this.nCodffina);
         this.verControlInformacion();
     }
 

@@ -437,11 +437,11 @@
                     <p style="padding:5px;">
                         INSTRUCCIONES:
                         <br/> (*) Desagregar en cuentas de la clase 6 a dos dígitos caso contrario según el giro de la empresa.
-                        <br/> -La información de la columna 2014, 2015 y 2016 corresponde a los resultados financieros correspondientes
+                        <br/> -La información de la columna {{anios[0]}}, {{anios[1]}} y {{anios[2]}} corresponde a los resultados financieros correspondientes
                         a los tres últimos años.
-                        <br/> -La columna 2017 contiene información preliminar hasta el último periodo mensual declarado a la
+                        <br/> -La columna {{anios[3]}} contiene información preliminar hasta el último periodo mensual declarado a la
                         SUNAT (PDT 621) del ejercicio vigente (especificar mes y año).
-                        <br/> -El total de las columnas 2014, 2015, 2016 y 2017 debe ser igual a las casillas corrrespondientes
+                        <br/> -El total de las columnas {{anios[0]}}, {{anios[1]}}, {{anios[2]}} y {{anios[3]}} debe ser igual a las casillas corrrespondientes
                         al Formulario Nº 1.
                         <br/>
                     </p>
@@ -481,13 +481,13 @@
                         <legend>Monto</legend>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosVentasDistribucion.anioA">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosVentasDistribucion.anioB">
@@ -497,13 +497,13 @@
                         <br/>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
                             </div>
                             <div class="col">
                                 <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosVentasDistribucion.anioC">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosVentasDistribucion.anioD">
@@ -540,13 +540,13 @@
                         <legend>Monto</legend>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosVenDistriServPorTerceros.anioA">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosVenDistriServPorTerceros.anioB">
@@ -556,13 +556,13 @@
                         <br/>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
                             </div>
                             <div class="col">
                                 <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosVenDistriServPorTerceros.anioC">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosVenDistriServPorTerceros.anioD">
@@ -599,13 +599,13 @@
                         <legend>Monto</legend>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosDiversionGestion.anioA">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosDiversionGestion.anioB">
@@ -615,13 +615,13 @@
                         <br/>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
                             </div>
                             <div class="col">
                                 <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosDiversionGestion.anioC">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosDiversionGestion.anioD">
@@ -658,13 +658,13 @@
                         <legend>Monto</legend>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="provisiones.anioA">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="provisiones.anioB">
@@ -674,13 +674,13 @@
                         <br/>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
                             </div>
                             <div class="col">
                                 <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="provisiones.anioC">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="provisiones.anioD">
@@ -717,13 +717,13 @@
                         <legend>Monto</legend>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosAdministracion.anioA">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosAdministracion.anioB">
@@ -733,13 +733,13 @@
                         <br/>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
                             </div>
                             <div class="col">
                                 <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosAdministracion.anioC">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosAdministracion.anioD">
@@ -776,13 +776,13 @@
                         <legend>Monto</legend>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosDentroAdminServPorTerceros.anioA">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosDentroAdminServPorTerceros.anioB">
@@ -792,13 +792,13 @@
                         <br/>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
                             </div>
                             <div class="col">
                                 <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosDentroAdminServPorTerceros.anioC">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosDentroAdminServPorTerceros.anioD">
@@ -835,13 +835,13 @@
                         <legend>Monto</legend>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ingresosFinancieros.anioA">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ingresosFinancieros.anioB">
@@ -851,13 +851,13 @@
                         <br/>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
                             </div>
                             <div class="col">
                                 <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ingresosFinancieros.anioC">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ingresosFinancieros.anioD">
@@ -894,13 +894,13 @@
                         <legend>Monto</legend>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosFinancieros.anioA">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosFinancieros.anioB">
@@ -910,13 +910,13 @@
                         <br/>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
                             </div>
                             <div class="col">
                                 <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosFinancieros.anioC">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="gastosFinancieros.anioD">
@@ -953,13 +953,13 @@
                         <legend>Monto</legend>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosIngresos.anioA">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosIngresos.anioB">
@@ -969,13 +969,13 @@
                         <br/>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
                             </div>
                             <div class="col">
                                 <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosIngresos.anioC">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosIngresos.anioD">
@@ -1012,13 +1012,13 @@
                         <legend>Monto</legend>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2014</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosEgresos.anioA">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2015</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosEgresos.anioB">
@@ -1028,13 +1028,13 @@
                         <br/>
                         <div class="row">
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2016</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
                             </div>
                             <div class="col">
                                 <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosEgresos.anioC">
                             </div>
                             <div class="col col-sm-2">
-                                <label for="inpDireccion" class="col-form-label col-form-label-sm">2017</label>
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosEgresos.anioD">
