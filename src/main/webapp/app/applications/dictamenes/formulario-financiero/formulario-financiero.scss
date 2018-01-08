@@ -683,9 +683,23 @@
   width:20%;
 }
 
+.concepto_w70 {
+  width:70%;
+}
+
 .dinamico {
   width:20%;
 }
 table.cabecera thead tr td {
   text-align:center;
+}
+
+table thead tr {
+  background: #F90014;
+  color: #fff;
+}
+
+.longitud {
+  width:50px;
+  margin:auto;
 }

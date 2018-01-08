@@ -14,6 +14,16 @@ export const ConsultasRoute: Routes = [
         },
         canActivate: [UserRouteAccessService],
         children: [
+          {
+            path: '**',
+            pathMatch: 'full',
+            redirectTo: 'trabajador',
+            data: {
+              authorities: ['ROLE_USER'],
+              pageTitle: 'global.menu.entities.atencionTra'
+            },
+            canActivate: [UserRouteAccessService]
+          },
             {
                 path: 'trabajador',
                 component: TrabajadorComponent,

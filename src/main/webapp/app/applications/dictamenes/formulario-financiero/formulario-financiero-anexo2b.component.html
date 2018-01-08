@@ -1,0 +1,157 @@
+<div class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
+    <div class="row">
+        <div class="col" style="text-align:center;">
+            <h5 class="title">ANEXO 2 B</h5>
+            <h5 class="title">ESTADO DE CAMBIOS EN EL PATRIMONIO</h5>
+            <h6 class="title">(Soles)</h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card card-mtpe mb-3">
+                <div class="card-body">
+                    <p>FLUJOS DE EFECTIVO DE ACTIVIDAD DE OPERACIÓN</p>
+                    <p>&nbsp;&nbsp;Clases de cobros en efectivo por actividades de operación</p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead style="font-size:8pt;text-align:justify">
+                            <tr>
+                                <td rowspan="2">Concepto</td>
+                                <td rowspan="2">Capital</td>
+                                <td rowspan="2">Capital Adicional</td>
+                                <td rowspan="2">Reservas</td>
+                                <td rowspan="2">Resultados Acumulados</td>
+                                <td rowspan="2">Excedente de Revaluacion</td>
+                                <td colspan="8" style="border:1px white solid">Resultados no Realizados</td>
+                                <td rowspan="2">Total Patrimonio</td>
+                            </tr>
+                            <tr>
+                                <td style="border-left:1px white solid">Coberturas de Flujos de efectivo</th>
+                                    <td>Coberturas de inversión neta de negocios en el extranjero</td>
+                                    <td>Inversiones en instrumentos de patrimonio medidos al valor razonable</td>
+                                    <td>Diferencias de Cambio por Conversión de Operaciones en el Extranjero</td>
+                                    <td>Activos no corrientes o grupos de activos mantenidos para la venta</td>
+                                    <td>Ganancia (perdida) actuariales en plan de beneficios definidos</td>
+                                    <td>Cambios en el valor razonable de pasivos financieros atribuibles a cambios en el riesgo
+                                        de crédito del pasivo</td>
+                                    <td style="border-right:1px white solid">Subtotal</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaA;let j = index;">
+                                <ng-container *ngIf="j != 4">
+                                    <tr>
+                                        <td class="concepto_w70">{{lista.descripcion}}</td>
+
+                                        <ng-container *ngFor="let comp of lista.componentes;let i = index;let total = count">
+                                            <ng-container *ngIf="i < 12">
+                                                <ng-container *ngIf="j == 3 || j == 7 || j == 16 || j == 17">
+                                                    <td class="text-right longitud" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                                </ng-container>
+                                                <ng-container *ngIf="j != 3 && j != 7 && j != 16 && j != 17">
+                                                    <td>
+                                                        <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right longitud"
+                                                            name="" id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="actualizarCampoListaA($event)" (keypress)="keyPress($event)"
+                                                            maxlength="6">
+                                                    </td>
+                                                </ng-container>
+                                            </ng-container>
+                                            <ng-container *ngIf="i >= 12">
+                                                <td class="text-right longitud" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                            </ng-container>
+                                        </ng-container>
+                                    </tr>
+                                </ng-container>
+                                <ng-container *ngIf="j == 4">
+                                    <tr>
+                                        <td class="concepto" colspan="16" style="text-align: left;background-color: rgba(0,0,0,.075)">{{lista.descripcion}}</td>
+                                    </tr>
+                                </ng-container>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead style="font-size:8pt;text-align:justify">
+                            <tr>
+                                <td rowspan="2">Concepto</td>
+                                <td rowspan="2">Capital</td>
+                                <td rowspan="2">Capital Adicional</td>
+                                <td rowspan="2">Reservas</td>
+                                <td rowspan="2">Resultados Acumulados</td>
+                                <td rowspan="2">Excedente de Revaluacion</td>
+                                <td colspan="8" style="border:1px white solid">Resultados no Realizados</td>
+                                <td rowspan="2">Total Patrimonio</td>
+                            </tr>
+                            <tr>
+                                <td style="border-left:1px white solid">Coberturas de Flujos de efectivo</th>
+                                    <td>Coberturas de inversión neta de negocios en el extranjero</td>
+                                    <td>Inversiones en instrumentos de patrimonio medidos al valor razonable</td>
+                                    <td>Diferencias de Cambio por Conversión de Operaciones en el Extranjero</td>
+                                    <td>Activos no corrientes o grupos de activos mantenidos para la venta</td>
+                                    <td>Ganancia (perdida) actuariales en plan de beneficios definidos</td>
+                                    <td>Cambios en el valor razonable de pasivos financieros atribuibles a cambios en el riesgo
+                                        de crédito del pasivo</td>
+                                    <td style="border-right:1px white solid">Subtotal</td>
+                            </tr>
+                        </thead>
+                            <ng-container *ngFor="let lista of formulario.listaB;let j = index;">
+                                <ng-container *ngIf="j != 4">
+                                    <tr>
+                                        <td class="concepto_w70">{{lista.descripcion}}</td>
+
+                                        <ng-container *ngFor="let comp of lista.componentes;let i = index;let total = count">
+                                            <ng-container *ngIf="i < 12">
+                                                <ng-container *ngIf="j == 0 || j == 3 || j == 7 || j == 16 || j == 17">
+                                                    <td class="text-right longitud" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                                </ng-container>
+                                                <ng-container *ngIf="j != 0 && j != 3 && j != 7 && j != 16 && j != 17">
+                                                    <td>
+                                                        <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right longitud"
+                                                            name="" id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="actualizarCampoListaB($event)" (keypress)="keyPress($event)"
+                                                            maxlength="6">
+                                                    </td>
+                                                </ng-container>
+                                            </ng-container>
+                                            <ng-container *ngIf="i >= 12">
+                                                <td class="text-right longitud" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                            </ng-container>
+                                        </ng-container>
+                                    </tr>
+                                </ng-container>
+                                <ng-container *ngIf="j == 4">
+                                    <tr>
+                                        <td class="concepto" colspan="16" style="text-align: left;background-color: rgba(0,0,0,.075)">{{lista.descripcion}}</td>
+                                    </tr>
+                                </ng-container>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+
+
+                    <div style="font-size:9pt;">
+                        <p>
+                            INSTRUCCIONES:
+                            </br>- Los saldos finales de las columnas corresponden a ejercicios económicos terminados al
+                            31 de diciembre de los dos últimos años culminados y deben ser iguales a los saldos del Patrimonio
+                            del Formulario Nº 2.
+                            </br>- Presentar el Estado de Cambio de Patrimonio el cual contenga la información preliminar
+                            del presente año hasta el último trimestre concluido (especificar año y trimestre).
+                            </br>- Se debe llenar con la información de la Declaración del Pago Anual por el Impuesto a la
+                            Renta de Tercera Categoría presentada a la SUNAT.
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-sm-right">
+                    <a (click)="verControlInformacion()" class="btn btn-sm m-1 btn-success">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
+                    <a (click)="guardarFormulario()" class="btn btn-sm m-1 btn-secondary">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -43,7 +43,16 @@
                                             </td>
                                             <td>
                                                 <span *ngIf="solicForm.vTipoform == 'G'">GENERAL</span>
-                                                <span *ngIf="solicForm.vTipoform.substr(0,1) == 'F'">FINANCIERO</span>
+                                                <span *ngIf="solicForm.vTipoform == 'F1'">FINANCIERO FORMULARIO 1</span>
+                                                <span *ngIf="solicForm.vTipoform == 'F1A'">FINANCIERO FORMULARIO 1 - ANEXO 1A</span>
+                                                <span *ngIf="solicForm.vTipoform == 'F1B'">FINANCIERO FORMULARIO 1 - ANEXO 1B</span>
+                                                <span *ngIf="solicForm.vTipoform == 'F1C'">FINANCIERO FORMULARIO 1 - ANEXO 1C</span>
+                                                <span *ngIf="solicForm.vTipoform == 'F1D'">FINANCIERO FORMULARIO 1 - ANEXO 1D</span>
+                                                <span *ngIf="solicForm.vTipoform == 'F2'">FINANCIERO FORMULARIO 2</span>
+                                                <span *ngIf="solicForm.vTipoform == 'F2A'">FINANCIERO FORMULARIO 2 - ANEXO 2A</span>
+                                                <span *ngIf="solicForm.vTipoform == 'F2B'">FINANCIERO FORMULARIO 2 - ANEXO 2B</span>
+                                                <span *ngIf="solicForm.vTipoform == 'F2C'">FINANCIERO FORMULARIO 2 - ANEXO 2C</span>
+                                                <span *ngIf="solicForm.vTipoform == 'F3'">FINANCIERO FORMULARIO 3</span>
                                                 <span *ngIf="solicForm.vTipoform == 'L'">LABORAL</span>
                                                 <span *ngIf="solicForm.vTipoform == 'A'">ARCHIVO</span>
                                             </td>
