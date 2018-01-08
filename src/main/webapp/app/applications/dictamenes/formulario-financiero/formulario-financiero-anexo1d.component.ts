@@ -17,7 +17,7 @@ import { Anexo1D } from './anexo1d.model';
 import { Tabla } from './tabla.model';
 import { Componente } from './componente.model';
 import { DetalleCuenta } from './detallecuenta.model';
-import { FormfinancDetalleService } from '../entities/index';
+import { FormfinancDetalleService, FormfinancDetalle } from '../entities/index';
 
 @Component({
     selector: 'jhi-formulario-financiero-anexo1d',
@@ -180,51 +180,220 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
         this.formulario.listaOtrosIngresos = new Array<Tabla>();
         this.formulario.listaOtrosEgresos = new Array<Tabla>();
 
+        this.obtenerValores(this.constantes.FORM1ANEX1D_COD_GASTOS_VENTAS_DISTRIBUCION, 1);
+        this.obtenerValores(this.constantes.FORM1ANEX1D_COD_GASTOS_SERVICIOS_PRESTADOS_TERCEROS, 2);
+        this.obtenerValores(this.constantes.FORM1ANEX1D_COD_GASTOS_CARGOS_DIVERSOS_GESTION, 3);
+        this.obtenerValores(this.constantes.FORM1ANEX1D_COD_PROVISIONES, 4);
+        this.obtenerValores(this.constantes.FORM1ANEX1D_COD_GASTOS_ADMINISTRACION, 5);
+        this.obtenerValores(this.constantes.FORM1ANEX1D_COD_DENTRO_ADMINISTRACION_GASTOS_SERVICIOS_PRESTADOS_TERCEROS, 6);
+        this.obtenerValores(this.constantes.FORM1ANEX1D_COD_INGRESOS_FINANCIEROS, 7);
+        this.obtenerValores(this.constantes.FORM1ANEX1D_COD_GASTOS_FINANCIEROS, 8);
+        this.obtenerValores(this.constantes.FORM1ANEX1D_COD_OTROS_INGRESOS, 9);
+        this.obtenerValores(this.constantes.FORM1ANEX1D_COD_OTROS_EGRESOS, 10);
+
         const totalGastosVentasDistribucionDesc: string[] = [this.constantes.FORM1ANEX1D_GASTOS_VENTAS_DISTRIBUCION];
-        const totalGastosVentasDistribucionCod: string[] = [this.constantes.FORM1ANEX1D_COD_GASTOS_VENTAS_DISTRIBUCION];
-        this.formulario.totalGastosVentasDistribucion = this.creartotales(totalGastosVentasDistribucionDesc, totalGastosVentasDistribucionCod);
+        const totalGastosVentasDistribucionCod: string[] = [this.constantes.FORM1ANEX1D_COD_TOTAL_GASTOS_VENTAS_DISTRIBUCION];
 
         const totalGastosVenDistriServPorTercerosDesc: string[] = [this.constantes.FORM1ANEX1D_GASTOS_SERVICIOS_PRESTADOS_TERCEROS];
-        const totalGastosVenDistriServPorTercerosCod: string[] = [this.constantes.FORM1ANEX1D_COD_GASTOS_SERVICIOS_PRESTADOS_TERCEROS];
-        this.formulario.totalGastosVenDistriServPorTerceros = this.creartotales(totalGastosVenDistriServPorTercerosDesc, totalGastosVenDistriServPorTercerosCod);
+        const totalGastosVenDistriServPorTercerosCod: string[] = [this.constantes.FORM1ANEX1D_COD_TOTAL_GASTOS_SERVICIOS_PRESTADOS_TERCEROS];
 
         const totalGastosDiversionGestionDesc: string[] = [this.constantes.FORM1ANEX1D_GASTOS_CARGOS_DIVERSOS_GESTION];
-        const totalGastosDiversionGestionCod: string[] = [this.constantes.FORM1ANEX1D_COD_GASTOS_CARGOS_DIVERSOS_GESTION];
-        this.formulario.totalGastosDiversionGestion = this.creartotales(totalGastosDiversionGestionDesc, totalGastosDiversionGestionCod);
+        const totalGastosDiversionGestionCod: string[] = [this.constantes.FORM1ANEX1D_COD_TOTAL_GASTOS_CARGOS_DIVERSOS_GESTION];
 
         const totalProvisionesDesc: string[] = [this.constantes.FORM1ANEX1D_PROVISIONES];
-        const totalProvisionesCod: string[] = [this.constantes.FORM1ANEX1D_COD_PROVISIONES];
-        this.formulario.totalProvisiones = this.creartotales(totalProvisionesDesc, totalProvisionesCod);
+        const totalProvisionesCod: string[] = [this.constantes.FORM1ANEX1D_COD_TOTAL_PROVISIONES];
 
         const totalGastosAdministracionDesc: string[] = [this.constantes.FORM1ANEX1D_GASTOS_ADMINISTRACION];
-        const totalGastosAdministracionCod: string[] = [this.constantes.FORM1ANEX1D_COD_GASTOS_ADMINISTRACION];
-        this.formulario.totalGastosAdministracion = this.creartotales(totalGastosAdministracionDesc, totalGastosAdministracionCod);
+        const totalGastosAdministracionCod: string[] = [this.constantes.FORM1ANEX1D_COD_TOTAL_GASTOS_ADMINISTRACION];
 
         const totalGastosDentroAdminServPorTercerosDesc: string[] = [this.constantes.FORM1ANEX1D_DENTRO_ADMINISTRACION_GASTOS_SERVICIOS_PRESTADOS_TERCEROS];
-        const totalGastosDentroAdminServPorTercerosCod: string[] = [this.constantes.FORM1ANEX1D_COD_DENTRO_ADMINISTRACION_GASTOS_SERVICIOS_PRESTADOS_TERCEROS];
-        this.formulario.totalGastosDentroAdminServPorTerceros = this.creartotales(totalGastosDentroAdminServPorTercerosDesc, totalGastosDentroAdminServPorTercerosCod);
+        const totalGastosDentroAdminServPorTercerosCod: string[] = [this.constantes.FORM1ANEX1D_COD_TOTAL_DENTRO_ADMINISTRACION_GASTOS_SERVICIOS_PRESTADOS_TERCEROS];
 
         const totalIngresosFinancierosDesc: string[] = [this.constantes.FORM1ANEX1D_INGRESOS_FINANCIEROS];
-        const totalIngresosFinancierosCod: string[] = [this.constantes.FORM1ANEX1D_COD_INGRESOS_FINANCIEROS];
-        this.formulario.totalIngresosFinancieros = this.creartotales(totalIngresosFinancierosDesc, totalIngresosFinancierosCod);
+        const totalIngresosFinancierosCod: string[] = [this.constantes.FORM1ANEX1D_COD_TOTAL_INGRESOS_FINANCIEROS];
 
         const totalGastosFinancierosDesc: string[] = [this.constantes.FORM1ANEX1D_GASTOS_FINANCIEROS];
-        const totalGastosFinancierosCod: string[] = [this.constantes.FORM1ANEX1D_COD_GASTOS_FINANCIEROS];
-        this.formulario.totalGastosFinancieros = this.creartotales(totalGastosFinancierosDesc, totalGastosFinancierosCod);
+        const totalGastosFinancierosCod: string[] = [this.constantes.FORM1ANEX1D_COD_TOTAL_GASTOS_FINANCIEROS];
 
         const totalOtrosIngresosDesc: string[] = [this.constantes.FORM1ANEX1D_OTROS_INGRESOS];
-        const totalOtrosIngresosCod: string[] = [this.constantes.FORM1ANEX1D_COD_OTROS_INGRESOS];
-        this.formulario.totalOtrosIngresos = this.creartotales(totalOtrosIngresosDesc, totalOtrosIngresosCod);
+        const totalOtrosIngresosCod: string[] = [this.constantes.FORM1ANEX1D_COD_TOTAL_OTROS_INGRESOS];
 
-        const totalOtrosEgresosDesc: string[] = [this.constantes.FORM1ANEX1D_OTROS_INGRESOS];
-        const totalOtrosEgresosCod: string[] = [this.constantes.FORM1ANEX1D_COD_OTROS_INGRESOS];
+        const totalOtrosEgresosDesc: string[] = [this.constantes.FORM1ANEX1D_OTROS_EGRESOS];
+        const totalOtrosEgresosCod: string[] = [this.constantes.FORM1ANEX1D_COD_TOTAL_OTROS_EGRESOS];
+
+        this.formulario.totalGastosVentasDistribucion = this.creartotales(totalGastosVentasDistribucionDesc, totalGastosVentasDistribucionCod);
+        this.formulario.totalGastosVenDistriServPorTerceros = this.creartotales(totalGastosVenDistriServPorTercerosDesc, totalGastosVenDistriServPorTercerosCod);
+        this.formulario.totalGastosDiversionGestion = this.creartotales(totalGastosDiversionGestionDesc, totalGastosDiversionGestionCod);
+        this.formulario.totalProvisiones = this.creartotales(totalProvisionesDesc, totalProvisionesCod);
+        this.formulario.totalGastosAdministracion = this.creartotales(totalGastosAdministracionDesc, totalGastosAdministracionCod);
+        this.formulario.totalGastosDentroAdminServPorTerceros = this.creartotales(totalGastosDentroAdminServPorTercerosDesc, totalGastosDentroAdminServPorTercerosCod);
+        this.formulario.totalIngresosFinancieros = this.creartotales(totalIngresosFinancierosDesc, totalIngresosFinancierosCod);
+        this.formulario.totalGastosFinancieros = this.creartotales(totalGastosFinancierosDesc, totalGastosFinancierosCod);
+        this.formulario.totalOtrosIngresos = this.creartotales(totalOtrosIngresosDesc, totalOtrosIngresosCod);
         this.formulario.totalOtrosEgresos = this.creartotales(totalOtrosEgresosDesc, totalOtrosEgresosCod);
 
     }
+
+    obtenerComponente(tabla: Tabla[], i: number, codigo: string) {
+        this.formfinancdetalleService.obtenerComponente(this.nCodffina, codigo).subscribe(
+            (formfinancdetalle) => {
+                if (formfinancdetalle !== undefined) {
+                    tabla[0].componentes[i].cantidad = formfinancdetalle.nValffina;
+                    tabla[0].componentes[i].id = formfinancdetalle.nCodfdetal;
+                    tabla[0].componentes[i].vUsureg = formfinancdetalle.vUsuareg;
+                    tabla[0].componentes[i].tFecReg = formfinancdetalle.tFecreg;
+                    tabla[0].componentes[i].nSedeReg = formfinancdetalle.nSedereg;
+                }
+            }
+        );
+    }
+
+    obtenerValores(componente: string, tipo: number) {
+        const excluido = 'subtotal';
+        const componentes = new Array<Componente>();
+        this.formfinancdetalleService.obtenerListaComponenteExcluido(this.nCodffina, componente, excluido).subscribe(
+            (res: ResponseWrapper) => {
+                let cont = 1;
+                let i = 0;
+                const objetos: FormfinancDetalle[] = res.json;
+                if (objetos.length > 0) {
+                    while ((cont - 1) < objetos.length) {
+                        const comp: Componente = new Componente();
+                        comp.codigo = objetos[cont - 1].vCompone;
+                        comp.cantidad = objetos[cont - 1].nValffina;
+                        comp.id = objetos[cont - 1].nCodfdetal;
+                        comp.vUsureg = objetos[cont - 1].vUsuareg;
+                        comp.tFecReg = objetos[cont - 1].tFecreg;
+                        comp.nSedeReg = objetos[cont - 1].nSedereg;
+                        switch (tipo) {
+                            case 1:
+                                if (this.formulario.listaGastosVentasDistribucion[i] === undefined) {
+                                    this.formulario.listaGastosVentasDistribucion[i] = new Tabla();
+                                    if (this.formulario.listaGastosVentasDistribucion[i].componentes === undefined) {
+                                        this.formulario.listaGastosVentasDistribucion[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaGastosVentasDistribucion[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaGastosVentasDistribucion[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaGastosVentasDistribucion[i].componentes.push(comp);
+                            break;
+                            case 2:
+                                if (this.formulario.listaGastosVenDistriServPorTerceros[i] === undefined) {
+                                    this.formulario.listaGastosVenDistriServPorTerceros[i] = new Tabla();
+                                    if (this.formulario.listaGastosVenDistriServPorTerceros[i].componentes === undefined) {
+                                        this.formulario.listaGastosVenDistriServPorTerceros[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaGastosVenDistriServPorTerceros[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaGastosVenDistriServPorTerceros[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaGastosVenDistriServPorTerceros[i].componentes.push(comp);
+                            break;
+                            case 3:
+                                if (this.formulario.listaGastosDiversionGestion[i] === undefined) {
+                                    this.formulario.listaGastosDiversionGestion[i] = new Tabla();
+                                    if (this.formulario.listaGastosDiversionGestion[i].componentes === undefined) {
+                                        this.formulario.listaGastosDiversionGestion[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaGastosDiversionGestion[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaGastosDiversionGestion[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaGastosDiversionGestion[i].componentes.push(comp);
+                            break;
+                            case 4:
+                                if (this.formulario.listaProvisiones[i] === undefined) {
+                                    this.formulario.listaProvisiones[i] = new Tabla();
+                                    if (this.formulario.listaProvisiones[i].componentes === undefined) {
+                                        this.formulario.listaProvisiones[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaProvisiones[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaProvisiones[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaProvisiones[i].componentes.push(comp);
+                            break;
+                            case 5:
+                                if (this.formulario.listaGastosAdministracion[i] === undefined) {
+                                    this.formulario.listaGastosAdministracion[i] = new Tabla();
+                                    if (this.formulario.listaGastosAdministracion[i].componentes === undefined) {
+                                        this.formulario.listaGastosAdministracion[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaGastosAdministracion[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaGastosAdministracion[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaGastosAdministracion[i].componentes.push(comp);
+                            break;
+                            case 6:
+                                if (this.formulario.listaGastosDentroAdminServPorTerceros[i] === undefined) {
+                                    this.formulario.listaGastosDentroAdminServPorTerceros[i] = new Tabla();
+                                    if (this.formulario.listaGastosDentroAdminServPorTerceros[i].componentes === undefined) {
+                                        this.formulario.listaGastosDentroAdminServPorTerceros[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaGastosDentroAdminServPorTerceros[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaGastosDentroAdminServPorTerceros[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaGastosDentroAdminServPorTerceros[i].componentes.push(comp);
+                            break;
+                            case 7:
+                                if (this.formulario.listaIngresosFinancieros[i] === undefined) {
+                                    this.formulario.listaIngresosFinancieros[i] = new Tabla();
+                                    if (this.formulario.listaIngresosFinancieros[i].componentes === undefined) {
+                                        this.formulario.listaIngresosFinancieros[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaIngresosFinancieros[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaIngresosFinancieros[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaIngresosFinancieros[i].componentes.push(comp);
+                            break;
+                            case 8:
+                                if (this.formulario.listaGastosFinancieros[i] === undefined) {
+                                    this.formulario.listaGastosFinancieros[i] = new Tabla();
+                                    if (this.formulario.listaGastosFinancieros[i].componentes === undefined) {
+                                        this.formulario.listaGastosFinancieros[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaGastosFinancieros[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaGastosFinancieros[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaGastosFinancieros[i].componentes.push(comp);
+                            break;
+                            case 9:
+                                if (this.formulario.listaOtrosIngresos[i] === undefined) {
+                                    this.formulario.listaOtrosIngresos[i] = new Tabla();
+                                    if (this.formulario.listaOtrosIngresos[i].componentes === undefined) {
+                                        this.formulario.listaOtrosIngresos[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaOtrosIngresos[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaOtrosIngresos[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaOtrosIngresos[i].componentes.push(comp);
+                            break;
+                            case 10:
+                                if (this.formulario.listaOtrosEgresos[i] === undefined) {
+                                    this.formulario.listaOtrosEgresos[i] = new Tabla();
+                                    if (this.formulario.listaOtrosEgresos[i].componentes === undefined) {
+                                        this.formulario.listaOtrosEgresos[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaOtrosEgresos[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaOtrosEgresos[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaOtrosEgresos[i].componentes.push(comp);
+                            break;
+                        }
+
+                        if (cont % 4 === 0 && (cont - 1) !== 0) {
+                            i++;
+                        }
+                        cont++;
+                    }
+                }
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+    }
+
     // ------------------------------------------------------------------------
     creartotales(desc: string[], cod: string[]): Tabla {
         const t = new Tabla();
         t.componentes = new Array<Componente>();
+
         for (let j = 0; j < desc.length; j++) {
             t.descripcion = desc[j];
             for (let i = 0; i < this.anios.length; i++) {
@@ -272,22 +441,22 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.gastosVentasDistribucion.descripcion + '_' + this.formulario.listaGastosVentasDistribucion.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_VENTAS_DISTRIBUCION + '_' + this.formulario.listaGastosVentasDistribucion.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.gastosVentasDistribucion.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.gastosVentasDistribucion.descripcion + '_' + this.formulario.listaGastosVentasDistribucion.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_VENTAS_DISTRIBUCION + '_' + this.formulario.listaGastosVentasDistribucion.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.gastosVentasDistribucion.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.gastosVentasDistribucion.descripcion + '_' + this.formulario.listaGastosVentasDistribucion.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_VENTAS_DISTRIBUCION + '_' + this.formulario.listaGastosVentasDistribucion.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.gastosVentasDistribucion.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.gastosVentasDistribucion.descripcion + '_' + this.formulario.listaGastosVentasDistribucion.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_VENTAS_DISTRIBUCION + '_' + this.formulario.listaGastosVentasDistribucion.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.gastosVentasDistribucion.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarGastosVentasDistribucion) {
@@ -317,12 +486,6 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
                         break;
                 }
             }
-        }
-        if (!this.editarGastosVentasDistribucion) {
-            suma1 += Number(this.gastosVentasDistribucion.anioA);
-            suma2 += Number(this.gastosVentasDistribucion.anioB);
-            suma3 += Number(this.gastosVentasDistribucion.anioC);
-            suma4 += Number(this.gastosVentasDistribucion.anioD);
         }
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalGastosVentasDistribucion.componentes[0].cantidad = suma1 + Number(this.gastosVentasDistribucion.anioA);
@@ -381,22 +544,26 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.gastosVenDistriServPorTerceros.descripcion + '_' + this.formulario.listaGastosVenDistriServPorTerceros.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_SERVICIOS_PRESTADOS_TERCEROS + '_' +
+                                 this.formulario.listaGastosVenDistriServPorTerceros.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.gastosVenDistriServPorTerceros.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.gastosVenDistriServPorTerceros.descripcion + '_' + this.formulario.listaGastosVenDistriServPorTerceros.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_SERVICIOS_PRESTADOS_TERCEROS + '_' +
+                                 this.formulario.listaGastosVenDistriServPorTerceros.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.gastosVenDistriServPorTerceros.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.gastosVenDistriServPorTerceros.descripcion + '_' + this.formulario.listaGastosVenDistriServPorTerceros.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_SERVICIOS_PRESTADOS_TERCEROS + '_' +
+                                 this.formulario.listaGastosVenDistriServPorTerceros.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.gastosVenDistriServPorTerceros.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.gastosVenDistriServPorTerceros.descripcion + '_' + this.formulario.listaGastosVenDistriServPorTerceros.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_SERVICIOS_PRESTADOS_TERCEROS + '_' +
+                                 this.formulario.listaGastosVenDistriServPorTerceros.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.gastosVenDistriServPorTerceros.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarGastosVenDistriServPorTerceros) {
@@ -426,12 +593,6 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
                         break;
                 }
             }
-        }
-        if (!this.editarGastosVenDistriServPorTerceros) {
-            suma1 += Number(this.gastosVenDistriServPorTerceros.anioA);
-            suma2 += Number(this.gastosVenDistriServPorTerceros.anioB);
-            suma3 += Number(this.gastosVenDistriServPorTerceros.anioC);
-            suma4 += Number(this.gastosVenDistriServPorTerceros.anioD);
         }
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalGastosVenDistriServPorTerceros.componentes[0].cantidad = suma1 + Number(this.gastosVenDistriServPorTerceros.anioA);
@@ -490,22 +651,22 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.gastosDiversionGestion.descripcion + '_' + this.formulario.listaGastosDiversionGestion.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_CARGOS_DIVERSOS_GESTION + '_' + this.formulario.listaGastosDiversionGestion.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.gastosDiversionGestion.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.gastosDiversionGestion.descripcion + '_' + this.formulario.listaGastosDiversionGestion.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_CARGOS_DIVERSOS_GESTION + '_' + this.formulario.listaGastosDiversionGestion.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.gastosDiversionGestion.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.gastosDiversionGestion.descripcion + '_' + this.formulario.listaGastosDiversionGestion.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_CARGOS_DIVERSOS_GESTION + '_' + this.formulario.listaGastosDiversionGestion.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.gastosDiversionGestion.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.gastosDiversionGestion.descripcion + '_' + this.formulario.listaGastosDiversionGestion.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_CARGOS_DIVERSOS_GESTION + '_' + this.formulario.listaGastosDiversionGestion.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.gastosDiversionGestion.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarGastosDiversionGestion) {
@@ -536,12 +697,6 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        /*if (!this.editarGastosDiversionGestion) {
-            suma1 += Number(this.gastosDiversionGestion.anioA);
-            suma2 += Number(this.gastosDiversionGestion.anioB);
-            suma3 += Number(this.gastosDiversionGestion.anioC);
-            suma4 += Number(this.gastosDiversionGestion.anioD);
-        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalGastosDiversionGestion.componentes[0].cantidad = suma1 + Number(this.gastosDiversionGestion.anioA);
         this.formulario.totalGastosDiversionGestion.componentes[1].cantidad = suma2 + Number(this.gastosDiversionGestion.anioB);
@@ -599,22 +754,22 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.provisiones.descripcion + '_' + this.formulario.listaProvisiones.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM1ANEX1D_COD_PROVISIONES + '_' + this.formulario.listaProvisiones.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.provisiones.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.provisiones.descripcion + '_' + this.formulario.listaProvisiones.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM1ANEX1D_COD_PROVISIONES + '_' + this.formulario.listaProvisiones.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.provisiones.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.provisiones.descripcion + '_' + this.formulario.listaProvisiones.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM1ANEX1D_COD_PROVISIONES + '_' + this.formulario.listaProvisiones.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.provisiones.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.provisiones.descripcion + '_' + this.formulario.listaProvisiones.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM1ANEX1D_COD_PROVISIONES + '_' + this.formulario.listaProvisiones.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.provisiones.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarProvisiones) {
@@ -645,12 +800,6 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        /*if (!this.editarProvisiones) {
-            suma1 += Number(this.provisiones.anioA);
-            suma2 += Number(this.provisiones.anioB);
-            suma3 += Number(this.provisiones.anioC);
-            suma4 += Number(this.provisiones.anioD);
-        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalProvisiones.componentes[0].cantidad = suma1 + Number(this.provisiones.anioA);
         this.formulario.totalProvisiones.componentes[1].cantidad = suma2 + Number(this.provisiones.anioB);
@@ -708,22 +857,22 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.gastosAdministracion.descripcion + '_' + this.formulario.listaGastosAdministracion.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_ADMINISTRACION + '_' + this.formulario.listaGastosAdministracion.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.gastosAdministracion.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.gastosAdministracion.descripcion + '_' + this.formulario.listaGastosAdministracion.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_ADMINISTRACION + '_' + this.formulario.listaGastosAdministracion.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.gastosAdministracion.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.gastosAdministracion.descripcion + '_' + this.formulario.listaGastosAdministracion.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_ADMINISTRACION + '_' + this.formulario.listaGastosAdministracion.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.gastosAdministracion.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.gastosAdministracion.descripcion + '_' + this.formulario.listaGastosAdministracion.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_ADMINISTRACION + '_' + this.formulario.listaGastosAdministracion.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.gastosAdministracion.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarGastosAdministracion) {
@@ -754,17 +903,11 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        // if (!this.editarGastosAdministracion) {
-            suma1 += Number(this.gastosAdministracion.anioA);
-            suma2 += Number(this.gastosAdministracion.anioB);
-            suma3 += Number(this.gastosAdministracion.anioC);
-            suma4 += Number(this.gastosAdministracion.anioD);
-       // }
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
-        this.formulario.totalGastosAdministracion.componentes[0].cantidad = suma1;
-        this.formulario.totalGastosAdministracion.componentes[1].cantidad = suma2;
-        this.formulario.totalGastosAdministracion.componentes[2].cantidad = suma3;
-        this.formulario.totalGastosAdministracion.componentes[3].cantidad = suma4;
+        this.formulario.totalGastosAdministracion.componentes[0].cantidad = suma1 + Number(this.gastosAdministracion.anioA);
+        this.formulario.totalGastosAdministracion.componentes[1].cantidad = suma2 + Number(this.gastosAdministracion.anioB);
+        this.formulario.totalGastosAdministracion.componentes[2].cantidad = suma3 + Number(this.gastosAdministracion.anioC);
+        this.formulario.totalGastosAdministracion.componentes[3].cantidad = suma4 + Number(this.gastosAdministracion.anioD);
 
         this.displayGastosAdministracion = false;
         this.gastosAdministracion = new DetalleCuenta();
@@ -817,22 +960,26 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.gastosDentroAdminServPorTerceros.descripcion + '_' + this.formulario.listaGastosDentroAdminServPorTerceros.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM1ANEX1D_COD_DENTRO_ADMINISTRACION_GASTOS_SERVICIOS_PRESTADOS_TERCEROS + '_' +
+                                 this.formulario.listaGastosDentroAdminServPorTerceros.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.gastosDentroAdminServPorTerceros.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.gastosDentroAdminServPorTerceros.descripcion + '_' + this.formulario.listaGastosDentroAdminServPorTerceros.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM1ANEX1D_COD_DENTRO_ADMINISTRACION_GASTOS_SERVICIOS_PRESTADOS_TERCEROS + '_' +
+                                 this.formulario.listaGastosDentroAdminServPorTerceros.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.gastosDentroAdminServPorTerceros.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.gastosDentroAdminServPorTerceros.descripcion + '_' + this.formulario.listaGastosDentroAdminServPorTerceros.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM1ANEX1D_COD_DENTRO_ADMINISTRACION_GASTOS_SERVICIOS_PRESTADOS_TERCEROS + '_' +
+                                 this.formulario.listaGastosDentroAdminServPorTerceros.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.gastosDentroAdminServPorTerceros.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.gastosDentroAdminServPorTerceros.descripcion + '_' + this.formulario.listaGastosDentroAdminServPorTerceros.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM1ANEX1D_COD_DENTRO_ADMINISTRACION_GASTOS_SERVICIOS_PRESTADOS_TERCEROS + '_' +
+                                 this.formulario.listaGastosDentroAdminServPorTerceros.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.gastosDentroAdminServPorTerceros.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarGastosDentroAdminServPorTerceros) {
@@ -863,17 +1010,11 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
                 }
             }
         }
-       // if (!this.editarGastosDentroAdminServPorTerceros) {
-            suma1 += Number(this.gastosDentroAdminServPorTerceros.anioA);
-            suma2 += Number(this.gastosDentroAdminServPorTerceros.anioB);
-            suma3 += Number(this.gastosDentroAdminServPorTerceros.anioC);
-            suma4 += Number(this.gastosDentroAdminServPorTerceros.anioD);
-       // }
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
-        this.formulario.totalGastosDentroAdminServPorTerceros.componentes[0].cantidad = suma1;
-        this.formulario.totalGastosDentroAdminServPorTerceros.componentes[1].cantidad = suma2;
-        this.formulario.totalGastosDentroAdminServPorTerceros.componentes[2].cantidad = suma3;
-        this.formulario.totalGastosDentroAdminServPorTerceros.componentes[3].cantidad = suma4;
+        this.formulario.totalGastosDentroAdminServPorTerceros.componentes[0].cantidad = suma1 + Number(this.gastosDentroAdminServPorTerceros.anioA);
+        this.formulario.totalGastosDentroAdminServPorTerceros.componentes[1].cantidad = suma2 + Number(this.gastosDentroAdminServPorTerceros.anioB);
+        this.formulario.totalGastosDentroAdminServPorTerceros.componentes[2].cantidad = suma3 + Number(this.gastosDentroAdminServPorTerceros.anioC);
+        this.formulario.totalGastosDentroAdminServPorTerceros.componentes[3].cantidad = suma4 + Number(this.gastosDentroAdminServPorTerceros.anioD);
 
         this.displayGastosDentroAdminServPorTerceros = false;
         this.gastosDentroAdminServPorTerceros = new DetalleCuenta();
@@ -926,22 +1067,22 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.ingresosFinancieros.descripcion + '_' + this.formulario.listaIngresosFinancieros.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM1ANEX1D_COD_INGRESOS_FINANCIEROS + '_' + this.formulario.listaIngresosFinancieros.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.ingresosFinancieros.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.ingresosFinancieros.descripcion + '_' + this.formulario.listaIngresosFinancieros.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM1ANEX1D_COD_INGRESOS_FINANCIEROS + '_' + this.formulario.listaIngresosFinancieros.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.ingresosFinancieros.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.ingresosFinancieros.descripcion + '_' + this.formulario.listaIngresosFinancieros.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM1ANEX1D_COD_INGRESOS_FINANCIEROS + '_' + this.formulario.listaIngresosFinancieros.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.ingresosFinancieros.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.ingresosFinancieros.descripcion + '_' + this.formulario.listaIngresosFinancieros.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM1ANEX1D_COD_INGRESOS_FINANCIEROS + '_' + this.formulario.listaIngresosFinancieros.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.ingresosFinancieros.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarIngresosFinancieros) {
@@ -972,18 +1113,11 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
                 }
             }
         }
-
-      //  if (!this.editarIngresosFinancieros) {
-            suma1 += Number(this.ingresosFinancieros.anioA);
-            suma2 += Number(this.ingresosFinancieros.anioB);
-            suma3 += Number(this.ingresosFinancieros.anioC);
-            suma4 += Number(this.ingresosFinancieros.anioD);
-      //  }
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
-        this.formulario.totalIngresosFinancieros.componentes[0].cantidad = suma1;
-        this.formulario.totalIngresosFinancieros.componentes[1].cantidad = suma2;
-        this.formulario.totalIngresosFinancieros.componentes[2].cantidad = suma3;
-        this.formulario.totalIngresosFinancieros.componentes[3].cantidad = suma4;
+        this.formulario.totalIngresosFinancieros.componentes[0].cantidad = suma1 + Number(this.ingresosFinancieros.anioA);
+        this.formulario.totalIngresosFinancieros.componentes[1].cantidad = suma2 + Number(this.ingresosFinancieros.anioB);
+        this.formulario.totalIngresosFinancieros.componentes[2].cantidad = suma3 + Number(this.ingresosFinancieros.anioC);
+        this.formulario.totalIngresosFinancieros.componentes[3].cantidad = suma4 + Number(this.ingresosFinancieros.anioD);
 
         this.displayIngresosFinancieros = false;
         this.ingresosFinancieros = new DetalleCuenta();
@@ -1036,22 +1170,22 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.gastosFinancieros.descripcion + '_' + this.formulario.listaGastosFinancieros.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_FINANCIEROS + '_' + this.formulario.listaGastosFinancieros.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.gastosFinancieros.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.gastosFinancieros.descripcion + '_' + this.formulario.listaGastosFinancieros.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_FINANCIEROS + '_' + this.formulario.listaGastosFinancieros.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.gastosFinancieros.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.gastosFinancieros.descripcion + '_' + this.formulario.listaGastosFinancieros.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_FINANCIEROS + '_' + this.formulario.listaGastosFinancieros.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.gastosFinancieros.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.gastosFinancieros.descripcion + '_' + this.formulario.listaGastosFinancieros.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_FINANCIEROS + '_' + this.formulario.listaGastosFinancieros.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.gastosFinancieros.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarGastosFinancieros) {
@@ -1082,19 +1216,11 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
                 }
             }
         }
-
-      //  if (!this.editarGastosFinancieros) {
-            suma1 += Number(this.gastosFinancieros.anioA);
-            suma2 += Number(this.gastosFinancieros.anioB);
-            suma3 += Number(this.gastosFinancieros.anioC);
-            suma4 += Number(this.gastosFinancieros.anioD);
-      //  }
-
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
-        this.formulario.totalGastosFinancieros.componentes[0].cantidad = suma1;
-        this.formulario.totalGastosFinancieros.componentes[1].cantidad = suma2;
-        this.formulario.totalGastosFinancieros.componentes[2].cantidad = suma3;
-        this.formulario.totalGastosFinancieros.componentes[3].cantidad = suma4;
+        this.formulario.totalGastosFinancieros.componentes[0].cantidad = suma1 + Number(this.gastosFinancieros.anioA);
+        this.formulario.totalGastosFinancieros.componentes[1].cantidad = suma2 + Number(this.gastosFinancieros.anioB);
+        this.formulario.totalGastosFinancieros.componentes[2].cantidad = suma3 + Number(this.gastosFinancieros.anioC);
+        this.formulario.totalGastosFinancieros.componentes[3].cantidad = suma4 + Number(this.gastosFinancieros.anioD);
 
         this.displayGastosFinancieros = false;
         this.gastosFinancieros = new DetalleCuenta();
@@ -1147,22 +1273,22 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.otrosIngresos.descripcion + '_' + this.formulario.listaOtrosIngresos.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM1ANEX1D_COD_OTROS_INGRESOS + '_' + this.formulario.listaOtrosIngresos.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.otrosIngresos.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.otrosIngresos.descripcion + '_' + this.formulario.listaOtrosIngresos.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM1ANEX1D_COD_OTROS_INGRESOS + '_' + this.formulario.listaOtrosIngresos.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.otrosIngresos.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.otrosIngresos.descripcion + '_' + this.formulario.listaOtrosIngresos.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM1ANEX1D_COD_OTROS_INGRESOS + '_' + this.formulario.listaOtrosIngresos.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.otrosIngresos.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.otrosIngresos.descripcion + '_' + this.formulario.listaOtrosIngresos.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM1ANEX1D_COD_OTROS_INGRESOS + '_' + this.formulario.listaOtrosIngresos.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.otrosIngresos.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarOtrosIngresos) {
@@ -1193,19 +1319,11 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
                 }
             }
         }
-
-       // if (!this.editarOtrosIngresos) {
-            suma1 += Number(this.otrosIngresos.anioA);
-            suma2 += Number(this.otrosIngresos.anioB);
-            suma3 += Number(this.otrosIngresos.anioC);
-            suma4 += Number(this.otrosIngresos.anioD);
-       // }
-
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
-        this.formulario.totalOtrosIngresos.componentes[0].cantidad = suma1;
-        this.formulario.totalOtrosIngresos.componentes[1].cantidad = suma2;
-        this.formulario.totalOtrosIngresos.componentes[2].cantidad = suma3;
-        this.formulario.totalOtrosIngresos.componentes[3].cantidad = suma4;
+        this.formulario.totalOtrosIngresos.componentes[0].cantidad = suma1 + Number(this.otrosIngresos.anioA);
+        this.formulario.totalOtrosIngresos.componentes[1].cantidad = suma2 + Number(this.otrosIngresos.anioB);
+        this.formulario.totalOtrosIngresos.componentes[2].cantidad = suma3 + Number(this.otrosIngresos.anioC);
+        this.formulario.totalOtrosIngresos.componentes[3].cantidad = suma4 + Number(this.otrosIngresos.anioD);
 
         this.displayOtrosIngresos = false;
         this.otrosIngresos = new DetalleCuenta();
@@ -1258,22 +1376,22 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.otrosEgresos.descripcion + '_' + this.formulario.listaOtrosEgresos.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM1ANEX1D_COD_OTROS_EGRESOS + '_' + this.formulario.listaOtrosEgresos.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.otrosEgresos.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.otrosEgresos.descripcion + '_' + this.formulario.listaOtrosEgresos.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM1ANEX1D_COD_OTROS_EGRESOS + '_' + this.formulario.listaOtrosEgresos.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.otrosEgresos.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.otrosEgresos.descripcion + '_' + this.formulario.listaOtrosEgresos.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM1ANEX1D_COD_OTROS_EGRESOS + '_' + this.formulario.listaOtrosEgresos.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.otrosEgresos.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.otrosEgresos.descripcion + '_' + this.formulario.listaOtrosEgresos.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM1ANEX1D_COD_OTROS_EGRESOS + '_' + this.formulario.listaOtrosEgresos.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.otrosEgresos.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarOtrosEgresos) {
@@ -1304,18 +1422,10 @@ export class FormularioFinancieroAnexo1DComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
-      //  if (!this.editarOtrosEgresos) {
-            suma1 += Number(this.otrosEgresos.anioA);
-            suma2 += Number(this.otrosEgresos.anioB);
-            suma3 += Number(this.otrosEgresos.anioC);
-            suma4 += Number(this.otrosEgresos.anioD);
-      //  }
-
-        this.formulario.totalOtrosEgresos.componentes[0].cantidad = suma1;
-        this.formulario.totalOtrosEgresos.componentes[1].cantidad = suma2;
-        this.formulario.totalOtrosEgresos.componentes[2].cantidad = suma3;
-        this.formulario.totalOtrosEgresos.componentes[3].cantidad = suma4;
+        this.formulario.totalOtrosEgresos.componentes[0].cantidad = suma1 + Number(this.otrosEgresos.anioA);
+        this.formulario.totalOtrosEgresos.componentes[1].cantidad = suma2 + Number(this.otrosEgresos.anioB);
+        this.formulario.totalOtrosEgresos.componentes[2].cantidad = suma3 + Number(this.otrosEgresos.anioC);
+        this.formulario.totalOtrosEgresos.componentes[3].cantidad = suma4 + Number(this.otrosEgresos.anioD);
 
         this.displayOtrosEgresos = false;
         this.otrosEgresos = new DetalleCuenta();

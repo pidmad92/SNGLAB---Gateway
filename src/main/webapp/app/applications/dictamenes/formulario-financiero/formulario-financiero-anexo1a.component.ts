@@ -463,35 +463,13 @@ export class FormularioFinancieroAnexo1AComponent implements OnInit, OnDestroy {
         this.formulario.listaInternacional = new Array<Tabla>();
         this.formulario.subtotalNacional = new Array<Tabla>();
         this.formulario.subtotalInternacional = new Array<Tabla>();
-        for (let i = 0; i < this.anios.length; i++) {
-            this.formulario.subtotalNacional[i] = new Tabla();
-            this.formulario.subtotalNacional[i].componentes = new Array<Componente>();
-
-            this.formulario.subtotalInternacional[i] = new Tabla();
-            this.formulario.subtotalInternacional[i].componentes = new Array<Componente>();
-
-            for (let j = 0; j < anxNacCod.length; j++) {
-                this.formulario.subtotalNacional[i].componentes[j] = new Componente();
-                this.formulario.subtotalNacional[i].componentes[j].cantidad = 0;
-                this.formulario.subtotalNacional[i].componentes[j].codigo = anxNacCod[j] + 'subtotal_' + i + '_' +  this.anios[i];
-            }
-
-            for (let j = 0; j < anxIntCod.length; j++) {
-                this.formulario.subtotalInternacional[i].componentes[j] = new Componente();
-                this.formulario.subtotalInternacional[i].componentes[j].cantidad = 0;
-                this.formulario.subtotalInternacional[i].componentes[j].codigo = anxIntCod[j] + 'subtotal_' + i + '_' + this.anios[i];
-            }
-
-        }
 
         this.obtenerValores('f1anex1a_nac', true);
 
         this.obtenerValores('f1anex1a_int', false);
 
-        this.obtenerSubtotalesValores('f1anex1a_nac', 'subtotal', true);
-        this.obtenerSubtotalesValores('f1anex1a_int', 'subtotal', false);
-
-        if ( this.formulario.listaNacional !== undefined ) {}
+        this.obtenerSubtotalesValores('f1anex1a_nac', 'subtotal', true, anxNacCod);
+        this.obtenerSubtotalesValores('f1anex1a_int', 'subtotal', false, anxIntCod);
 
         this.formulario.ingresoTotal = new Array<Tabla>();
         this.formulario.ingresoTotal[0] = new Tabla();
@@ -544,89 +522,113 @@ export class FormularioFinancieroAnexo1AComponent implements OnInit, OnDestroy {
                 let cont = 1;
                 let i = 0;
                 const objetos: FormfinancDetalle[] = res.json;
-                while ((cont - 1) < objetos.length) {
-                    if ( nacional ) {
-                        if (this.formulario.listaNacional[i] === undefined) {
-                            this.formulario.listaNacional[i] = new Tabla();
-                            if ( this.formulario.listaNacional[i].componentes === undefined ) {
-                                this.formulario.listaNacional[i].componentes = new Array<Componente>();
+                if (objetos.length > 0) {
+                    while ((cont - 1) < objetos.length) {
+                        if (nacional) {
+                            if (this.formulario.listaNacional[i] === undefined) {
+                                this.formulario.listaNacional[i] = new Tabla();
+                                if (this.formulario.listaNacional[i].componentes === undefined) {
+                                    this.formulario.listaNacional[i].componentes = new Array<Componente>();
+                                }
+                            }
+                        } else {
+                            if (this.formulario.listaInternacional[i] === undefined) {
+                                this.formulario.listaInternacional[i] = new Tabla();
+                                if (this.formulario.listaInternacional[i].componentes === undefined) {
+                                    this.formulario.listaInternacional[i].componentes = new Array<Componente>();
+                                }
                             }
                         }
-                    } else {
-                        if (this.formulario.listaInternacional[i] === undefined) {
-                            this.formulario.listaInternacional[i] = new Tabla();
-                            if ( this.formulario.listaInternacional[i].componentes === undefined ) {
-                                this.formulario.listaInternacional[i].componentes = new Array<Componente>();
-                            }
+                        // componentes[i] = new Componente();
+                        const comp: Componente = new Componente();
+                        comp.codigo = objetos[cont - 1].vCompone;
+                        comp.cantidad = objetos[cont - 1].nValffina;
+                        comp.id = objetos[cont - 1].nCodfdetal;
+                        comp.vUsureg = objetos[cont - 1].vUsuareg;
+                        comp.tFecReg = objetos[cont - 1].tFecreg;
+                        comp.nSedeReg = objetos[cont - 1].nSedereg;
+                        if (nacional) {
+                            this.formulario.listaNacional[i].descripcion = objetos[cont - 1].vDesffina;
+                            this.formulario.listaNacional[i].unidadmedida = objetos[cont - 1].vUndffina;
+                            this.formulario.listaNacional[i].componentes.push(comp);
+                        } else {
+                            this.formulario.listaInternacional[i].descripcion = objetos[cont - 1].vDesffina;
+                            this.formulario.listaInternacional[i].unidadmedida = objetos[cont - 1].vUndffina;
+                            this.formulario.listaInternacional[i].componentes.push(comp);
                         }
+                        if (cont % 12 === 0 && (cont - 1) !== 0) {
+                            i++;
+                        }
+                        cont++;
                     }
-                    // componentes[i] = new Componente();
-                    const comp: Componente = new Componente();
-                    comp.codigo = objetos[cont - 1].vCompone;
-                    comp.cantidad = objetos[cont - 1].nValffina;
-                    comp.id = objetos[cont - 1].nCodfdetal;
-                    comp.vUsureg = objetos[cont - 1].vUsuareg;
-                    comp.tFecReg = objetos[cont - 1].tFecreg;
-                    comp.nSedeReg = objetos[cont - 1].nSedereg;
-                    if (nacional) {
-                        this.formulario.listaNacional[i].descripcion = objetos[cont - 1].vDesffina;
-                        this.formulario.listaNacional[i].unidadmedida = objetos[cont - 1].vUndffina;
-                        this.formulario.listaNacional[i].componentes.push(comp);
-                    } else {
-                        this.formulario.listaInternacional[i].descripcion = objetos[cont - 1].vDesffina;
-                        this.formulario.listaInternacional[i].unidadmedida = objetos[cont - 1].vUndffina;
-                        this.formulario.listaInternacional[i].componentes.push(comp);
-                    }
-                    if (cont % 12 === 0 && (cont - 1) !== 0) {
-                        i++;
-                    }
-                    cont++;
                 }
             },
             (res: ResponseWrapper) => this.onError(res.json)
         );
     }
 
-    obtenerSubtotalesValores(componente: string, componente2: string, nacional: boolean) {
+    obtenerSubtotalesValores(componente: string, componente2: string, nacional: boolean, anxCod: string[]) {
         const componentes = new Array<Componente>();
         this.formfinancdetalleService.obtenerListaComponentes(this.nCodffina, componente, componente2).subscribe(
             (res: ResponseWrapper) => {
                 let cont = 1;
                 let i = 0;
                 const objetos: FormfinancDetalle[] = res.json;
-                while ((cont - 1) < objetos.length) {
-                    if ( nacional ) {
-                        if (this.formulario.subtotalNacional[i] === undefined) {
-                            this.formulario.subtotalNacional[i] = new Tabla();
-                            if ( this.formulario.subtotalNacional[i].componentes === undefined ) {
-                                this.formulario.subtotalNacional[i].componentes = new Array<Componente>();
+                if (objetos.length > 0) {
+                    while ((cont - 1) < objetos.length) {
+                        if (nacional) {
+                            if (this.formulario.subtotalNacional[i] === undefined) {
+                                this.formulario.subtotalNacional[i] = new Tabla();
+                                if (this.formulario.subtotalNacional[i].componentes === undefined) {
+                                    this.formulario.subtotalNacional[i].componentes = new Array<Componente>();
+                                }
+                            }
+                        } else {
+                            if (this.formulario.subtotalInternacional[i] === undefined) {
+                                this.formulario.subtotalInternacional[i] = new Tabla();
+                                if (this.formulario.subtotalInternacional[i].componentes === undefined) {
+                                    this.formulario.subtotalInternacional[i].componentes = new Array<Componente>();
+                                }
                             }
                         }
-                    } else {
-                        if (this.formulario.subtotalInternacional[i] === undefined) {
-                            this.formulario.subtotalInternacional[i] = new Tabla();
-                            if ( this.formulario.subtotalInternacional[i].componentes === undefined ) {
-                                this.formulario.subtotalInternacional[i].componentes = new Array<Componente>();
+                        const comp: Componente = new Componente();
+                        comp.codigo = objetos[cont - 1].vCompone;
+                        comp.cantidad = objetos[cont - 1].nValffina;
+                        comp.id = objetos[cont - 1].nCodfdetal;
+                        comp.vUsureg = objetos[cont - 1].vUsuareg;
+                        comp.tFecReg = objetos[cont - 1].tFecreg;
+                        comp.nSedeReg = objetos[cont - 1].nSedereg;
+                        if (nacional) {
+                            this.formulario.subtotalNacional[i].componentes.push(comp);
+                        } else {
+                            this.formulario.subtotalInternacional[i].componentes.push(comp);
+                        }
+                        if (cont % 3 === 0 && (cont - 1) !== 0) {
+                            i++;
+                        }
+                        cont++;
+                    }
+                } else {
+                    for (let m = 0; m < this.anios.length; m++) {
+                        if (nacional) {
+                            this.formulario.subtotalNacional[m] = new Tabla();
+                            this.formulario.subtotalNacional[m].componentes = new Array<Componente>();
+                            for (let j = 0; j < anxCod.length; j++) {
+                                this.formulario.subtotalNacional[m].componentes[j] = new Componente();
+                                this.formulario.subtotalNacional[m].componentes[j].cantidad = 0;
+                                this.formulario.subtotalNacional[m].componentes[j].codigo = anxCod[j] + 'subtotal_' + m + '_' + this.anios[m];
+                            }
+                        } else {
+                            this.formulario.subtotalInternacional[m] = new Tabla();
+                            this.formulario.subtotalInternacional[m].componentes = new Array<Componente>();
+                            for (let j = 0; j < anxCod.length; j++) {
+                                this.formulario.subtotalInternacional[m].componentes[j] = new Componente();
+                                this.formulario.subtotalInternacional[m].componentes[j].cantidad = 0;
+                                this.formulario.subtotalInternacional[m].componentes[j].codigo = anxCod[j] + 'subtotal_' + m + '_' + this.anios[m];
                             }
                         }
+
                     }
-                    // componentes[i] = new Componente();
-                    const comp: Componente = new Componente();
-                    comp.codigo = objetos[cont - 1].vCompone;
-                    comp.cantidad = objetos[cont - 1].nValffina;
-                    comp.id = objetos[cont - 1].nCodfdetal;
-                    comp.vUsureg = objetos[cont - 1].vUsuareg;
-                    comp.tFecReg = objetos[cont - 1].tFecreg;
-                    comp.nSedeReg = objetos[cont - 1].nSedereg;
-                    if (nacional) {
-                        this.formulario.subtotalNacional[i].componentes.push(comp);
-                    } else {
-                        this.formulario.subtotalInternacional[i].componentes.push(comp);
-                    }
-                    if (cont % 12 === 0 && (cont - 1) !== 0) {
-                        i++;
-                    }
-                    cont++;
                 }
             },
             (res: ResponseWrapper) => this.onError(res.json)

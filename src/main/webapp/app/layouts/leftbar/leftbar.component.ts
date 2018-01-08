@@ -50,7 +50,6 @@ export class LeftbarComponent implements OnInit {
     }
 
     getRoute(url) {
-        console.log(url);
         for (const module of this.modules) {
             if (url === '/') {
                 this.aplicacion = 'seguridad';

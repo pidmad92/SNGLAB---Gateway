@@ -18,7 +18,7 @@ import { Tabla } from './tabla.model';
 import { Componente } from './componente.model';
 import { FormularioAnexo2C } from './formulario-anexo2c.model';
 import { DetalleCuenta } from './detallecuenta.model';
-import { FormfinancDetalleService } from '../entities/index';
+import { FormfinancDetalleService, FormfinancDetalle } from '../entities/index';
 
 @Component({
     selector: 'jhi-formulario-financiero-anexo2c',
@@ -122,7 +122,9 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
         });
     }
 
-    load(nCodfperf) { }
+    load(nCodffina) {
+        this.nCodffina = nCodffina;
+     }
 
     ngOnInit() {
         this.loadAll();
@@ -207,64 +209,278 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
         this.formulario.listaPNCProvisiones = new Array<Tabla>();
         this.formulario.listaPResultadosNoRealizados = new Array<Tabla>();
 
+        this.obtenerValores(this.constantes.FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALES + '_', 1);
+        this.obtenerValores(this.constantes.FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALESRELACIONADAS + '_', 2);
+        this.obtenerValores(this.constantes.FORM2ANEX2C_COD_ACCUENTASCOBRARDIVERSAS + '_', 3);
+        this.obtenerValores(this.constantes.FORM2ANEX2C_COD_ACOTRASCUENTAS + '_', 4);
+        this.obtenerValores(this.constantes.FORM2ANEX2C_COD_ANCOTRASCUENTAS + '_', 5);
+        this.obtenerValores(this.constantes.FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALES + '_', 6);
+        this.obtenerValores(this.constantes.FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALESRELACIONADAS + '_', 7);
+        this.obtenerValores(this.constantes.FORM2ANEX2C_COD_PCOBLIGACIONESFINANCIERAS + '_', 8);
+        this.obtenerValores(this.constantes.FORM2ANEX2C_COD_PCPROVISIONES + '_', 9);
+        this.obtenerValores(this.constantes.FORM2ANEX2C_COD_PCOTRASCUENTAS + '_', 10);
+        this.obtenerValores(this.constantes.FORM2ANEX2C_COD_PNCOBLIGACIONESFINANCIERAS + '_', 11);
+        this.obtenerValores(this.constantes.FORM2ANEX2C_COD_PNCOTRASCUENTAS + '_', 12);
+        this.obtenerValores(this.constantes.FORM2ANEX2C_COD_PNCPROVISIONES + '_', 13);
+        this.obtenerValores(this.constantes.FORM2ANEX2C_COD_PRESULTADOSNOREALIZADOS + '_', 14);
+
         const totalACCuentasCobrarComercialesDesc: string[] = [this.constantes.FORM2ANEX2C_ACCUENTASCOBRARCOMERCIALES];
-        const totalACCuentasCobrarComercialesCod: string[] = [this.constantes.FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALES];
+        const totalACCuentasCobrarComercialesCod: string[] = [this.constantes.FORM2ANEX2C_COD_TOTAL_ACCUENTASCOBRARCOMERCIALES];
         this.formulario.totalACCuentasCobrarComerciales = this.creartotales(totalACCuentasCobrarComercialesDesc, totalACCuentasCobrarComercialesCod);
 
         const totalACCuentasCobrarComercialesRelacionadasDesc: string[] = [this.constantes.FORM2ANEX2C_ACCUENTASCOBRARCOMERCIALESRELACIONADAS];
-        const totalACCuentasCobrarComercialesRelacionadasCod: string[] = [this.constantes.FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALESRELACIONADAS];
+        const totalACCuentasCobrarComercialesRelacionadasCod: string[] = [this.constantes.FORM2ANEX2C_COD_TOTAL_ACCUENTASCOBRARCOMERCIALESRELACIONADAS];
         // tslint:disable-next-line:max-line-length
         this.formulario.totalACCuentasCobrarComercialesRelacionadas = this.creartotales(totalACCuentasCobrarComercialesRelacionadasDesc, totalACCuentasCobrarComercialesRelacionadasCod);
 
         const totalACCuentasCobrarDiversasDesc: string[] = [this.constantes.FORM2ANEX2C_ACCUENTASCOBRARDIVERSAS];
-        const totalACCuentasCobrarDiversasCod: string[] = [this.constantes.FORM2ANEX2C_COD_ACCUENTASCOBRARDIVERSAS];
+        const totalACCuentasCobrarDiversasCod: string[] = [this.constantes.FORM2ANEX2C_COD_TOTAL_ACCUENTASCOBRARDIVERSAS];
         this.formulario.totalACCuentasCobrarDiversas = this.creartotales(totalACCuentasCobrarDiversasDesc, totalACCuentasCobrarDiversasCod);
 
         const totalACOtrasCuentasDesc: string[] = [this.constantes.FORM2ANEX2C_ACOTRASCUENTAS];
-        const totalACOtrasCuentasCod: string[] = [this.constantes.FORM2ANEX2C_COD_ACOTRASCUENTAS];
+        const totalACOtrasCuentasCod: string[] = [this.constantes.FORM2ANEX2C_COD_TOTAL_ACOTRASCUENTAS];
         this.formulario.totalACOtrasCuentas = this.creartotales(totalACOtrasCuentasDesc, totalACOtrasCuentasCod);
 
         const totalANCOtrasCuentasDesc: string[] = [this.constantes.FORM2ANEX2C_ANCOTRASCUENTAS];
-        const totalANCOtrasCuentasCod: string[] = [this.constantes.FORM2ANEX2C_COD_ANCOTRASCUENTAS];
+        const totalANCOtrasCuentasCod: string[] = [this.constantes.FORM2ANEX2C_COD_TOTAL_ANCOTRASCUENTAS];
         this.formulario.totalANCOtrasCuentas = this.creartotales(totalANCOtrasCuentasDesc, totalANCOtrasCuentasCod);
 
         const totalPCCuentasPagarComercialesDesc: string[] = [this.constantes.FORM2ANEX2C_PCCUENTASPAGARCOMERCIALES];
-        const totalPCCuentasPagarComercialesCod: string[] = [this.constantes.FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALES];
+        const totalPCCuentasPagarComercialesCod: string[] = [this.constantes.FORM2ANEX2C_COD_TOTAL_PCCUENTASPAGARCOMERCIALES];
         this.formulario.totalPCCuentasPagarComerciales = this.creartotales(totalPCCuentasPagarComercialesDesc, totalPCCuentasPagarComercialesCod);
 
         const totalPCCuentasPagarComercialesRelacionadasDesc: string[] = [this.constantes.FORM2ANEX2C_PCCUENTASPAGARCOMERCIALESRELACIONADAS];
-        const totalPCCuentasPagarComercialesRelacionadasCod: string[] = [this.constantes.FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALESRELACIONADAS];
+        const totalPCCuentasPagarComercialesRelacionadasCod: string[] = [this.constantes.FORM2ANEX2C_COD_TOTAL_PCCUENTASPAGARCOMERCIALESRELACIONADAS];
         // tslint:disable-next-line:max-line-length
         this.formulario.totalPCCuentasPagarComercialesRelacionadas = this.creartotales(totalPCCuentasPagarComercialesRelacionadasDesc, totalPCCuentasPagarComercialesRelacionadasCod);
 
         const totalPCObligacionesFinancierasDesc: string[] = [this.constantes.FORM2ANEX2C_PCOBLIGACIONESFINANCIERAS];
-        const totalPCObligacionesFinancierasCod: string[] = [this.constantes.FORM2ANEX2C_COD_PCOBLIGACIONESFINANCIERAS];
+        const totalPCObligacionesFinancierasCod: string[] = [this.constantes.FORM2ANEX2C_COD_TOTAL_PCOBLIGACIONESFINANCIERAS];
         this.formulario.totalPCObligacionesFinancieras = this.creartotales(totalPCObligacionesFinancierasDesc, totalPCObligacionesFinancierasCod);
 
         const totalPCProvisionesDesc: string[] = [this.constantes.FORM2ANEX2C_PCPROVISIONES];
-        const totalPCProvisionesCod: string[] = [this.constantes.FORM2ANEX2C_COD_PCPROVISIONES];
+        const totalPCProvisionesCod: string[] = [this.constantes.FORM2ANEX2C_COD_TOTAL_PCPROVISIONES];
         this.formulario.totalPCProvisiones = this.creartotales(totalPCProvisionesDesc, totalPCProvisionesCod);
 
         const totalPCOtrasCuentasDesc: string[] = [this.constantes.FORM2ANEX2C_PCOTRASCUENTAS];
-        const totalPCOtrasCuentasCod: string[] = [this.constantes.FORM2ANEX2C_COD_PCOTRASCUENTAS];
+        const totalPCOtrasCuentasCod: string[] = [this.constantes.FORM2ANEX2C_COD_TOTAL_PCOTRASCUENTAS];
         this.formulario.totalPCOtrasCuentas = this.creartotales(totalPCOtrasCuentasDesc, totalPCOtrasCuentasCod);
 
         const totalPNCObligacionesFinancierasDesc: string[] = [this.constantes.FORM2ANEX2C_PNCOBLIGACIONESFINANCIERAS];
-        const totalPNCObligacionesFinancierasCod: string[] = [this.constantes.FORM2ANEX2C_COD_PNCOBLIGACIONESFINANCIERAS];
+        const totalPNCObligacionesFinancierasCod: string[] = [this.constantes.FORM2ANEX2C_COD_TOTAL_PNCOBLIGACIONESFINANCIERAS];
         this.formulario.totalPNCObligacionesFinancieras = this.creartotales(totalPNCObligacionesFinancierasDesc, totalPNCObligacionesFinancierasCod);
 
         const totalPNCOtrasCuentasDesc: string[] = [this.constantes.FORM2ANEX2C_PNCOTRASCUENTAS];
-        const totalPNCOtrasCuentasCod: string[] = [this.constantes.FORM2ANEX2C_COD_PNCOTRASCUENTAS];
+        const totalPNCOtrasCuentasCod: string[] = [this.constantes.FORM2ANEX2C_COD_TOTAL_PNCOTRASCUENTAS];
         this.formulario.totalPNCOtrasCuentas = this.creartotales(totalPNCOtrasCuentasDesc, totalPNCOtrasCuentasCod);
 
         const totalPNCProvisionesDesc: string[] = [this.constantes.FORM2ANEX2C_PNCPROVISIONES];
-        const totalPNCProvisionesCod: string[] = [this.constantes.FORM2ANEX2C_COD_PNCPROVISIONES];
+        const totalPNCProvisionesCod: string[] = [this.constantes.FORM2ANEX2C_COD_TOTAL_PNCPROVISIONES];
         this.formulario.totalPNCProvisiones = this.creartotales(totalPNCProvisionesDesc, totalPNCProvisionesCod);
 
         const totalPResultadosNoRealizadosDesc: string[] = [this.constantes.FORM2ANEX2C_PRESULTADOSNOREALIZADOS];
-        const totalPResultadosNoRealizadosCod: string[] = [this.constantes.FORM2ANEX2C_COD_PRESULTADOSNOREALIZADOS];
+        const totalPResultadosNoRealizadosCod: string[] = [this.constantes.FORM2ANEX2C_COD_TOTAL_PRESULTADOSNOREALIZADOS];
         this.formulario.totalPResultadosNoRealizados = this.creartotales(totalPResultadosNoRealizadosDesc, totalPResultadosNoRealizadosCod);
 
+    }
+
+    obtenerComponente(tabla: Tabla[], i: number, codigo: string) {
+        this.formfinancdetalleService.obtenerComponente(this.nCodffina, codigo).subscribe(
+            (formfinancdetalle) => {
+                if (formfinancdetalle !== undefined) {
+                    tabla[0].componentes[i].cantidad = formfinancdetalle.nValffina;
+                    tabla[0].componentes[i].id = formfinancdetalle.nCodfdetal;
+                    tabla[0].componentes[i].vUsureg = formfinancdetalle.vUsuareg;
+                    tabla[0].componentes[i].tFecReg = formfinancdetalle.tFecreg;
+                    tabla[0].componentes[i].nSedeReg = formfinancdetalle.nSedereg;
+                }
+            }
+        );
+    }
+
+    obtenerValores(componente: string, tipo: number) {
+        const excluido = 'subtotal';
+        const componentes = new Array<Componente>();
+        this.formfinancdetalleService.obtenerListaComponenteExcluido(this.nCodffina, componente, excluido).subscribe(
+            (res: ResponseWrapper) => {
+                let cont = 1;
+                let i = 0;
+                const objetos: FormfinancDetalle[] = res.json;
+                if (objetos.length > 0) {
+                    while ((cont - 1) < objetos.length) {
+                        const comp: Componente = new Componente();
+                        comp.codigo = objetos[cont - 1].vCompone;
+                        comp.cantidad = objetos[cont - 1].nValffina;
+                        comp.id = objetos[cont - 1].nCodfdetal;
+                        comp.vUsureg = objetos[cont - 1].vUsuareg;
+                        comp.tFecReg = objetos[cont - 1].tFecreg;
+                        comp.nSedeReg = objetos[cont - 1].nSedereg;
+                        switch (tipo) {
+                            case 1:
+                                if (this.formulario.listaACCuentasCobrarComerciales[i] === undefined) {
+                                    this.formulario.listaACCuentasCobrarComerciales[i] = new Tabla();
+                                    if (this.formulario.listaACCuentasCobrarComerciales[i].componentes === undefined) {
+                                        this.formulario.listaACCuentasCobrarComerciales[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaACCuentasCobrarComerciales[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaACCuentasCobrarComerciales[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaACCuentasCobrarComerciales[i].componentes.push(comp);
+                            break;
+                            case 2:
+                                if (this.formulario.listaACCuentasCobrarComercialesRelacionadas[i] === undefined) {
+                                    this.formulario.listaACCuentasCobrarComercialesRelacionadas[i] = new Tabla();
+                                    if (this.formulario.listaACCuentasCobrarComercialesRelacionadas[i].componentes === undefined) {
+                                        this.formulario.listaACCuentasCobrarComercialesRelacionadas[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaACCuentasCobrarComercialesRelacionadas[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaACCuentasCobrarComercialesRelacionadas[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaACCuentasCobrarComercialesRelacionadas[i].componentes.push(comp);
+                            break;
+                            case 3:
+                                if (this.formulario.listaACCuentasCobrarDiversas[i] === undefined) {
+                                    this.formulario.listaACCuentasCobrarDiversas[i] = new Tabla();
+                                    if (this.formulario.listaACCuentasCobrarDiversas[i].componentes === undefined) {
+                                        this.formulario.listaACCuentasCobrarDiversas[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaACCuentasCobrarDiversas[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaACCuentasCobrarDiversas[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaACCuentasCobrarDiversas[i].componentes.push(comp);
+                            break;
+                            case 4:
+                                if (this.formulario.listaACOtrasCuentas[i] === undefined) {
+                                    this.formulario.listaACOtrasCuentas[i] = new Tabla();
+                                    if (this.formulario.listaACOtrasCuentas[i].componentes === undefined) {
+                                        this.formulario.listaACOtrasCuentas[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaACOtrasCuentas[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaACOtrasCuentas[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaACOtrasCuentas[i].componentes.push(comp);
+                            break;
+                            case 5:
+                                if (this.formulario.listaANCOtrasCuentas[i] === undefined) {
+                                    this.formulario.listaANCOtrasCuentas[i] = new Tabla();
+                                    if (this.formulario.listaANCOtrasCuentas[i].componentes === undefined) {
+                                        this.formulario.listaANCOtrasCuentas[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaANCOtrasCuentas[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaANCOtrasCuentas[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaANCOtrasCuentas[i].componentes.push(comp);
+                            break;
+                            case 6:
+                                if (this.formulario.listaPCCuentasPagarComerciales[i] === undefined) {
+                                    this.formulario.listaPCCuentasPagarComerciales[i] = new Tabla();
+                                    if (this.formulario.listaPCCuentasPagarComerciales[i].componentes === undefined) {
+                                        this.formulario.listaPCCuentasPagarComerciales[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaPCCuentasPagarComerciales[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaPCCuentasPagarComerciales[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaPCCuentasPagarComerciales[i].componentes.push(comp);
+                            break;
+                            case 7:
+                                if (this.formulario.listaPCCuentasPagarComercialesRelacionadas[i] === undefined) {
+                                    this.formulario.listaPCCuentasPagarComercialesRelacionadas[i] = new Tabla();
+                                    if (this.formulario.listaPCCuentasPagarComercialesRelacionadas[i].componentes === undefined) {
+                                        this.formulario.listaPCCuentasPagarComercialesRelacionadas[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaPCCuentasPagarComercialesRelacionadas[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaPCCuentasPagarComercialesRelacionadas[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaPCCuentasPagarComercialesRelacionadas[i].componentes.push(comp);
+                            break;
+                            case 8:
+                                if (this.formulario.listaPCObligacionesFinancieras[i] === undefined) {
+                                    this.formulario.listaPCObligacionesFinancieras[i] = new Tabla();
+                                    if (this.formulario.listaPCObligacionesFinancieras[i].componentes === undefined) {
+                                        this.formulario.listaPCObligacionesFinancieras[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaPCObligacionesFinancieras[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaPCObligacionesFinancieras[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaPCObligacionesFinancieras[i].componentes.push(comp);
+                            break;
+                            case 9:
+                                if (this.formulario.listaPCProvisiones[i] === undefined) {
+                                    this.formulario.listaPCProvisiones[i] = new Tabla();
+                                    if (this.formulario.listaPCProvisiones[i].componentes === undefined) {
+                                        this.formulario.listaPCProvisiones[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaPCProvisiones[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaPCProvisiones[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaPCProvisiones[i].componentes.push(comp);
+                            break;
+                            case 10:
+                                if (this.formulario.listaPCOtrasCuentas[i] === undefined) {
+                                    this.formulario.listaPCOtrasCuentas[i] = new Tabla();
+                                    if (this.formulario.listaPCOtrasCuentas[i].componentes === undefined) {
+                                        this.formulario.listaPCOtrasCuentas[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaPCOtrasCuentas[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaPCOtrasCuentas[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaPCOtrasCuentas[i].componentes.push(comp);
+                            break;
+                            case 11:
+                                if (this.formulario.listaPNCObligacionesFinancieras[i] === undefined) {
+                                    this.formulario.listaPNCObligacionesFinancieras[i] = new Tabla();
+                                    if (this.formulario.listaPNCObligacionesFinancieras[i].componentes === undefined) {
+                                        this.formulario.listaPNCObligacionesFinancieras[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaPNCObligacionesFinancieras[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaPNCObligacionesFinancieras[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaPNCObligacionesFinancieras[i].componentes.push(comp);
+                            break;
+                            case 12:
+                                if (this.formulario.listaPNCOtrasCuentas[i] === undefined) {
+                                    this.formulario.listaPNCOtrasCuentas[i] = new Tabla();
+                                    if (this.formulario.listaPNCOtrasCuentas[i].componentes === undefined) {
+                                        this.formulario.listaPNCOtrasCuentas[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaPCOtrasCuentas[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaPCOtrasCuentas[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaPCOtrasCuentas[i].componentes.push(comp);
+                            break;
+                            case 13:
+                                if (this.formulario.listaPNCProvisiones[i] === undefined) {
+                                    this.formulario.listaPNCProvisiones[i] = new Tabla();
+                                    if (this.formulario.listaPNCProvisiones[i].componentes === undefined) {
+                                        this.formulario.listaPNCProvisiones[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaPNCProvisiones[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaPNCProvisiones[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaPNCProvisiones[i].componentes.push(comp);
+                            break;
+                            case 14:
+                                if (this.formulario.listaPResultadosNoRealizados[i] === undefined) {
+                                    this.formulario.listaPResultadosNoRealizados[i] = new Tabla();
+                                    if (this.formulario.listaPResultadosNoRealizados[i].componentes === undefined) {
+                                        this.formulario.listaPResultadosNoRealizados[i].componentes = new Array<Componente>();
+                                    }
+                                }
+                                this.formulario.listaPResultadosNoRealizados[i].descripcion = objetos[cont - 1].vDesffina;
+                                this.formulario.listaPResultadosNoRealizados[i].unidadmedida = objetos[cont - 1].vUndffina;
+                                this.formulario.listaPResultadosNoRealizados[i].componentes.push(comp);
+                            break;
+                        }
+
+                        if (cont % 4 === 0 && (cont - 1) !== 0) {
+                            i++;
+                        }
+                        cont++;
+                    }
+                }
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
     // Funcionaes para la creacion de Formularios
@@ -383,22 +599,22 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.ACCuentasCobrarComerciales.descripcion + '_' + this.formulario.listaACCuentasCobrarComerciales.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALES + '_' + this.formulario.listaACCuentasCobrarComerciales.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.ACCuentasCobrarComerciales.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.ACCuentasCobrarComerciales.descripcion + '_' + this.formulario.listaACCuentasCobrarComerciales.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALES + '_' + this.formulario.listaACCuentasCobrarComerciales.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.ACCuentasCobrarComerciales.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.ACCuentasCobrarComerciales.descripcion + '_' + this.formulario.listaACCuentasCobrarComerciales.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALES + '_' + this.formulario.listaACCuentasCobrarComerciales.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.ACCuentasCobrarComerciales.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.ACCuentasCobrarComerciales.descripcion + '_' + this.formulario.listaACCuentasCobrarComerciales.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALES + '_' + this.formulario.listaACCuentasCobrarComerciales.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.ACCuentasCobrarComerciales.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarACCuentasCobrarComerciales) {
@@ -429,12 +645,6 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        /*if (!this.editarACCuentasCobrarComerciales) {
-            suma1 += Number(this.ACCuentasCobrarComerciales.anioA);
-            suma2 += Number(this.ACCuentasCobrarComerciales.anioB);
-            suma3 += Number(this.ACCuentasCobrarComerciales.anioC);
-            suma4 += Number(this.ACCuentasCobrarComerciales.anioD);
-        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalACCuentasCobrarComerciales.componentes[0].cantidad = suma1 + Number(this.ACCuentasCobrarComerciales.anioA);
         this.formulario.totalACCuentasCobrarComerciales.componentes[1].cantidad = suma2 + Number(this.ACCuentasCobrarComerciales.anioB);
@@ -491,22 +701,26 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.ACCuentasCobrarComercialesRelacionadas.descripcion + '_' + this.formulario.listaACCuentasCobrarComercialesRelacionadas.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALESRELACIONADAS + '_' +
+                                 this.formulario.listaACCuentasCobrarComercialesRelacionadas.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.ACCuentasCobrarComercialesRelacionadas.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.ACCuentasCobrarComercialesRelacionadas.descripcion + '_' + this.formulario.listaACCuentasCobrarComercialesRelacionadas.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALESRELACIONADAS + '_' +
+                                 this.formulario.listaACCuentasCobrarComercialesRelacionadas.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.ACCuentasCobrarComercialesRelacionadas.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.ACCuentasCobrarComercialesRelacionadas.descripcion + '_' + this.formulario.listaACCuentasCobrarComercialesRelacionadas.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALESRELACIONADAS + '_' +
+                                 this.formulario.listaACCuentasCobrarComercialesRelacionadas.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.ACCuentasCobrarComercialesRelacionadas.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.ACCuentasCobrarComercialesRelacionadas.descripcion + '_' + this.formulario.listaACCuentasCobrarComercialesRelacionadas.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALESRELACIONADAS + '_' +
+                                 this.formulario.listaACCuentasCobrarComercialesRelacionadas.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.ACCuentasCobrarComercialesRelacionadas.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarACCuentasCobrarComercialesRelacionadas) {
@@ -537,12 +751,6 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        /*if (!this.editarACCuentasCobrarComercialesRelacionadas) {
-            suma1 += Number(this.ACCuentasCobrarComercialesRelacionadas.anioA);
-            suma2 += Number(this.ACCuentasCobrarComercialesRelacionadas.anioB);
-            suma3 += Number(this.ACCuentasCobrarComercialesRelacionadas.anioC);
-            suma4 += Number(this.ACCuentasCobrarComercialesRelacionadas.anioD);
-        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalACCuentasCobrarComercialesRelacionadas.componentes[0].cantidad = suma1 + Number(this.ACCuentasCobrarComercialesRelacionadas.anioA);
         this.formulario.totalACCuentasCobrarComercialesRelacionadas.componentes[1].cantidad = suma2 + Number(this.ACCuentasCobrarComercialesRelacionadas.anioB);
@@ -599,22 +807,26 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.ACCuentasCobrarDiversas.descripcion + '_' + this.formulario.listaACCuentasCobrarDiversas.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM2ANEX2C_COD_ACCUENTASCOBRARDIVERSAS + '_' +
+                                 this.formulario.listaACCuentasCobrarDiversas.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.ACCuentasCobrarDiversas.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.ACCuentasCobrarDiversas.descripcion + '_' + this.formulario.listaACCuentasCobrarDiversas.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM2ANEX2C_COD_ACCUENTASCOBRARDIVERSAS + '_' +
+                                 this.formulario.listaACCuentasCobrarDiversas.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.ACCuentasCobrarDiversas.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.ACCuentasCobrarDiversas.descripcion + '_' + this.formulario.listaACCuentasCobrarDiversas.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM2ANEX2C_COD_ACCUENTASCOBRARDIVERSAS + '_' +
+                                 this.formulario.listaACCuentasCobrarDiversas.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.ACCuentasCobrarDiversas.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.ACCuentasCobrarDiversas.descripcion + '_' + this.formulario.listaACCuentasCobrarDiversas.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM2ANEX2C_COD_ACCUENTASCOBRARDIVERSAS + '_' +
+                                 this.formulario.listaACCuentasCobrarDiversas.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.ACCuentasCobrarDiversas.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarACCuentasCobrarDiversas) {
@@ -645,12 +857,6 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        /*if (!this.editarACCuentasCobrarDiversas) {
-            suma1 += Number(this.ACCuentasCobrarDiversas.anioA);
-            suma2 += Number(this.ACCuentasCobrarDiversas.anioB);
-            suma3 += Number(this.ACCuentasCobrarDiversas.anioC);
-            suma4 += Number(this.ACCuentasCobrarDiversas.anioD);
-        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalACCuentasCobrarDiversas.componentes[0].cantidad = suma1 + Number(this.ACCuentasCobrarDiversas.anioA);
         this.formulario.totalACCuentasCobrarDiversas.componentes[1].cantidad = suma2 + Number(this.ACCuentasCobrarDiversas.anioB);
@@ -707,22 +913,22 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.ACOtrasCuentas.descripcion + '_' + this.formulario.listaACOtrasCuentas.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM2ANEX2C_COD_ACOTRASCUENTAS + '_' + this.formulario.listaACOtrasCuentas.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.ACOtrasCuentas.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.ACOtrasCuentas.descripcion + '_' + this.formulario.listaACOtrasCuentas.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM2ANEX2C_COD_ACOTRASCUENTAS + '_' + this.formulario.listaACOtrasCuentas.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.ACOtrasCuentas.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.ACOtrasCuentas.descripcion + '_' + this.formulario.listaACOtrasCuentas.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM2ANEX2C_COD_ACOTRASCUENTAS + '_' + this.formulario.listaACOtrasCuentas.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.ACOtrasCuentas.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.ACOtrasCuentas.descripcion + '_' + this.formulario.listaACOtrasCuentas.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM2ANEX2C_COD_ACOTRASCUENTAS + '_' + this.formulario.listaACOtrasCuentas.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.ACOtrasCuentas.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarACOtrasCuentas) {
@@ -753,12 +959,6 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        /*if (!this.editarACOtrasCuentas) {
-            suma1 += Number(this.ACOtrasCuentas.anioA);
-            suma2 += Number(this.ACOtrasCuentas.anioB);
-            suma3 += Number(this.ACOtrasCuentas.anioC);
-            suma4 += Number(this.ACOtrasCuentas.anioD);
-        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalACOtrasCuentas.componentes[0].cantidad = suma1 + Number(this.ACOtrasCuentas.anioA);
         this.formulario.totalACOtrasCuentas.componentes[1].cantidad = suma2 + Number(this.ACOtrasCuentas.anioB);
@@ -815,22 +1015,22 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.ANCOtrasCuentas.descripcion + '_' + this.formulario.listaANCOtrasCuentas.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM2ANEX2C_COD_ANCOTRASCUENTAS + '_' + this.formulario.listaANCOtrasCuentas.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.ANCOtrasCuentas.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.ANCOtrasCuentas.descripcion + '_' + this.formulario.listaANCOtrasCuentas.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM2ANEX2C_COD_ANCOTRASCUENTAS + '_' + this.formulario.listaANCOtrasCuentas.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.ANCOtrasCuentas.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.ANCOtrasCuentas.descripcion + '_' + this.formulario.listaANCOtrasCuentas.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM2ANEX2C_COD_ANCOTRASCUENTAS + '_' + this.formulario.listaANCOtrasCuentas.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.ANCOtrasCuentas.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.ANCOtrasCuentas.descripcion + '_' + this.formulario.listaANCOtrasCuentas.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM2ANEX2C_COD_ANCOTRASCUENTAS + '_' + this.formulario.listaANCOtrasCuentas.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.ANCOtrasCuentas.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarANCOtrasCuentas) {
@@ -861,12 +1061,6 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        /*if (!this.editarANCOtrasCuentas) {
-            suma1 += Number(this.ANCOtrasCuentas.anioA);
-            suma2 += Number(this.ANCOtrasCuentas.anioB);
-            suma3 += Number(this.ANCOtrasCuentas.anioC);
-            suma4 += Number(this.ANCOtrasCuentas.anioD);
-        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalANCOtrasCuentas.componentes[0].cantidad = suma1 + Number(this.ANCOtrasCuentas.anioA);
         this.formulario.totalANCOtrasCuentas.componentes[1].cantidad = suma2 + Number(this.ANCOtrasCuentas.anioB);
@@ -923,22 +1117,22 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.PCCuentasPagarComerciales.descripcion + '_' + this.formulario.listaPCCuentasPagarComerciales.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALES + '_' + this.formulario.listaPCCuentasPagarComerciales.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.PCCuentasPagarComerciales.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.PCCuentasPagarComerciales.descripcion + '_' + this.formulario.listaPCCuentasPagarComerciales.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALES + '_' + this.formulario.listaPCCuentasPagarComerciales.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.PCCuentasPagarComerciales.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.PCCuentasPagarComerciales.descripcion + '_' + this.formulario.listaPCCuentasPagarComerciales.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALES + '_' + this.formulario.listaPCCuentasPagarComerciales.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.PCCuentasPagarComerciales.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.PCCuentasPagarComerciales.descripcion + '_' + this.formulario.listaPCCuentasPagarComerciales.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALES + '_' + this.formulario.listaPCCuentasPagarComerciales.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.PCCuentasPagarComerciales.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarPCCuentasPagarComerciales) {
@@ -969,12 +1163,6 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        /*if (!this.editarPCCuentasPagarComerciales) {
-            suma1 += Number(this.PCCuentasPagarComerciales.anioA);
-            suma2 += Number(this.PCCuentasPagarComerciales.anioB);
-            suma3 += Number(this.PCCuentasPagarComerciales.anioC);
-            suma4 += Number(this.PCCuentasPagarComerciales.anioD);
-        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalPCCuentasPagarComerciales.componentes[0].cantidad = suma1 + Number(this.PCCuentasPagarComerciales.anioA);
         this.formulario.totalPCCuentasPagarComerciales.componentes[1].cantidad = suma2 + Number(this.PCCuentasPagarComerciales.anioB);
@@ -1031,22 +1219,26 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.PCCuentasPagarComercialesRelacionadas.descripcion + '_' + this.formulario.listaPCCuentasPagarComercialesRelacionadas.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALESRELACIONADAS + '_' +
+                                 this.formulario.listaPCCuentasPagarComercialesRelacionadas.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.PCCuentasPagarComercialesRelacionadas.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.PCCuentasPagarComercialesRelacionadas.descripcion + '_' + this.formulario.listaPCCuentasPagarComercialesRelacionadas.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALESRELACIONADAS + '_' +
+                                 this.formulario.listaPCCuentasPagarComercialesRelacionadas.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.PCCuentasPagarComercialesRelacionadas.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.PCCuentasPagarComercialesRelacionadas.descripcion + '_' + this.formulario.listaPCCuentasPagarComercialesRelacionadas.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALESRELACIONADAS + '_' +
+                                 this.formulario.listaPCCuentasPagarComercialesRelacionadas.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.PCCuentasPagarComercialesRelacionadas.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.PCCuentasPagarComercialesRelacionadas.descripcion + '_' + this.formulario.listaPCCuentasPagarComercialesRelacionadas.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALESRELACIONADAS + '_' +
+                                 this.formulario.listaPCCuentasPagarComercialesRelacionadas.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.PCCuentasPagarComercialesRelacionadas.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarPCCuentasPagarComercialesRelacionadas) {
@@ -1077,12 +1269,6 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        /*if (!this.editarPCCuentasPagarComercialesRelacionadas) {
-            suma1 += Number(this.PCCuentasPagarComercialesRelacionadas.anioA);
-            suma2 += Number(this.PCCuentasPagarComercialesRelacionadas.anioB);
-            suma3 += Number(this.PCCuentasPagarComercialesRelacionadas.anioC);
-            suma4 += Number(this.PCCuentasPagarComercialesRelacionadas.anioD);
-        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalPCCuentasPagarComercialesRelacionadas.componentes[0].cantidad = suma1 + Number(this.PCCuentasPagarComercialesRelacionadas.anioA);
         this.formulario.totalPCCuentasPagarComercialesRelacionadas.componentes[1].cantidad = suma2 + Number(this.PCCuentasPagarComercialesRelacionadas.anioB);
@@ -1138,22 +1324,26 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.PCObligacionesFinancieras.descripcion + '_' + this.formulario.listaPCObligacionesFinancieras.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM2ANEX2C_COD_PCOBLIGACIONESFINANCIERAS + '_' +
+                                 this.formulario.listaPCObligacionesFinancieras.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.PCObligacionesFinancieras.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.PCObligacionesFinancieras.descripcion + '_' + this.formulario.listaPCObligacionesFinancieras.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM2ANEX2C_COD_PCOBLIGACIONESFINANCIERAS + '_' +
+                                 this.formulario.listaPCObligacionesFinancieras.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.PCObligacionesFinancieras.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.PCObligacionesFinancieras.descripcion + '_' + this.formulario.listaPCObligacionesFinancieras.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM2ANEX2C_COD_PCOBLIGACIONESFINANCIERAS + '_' +
+                                 this.formulario.listaPCObligacionesFinancieras.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.PCObligacionesFinancieras.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.PCObligacionesFinancieras.descripcion + '_' + this.formulario.listaPCObligacionesFinancieras.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM2ANEX2C_COD_PCOBLIGACIONESFINANCIERAS + '_' +
+                                 this.formulario.listaPCObligacionesFinancieras.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.PCObligacionesFinancieras.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarPCObligacionesFinancieras) {
@@ -1184,12 +1374,6 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        /*if (!this.editarPCObligacionesFinancieras) {
-            suma1 += Number(this.PCObligacionesFinancieras.anioA);
-            suma2 += Number(this.PCObligacionesFinancieras.anioB);
-            suma3 += Number(this.PCObligacionesFinancieras.anioC);
-            suma4 += Number(this.PCObligacionesFinancieras.anioD);
-        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalPCObligacionesFinancieras.componentes[0].cantidad = suma1 + Number(this.PCObligacionesFinancieras.anioA);
         this.formulario.totalPCObligacionesFinancieras.componentes[1].cantidad = suma2 + Number(this.PCObligacionesFinancieras.anioB);
@@ -1245,22 +1429,22 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.PCProvisiones.descripcion + '_' + this.formulario.listaPCProvisiones.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM2ANEX2C_COD_PCPROVISIONES + '_' + this.formulario.listaPCProvisiones.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.PCProvisiones.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.PCProvisiones.descripcion + '_' + this.formulario.listaPCProvisiones.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM2ANEX2C_COD_PCPROVISIONES + '_' + this.formulario.listaPCProvisiones.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.PCProvisiones.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.PCProvisiones.descripcion + '_' + this.formulario.listaPCProvisiones.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM2ANEX2C_COD_PCPROVISIONES + '_' + this.formulario.listaPCProvisiones.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.PCProvisiones.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.PCProvisiones.descripcion + '_' + this.formulario.listaPCProvisiones.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM2ANEX2C_COD_PCPROVISIONES + '_' + this.formulario.listaPCProvisiones.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.PCProvisiones.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarPCProvisiones) {
@@ -1291,12 +1475,6 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        /*if (!this.editarPCProvisiones) {
-            suma1 += Number(this.PCProvisiones.anioA);
-            suma2 += Number(this.PCProvisiones.anioB);
-            suma3 += Number(this.PCProvisiones.anioC);
-            suma4 += Number(this.PCProvisiones.anioD);
-        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalPCProvisiones.componentes[0].cantidad = suma1 + Number(this.PCProvisiones.anioA);
         this.formulario.totalPCProvisiones.componentes[1].cantidad = suma2 + Number(this.PCProvisiones.anioB);
@@ -1352,22 +1530,22 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.PCOtrasCuentas.descripcion + '_' + this.formulario.listaPCOtrasCuentas.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM2ANEX2C_COD_PCOTRASCUENTAS + '_' + this.formulario.listaPCOtrasCuentas.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.PCOtrasCuentas.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.PCOtrasCuentas.descripcion + '_' + this.formulario.listaPCOtrasCuentas.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM2ANEX2C_COD_PCOTRASCUENTAS + '_' + this.formulario.listaPCOtrasCuentas.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.PCOtrasCuentas.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.PCOtrasCuentas.descripcion + '_' + this.formulario.listaPCOtrasCuentas.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM2ANEX2C_COD_PCOTRASCUENTAS + '_' + this.formulario.listaPCOtrasCuentas.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.PCOtrasCuentas.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.PCOtrasCuentas.descripcion + '_' + this.formulario.listaPCOtrasCuentas.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM2ANEX2C_COD_PCOTRASCUENTAS + '_' + this.formulario.listaPCOtrasCuentas.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.PCOtrasCuentas.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarPCOtrasCuentas) {
@@ -1398,12 +1576,6 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        /*if (!this.editarPCOtrasCuentas) {
-            suma1 += Number(this.PCOtrasCuentas.anioA);
-            suma2 += Number(this.PCOtrasCuentas.anioB);
-            suma3 += Number(this.PCOtrasCuentas.anioC);
-            suma4 += Number(this.PCOtrasCuentas.anioD);
-        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalPCOtrasCuentas.componentes[0].cantidad = suma1 + Number(this.PCOtrasCuentas.anioA);
         this.formulario.totalPCOtrasCuentas.componentes[1].cantidad = suma2 + Number(this.PCOtrasCuentas.anioB);
@@ -1459,22 +1631,22 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.PNCObligacionesFinancieras.descripcion + '_' + this.formulario.listaPNCObligacionesFinancieras.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM2ANEX2C_COD_PNCOBLIGACIONESFINANCIERAS + '_' + this.formulario.listaPNCObligacionesFinancieras.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.PNCObligacionesFinancieras.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.PNCObligacionesFinancieras.descripcion + '_' + this.formulario.listaPNCObligacionesFinancieras.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM2ANEX2C_COD_PNCOBLIGACIONESFINANCIERAS + '_' + this.formulario.listaPNCObligacionesFinancieras.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.PNCObligacionesFinancieras.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.PNCObligacionesFinancieras.descripcion + '_' + this.formulario.listaPNCObligacionesFinancieras.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM2ANEX2C_COD_PNCOBLIGACIONESFINANCIERAS + '_' + this.formulario.listaPNCObligacionesFinancieras.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.PNCObligacionesFinancieras.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.PNCObligacionesFinancieras.descripcion + '_' + this.formulario.listaPNCObligacionesFinancieras.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM2ANEX2C_COD_PNCOBLIGACIONESFINANCIERAS + '_' + this.formulario.listaPNCObligacionesFinancieras.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.PNCObligacionesFinancieras.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarPNCObligacionesFinancieras) {
@@ -1505,12 +1677,6 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        /*if (!this.editarPNCObligacionesFinancieras) {
-            suma1 += Number(this.PNCObligacionesFinancieras.anioA);
-            suma2 += Number(this.PNCObligacionesFinancieras.anioB);
-            suma3 += Number(this.PNCObligacionesFinancieras.anioC);
-            suma4 += Number(this.PNCObligacionesFinancieras.anioD);
-        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalPNCObligacionesFinancieras.componentes[0].cantidad = suma1 + Number(this.PNCObligacionesFinancieras.anioA);
         this.formulario.totalPNCObligacionesFinancieras.componentes[1].cantidad = suma2 + Number(this.PNCObligacionesFinancieras.anioB);
@@ -1566,22 +1732,22 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.PNCProvisiones.descripcion + '_' + this.formulario.listaPNCProvisiones.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM2ANEX2C_COD_PNCPROVISIONES + '_' + this.formulario.listaPNCProvisiones.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.PNCProvisiones.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.PNCProvisiones.descripcion + '_' + this.formulario.listaPNCProvisiones.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM2ANEX2C_COD_PNCPROVISIONES + '_' + this.formulario.listaPNCProvisiones.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.PNCProvisiones.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.PNCProvisiones.descripcion + '_' + this.formulario.listaPNCProvisiones.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM2ANEX2C_COD_PNCPROVISIONES + '_' + this.formulario.listaPNCProvisiones.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.PNCProvisiones.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.PNCProvisiones.descripcion + '_' + this.formulario.listaPNCProvisiones.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM2ANEX2C_COD_PNCPROVISIONES + '_' + this.formulario.listaPNCProvisiones.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.PNCProvisiones.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarPNCProvisiones) {
@@ -1612,12 +1778,6 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        /*if (!this.editarPNCProvisiones) {
-            suma1 += Number(this.PNCProvisiones.anioA);
-            suma2 += Number(this.PNCProvisiones.anioB);
-            suma3 += Number(this.PNCProvisiones.anioC);
-            suma4 += Number(this.PNCProvisiones.anioD);
-        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalPNCProvisiones.componentes[0].cantidad = suma1 + Number(this.PNCProvisiones.anioA);
         this.formulario.totalPNCProvisiones.componentes[1].cantidad = suma2 + Number(this.PNCProvisiones.anioB);
@@ -1673,22 +1833,22 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.PNCOtrasCuentas.descripcion + '_' + this.formulario.listaPNCOtrasCuentas.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM2ANEX2C_COD_PNCOTRASCUENTAS + '_' + this.formulario.listaPNCOtrasCuentas.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.PNCOtrasCuentas.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.PNCOtrasCuentas.descripcion + '_' + this.formulario.listaPNCOtrasCuentas.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM2ANEX2C_COD_PNCOTRASCUENTAS + '_' + this.formulario.listaPNCOtrasCuentas.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.PNCOtrasCuentas.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.PNCOtrasCuentas.descripcion + '_' + this.formulario.listaPNCOtrasCuentas.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM2ANEX2C_COD_PNCOTRASCUENTAS + '_' + this.formulario.listaPNCOtrasCuentas.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.PNCOtrasCuentas.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.PNCOtrasCuentas.descripcion + '_' + this.formulario.listaPNCOtrasCuentas.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM2ANEX2C_COD_PNCOTRASCUENTAS + '_' + this.formulario.listaPNCOtrasCuentas.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.PNCOtrasCuentas.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarPNCOtrasCuentas) {
@@ -1719,12 +1879,6 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        /*if (!this.editarPNCOtrasCuentas) {
-            suma1 += Number(this.PNCOtrasCuentas.anioA);
-            suma2 += Number(this.PNCOtrasCuentas.anioB);
-            suma3 += Number(this.PNCOtrasCuentas.anioC);
-            suma4 += Number(this.PNCOtrasCuentas.anioD);
-        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalPNCOtrasCuentas.componentes[0].cantidad = suma1 + Number(this.PNCOtrasCuentas.anioA);
         this.formulario.totalPNCOtrasCuentas.componentes[1].cantidad = suma2 + Number(this.PNCOtrasCuentas.anioB);
@@ -1780,22 +1934,22 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.PResultadosNoRealizados.descripcion + '_' + this.formulario.listaPResultadosNoRealizados.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM2ANEX2C_COD_PRESULTADOSNOREALIZADOS + '_' + this.formulario.listaPResultadosNoRealizados.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.PResultadosNoRealizados.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.PResultadosNoRealizados.descripcion + '_' + this.formulario.listaPResultadosNoRealizados.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM2ANEX2C_COD_PRESULTADOSNOREALIZADOS + '_' + this.formulario.listaPResultadosNoRealizados.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.PResultadosNoRealizados.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.PResultadosNoRealizados.descripcion + '_' + this.formulario.listaPResultadosNoRealizados.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM2ANEX2C_COD_PRESULTADOSNOREALIZADOS + '_' + this.formulario.listaPResultadosNoRealizados.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.PResultadosNoRealizados.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.PResultadosNoRealizados.descripcion + '_' + this.formulario.listaPResultadosNoRealizados.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM2ANEX2C_COD_PRESULTADOSNOREALIZADOS + '_' + this.formulario.listaPResultadosNoRealizados.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.PResultadosNoRealizados.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarPResultadosNoRealizados) {
@@ -1826,12 +1980,6 @@ export class FormularioFinancieroAnexo2CComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        /*if (!this.editarPResultadosNoRealizados) {
-            suma1 += Number(this.PResultadosNoRealizados.anioA);
-            suma2 += Number(this.PResultadosNoRealizados.anioB);
-            suma3 += Number(this.PResultadosNoRealizados.anioC);
-            suma4 += Number(this.PResultadosNoRealizados.anioD);
-        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalPResultadosNoRealizados.componentes[0].cantidad = suma1 + Number(this.PResultadosNoRealizados.anioA);
         this.formulario.totalPResultadosNoRealizados.componentes[1].cantidad = suma2 + Number(this.PResultadosNoRealizados.anioB);

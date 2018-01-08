@@ -17,7 +17,7 @@ import { Tabla } from './tabla.model';
 import { Anexo1B } from './anexo1b.model';
 import { Volumen } from './volumen.model';
 import { Componente } from './componente.model';
-import { FormfinancDetalleService } from '../entities/index';
+import { FormfinancDetalleService, FormfinancDetalle } from '../entities/index';
 
 @Component({
     selector: 'jhi-formulario-financiero-anexo1b',
@@ -90,6 +90,7 @@ export class FormularioFinancieroAnexo1BComponent implements OnInit, OnDestroy {
         this.anios.push(fecha - 1);
         this.anios.push(fecha);
         this.display = false;
+        this.constantes = new Constants();
         this.formulario = new Anexo1B();
         this.volumen = new Volumen();
         this.construirFormulario();
@@ -125,15 +126,19 @@ export class FormularioFinancieroAnexo1BComponent implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         t.componentes[0] = new Componente();
+        t.componentes[0].codigo = this.constantes.FORM1ANEX1B_COD_VOLUMEN + '_' + this.volumen.id + '_' + this.anios[0];
         t.componentes[0].cantidad = this.volumen.anioAvolumen;
 
         t.componentes[1] = new Componente();
+        t.componentes[1].codigo = this.constantes.FORM1ANEX1B_COD_VOLUMEN + '_' + this.volumen.id + '_' + this.anios[1];
         t.componentes[1].cantidad = this.volumen.anioBvolumen;
 
         t.componentes[2] = new Componente();
+        t.componentes[2].codigo = this.constantes.FORM1ANEX1B_COD_VOLUMEN + '_' + this.volumen.id + '_' + this.anios[2];
         t.componentes[2].cantidad = this.volumen.anioCvolumen;
 
         t.componentes[3] = new Componente();
+        t.componentes[3].codigo = this.constantes.FORM1ANEX1B_COD_VOLUMEN + '_' + this.volumen.id + '_' + this.anios[3];
         t.componentes[3].cantidad = this.volumen.anioDvolumen;
 
         if (this.editar) {
@@ -172,6 +177,47 @@ export class FormularioFinancieroAnexo1BComponent implements OnInit, OnDestroy {
     // ---------------------------------------
     construirFormulario() {
         this.formulario.listaProductos = new Array<Tabla>();
+
+        this.obtenerValores(this.constantes.FORM1ANEX1B_COD_VOLUMEN, true);
+    }
+
+    obtenerValores(componente: string, nacional: boolean) {
+        const excluido = 'subtotal';
+        const componentes = new Array<Componente>();
+        this.formfinancdetalleService.obtenerListaComponenteExcluido(this.nCodffina, componente, excluido).subscribe(
+            (res: ResponseWrapper) => {
+                let cont = 1;
+                let i = 0;
+                const objetos: FormfinancDetalle[] = res.json;
+                if (objetos.length > 0) {
+                    while ((cont - 1) < objetos.length) {
+                        if (this.formulario.listaProductos[i] === undefined) {
+                            this.formulario.listaProductos[i] = new Tabla();
+                            if (this.formulario.listaProductos[i].componentes === undefined) {
+                                this.formulario.listaProductos[i].componentes = new Array<Componente>();
+                            }
+                        }
+                        // componentes[i] = new Componente();
+                        const comp: Componente = new Componente();
+                        comp.codigo = objetos[cont - 1].vCompone;
+                        comp.cantidad = objetos[cont - 1].nValffina;
+                        comp.id = objetos[cont - 1].nCodfdetal;
+                        comp.vUsureg = objetos[cont - 1].vUsuareg;
+                        comp.tFecReg = objetos[cont - 1].tFecreg;
+                        comp.nSedeReg = objetos[cont - 1].nSedereg;
+
+                        this.formulario.listaProductos[i].descripcion = objetos[cont - 1].vDesffina;
+                        this.formulario.listaProductos[i].unidadmedida = objetos[cont - 1].vUndffina;
+                        this.formulario.listaProductos[i].componentes.push(comp);
+                        if (cont % 4 === 0 && (cont - 1) !== 0) {
+                            i++;
+                        }
+                        cont++;
+                    }
+                }
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
     // Solo numeros

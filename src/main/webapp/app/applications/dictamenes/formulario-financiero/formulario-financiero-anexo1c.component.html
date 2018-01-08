@@ -56,7 +56,7 @@
                                 <td></td>
                                 <ng-container *ngFor="let lista of formulario.subtotalMPNacional;">
                                     <ng-container *ngFor="let comp of lista.componentes;">
-                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                        <td colspan="3" class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
                                     </ng-container>
                                 </ng-container>
                                 <td></td>
@@ -110,7 +110,7 @@
                                 <td></td>
                                 <ng-container *ngFor="let lista of formulario.subtotalMPImportada;">
                                     <ng-container *ngFor="let comp of lista.componentes;">
-                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                        <td colspan="3" class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
                                     </ng-container>
                                 </ng-container>
                                 <td></td>
@@ -195,7 +195,7 @@
                         <td></td>
                         <ng-container *ngFor="let lista of formulario.subtotalGastosFinancieros;">
                             <ng-container *ngFor="let comp of lista.componentes;">
-                                <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                <td colspan="3" class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
                             </ng-container>
                         </ng-container>
                         <td></td>

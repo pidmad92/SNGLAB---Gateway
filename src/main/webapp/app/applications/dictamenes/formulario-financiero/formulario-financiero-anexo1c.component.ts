@@ -17,7 +17,7 @@ import { Constants } from './constants';
 import { Anexo1C } from './anexo1c.model';
 import { Tabla } from './tabla.model';
 import { Componente } from './componente.model';
-import { FormfinancDetalleService } from '../entities/index';
+import { FormfinancDetalleService, FormfinancDetalle } from '../entities/index';
 
 @Component({
     selector: 'jhi-formulario-financiero-anexo1c',
@@ -147,40 +147,52 @@ export class FormularioFinancieroAnexo1CComponent implements OnInit, OnDestroy {
 
         t.componentes = new Array<Componente>();
         t.componentes[0] = new Componente();
+        t.componentes[0].codigo = this.constantes.FORM1ANEX1C_COD_MP_NAC_CANTIDAD_CONSUMIDA + '_' + this.ventasMPNacionales.id + '_' + this.anios[0];
         t.componentes[0].cantidad = Number(this.ventasMPNacionales.anioAvolumenfisico);
 
         t.componentes[1] = new Componente();
+        t.componentes[1].codigo = this.constantes.FORM1ANEX1C_COD_MP_NAC_PRECIO_PROMEDIO + '_' + this.ventasMPNacionales.id + '_' + this.anios[0];
         t.componentes[1].cantidad = Number(this.ventasMPNacionales.anioApromedio);
 
         t.componentes[2] = new Componente();
-        t.componentes[2].cantidad = Number(this.ventasMPNacionales.anioAvolumenfisico) + Number(this.ventasMPNacionales.anioApromedio);
+        t.componentes[2].codigo = this.constantes.FORM1ANEX1C_COD_MP_NAC_COSTO_TOTAL + '_' + this.ventasMPNacionales.id + '_' + this.anios[0];
+        t.componentes[2].cantidad = Number(this.ventasMPNacionales.anioAvolumenfisico) * Number(this.ventasMPNacionales.anioApromedio);
 
         t.componentes[3] = new Componente();
+        t.componentes[3].codigo = this.constantes.FORM1ANEX1C_COD_MP_NAC_CANTIDAD_CONSUMIDA + '_' + this.ventasMPNacionales.id + '_' + this.anios[1];
         t.componentes[3].cantidad = Number(this.ventasMPNacionales.anioBvolumenfisico);
 
         t.componentes[4] = new Componente();
+        t.componentes[4].codigo = this.constantes.FORM1ANEX1C_COD_MP_NAC_PRECIO_PROMEDIO + '_' + this.ventasMPNacionales.id + '_' + this.anios[1];
         t.componentes[4].cantidad = Number(this.ventasMPNacionales.anioBpromedio);
 
         t.componentes[5] = new Componente();
-        t.componentes[5].cantidad = Number(this.ventasMPNacionales.anioBvolumenfisico) + Number(this.ventasMPNacionales.anioBpromedio);
+        t.componentes[5].codigo = this.constantes.FORM1ANEX1C_COD_MP_NAC_COSTO_TOTAL + '_' + this.ventasMPNacionales.id + '_' + this.anios[1];
+        t.componentes[5].cantidad = Number(this.ventasMPNacionales.anioBvolumenfisico) * Number(this.ventasMPNacionales.anioBpromedio);
 
         t.componentes[6] = new Componente();
+        t.componentes[6].codigo = this.constantes.FORM1ANEX1C_COD_MP_NAC_CANTIDAD_CONSUMIDA + '_' + this.ventasMPNacionales.id + '_' + this.anios[2];
         t.componentes[6].cantidad = Number(this.ventasMPNacionales.anioCvolumenfisico);
 
         t.componentes[7] = new Componente();
+        t.componentes[7].codigo = this.constantes.FORM1ANEX1C_COD_MP_NAC_PRECIO_PROMEDIO + '_' + this.ventasMPNacionales.id + '_' + this.anios[2];
         t.componentes[7].cantidad = Number(this.ventasMPNacionales.anioCpromedio);
 
         t.componentes[8] = new Componente();
-        t.componentes[8].cantidad = Number(this.ventasMPNacionales.anioCvolumenfisico) + Number(this.ventasMPNacionales.anioCpromedio);
+        t.componentes[8].codigo = this.constantes.FORM1ANEX1C_COD_MP_NAC_COSTO_TOTAL + '_' + this.ventasMPNacionales.id + '_' + this.anios[2];
+        t.componentes[8].cantidad = Number(this.ventasMPNacionales.anioCvolumenfisico) * Number(this.ventasMPNacionales.anioCpromedio);
 
         t.componentes[9] = new Componente();
+        t.componentes[9].codigo = this.constantes.FORM1ANEX1C_COD_MP_NAC_CANTIDAD_CONSUMIDA + '_' + this.ventasMPNacionales.id + '_' + this.anios[3];
         t.componentes[9].cantidad = Number(this.ventasMPNacionales.anioDvolumenfisico);
 
         t.componentes[10] = new Componente();
+        t.componentes[10].codigo = this.constantes.FORM1ANEX1C_COD_MP_NAC_PRECIO_PROMEDIO + '_' + this.ventasMPNacionales.id + '_' + this.anios[3];
         t.componentes[10].cantidad = Number(this.ventasMPNacionales.anioDpromedio);
 
         t.componentes[11] = new Componente();
-        t.componentes[11].cantidad = Number(this.ventasMPNacionales.anioDvolumenfisico) + Number(this.ventasMPNacionales.anioDpromedio);
+        t.componentes[11].codigo = this.constantes.FORM1ANEX1C_COD_MP_NAC_COSTO_TOTAL + '_' + this.ventasMPNacionales.id + '_' + this.anios[3];
+        t.componentes[11].cantidad = Number(this.ventasMPNacionales.anioDvolumenfisico) * Number(this.ventasMPNacionales.anioDpromedio);
 
         if (this.editarMPNacional) {
             const bean: Tabla = this.formulario.listaMPNacional.find((x) => x.id === t.id);
@@ -201,51 +213,26 @@ export class FormularioFinancieroAnexo1CComponent implements OnInit, OnDestroy {
 
     actualizarSubtotalMPNacional() {
 
-        let multiplicacion1 = 0;
-        let multiplicacion2 = 0;
-        let multiplicacion3 = 0;
-        let multiplicacion4 = 0;
-        let multiplicacion5 = 0;
-        let multiplicacion6 = 0;
-        let multiplicacion7 = 0;
-        let multiplicacion8 = 0;
-        let multiplicacion9 = 0;
-        let multiplicacion10 = 0;
-        let multiplicacion11 = 0;
-        let multiplicacion12 = 0;
+        let suma1 = 0;
+        let suma2 = 0;
+        let suma3 = 0;
+        let suma4 = 0;
 
         for (let i = 0; i < this.formulario.listaMPNacional.length; i++) {
             for (let j = 0; j < this.formulario.listaMPNacional[i].componentes.length; j++) {
                 switch (j) {
-                    case 0: multiplicacion1 *= this.formulario.listaMPNacional[i].componentes[j].cantidad; break;
-                    case 1: multiplicacion2 *= this.formulario.listaMPNacional[i].componentes[j].cantidad; break;
-                    case 2: multiplicacion3 *= this.formulario.listaMPNacional[i].componentes[j].cantidad; break;
-                    case 3: multiplicacion4 *= this.formulario.listaMPNacional[i].componentes[j].cantidad; break;
-                    case 4: multiplicacion5 *= this.formulario.listaMPNacional[i].componentes[j].cantidad; break;
-                    case 5: multiplicacion6 *= this.formulario.listaMPNacional[i].componentes[j].cantidad; break;
-                    case 6: multiplicacion7 *= this.formulario.listaMPNacional[i].componentes[j].cantidad; break;
-                    case 7: multiplicacion8 *= this.formulario.listaMPNacional[i].componentes[j].cantidad; break;
-                    case 8: multiplicacion9 *= this.formulario.listaMPNacional[i].componentes[j].cantidad; break;
-                    case 9: multiplicacion10 *= this.formulario.listaMPNacional[i].componentes[j].cantidad; break;
-                    case 10: multiplicacion11 *= this.formulario.listaMPNacional[i].componentes[j].cantidad; break;
-                    case 11: multiplicacion12 *= this.formulario.listaMPNacional[i].componentes[j].cantidad; break;
-
+                    case 2: suma1 += this.formulario.listaMPNacional[i].componentes[j].cantidad; break;
+                    case 5: suma2 += this.formulario.listaMPNacional[i].componentes[j].cantidad; break;
+                    case 8: suma3 += this.formulario.listaMPNacional[i].componentes[j].cantidad; break;
+                    case 11: suma4 += this.formulario.listaMPNacional[i].componentes[j].cantidad; break;
                 }
             }
         }
 
-        this.formulario.subtotalMPNacional[0].componentes[0].cantidad = multiplicacion1;
-        this.formulario.subtotalMPNacional[0].componentes[1].cantidad = multiplicacion2;
-        this.formulario.subtotalMPNacional[0].componentes[2].cantidad = multiplicacion3;
-        this.formulario.subtotalMPNacional[1].componentes[0].cantidad = multiplicacion4;
-        this.formulario.subtotalMPNacional[1].componentes[1].cantidad = multiplicacion5;
-        this.formulario.subtotalMPNacional[1].componentes[2].cantidad = multiplicacion6;
-        this.formulario.subtotalMPNacional[2].componentes[0].cantidad = multiplicacion7;
-        this.formulario.subtotalMPNacional[2].componentes[1].cantidad = multiplicacion8;
-        this.formulario.subtotalMPNacional[2].componentes[2].cantidad = multiplicacion9;
-        this.formulario.subtotalMPNacional[3].componentes[0].cantidad = multiplicacion10;
-        this.formulario.subtotalMPNacional[3].componentes[1].cantidad = multiplicacion11;
-        this.formulario.subtotalMPNacional[3].componentes[2].cantidad = multiplicacion12;
+        this.formulario.subtotalMPNacional[0].componentes[0].cantidad = suma1;
+        this.formulario.subtotalMPNacional[1].componentes[0].cantidad = suma2;
+        this.formulario.subtotalMPNacional[2].componentes[0].cantidad = suma3;
+        this.formulario.subtotalMPNacional[3].componentes[0].cantidad = suma4;
         this.actualizarTotalMP();
     }
 
@@ -299,40 +286,52 @@ export class FormularioFinancieroAnexo1CComponent implements OnInit, OnDestroy {
 
         t.componentes = new Array<Componente>();
         t.componentes[0] = new Componente();
+        t.componentes[0].codigo = this.constantes.FORM1ANEX1C_COD_MP_IMP_CANTIDAD_CONSUMIDA + '_' + this.ventasMPImportadas.id + '_' + this.anios[0];
         t.componentes[0].cantidad = Number(this.ventasMPImportadas.anioAvolumenfisico);
 
         t.componentes[1] = new Componente();
+        t.componentes[1].codigo = this.constantes.FORM1ANEX1C_COD_MP_IMP_PRECIO_PROMEDIO + '_' + this.ventasMPImportadas.id + '_' + this.anios[0];
         t.componentes[1].cantidad = Number(this.ventasMPImportadas.anioApromedio);
 
         t.componentes[2] = new Componente();
-        t.componentes[2].cantidad = Number(this.ventasMPImportadas.anioAvolumenfisico) + Number(this.ventasMPImportadas.anioApromedio);
+        t.componentes[2].codigo = this.constantes.FORM1ANEX1C_COD_MP_IMP_COSTO_TOTAL + '_' + this.ventasMPImportadas.id + '_' + this.anios[0];
+        t.componentes[2].cantidad = Number(this.ventasMPImportadas.anioAvolumenfisico) * Number(this.ventasMPImportadas.anioApromedio);
 
         t.componentes[3] = new Componente();
+        t.componentes[3].codigo = this.constantes.FORM1ANEX1C_COD_MP_IMP_CANTIDAD_CONSUMIDA + '_' + this.ventasMPImportadas.id + '_' + this.anios[1];
         t.componentes[3].cantidad = Number(this.ventasMPImportadas.anioBvolumenfisico);
 
         t.componentes[4] = new Componente();
+        t.componentes[4].codigo = this.constantes.FORM1ANEX1C_COD_MP_IMP_PRECIO_PROMEDIO + '_' + this.ventasMPImportadas.id + '_' + this.anios[1];
         t.componentes[4].cantidad = Number(this.ventasMPImportadas.anioBpromedio);
 
         t.componentes[5] = new Componente();
-        t.componentes[5].cantidad = Number(this.ventasMPImportadas.anioBvolumenfisico) + Number(this.ventasMPImportadas.anioBpromedio);
+        t.componentes[5].codigo = this.constantes.FORM1ANEX1C_COD_MP_IMP_COSTO_TOTAL + '_' + this.ventasMPImportadas.id + '_' + this.anios[1];
+        t.componentes[5].cantidad = Number(this.ventasMPImportadas.anioBvolumenfisico) * Number(this.ventasMPImportadas.anioBpromedio);
 
         t.componentes[6] = new Componente();
+        t.componentes[6].codigo = this.constantes.FORM1ANEX1C_COD_MP_IMP_CANTIDAD_CONSUMIDA + '_' + this.ventasMPImportadas.id + '_' + this.anios[2];
         t.componentes[6].cantidad = Number(this.ventasMPImportadas.anioCvolumenfisico);
 
         t.componentes[7] = new Componente();
+        t.componentes[7].codigo = this.constantes.FORM1ANEX1C_COD_MP_IMP_PRECIO_PROMEDIO + '_' + this.ventasMPImportadas.id + '_' + this.anios[2];
         t.componentes[7].cantidad = Number(this.ventasMPImportadas.anioCpromedio);
 
         t.componentes[8] = new Componente();
-        t.componentes[8].cantidad = Number(this.ventasMPImportadas.anioCvolumenfisico) + Number(this.ventasMPImportadas.anioCpromedio);
+        t.componentes[8].codigo = this.constantes.FORM1ANEX1C_COD_MP_IMP_COSTO_TOTAL + '_' + this.ventasMPImportadas.id + '_' + this.anios[2];
+        t.componentes[8].cantidad = Number(this.ventasMPImportadas.anioCvolumenfisico) * Number(this.ventasMPImportadas.anioCpromedio);
 
         t.componentes[9] = new Componente();
+        t.componentes[9].codigo = this.constantes.FORM1ANEX1C_COD_MP_IMP_CANTIDAD_CONSUMIDA + '_' + this.ventasMPImportadas.id + '_' + this.anios[3];
         t.componentes[9].cantidad = Number(this.ventasMPImportadas.anioDvolumenfisico);
 
         t.componentes[10] = new Componente();
+        t.componentes[10].codigo = this.constantes.FORM1ANEX1C_COD_MP_IMP_PRECIO_PROMEDIO + '_' + this.ventasMPImportadas.id + '_' + this.anios[3];
         t.componentes[10].cantidad = Number(this.ventasMPImportadas.anioDpromedio);
 
         t.componentes[11] = new Componente();
-        t.componentes[11].cantidad = Number(this.ventasMPImportadas.anioDvolumenfisico) + Number(this.ventasMPImportadas.anioDpromedio);
+        t.componentes[11].codigo = this.constantes.FORM1ANEX1C_COD_MP_IMP_COSTO_TOTAL + '_' + this.ventasMPImportadas.id + '_' + this.anios[3];
+        t.componentes[11].cantidad = Number(this.ventasMPImportadas.anioDvolumenfisico) * Number(this.ventasMPImportadas.anioDpromedio);
 
         if (this.editarMPImportada) {
             const bean: Tabla = this.formulario.listaMPImportada.find((x) => x.id === t.id);
@@ -353,51 +352,26 @@ export class FormularioFinancieroAnexo1CComponent implements OnInit, OnDestroy {
 
     actualizarSubtotalMPImportada() {
 
-        let multiplicacion1 = 0;
-        let multiplicacion2 = 0;
-        let multiplicacion3 = 0;
-        let multiplicacion4 = 0;
-        let multiplicacion5 = 0;
-        let multiplicacion6 = 0;
-        let multiplicacion7 = 0;
-        let multiplicacion8 = 0;
-        let multiplicacion9 = 0;
-        let multiplicacion10 = 0;
-        let multiplicacion11 = 0;
-        let multiplicacion12 = 0;
+        let suma1 = 0;
+        let suma2 = 0;
+        let suma3 = 0;
+        let suma4 = 0;
 
         for (let i = 0; i < this.formulario.listaMPImportada.length; i++) {
             for (let j = 0; j < this.formulario.listaMPImportada[i].componentes.length; j++) {
                 switch (j) {
-                    case 0: multiplicacion1 *= this.formulario.listaMPImportada[i].componentes[j].cantidad; break;
-                    case 1: multiplicacion2 *= this.formulario.listaMPImportada[i].componentes[j].cantidad; break;
-                    case 2: multiplicacion3 *= this.formulario.listaMPImportada[i].componentes[j].cantidad; break;
-                    case 3: multiplicacion4 *= this.formulario.listaMPImportada[i].componentes[j].cantidad; break;
-                    case 4: multiplicacion5 *= this.formulario.listaMPImportada[i].componentes[j].cantidad; break;
-                    case 5: multiplicacion6 *= this.formulario.listaMPImportada[i].componentes[j].cantidad; break;
-                    case 6: multiplicacion7 *= this.formulario.listaMPImportada[i].componentes[j].cantidad; break;
-                    case 7: multiplicacion8 *= this.formulario.listaMPImportada[i].componentes[j].cantidad; break;
-                    case 8: multiplicacion9 *= this.formulario.listaMPImportada[i].componentes[j].cantidad; break;
-                    case 9: multiplicacion10 *= this.formulario.listaMPImportada[i].componentes[j].cantidad; break;
-                    case 10: multiplicacion11 *= this.formulario.listaMPImportada[i].componentes[j].cantidad; break;
-                    case 11: multiplicacion12 *= this.formulario.listaMPImportada[i].componentes[j].cantidad; break;
-
+                    case 2: suma1 += this.formulario.listaMPImportada[i].componentes[j].cantidad; break;
+                    case 5: suma2 += this.formulario.listaMPImportada[i].componentes[j].cantidad; break;
+                    case 8: suma3 += this.formulario.listaMPImportada[i].componentes[j].cantidad; break;
+                    case 11: suma4 += this.formulario.listaMPImportada[i].componentes[j].cantidad; break;
                 }
             }
         }
 
-        this.formulario.subtotalMPImportada[0].componentes[0].cantidad = multiplicacion1;
-        this.formulario.subtotalMPImportada[0].componentes[1].cantidad = multiplicacion2;
-        this.formulario.subtotalMPImportada[0].componentes[2].cantidad = multiplicacion3;
-        this.formulario.subtotalMPImportada[1].componentes[0].cantidad = multiplicacion4;
-        this.formulario.subtotalMPImportada[1].componentes[1].cantidad = multiplicacion5;
-        this.formulario.subtotalMPImportada[1].componentes[2].cantidad = multiplicacion6;
-        this.formulario.subtotalMPImportada[2].componentes[0].cantidad = multiplicacion7;
-        this.formulario.subtotalMPImportada[2].componentes[1].cantidad = multiplicacion8;
-        this.formulario.subtotalMPImportada[2].componentes[2].cantidad = multiplicacion9;
-        this.formulario.subtotalMPImportada[3].componentes[0].cantidad = multiplicacion10;
-        this.formulario.subtotalMPImportada[3].componentes[1].cantidad = multiplicacion11;
-        this.formulario.subtotalMPImportada[3].componentes[2].cantidad = multiplicacion12;
+        this.formulario.subtotalMPImportada[0].componentes[0].cantidad = suma1;
+        this.formulario.subtotalMPImportada[1].componentes[0].cantidad = suma2;
+        this.formulario.subtotalMPImportada[2].componentes[0].cantidad = suma3;
+        this.formulario.subtotalMPImportada[3].componentes[0].cantidad = suma4;
         this.actualizarTotalMP();
     }
 
@@ -450,40 +424,52 @@ export class FormularioFinancieroAnexo1CComponent implements OnInit, OnDestroy {
 
         t.componentes = new Array<Componente>();
         t.componentes[0] = new Componente();
+        t.componentes[0].codigo = this.constantes.FORM1ANEX1C_COD_GF_CANTIDAD_CONSUMIDA + '_' + this.ventasGastosFinancieros.id + '_' + this.anios[0];
         t.componentes[0].cantidad = Number(this.ventasGastosFinancieros.anioAvolumenfisico);
 
         t.componentes[1] = new Componente();
+        t.componentes[1].codigo = this.constantes.FORM1ANEX1C_COD_GF_PRECIO_PROMEDIO + '_' + this.ventasGastosFinancieros.id + '_' + this.anios[0];
         t.componentes[1].cantidad = Number(this.ventasGastosFinancieros.anioApromedio);
 
         t.componentes[2] = new Componente();
-        t.componentes[2].cantidad = Number(this.ventasGastosFinancieros.anioAvolumenfisico) + Number(this.ventasGastosFinancieros.anioApromedio);
+        t.componentes[2].codigo = this.constantes.FORM1ANEX1C_COD_GF_COSTO_TOTAL + '_' + this.ventasGastosFinancieros.id + '_' + this.anios[0];
+        t.componentes[2].cantidad = Number(this.ventasGastosFinancieros.anioAvolumenfisico) * Number(this.ventasGastosFinancieros.anioApromedio);
 
         t.componentes[3] = new Componente();
+        t.componentes[3].codigo = this.constantes.FORM1ANEX1C_COD_GF_CANTIDAD_CONSUMIDA + '_' + this.ventasGastosFinancieros.id + '_' + this.anios[1];
         t.componentes[3].cantidad = Number(this.ventasGastosFinancieros.anioBvolumenfisico);
 
         t.componentes[4] = new Componente();
+        t.componentes[4].codigo = this.constantes.FORM1ANEX1C_COD_GF_PRECIO_PROMEDIO + '_' + this.ventasGastosFinancieros.id + '_' + this.anios[1];
         t.componentes[4].cantidad = Number(this.ventasGastosFinancieros.anioBpromedio);
 
         t.componentes[5] = new Componente();
-        t.componentes[5].cantidad = Number(this.ventasGastosFinancieros.anioBvolumenfisico) + Number(this.ventasGastosFinancieros.anioBpromedio);
+        t.componentes[5].codigo = this.constantes.FORM1ANEX1C_COD_GF_COSTO_TOTAL + '_' + this.ventasGastosFinancieros.id + '_' + this.anios[1];
+        t.componentes[5].cantidad = Number(this.ventasGastosFinancieros.anioBvolumenfisico) * Number(this.ventasGastosFinancieros.anioBpromedio);
 
         t.componentes[6] = new Componente();
+        t.componentes[6].codigo = this.constantes.FORM1ANEX1C_COD_GF_CANTIDAD_CONSUMIDA + '_' + this.ventasGastosFinancieros.id + '_' + this.anios[2];
         t.componentes[6].cantidad = Number(this.ventasGastosFinancieros.anioCvolumenfisico);
 
         t.componentes[7] = new Componente();
+        t.componentes[7].codigo = this.constantes.FORM1ANEX1C_COD_GF_PRECIO_PROMEDIO + '_' + this.ventasGastosFinancieros.id + '_' + this.anios[2];
         t.componentes[7].cantidad = Number(this.ventasGastosFinancieros.anioCpromedio);
 
         t.componentes[8] = new Componente();
-        t.componentes[8].cantidad = Number(this.ventasGastosFinancieros.anioCvolumenfisico) + Number(this.ventasGastosFinancieros.anioCpromedio);
+        t.componentes[8].codigo = this.constantes.FORM1ANEX1C_COD_GF_COSTO_TOTAL + '_' + this.ventasGastosFinancieros.id + '_' + this.anios[2];
+        t.componentes[8].cantidad = Number(this.ventasGastosFinancieros.anioCvolumenfisico) * Number(this.ventasGastosFinancieros.anioCpromedio);
 
         t.componentes[9] = new Componente();
+        t.componentes[9].codigo = this.constantes.FORM1ANEX1C_COD_GF_CANTIDAD_CONSUMIDA + '_' + this.ventasGastosFinancieros.id + '_' + this.anios[3];
         t.componentes[9].cantidad = Number(this.ventasGastosFinancieros.anioDvolumenfisico);
 
         t.componentes[10] = new Componente();
+        t.componentes[10].codigo = this.constantes.FORM1ANEX1C_COD_GF_PRECIO_PROMEDIO + '_' + this.ventasGastosFinancieros.id + '_' + this.anios[3];
         t.componentes[10].cantidad = Number(this.ventasGastosFinancieros.anioDpromedio);
 
         t.componentes[11] = new Componente();
-        t.componentes[11].cantidad = Number(this.ventasGastosFinancieros.anioDvolumenfisico) + Number(this.ventasGastosFinancieros.anioDpromedio);
+        t.componentes[11].codigo = this.constantes.FORM1ANEX1C_COD_GF_COSTO_TOTAL + '_' + this.ventasGastosFinancieros.id + '_' + this.anios[3];
+        t.componentes[11].cantidad = Number(this.ventasGastosFinancieros.anioDvolumenfisico) * Number(this.ventasGastosFinancieros.anioDpromedio);
 
         if (this.editarGastosFinancieros) {
             const bean: Tabla = this.formulario.listaGastosFinancieros.find((x) => x.id === t.id);
@@ -504,51 +490,26 @@ export class FormularioFinancieroAnexo1CComponent implements OnInit, OnDestroy {
 
     actualizarSubtotalGastosFinancieros() {
 
-        let multiplicacion1 = 0;
-        let multiplicacion2 = 0;
-        let multiplicacion3 = 0;
-        let multiplicacion4 = 0;
-        let multiplicacion5 = 0;
-        let multiplicacion6 = 0;
-        let multiplicacion7 = 0;
-        let multiplicacion8 = 0;
-        let multiplicacion9 = 0;
-        let multiplicacion10 = 0;
-        let multiplicacion11 = 0;
-        let multiplicacion12 = 0;
+        let suma1 = 0;
+        let suma2 = 0;
+        let suma3 = 0;
+        let suma4 = 0;
 
         for (let i = 0; i < this.formulario.listaGastosFinancieros.length; i++) {
             for (let j = 0; j < this.formulario.listaGastosFinancieros[i].componentes.length; j++) {
                 switch (j) {
-                    case 0: multiplicacion1 *= this.formulario.listaGastosFinancieros[i].componentes[j].cantidad; break;
-                    case 1: multiplicacion2 *= this.formulario.listaGastosFinancieros[i].componentes[j].cantidad; break;
-                    case 2: multiplicacion3 *= this.formulario.listaGastosFinancieros[i].componentes[j].cantidad; break;
-                    case 3: multiplicacion4 *= this.formulario.listaGastosFinancieros[i].componentes[j].cantidad; break;
-                    case 4: multiplicacion5 *= this.formulario.listaGastosFinancieros[i].componentes[j].cantidad; break;
-                    case 5: multiplicacion6 *= this.formulario.listaGastosFinancieros[i].componentes[j].cantidad; break;
-                    case 6: multiplicacion7 *= this.formulario.listaGastosFinancieros[i].componentes[j].cantidad; break;
-                    case 7: multiplicacion8 *= this.formulario.listaGastosFinancieros[i].componentes[j].cantidad; break;
-                    case 8: multiplicacion9 *= this.formulario.listaGastosFinancieros[i].componentes[j].cantidad; break;
-                    case 9: multiplicacion10 *= this.formulario.listaGastosFinancieros[i].componentes[j].cantidad; break;
-                    case 10: multiplicacion11 *= this.formulario.listaGastosFinancieros[i].componentes[j].cantidad; break;
-                    case 11: multiplicacion12 *= this.formulario.listaGastosFinancieros[i].componentes[j].cantidad; break;
-
+                    case 2: suma1 += this.formulario.listaGastosFinancieros[i].componentes[j].cantidad; break;
+                    case 5: suma2 += this.formulario.listaGastosFinancieros[i].componentes[j].cantidad; break;
+                    case 8: suma3 += this.formulario.listaGastosFinancieros[i].componentes[j].cantidad; break;
+                    case 11: suma4 += this.formulario.listaGastosFinancieros[i].componentes[j].cantidad; break;
                 }
             }
         }
 
-        this.formulario.subtotalGastosFinancieros[0].componentes[0].cantidad = multiplicacion1;
-        this.formulario.subtotalGastosFinancieros[0].componentes[1].cantidad = multiplicacion2;
-        this.formulario.subtotalGastosFinancieros[0].componentes[2].cantidad = multiplicacion3;
-        this.formulario.subtotalGastosFinancieros[1].componentes[0].cantidad = multiplicacion4;
-        this.formulario.subtotalGastosFinancieros[1].componentes[1].cantidad = multiplicacion5;
-        this.formulario.subtotalGastosFinancieros[1].componentes[2].cantidad = multiplicacion6;
-        this.formulario.subtotalGastosFinancieros[2].componentes[0].cantidad = multiplicacion7;
-        this.formulario.subtotalGastosFinancieros[2].componentes[1].cantidad = multiplicacion8;
-        this.formulario.subtotalGastosFinancieros[2].componentes[2].cantidad = multiplicacion9;
-        this.formulario.subtotalGastosFinancieros[3].componentes[0].cantidad = multiplicacion10;
-        this.formulario.subtotalGastosFinancieros[3].componentes[1].cantidad = multiplicacion11;
-        this.formulario.subtotalGastosFinancieros[3].componentes[2].cantidad = multiplicacion12;
+        this.formulario.subtotalGastosFinancieros[0].componentes[0].cantidad = suma1;
+        this.formulario.subtotalGastosFinancieros[1].componentes[0].cantidad = suma2;
+        this.formulario.subtotalGastosFinancieros[2].componentes[0].cantidad = suma3;
+        this.formulario.subtotalGastosFinancieros[3].componentes[0].cantidad = suma4;
     }
 
     editarComponenteGastosFinancieros(tabla: Tabla) {
@@ -577,76 +538,222 @@ export class FormularioFinancieroAnexo1CComponent implements OnInit, OnDestroy {
 
     // ---------------------------------------------------------------------
     actualizarTotalMP() {
-        this.formulario.ingresoTotalMP[0].componentes[0].cantidad = this.formulario.subtotalMPImportada[0].componentes[2].cantidad
-            + this.formulario.subtotalMPNacional[0].componentes[2].cantidad;
-        this.formulario.ingresoTotalMP[0].componentes[1].cantidad = this.formulario.subtotalMPImportada[1].componentes[2].cantidad
-            + this.formulario.subtotalMPNacional[1].componentes[2].cantidad;
-        this.formulario.ingresoTotalMP[0].componentes[2].cantidad = this.formulario.subtotalMPImportada[2].componentes[2].cantidad
-            + this.formulario.subtotalMPNacional[2].componentes[2].cantidad;
-        this.formulario.ingresoTotalMP[0].componentes[3].cantidad = this.formulario.subtotalMPImportada[3].componentes[2].cantidad
-            + this.formulario.subtotalMPNacional[3].componentes[2].cantidad;
+        this.formulario.ingresoTotalMP[0].componentes[0].cantidad = this.formulario.subtotalMPImportada[0].componentes[0].cantidad
+            + this.formulario.subtotalMPNacional[0].componentes[0].cantidad;
+        this.formulario.ingresoTotalMP[0].componentes[1].cantidad = this.formulario.subtotalMPImportada[1].componentes[0].cantidad
+            + this.formulario.subtotalMPNacional[1].componentes[0].cantidad;
+        this.formulario.ingresoTotalMP[0].componentes[2].cantidad = this.formulario.subtotalMPImportada[2].componentes[0].cantidad
+            + this.formulario.subtotalMPNacional[2].componentes[0].cantidad;
+        this.formulario.ingresoTotalMP[0].componentes[3].cantidad = this.formulario.subtotalMPImportada[3].componentes[0].cantidad
+            + this.formulario.subtotalMPNacional[3].componentes[0].cantidad;
     }
 
     // ---------------------------------------
     construirFormulario() {
-        const anxMPNacCod: string[] = [this.constantes.FORM1ANEX1C_COD_MP_NAC_CANTIDAD_CONSUMIDA,
-        this.constantes.FORM1ANEX1C_COD_MP_NAC_PRECIO_PROMEDIO,
-        this.constantes.FORM1ANEX1C_COD_MP_NAC_COSTO_TOTAL];
-        const anxMPImpCod: string[] = [this.constantes.FORM1ANEX1C_COD_MP_IMP_CANTIDAD_CONSUMIDA,
-        this.constantes.FORM1ANEX1C_COD_MP_IMP_PRECIO_PROMEDIO,
-        this.constantes.FORM1ANEX1C_COD_MP_IMP_COSTO_TOTAL];
-
-        const anxGFCod: string[] = [this.constantes.FORM1ANEX1C_COD_GF_CANTIDAD_CONSUMIDA,
-        this.constantes.FORM1ANEX1C_COD_GF_PRECIO_PROMEDIO,
-        this.constantes.FORM1ANEX1C_COD_GF_COSTO_TOTAL];
+        const anxMPNacCod: string[] = [this.constantes.FORM1ANEX1C_COD_MP_NAC_COSTO_TOTAL];
+        const anxMPImpCod: string[] = [this.constantes.FORM1ANEX1C_COD_MP_IMP_CANTIDAD_CONSUMIDA];
+        const anxGFCod: string[] = [this.constantes.FORM1ANEX1C_COD_GF_CANTIDAD_CONSUMIDA];
 
         this.formulario = new Anexo1C();
         this.formulario.listaMPNacional = new Array<Tabla>();
         this.formulario.listaMPImportada = new Array<Tabla>();
+        this.formulario.listaGastosFinancieros = new Array<Tabla>();
         this.formulario.subtotalMPNacional = new Array<Tabla>();
         this.formulario.subtotalMPImportada = new Array<Tabla>();
         this.formulario.subtotalGastosFinancieros = new Array<Tabla>();
-        for (let i = 0; i < this.anios.length; i++) {
-            this.formulario.subtotalMPNacional[i] = new Tabla();
-            this.formulario.subtotalMPNacional[i].componentes = new Array<Componente>();
 
-            this.formulario.subtotalMPImportada[i] = new Tabla();
-            this.formulario.subtotalMPImportada[i].componentes = new Array<Componente>();
+        this.obtenerValores('f1anex1c_nac', 'N');
+        this.obtenerValores('f1anex1c_imp', 'I');
+        this.obtenerValores('f1anex1c_gf', 'G');
 
-            this.formulario.subtotalGastosFinancieros[i] = new Tabla();
-            this.formulario.subtotalGastosFinancieros[i].componentes = new Array<Componente>();
+        this.obtenerSubtotalesValores('f1anex1c_nac', 'subtotal', 'N', anxMPNacCod);
+        this.obtenerSubtotalesValores('f1anex1c_imp', 'subtotal', 'I', anxMPImpCod);
+        this.obtenerSubtotalesValores('f1anex1c_gf', 'subtotal', 'G', anxGFCod);
 
-            for (let j = 0; j < anxMPNacCod.length; j++) {
-                this.formulario.subtotalMPNacional[i].componentes[j] = new Componente();
-                this.formulario.subtotalMPNacional[i].componentes[j].cantidad = 0;
-                this.formulario.subtotalMPNacional[i].componentes[j].codigo = anxMPNacCod[j] + '_subtotal_' + i + this.anios[i];
-            }
-
-            for (let j = 0; j < anxMPImpCod.length; j++) {
-                this.formulario.subtotalMPImportada[i].componentes[j] = new Componente();
-                this.formulario.subtotalMPImportada[i].componentes[j].cantidad = 0;
-                this.formulario.subtotalMPImportada[i].componentes[j].codigo = anxMPImpCod[j] + '_subtotal_' + i + this.anios[i];
-            }
-
-            for (let j = 0; j < anxGFCod.length; j++) {
-                this.formulario.subtotalGastosFinancieros[i].componentes[j] = new Componente();
-                this.formulario.subtotalGastosFinancieros[i].componentes[j].cantidad = 0;
-                this.formulario.subtotalGastosFinancieros[i].componentes[j].codigo = anxGFCod[j] + '_subtotal_' + i + this.anios[i];
-            }
-
-        }
         this.formulario.ingresoTotalMP = new Array<Tabla>();
         this.formulario.ingresoTotalMP[0] = new Tabla();
         this.formulario.ingresoTotalMP[0].componentes = new Array<Componente>();
         this.formulario.ingresoTotalMP[0].componentes[0] = new Componente();
+        this.formulario.ingresoTotalMP[0].componentes[0].codigo = this.constantes.FORM1ANEX1C_COD_TOTAL + '_0_' + this.anios[0];
         this.formulario.ingresoTotalMP[0].componentes[0].cantidad = 0;
-        this.formulario.ingresoTotalMP[0].componentes[1] = new Componente();
-        this.formulario.ingresoTotalMP[0].componentes[1].cantidad = 0;
-        this.formulario.ingresoTotalMP[0].componentes[2] = new Componente();
-        this.formulario.ingresoTotalMP[0].componentes[2].cantidad = 0;
-        this.formulario.ingresoTotalMP[0].componentes[3] = new Componente();
-        this.formulario.ingresoTotalMP[0].componentes[3].cantidad = 0;
+        this.obtenerComponente(this.formulario.ingresoTotalMP, 0, this.constantes.FORM1ANEX1C_COD_TOTAL + '_0_' + this.anios[0]);
 
+        this.formulario.ingresoTotalMP[0].componentes[1] = new Componente();
+        this.formulario.ingresoTotalMP[0].componentes[1].codigo = this.constantes.FORM1ANEX1C_COD_TOTAL + '_0_' + this.anios[1];
+        this.formulario.ingresoTotalMP[0].componentes[1].cantidad = 0;
+        this.obtenerComponente(this.formulario.ingresoTotalMP, 1, this.constantes.FORM1ANEX1C_COD_TOTAL + '_0_' + this.anios[1]);
+
+        this.formulario.ingresoTotalMP[0].componentes[2] = new Componente();
+        this.formulario.ingresoTotalMP[0].componentes[2].codigo = this.constantes.FORM1ANEX1C_COD_TOTAL + '_0_' + this.anios[2];
+        this.formulario.ingresoTotalMP[0].componentes[2].cantidad = 0;
+        this.obtenerComponente(this.formulario.ingresoTotalMP, 2, this.constantes.FORM1ANEX1C_COD_TOTAL + '_0_' + this.anios[2]);
+
+        this.formulario.ingresoTotalMP[0].componentes[3] = new Componente();
+        this.formulario.ingresoTotalMP[0].componentes[3].codigo = this.constantes.FORM1ANEX1C_COD_TOTAL + '_0_' + this.anios[3];
+        this.formulario.ingresoTotalMP[0].componentes[3].cantidad = 0;
+        this.obtenerComponente(this.formulario.ingresoTotalMP, 3, this.constantes.FORM1ANEX1C_COD_TOTAL + '_0_' + this.anios[3]);
+
+    }
+
+    obtenerComponente(tabla: Tabla[], i: number, codigo: string) {
+        this.formfinancdetalleService.obtenerComponente(this.nCodffina, codigo).subscribe(
+            (formfinancdetalle) => {
+                if (formfinancdetalle !== undefined) {
+                    tabla[0].componentes[i].cantidad = formfinancdetalle.nValffina;
+                    tabla[0].componentes[i].id = formfinancdetalle.nCodfdetal;
+                    tabla[0].componentes[i].vUsureg = formfinancdetalle.vUsuareg;
+                    tabla[0].componentes[i].tFecReg = formfinancdetalle.tFecreg;
+                    tabla[0].componentes[i].nSedeReg = formfinancdetalle.nSedereg;
+                }
+            }
+        );
+    }
+
+    obtenerValores(componente: string, tipo: string) {
+        const excluido = 'subtotal';
+        const componentes = new Array<Componente>();
+        this.formfinancdetalleService.obtenerListaComponenteExcluido(this.nCodffina, componente, excluido).subscribe(
+            (res: ResponseWrapper) => {
+                let cont = 1;
+                let i = 0;
+                const objetos: FormfinancDetalle[] = res.json;
+                if (objetos.length > 0) {
+                    while ((cont - 1) < objetos.length) {
+                        if (tipo === 'N') {
+                            if (this.formulario.listaMPNacional[i] === undefined) {
+                                this.formulario.listaMPNacional[i] = new Tabla();
+                                if (this.formulario.listaMPNacional[i].componentes === undefined) {
+                                    this.formulario.listaMPNacional[i].componentes = new Array<Componente>();
+                                }
+                            }
+                        } else if ( tipo === 'I') {
+                            if (this.formulario.listaMPImportada[i] === undefined) {
+                                this.formulario.listaMPImportada[i] = new Tabla();
+                                if (this.formulario.listaMPImportada[i].componentes === undefined) {
+                                    this.formulario.listaMPImportada[i].componentes = new Array<Componente>();
+                                }
+                            }
+                        } else {
+                            if (this.formulario.listaGastosFinancieros[i] === undefined) {
+                                this.formulario.listaGastosFinancieros[i] = new Tabla();
+                                if (this.formulario.listaGastosFinancieros[i].componentes === undefined) {
+                                    this.formulario.listaGastosFinancieros[i].componentes = new Array<Componente>();
+                                }
+                            }
+                        }
+                        // componentes[i] = new Componente();
+                        const comp: Componente = new Componente();
+                        comp.codigo = objetos[cont - 1].vCompone;
+                        comp.cantidad = objetos[cont - 1].nValffina;
+                        comp.id = objetos[cont - 1].nCodfdetal;
+                        comp.vUsureg = objetos[cont - 1].vUsuareg;
+                        comp.tFecReg = objetos[cont - 1].tFecreg;
+                        comp.nSedeReg = objetos[cont - 1].nSedereg;
+                        if (tipo === 'N') {
+                            this.formulario.listaMPNacional[i].descripcion = objetos[cont - 1].vDesffina;
+                            this.formulario.listaMPNacional[i].unidadmedida = objetos[cont - 1].vUndffina;
+                            this.formulario.listaMPNacional[i].componentes.push(comp);
+                        } else if ( tipo === 'I') {
+                            this.formulario.listaMPImportada[i].descripcion = objetos[cont - 1].vDesffina;
+                            this.formulario.listaMPImportada[i].unidadmedida = objetos[cont - 1].vUndffina;
+                            this.formulario.listaMPImportada[i].componentes.push(comp);
+                        } else {
+                            this.formulario.listaGastosFinancieros[i].descripcion = objetos[cont - 1].vDesffina;
+                            this.formulario.listaGastosFinancieros[i].unidadmedida = objetos[cont - 1].vUndffina;
+                            this.formulario.listaGastosFinancieros[i].componentes.push(comp);
+                        }
+                        if (cont % 12 === 0 && (cont - 1) !== 0) {
+                            i++;
+                        }
+                        cont++;
+                    }
+                }
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+    }
+
+    obtenerSubtotalesValores(componente: string, componente2: string, tipo: string, anxCod: string[]) {
+        const componentes = new Array<Componente>();
+        this.formfinancdetalleService.obtenerListaComponentes(this.nCodffina, componente, componente2).subscribe(
+            (res: ResponseWrapper) => {
+                let cont = 1;
+                let i = 0;
+                const objetos: FormfinancDetalle[] = res.json;
+                if (objetos.length > 0) {
+                    while ((cont - 1) < objetos.length) {
+                        if (tipo === 'N') {
+                            if (this.formulario.subtotalMPNacional[i] === undefined) {
+                                this.formulario.subtotalMPNacional[i] = new Tabla();
+                                if (this.formulario.subtotalMPNacional[i].componentes === undefined) {
+                                    this.formulario.subtotalMPNacional[i].componentes = new Array<Componente>();
+                                }
+                            }
+                        } else if ( tipo === 'I') {
+                            if (this.formulario.subtotalMPImportada[i] === undefined) {
+                                this.formulario.subtotalMPImportada[i] = new Tabla();
+                                if (this.formulario.subtotalMPImportada[i].componentes === undefined) {
+                                    this.formulario.subtotalMPImportada[i].componentes = new Array<Componente>();
+                                }
+                            }
+                        } else {
+                            if (this.formulario.subtotalGastosFinancieros[i] === undefined) {
+                                this.formulario.subtotalGastosFinancieros[i] = new Tabla();
+                                if (this.formulario.subtotalGastosFinancieros[i].componentes === undefined) {
+                                    this.formulario.subtotalGastosFinancieros[i].componentes = new Array<Componente>();
+                                }
+                            }
+                        }
+                        const comp: Componente = new Componente();
+                        comp.codigo = objetos[cont - 1].vCompone;
+                        comp.cantidad = objetos[cont - 1].nValffina;
+                        comp.id = objetos[cont - 1].nCodfdetal;
+                        comp.vUsureg = objetos[cont - 1].vUsuareg;
+                        comp.tFecReg = objetos[cont - 1].tFecreg;
+                        comp.nSedeReg = objetos[cont - 1].nSedereg;
+                        if (tipo === 'N') {
+                            this.formulario.subtotalMPNacional[i].componentes.push(comp);
+                        } else if ( tipo === 'I') {
+                            this.formulario.subtotalMPImportada[i].componentes.push(comp);
+                        } else {
+                            this.formulario.subtotalGastosFinancieros[i].componentes.push(comp);
+                        }
+                        i++;
+                        cont++;
+                    }
+                } else {
+                    for (let m = 0; m < this.anios.length; m++) {
+                        if (tipo === 'N') {
+                            this.formulario.subtotalMPNacional[m] = new Tabla();
+                            this.formulario.subtotalMPNacional[m].componentes = new Array<Componente>();
+                            for (let j = 0; j < anxCod.length; j++) {
+                                this.formulario.subtotalMPNacional[m].componentes[j] = new Componente();
+                                this.formulario.subtotalMPNacional[m].componentes[j].cantidad = 0;
+                                this.formulario.subtotalMPNacional[m].componentes[j].codigo = anxCod[j] + 'subtotal_' + m + '_' + this.anios[m];
+                            }
+                        } else if ( tipo === 'I') {
+                            this.formulario.subtotalMPImportada[m] = new Tabla();
+                            this.formulario.subtotalMPImportada[m].componentes = new Array<Componente>();
+                            for (let j = 0; j < anxCod.length; j++) {
+                                this.formulario.subtotalMPImportada[m].componentes[j] = new Componente();
+                                this.formulario.subtotalMPImportada[m].componentes[j].cantidad = 0;
+                                this.formulario.subtotalMPImportada[m].componentes[j].codigo = anxCod[j] + 'subtotal_' + m + '_' + this.anios[m];
+                            }
+                        }  else {
+                            this.formulario.subtotalGastosFinancieros[m] = new Tabla();
+                            this.formulario.subtotalGastosFinancieros[m].componentes = new Array<Componente>();
+                            for (let j = 0; j < anxCod.length; j++) {
+                                this.formulario.subtotalGastosFinancieros[m].componentes[j] = new Componente();
+                                this.formulario.subtotalGastosFinancieros[m].componentes[j].cantidad = 0;
+                                this.formulario.subtotalGastosFinancieros[m].componentes[j].codigo = anxCod[j] + 'subtotal_' + m + '_' + this.anios[m];
+                            }
+                        }
+
+                    }
+                }
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
     // --------------------------- Errores ------------------------------------

@@ -89,54 +89,69 @@ export class Constants {
     public readonly FORM1ANEX1A_COD_INT_INGRESOS = 'f1anex1a_int3ingresos';
 
     public readonly FORM1ANEX1A_COD_TOTAL = 'f1anex1a_total';
+    // -----------------------------------------------------------------
+    // Formulario 1 - ANEXO 1B - VOLUMEN FÍSICO DE PRODUCCIÓN Y/O SERVICIOS
+    // -----------------------------------------------------------------
+    public readonly FORM1ANEX1B_COD_VOLUMEN = 'f1anex1b_volumen';
 
     // -----------------------------------------------------------------
     // Formulario 1 - ANEXO 1C - INGRESOS POR VENTAS NETAS Y/O SERVICIOS
     // -----------------------------------------------------------------
-    public readonly FORM1ANEX1C_COD_MP_NAC_CANTIDAD_CONSUMIDA = 'f1anex1c_nacmpcantconsu';
-    public readonly FORM1ANEX1C_COD_MP_NAC_PRECIO_PROMEDIO = 'f1anex1c_nacmppreprom';
-    public readonly FORM1ANEX1C_COD_MP_NAC_COSTO_TOTAL = 'f1anex1c_nacmpcostotal';
+    public readonly FORM1ANEX1C_COD_MP_NAC_CANTIDAD_CONSUMIDA = 'f1anex1c_nac1mpcantconsu';
+    public readonly FORM1ANEX1C_COD_MP_NAC_PRECIO_PROMEDIO = 'f1anex1c_nac2mppreprom';
+    public readonly FORM1ANEX1C_COD_MP_NAC_COSTO_TOTAL = 'f1anex1c_nac3mpcostotal';
 
-    public readonly FORM1ANEX1C_COD_MP_IMP_CANTIDAD_CONSUMIDA = 'f1anex1c_impmpcantconsu';
-    public readonly FORM1ANEX1C_COD_MP_IMP_PRECIO_PROMEDIO = 'f1anex1c_impmppreprom';
-    public readonly FORM1ANEX1C_COD_MP_IMP_COSTO_TOTAL = 'f1anex1c_impmpcostotal';
+    public readonly FORM1ANEX1C_COD_MP_IMP_CANTIDAD_CONSUMIDA = 'f1anex1c_imp1mpcantconsu';
+    public readonly FORM1ANEX1C_COD_MP_IMP_PRECIO_PROMEDIO = 'f1anex1c_imp2mppreprom';
+    public readonly FORM1ANEX1C_COD_MP_IMP_COSTO_TOTAL = 'f1anex1c_imp3mpcostotal';
 
-    public readonly FORM1ANEX1C_COD_GF_CANTIDAD_CONSUMIDA = 'f1anex1c_gfcantconsu';
-    public readonly FORM1ANEX1C_COD_GF_PRECIO_PROMEDIO = 'f1anex1c_gfpreprom';
-    public readonly FORM1ANEX1C_COD_GF_COSTO_TOTAL = 'f1anex1c_gfcostotal';
+    public readonly FORM1ANEX1C_COD_GF_CANTIDAD_CONSUMIDA = 'f1anex1c_gf1cantconsu';
+    public readonly FORM1ANEX1C_COD_GF_PRECIO_PROMEDIO = 'f1anex1c_gf2preprom';
+    public readonly FORM1ANEX1C_COD_GF_COSTO_TOTAL = 'f1anex1c_gf3costotal';
 
+    public readonly FORM1ANEX1C_COD_TOTAL = 'f1anex1c_total';
     // -----------------------------------------------------------------
     // Formulario 1 - ANEXO 1D - INGRESOS POR VENTAS NETAS Y/O SERVICIOS
     // -----------------------------------------------------------------
+    public readonly FORM1ANEX1D_COD_GASTOS_VENTAS_DISTRIBUCION = 'f1anex1d_gasvendistri';
     public readonly FORM1ANEX1D_GASTOS_VENTAS_DISTRIBUCION = 'TOTAL';
-    public readonly FORM1ANEX1D_COD_GASTOS_VENTAS_DISTRIBUCION = 'f1anex1d_totalgasvendistri';
+    public readonly FORM1ANEX1D_COD_TOTAL_GASTOS_VENTAS_DISTRIBUCION = 'f1anex1d_totalgasvendistri';
 
+    public readonly FORM1ANEX1D_COD_GASTOS_SERVICIOS_PRESTADOS_TERCEROS = 'f1anex1d_gasservprester';
     public readonly FORM1ANEX1D_GASTOS_SERVICIOS_PRESTADOS_TERCEROS = 'TOTAL';
-    public readonly FORM1ANEX1D_COD_GASTOS_SERVICIOS_PRESTADOS_TERCEROS = 'f1anex1d_totalgasservprester';
+    public readonly FORM1ANEX1D_COD_TOTAL_GASTOS_SERVICIOS_PRESTADOS_TERCEROS = 'f1anex1d_totalgasservprester';
 
+    public readonly FORM1ANEX1D_COD_GASTOS_CARGOS_DIVERSOS_GESTION = 'f1anex1d_gascardivgestion';
     public readonly FORM1ANEX1D_GASTOS_CARGOS_DIVERSOS_GESTION = 'TOTAL';
-    public readonly FORM1ANEX1D_COD_GASTOS_CARGOS_DIVERSOS_GESTION = 'f1anex1d_totalgascardivgestion';
+    public readonly FORM1ANEX1D_COD_TOTAL_GASTOS_CARGOS_DIVERSOS_GESTION = 'f1anex1d_totalgascardivgestion';
 
+    public readonly FORM1ANEX1D_COD_PROVISIONES = 'f1anex1d_provisiones';
     public readonly FORM1ANEX1D_PROVISIONES = 'TOTAL';
-    public readonly FORM1ANEX1D_COD_PROVISIONES = 'f1anex1d_totalprovisiones';
+    public readonly FORM1ANEX1D_COD_TOTAL_PROVISIONES = 'f1anex1d_totalprovisiones';
 
+    public readonly FORM1ANEX1D_COD_GASTOS_ADMINISTRACION = 'f1anex1d_gasadmin';
     public readonly FORM1ANEX1D_GASTOS_ADMINISTRACION = 'TOTAL';
-    public readonly FORM1ANEX1D_COD_GASTOS_ADMINISTRACION = 'f1anex1d_totalgasadmin';
+    public readonly FORM1ANEX1D_COD_TOTAL_GASTOS_ADMINISTRACION = 'f1anex1d_totalgasadmin';
 
+    public readonly FORM1ANEX1D_COD_DENTRO_ADMINISTRACION_GASTOS_SERVICIOS_PRESTADOS_TERCEROS = 'f1anex1d_deadmgasservpreter';
     public readonly FORM1ANEX1D_DENTRO_ADMINISTRACION_GASTOS_SERVICIOS_PRESTADOS_TERCEROS = 'TOTAL';
-    public readonly FORM1ANEX1D_COD_DENTRO_ADMINISTRACION_GASTOS_SERVICIOS_PRESTADOS_TERCEROS = 'f1anex1d_totaldeadmgasservpreter';
+    public readonly FORM1ANEX1D_COD_TOTAL_DENTRO_ADMINISTRACION_GASTOS_SERVICIOS_PRESTADOS_TERCEROS = 'f1anex1d_totaldeadmgasservpreter';
 
+    public readonly FORM1ANEX1D_COD_INGRESOS_FINANCIEROS = 'f1anex1d_ingfinan';
     public readonly FORM1ANEX1D_INGRESOS_FINANCIEROS = 'TOTAL';
-    public readonly FORM1ANEX1D_COD_INGRESOS_FINANCIEROS = 'f1anex1d_totalingfinan';
+    public readonly FORM1ANEX1D_COD_TOTAL_INGRESOS_FINANCIEROS = 'f1anex1d_totalingfinan';
 
+    public readonly FORM1ANEX1D_COD_GASTOS_FINANCIEROS = 'f1anex1d_gasfinan';
     public readonly FORM1ANEX1D_GASTOS_FINANCIEROS = 'TOTAL';
-    public readonly FORM1ANEX1D_COD_GASTOS_FINANCIEROS = 'f1anex1d_totalgasfinan';
+    public readonly FORM1ANEX1D_COD_TOTAL_GASTOS_FINANCIEROS = 'f1anex1d_totalgasfinan';
 
+    public readonly FORM1ANEX1D_COD_OTROS_INGRESOS = 'f1anex1d_otrosingresos';
     public readonly FORM1ANEX1D_OTROS_INGRESOS = 'TOTAL';
-    public readonly FORM1ANEX1D_COD_OTROS_INGRESOS = 'f1anex1d_totalotrosingresos';
+    public readonly FORM1ANEX1D_COD_TOTAL_OTROS_INGRESOS = 'f1anex1d_totalotrosingresos';
 
+    public readonly FORM1ANEX1D_COD_OTROS_EGRESOS = 'f1anex1d_otrosegresos';
     public readonly FORM1ANEX1D_OTROS_EGRESOS = 'TOTAL';
-    public readonly FORM1ANEX1D_COD_OTROS_EGRESOS = 'f1anex1d_totalotrosegresos';
+    public readonly FORM1ANEX1D_COD_TOTAL_OTROS_EGRESOS = 'f1anex1d_totalotrosegresos';
 
     // -----------------------------------------------------------------
     // Formulario 2 - ESTADO DE SITUACIÓN FINANCIERA
@@ -475,47 +490,61 @@ export class Constants {
     // -----------------------------------------------------------------
     // Formulario 2 - ANEXO 2C - DETALLE DE CUENTAS
     // -----------------------------------------------------------------
+    public readonly FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALES = 'f2anex2c_cam1';
     public readonly FORM2ANEX2C_ACCUENTASCOBRARCOMERCIALES = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALES = 'f2anex2c_total1';
+    public readonly FORM2ANEX2C_COD_TOTAL_ACCUENTASCOBRARCOMERCIALES = 'f2anex2c_total1';
 
+    public readonly FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALESRELACIONADAS = 'f2anex2c_cam2';
     public readonly FORM2ANEX2C_ACCUENTASCOBRARCOMERCIALESRELACIONADAS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALESRELACIONADAS = 'f2anex2c_total2';
+    public readonly FORM2ANEX2C_COD_TOTAL_ACCUENTASCOBRARCOMERCIALESRELACIONADAS = 'f2anex2c_total2';
 
+    public readonly FORM2ANEX2C_COD_ACCUENTASCOBRARDIVERSAS = 'f2anex2c_cam3';
     public readonly FORM2ANEX2C_ACCUENTASCOBRARDIVERSAS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_ACCUENTASCOBRARDIVERSAS = 'f2anex2c_total3';
+    public readonly FORM2ANEX2C_COD_TOTAL_ACCUENTASCOBRARDIVERSAS = 'f2anex2c_total3';
 
+    public readonly FORM2ANEX2C_COD_ACOTRASCUENTAS = 'f2anex2c_cam4';
     public readonly FORM2ANEX2C_ACOTRASCUENTAS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_ACOTRASCUENTAS = 'f2anex2c_total4';
+    public readonly FORM2ANEX2C_COD_TOTAL_ACOTRASCUENTAS = 'f2anex2c_total4';
 
+    public readonly FORM2ANEX2C_COD_ANCOTRASCUENTAS = 'f2anex2c_cam5';
     public readonly FORM2ANEX2C_ANCOTRASCUENTAS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_ANCOTRASCUENTAS = 'f2anex2c_total5';
+    public readonly FORM2ANEX2C_COD_TOTAL_ANCOTRASCUENTAS = 'f2anex2c_total5';
 
+    public readonly FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALES = 'f2anex2c_cam6';
     public readonly FORM2ANEX2C_PCCUENTASPAGARCOMERCIALES = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALES = 'f2anex2c_total6';
+    public readonly FORM2ANEX2C_COD_TOTAL_PCCUENTASPAGARCOMERCIALES = 'f2anex2c_total6';
 
+    public readonly FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALESRELACIONADAS = 'f2anex2c_cam7';
     public readonly FORM2ANEX2C_PCCUENTASPAGARCOMERCIALESRELACIONADAS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALESRELACIONADAS = 'f2anex2c_total7';
+    public readonly FORM2ANEX2C_COD_TOTAL_PCCUENTASPAGARCOMERCIALESRELACIONADAS = 'f2anex2c_total7';
 
+    public readonly FORM2ANEX2C_COD_PCOBLIGACIONESFINANCIERAS = 'f2anex2c_cam8';
     public readonly FORM2ANEX2C_PCOBLIGACIONESFINANCIERAS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_PCOBLIGACIONESFINANCIERAS = 'f2anex2c_total8';
+    public readonly FORM2ANEX2C_COD_TOTAL_PCOBLIGACIONESFINANCIERAS = 'f2anex2c_total8';
 
+    public readonly FORM2ANEX2C_COD_PCPROVISIONES = 'f2anex2c_cam9';
     public readonly FORM2ANEX2C_PCPROVISIONES = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_PCPROVISIONES = 'f2anex2c_total9';
+    public readonly FORM2ANEX2C_COD_TOTAL_PCPROVISIONES = 'f2anex2c_total9';
 
+    public readonly FORM2ANEX2C_COD_PCOTRASCUENTAS = 'f2anex2c_cam10';
     public readonly FORM2ANEX2C_PCOTRASCUENTAS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_PCOTRASCUENTAS = 'f2anex2c_total10';
+    public readonly FORM2ANEX2C_COD_TOTAL_PCOTRASCUENTAS = 'f2anex2c_total10';
 
+    public readonly FORM2ANEX2C_COD_PNCOBLIGACIONESFINANCIERAS = 'f2anex2c_cam11';
     public readonly FORM2ANEX2C_PNCOBLIGACIONESFINANCIERAS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_PNCOBLIGACIONESFINANCIERAS = 'f2anex2c_total11';
+    public readonly FORM2ANEX2C_COD_TOTAL_PNCOBLIGACIONESFINANCIERAS = 'f2anex2c_total11';
 
+    public readonly FORM2ANEX2C_COD_PNCOTRASCUENTAS = 'f2anex2c_cam12';
     public readonly FORM2ANEX2C_PNCOTRASCUENTAS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_PNCOTRASCUENTAS = 'f2anex2c_total12';
+    public readonly FORM2ANEX2C_COD_TOTAL_PNCOTRASCUENTAS = 'f2anex2c_total12';
 
+    public readonly FORM2ANEX2C_COD_PNCPROVISIONES = 'f2anex2c_cam13';
     public readonly FORM2ANEX2C_PNCPROVISIONES = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_PNCPROVISIONES = 'f2anex2c_total13';
+    public readonly FORM2ANEX2C_COD_TOTAL_PNCPROVISIONES = 'f2anex2c_total13';
 
+    public readonly FORM2ANEX2C_COD_PRESULTADOSNOREALIZADOS = 'f2anex2c_cam14';
     public readonly FORM2ANEX2C_PRESULTADOSNOREALIZADOS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_PRESULTADOSNOREALIZADOS = 'f2anex2c_total14';
+    public readonly FORM2ANEX2C_COD_TOTAL_PRESULTADOSNOREALIZADOS = 'f2anex2c_total14';
 
     // -----------------------------------------------------------------------------------
     // Formulario 3 - GASTOS DE PERSONAL RELACIONADOS AL COSTO DE PRODUCCIÓN O SERVICIOS
