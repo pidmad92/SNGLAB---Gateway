@@ -1,77 +1,69 @@
 <div class="row">
-	<div class="col">
-		<div class="card card-panel mb-2">
-			<div class="card-header d-sm-flex justify-content-between">
-			  <h5>Registro<small class="ml-3">Atención Empleador</small></h5>
-			</div>
-			<div class="card-body">
-			  <fieldset class="col">     
-				<legend>Documentos presentados</legend>
-				<div class="panel">
-				  <div class="panel-body">
-					<table id="myTable" class="table table-reponsive table-striped">
-					  <thead>
-						<tr>
-						  <th>Descripción</th>
-						  <th></th>
-						</tr>
-					  </thead>
-					  <tbody>
-						<tr>
-						  <td>Beneficios Sociales</td>
-						  <td class="text-center">
-							<label class="custom-control custom-checkbox">
-							  <input type="checkbox" class="custom-control-input" checked>
-							  <span class="custom-control-indicator"></span>
-							</label>
-						  </td>
-						</tr>
-						<tr>
-						  <td>Calculo de CTS</td>
-						  <td class="text-center">
-							<label class="custom-control custom-checkbox">
-							  <input type="checkbox" class="custom-control-input">
-							  <span class="custom-control-indicator"></span>
-							</label>
-						  </td>
-						</tr>
-						<tr>
-						  <td>Despido Abitrario</td>
-						  <td class="text-center">
-							<label class="custom-control custom-checkbox">
-							  <input type="checkbox" class="custom-control-input">
-							  <span class="custom-control-indicator"></span>
-							</label>
-						  </td>
-						</tr>
-						<tr>
-						  <td>Vacaciones periodos</td>
-						  <td class="text-center">
-							<label class="custom-control custom-checkbox">
-							  <input type="checkbox" class="custom-control-input" checked>
-							  <span class="custom-control-indicator"></span>
-							</label>
-						  </td>
-						</tr>
-					  </tbody>
-					</table>
-					<div class="col">
-					  <form>
-						<div class="form-group">
-						  <label for="exampleFormControlTextarea1">Observación de la atención</label>
-						  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-						</div>
-					  </form>
-					</div>
-				  </div>
+		<div class="col">
+			<div class="card card-mtpe mb-3">
+				<div class="card-header bg-light d-sm-flex justify-content-between p-1">
+					<h5 class="mb-0"><small><i class="fa fa-user" aria-hidden="true"></i> Registro de Atención del Empleador</small></h5>
 				</div>
-			  </fieldset>
+				<div class="card-body">
+					<div class="consultas-laborales mb-2">
+							<form>
+								<div class="form-row mb-2">
+									<div class="col-md">
+									<div class="form-group row">
+										<label for="inpTicket" class="col-sm-3 col-form-label">Ticket</label>
+										<div class="col-sm-9">
+												<input type="text" class="form-control form-control-sm" id="inpTicket" name="atencion.vNumticket" [(ngModel)]="atencion.vNumticket" placeholder="">
+										</div>
+									</div>
+									</div>
+									<div class="col-md">
+									<div class="form-group row">
+										<label for="inpLocal" class="col-sm-3 col-form-label">Local</label>
+										<div class="col-sm-9">
+										<input type="text" class="form-control form-control-sm" id="inpLocal" value="LIMA CENTRO" readonly>
+										</div>
+									</div>
+									</div>
+									<div class="col-md">
+									<div class="form-group row">
+										<label for="inpFecha" class="col-sm-3 col-form-label">Fecha</label>
+										<div class="col-sm-9">
+											<!-- <input type="date" class="form-control form-control-sm" id="inpFecha" [(ngModel)]="fechoy"> -->
+											<!-- <input type="date" class="form-control form-control-sm" id="inpFecha"> -->
+											<p style="padding-top: 5px;"><span ng-non-bindable>{{ fechoy | date: 'dd/MM/yyyy' }}</span></p>
+										</div>
+									</div>
+									</div>
+								</div>
+							</form>
+							<div class="card">
+								<div class="card-header bg-secondary text-white d-sm-flex justify-content-between p-1">
+									<h6 class="mb-0"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Documentos Presentados</h6>
+								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-12">
+												<p-dataTable [value]="listDocumentosPre" [editable]="true" [(selection)]="selectListDocumentoPre" (onEditComplete)="saveObservacion($event)" (onRowSelect)="saveDoc($event)" (onRowUnselect)="deleteDoc($event)" scrollable="true" scrollHeight="220px" dataKey="id">
+														<p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+														<p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
+															<ng-template let-i="rowIndex" pTemplate="body">
+																<span style="text-align:center">{{i+1}}</span>
+															</ng-template>
+														</p-column>
+														<p-column [style]="{'width':'30%'}" field="vDesdoc" header="Descripción"></p-column>
+														<p-column [style]="{'text-align':'left'}" field="observacion" header="Observación" [editable]="true"></p-column>
+														<p-column [style]="{'text-align':'left'}" [hidden]="true" field="check" header="Checked"></p-column>
+														<ng-template pTemplate="emptymessage">
+															No se han encontrado registros
+														</ng-template>
+													</p-dataTable>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+				</div>
 			</div>
-			<!-- <div class="card-footer text-center">
-			  <a href="consultas-empleador4.html" class="btn mx-1 btn-dark"><i class="fa fa-chevron-left" aria-hidden="true"></i> Anterior</a>
-			  <a href="consultas-empleador5.html" class="btn mx-1 btn-warning"  data-toggle="modal" data-target="#exampleModal"><i class="fa fa-random" aria-hidden="true"></i> Generar pase</a>
-			  <a href="consultas-empleador5.html" class="btn mx-1 btn-success"><i class="fa fa-archive" aria-hidden="true"></i> Terminar</a>
-			</div> -->
 		</div>
 	</div>
-</div>
+	

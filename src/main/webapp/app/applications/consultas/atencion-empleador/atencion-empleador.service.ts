@@ -18,6 +18,7 @@ import { Motatenofic } from '../models/motatenofic.model';
 import { Motateselec } from '../models/motateselec.model';
 import { Accionadop } from '../models/accionadop.model';
 import { Docpresate } from '../models/docpresate.model';
+import { Documento } from '../models/documento.model';
 import { Docinperdlb } from '../models/docinperdlb.model';
 import { Docingrper } from '../models/docingrper.model';
 import { Cartrab } from '../models/cartrab.model';
@@ -30,7 +31,7 @@ export class AtencionEmpleadorService {
     private resource = '/consultas/api/';
 
 // RUTAS POR ENTIDAD
-    private resourcePasegl    = this.resource + 'pasegls';
+    private resourcePasegl      = this.resource + 'pasegls';
     private resourceAtencion    = this.resource + 'atencions';
     private resourceTipoDoc     = this.resource + 'tipdocidents';
     private resourceTrabajador  = this.resource + 'trabajadors';
@@ -40,6 +41,7 @@ export class AtencionEmpleadorService {
     private resourceMotateOfi   = this.resource + 'motatenofics';
     private resourceMotateSelec = this.resource + 'motateselecs';
     private resourceDocpresa    = this.resource + 'docpresates';
+    private resourceDocumento   = this.resource + 'documentos';
     private resourceDocingper   = this.resource + 'docinperdlbs';
     private resourceDocingtot   = this.resource + 'docingrpers';
     private resourceCargoTrab   = this.resource + 'cartrabs';
@@ -93,7 +95,7 @@ export class AtencionEmpleadorService {
      * @returns Observable
      */
     consultaTipoDocIdentidad(): Observable<ResponseWrapper> {
-        return this.http.get(this.resourceTipoDoc, null)
+        return this.http.get(this.resourceTipoDoc + '/activos', null)
             .map((res: Response) => this.convertResponseTipoDocIdentidad(res));
     }
 
@@ -199,8 +201,8 @@ export class AtencionEmpleadorService {
          * @param  {String} numdoc
          * @returns Observable
          */
-        findEmpleadorsByDocIdent(tipodoc: number, numdoc: String): Observable<Empleador> {
-            return this.http.get(`${this.resourceEmpleador}/tipdoc/${tipodoc}/numdoc/${numdoc}`)
+        findEmpleadorsByDocIdent(tipodoc: number, numdoc: String, tipper: number): Observable<Empleador> {
+            return this.http.get(`${this.resourceEmpleador}/tipdoc/${tipodoc}/numdoc/${numdoc}/bandperjuri/${tipper}`)
                 .map((res: Response) => {
                     const jsonResponse = res.json();
                     return this.convertItemFromServerEmpleador(jsonResponse);
@@ -274,12 +276,22 @@ export class AtencionEmpleadorService {
 // PASES
 
         /**
+         * Buscar Pases de Empleador, para una oficina con un estado de pase
+         * @param  {String} id
+         * @returns Observable
+         */
+        findPasesByEmpleadorOficinaEstadopase(id_empl: number, id_ofic: number, estpase: number): Observable<ResponseWrapper> {
+            return this.http.get(`${this.resourcePasegl}/pases/empleador/${id_empl}/oficina/${id_ofic}/estado/${estpase}`)
+                .map((res: Response) => this.convertResponsePase(res));
+        }
+
+        /**
          * Buscar Pases por código de Empleador
          * @param  {String} id
          * @returns Observable
          */
-        findPasesByEmpleador(id: number): Observable<ResponseWrapper> {
-            return this.http.get(`${this.resourcePasegl}/pases/empleador/${id}/oficina/5/estado/1`)
+        findPasesByEmpleador(id_empl: number): Observable<ResponseWrapper> {
+            return this.http.get(`${this.resourcePasegl}/pase/general/id_empleador/${id_empl}`)
                 .map((res: Response) => this.convertResponsePase(res));
         }
 
@@ -356,15 +368,33 @@ export class AtencionEmpleadorService {
             .map((res: Response) => this.convertResponseMotateselec(res));
         }
 
+// -- DOCUMENTOS TABLA MAESTRA
+    findListaDocumentosActivos(): Observable<ResponseWrapper> {
+        return this.http.get(this.resourceDocumento)
+        .map((res: Response) => this.convertResponseDocumento(res));
+    }
+// --
+
 // -- lISTAR LOS DOCUMENTOS PRESENTADOS
-        findListaDocpresate(): Observable<ResponseWrapper> {
-            return this.http.get(this.resourceDocpresa)
-            .map((res: Response) => this.convertResponseDocpresate(res));
-        }
+    createDocpresate(docpresate: Docpresate): Observable<Docpresate> {
+        docpresate.nUsuareg = 1;
+        docpresate.nFlgactivo = true;
+        docpresate.nSedereg = 1;
+        const copy = this.convertDocpresate(docpresate);
+        return this.http.post(this.resourceDocpresa, copy).map((res: Response) => {
+            const jsonResponse = res.json();
+            return this.convertItemFromServerDocpresate(jsonResponse);
+        });
+    }
+    findListaDocpresateActivos(): Observable<ResponseWrapper> {
+        return this.http.get(this.resourceDocpresa)
+        .map((res: Response) => this.convertResponseDocpresate(res));
+    }
+// --
 
 // -- lISTAR LOS CARGOS DE TRABAJADOR
         findListaCartrab(): Observable<ResponseWrapper> {
-            return this.http.get(this.resourceCargoTrab)
+            return this.http.get(this.resourceCargoTrab + '/activos')
             .map((res: Response) => this.convertResponseCargotrab(res));
         }
 
@@ -563,6 +593,21 @@ export class AtencionEmpleadorService {
         return entity;
     }
 
+    private convertResponseDocumento(res: Response): ResponseWrapper {
+        const jsonResponse = res.json();
+        const result = [];
+        for (let i = 0; i < jsonResponse.length; i++) {
+            result.push(this.convertItemFromServerDocumento(jsonResponse[i]));
+        }
+        return new ResponseWrapper(res.headers, result, res.status);
+    }
+    private convertItemFromServerDocumento(json: any): Documento {
+        const entity: Documento = Object.assign(new Documento(), json);
+        entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+        return entity;
+    }
+
     private convertResponseDocingper(res: Response): ResponseWrapper {
         const jsonResponse = res.json();
         const result = [];
@@ -657,6 +702,13 @@ export class AtencionEmpleadorService {
         const copy: Dirperjuri = Object.assign({}, dirperjuri);
         copy.tFecreg = this.dateUtils.toDate(dirperjuri.tFecreg);
         copy.tFecupd = this.dateUtils.toDate(dirperjuri.tFecupd);
+        return copy;
+    }
+
+    private convertDocpresate(docpresate: Docpresate): Docpresate {
+        const copy: Docpresate = Object.assign({}, docpresate);
+        copy.tFecreg = this.dateUtils.toDate(docpresate.tFecreg);
+        copy.tFecupd = this.dateUtils.toDate(docpresate.tFecupd);
         return copy;
     }
 
