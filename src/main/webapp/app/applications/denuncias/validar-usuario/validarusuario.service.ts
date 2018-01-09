@@ -129,7 +129,7 @@ export class ValidarUsuarioService {
         for (let i = 0; i < jsonResponse.length; i++) {
 
             const cm: Tipvia = this.convertTViaFromServer(jsonResponse[i]);
-            result.push(new ComboModel(cm.vDescrip, cm.id.toString(), 0));
+            result.push(new ComboModel(cm.vDesccorta, cm.id.toString(), 0));
         }
         return new ResponseWrapper(res.headers, result, res.status);
     }

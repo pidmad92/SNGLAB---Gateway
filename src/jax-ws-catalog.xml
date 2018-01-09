@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://192.168.140.137:8080/tramite/webservice/serviciosstd?wsdl" uri="wsdl/192.168.140.137_8080/tramite/webservice/serviciosstd.wsdl"/>
+    <system systemId="http://192.168.140.137:8080/tramite/webservice/serviciosstd?xsd=1" uri="wsdl/192.168.140.137_8080/tramite/webservice/serviciosstd.xsd_1.xsd"/>
+    <system systemId="http://192.168.140.137:8080/tramite/webservice/serviciosstd?xsd=2" uri="wsdl/192.168.140.137_8080/tramite/webservice/serviciosstd.xsd_2.xsd"/>
+    <system systemId="http://192.168.140.137:8080/tramite/webservice/situacionmitramite?wsdl" uri="wsdl/192.168.140.137_8080/tramite/webservice/situacionmitramite.wsdl"/>
+    <system systemId="http://192.168.140.137:8080/tramite/webservice/situacionmitramite?wsdl=1" uri="wsdl/192.168.140.137_8080/tramite/webservice/situacionmitramite.wsdl_1.wsdl"/>
+    <system systemId="http://192.168.140.137:8080/tramite/webservice/situacionmitramite?xsd=1" uri="wsdl/192.168.140.137_8080/tramite/webservice/situacionmitramite.xsd_1.xsd"/>
+</catalog>

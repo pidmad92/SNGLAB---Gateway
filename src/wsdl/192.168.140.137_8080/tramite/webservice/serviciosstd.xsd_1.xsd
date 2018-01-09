@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.3-b02-. --><xs:schema xmlns:tns="http://ws.web.bs.std.mef.gob.pe/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.web.bs.std.mef.gob.pe/">
+
+<xs:element name="ErrorDeServicio" nillable="true" type="tns:errorInfo"></xs:element>
+
+<xs:complexType name="errorInfo">
+<xs:sequence>
+<xs:element name="codigo" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="mensaje" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="message" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="hojaDeRutaEllipse">
+<xs:sequence>
+<xs:element name="anexos" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="apellidomaterno" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="apellidopaterno" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="asunto" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="coddist" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="coddisttxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="coddpto" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="coddptotxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="codpais" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="codpaistxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="codprov" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="codprovtxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="comentario" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="direccion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="dni" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="estado" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="estadotxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fechaCompleto" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaCrea" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaDocFin" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaDocumento" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaFinalizacion" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaModif" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaSuspFin" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaSuspInicio" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="flujosEllipse" type="tns:flujosEllipse" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+<xs:element name="foliosFin" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="foliosIni" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idarchmed" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idarchmueb" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idclase" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idclaseFin" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idclaseFinSub" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idclaseFinSubtxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idclaseFintxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idclaseSub" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idclaseSubtxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idclaseSup" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idclaseSuptxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idclasetxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="iddoc" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="iddocAnexado" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="iddocAnexadotxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="iddocAnexo" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="iddocAnexotxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idgrupo" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idgrupo_txt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idinfocomp" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idinfocomptxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idperson" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idpersontxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idproc" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idproc_cod" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idproc_idunidad" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idproc_idunidad_ini" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idproc_tipo" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idprocreqgrp" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idprocreqgrptxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idproctxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idprocunidadtxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idprovee" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idproveeTipo" type="xs:int"></xs:element>
+<xs:element name="idproveecate" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idproveeruc" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idproveetxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idserie" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idubifis" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idunidad" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idunidadtxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="iduserCrea" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="iduserModif" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="institucionNoReg" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nombres" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numDecLey" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeroAnio" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="numeroDoc" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeroDocFin" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeroDocFinSub" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeroDocSub" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeroDocSusp" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeroLargoSid" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeroSid" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="observDocFin" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="prioridad" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="prioridadtxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="siglas" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="subtipoexpediente" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="tiempoDiasSupMax" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="tiempoestadia" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="tipoEvaluacion" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="tipoFin" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="tipoFintxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoexpediente" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="unidadprovee" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="VCodcom" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="VCodcomtxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="VCodcong" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="VCodcongtxt" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="flujosEllipse">
+<xs:sequence>
+<xs:element name="esdeSoloConocimiento" type="xs:boolean"></xs:element>
+<xs:element name="esmiareaderiva" type="xs:boolean"></xs:element>
+<xs:element name="estado" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="estadoImpresion" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="estadotxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fechaAtencion" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaCrea" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaDerivacion" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaModif" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaRecepcion" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="folios" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="iddoc" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idflujo" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idflujopadre" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idunidadAcroAtiendetxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idunidadAcroDerivatxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idunidadAcroDestinotxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idunidadAcroRecepcionatxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idunidadAtiende" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idunidadAtiendetxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idunidadDeriva" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idunidadDerivatxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idunidadDestino" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idunidadDestinotxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idunidadRecepciona" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idunidadRecepcionatxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="iduserAtiende" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="iduserAtiendetxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="iduserCrea" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="iduserDeriva" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="iduserDerivatxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="iduserDestino" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="iduserDestinotxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="iduserModif" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="iduserRecepciona" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="iduserRecepcionatxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="iidflujo" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="iidflujopadre" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="instruccion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="observacion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="observacionAtencion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="rmtaddress" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="rmtaddressrst" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tiempoestadia" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="tiempotranscurrido" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="tipoFlujo" type="xs:int" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="expedienteWSDto">
+<xs:sequence>
+<xs:element name="anexos" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="asunto" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="courier" type="tns:msgDocumentosHojasEnvioWsDto" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+<xs:element name="fechahoradeiniciodetramite" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fechahoradeldocumento" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fechahorarecepcion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="movimientos" type="tns:movimientoWSDto" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+<xs:element name="noexpediente" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numerodedocumento" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numerodefolios" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="procedimiento" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="remitente" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="responsableArea" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="responsableUsuario" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="situacionactual" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipodedocumento" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tupa" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="msgDocumentosHojasEnvioWsDto">
+<xs:sequence>
+<xs:element name="direcciontxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doAnio" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="doDesc" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doId" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="doNodoc" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doNohe" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doNohetxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doNoordenpedido" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="estadotxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fechaCrea" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="movimientoWSDto">
+<xs:sequence>
+<xs:element name="apellidoMaternoDestino" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="apellidoPaternoDestino" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="estado" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fechadederivacion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fechadeestado" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nombreDestino" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="observacion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="observacionAtencion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="perfil" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="remitente" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="unidaddestino" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="usuarioDestino" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="casaComercializadora">
+<xs:sequence>
+<xs:element name="documentosNombre" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fpCorreoRemitente" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fpDocumentoNumero" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fpFechaDocumento" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fpMesDeInicio" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fpMesFin" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fpNoBanco" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fpNoCertOmologacion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fpObservacionClient" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fpPersona" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idsVehiculos" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="linkCambio" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="linkDocInicio" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numPartidaRegistral" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="placas" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="soats" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoAereo" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoLicencia" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fPidCasaComer" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="vucmSolicitud">
+<xs:sequence>
+<xs:element name="fechaDocumento" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="formato" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idTransmision" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="monto_documento" type="xs:float" minOccurs="0"></xs:element>
+<xs:element name="notificacion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeDocumento" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeDocumentoRef" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoDocRef" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoDocumento" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoMensaje" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="vucmSolicitudPersona">
+<xs:sequence>
+<xs:element name="aceptaNotifelec" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="celularreponsabletecnico" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="correresponsabletecnico" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="domicilio" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="domicilioRepleg" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="email" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="motivoInter" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="motivoInterDetalle" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nidecer" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="nombre" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nombreRepleg" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nombresresponsableestacion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeCelular" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeDocide" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeDocideRepleg" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numePartiregis" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeResolservi" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeTelefono" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="observaciones" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="oficinaRegis" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="plazoPermiso" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="telefonoresponsabletecnico" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoAduana" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoDocide" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoDocideRepleg" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoPersona" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoServicio" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="tipoServicioAutorizado" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoServicioDetalle" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoTramite" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="ubigeo" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="vucdProducto">
+<xs:sequence>
+<xs:element name="codigoFcc" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="direccionFabricante" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="funcion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="marca" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="modelo" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nombreFabricante" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="paisFabricante" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="uso" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="vucdFactura">
+<xs:sequence>
+<xs:element name="nombreProveedor" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeFactura" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="vucdFacturaDetalless" type="tns:vucdFacturaDetalle" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="vucdFacturaDetalle">
+<xs:sequence>
+<xs:element name="cantidad" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="cantidadFisica" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="codigoCertifHomolo" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="marca" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="modelo" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nombre" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="partidaArancelaria" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="unidadMedida" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="vucSTDExpediente">
+<xs:sequence>
+<xs:element name="nroExpediente" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="ntasa" type="xs:double" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="vucdTablon">
+<xs:sequence>
+<xs:element name="anio" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="area" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="cantidad" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="cantidadDescripcion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="cantidadFisica" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="codigoCertifHomolo" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="codigoCertificacionHomologacion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="detalleTrazabilidad" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="domicilio" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="error" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="expirationDate" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="expirationDateText" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fecIngreso" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaCaducidad" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaCaducidadDescripcion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fechaCertificacionHomologacion" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaEmisionDocumento" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaEstimadaSalida" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaExpediente" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaOficio" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fileBytes" type="xs:base64Binary" minOccurs="0"></xs:element>
+<xs:element name="funcion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idArchivo" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idNotificacion" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="iddoc" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="idflujo" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="marca" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="modelo" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nombre" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nombreArchivo" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nombreProveedor" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nombreRepleg" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nroConStanciaInscripcion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nroExpediente" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nroSuce" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="numeDocide" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeDocref" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeDocumento" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeFactura" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numePartiregis" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="observaciones" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="partidaArancelaria" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="responsable" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="subarea" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tasa" type="xs:float" minOccurs="0"></xs:element>
+<xs:element name="texto" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="textoSustento" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoDocide" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoDocref" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoDocumento" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoMensaje" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoPersona" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoTramite" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="ubigeo" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="unidadMedida" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="vigencia" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="hojaDeEnvioWsDto">
+<xs:sequence>
+<xs:element name="aplicPenCargo" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="aplicPenEntrega" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="ddoFchnotificacion" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="ddoFchrecojo" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="ddoFchretorno" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="direcciontxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doAnio" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="doCostoEnvioFinal" type="xs:double" minOccurs="0"></xs:element>
+<xs:element name="doCostoParcial" type="xs:double" minOccurs="0"></xs:element>
+<xs:element name="doCostoTotal" type="xs:double" minOccurs="0"></xs:element>
+<xs:element name="doCostoenvio" type="xs:double" minOccurs="0"></xs:element>
+<xs:element name="doDesc" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doDiasatrasocargo" type="xs:double" minOccurs="0"></xs:element>
+<xs:element name="doDiasatrasoentrega" type="xs:double" minOccurs="0"></xs:element>
+<xs:element name="doFchrecojoMes" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doIdclasetxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doIddestinatariotxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doIddocNoAnioSid" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="doIddocNoSid" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doIddoctxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doIdremitareatxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doIdremitareatxtacro" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doIdremitareatxtcod" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doIdremtusutxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doIduserproveedor" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="doIduserproveedortxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doNivelsegu" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doNodoc" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doNofolios" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="doNohe" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doNohetxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doNoordenpedido" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doNoremito" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doNoremitoAnio" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="doNoservicio" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doObservacionFin" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doParaNombre" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doPenalidadCargo" type="xs:double" minOccurs="0"></xs:element>
+<xs:element name="doPenalidadEnvio" type="xs:double" minOccurs="0"></xs:element>
+<xs:element name="doPesoUnitario" type="xs:double" minOccurs="0"></xs:element>
+<xs:element name="doPesokg" type="xs:double" minOccurs="0"></xs:element>
+<xs:element name="doTipoDestinatario" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="doTsidtipse" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="doTsidtipsetxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doUbgdir" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doUbgdisttxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doUbgdptotxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doUbgpaistxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="doUbgprovtxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="domcId" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="drIddirreco" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="drIddirrecotxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="eslocal" type="xs:boolean"></xs:element>
+<xs:element name="estado" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="estadoReporte" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="estadotxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="iduserCrea" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="motivoNoEntrega" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="resultadisierror" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="seleccionado" type="xs:boolean"></xs:element>
+<xs:element name="tsCaracter" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tsDespacho" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tsIdtipacceso" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="tsIdtipaccesotxt" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="dFechaCrea" type="xs:dateTime" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="msgDestinatario">
+<xs:sequence>
+<xs:element name="administrado" type="tns:administrado" minOccurs="0"></xs:element>
+<xs:element name="asunto" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="idClase" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="nivelSegu" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="noDocumento" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numFolios" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="numeroExpediente" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="paraNombre" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoDespacho" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="administrado">
+<xs:sequence>
+<xs:element name="departamento" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="distrito" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="domicilio" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nombreRemitente" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="numeroDocumentoIdent" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="pais" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="provincia" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoAdministrado" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="tipoDocumentoIdent" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="hojaDeRutaEllipseArray" final="#all">
+<xs:sequence>
+<xs:element name="item" type="tns:hojaDeRutaEllipse" minOccurs="0" maxOccurs="unbounded" nillable="true"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="expedienteWSDtoArray" final="#all">
+<xs:sequence>
+<xs:element name="item" type="tns:expedienteWSDto" minOccurs="0" maxOccurs="unbounded" nillable="true"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="vucdFacturaArray" final="#all">
+<xs:sequence>
+<xs:element name="item" type="tns:vucdFactura" minOccurs="0" maxOccurs="unbounded" nillable="true"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="vucdTablonArray" final="#all">
+<xs:sequence>
+<xs:element name="item" type="tns:vucdTablon" minOccurs="0" maxOccurs="unbounded" nillable="true"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="msgDestinatarioArray" final="#all">
+<xs:sequence>
+<xs:element name="item" type="tns:msgDestinatario" minOccurs="0" maxOccurs="unbounded" nillable="true"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="hojaDeEnvioWsDtoArray" final="#all">
+<xs:sequence>
+<xs:element name="item" type="tns:hojaDeEnvioWsDto" minOccurs="0" maxOccurs="unbounded" nillable="true"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
