@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } from 'ng-jhipster';
@@ -18,6 +19,7 @@ import { ComboModel } from '../../general/combobox.model';
 import { UbigeodepaModel } from '../../general/ubigeodepa.model';
 import { UbigeoprovModel } from '../../general/ubigeoprov.model';
 import { UbigeodistModel } from '../../general/ubigeodist.model';
+import { Pernatural } from '../../../entities/pernatural';
 import { ES } from './../../applications.constant';
 
 @Component({
@@ -26,6 +28,7 @@ import { ES } from './../../applications.constant';
 })
 
 export class ReginternoComponent implements OnInit {
+    messagesDenu: Message[] = [];
     messagesEmpleador: Message[] = [];
     messagesTrabajo: Message[] = [];
     messagesDireccion: Message[] = [];
@@ -40,6 +43,7 @@ export class ReginternoComponent implements OnInit {
     msgs: Message[] = [];
     indexTab: number;
     block: boolean;
+    disableTab0: boolean;
     disableTab1: boolean;
     disableTab2: boolean;
     disableTab3: boolean;
@@ -58,6 +62,17 @@ export class ReginternoComponent implements OnInit {
     listaorigendenu: ComboModel[];
     messageList: any;
     es: any;
+    tipoDocDenu: string;
+    numDocDenu: string;
+    nombreDenu: string;
+    numTelefonoDenu: string;
+    correoDenu: string;
+    denunte: Pernatural;
+    validReg: boolean;
+    validRegDenunte: boolean;
+    validReserva: boolean;
+    @ViewChild('fileDenuncia')
+    fileDenuncia: any;
 
     constructor(
         private eventManager: JhiEventManager,
@@ -76,46 +91,104 @@ export class ReginternoComponent implements OnInit {
         this.indexTab = 0;
         this.block = false;
         this.formregdenu = new ReginternoModel();
-        this.disableTab1 = false;
+        this.disableTab0 = false;
+        this.disableTab1 = true;
         this.disableTab2 = true;
         this.disableTab3 = true;
         this.disableTab4 = true;
         this.displayNuevaDireccion = false;
         this.tviasLista = [];
         this.tzonasLista = [];
+        this.validReg = false;
+        this.validRegDenunte = false;
+        this.validReserva = true;
     }
 
-    backPerJuridica() {
-        this.disableTab1 = false;
+    buscarDenu() {
+        if (this.tipoDocDenu === undefined) {
+            this.onErrorDenunciante('Debe seleccionar el tipo de documento.');
+        } else if (this.numDocDenu === undefined) {
+            this.onErrorDenunciante('Ingrese el numero de documento.');
+        } else {
+            this.block = true;
+            this.reginternoService.getPersonaServicio({
+                TipoDoc: this.tipoDocDenu,
+                vNumdoc: this.numDocDenu,
+                vTelefono: this.numTelefonoDenu,
+                vEmailper: this.correoDenu
+            }).subscribe(
+                (res: any) => {
+                    this.denunte = res;
+                    this.nombreDenu = this.denunte.vNombres + ' ' + this.denunte.vApepat + ' ' + this.denunte.vApemat;
+                    this.validRegDenunte = true;
+                    this.block = false;
+                },
+                (res: any) => {
+                    this.numDocDenu = '';
+                    this.nombreDenu = '';
+                    this.onErrorDenunciante('Numero o tipo de documento incorrecto.');
+                    this.block = false;
+                });
+        }
+    }
+
+    backDenunciante() {
+        this.disableTab0 = false;
+        this.disableTab1 = true;
         this.disableTab2 = true;
         this.disableTab3 = true;
         this.disableTab4 = true;
         this.indexTab = 0;
     }
 
-    backDatosTrabajo() {
-        this.disableTab1 = true;
-        this.disableTab2 = false;
+    nextPerJuridica() {
+        if (this.validRegDenunte === true) {
+            this.disableTab0 = true;
+            this.disableTab1 = false;
+            this.disableTab2 = true;
+            this.disableTab3 = true;
+            this.disableTab4 = true;
+            this.indexTab = 1;
+        } else {
+            this.onErrorDenunciante('Debe ingresar un numero de documento valido.');
+        }
+    }
+
+    backPerJuridica() {
+        this.disableTab0 = true;
+        this.disableTab1 = false;
+        this.disableTab2 = true;
         this.disableTab3 = true;
         this.disableTab4 = true;
         this.indexTab = 1;
     }
 
-    backDatosDenuncia() {
+    backDatosTrabajo() {
+        this.disableTab0 = true;
         this.disableTab1 = true;
-        this.disableTab2 = true;
-        this.disableTab3 = false;
+        this.disableTab2 = false;
+        this.disableTab3 = true;
         this.disableTab4 = true;
         this.indexTab = 2;
     }
 
+    backDatosDenuncia() {
+        this.disableTab0 = true;
+        this.disableTab1 = true;
+        this.disableTab2 = true;
+        this.disableTab3 = false;
+        this.disableTab4 = true;
+        this.indexTab = 3;
+    }
+
     nextDatosTrabajo() {
         if (this.validarPersonaJuridica() === true) {
+            this.disableTab0 = true;
             this.disableTab1 = true;
             this.disableTab2 = false;
             this.disableTab3 = true;
             this.disableTab4 = true;
-            this.indexTab = 1;
+            this.indexTab = 2;
         }
     }
 
@@ -129,11 +202,19 @@ export class ReginternoComponent implements OnInit {
                     for (const i in res) {
                         this.listamotivos.push(new ComboModel(res[i].vDescrip, String(res[i].id), 0));
                     }
+                    this.disableTab0 = true;
                     this.disableTab1 = true;
                     this.disableTab2 = true;
                     this.disableTab3 = false;
                     this.disableTab4 = true;
-                    this.indexTab = 2;
+                    this.indexTab = 3;
+                    /* */
+                    if (this.formregdenu.flagtrabajando === true) {
+                        this.formregdenu.flagreservaidentidad = true;
+                    } else if (this.formregdenu.flagtrabajando === false) {
+                        this.formregdenu.flagreservaidentidad = false;
+                    }
+                    /* */
                     this.block = false;
                 },
                 (res: any) => {
@@ -157,11 +238,12 @@ export class ReginternoComponent implements OnInit {
                     for (const i in res) {
                         this.listadetalle.push(new ComboModel(res[i].vDescrip, res[i].id, 0));
                     }
+                    this.disableTab0 = true;
                     this.disableTab1 = true;
                     this.disableTab2 = true;
                     this.disableTab3 = false;
                     this.disableTab4 = true;
-                    this.indexTab = 2;
+                    this.indexTab = 3;
                     this.block = false;
                 },
                 (res: any) => {
@@ -177,6 +259,9 @@ export class ReginternoComponent implements OnInit {
             this.onErrorEmpleador('Debe ingresar el número RUC de la empresa.');
             return false;
         } else if (this.formregdenu.ddpnombre === undefined) {
+            this.onErrorEmpleador('Debe ingresar el número RUC de la empresa valido.');
+            return false;
+        } else if (this.validReg === false) {
             this.onErrorEmpleador('Debe ingresar el número RUC de la empresa valido.');
             return false;
         } else {
@@ -262,11 +347,12 @@ export class ReginternoComponent implements OnInit {
                             for (const i in oridenres) {
                                 this.listaorigendenu.push(new ComboModel(oridenres[i].vDescripcion, oridenres[i].id, 0));
                             }
+                            this.disableTab0 = true;
                             this.disableTab1 = true;
                             this.disableTab2 = true;
                             this.disableTab3 = true;
                             this.disableTab4 = false;
-                            this.indexTab = 3;
+                            this.indexTab = 4;
                             this.block = false;
                         },
                         (oridenres: any) => {
@@ -354,7 +440,8 @@ export class ReginternoComponent implements OnInit {
                 codOrigendenu: Number(this.formregdenu.selectOridenu.value),
                 listaCalifica: lista,
                 observaCalifica: this.formregdenu.observaCalifica.trim(),
-                fileString: this.formregdenu.fileString
+                fileString: this.formregdenu.fileString,
+                persona: this.denunte
             }).subscribe(
                 (dato: ResponseWrapper) => {
                     this.block = false;
@@ -381,7 +468,7 @@ export class ReginternoComponent implements OnInit {
                             ddp_numruc: this.nRuc
                         }).subscribe(
                             (res: any) => {
-                                console.log(res);
+                                this.validReg = true;
                                 this.formregdenu.numruc = this.nRuc;
                                 this.formregdenu.descciiu = res.desc_ciiu;
                                 this.formregdenu.descsectoeco = res.desc_sectoeco;
@@ -406,6 +493,7 @@ export class ReginternoComponent implements OnInit {
                             },
                             (res: any) => {
                                 this.nRuc = '';
+                                this.validReg = false;
                                 this.onErrorEmpleador(res);
                                 this.block = false;
                             });
@@ -538,7 +626,7 @@ export class ReginternoComponent implements OnInit {
             this.formregdenu.ddptipzon_c = this.formregdenu.selectZona.value;
             this.displayNuevaDireccion = false;
             this.formregdenu.flagOtradireccion = true;
-            this.block = true;
+            this.block = false;
         }
     }
 
@@ -559,9 +647,16 @@ export class ReginternoComponent implements OnInit {
 
     handleInputChange(e) {
         const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-        const reader = new FileReader();
-        reader.onload = this._handleReaderLoaded.bind(this);
-        reader.readAsDataURL(file);
+        if (file.size > 0) {
+            if ((Number(file.size) / 1000) < 5000) {
+                const reader = new FileReader();
+                reader.onload = this._handleReaderLoaded.bind(this);
+                reader.readAsDataURL(file);
+            } else {
+                this.fileDenuncia.nativeElement.value = '';
+                this.onErrorDenuncia('El archivo no puede ser mayor de 5 megas.');
+            }
+        }
     }
 
     _handleReaderLoaded(e) {
@@ -569,7 +664,10 @@ export class ReginternoComponent implements OnInit {
         this.formregdenu.fileString = reader.result.split(',')[1];
         console.log(this.formregdenu.fileString);
     }
-
+    private onErrorDenunciante(error: any) {
+        this.messagesDenu = [];
+        this.messagesDenu.push({ severity: 'error', summary: 'Mensaje de Error', detail: error });
+    }
     private onErrorEmpleador(error: any) {
         this.messagesEmpleador = [];
         this.messagesEmpleador.push({ severity: 'error', summary: 'Mensaje de Error', detail: error });

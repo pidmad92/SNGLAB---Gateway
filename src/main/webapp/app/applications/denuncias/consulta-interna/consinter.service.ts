@@ -13,9 +13,14 @@ export class ConsinterService {
     private resourceUrlFiltroMotFin = '/denuncias/api/motfins';
     private resourceUrlFinalizaDenu = '/denuncias/api/finalizadenu';
     private resourceOridenuncia = '/denuncias/api/oridenus';
+    private resourceReporte = '/denuncias/api/reporte';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
+    getReporte(criterio: any, param1: any, param2: any): any {
+        window.open(`${this.resourceReporte}/${criterio}/${param1}/${param2}`);
+        return {flag : true};
+    }
     getFiltro(filtro: any): any {
         return this.http.post(`${this.resourceUrlFiltro}`, filtro).map((res: Response) => {
             const jsonResponse = res.json();

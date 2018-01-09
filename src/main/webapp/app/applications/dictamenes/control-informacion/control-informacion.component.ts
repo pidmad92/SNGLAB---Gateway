@@ -112,7 +112,6 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.limpiarLocalStorage();
         this.loadAll();
-        // this.solicitudService.obtenerlistaFormulariosObligatorios();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
@@ -179,29 +178,125 @@ export class ControlInformacionComponent implements OnInit, OnDestroy {
     }
 
     abrirFormulario(obj: Solicform) {
-        if (obj.vTipoform === 'G' && obj.nCodfperf != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
-            // Formulario Perfil
-            this.router.navigate(['../../dictamenes/formulario-perfil/' + obj.nCodfperf])
-        } else if (obj.vTipoform === 'F1' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
-            this.router.navigate(['../../dictamenes/formulario-financiero-n1/' + obj.nCodffina])
-        } else if (obj.vTipoform === 'F1A' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
-            this.router.navigate(['../../dictamenes/formulario-financiero-anexo1a/' + obj.nCodffina])
-        } else if (obj.vTipoform === 'F1B' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
-            this.router.navigate(['../../dictamenes/formulario-financiero-anexo1b/' + obj.nCodffina])
-        } else if (obj.vTipoform === 'F1C' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
-            this.router.navigate(['../../dictamenes/formulario-financiero-anexo1c/' + obj.nCodffina])
-        } else if (obj.vTipoform === 'F1D' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
-            this.router.navigate(['../../dictamenes/formulario-financiero-anexo1d/' + obj.nCodffina])
-        } else if (obj.vTipoform === 'F2' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
-            this.router.navigate(['../../dictamenes/formulario-financiero-n2/' + obj.nCodffina])
-        } else if (obj.vTipoform === 'F2A' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
-            this.router.navigate(['../../dictamenes/formulario-financiero-anexo2a/' + obj.nCodffina])
-        } else if (obj.vTipoform === 'F2B' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
-            this.router.navigate(['../../dictamenes/formulario-financiero-anexo2b/' + obj.nCodffina])
-        } else if (obj.vTipoform === 'F2C' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
-            this.router.navigate(['../../dictamenes/formulario-financiero-anexo2c/' + obj.nCodffina])
-        } else if (obj.vTipoform === 'F3' && obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')) {
-            this.router.navigate(['../../dictamenes/formulario-financiero-n3/' + obj.nCodffina])
+        if (obj.vTipoform === 'G' &&
+            obj.nCodfperf != null &&
+           (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Perfil
+            this.router.navigate(['../../dictamenes/formulario-perfil/' + obj.nCodfperf]);
+        } else if (obj.vTipoform === 'FP1' &&
+                   obj.nCodffina != null &&
+                  (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero 1 Sector Privado
+            this.router.navigate(['../../dictamenes/formulario-financiero-privado-n1/' + obj.nCodffina]);
+        } else if (obj.vTipoform === 'FP1A' &&
+                   obj.nCodffina != null &&
+                  (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero Anexo 1A Sector Privado
+            this.router.navigate(['../../dictamenes/formulario-financiero-privado-anexo1a/' + obj.nCodffina]);
+        } else if (obj.vTipoform === 'FP1B' &&
+                   obj.nCodffina != null &&
+                  (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero Anexo 1B Sector Privado
+            this.router.navigate(['../../dictamenes/formulario-financiero-privado-anexo1b/' + obj.nCodffina]);
+        } else if (obj.vTipoform === 'FP1C' &&
+                   obj.nCodffina != null &&
+                  (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero Anexo 1C Sector Privado
+            this.router.navigate(['../../dictamenes/formulario-financiero-privado-anexo1c/' + obj.nCodffina]);
+        } else if (obj.vTipoform === 'FP1D' &&
+                   obj.nCodffina != null &&
+                  (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero Anexo 1D Sector Privado
+            this.router.navigate(['../../dictamenes/formulario-financiero-privado-anexo1d/' + obj.nCodffina]);
+        } else if (obj.vTipoform === 'FP2' &&
+                   obj.nCodffina != null &&
+                  (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero 2 Sector Privado
+            this.router.navigate(['../../dictamenes/formulario-financiero-privado-n2/' + obj.nCodffina]);
+        } else if (obj.vTipoform === 'FP2A' &&
+                   obj.nCodffina != null &&
+                  (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero Anexo 2A Sector Privado
+            this.router.navigate(['../../dictamenes/formulario-financiero-privado-anexo2a/' + obj.nCodffina]);
+        } else if (obj.vTipoform === 'FP2B' &&
+                   obj.nCodffina != null &&
+                  (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero Anexo 2B Sector Privado
+            this.router.navigate(['../../dictamenes/formulario-financiero-privado-anexo2b/' + obj.nCodffina])
+        } else if (obj.vTipoform === 'FP2C' &&
+                   obj.nCodffina != null &&
+                  (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero Aenxo 2C Sector Privado
+            this.router.navigate(['../../dictamenes/formulario-financiero-privado-anexo2c/' + obj.nCodffina])
+        } else if (obj.vTipoform === 'FP3' &&
+                   obj.nCodffina != null &&
+                  (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero 3 Sector Privado
+            this.router.navigate(['../../dictamenes/formulario-financiero-privado-n3/' + obj.nCodffina])
+        } else if (obj.vTipoform === 'FF1' &&
+                   obj.nCodffina != null &&
+                  (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero 1 Sector Financiero
+            this.router.navigate(['../../dictamenes/formulario-financiero-financiero-n1/' + obj.nCodffina])
+        } else if (obj.vTipoform === 'FF2' &&
+                   obj.nCodffina != null &&
+                  (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero 2 Sector Financiero
+            this.router.navigate(['../../dictamenes/formulario-financiero-financiero-n2/' + obj.nCodffina])
+        } else if (obj.vTipoform === 'FF2A' &&
+                   obj.nCodffina != null &&
+                  (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero Anexo 2A Sector Financiero
+            // this.router.navigate(['../../dictamenes/formulario-financiero-financiero-anexo2a/' + obj.nCodffina])
+        }  else if (obj.vTipoform === 'FF2B' &&
+                    obj.nCodffina != null &&
+                   (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero Anexo 2B Sector Financiero
+            // this.router.navigate(['../../dictamenes/formulario-financiero-financiero-anexo2b/' + obj.nCodffina])
+        }  else if (obj.vTipoform === 'FF2C' &&
+                   obj.nCodffina != null &&
+                  (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero Anexo 2C Sector Financiero
+            this.router.navigate(['../../dictamenes/formulario-financiero-financiero-anexo2c/' + obj.nCodffina])
+        } else if (obj.vTipoform === 'FF3' &&
+                   obj.nCodffina != null &&
+                  (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero 3 Sector Financiero
+            this.router.navigate(['../../dictamenes/formulario-financiero-financiero-n3/' + obj.nCodffina])
+        } else if (obj.vTipoform === 'FF4' &&
+                   obj.nCodffina != null && (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero 4 Sector Financiero
+            this.router.navigate(['../../dictamenes/formulario-financiero-financiero-n4/' + obj.nCodffina])
+        } else if (obj.vTipoform === 'FF5' &&
+                   obj.nCodffina != null &&
+                  (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero 5 Sector Financiero
+            this.router.navigate(['../../dictamenes/formulario-financiero-financiero-n5/' + obj.nCodffina])
+        } else if (obj.vTipoform === 'FF6' &&
+                   obj.nCodffina != null &&
+                  (obj.vFlgest === 'P' || obj.vFlgest === 'O')
+        ) {
+            // Formularios Financiero 6 Sector Financiero
+            this.router.navigate(['../../dictamenes/formulario-financiero-financiero-n6/' + obj.nCodffina])
         } else {
             this.router.navigate(['./dictamenes/control-informacion/' + obj.nCodsolic])
         }
