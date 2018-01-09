@@ -6,7 +6,7 @@ import { ResponseWrapper, createRequestOption } from '../../../shared';
 
 @Injectable()
 export class ConsexterService {
-    private resourceUrlFiltro = '/denuncias/api/denunciasbycriterio';
+    private resourceUrlFiltro = '/denuncias/api/denunciasbycriteriodenu';
     private resourceUrlFiltroInfoSoli = '/denuncias/api/infosolisfiltro';
     private resourceUrlReg = '/denuncias/api/infosolis';
     private resourceUrlUpd = '/denuncias/api/infosolisupd';

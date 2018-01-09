@@ -80,6 +80,7 @@
                 <button (click)="consultaInformacionAdicional()" class="btn btn-default" type="button">Solicitar Información Adicional</button>
                 <button (click)="atenderDenuncia()" class="btn btn-default" type="button">Atender Denuncia</button>
                 <button (click)="finalizaDenuncia()" class="btn btn-default" type="button">Finalizar Denuncia</button>
+                <button (click)="generaReporte()" class="btn btn-default" type="button">Exportar a Excel</button>
                 <form>
                     <p-dataTable [value]="listaResultado" [(selection)]="selectedResultado" rowGroupMode="subheader" groupField="groupheader"
                         expandableRowGroups="true" [sortableRowGroup]="false" dataKey="serialize">

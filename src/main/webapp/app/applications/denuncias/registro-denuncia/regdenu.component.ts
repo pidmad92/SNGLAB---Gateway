@@ -18,6 +18,7 @@ import { UbigeodepaModel } from '../../general/ubigeodepa.model';
 import { UbigeoprovModel } from '../../general/ubigeoprov.model';
 import { UbigeodistModel } from '../../general/ubigeodist.model';
 import { ES } from './../../applications.constant';
+import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
 
 @Component({
     selector: 'jhi-formregdenuncia',
@@ -63,6 +64,7 @@ export class RegdenuComponent implements OnInit {
         private messageService: MessageService,
         private validarrucService: ValidarrucService,
         private regdenuService: RegdenuService,
+        private confirmationService: ConfirmationService,
         private validarUsuarioService: ValidarUsuarioService,
         private router: Router,
     ) {
@@ -224,6 +226,7 @@ export class RegdenuComponent implements OnInit {
     }
 
     validarDatosDenuncias() {
+        let departamento: string;
         if (this.formregdenu.flaggruposindical === true && this.formregdenu.numtrabajadores === undefined) {
             this.onErrorDenuncia('Debe ingresar el número de trabajadores afectados.');
         } else if (this.formregdenu.horainiinspec === undefined) {
@@ -248,6 +251,7 @@ export class RegdenuComponent implements OnInit {
                 this.formregdenu.coddep = this.formregdenu.coddep_c;
                 this.formregdenu.codprov = this.formregdenu.codprov_c;
                 this.formregdenu.coddist = this.formregdenu.coddist_c;
+                departamento = this.formregdenu.descdep_c;
             } else {
                 this.formregdenu.codVia = Number(this.formregdenu.ddptipvia);
                 this.formregdenu.codZona = Number(this.formregdenu.ddptipzon);
@@ -255,6 +259,7 @@ export class RegdenuComponent implements OnInit {
                 this.formregdenu.coddep = this.formregdenu.coddep;
                 this.formregdenu.codprov = this.formregdenu.codprov;
                 this.formregdenu.coddist = this.formregdenu.coddist;
+                departamento = this.formregdenu.descdep;
             }
             this.regdenuService.guardarDenunciaExterna({
                 numruc: this.formregdenu.numruc,
@@ -300,7 +305,7 @@ export class RegdenuComponent implements OnInit {
             }).subscribe(
                 (dato: ResponseWrapper) => {
                     this.block = false;
-                    this.router.navigate(['/denuncias/formconsexterno']);
+                    this.confirmRegistro(departamento);
                 },
                 (dato: ResponseWrapper) => { console.log(dato); this.onErrorDatosTrabajo(dato.json); this.block = false; }
                 );
@@ -538,6 +543,17 @@ export class RegdenuComponent implements OnInit {
             // e.originalEvent().defaultPrevented = true
             e.checked = false;
         }
+    }
+
+    confirmRegistro(departamento: string) {
+        this.confirmationService.confirm({
+            message: 'Su denuncia es competencia de la gerencia/dirección regional de trabajo - ' + departamento,
+            header: 'Informativo',
+            icon: 'fa fa-question-circle',
+            accept: () => {
+                this.router.navigate(['/denuncias/formconsexterno']);
+            }
+        });
     }
 
     private onErrorEmpleador(error: any) {

@@ -7,7 +7,8 @@
                 <label>Ruc</label>
             </div>
             <div class="col-md-6">
-                <input name="nRuc" (change)="validReg = false" [(ngModel)]="nRuc" placeholder="Ingresar el RUC de la empresa" class="form-control" type="text" />
+                <input name="nRuc" (change)="validReg = false" [(ngModel)]="nRuc" placeholder="Ingresar el RUC de la empresa" class="form-control"
+                    type="text" />
             </div>
             <div class="col-md-4">
                 <button class="" (click)="validarRuc()" type="button">Buscar</button>
@@ -135,11 +136,13 @@
                 <p-checkbox [(ngModel)]="formregdenu.flagdom" name="flagdom" binary="true"></p-checkbox>Dom
             </div>
             <div class="ui-md-3">
-                <label>Hora inicio trabajo:</label> <br />
+                <label>Hora inicio trabajo:</label>
+                <br />
                 <p-calendar [(ngModel)]="formregdenu.horainicio" name="horainicio" [timeOnly]="true"></p-calendar>
             </div>
             <div class="ui-md-3">
-                <label>Hora fin trabajo:</label> <br />
+                <label>Hora fin trabajo:</label>
+                <br />
                 <p-calendar [(ngModel)]="formregdenu.horafin" name="horafin" [timeOnly]="true"></p-calendar>
             </div>
         </div>
@@ -165,7 +168,8 @@
         </div>
         <div class="ui-g">
             <div *ngIf="formregdenu.flagtrabajando == false" class="ui-md-3">
-                <label>Fecha Cese</label><br />
+                <label>Fecha Cese</label>
+                <br />
                 <p-calendar [(ngModel)]="formregdenu.fechacese" name="fechacese" [locale]="es" dateFormat="dd/mm/yy"></p-calendar>
             </div>
             <div *ngIf="formregdenu.flaggruposindical == true" class="ui-md-9">
@@ -195,7 +199,7 @@
                 Hora ideonea de la visita inspectiva:
             </div>
             <div class="ui-md-9">
-                <p-calendar [(ngModel)]="formregdenu.horainiinspec" name="horainiinspec" [timeOnly]="true"></p-calendar> - 
+                <p-calendar [(ngModel)]="formregdenu.horainiinspec" name="horainiinspec" [timeOnly]="true"></p-calendar> -
                 <p-calendar [(ngModel)]="formregdenu.horafininspec" name="horafininspec" [timeOnly]="true"></p-calendar>
             </div>
         </div>
@@ -204,10 +208,8 @@
                 Motivo de la denuncia
             </div>
             <div class="ui-md-9">
-                <p-dropdown appendTo="body" [options]="listamotivos" [(ngModel)]="formregdenu.selectmotivos" name="selectmotivos"
-                (onChange)="onChangeMotivodenuncia()" [style]="{'width':'150px'}" editable="true" placeholder="Seleccione el motivo"
-                optionLabel="name"
-                ></p-dropdown>
+                <p-dropdown appendTo="body" [options]="listamotivos" [(ngModel)]="formregdenu.selectmotivos" name="selectmotivos" (onChange)="onChangeMotivodenuncia()"
+                    [style]="{'width':'150px'}" editable="true" placeholder="Seleccione el motivo" optionLabel="name"></p-dropdown>
             </div>
         </div>
         <div class="ui-g">
@@ -215,10 +217,8 @@
                 Detalle especifico
             </div>
             <div class="ui-md-9">
-                <p-dropdown appendTo="body" [options]="listadetalle" [(ngModel)]="formregdenu.selectdetalle" name="selectdetalle"
-                    [style]="{'width':'150px'}" editable="true" placeholder="Seleccione el detalle"
-                    optionLabel="name"
-                    ></p-dropdown>
+                <p-dropdown appendTo="body" [options]="listadetalle" [(ngModel)]="formregdenu.selectdetalle" name="selectdetalle" [style]="{'width':'150px'}"
+                    editable="true" placeholder="Seleccione el detalle" optionLabel="name"></p-dropdown>
             </div>
         </div>
         <div class="ui-g">
@@ -226,7 +226,8 @@
                 Descripción denuncia
             </div>
             <div class="ui-md-9">
-                <textarea [rows]="5" [cols]="100" autoResize="autoResize" [style]="{'width':'100%'}" pInputTextarea [(ngModel)]="formregdenu.observadenuncia" name="observadenuncia"></textarea>
+                <textarea [rows]="5" [cols]="100" autoResize="autoResize" [style]="{'width':'100%'}" pInputTextarea [(ngModel)]="formregdenu.observadenuncia"
+                    name="observadenuncia"></textarea>
             </div>
         </div>
         <div class="ui-g">
@@ -234,7 +235,8 @@
                 Detalle si presento su denuncia en otro organo del estado
             </div>
             <div class="ui-md-9">
-                <textarea [rows]="5" [cols]="100" autoResize="autoResize" [style]="{'width':'100%'}" pInputTextarea [(ngModel)]="formregdenu.observadenunciadetalle" name="observadenunciadetalle"></textarea>
+                <textarea [rows]="5" [cols]="100" autoResize="autoResize" [style]="{'width':'100%'}" pInputTextarea [(ngModel)]="formregdenu.observadenunciadetalle"
+                    name="observadenunciadetalle"></textarea>
             </div>
         </div>
         <div class="ui-g">
@@ -242,7 +244,8 @@
                 Adjuntar archivo
             </div>
             <div class="ui-md-9">
-                <input #fileDenuncia accept="application/pdf" (change)="handleInputChange($event)" type="file" class="form-control" [(ngModel)]="formregdenu.filedenuncia" name="filedenuncia" />
+                <input #fileDenuncia accept="application/pdf" (change)="handleInputChange($event)" type="file" class="form-control" [(ngModel)]="formregdenu.filedenuncia"
+                    name="filedenuncia" />
             </div>
         </div>
         <div class="ui-g">
@@ -250,7 +253,8 @@
                 Su denuncia será con la reserva de indentidad
             </div>
             <div class="ui-md-9">
-                <p-inputSwitch [disabled]="validReserva" (onChange)="getSwitchReserva($event)" onLabel="Si" offLabel="No" [(ngModel)]="formregdenu.flagreservaidentidad" name="flagreservaidentidad"></p-inputSwitch>
+                <p-inputSwitch [disabled]="validReserva" (onChange)="getSwitchReserva($event)" onLabel="Si" offLabel="No" [(ngModel)]="formregdenu.flagreservaidentidad"
+                    name="flagreservaidentidad"></p-inputSwitch>
             </div>
         </div>
         <div class="ui-g">
@@ -261,6 +265,11 @@
         </div>
         <div class="ui-g">
             <div class="ui-md-12">
+                <p-confirmDialog header="Informativo" icon="fa fa-question-circle" width="425" #cd>
+                    <p-footer>
+                        <button type="button" pButton icon="fa-check" label="Aceptar" (click)="cd.accept()"></button>
+                    </p-footer>
+                </p-confirmDialog>
                 <button (click)="backDatosTrabajo()" class="btn btn-second" type="button">Atras</button>
                 <button (click)="validarDatosDenuncias()" class="btn btn-primary" type="button">Finalizar denuncia laboral</button>
             </div>
