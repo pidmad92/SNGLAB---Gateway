@@ -242,7 +242,7 @@ export class FormularioFinancieroAnexo1BComponent implements OnInit, OnDestroy {
     }
 
     guardarFormulario() {
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaProductos, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaProductos, this.nCodffina, 'f1anex1b');
         this.verControlInformacion();
     }
 

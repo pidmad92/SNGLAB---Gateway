@@ -558,14 +558,14 @@ export class FormularioFinancieroN2Component implements OnInit, OnDestroy {
     }
 
     guardarFormulario() {
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaActivoCorriente, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaActivoNoCorriente, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPasivoCorriente, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPasivoNoCorriente, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPatrimonio, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalActivos, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPasivoPatrimonio, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPasivos, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaActivoCorriente, this.nCodffina, 'f2');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaActivoNoCorriente, this.nCodffina, 'f2');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPasivoCorriente, this.nCodffina, 'f2');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPasivoNoCorriente, this.nCodffina, 'f2');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPatrimonio, this.nCodffina, 'f2');
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalActivos, this.nCodffina, 'f2');
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPasivoPatrimonio, this.nCodffina, 'f2');
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPasivos, this.nCodffina, 'f2');
         this.verControlInformacion();
     }
 

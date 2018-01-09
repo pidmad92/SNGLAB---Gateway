@@ -769,13 +769,13 @@ export class FormularioFinancieroAnexo1CComponent implements OnInit, OnDestroy {
     }
 
     guardarFormulario() {
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaMPNacional, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaMPImportada, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosFinancieros, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.ingresoTotalMP, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.subtotalGastosFinancieros, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.subtotalMPImportada, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.subtotalMPNacional, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaMPNacional, this.nCodffina, 'f1anex1c');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaMPImportada, this.nCodffina, 'f1anex1c');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosFinancieros, this.nCodffina, 'f1anex1c');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.ingresoTotalMP, this.nCodffina, 'f1anex1c');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.subtotalGastosFinancieros, this.nCodffina, 'f1anex1c');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.subtotalMPImportada, this.nCodffina, 'f1anex1c');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.subtotalMPNacional, this.nCodffina, 'f1anex1c');
         this.verControlInformacion();
     }
     verControlInformacion() {

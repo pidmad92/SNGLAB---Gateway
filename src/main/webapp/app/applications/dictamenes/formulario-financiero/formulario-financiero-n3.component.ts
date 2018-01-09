@@ -207,7 +207,7 @@ export class FormularioFinancieroN3Component implements OnInit, OnDestroy {
     }
 
     guardarFormulario() {
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosPersonal, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosPersonal, this.nCodffina, 'f3');
         this.verControlInformacion();
     }
 

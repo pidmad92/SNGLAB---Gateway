@@ -648,11 +648,11 @@ export class FormularioFinancieroAnexo1AComponent implements OnInit, OnDestroy {
     }
 
     guardarFormulario() {
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaNacional, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaInternacional, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.subtotalNacional, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.subtotalInternacional, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.ingresoTotal, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaNacional, this.nCodffina, 'f1anex1a');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaInternacional, this.nCodffina, 'f1anex1a');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.subtotalNacional, this.nCodffina, 'f1anex1a');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.subtotalInternacional, this.nCodffina, 'f1anex1a');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.ingresoTotal, this.nCodffina, 'f1anex1a');
         this.verControlInformacion();
     }
 

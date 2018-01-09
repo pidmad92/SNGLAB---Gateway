@@ -659,21 +659,21 @@ export class FormularioFinancieroAnexo2AComponent implements OnInit, OnDestroy {
     }
 
     guardarFormulario() {
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista1, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista2, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista3, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista4, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista5, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista6, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista7, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.lista8, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.lista9, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total1, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total2, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total3, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total4, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total5, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total6, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista1, this.nCodffina, 'f2anex2a');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista2, this.nCodffina, 'f2anex2a');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista3, this.nCodffina, 'f2anex2a');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista4, this.nCodffina, 'f2anex2a');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista5, this.nCodffina, 'f2anex2a');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista6, this.nCodffina, 'f2anex2a');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista7, this.nCodffina, 'f2anex2a');
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.lista8, this.nCodffina, 'f2anex2a');
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.lista9, this.nCodffina, 'f2anex2a');
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total1, this.nCodffina, 'f2anex2a');
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total2, this.nCodffina, 'f2anex2a');
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total3, this.nCodffina, 'f2anex2a');
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total4, this.nCodffina, 'f2anex2a');
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total5, this.nCodffina, 'f2anex2a');
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total6, this.nCodffina, 'f2anex2a');
         this.verControlInformacion();
     }
 

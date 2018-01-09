@@ -490,61 +490,61 @@ export class Constants {
     // -----------------------------------------------------------------
     // Formulario 2 - ANEXO 2C - DETALLE DE CUENTAS
     // -----------------------------------------------------------------
-    public readonly FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALES = 'f2anex2c_cam1';
+    public readonly FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALES = 'f2anex2c_cama';
     public readonly FORM2ANEX2C_ACCUENTASCOBRARCOMERCIALES = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_TOTAL_ACCUENTASCOBRARCOMERCIALES = 'f2anex2c_total1';
+    public readonly FORM2ANEX2C_COD_TOTAL_ACCUENTASCOBRARCOMERCIALES = 'f2anex2c_totala';
 
-    public readonly FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALESRELACIONADAS = 'f2anex2c_cam2';
+    public readonly FORM2ANEX2C_COD_ACCUENTASCOBRARCOMERCIALESRELACIONADAS = 'f2anex2c_camb';
     public readonly FORM2ANEX2C_ACCUENTASCOBRARCOMERCIALESRELACIONADAS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_TOTAL_ACCUENTASCOBRARCOMERCIALESRELACIONADAS = 'f2anex2c_total2';
+    public readonly FORM2ANEX2C_COD_TOTAL_ACCUENTASCOBRARCOMERCIALESRELACIONADAS = 'f2anex2c_totalb';
 
-    public readonly FORM2ANEX2C_COD_ACCUENTASCOBRARDIVERSAS = 'f2anex2c_cam3';
+    public readonly FORM2ANEX2C_COD_ACCUENTASCOBRARDIVERSAS = 'f2anex2c_camc';
     public readonly FORM2ANEX2C_ACCUENTASCOBRARDIVERSAS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_TOTAL_ACCUENTASCOBRARDIVERSAS = 'f2anex2c_total3';
+    public readonly FORM2ANEX2C_COD_TOTAL_ACCUENTASCOBRARDIVERSAS = 'f2anex2c_totalc';
 
-    public readonly FORM2ANEX2C_COD_ACOTRASCUENTAS = 'f2anex2c_cam4';
+    public readonly FORM2ANEX2C_COD_ACOTRASCUENTAS = 'f2anex2c_camd';
     public readonly FORM2ANEX2C_ACOTRASCUENTAS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_TOTAL_ACOTRASCUENTAS = 'f2anex2c_total4';
+    public readonly FORM2ANEX2C_COD_TOTAL_ACOTRASCUENTAS = 'f2anex2c_totald';
 
-    public readonly FORM2ANEX2C_COD_ANCOTRASCUENTAS = 'f2anex2c_cam5';
+    public readonly FORM2ANEX2C_COD_ANCOTRASCUENTAS = 'f2anex2c_came';
     public readonly FORM2ANEX2C_ANCOTRASCUENTAS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_TOTAL_ANCOTRASCUENTAS = 'f2anex2c_total5';
+    public readonly FORM2ANEX2C_COD_TOTAL_ANCOTRASCUENTAS = 'f2anex2c_totale';
 
-    public readonly FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALES = 'f2anex2c_cam6';
+    public readonly FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALES = 'f2anex2c_camf';
     public readonly FORM2ANEX2C_PCCUENTASPAGARCOMERCIALES = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_TOTAL_PCCUENTASPAGARCOMERCIALES = 'f2anex2c_total6';
+    public readonly FORM2ANEX2C_COD_TOTAL_PCCUENTASPAGARCOMERCIALES = 'f2anex2c_totalf';
 
-    public readonly FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALESRELACIONADAS = 'f2anex2c_cam7';
+    public readonly FORM2ANEX2C_COD_PCCUENTASPAGARCOMERCIALESRELACIONADAS = 'f2anex2c_camg';
     public readonly FORM2ANEX2C_PCCUENTASPAGARCOMERCIALESRELACIONADAS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_TOTAL_PCCUENTASPAGARCOMERCIALESRELACIONADAS = 'f2anex2c_total7';
+    public readonly FORM2ANEX2C_COD_TOTAL_PCCUENTASPAGARCOMERCIALESRELACIONADAS = 'f2anex2c_totalg';
 
-    public readonly FORM2ANEX2C_COD_PCOBLIGACIONESFINANCIERAS = 'f2anex2c_cam8';
+    public readonly FORM2ANEX2C_COD_PCOBLIGACIONESFINANCIERAS = 'f2anex2c_camh';
     public readonly FORM2ANEX2C_PCOBLIGACIONESFINANCIERAS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_TOTAL_PCOBLIGACIONESFINANCIERAS = 'f2anex2c_total8';
+    public readonly FORM2ANEX2C_COD_TOTAL_PCOBLIGACIONESFINANCIERAS = 'f2anex2c_totalh';
 
-    public readonly FORM2ANEX2C_COD_PCPROVISIONES = 'f2anex2c_cam9';
+    public readonly FORM2ANEX2C_COD_PCPROVISIONES = 'f2anex2c_cami';
     public readonly FORM2ANEX2C_PCPROVISIONES = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_TOTAL_PCPROVISIONES = 'f2anex2c_total9';
+    public readonly FORM2ANEX2C_COD_TOTAL_PCPROVISIONES = 'f2anex2c_totali';
 
-    public readonly FORM2ANEX2C_COD_PCOTRASCUENTAS = 'f2anex2c_cam10';
+    public readonly FORM2ANEX2C_COD_PCOTRASCUENTAS = 'f2anex2c_camj';
     public readonly FORM2ANEX2C_PCOTRASCUENTAS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_TOTAL_PCOTRASCUENTAS = 'f2anex2c_total10';
+    public readonly FORM2ANEX2C_COD_TOTAL_PCOTRASCUENTAS = 'f2anex2c_totalj';
 
-    public readonly FORM2ANEX2C_COD_PNCOBLIGACIONESFINANCIERAS = 'f2anex2c_cam11';
+    public readonly FORM2ANEX2C_COD_PNCOBLIGACIONESFINANCIERAS = 'f2anex2c_camk';
     public readonly FORM2ANEX2C_PNCOBLIGACIONESFINANCIERAS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_TOTAL_PNCOBLIGACIONESFINANCIERAS = 'f2anex2c_total11';
+    public readonly FORM2ANEX2C_COD_TOTAL_PNCOBLIGACIONESFINANCIERAS = 'f2anex2c_totalk';
 
-    public readonly FORM2ANEX2C_COD_PNCOTRASCUENTAS = 'f2anex2c_cam12';
+    public readonly FORM2ANEX2C_COD_PNCOTRASCUENTAS = 'f2anex2c_caml';
     public readonly FORM2ANEX2C_PNCOTRASCUENTAS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_TOTAL_PNCOTRASCUENTAS = 'f2anex2c_total12';
+    public readonly FORM2ANEX2C_COD_TOTAL_PNCOTRASCUENTAS = 'f2anex2c_totall';
 
-    public readonly FORM2ANEX2C_COD_PNCPROVISIONES = 'f2anex2c_cam13';
+    public readonly FORM2ANEX2C_COD_PNCPROVISIONES = 'f2anex2c_camm';
     public readonly FORM2ANEX2C_PNCPROVISIONES = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_TOTAL_PNCPROVISIONES = 'f2anex2c_total13';
+    public readonly FORM2ANEX2C_COD_TOTAL_PNCPROVISIONES = 'f2anex2c_totalm';
 
-    public readonly FORM2ANEX2C_COD_PRESULTADOSNOREALIZADOS = 'f2anex2c_cam14';
+    public readonly FORM2ANEX2C_COD_PRESULTADOSNOREALIZADOS = 'f2anex2c_camn';
     public readonly FORM2ANEX2C_PRESULTADOSNOREALIZADOS = 'TOTAL';
-    public readonly FORM2ANEX2C_COD_TOTAL_PRESULTADOSNOREALIZADOS = 'f2anex2c_total14';
+    public readonly FORM2ANEX2C_COD_TOTAL_PRESULTADOSNOREALIZADOS = 'f2anex2c_totaln';
 
     // -----------------------------------------------------------------------------------
     // Formulario 3 - GASTOS DE PERSONAL RELACIONADOS AL COSTO DE PRODUCCIÓN O SERVICIOS

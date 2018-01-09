@@ -119,7 +119,7 @@ export class FormularioFinancieroAnexo2BComponent implements OnInit, OnDestroy {
         this.constantes.FORM2ANEX2B_ITOCP,
         this.constantes.FORM2ANEX2B_TIP,
         this.constantes.FORM2ANEX2B_SALDODIC + this.anios[0]];
-        const listaACod: string[] = [this.constantes.FORM2ANEX2B_COD_SALDOENE + this.anios[1],
+        const listaACod: string[] = [this.constantes.FORM2ANEX2B_COD_SALDOENE + this.anios[0],
         this.constantes.FORM2ANEX2B_COD_CPC,
         this.constantes.FORM2ANEX2B_COD_CE,
         this.constantes.FORM2ANEX2B_COD_SIR,
@@ -137,9 +137,9 @@ export class FormularioFinancieroAnexo2BComponent implements OnInit, OnDestroy {
         this.constantes.FORM2ANEX2B_COD_ITOCP,
         this.constantes.FORM2ANEX2B_COD_TIP,
         this.constantes.FORM2ANEX2B_COD_SALDODIC + this.anios[1]];
-        this.formulario.listaA = this.crearlistacomponentes(listaADesc, listaACod, false);
+        this.formulario.listaA = this.crearlistacomponentes(listaADesc, listaACod, false, this.anios[0]);
 
-        const listaBDesc: string[] = [this.constantes.FORM2ANEX2B_SALDOENE,
+        const listaBDesc: string[] = [this.constantes.FORM2ANEX2B_SALDOENE + this.anios[1],
         this.constantes.FORM2ANEX2B_CPC,
         this.constantes.FORM2ANEX2B_CE,
         this.constantes.FORM2ANEX2B_SIR,
@@ -157,7 +157,7 @@ export class FormularioFinancieroAnexo2BComponent implements OnInit, OnDestroy {
         this.constantes.FORM2ANEX2B_ITOCP,
         this.constantes.FORM2ANEX2B_TIP,
         this.constantes.FORM2ANEX2B_SALDODIC];
-        const listaBCod: string[] = [this.constantes.FORM2ANEX2B_COD_SALDOENE,
+        const listaBCod: string[] = [this.constantes.FORM2ANEX2B_COD_SALDOENE + this.anios[1],
         this.constantes.FORM2ANEX2B_COD_CPC,
         this.constantes.FORM2ANEX2B_COD_CE,
         this.constantes.FORM2ANEX2B_COD_SIR,
@@ -175,7 +175,7 @@ export class FormularioFinancieroAnexo2BComponent implements OnInit, OnDestroy {
         this.constantes.FORM2ANEX2B_COD_ITOCP,
         this.constantes.FORM2ANEX2B_COD_TIP,
         this.constantes.FORM2ANEX2B_COD_SALDODIC];
-        this.formulario.listaB = this.crearlistacomponentes(listaBDesc, listaBCod, false);
+        this.formulario.listaB = this.crearlistacomponentes(listaBDesc, listaBCod, false, this.anios[1]);
     }
 
     // Funcionaes para la creacion de Formularios
@@ -235,15 +235,17 @@ export class FormularioFinancieroAnexo2BComponent implements OnInit, OnDestroy {
         return t;
     }
 
-    crearlistacomponentes(desc: string[], cod: string[], subtotal: boolean): Tabla[] {
+    crearlistacomponentes(desc: string[], cod: string[], subtotal: boolean, anio: number): Tabla[] {
         const t = new Array<Tabla>();
         for (let j = 0; j < desc.length; j++) {
+            console.log('j: ' + j);
             t[j] = new Tabla();
             t[j].descripcion = desc[j];
             t[j].componentes = new Array<Componente>();
-            for (let i = 0; i < this.anios.length; i++) {
+            for (let i = 0; i < 14; i++) {
+                console.log('i: ' + i);
                 t[j].componentes[i] = new Componente();
-                t[j].componentes[i].codigo = cod[j] + '_' + i + '_' + this.anios[i];
+                t[j].componentes[i].codigo = cod[j] + '_' + i + '_' + anio;
                 t[j].componentes[i].cantidad = 0;
                 this.formfinancdetalleService.obtenerComponente(this.nCodffina, t[j].componentes[i].codigo).subscribe(
                     (formfinancdetalle) => {
@@ -256,13 +258,13 @@ export class FormularioFinancieroAnexo2BComponent implements OnInit, OnDestroy {
                         }
                     }
                 );
-                t[j].componentes[i].año = this.anios[i];
+                t[j].componentes[i].año = anio;
                 if (subtotal && j === desc.length - 1) {
                     // logica no necesaria
                 } else {
                     const fc: FormControl = new FormControl();
-                    this.formGroup.addControl(cod[j] + '_' + i + '_' + this.anios[i], new FormControl);
-                    this.formGroup.controls[cod[j] + '_' + i + '_' + this.anios[i]].setValue(0);
+                    this.formGroup.addControl(cod[j] + '_' + i + '_' + anio, new FormControl);
+                    this.formGroup.controls[cod[j] + '_' + i + '_' + anio].setValue(0);
                 }
             }
 
@@ -687,8 +689,8 @@ export class FormularioFinancieroAnexo2BComponent implements OnInit, OnDestroy {
     }
 
     guardarFormulario() {
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaA, this.nCodffina);
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaB, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaA, this.nCodffina, 'f2anex2b');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaB, this.nCodffina, 'f2anex2b');
         this.verControlInformacion();
     }
 

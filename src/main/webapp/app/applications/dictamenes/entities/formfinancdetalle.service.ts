@@ -93,107 +93,127 @@ export class FormfinancDetalleService {
     obtenerComponente(codffina: number, componente: string): Observable<FormfinancDetalle> {
         const options = createRequestOption();
         const url = SERVER_API_URL + 'api/obtenerComponente';
-        return this.http.get(url +  '?codffina=' + codffina + '&componente=' + componente, options)
-        .map((res: Response) => {
-            if (res.text().length !== 0) {
-                const jsonResponse = res.json();
-                return this.convertItemFromServer(jsonResponse);
-            } else {
-                return undefined;
-            }
-        });
+        return this.http.get(url + '?codffina=' + codffina + '&componente=' + componente, options)
+            .map((res: Response) => {
+                if (res.text().length !== 0) {
+                    const jsonResponse = res.json();
+                    return this.convertItemFromServer(jsonResponse);
+                } else {
+                    return undefined;
+                }
+            });
     }
 
     obtenerListaComponente(codffina: number, componente: string): Observable<ResponseWrapper> {
         const options = createRequestOption();
         const url = SERVER_API_URL + 'api/obtenerListaComponente';
-        return this.http.get(url +  '?codffina=' + codffina + '&componente=' + componente, options)
-        .map((res: Response) => this.convertResponse(res));
+        return this.http.get(url + '?codffina=' + codffina + '&componente=' + componente, options)
+            .map((res: Response) => this.convertResponse(res));
     }
 
     obtenerListaComponenteExcluido(codffina: number, componente: string, excluido: string): Observable<ResponseWrapper> {
         const options = createRequestOption();
         const url = SERVER_API_URL + 'api/obtenerListaComponenteExcluido';
-        return this.http.get(url +  '?codffina=' + codffina + '&componente=' + componente + '&excluido=' + excluido, options)
-        .map((res: Response) => this.convertResponse(res));
+        return this.http.get(url + '?codffina=' + codffina + '&componente=' + componente + '&excluido=' + excluido, options)
+            .map((res: Response) => this.convertResponse(res));
     }
 
     obtenerListaComponentes(codffina: number, componente: string, componente2: string): Observable<ResponseWrapper> {
         const options = createRequestOption();
         const url = SERVER_API_URL + 'api/obtenerListaComponentes';
-        return this.http.get(url +  '?codffina=' + codffina + '&componente=' + componente + '&componente2=' + componente2, options)
-        .map((res: Response) => this.convertResponse(res));
+        return this.http.get(url + '?codffina=' + codffina + '&componente=' + componente + '&componente2=' + componente2, options)
+            .map((res: Response) => this.convertResponse(res));
     }
 
-    guardarFormFinancieroTablas(datepipe: DatePipe, tablas: Tabla[], nCodffina: number) {
-        for (let i = 0; i < tablas.length; i++) {
-            for (let j = 0; j < tablas[i].componentes.length; j++) {
-                const obj = new FormfinancDetalle();
+    desactivarFormulario(codffina: number, formulario: string): Observable<ResponseWrapper> {
+        const options = createRequestOption();
+        const url = SERVER_API_URL + '/api/desactivarFormulario';
+        return this.http.get(url + '?&codffina=' + codffina + '&formulario=' + formulario, options)
+            .map((res: Response) => this.convertResponse(res));
+    }
 
-                obj.nCodfdetal = tablas[i].componentes[j].id;
-                obj.nCodffina = nCodffina;
-                obj.nValffina = tablas[i].componentes[j].cantidad;
-                obj.vDesffina = tablas[i].descripcion;
-                obj.vUndffina = tablas[i].unidadmedida;
-                obj.vCompone = tablas[i].componentes[j].codigo;
+    private onError(error: any) { }
 
-                if (obj.nCodfdetal === undefined) {
-                    obj.vUsuareg = 'UsuReg1';
-                    obj.tFecreg = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
-                    obj.nSedereg = 0;
-                    obj.nFlgactivo = true;
+    guardarFormFinancieroTablas(datepipe: DatePipe, tablas: Tabla[], nCodffina: number, formulario: string) {
 
-                    obj.vUsuaupd = null;
-                    obj.nSedeupd = null;
-                    obj.tFecupd = null;
-                    this.create(obj).subscribe();
-                } else {
-                    obj.vUsuareg = tablas[i].componentes[j].vUsureg;
-                    obj.tFecreg = datepipe.transform(tablas[i].componentes[j].tFecReg, 'yyyy-MM-dd HH:mm:ss');
-                    obj.nSedereg = tablas[i].componentes[j].nSedeReg;
-                    obj.nFlgactivo = true;
-                    obj.vUsuaupd = 'UsuReg1';
-                    obj.tFecupd = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
-                    obj.nSedeupd = 0;
-                    obj.nFlgactivo = true;
-                    this.update(obj).subscribe();
+        this.desactivarFormulario(nCodffina, formulario).subscribe(
+            (res: ResponseWrapper) => {
+                for (let i = 0; i < tablas.length; i++) {
+                    for (let j = 0; j < tablas[i].componentes.length; j++) {
+                        const obj = new FormfinancDetalle();
+
+                        obj.nCodfdetal = tablas[i].componentes[j].id;
+                        obj.nCodffina = nCodffina;
+                        obj.nValffina = tablas[i].componentes[j].cantidad;
+                        obj.vDesffina = tablas[i].descripcion;
+                        obj.vUndffina = tablas[i].unidadmedida;
+                        obj.vCompone = tablas[i].componentes[j].codigo;
+
+                        if (obj.nCodfdetal === undefined) {
+                            obj.vUsuareg = 'UsuReg1';
+                            obj.tFecreg = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
+                            obj.nSedereg = 0;
+                            obj.nFlgactivo = true;
+
+                            obj.vUsuaupd = null;
+                            obj.nSedeupd = null;
+                            obj.tFecupd = null;
+                            this.create(obj).subscribe();
+                        } else {
+                            obj.vUsuareg = tablas[i].componentes[j].vUsureg;
+                            obj.tFecreg = datepipe.transform(tablas[i].componentes[j].tFecReg, 'yyyy-MM-dd HH:mm:ss');
+                            obj.nSedereg = tablas[i].componentes[j].nSedeReg;
+                            obj.nFlgactivo = true;
+                            obj.vUsuaupd = 'UsuReg1';
+                            obj.tFecupd = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
+                            obj.nSedeupd = 0;
+                            obj.nFlgactivo = true;
+                            this.update(obj).subscribe();
+                        }
+                    }
                 }
-            }
-        }
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
-    guardarFormFinanciero(datepipe: DatePipe, tablas: Tabla, nCodffina: number) {
+    guardarFormFinanciero(datepipe: DatePipe, tablas: Tabla, nCodffina: number, formulario: string) {
 
-        for (let j = 0; j < tablas.componentes.length; j++) {
-            const obj = new FormfinancDetalle();
-            obj.nCodfdetal = tablas.componentes[j].id;
-            obj.nCodffina = nCodffina;
-            obj.nValffina = tablas.componentes[j].cantidad;
-            obj.vDesffina = tablas.descripcion;
-            obj.vUndffina = tablas.unidadmedida;
-            obj.vCompone = tablas.componentes[j].codigo;
+        this.desactivarFormulario(nCodffina, formulario).subscribe(
+            (res: ResponseWrapper) => {
+                for (let j = 0; j < tablas.componentes.length; j++) {
+                    const obj = new FormfinancDetalle();
+                    obj.nCodfdetal = tablas.componentes[j].id;
+                    obj.nCodffina = nCodffina;
+                    obj.nValffina = tablas.componentes[j].cantidad;
+                    obj.vDesffina = tablas.descripcion;
+                    obj.vUndffina = tablas.unidadmedida;
+                    obj.vCompone = tablas.componentes[j].codigo;
 
-            if (obj.nCodfdetal === undefined) {
-                obj.vUsuareg = 'UsuReg1';
-                obj.tFecreg = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
-                obj.nSedereg = 0;
-                obj.nFlgactivo = true;
+                    if (obj.nCodfdetal === undefined) {
+                        obj.vUsuareg = 'UsuReg1';
+                        obj.tFecreg = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
+                        obj.nSedereg = 0;
+                        obj.nFlgactivo = true;
 
-                obj.vUsuaupd = null;
-                obj.nSedeupd = null;
-                obj.tFecupd = null;
-                this.create(obj).subscribe();
-            } else {
-                obj.vUsuareg = tablas.componentes[j].vUsureg;
-                obj.tFecreg =  datepipe.transform(tablas.componentes[j].tFecReg, 'yyyy-MM-dd HH:mm:ss');
-                obj.nSedereg = tablas.componentes[j].nSedeReg;
-                obj.vUsuaupd = 'UsuReg1';
-                obj.tFecupd = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
-                obj.nSedeupd = 0;
-                obj.nFlgactivo = true;
-                this.update(obj).subscribe();
-            }
-        }
+                        obj.vUsuaupd = null;
+                        obj.nSedeupd = null;
+                        obj.tFecupd = null;
+                        this.create(obj).subscribe();
+                    } else {
+                        obj.vUsuareg = tablas.componentes[j].vUsureg;
+                        obj.tFecreg = datepipe.transform(tablas.componentes[j].tFecReg, 'yyyy-MM-dd HH:mm:ss');
+                        obj.nSedereg = tablas.componentes[j].nSedeReg;
+                        obj.vUsuaupd = 'UsuReg1';
+                        obj.tFecupd = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
+                        obj.nSedeupd = 0;
+                        obj.nFlgactivo = true;
+                        this.update(obj).subscribe();
+                    }
+                }
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
 }
