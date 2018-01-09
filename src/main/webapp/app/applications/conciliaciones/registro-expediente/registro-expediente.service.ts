@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Rx';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
-import { Pasegl } from './pasegl.model';
+import { Pasegl } from '../models/pasegl.model';
 import { ResponseWrapper, createRequestOption, AuthServerProvider } from '../../../shared';
 
 @Injectable()

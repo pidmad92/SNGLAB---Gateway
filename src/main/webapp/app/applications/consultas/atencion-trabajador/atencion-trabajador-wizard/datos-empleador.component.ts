@@ -114,6 +114,7 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
                 }
 
             });
+            this.registerChangeInEmpleador();
         });
     }
 
@@ -148,7 +149,7 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
                 this.dirper.nCoddist = Number(this.distris[0].vCoddis);
             }
             // console.log('LOADDATAdist' + this.distris)
-    });
+        });
     }
     showDialogToAdd() {
         this.newDirec = true;
@@ -173,6 +174,8 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
                 this.atencionTrabajadorService.updateDirPerjuri(this.dirper));
         }
     }
+    delete() {
+    }
     private subscribeToSaveResponse(result: Observable<Dirperjuri>) {
         result.subscribe((res: Dirperjuri) =>
             this.onSaveSuccess(res), (res: Response) => this.onSaveError());
@@ -195,12 +198,12 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
     previousState() {
         window.history.back();
     }
-
-    registerChangeInAccionadops() {
-        this.eventSubscriber = this.eventManager.subscribe(
-            'datosTrabajadorListModification',
-            (response) => this.load(this.trabajador.id)
-        );
+    registerChangeInEmpleador() {
+        this.eventSubscriber = this.eventManager.subscribe('saveEmpleador',
+        (response) => {
+            console.log('PasarEmpleador' + JSON.stringify(this.empleador));
+            this.registroAtencionWizard.cambiarEmpleador(this.empleador);
+        });
     }
     cloneDirec(dir: Dirperjuri): Dirperjuri {
         const direc = new Dirperjuri();

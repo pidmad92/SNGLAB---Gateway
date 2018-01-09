@@ -92,8 +92,13 @@
 									<p-column field="prov" header="Provincia"></p-column>
 									<p-column field="dist" header="Distrito"></p-column>
 									<p-column field="direc.vDircomple" [style]="{'text-align':'left'}" header="Dirección"></p-column>
-									<p-footer><div class="ui-helper-clearfix" style="width:100%">
-										<button type="button" class="btn btn-sm btn-primary" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Añadir Dirección"></button></div>
+									<ng-template pTemplate="emptymessage">
+											No se han encontrado registros
+									</ng-template>
+									<p-footer>
+										<div class="ui-helper-clearfix" style="width:100%">
+											<button type="button" class="btn btn-sm btn-primary" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Añadir Dirección"></button>
+										</div>
 									</p-footer>
 								</p-dataTable>
 								<p-dialog [width]="500" header="Dirección:" [closable]="false" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
@@ -135,8 +140,9 @@
 									</div>
 									<p-footer>
 										<div class="ui-dialog-buttonpane ui-helper-clearfix">
-											<button type="button" pButton icon="fa-close" (click)="close()" label="Cancelar"></button>
-											<button pButton icon="fa-check" type="submit" label="Grabar"></button>
+											<button pButton class="ui-button-info" icon="fa-close" type="button" (click)="close()" label="Cancelar"></button>
+											<button pButton class="ui-button-danger" icon="fa-trash-o" type="button" (click)="delete()" label="Eliminar"></button>
+											<button pButton class="ui-button-success" icon="fa-save" type="submit" label="Grabar"></button>
 										</div>
 									</p-footer>
 									</form>

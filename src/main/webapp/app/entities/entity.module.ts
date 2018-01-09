@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { customHttpProvider } from '../blocks/interceptor/http.provider';
 
-import { GatewayExpedienteModule } from './expediente/expediente.module';
+// import { GatewayExpedienteModule } from './expediente/expediente.module';
 import { GatewayAplicacionModule } from './aplicacion/aplicacion.module';
 import { GatewayModuloModule } from './modulo/modulo.module';
 import { GatewayTipoUsuarioModule } from './tipo-usuario/tipo-usuario.module';
@@ -17,12 +17,12 @@ import { GatewayGrupoModule } from './grupo/grupo.module';
 import { GatewayUsuPerModule } from './usu-per/usu-per.module';
 import { GatewayModuloEntidadModule } from './modulo-entidad/modulo-entidad.module';
 import { GatewayMenuPerfilModule } from './menu-perfil/menu-perfil.module';
-import { GatewayActiveconoModule } from './activecono/activecono.module';
-import { GatewayAtencionModule } from './atencion/atencion.module';
-import { GatewayAccionadopModule } from './accionadop/accionadop.module';
-import { GatewayAtenaccadopModule } from './atenaccadop/atenaccadop.module';
-import { GatewayAtendiscaModule } from './atendisca/atendisca.module';
-import { GatewayAtenmotiatenModule } from './atenmotiaten/atenmotiaten.module';
+// import { GatewayActiveconoModule } from './activecono/activecono.module';
+// import { GatewayAtencionModule } from './atencion/atencion.module';
+// import { GatewayAccionadopModule } from './accionadop/accionadop.module';
+// import { GatewayAtenaccadopModule } from './atenaccadop/atenaccadop.module';
+// import { GatewayAtendiscaModule } from './atendisca/atendisca.module';
+// import { GatewayAtenmotiatenModule } from './atenmotiaten/atenmotiaten.module';
 import { GatewayDlabingpercModule } from './dlabingperc/dlabingperc.module';
 import { GatewayDocpresentaModule } from './docpresenta/docpresenta.module';
 import { GatewayPasemotiatenModule } from './pasemotiaten/pasemotiaten.module';
@@ -31,7 +31,7 @@ import { GatewayPernatudireModule } from './pernatudire/pernatudire.module';
 import { GatewayCargotrabajaModule } from './cargotrabaja/cargotrabaja.module';
 import { GatewayDatlaboralModule } from './datlaboral/datlaboral.module';
 import { GatewayDiscapacidadModule } from './discapacidad/discapacidad.module';
-import { GatewayDocingrepercModule } from './docingreperc/docingreperc.module';
+// import { GatewayDocingrepercModule } from './docingreperc/docingreperc.module';
 import { GatewayDocumentoModule } from './documento/documento.module';
 import { GatewayEmpleadorModule } from './empleador/empleador.module';
 import { GatewayModacontratoModule } from './modacontrato/modacontrato.module';
@@ -53,16 +53,16 @@ import { GatewayMotatenoficModule } from './motatenofic/motatenofic.module';
 import { GatewaySubregilaboModule } from './subregilabo/subregilabo.module';
 import { GatewayConciliacionModule } from './conciliacion/conciliacion.module';
 import { GatewayDocexpedienModule } from './docexpedien/docexpedien.module';
-import { GatewayMultaModule } from './multa/multa.module';
-import { GatewayNotificacionModule } from './notificacion/notificacion.module';
-import { GatewayResolucrdModule } from './resolucrd/resolucrd.module';
+// import { GatewayMultaModule } from './multa/multa.module';
+// import { GatewayNotificacionModule } from './notificacion/notificacion.module';
+// import { GatewayResolucrdModule } from './resolucrd/resolucrd.module';
 import { GatewayDirecnotifModule } from './direcnotif/direcnotif.module';
-import { GatewayAbogadoModule } from './abogado/abogado.module';
+// import { GatewayAbogadoModule } from './abogado/abogado.module';
 import { GatewayDettipprovModule } from './dettipprov/dettipprov.module';
 import { GatewayEstexpedienModule } from './estexpedien/estexpedien.module';
 import { GatewayHoraModule } from './hora/hora.module';
-import { GatewayResolutorModule } from './resolutor/resolutor.module';
-import { GatewayResulconciModule } from './resulconci/resulconci.module';
+// import { GatewayResolutorModule } from './resolutor/resolutor.module';
+// import { GatewayResulconciModule } from './resulconci/resulconci.module';
 import { GatewayTipdocexpModule } from './tipdocexp/tipdocexp.module';
 import { GatewayTipenvnotModule } from './tipenvnot/tipenvnot.module';
 import { GatewayTipnotifModule } from './tipnotif/tipnotif.module';
@@ -87,18 +87,18 @@ import { GatewaySolicitudModule } from './solicitud/solicitud.module';
 import { GatewayUndnegocioModule } from './undnegocio/undnegocio.module';
 
 import { GatewayActieconModule } from './actiecon/actiecon.module';
-import { GatewayAccadoateModule } from './accadoate/accadoate.module';
+// import { GatewayAccadoateModule } from './accadoate/accadoate.module';
 import { GatewayDiscapateModule } from './discapate/discapate.module';
 import { GatewayMotateselecModule } from './motateselec/motateselec.module';
-import { GatewayDocinperdlbModule } from './docinperdlb/docinperdlb.module';
-import { GatewayDocpresateModule } from './docpresate/docpresate.module';
-import { GatewayMotivpaseModule } from './motivpase/motivpase.module';
+// import { GatewayDocinperdlbModule } from './docinperdlb/docinperdlb.module';
+// import { GatewayDocpresateModule } from './docpresate/docpresate.module';
+// import { GatewayMotivpaseModule } from './motivpase/motivpase.module';
 import { GatewayDirperjuriModule } from './dirperjuri/dirperjuri.module';
 import { GatewayDirpernatModule } from './dirpernat/dirpernat.module';
 import { GatewayCartrabModule } from './cartrab/cartrab.module';
 import { GatewayDatlabModule } from './datlab/datlab.module';
 import { GatewayDiscapModule } from './discap/discap.module';
-import { GatewayDocingrperModule } from './docingrper/docingrper.module';
+// import { GatewayDocingrperModule } from './docingrper/docingrper.module';
 import { GatewayModcontratoModule } from './modcontrato/modcontrato.module';
 import { GatewayMotateModule } from './motate/motate.module';
 import { GatewayMotceseModule } from './motcese/motcese.module';
@@ -115,13 +115,13 @@ import { GatewayCalrcmperiModule } from './calrcmperi/calrcmperi.module';
 import { GatewayConcepremModule } from './conceprem/conceprem.module';
 import { GatewayEstpericalModule } from './estperical/estperical.module';
 import { GatewayInteresperiModule } from './interesperi/interesperi.module';
-import { GatewayLiquidacionModule } from './liquidacion/liquidacion.module';
+// import { GatewayLiquidacionModule } from './liquidacion/liquidacion.module';
 import { GatewayTipcalconreModule } from './tipcalconre/tipcalconre.module';
 import { GatewayTipcalperiModule } from './tipcalperi/tipcalperi.module';
 import { GatewayTipconremModule } from './tipconrem/tipconrem.module';
 import { GatewayTipinteresModule } from './tipinteres/tipinteres.module';
 import { GatewayConciliaModule } from './concilia/concilia.module';
-import { GatewayMultaconciModule } from './multaconci/multaconci.module';
+// import { GatewayMultaconciModule } from './multaconci/multaconci.module';
 import { GatewayNotificaModule } from './notifica/notifica.module';
 import { GatewayHoraconModule } from './horacon/horacon.module';
 import { GatewayDenunteModule } from './denunte/denunte.module';
@@ -142,7 +142,7 @@ import { GatewayLegajoModule } from './legajo/legajo.module';
 import { GatewayLegajoasigModule } from './legajoasig/legajoasig.module';
 import { GatewayLegtipdocModule } from './legtipdoc/legtipdoc.module';
 import { GatewayPasepjModule } from './pasepj/pasepj.module';
-import { GatewayAtencionpjModule } from './atencionpj/atencionpj.module';
+// import { GatewayAtencionpjModule } from './atencionpj/atencionpj.module';
 import { GatewayMateriaModule } from './materia/materia.module';
 import { GatewayTipdocpjModule } from './tipdocpj/tipdocpj.module';
 import { GatewayTipaudiModule } from './tipaudi/tipaudi.module';
@@ -154,7 +154,7 @@ import { GatewayScargoModule } from './scargo/scargo.module';
 import { GatewaySrubroModule } from './srubro/srubro.module';
 import { GatewayTipoorganizModule } from './tipoorganiz/tipoorganiz.module';
 import { GatewayNivelorganiModule } from './nivelorgani/nivelorgani.module';
-import { GatewayAmbitoorganModule } from './ambitoorgan/ambitoorgan.module';
+// import { GatewayAmbitoorganModule } from './ambitoorgan/ambitoorgan.module';
 import { GatewayCategoriaModule } from './categoria/categoria.module';
 import { GatewayCategoriaorModule } from './categoriaor/categoriaor.module';
 import { GatewayRegionModule } from './region/region.module';
@@ -171,12 +171,12 @@ import { GatewayJuntadirectModule } from './juntadirect/juntadirect.module';
 import { GatewayDelegadoModule } from './delegado/delegado.module';
 import { GatewaySindicatoModule } from './sindicato/sindicato.module';
 import { GatewayFederacionModule } from './federacion/federacion.module';
-import { GatewayAfiliadoModule } from './afiliado/afiliado.module';
+// import { GatewayAfiliadoModule } from './afiliado/afiliado.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
     imports: [
-        GatewayExpedienteModule,
+        // GatewayExpedienteModule,
         GatewayAplicacionModule,
         GatewayModuloModule,
         GatewayTipoUsuarioModule,
@@ -192,12 +192,12 @@ import { GatewayAfiliadoModule } from './afiliado/afiliado.module';
         GatewayUsuPerModule,
         GatewayModuloEntidadModule,
         GatewayMenuPerfilModule,
-        GatewayActiveconoModule,
-        GatewayAtencionModule,
-        GatewayAccionadopModule,
-        GatewayAtenaccadopModule,
-        GatewayAtendiscaModule,
-        GatewayAtenmotiatenModule,
+        // GatewayActiveconoModule,
+        // GatewayAtencionModule,
+        // GatewayAccionadopModule,
+        // GatewayAtenaccadopModule,
+        // GatewayAtendiscaModule,
+        // GatewayAtenmotiatenModule,
         GatewayDlabingpercModule,
         GatewayDocpresentaModule,
         GatewayPasemotiatenModule,
@@ -206,7 +206,7 @@ import { GatewayAfiliadoModule } from './afiliado/afiliado.module';
         GatewayCargotrabajaModule,
         GatewayDatlaboralModule,
         GatewayDiscapacidadModule,
-        GatewayDocingrepercModule,
+        // GatewayDocingrepercModule,
         GatewayDocumentoModule,
         GatewayEmpleadorModule,
         GatewayModacontratoModule,
@@ -228,16 +228,16 @@ import { GatewayAfiliadoModule } from './afiliado/afiliado.module';
         GatewaySubregilaboModule,
         GatewayConciliacionModule,
         GatewayDocexpedienModule,
-        GatewayMultaModule,
-        GatewayNotificacionModule,
-        GatewayResolucrdModule,
+        // GatewayMultaModule,
+        // GatewayNotificacionModule,
+        // GatewayResolucrdModule,
         GatewayDirecnotifModule,
-        GatewayAbogadoModule,
+        // GatewayAbogadoModule,
         GatewayDettipprovModule,
         GatewayEstexpedienModule,
         GatewayHoraModule,
-        GatewayResolutorModule,
-        GatewayResulconciModule,
+        // GatewayResolutorModule,
+        // GatewayResulconciModule,
         GatewayTipdocexpModule,
         GatewayTipenvnotModule,
         GatewayTipnotifModule,
@@ -261,18 +261,18 @@ import { GatewayAfiliadoModule } from './afiliado/afiliado.module';
         GatewaySolicitudModule,
         GatewayUndnegocioModule,
         GatewayActieconModule,
-        GatewayAccadoateModule,
+        // GatewayAccadoateModule,
         GatewayDiscapateModule,
         GatewayMotateselecModule,
-        GatewayDocinperdlbModule,
-        GatewayDocpresateModule,
-        GatewayMotivpaseModule,
+        // GatewayDocinperdlbModule,
+        // GatewayDocpresateModule,
+        // GatewayMotivpaseModule,
         GatewayDirperjuriModule,
         GatewayDirpernatModule,
         GatewayCartrabModule,
         GatewayDatlabModule,
         GatewayDiscapModule,
-        GatewayDocingrperModule,
+        // GatewayDocingrperModule,
         GatewayModcontratoModule,
         GatewayMotateModule,
         GatewayMotceseModule,
@@ -289,13 +289,13 @@ import { GatewayAfiliadoModule } from './afiliado/afiliado.module';
         GatewayConcepremModule,
         GatewayEstpericalModule,
         GatewayInteresperiModule,
-        GatewayLiquidacionModule,
+        // GatewayLiquidacionModule,
         GatewayTipcalconreModule,
         GatewayTipcalperiModule,
         GatewayTipconremModule,
         GatewayTipinteresModule,
         GatewayConciliaModule,
-        GatewayMultaconciModule,
+        // GatewayMultaconciModule,
         GatewayNotificaModule,
         GatewayHoraconModule,
         GatewayDenunteModule,
@@ -316,7 +316,7 @@ import { GatewayAfiliadoModule } from './afiliado/afiliado.module';
         GatewayLegajoasigModule,
         GatewayLegtipdocModule,
         GatewayPasepjModule,
-        GatewayAtencionpjModule,
+        // GatewayAtencionpjModule,
         GatewayMateriaModule,
         GatewayTipdocpjModule,
         GatewayTipaudiModule,
@@ -328,7 +328,7 @@ import { GatewayAfiliadoModule } from './afiliado/afiliado.module';
         GatewaySrubroModule,
         GatewayTipoorganizModule,
         GatewayNivelorganiModule,
-        GatewayAmbitoorganModule,
+        // GatewayAmbitoorganModule,
         GatewayCategoriaModule,
         GatewayCategoriaorModule,
         GatewayRegionModule,
@@ -345,7 +345,7 @@ import { GatewayAfiliadoModule } from './afiliado/afiliado.module';
         GatewayDelegadoModule,
         GatewaySindicatoModule,
         GatewayFederacionModule,
-        GatewayAfiliadoModule,
+        // GatewayAfiliadoModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

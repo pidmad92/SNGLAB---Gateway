@@ -23,7 +23,7 @@ export const atencionEmpleadorRoute: Routes = [
         data: {
             authorities: ['ROLE_USER'],
             // pageTitle: 'gatewayApp.accionadop.home.title'
-            pageTitle: 'global.menu.entities.atencionTra'
+            pageTitle: 'global.menu.entities.atencionEmp'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -44,7 +44,7 @@ export const accionadopPopupRoute: Routes = [
         component: AtencionEmpleadorWizardComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'global.menu.entities.atencionTra'
+            pageTitle: 'global.menu.entities.atencionEmp'
         },
         canActivate: [UserRouteAccessService],
         children: [
@@ -53,7 +53,7 @@ export const accionadopPopupRoute: Routes = [
                 component: DatosRepresentanteComponent,
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'global.menu.entities.atencionTra'
+                    pageTitle: 'global.menu.entities.atencionEmp'
                 },
                 outlet: 'wizard'
             },
@@ -62,16 +62,16 @@ export const accionadopPopupRoute: Routes = [
                 component: DatosEmpleadorComponent,
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'global.menu.entities.atencionTra'
+                    pageTitle: 'global.menu.entities.atencionEmp'
                 },
                 outlet: 'wizard'
             },
             {
-                path: 'datos-trabajador',
+                path: 'datos-trabajador-invitado',
                 component: DatosTrabajadorComponent,
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'global.menu.entities.atencionTra'
+                    pageTitle: 'global.menu.entities.atencionEmp'
                 },
                 outlet: 'wizard'
             },
@@ -80,7 +80,7 @@ export const accionadopPopupRoute: Routes = [
                 component: MotivosConsultaComponent,
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'global.menu.entities.atencionTra'
+                    pageTitle: 'global.menu.entities.atencionEmp'
                 },
                 outlet: 'wizard'
             },
@@ -89,7 +89,7 @@ export const accionadopPopupRoute: Routes = [
             //     component: VinculoLaboralComponent,
             //     data: {
             //         authorities: ['ROLE_USER'],
-            //         pageTitle: 'global.menu.entities.atencionTra'
+            //         pageTitle: 'global.menu.entities.atencionEmp'
             //     },
             //     outlet: 'wizard'
             // },
@@ -98,7 +98,7 @@ export const accionadopPopupRoute: Routes = [
                 component: DocumentosPresentadosComponent,
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'global.menu.entities.atencionTra'
+                    pageTitle: 'global.menu.entities.atencionEmp'
                 },
                 outlet: 'wizard'
             },
@@ -107,7 +107,7 @@ export const accionadopPopupRoute: Routes = [
             //     component: AccionesRealizarComponent,
             //     data: {
             //         authorities: ['ROLE_USER'],
-            //         pageTitle: 'global.menu.entities.atencionTra'
+            //         pageTitle: 'global.menu.entities.atencionEmp'
             //     },
             //     outlet: 'wizard'
             // },

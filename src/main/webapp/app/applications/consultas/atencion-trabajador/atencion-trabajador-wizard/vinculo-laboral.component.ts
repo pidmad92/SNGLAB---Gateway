@@ -1,4 +1,3 @@
-
 import { OnInit, OnDestroy, Component } from '@angular/core';
 import { Subscription, Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
@@ -12,6 +11,8 @@ import { Motcese } from '../../models/motcese.model';
 import { Regimenlab } from '../../models/regimenlab.model';
 import { AtencionTrabajadorService } from './../atencion-trabajador.service';
 import { RegistroAtencionWizardService } from './registro-atencion-wizard.service';
+import { Motivocese } from '../../../../entities/motivocese/index';
+import { Modcontrato } from '../../models/modcontrato.model';
 
 @Component({
     selector: 'jhi-vinculo-laboral',
@@ -25,7 +26,9 @@ export class VinculoLaboralComponent implements OnInit, OnDestroy {
     atencion: any;
     datosLab: Datlab;
     motivcese: Motcese[];
-    regimenlab: Regimenlab[];
+    modcontrato: Modcontrato[];
+    motCese: Motcese;
+    regimenlab: Regimenlab[] = [];
 
     documentoIngSelecs: Docinperdlb[];
     documentoIngSelec: Docinperdlb;
@@ -36,6 +39,9 @@ export class VinculoLaboralComponent implements OnInit, OnDestroy {
     documentosIngresos: any;
     selDocumentos: any;
     actividadSelec: string;
+
+    viewAnotherMotiv = false;
+    nuevoMotivo = '';
 
     checkedsel = [];
 
@@ -53,11 +59,23 @@ export class VinculoLaboralComponent implements OnInit, OnDestroy {
             (res: ResponseWrapper) => { this.onError(res.json); }
         );
     }
-    loadMotivCese() {
+    loadMotivCese(motiv?) {
         this.atencionTrabajadorService.findListaMotivcese().subscribe(
             (res: ResponseWrapper) => {
                 this.motivcese = res.json;
                 console.log('Motivcese:' + JSON.stringify(this.motivcese));
+                if (motiv !== undefined) {
+                    this.atencion.datlab.motcese = motiv;
+                }
+            },
+            (res: ResponseWrapper) => { this.onError(res.json); }
+        );
+    }
+    loadModcontrato() {
+        this.atencionTrabajadorService.findListaModContrato().subscribe(
+            (res: ResponseWrapper) => {
+                this.modcontrato = res.json;
+                console.log('Modcontrato:' + JSON.stringify(this.modcontrato));
             },
             (res: ResponseWrapper) => { this.onError(res.json); }
         );
@@ -66,14 +84,32 @@ export class VinculoLaboralComponent implements OnInit, OnDestroy {
         this.atencionTrabajadorService.findListaDocumentosPercibidosActivos().subscribe(
             (res: ResponseWrapper) => {
                 this.listDocumentosIng = res.json;
+                this.loadDocingSelec();
             },
             (res: ResponseWrapper) => { this.onError(res.json); }
         );
     }
+    loadDocingSelec() {
+        // Consultar de forma interna por los documentos de ingreso seleccionados
+        this.registroAtencionWizard.docingSeleccionado.subscribe((documentoIngSelec) => {
+            // console.log('DOCS:' + JSON.stringify(documentoIngSelec))
+            this.documentoIngSelecs = documentoIngSelec;
+            this.selectListDocumentoIng = [];
+            if (documentoIngSelec.length !== 0) {
+                for (const docing of documentoIngSelec) {
+                    this.selectListDocumentoIng.push(docing.docingrper)
+                }
+            }
+        });
+    }
 
     ngOnInit() {
+        this.regimenlab = [];
         this.loadMotivCese();
         this.loadRegimenlab();
+        this.loadModcontrato();
+        // Cargar los documentos de ingresos percibidos
+        this.loadDocingper();
         this.subscription = this.registroAtencionWizard.actividadSelec.subscribe((actividadSelect) => {
             this.actividadSelec = actividadSelect;
             this.registroAtencionWizard.atenSeleccionado.subscribe((atencion) => {
@@ -83,30 +119,67 @@ export class VinculoLaboralComponent implements OnInit, OnDestroy {
                 } else if (this.actividadSelec === '3') {
                     // this.atencionTrabajadorService
                 } else {
-                    // Cargar los documentos de ingresos percibidos
-                    this.loadDocingper();
-                    console.log('AtencionVinculo:' + JSON.stringify(this.atencion));
+                    console.log('ATENCIONDATLAB: ' + JSON.stringify(atencion.datlab));
+                    if (atencion.datlab.id !== undefined) {
+                        this.atencion.datlab = new Datlab();
+                        this.atencion.regimenlab = new Regimenlab();
+                        this.atencion.datlab.motcese = new Motcese();
+                        this.atencion.datlab.nFlgsitlab = 2;
+                    }
+                    // console.log('AtencionVinculo:' + JSON.stringify(this.atencion));
                     if (atencion.datlab !== undefined ) {
                         this.datosLab  = atencion.datlab;
                     }
-                    // Consultar de forma interna por los motivos seleccionados
-                    this.registroAtencionWizard.docingSeleccionado.subscribe((documentoIngSelec) => {
-                        this.documentoIngSelecs = documentoIngSelec;
-                        this.documentosIngresos = [];
-                        if (documentoIngSelec.length !== 0) {
-                            for (const docing of documentoIngSelec) {
-                                this.documentosIngresos.push(docing.docingrper)
-                            }
-                        }
-                    });
                 }
             });
         });
         this.registerChangeInDocing();
     }
 
-    saveMotSel(event: any) {
-        console.log('Save1:' + JSON.stringify(event));
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+        this.eventSubscriber.unsubscribe();
+    }
+
+    registerChangeInDocing() {
+        this.eventSubscriber = this.eventManager.subscribe('saveDocing',
+        (response) => {
+            // console.log('Atencion' + JSON.stringify(this.atencion));
+            this.registroAtencionWizard.cambiarDocumentosIng(this.documentoIngSelecs);
+            this.registroAtencionWizard.cambiarDatlab(this.atencion.datlab);
+        });
+    }
+
+    selectMotivCese(data) {
+        if (data.value === '0') {
+            this.viewAnotherMotiv = true;
+        }
+    }
+
+    saveMotivCese() {
+        if (this.nuevoMotivo !== '') {
+            this.motCese = new Motcese();
+            this.motCese.vDesmotces = this.nuevoMotivo
+            this.subscribeToSaveResponse(
+                this.atencionTrabajadorService.createMotivCese(this.motCese));
+        }
+    }
+
+    private subscribeToSaveResponse(result: Observable<Motcese>) {
+        result.subscribe(
+            (res: Motcese) => { this.viewAnotherMotiv = false; this.loadMotivCese(res); console.log(res); },
+            (res: Response) => this.onSaveError()
+        );
+    }
+
+    private onSaveError() {
+    }
+
+    onRowSelect(event) {
+    }
+
+    saveDoc(event: any) {
+        // console.log('Save1:' + JSON.stringify(event));
         this.documentoIngSelec = new Docingrper();
         this.documentoIngSelec.docingrper = event.data;
         if (this.documentoIngSelecs.length === 0) {
@@ -117,7 +190,7 @@ export class VinculoLaboralComponent implements OnInit, OnDestroy {
         // console.log('Array1:' + this.checkedsel);
     }
 
-    deleteMotSel(event: any) {
+    deleteDoc(event: any) {
         let index = 0;
         for (const docing of this.documentoIngSelecs) {
             if ( docing.docingrper.id === event.data.id) {
@@ -127,28 +200,6 @@ export class VinculoLaboralComponent implements OnInit, OnDestroy {
         }
         this.documentoIngSelecs.splice(index, 1);
         this.checkedsel.splice(index, 1);
-    }
-
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
-    }
-
-    registerChangeInDocing() {
-        this.eventSubscriber = this.eventManager.subscribe('saveDocing',
-        (response) => {
-            console.log('PasarObjetoDocIng' + JSON.stringify(this.documentoIngSelecs));
-            this.registroAtencionWizard.cambiarMotivos(this.documentoIngSelecs);
-        });
-    }
-
-    onRowSelect(event) {
-    }
-
-    saveDoc(event) {
-
-    }
-
-    deleteDoc(event) {
     }
 
     private onError(error: any) {

@@ -8,7 +8,7 @@ import { JhiEventManager } from 'ng-jhipster';
     templateUrl: 'atencion-empleador-wizard.component.html',
     styles: [`
         .ui-steps .ui-steps-item {
-            width: 16.6666%;
+            width: 20%;
         }
     `],
     encapsulation: ViewEncapsulation.None
@@ -19,7 +19,11 @@ export class AtencionEmpleadorWizardComponent implements OnInit, OnChanges  {
     activeIndex: number;
     url: string;
     router: any;
-    routes = ['datos-empleador', 'motivos-consulta', 'datos-trabajador', 'vinculo-laboral', 'documentos-presentados', 'acciones-realizar'];
+    routes = ['datos-trabajador-representante', 'datos-empleador', 'datos-trabajador-invitado', 'motivos-consulta'
+    // , 'vinculo-laboral'
+    , 'documentos-presentados'
+    // , 'acciones-realizar'
+    ];
 
     constructor(router: Router, private eventManager: JhiEventManager) {
         this.router = router;
@@ -28,8 +32,8 @@ export class AtencionEmpleadorWizardComponent implements OnInit, OnChanges  {
 
     ngOnInit() {
         this.items = [{
-                label: 'Datos del Empleador',
-                // routerLink: ['/consultas/registro-atencion-empleador', { outlets: { wizard: ['datos-empleador'] } }],
+                label: 'Datos del Representante',
+                // routerLink: ['/consultas/registro-atencion-empleador', { outlets: { wizard: ['datos-representante'] } }],
                 routerLinkActiveOptions: '{exact: true}',
                 command: (event: any) => {
                     this.activeIndex = 0;
@@ -38,7 +42,7 @@ export class AtencionEmpleadorWizardComponent implements OnInit, OnChanges  {
                 }
             },
             {
-                label: 'Motivos de Consulta',
+                label: 'Datos del Empleador',
                 // routerLink: ['/consultas/registro-atencion-empleador', { outlets: { wizard: ['motivos-consulta'] } }],
                 routerLinkActiveOptions: '{exact: true}',
                 command: (event: any) => {
@@ -48,7 +52,7 @@ export class AtencionEmpleadorWizardComponent implements OnInit, OnChanges  {
                 }
             },
             {
-                label: 'Datos del Empleador',
+                label: 'Datos del Trabajador',
                 // routerLink: ['/consultas/registro-atencion-empleador', { outlets: { wizard: ['datos-empleador'] } }],
                 routerLinkActiveOptions: 'active' ,
                 command: (event: any) => {
@@ -58,14 +62,24 @@ export class AtencionEmpleadorWizardComponent implements OnInit, OnChanges  {
                 }
             },
             {
-                label: 'Vínculo Laboral',
-                // routerLink: ['/consultas/registro-atencion-empleador', { outlets: { wizard: ['vinculo-laboral'] } }],
+                label: 'Motivos de Consulta',
+                // routerLink: ['/consultas/registro-atencion-empleador', { outlets: { wizard: ['datos-empleador'] } }],
+                routerLinkActiveOptions: 'active' ,
                 command: (event: any) => {
                     this.activeIndex = 3;
                     this.msgs.length = 0;
                     this.msgs.push({severity: 'info', summary: 'Last Step', detail: event.item.label});
                 }
             },
+            // {
+            //     label: 'Vínculo Laboral',
+            //     // routerLink: ['/consultas/registro-atencion-empleador', { outlets: { wizard: ['vinculo-laboral'] } }],
+            //     command: (event: any) => {
+            //         this.activeIndex = 3;
+            //         this.msgs.length = 0;
+            //         this.msgs.push({severity: 'info', summary: 'Last Step', detail: event.item.label});
+            //     }
+            // },
             {
                 label: 'Documentos presentados',
                 // routerLink: ['/consultas/registro-atencion-empleador', { outlets: { wizard: ['documentos-presentados'] } }],
@@ -75,15 +89,15 @@ export class AtencionEmpleadorWizardComponent implements OnInit, OnChanges  {
                     this.msgs.push({severity: 'info', summary: 'Last Step', detail: event.item.label});
                 }
             },
-            {
-                label: 'Acciones a tomar',
-                // routerLink: ['/consultas/registro-atencion-empleador', { outlets: { wizard: ['acciones-realizar'] } }],
-                command: (event: any) => {
-                    this.activeIndex = 5;
-                    this.msgs.length = 0;
-                    this.msgs.push({severity: 'info', summary: 'Last Step', detail: event.item.label});
-                }
-            }
+            // {
+            //     label: 'Acciones a tomar',
+            //     // routerLink: ['/consultas/registro-atencion-empleador', { outlets: { wizard: ['acciones-realizar'] } }],
+            //     command: (event: any) => {
+            //         this.activeIndex = 5;
+            //         this.msgs.length = 0;
+            //         this.msgs.push({severity: 'info', summary: 'Last Step', detail: event.item.label});
+            //     }
+            // }
         ];
     }
     ngOnChanges(changes: SimpleChanges) {
@@ -114,7 +128,7 @@ export class AtencionEmpleadorWizardComponent implements OnInit, OnChanges  {
         this.activeIndex++;
         this.router.navigate(['/consultas/registro-atencion-empleador', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
         // Mostrar / ocultar steps y emitir el label seleccionado
-        if (this.activeIndex === 2) {
+        if (this.activeIndex === 4) {
             this.eventManager.broadcast({ name: 'saveMotivos', content: 'OK'});
         }
         this.ngOnChanges({

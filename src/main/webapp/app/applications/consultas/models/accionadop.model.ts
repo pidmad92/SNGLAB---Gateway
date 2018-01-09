@@ -11,7 +11,7 @@ export class Accionadop implements BaseEntity {
         public nUsuaupd?: number,
         public tFecupd?: any,
         public nSedeupd?: number,
-        public accadoates?: BaseEntity[],
+        public accadoates?: BaseEntity,
     ) {
         this.nFlgactivo = false;
     }

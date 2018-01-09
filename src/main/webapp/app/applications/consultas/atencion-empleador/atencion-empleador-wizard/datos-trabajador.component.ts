@@ -51,6 +51,10 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
 
     actividadSelec: string;
 
+    fechoy: Date;
+    maxlengthDocIdent: number;
+    numOficina = 5;
+
     constructor(
         private eventManager: JhiEventManager,
         private atencionEmpleadorService: AtencionEmpleadorService,
@@ -60,6 +64,27 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
         // private cartrabService: CartrabService,
         private route: ActivatedRoute
     ) {
+    }
+
+    inicializaTablas() {
+        this.dirpernat = [];
+    }
+
+    inicializarFormulario() {
+        this.inicializaTablas();
+        this.vNumdocumento = '';
+        this.displayDialog = false;
+        if (this.selectedTipodoc !== undefined) {
+            this.maxlengthDocIdent = this.selectedTipodoc.nNumdigi;
+        }
+        // this.vApepaterno = '';
+        // this.vApematerno = '';
+        // this.vNombres = '';
+
+        if (this.trabajador !== null) {
+            this.trabajador.pernatural = new Pernatural();
+            this.trabajador.cartrab = new Cartrab();
+        }
     }
 
     loadTipoDoc() {
@@ -80,6 +105,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.fechoy = new Date();
         this.loadTipoDoc();
         this.loadDepartamentos();
         this.atencion = new Atencion();
@@ -213,6 +239,10 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
         this.atencionEmpleadorService.findTrabajadorByDocIdent(tipodoc, numdoc).subscribe((trabajador) => {
             console.log(trabajador);
             this.trabajador = trabajador;
+            console.log('ID Trabajador: ' + this.trabajador.id);
+            if (this.trabajador.id !== undefined) {
+                this.loadDirecPerNatu(this.trabajador.id);
+            }
         });
     }
     cloneDirec(dir: Dirpernat): Dirpernat {

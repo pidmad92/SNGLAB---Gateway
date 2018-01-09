@@ -1,0 +1,1462 @@
+<div class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
+    <div class="row">
+        <div class="col" style="text-align:center;">
+            <h5 class="title">ANEXO 2C</h5>
+            <h5 class="title">DETALLE DE CUENTAS</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card card-mtpe mb-3">
+                <div class="card-body">
+                    <p>ACTIVO CORRIENTE</p>
+                    <p>&nbsp;Cuentas por Cobrar Comerciales
+                        <a (click)="mostrarDialogACCuentasCobrarComerciales()" class="btn btn-sm btn-dark" style="float:right;color:white;">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
+                    </p>
+                    </p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr style="font-size:8.5pt;">
+                                <td>Descripción(2)</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
+                                <td>Acción</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaACCuentasCobrarComerciales;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteACCuentasCobrarComerciales(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteACCuentasCobrarComerciales(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalACCuentasCobrarComerciales.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalACCuentasCobrarComerciales.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>&nbsp;Cuentas por Cobrar Comerciales Relacionadas
+                        <a (click)="mostrarDialogACCuentasCobrarComercialesRelacionadas()" class="btn btn-sm btn-dark" style="float:right;color:white;">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
+                    </p>
+                    </p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr style="font-size:8.5pt;">
+                                <td>Descripción(2)</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
+                                <td>Acción</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaACCuentasCobrarComercialesRelacionadas;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteACCuentasCobrarComercialesRelacionadas(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteACCuentasCobrarComercialesRelacionadas(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalACCuentasCobrarComercialesRelacionadas.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalACCuentasCobrarComercialesRelacionadas.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>&nbsp;Cuentas por Cobrar Diversas
+                        <a (click)="mostrarDialogACCuentasCobrarDiversas()" class="btn btn-sm btn-dark" style="float:right;color:white;">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
+                    </p>
+                    </p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr style="font-size:8.5pt;">
+                                <td>Descripción(2)</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
+                                <td>Acción</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaACCuentasCobrarDiversas;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteACCuentasCobrarDiversas(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteACCuentasCobrarDiversas(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalACCuentasCobrarDiversas.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalACCuentasCobrarDiversas.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>&nbsp;Cuentas por Cobrar del Activo Corriente
+                        <a (click)="mostrarDialogACOtrasCuentas()" class="btn btn-sm btn-dark" style="float:right;color:white;">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
+                    </p>
+                    </p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr style="font-size:8.5pt;">
+                                <td>Descripción(2)</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
+                                <td>Acción</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaACOtrasCuentas;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteACOtrasCuentas(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteACOtrasCuentas(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalACOtrasCuentas.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalACOtrasCuentas.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>ACTIVO NO CORRIENTE</p>
+                    <p>&nbsp;Otras Cuentas del Activo No Corriente
+                        <a (click)="mostrarDialogANCOtrasCuentas()" class="btn btn-sm btn-dark" style="float:right;color:white;">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
+                    </p>
+                    </p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr style="font-size:8.5pt;">
+                                <td>Descripción(2)</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
+                                <td>Acción</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaANCOtrasCuentas;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteANCOtrasCuentas(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteANCOtrasCuentas(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalANCOtrasCuentas.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalANCOtrasCuentas.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>PASIVO CORRIENTE</p>
+                    <p>&nbsp; Cuentas por Pagar Comerciales
+                        <a (click)="mostrarDialogPCCuentasPagarComerciales()" class="btn btn-sm btn-dark" style="float:right;color:white;">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
+                    </p>
+                    </p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr style="font-size:8.5pt;">
+                                <td>Descripción(2)</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
+                                <td>Acción</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaPCCuentasPagarComerciales;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponentePCCuentasPagarComerciales(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponentePCCuentasPagarComerciales(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalPCCuentasPagarComerciales.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalPCCuentasPagarComerciales.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>&nbsp; Cuentas por Pagar Comerciales Relacionadas
+                        <a (click)="mostrarDialogPCCuentasPagarComercialesRelacionadas()" class="btn btn-sm btn-dark" style="float:right;color:white;">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
+                    </p>
+                    </p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr style="font-size:8.5pt;">
+                                <td>Descripción(2)</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
+                                <td>Acción</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaPCCuentasPagarComercialesRelacionadas;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponentePCCuentasPagarComercialesRelacionadas(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponentePCCuentasPagarComercialesRelacionadas(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalPCCuentasPagarComercialesRelacionadas.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalPCCuentasPagarComercialesRelacionadas.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>&nbsp; Obligaciones Financieras
+                        <a (click)="mostrarDialogPCObligacionesFinancieras()" class="btn btn-sm btn-dark" style="float:right;color:white;">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
+                    </p>
+                    </p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr style="font-size:8.5pt;">
+                                <td>Descripción(2)</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
+                                <td>Acción</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaPCObligacionesFinancieras;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponentePCObligacionesFinancieras(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponentePCObligacionesFinancieras(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalPCObligacionesFinancieras.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalPCObligacionesFinancieras.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>&nbsp; Provisiones
+                        <a (click)="mostrarDialogPCProvisiones()" class="btn btn-sm btn-dark" style="float:right;color:white;">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
+                    </p>
+                    </p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr style="font-size:8.5pt;">
+                                <td>Descripción(2)</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
+                                <td>Acción</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaPCProvisiones;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponentePCProvisiones(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponentePCProvisiones(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalPCProvisiones.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalPCProvisiones.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>Otras Cuentas del Pasivo Corriente
+                        <a (click)="mostrarDialogPCOtrasCuentas()" class="btn btn-sm btn-dark" style="float:right;color:white;">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
+                    </p>
+                    </p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr style="font-size:8.5pt;">
+                                <td>Descripción(2)</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
+                                <td>Acción</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaPCOtrasCuentas;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponentePCOtrasCuentas(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponentePCOtrasCuentas(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalPCOtrasCuentas.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalPCOtrasCuentas.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>PASIVO NO CORRIENTE</p>
+                    <p>Obligaciones Financieras
+                        <a (click)="mostrarDialogPNCObligacionesFinancieras()" class="btn btn-sm btn-dark" style="float:right;color:white;">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
+                    </p>
+                    </p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr style="font-size:8.5pt;">
+                                <td>Descripción(2)</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
+                                <td>Acción</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaPNCObligacionesFinancieras;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponentePNCObligacionesFinancieras(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponentePNCObligacionesFinancieras(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalPNCObligacionesFinancieras.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalPNCObligacionesFinancieras.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>&nbsp;Provisiones
+                        <a (click)="mostrarDialogPNCProvisiones()" class="btn btn-sm btn-dark" style="float:right;color:white;">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
+                    </p>
+                    </p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr style="font-size:8.5pt;">
+                                <td>Descripción(2)</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
+                                <td>Acción</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaPNCProvisiones;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponentePNCProvisiones(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponentePNCProvisiones(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalPNCProvisiones.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalPNCProvisiones.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>&nbsp;Otras Cuentas del Pasivo No Corriente
+                        <a (click)="mostrarDialogPNCOtrasCuentas()" class="btn btn-sm btn-dark" style="float:right;color:white;">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
+                    </p>
+                    </p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr style="font-size:8.5pt;">
+                                <td>Descripción(2)</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
+                                <td>Acción</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaPNCOtrasCuentas;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponentePNCOtrasCuentas(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponentePNCOtrasCuentas(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalPNCOtrasCuentas.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalPNCOtrasCuentas.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>PATRIMONIO</p>
+                    <p>&nbsp;Resultados no Realizados
+                        <a (click)="mostrarDialogPResultadosNoRealizados()" class="btn btn-sm btn-dark" style="float:right;color:white;">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
+                    </p>
+                    </p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr style="font-size:8.5pt;">
+                                <td>Descripción(2)</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                                </ng-container>
+                                <td>Acción</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaPResultadosNoRealizados;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponentePResultadosNoRealizados(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponentePResultadosNoRealizados(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalPResultadosNoRealizados.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalPResultadosNoRealizados.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="font-size:9pt;padding:5px;">
+                    <br/>
+
+
+                    <p style="padding:5px;">
+                        INSTRUCCIONES:
+                        <br/> (*) Desagregar en cuentas de la clase 6 a dos dígitos caso contrario según el giro de la empresa.
+                        <br/> -La información de la columna {{anios[0]}}, {{anios[1]}} y {{anios[2]}} corresponde a los resultados financieros correspondientes
+                        a los tres últimos años.
+                        <br/> -La columna {{anios[3]}} contiene información preliminar hasta el último periodo mensual declarado a la
+                        SUNAT (PDT 621) del ejercicio vigente (especificar mes y año).
+                        <br/> -El total de las columnas {{anios[0]}}, {{anios[1]}}, {{anios[2]}} y {{anios[3]}} debe ser igual a las casillas corrrespondientes
+                        al Formulario Nº 1.
+                        <br/>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-sm-right">
+            <a (click)="verControlInformacion()" class="btn btn-sm m-1 btn-success">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
+            <a (click)="guardarFormulario()" class="btn btn-sm m-1 btn-secondary">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
+        </div>
+    </div>
+</div>
+</section>
+
+</div>
+
+<p-dialog [(visible)]="displayACCuentasCobrarComerciales" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos de Ventas y Distribución
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACCuentasCobrarComerciales.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACCuentasCobrarComerciales.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACCuentasCobrarComerciales.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACCuentasCobrarComerciales.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACCuentasCobrarComerciales.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalACCuentasCobrarComerciales()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalACCuentasCobrarComerciales()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayACCuentasCobrarComercialesRelacionadas" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos de Ventas y Distribución
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACCuentasCobrarComercialesRelacionadas.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACCuentasCobrarComercialesRelacionadas.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACCuentasCobrarComercialesRelacionadas.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACCuentasCobrarComercialesRelacionadas.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACCuentasCobrarComercialesRelacionadas.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalACCuentasCobrarComercialesRelacionadas()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalACCuentasCobrarComercialesRelacionadas()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayACCuentasCobrarDiversas" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos de Ventas y Distribución
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACCuentasCobrarDiversas.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACCuentasCobrarDiversas.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACCuentasCobrarDiversas.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACCuentasCobrarDiversas.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACCuentasCobrarDiversas.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalACCuentasCobrarDiversas()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalACCuentasCobrarDiversas()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+
+<p-dialog [(visible)]="displayACOtrasCuentas" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos de Ventas y Distribución
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACOtrasCuentas.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACOtrasCuentas.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACOtrasCuentas.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACOtrasCuentas.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ACOtrasCuentas.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalACOtrasCuentas()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalACOtrasCuentas()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayANCOtrasCuentas" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos de Ventas y Distribución
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ANCOtrasCuentas.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ANCOtrasCuentas.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ANCOtrasCuentas.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ANCOtrasCuentas.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ANCOtrasCuentas.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalANCOtrasCuentas()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalANCOtrasCuentas()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayPCCuentasPagarComerciales" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos de Ventas y Distribución
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCCuentasPagarComerciales.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCCuentasPagarComerciales.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCCuentasPagarComerciales.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCCuentasPagarComerciales.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCCuentasPagarComerciales.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalPCCuentasPagarComerciales()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalPCCuentasPagarComerciales()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayPCCuentasPagarComercialesRelacionadas" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos de Ventas y Distribución
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCCuentasPagarComercialesRelacionadas.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCCuentasPagarComercialesRelacionadas.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCCuentasPagarComercialesRelacionadas.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCCuentasPagarComercialesRelacionadas.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCCuentasPagarComercialesRelacionadas.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalPCCuentasPagarComercialesRelacionadas()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalPCCuentasPagarComercialesRelacionadas()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayPCObligacionesFinancieras" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos de Ventas y Distribución
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCObligacionesFinancieras.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCObligacionesFinancieras.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCObligacionesFinancieras.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCObligacionesFinancieras.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCObligacionesFinancieras.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalPCObligacionesFinancieras()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalPCObligacionesFinancieras()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayPCProvisiones" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos de Ventas y Distribución
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCProvisiones.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCProvisiones.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCProvisiones.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCProvisiones.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCProvisiones.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalPCProvisiones()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalPCProvisiones()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayPCOtrasCuentas" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos de Ventas y Distribución
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCOtrasCuentas.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCOtrasCuentas.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCOtrasCuentas.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCOtrasCuentas.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PCOtrasCuentas.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalPCOtrasCuentas()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalPCOtrasCuentas()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayPNCObligacionesFinancieras" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos de Ventas y Distribución
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PNCObligacionesFinancieras.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PNCObligacionesFinancieras.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PNCObligacionesFinancieras.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PNCObligacionesFinancieras.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PNCObligacionesFinancieras.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalPNCObligacionesFinancieras()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalPNCObligacionesFinancieras()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayPNCProvisiones" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos de Ventas y Distribución
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PNCProvisiones.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PNCProvisiones.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PNCProvisiones.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PNCProvisiones.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PNCProvisiones.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalPNCProvisiones()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalPNCProvisiones()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayPNCOtrasCuentas" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos de Ventas y Distribución
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PNCOtrasCuentas.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PNCOtrasCuentas.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PNCOtrasCuentas.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PNCOtrasCuentas.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PNCOtrasCuentas.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalPNCOtrasCuentas()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalPNCOtrasCuentas()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayPResultadosNoRealizados" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Gastos de Ventas y Distribución
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PResultadosNoRealizados.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PResultadosNoRealizados.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PResultadosNoRealizados.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PResultadosNoRealizados.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="PResultadosNoRealizados.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalPResultadosNoRealizados()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalPResultadosNoRealizados()">Añadir</button>
+    </p-footer>
+</p-dialog>

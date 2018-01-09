@@ -18,6 +18,9 @@ import { FormControl } from '@angular/forms';
 import { Tabla } from './tabla.model';
 import { Componente } from './componente.model';
 import { EmpresaServicio } from './empresaServicio.model';
+import { FormfinancService } from '../entities/formfinanc.service';
+import { FormfinancDetalleService } from '../entities/formfinancdetalle.service';
+import { FormfinancDetalle } from '../entities/index';
 
 @Component({
     selector: 'jhi-formulario-financiero-n1',
@@ -54,6 +57,8 @@ export class FormularioFinancieroN1Component implements OnInit, OnDestroy {
     constantes: Constants;
     empresaServicio: EmpresaServicio;
 
+    nCodffina: number;
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
@@ -67,6 +72,8 @@ export class FormularioFinancieroN1Component implements OnInit, OnDestroy {
         private solicitudService: SolicitudService,
         private formperfilService: FormperfilService,
         private solicfromService: SolicformService,
+        private formfinancService: FormfinancService,
+        private formfinancdetalleService: FormfinancDetalleService,
     ) {
         this.formGroup = this.fb.group({ 'name': ['', Validators.required] });
     }
@@ -75,11 +82,13 @@ export class FormularioFinancieroN1Component implements OnInit, OnDestroy {
         this.display = false;
         this.empresaServicio = new EmpresaServicio();
         this.subscription = this.route.params.subscribe((params) => {
-            this.load(params['nCodfperf']);
+            this.load(params['nCodffina']);
         });
     }
 
-    load(nCodfperf) { }
+    load(nCodffina) {
+        this.nCodffina = nCodffina;
+    }
 
     ngOnInit() {
         this.loadAll();
@@ -124,22 +133,22 @@ export class FormularioFinancieroN1Component implements OnInit, OnDestroy {
         t.componentes = new Array<Componente>();
 
         const componenteAnioA = new Componente();
-        componenteAnioA.codigo = this.empresaServicio.concepto + '_' + this.formulario.listaEmpresaServicios.length + '_anioA';
+        componenteAnioA.codigo = this.constantes.FORM1_COD_SERVICIOS + this.empresaServicio.concepto + '_' + this.formulario.listaEmpresaServicios.length + '_anioA';
         componenteAnioA.cantidad = this.empresaServicio.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.empresaServicio.concepto + '_' + this.formulario.listaEmpresaServicios.length + '_anioB';
+        componenteAnioB.codigo = this.constantes.FORM1_COD_SERVICIOS + this.empresaServicio.concepto + '_' + this.formulario.listaEmpresaServicios.length + '_anioB';
         componenteAnioB.cantidad = this.empresaServicio.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.empresaServicio.concepto + '_' + this.formulario.listaEmpresaServicios.length + '_anioC';
+        componenteAnioC.codigo = this.constantes.FORM1_COD_SERVICIOS + this.empresaServicio.concepto + '_' + this.formulario.listaEmpresaServicios.length + '_anioC';
         componenteAnioC.cantidad = this.empresaServicio.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.empresaServicio.concepto + '_' + this.formulario.listaEmpresaServicios.length + '_anioD';
+        componenteAnioD.codigo = this.constantes.FORM1_COD_SERVICIOS + this.empresaServicio.concepto + '_' + this.formulario.listaEmpresaServicios.length + '_anioD';
         componenteAnioD.cantidad = this.empresaServicio.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editar) {
@@ -170,6 +179,12 @@ export class FormularioFinancieroN1Component implements OnInit, OnDestroy {
                 }
             }
         }
+        /*if (!this.editar) {
+            suma1 += Number(this.empresaServicio.anioA);
+            suma2 += Number(this.empresaServicio.anioB);
+            suma3 += Number(this.empresaServicio.anioC);
+            suma4 += Number(this.empresaServicio.anioD);
+        }*/
         // Debido a que las listas no se refrescan hasta despues del render, se suma lo que esta en el modal
         this.formulario.totalServicios.componentes[0].cantidad = suma1 + this.empresaServicio.anioA;
         this.formulario.totalServicios.componentes[1].cantidad = suma2 + this.empresaServicio.anioB;
@@ -236,6 +251,34 @@ export class FormularioFinancieroN1Component implements OnInit, OnDestroy {
         this.formulario.totalServicios = this.creartotales(totalServiciosDesc, totalServiciosCod);
 
         this.formulario.listaEmpresaServicios = new Array<Tabla>();
+        // Agregar logica de obtencion de tablas dinamicas
+
+        this.formfinancdetalleService.obtenerListaComponente(this.nCodffina, this.constantes.FORM1_COD_SERVICIOS).subscribe(
+            (res: ResponseWrapper) => {
+                let cont = 0;
+                let i = 0;
+                const objetos: FormfinancDetalle[] = res.json;
+                while (cont < objetos.length) {
+                    this.formulario.listaEmpresaServicios[i] = new Tabla();
+                    this.formulario.listaEmpresaServicios[i].componentes = new Array<Componente>();
+                    this.formulario.listaEmpresaServicios[i].id = cont;
+                    for (let j = 0; j < 4; j++) {
+                        this.formulario.listaEmpresaServicios[i].descripcion = objetos[cont].vDesffina;
+                        this.formulario.listaEmpresaServicios[i].componentes[j] = new Componente();
+                        this.formulario.listaEmpresaServicios[i].componentes[j].codigo = objetos[cont].vCompone;
+                        this.formulario.listaEmpresaServicios[i].componentes[j].cantidad = objetos[cont].nValffina;
+                        this.formulario.listaEmpresaServicios[i].componentes[j].id = objetos[cont].nCodfdetal;
+                        this.formulario.listaEmpresaServicios[i].componentes[j].vUsureg = objetos[cont].vUsuareg;
+                        this.formulario.listaEmpresaServicios[i].componentes[j].tFecReg = objetos[cont].tFecreg;
+                        this.formulario.listaEmpresaServicios[i].componentes[j].nSedeReg = objetos[cont].nSedereg;
+                        cont++;
+                    }
+                    i++;
+                }
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+
         // TOTALES DE COSTOS DE VENTAS U OPERACIÓN
         const totalVenOpeSerDesc: string[] = [this.constantes.FORM1_TOTAL_COSTOS_TOTALES_VENTAS_OPERACIONES_SERVICIOS];
         const totalVenOpeSerCod: string[] = [this.constantes.FORM1_COD_TOTAL_COSTOS_TOTALES_VENTAS_OPERACIONES_SERVICIOS];
@@ -313,7 +356,6 @@ export class FormularioFinancieroN1Component implements OnInit, OnDestroy {
         const utilidadCod: string[] = [this.constantes.FORM1_COD_UTILIDAD_EJERCICIO];
 
         this.formulario.utilidadEjercicio = this.creartotales(utilidadDesc, utilidadCod);
-
     }
 
     // Funcionaes para la creacion de Formularios
@@ -328,6 +370,17 @@ export class FormularioFinancieroN1Component implements OnInit, OnDestroy {
                 t.componentes[i].codigo = cod[j] + '_' + i + '_' + this.anios[i];
                 t.componentes[i].cantidad = 0;
                 t.componentes[i].año = this.anios[i];
+                this.formfinancdetalleService.obtenerComponente(this.nCodffina, t.componentes[i].codigo).subscribe(
+                    (formfinancdetalle) => {
+                        if (formfinancdetalle !== undefined) {
+                            t.componentes[i].cantidad = formfinancdetalle.nValffina;
+                            t.componentes[i].id = formfinancdetalle.nCodfdetal;
+                            t.componentes[i].vUsureg = formfinancdetalle.vUsuareg;
+                            t.componentes[i].tFecReg = formfinancdetalle.tFecreg;
+                            t.componentes[i].nSedeReg = formfinancdetalle.nSedereg;
+                        }
+                    }
+                );
                 const fc: FormControl = new FormControl();
                 this.formGroup.addControl(cod[j] + '_' + i + '_' + this.anios[i], new FormControl);
                 this.formGroup.controls[cod[j] + '_' + i + '_' + this.anios[i]].setValue(0);
@@ -346,6 +399,17 @@ export class FormularioFinancieroN1Component implements OnInit, OnDestroy {
                 t.componentes[i].codigo = cod[j] + '_' + i + '_' + this.anios[i];
                 t.componentes[i].cantidad = 0;
                 t.componentes[i].año = this.anios[i];
+                this.formfinancdetalleService.obtenerComponente(this.nCodffina, t.componentes[i].codigo).subscribe(
+                    (formfinancdetalle) => {
+                        if (formfinancdetalle !== undefined) {
+                            t.componentes[i].cantidad = formfinancdetalle.nValffina;
+                            t.componentes[i].id = formfinancdetalle.nCodfdetal;
+                            t.componentes[i].vUsureg = formfinancdetalle.vUsuareg;
+                            t.componentes[i].tFecReg = formfinancdetalle.tFecreg;
+                            t.componentes[i].nSedeReg = formfinancdetalle.nSedereg;
+                        }
+                    }
+                );
             }
         }
         return t;
@@ -361,6 +425,17 @@ export class FormularioFinancieroN1Component implements OnInit, OnDestroy {
                 t[j].componentes[i] = new Componente();
                 t[j].componentes[i].codigo = cod[j] + '_' + i + '_' + this.anios[i];
                 t[j].componentes[i].cantidad = 0;
+                this.formfinancdetalleService.obtenerComponente(this.nCodffina, t[j].componentes[i].codigo).subscribe(
+                    (formfinancdetalle) => {
+                        if (formfinancdetalle !== undefined) {
+                            t[j].componentes[i].cantidad = formfinancdetalle.nValffina;
+                            t[j].componentes[i].id = formfinancdetalle.nCodfdetal;
+                            t[j].componentes[i].vUsureg = formfinancdetalle.vUsuareg;
+                            t[j].componentes[i].tFecReg = formfinancdetalle.tFecreg;
+                            t[j].componentes[i].nSedeReg = formfinancdetalle.nSedereg;
+                        }
+                    }
+                );
                 t[j].componentes[i].año = this.anios[i];
                 if (subtotal && j === desc.length - 1) {
                     // logica no necesaria
@@ -558,74 +633,74 @@ export class FormularioFinancieroN1Component implements OnInit, OnDestroy {
                         switch (j) {
                             case 0: suma1 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
                                 break;
-                            case 1:  suma2 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                            case 1: suma2 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
                                 break;
-                            case 2:  suma3 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                            case 2: suma3 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
                                 break;
-                            case 3:  suma4 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                            case 3: suma4 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
                                 break;
                         }
-                    break;
+                        break;
                     case this.constantes.FORM1_COD_GASTOS_FINANCIEROS:
-                    switch (j) {
-                        case 0: suma1 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
-                            break;
-                        case 1:  suma2 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
-                            break;
-                        case 2:  suma3 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
-                            break;
-                        case 3:  suma4 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
-                            break;
+                        switch (j) {
+                            case 0: suma1 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                                break;
+                            case 1: suma2 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                                break;
+                            case 2: suma3 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                                break;
+                            case 3: suma4 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                                break;
                         }
-                    break;
+                        break;
                     case this.constantes.FORM1_COD_ENAJENACION_VALORES_BIENES_ACTIVO_FIJO:
                         switch (j) {
                             case 0: suma1 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
                                 break;
-                            case 1:  suma2 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                            case 1: suma2 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
                                 break;
-                            case 2:  suma3 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                            case 2: suma3 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
                                 break;
-                            case 3:  suma4 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                            case 3: suma4 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
                                 break;
                         }
-                    break;
+                        break;
                     case this.constantes.FORM1_COD_COSTO_ENAJENACION_VALORES_BIENES_ACTIVO_FIJO:
-                    switch (j) {
-                        case 0: suma1 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
-                            break;
-                        case 1:  suma2 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
-                            break;
-                        case 2:  suma3 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
-                            break;
-                        case 3:  suma4 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
-                            break;
-                    }
-                    break;
+                        switch (j) {
+                            case 0: suma1 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                                break;
+                            case 1: suma2 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                                break;
+                            case 2: suma3 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                                break;
+                            case 3: suma4 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                                break;
+                        }
+                        break;
                     case this.constantes.FORM1_COD_OTROS_INGRESOS:
                         switch (j) {
                             case 0: suma1 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
                                 break;
-                            case 1:  suma2 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                            case 1: suma2 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
                                 break;
-                            case 2:  suma3 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                            case 2: suma3 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
                                 break;
-                            case 3:  suma4 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                            case 3: suma4 += this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
                                 break;
                         }
-                    break;
+                        break;
                     case this.constantes.FORM1_COD_OTROS_EGRESOS:
-                    switch (j) {
-                        case 0: suma1 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
-                            break;
-                        case 1:  suma2 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
-                            break;
-                        case 2:  suma3 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
-                            break;
-                        case 3:  suma4 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
-                            break;
-                    }
-                    break;
+                        switch (j) {
+                            case 0: suma1 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                                break;
+                            case 1: suma2 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                                break;
+                            case 2: suma3 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                                break;
+                            case 3: suma4 -= this.formulario.listaGastosOperativos2[i].componentes[j].cantidad;
+                                break;
+                        }
+                        break;
                 }
             }
         }
@@ -764,6 +839,26 @@ export class FormularioFinancieroN1Component implements OnInit, OnDestroy {
     private onError(error: any) {
         this.messages = [];
         this.messages.push({ severity: 'error', summary: 'Mensaje de Error', detail: error.message });
+    }
+
+    guardarFormulario() {
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.listaTotalIngresos, this.nCodffina, 'f1');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaEmpresaProduccion, this.nCodffina, 'f1');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaEmpresaServicios, this.nCodffina, 'f1');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosOperativos1, this.nCodffina, 'f1');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosOperativos2, this.nCodffina, 'f1');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaParticipacion, this.nCodffina, 'f1');
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaImpuestoRenta, this.nCodffina, 'f1');
+
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCostos, this.nCodffina, 'f1');
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalServicios, this.nCodffina, 'f1');
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.utilidadBrutaCostos, this.nCodffina, 'f1');
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastos, this.nCodffina, 'f1');
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.utilidadOperativa, this.nCodffina, 'f1');
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.utilidadAntParti, this.nCodffina, 'f1');
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.utilidadAntImp, this.nCodffina, 'f1');
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.utilidadEjercicio, this.nCodffina, 'f1');
+        this.verControlInformacion();
     }
 
     verControlInformacion() {

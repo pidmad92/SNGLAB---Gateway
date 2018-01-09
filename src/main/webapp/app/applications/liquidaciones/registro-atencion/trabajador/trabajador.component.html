@@ -66,38 +66,49 @@
                     <h5 class="mb-0"><small>Paso 1 de 3</small></h5>
                 </div>
                 <div class="card-body">
-                    <form>
-                        <div class="form-row">
+                    <form [formGroup]="formBusquedaTrabajador" (ngSubmit)="buscarTrabajador(formBusquedaTrabajador)" novalidate="novalidate">
+                        <div class="form-row" formGroupName="documento">
                             <div class="col-lg-5">
-                                <div class="form-group row">
-                                    <label for="inpTipo" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo de documentos</label>
+                                <div class="form-group row" [ngClass]="{'has-danger': !formBusquedaTrabajador.controls['documento'].controls['tipDoc'].valid && formBusquedaTrabajador.get('documento.tipDoc').touched}">
+                                    <label for="inpTipo" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo de documento</label>
                                     <div class="col-sm-7">
-                                        <select class="form-control form-control-sm" id="inpTipo">
-                              <option>DNI</option>
-                              <option>Carné de Extrangería</option>
-                              <option>Pasaporte</option>
-                            </select>
+                                        <select class="form-control form-control-sm" id="inpTipo" formControlName="tipDoc" ngModel name="tipDoc" (change)="resetFormularioTrabajador()">
+                                          <option value="">Seleccione un Documento</option>
+                                          <option *ngFor="let tipDoc of listaTipdocident" [value]="tipDoc.id">{{tipDoc.vDescorta}}</option>
+                                        </select>
                                     </div>
+                                </div>
+                                <div *ngIf="formBusquedaTrabajador.get('documento.tipDoc').errors?.required && formBusquedaTrabajador.get('documento.tipDoc').touched" class="alert alert-danger form-control-sm" role="alert">
+                                  Requerido el tipo de documento.
                                 </div>
                             </div>
                             <div class="col-lg-4">
-                                <div class="form-group row">
+                                <div class="form-group row" [ngClass]="{'has-danger': !formBusquedaTrabajador.controls['documento'].controls['numDoc'].valid && formBusquedaTrabajador.get('documento.numDoc').touched}">
                                     <label for="inpNumero" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Número</label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control form-control-sm" id="inpNumero" placeholder="">
+                                        <input type="text" class="form-control form-control-sm" id="inpNumero" placeholder="" formControlName="numDoc">
                                     </div>
+                                </div>
+                                <div *ngIf="formBusquedaTrabajador.get('documento.numDoc').errors?.required && formBusquedaTrabajador.get('documento.numDoc').touched" class="alert alert-danger form-control-sm" role="alert">
+                                  Requerido el numero de documento.
+                                </div>
+                                <div *ngIf="formBusquedaTrabajador.get('documento.numDoc').errors?.pattern && formBusquedaTrabajador.get('documento.numDoc').touched" class="alert alert-danger form-control-sm" role="alert">
+                                  El campo debe ser numerico.
+                                </div>
+                                <div *ngIf="formBusquedaTrabajador.get('documento.numDoc').errors?.minlength && formBusquedaTrabajador.get('documento.numDoc').touched" class="alert alert-danger form-control-sm" role="alert">
+                                  Debe tener como minimo {{formBusquedaTrabajador.get('documento.numDoc').errors.minlength.requiredLength}} digitos.
                                 </div>
                             </div>
                             <div class="col-lg-2">
                                 <div class="form-group row">
                                     <div class="col-sm-9">
-                                        <a href="#" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#regLaborales"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                                      <button [disabled]="!formBusquedaTrabajador.valid" type="submit" class="btn btn-sm btn-secondary" data-toggle="modal"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </form>
-                    <form>
+                    <form *ngIf="showFormularioDatosTrabajador == true">
                         <div class="row">
                             <div class="col-md-2 mb-2">
                                 <label for="inpAP" class="col-form-label col-form-label-sm">Apellido Paterno:</label>
@@ -115,9 +126,10 @@
                                 <label for="inpN" class="col-form-label col-form-label-sm">Sucesion Intestada:</label>
                                 <div class="col-sm-7 col-md-7">
                                     <div class="input-group">
+                                        <!--input type="hidden" name="toggle" [(ngModel)]="binding"-->
                                         <div id="radioBtn" class="btn-group">
-                                            <a class="btn btn-warning btn-sm active" data-toggle="happy" data-title="Y">SI</a>
-                                            <a class="btn btn-block btn-sm notActive" data-toggle="happy" data-title="N">NO</a>
+                                            <a class="btn btn-dark btn-sm active" data-toggle="happy" data-title="Y">SI</a>
+                                            <a class="btn btn-dark btn-sm notActive" data-toggle="happy" data-title="N">NO</a>
                                         </div>
                                         <input type="hidden" name="happy" id="happy">
                                     </div>

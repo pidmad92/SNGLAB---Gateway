@@ -59,7 +59,16 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
     selecDirper: Dirperjuri;
     tippersona: string;
     vRazsocial: string;
-    // fechoy: Date;
+    vEmailper: string;
+    vTelefono: string;
+    vCeluFax: string;
+    vNomalter: string;
+
+    actividadSelec: string;
+
+    fechoy: Date;
+    maxlengthDocIdent: number;
+    numOficina = 5;
 
     constructor(
         private router: Router,
@@ -70,6 +79,50 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
         private route: ActivatedRoute,
         private registroAtencionWizard: RegistroAtencionWizardService
     ) {
+    }
+
+    inicializaTablas() {
+        this.dirpernat = [];
+        this.dirperjuri = [];
+        this.dirper = [];
+    }
+
+    inicializarFormulario() {
+        this.inicializaTablas();
+        this.vNumdocumento = '';
+        this.displayDialog = false;
+        this.vEmailper = '';
+        this.vTelefono = '';
+        this.vCeluFax = '';
+        this.vRazsocial = '';
+        this.vNomalter = '';
+        if (this.selectedTipodoc !== undefined) {
+            this.maxlengthDocIdent = this.selectedTipodoc.nNumdigi;
+            if (this.selectedTipodoc.vDescorta === 'RUC') {
+                this.tippersona = '1';
+            } else {
+                this.tippersona = '0';
+            }
+        }
+
+        if (this.empleador !== null) {
+            // if (this.empleador.pernatural !== null) {
+            //     this.empleador.pernatural = new Pernatural();
+            // }
+            // if (this.empleador.perjuridica !== null) {
+            //     this.empleador.perjuridica = new Perjuridica();
+            // }
+            // if (this.empleador.cartrab !== null) {
+            //     this.empleador.cartrab = new Cartrab();
+            // }
+            this.empleador = new Empleador();
+            // if (this.empleador.perjuridica.vEmail !== undefined) {
+            //     this.empleador.perjuridica.vEmail = '';
+            // }
+            // if (this.empleador.pernatural.vEmail !== undefined) {
+            //     this.empleador.pernatural.vEmail = '';
+            // }
+        }
     }
 
     loadTipoDoc() {
@@ -83,8 +136,10 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
     loadDirecPerJuri(id: any) {
         this.atencionEmpleadorService.buscarDireccionesPerJuri(id).subscribe(
             (res: ResponseWrapper) => {
-                this.dirperjuri = res.json;
                 // console.log('DIRECCIONES: ' + JSON.stringify(this.dirperjuri));
+                console.log(res.json);
+                // this.dirperjuri = res.json;
+                this.dirper = res.json;
             },
             (res: ResponseWrapper) => { this.onError(res.json); }
         );
@@ -93,62 +148,88 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
     loadDirecPerNat(id: any) {
         this.atencionEmpleadorService.buscarDireccionesPerNat(id).subscribe(
             (res: ResponseWrapper) => {
-                this.dirpernat = res.json;
-                // console.log('DIRECCIONES: ' + JSON.stringify(this.dirperjuri));
+                // console.log('DIRECCIONES: ' + JSON.stringify(this.dirpernat));
+                console.log(res.json);
+                // this.dirpernat = res.json;
+                this.dirper = res.json;
             },
             (res: ResponseWrapper) => { this.onError(res.json); }
         );
     }
 
     ngOnInit() {
+        // this.dirper = new Perjuridica();
+        // this.dirper = new Object();
+        this.tippersona = '1';
+        this.dirper = [];
+        this.fechoy = new Date();
         this.loadTipoDoc();
-        this.subscription = this.registroAtencionWizard.atenSeleccionado.subscribe((atencion) => {
-        });
         this.loadDepartamentos();
         this.atencion = new Atencion();
         this.empleador = new Empleador();
         this.empleador.perjuridica = new Perjuridica();
         this.empleador.pernatural = new Pernatural();
+        this.empleador.perjuridica.vEmail = '';
+        this.empleador.pernatural.vEmail = '';
+        this.subscription = this.registroAtencionWizard.actividadSelec.subscribe((actividadSelect) => {
+            this.actividadSelec = actividadSelect;
         this.subscription = this.registroAtencionWizard.atenSeleccionado.subscribe((atencion) => {
             this.atencion = atencion;
-            if (atencion.datlab !== undefined ) {
-                console.log('NRO1');
-                this.empleador =  this.atencion.datlab.empleador;
-                console.log('EMP: ' + JSON.stringify(this.empleador));
-                if (this.atencion.datlab.empleador.perjuridica !== null) {
-                    this.empleador.perjuridica = this.atencion.datlab.empleador.perjuridica;
-                    this.selectedTipodoc = this.atencion.datlab.empleador.perjuridica.tipdocident;
-                    this.vNumdocumento = this.atencion.datlab.empleador.perjuridica.vNumdoc;
-                    this.dirper = new Dirperjuri();
-                    this.dirper.perjuridica = this.empleador.perjuridica;
-                    this.loadDirecPerJuri(this.empleador.id);
-                } else if (this.atencion.datlab.empleador.pernatural !== null) {
-                    this.empleador.pernatural = this.atencion.datlab.empleador.pernatural;
-                    this.selectedTipodoc = this.atencion.datlab.empleador.pernatural.tipdocident;
-                    this.vNumdocumento = this.atencion.datlab.empleador.pernatural.vNumdoc;
-                    this.dirper = new Dirpernat();
-                    this.dirper.pernatural = this.empleador.pernatural;
-                    this.loadDirecPerNat(this.empleador.id);
-                }
-            } else if (atencion.empleador !== undefined) {
-                console.log('NRO2');
-                this.empleador =  this.atencion.empleador;
-                if (this.atencion.empleador.perjuridica !== null) {
-                    this.empleador.perjuridica = this.atencion.empleador.perjuridica;
-                } else if (this.atencion.empleador.pernatural !== null) {
-                    this.empleador.pernatural = this.atencion.empleador.pernatural;
-                }
-            } else if (atencion.vObsatenci === 'newAten') {
-                console.log('NRO3');
-                this.atencion.vObsatenci = '';
-                this.empleador = new Empleador();
-                this.empleador.perjuridica = new Perjuridica();
+            if (this.actividadSelec === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
+                this.router.navigate(['/consultas/atencion-trabajador']);
+            } else if (this.actividadSelec === '1') { // Si el flujo es generado al presionar el boton nuevo registro se instanciaran los datos en blanco
             } else {
-                console.log('NRO4');
-                // this.router.navigate(['/consultas/atencion-Empleador']);
+                if (atencion.datlab !== undefined ) {
+                    console.log('NRO1');
+                    this.empleador =  this.atencion.datlab.empleador;
+                    console.log('EMP: ' + JSON.stringify(this.empleador));
+                    if (this.atencion.datlab.empleador.perjuridica !== null) {
+                        this.empleador.perjuridica = this.atencion.datlab.empleador.perjuridica;
+                        this.selectedTipodoc = this.atencion.datlab.empleador.perjuridica.tipdocident;
+                        this.vNumdocumento = this.atencion.datlab.empleador.perjuridica.vNumdoc;
+                        this.dirper = new Dirperjuri();
+                        this.dirper.perjuridica = this.empleador.perjuridica;
+                        this.loadDirecPerJuri(this.empleador.id);
+                    } else if (this.atencion.datlab.empleador.pernatural !== null) {
+                        this.atencion.datlab.empleador.perjuridica = new Perjuridica();
+                        this.empleador.pernatural = this.atencion.datlab.empleador.pernatural;
+                        this.selectedTipodoc = this.atencion.datlab.empleador.pernatural.tipdocident;
+                        this.vNumdocumento = this.atencion.datlab.empleador.pernatural.vNumdoc;
+                        this.dirper = new Dirpernat();
+                        this.dirper.pernatural = this.empleador.pernatural;
+                        this.loadDirecPerNat(this.empleador.id);
+                    } else {
+                        this.atencion.datlab.empleador.pernatural = new Pernatural();
+                        this.atencion.datlab.empleador.perjuridica = new Perjuridica();
+                    }
+                } else if (atencion.empleador !== undefined) {
+                    console.log('NRO2');
+                    this.empleador =  this.atencion.empleador;
+                    if (this.atencion.empleador.perjuridica !== null) {
+                        this.empleador.perjuridica = this.atencion.empleador.perjuridica;
+                        // this.selectedTipodoc = this.atencion.empleador.perjuridica.tipdocident;
+                        // this.vNumdocumento = this.atencion.empleador.perjuridica.vNumdoc;
+                    } else if (this.atencion.empleador.pernatural !== null) {
+                        this.empleador.pernatural = this.atencion.empleador.pernatural;
+                        this.empleador.perjuridica = new Perjuridica();
+                    } else {
+                        this.empleador.pernatural = new Pernatural();
+                        this.empleador.perjuridica = new Perjuridica();
+                    }
+                } else if (atencion.vObsatenci === 'newAten') {
+                    console.log('NRO3');
+                    this.atencion.vObsatenci = '';
+                    this.empleador = new Empleador();
+                    this.empleador.perjuridica = new Perjuridica();
+                    this.empleador.pernatural = new Pernatural();
+                } else {
+                    console.log('NRO4');
+                    // this.router.navigate(['/consultas/atencion-Empleador']);
+                }
             }
         });
-
+        this.registerChangeInEmpleador();
+    });
     }
 
     ngOnDestroy() {
@@ -244,51 +325,74 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
     }
 
     close() {
-        if (this.tippersona === '0') {
-            this.dirper = new Dirperjuri();
+        console.log('TipPersona: ' + this.tippersona);
+        if (this.tippersona === '1') {
+            // this.dirper = new Dirperjuri();
             this.dirper.perjuridica = this.empleador.perjuridica;
-        } else {
-            this.dirper = new Dirpernat();
+        } else if (this.tippersona === '0') {
+            // this.dirper = new Dirpernat();
             this.dirper.pernatural = this.empleador.pernatural;
+        } else {
+            this.dirper = [];
         }
         this.displayDialog = false;
     }
 
     buscaEmpleadorByDocIdent() {
-        console.log(JSON.stringify(this.selectedTipodoc.id) + '|' + this.vNumdocumento);
-        if (this.selectedTipodoc.id === undefined || this.vNumdocumento === undefined) {
-            return;
-        }
-        if (this.selectedTipodoc.vDescorta === 'RUC') {
-            this.tippersona = '0';
-        } else {
-            this.tippersona = '1';
-        }
-         const tipodoc = this.selectedTipodoc.id; // 1;
-         const numdoc =  this.vNumdocumento; //  '12345678';
-         console.log(tipodoc);
-         console.log(numdoc);
-        this.atencionEmpleadorService.findEmpleadorsByDocIdent(tipodoc, numdoc).subscribe((empleador) => {
+
+        this.inicializaTablas();
+            if (this.selectedTipodoc === undefined || this.selectedTipodoc.id === undefined || this.vNumdocumento === undefined || this.vNumdocumento === '') {
+                return;
+            }
+            console.log(JSON.stringify(this.selectedTipodoc.id) + '|' + this.vNumdocumento);
+            // if (this.selectedTipodoc.vDescorta === 'RUC') {
+            //     this.tippersona = '1';
+            // } else {
+            //     this.tippersona = '0';
+            // }
+         const tipodoc = this.selectedTipodoc.id; // 2;
+         const numdoc =  this.vNumdocumento; //  '11111111111';
+        this.atencionEmpleadorService.findEmpleadorsByDocIdent(tipodoc, numdoc, Number(this.tippersona)).subscribe((empleador) => {
             console.log(empleador);
             this.empleador = empleador;
+            if (this.empleador.id !== undefined) {
+                if (this.tippersona === '1') {
+                    this.vRazsocial = this.empleador.perjuridica.vRazsocial;
+                    this.vEmailper = this.empleador.perjuridica.vEmailper;
+                    this.vTelefono = this.empleador.perjuridica.vTelefono;
+                    this.vCeluFax = this.empleador.perjuridica.vFaxperju;
+                    this.vNomalter = this.empleador.perjuridica.vNomalter;
+                    this.loadDirecPerJuri(this.empleador.id);
+                } else {
+                    this.vRazsocial = this.empleador.pernatural.vNombres + ' ' +  this.empleador.pernatural.vApepat + ' ' + this.empleador.pernatural.vApemat;
+                    this.vEmailper = this.empleador.pernatural.vEmailper;
+                    this.vTelefono = this.empleador.pernatural.vTelefono;
+                    this.vCeluFax = this.empleador.pernatural.vCelular;
+                    this.vNomalter = '';
+                    this.loadDirecPerNat(this.empleador.id);
+                }
+            }
         });
-        if (this.tippersona === '0') {
-            this.vRazsocial = this.empleador.perjuridica.vRazsocial;
-        } else {
-            this.vRazsocial = this.empleador.pernatural.vNombres + ' ' +  this.empleador.pernatural.vApepat + ' ' + this.empleador.pernatural.vApemat;
-        }
     }
 
     previousState() {
         window.history.back();
     }
 
-    registerChangeInAccionadops() {
-        this.eventSubscriber = this.eventManager.subscribe(
-            'datosEmpleadorListModification',
-            (response) => this.load(this.empleador.id)
-        );
+    registerChangeInEmpleador() {
+        this.eventSubscriber = this.eventManager.subscribe('saveEmpleador',
+        (response) => {
+            console.log('PasarEmpleador' + JSON.stringify(this.empleador));
+            this.registroAtencionWizard.cambiarEmpleador(this.empleador);
+        });
     }
+
+    // registerChangeInAccionadops() {
+    //     this.eventSubscriber = this.eventManager.subscribe(
+    //         'datosEmpleadorListModification',
+    //         (response) => this.load(this.empleador.id)
+    //     );
+    // }
     // cloneDirec(dir: Dirperjuri): Dirperjuri {
     cloneDirec(dir: any): any {
         let direc;

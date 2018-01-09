@@ -13,6 +13,7 @@ import {
     FormularioFinancieroAnexo1DComponent,
     FormularioFinancieroRoute,
 } from './';
+import { FormfinancService, FormfinancDetalleService } from '../entities/index';
 
 const ENTITY_STATES = [
     ...FormularioFinancieroRoute,
@@ -42,6 +43,8 @@ const ENTITY_STATES = [
     ],
     providers: [
         FormularioFinancieroService,
+        FormfinancService,
+        FormfinancDetalleService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

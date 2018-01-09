@@ -34,7 +34,7 @@
                                     <label for="inpNumero" class="col-sm-2 col-form-label">Número:</label>
                                     <div class="col-sm-3 px-0">
                                         <!-- <input class="form-control form-control-sm" type="text" [(ngModel)]="vNumdoc" name="vNumdoc" pattern="[0-9]+/> -->
-                                        <input class="form-control form-control-sm" type="text" [(ngModel)]="vNumdoc" name="vNumdoc" />
+                                        <input class="form-control form-control-sm" type="text" [(ngModel)]="vNumdoc" name="vNumdoc" [maxlength]="maxlengthDocIdent" />
                                     </div>
                                 </div>
                             </div>
@@ -52,16 +52,6 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 mb-1" *ngIf="tippersona==='0'">
-                                <!-- <p-dataTable [value]="empleadores" [(selection)]="empleadorSelec" selectionMode="single" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" dataKey="id">
-                                        <p-header>Empleadores</p-header>
-                                        <p-column [style]="{'width':'38px'}" selectionMode="single"></p-column> -->
-                                        <!-- <p-column field="codPase" header="Cod. Pase"></p-column> -->
-                                        <!-- <p-column field="EmpleadorPernaturalTipdocident_vDescorta" header="Tipo Doc."></p-column>
-                                        <p-column field="EmpleadorPernatural_vNumdoc" header="Núm. Doc."></p-column>
-                                        <p-column field="NombEmpleador" header="Empleador"></p-column>
-                                        <p-column field="EmpleadorPernatural_vTelefono" header="Teléfono"></p-column>
-                                </p-dataTable> -->
-
                                 <p-dataTable #Templeadores [value]="empleadores" [(selection)]="empleadorSelec" selectionMode="single" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" dataKey="empleador.id">
                                         <p-header>Empleadores</p-header>
                                         <p-column [style]="{'width':'38px'}" selectionMode="single"></p-column>
@@ -70,6 +60,9 @@
                                         <p-column field="empleador.pernatural.vNumdoc" header="Núm. Doc."></p-column>
                                         <p-column field="NombEmpleador" header="Empleador"></p-column>
                                         <p-column field="empleador.pernatural.vTelefono" header="Teléfono"></p-column>
+                                        <ng-template pTemplate="emptymessage">
+                                                No se han encontrado registros
+                                        </ng-template>
                                 </p-dataTable>
                             </div>
                             <div class="col-md-12 mb-1" *ngIf="tippersona==='1'">
@@ -82,6 +75,9 @@
                                         <!-- <p-column field="empleador.perjuridica.vRazsocial" header="Empleador"></p-column> -->
                                         <p-column field="NombEmpleador" header="Empleador"></p-column>
                                         <p-column field="empleador.perjuridica.vTelefono" header="Teléfono"></p-column>
+                                        <ng-template pTemplate="emptymessage">
+                                                No se han encontrado registros
+                                        </ng-template>
                                 </p-dataTable>
                             </div>
                         </div>
@@ -99,7 +95,7 @@
                                                         <p-header>Atenciones</p-header>
                                                         <p-column header="Fecha">
                                                             <ng-template let-data="rowData" pTemplate="body">
-                                                                <span>{{ data.aten.tFecreg | date: 'dd/MM/yyyy' }}</span>
+                                                                <span style="text-align:center">{{ data.aten.tFecreg | date: 'dd/MM/yyyy' }}</span>
                                                             </ng-template>
                                                         </p-column>
                                                         <p-column field="aten.vNumticket" header="Num. Ticket"></p-column>
@@ -115,7 +111,20 @@
                                                         </div> -->
                                                         <p-column field="aten.oficina.vDesofic" header="Área"></p-column>
                                                         <p-column field="aten.nSedereg" header="Localidad"></p-column>
+                                                        <!-- <p-column header="Localidad"></p-column>
+                                                            <ng-template let-data="rowData" pTemplate="body">
+                                                                <span style="text-align:center">{{ localidad }}</span>
+                                                            </ng-template>
+                                                        </p-column> -->
                                                         <p-column field="aten.nUsuareg" header="Consultor"></p-column>
+                                                        <!-- <p-column header="Consultor"></p-column>
+                                                            <ng-template let-data="rowData" pTemplate="body">
+                                                                <span style="text-align:center">{{ consultor }}</span>
+                                                            </ng-template>
+                                                        </p-column> -->
+                                                        <ng-template pTemplate="emptymessage">
+                                                                No se han encontrado registros
+                                                        </ng-template>
                                                     </p-dataTable>
                                                 </div>
                                             </div>
@@ -125,22 +134,44 @@
                                         <form>
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
-                                                    <p-dataTable #Tpases [value]="pases" dataKey="pases.id_pasegl">
+                                                    <p-dataTable #Tpases [value]="pases" dataKey="id_pasegl">
+                                                        <p-header>Pases</p-header>
+                                                        <p-column header="Fecha">
+                                                            <ng-template let-data="rowData" pTemplate="body">
+                                                                <span>{{ data.fecha | date: 'dd/MM/yyyy' }}</span>
+                                                            </ng-template>
+                                                        </p-column>
+                                                        <p-column field="atencion.vNumticket" header="Num. Ticket"></p-column>
+                                                        <p-column field="oficinaOrigen" header="Origen"></p-column>
+                                                        <p-column field="oficinaDestino" header="Destino"></p-column>
+                                                        <p-column field="tipdoc" header="Tipo Doc."></p-column>
+                                                        <p-column field="vNumdoc" header="Num. Doc."></p-column>
+                                                        <p-column field="nomrepre" header="Representante"></p-column>
+                                                        <p-column field="nSedereg" header="Localidad"></p-column>
+                                                        <p-column field="nUsuareg" header="Consultor"></p-column>
+                                                        <ng-template pTemplate="emptymessage">
+                                                                No se han encontrado registros
+                                                        </ng-template>
+                                                    </p-dataTable>
+                                                    <!-- <p-dataTable #Tpases [value]="pases" dataKey="id_pasegl">
                                                             <p-header>Pases</p-header>
                                                             <p-column header="Fecha">
                                                                 <ng-template let-data="rowData" pTemplate="body">
-                                                                    <span>{{ pases.tFecreg | date: 'dd/MM/yyyy' }}</span>
+                                                                    <span>{{ data.fecha | date: 'dd/MM/yyyy' }}</span>
                                                                 </ng-template>
                                                             </p-column>
-                                                            <p-column field="pases.aten.vNumticket" header="Num. Ticket"></p-column>
-                                                            <p-column field="pases.oficinaOrigen" header="Origen"></p-column>
-                                                            <p-column field="pases.oficinaDestino" header="Destino"></p-column>
-                                                            <p-column field="pases.tipdoc" header="Tipo Doc."></p-column>
-                                                            <p-column field="pases.vNumdoc" header="Num. Doc."></p-column>
-                                                            <p-column field="pases.nomrepre" header="Representante"></p-column>
-                                                            <p-column field="pases.nSedereg" header="Localidad"></p-column>
-                                                            <p-column field="pases.nUsuareg" header="Consultor"></p-column>
-                                                    </p-dataTable>
+                                                            <p-column field="vNumticket" header="Num. Ticket"></p-column>
+                                                            <p-column field="oficinaOrigen" header="Origen"></p-column>
+                                                            <p-column field="oficinaDestino" header="Destino"></p-column>
+                                                            <p-column field="tipdoc" header="Tipo Doc."></p-column>
+                                                            <p-column field="vNumdoc" header="Num. Doc."></p-column>
+                                                            <p-column field="nomrepre" header="Representante"></p-column>
+                                                            <p-column field="nSedereg" header="Localidad"></p-column>
+                                                            <p-column field="nUsuareg" header="Consultor"></p-column>
+                                                            <ng-template pTemplate="emptymessage">
+                                                                    No se han encontrado registros
+                                                            </ng-template>
+                                                    </p-dataTable> -->
                                                 </div>
                                             </div>
                                         </form>
@@ -162,6 +193,9 @@
                                                                         <span style="text-align:center">{{ (data.direc.nFlgnotifi===false)?'':'SI' }}</span>
                                                                     </ng-template>
                                                                 </p-column>
+                                                                <ng-template pTemplate="emptymessage">
+                                                                        No se han encontrado registros
+                                                                </ng-template>
                                                         </p-dataTable>
                                                     </div>
                                                 </div>
@@ -171,9 +205,9 @@
 
                             </div>
                         </div>
-                        <!-- <p-dialog [width]="800" header="Registros Laborales:" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+                        <p-dialog [width]="800" header="Registros Laborales:" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
                             <div>
-                                <p-dataTable selectionMode="single" [(selection)]="selecAten" [value]="atenciones" dataKey="aten.id">
+                                <p-dataTable selectionMode="single" [(selection)]="selecAten" [value]="pasesofic" dataKey="aten.id">
                                     <p-header>Registros</p-header>
                                     <p-column field="aten.datlab.dFecvincul" header="Fecha Inicio"></p-column>
                                     <p-column field="aten.datlab.empleador.perjuridica.vRazsocial" header="Empleador"></p-column>
@@ -185,6 +219,9 @@
                                         </ng-template>
                                     </p-column>
                                     <p-column field="pase.vObspase" header="Motivo del Pase"></p-column>
+                                    <ng-template pTemplate="emptymessage">
+                                            No se han encontrado registros
+                                    </ng-template>
                                 </p-dataTable>
                             </div>
                             <p-footer>
@@ -194,7 +231,7 @@
                                     <button (click)="cargarRegistroAtencion('2')" class="btn btn-sm btn-success "><i class="fa fa-cloud-download" aria-hidden="true"></i> Cargar</button>
                                 </div>
                             </p-footer>
-                        </p-dialog> -->
+                        </p-dialog>
                     </div>
                 </div>
             </div>

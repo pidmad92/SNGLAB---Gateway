@@ -27,7 +27,8 @@
                   <ng-container *ngFor="let comp of formulario.listaTotalIngresos.componentes; let j = index">
                     <td>
                       <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
-                        id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalIngresos($event)" (keypress)="keyPress($event)" maxlength="6">
+                        id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalIngresos($event)" (keypress)="keyPress($event)"
+                        maxlength="6">
                     </td>
                   </ng-container>
                 </tr>
@@ -86,24 +87,24 @@
                   <tr style="height:28px;">
                     <td class="dinamico">{{lista.descripcion}}</td>
                     <ng-container *ngFor="let comp of lista.componentes">
-                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                      <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
                     </ng-container>
                     <td style="text-align: center;width: 10%">
-                        <a [routerLink]="" (click)="editarComponente(lista)" class="btn btn-sm btn-warning">
-                          <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </a>
-                        <a [routerLink]="" (click)="eliminarComponente(lista)" class="btn btn-sm btn-danger">
-                          <i class="fa fa-times" aria-hidden="true"></i>
-                        </a>
-                      </td>
+                      <a [routerLink]="" (click)="editarComponente(lista)" class="btn btn-sm btn-warning">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                      </a>
+                      <a [routerLink]="" (click)="eliminarComponente(lista)" class="btn btn-sm btn-danger">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                      </a>
+                    </td>
                   </tr>
                 </ng-container>
                 <tr>
-                    <td class="dinamico">{{formulario.totalServicios.descripcion}}</td>
-                    <ng-container *ngFor="let comp of formulario.totalServicios.componentes">
-                      <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
-                    </ng-container>
-                    <td></td>
+                  <td class="dinamico">{{formulario.totalServicios.descripcion}}</td>
+                  <ng-container *ngFor="let comp of formulario.totalServicios.componentes">
+                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                  </ng-container>
+                  <td></td>
                 </tr>
               </tbody>
             </table>
@@ -142,7 +143,8 @@
                     <ng-container *ngFor="let comp of lista.componentes">
                       <td>
                         <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
-                          id="{{comp.codigo}}" value="{{comp.cantidad}}" maxlength="6" (keyup)="subtotalGastosOperativos1($event)" (keypress)="keyPress($event)">
+                          id="{{comp.codigo}}" value="{{comp.cantidad}}" maxlength="6" (keyup)="subtotalGastosOperativos1($event)"
+                          (keypress)="keyPress($event)">
                       </td>
                     </ng-container>
                   </tr>
@@ -184,7 +186,8 @@
                       <ng-container *ngIf="k < (total - 1)">
                         <td>
                           <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
-                            id="{{comp.codigo}}" value="{{comp.cantidad}}" maxlength="6" (keyup)="subtotalGastosOperativos2($event)" (keypress)="keyPress($event)">
+                            id="{{comp.codigo}}" value="{{comp.cantidad}}" maxlength="6" (keyup)="subtotalGastosOperativos2($event)"
+                            (keypress)="keyPress($event)">
                         </td>
                       </ng-container>
                       <ng-container *ngIf="k === (total - 1)">
@@ -223,7 +226,8 @@
                     <ng-container *ngFor="let comp of lista.componentes">
                       <td>
                         <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
-                          id="{{comp.codigo}}" value="{{comp.cantidad}}" maxlength="6" (keyup)="participacionTrabajadores($event)" (keypress)="keyPress($event)">
+                          id="{{comp.codigo}}" value="{{comp.cantidad}}" maxlength="6" (keyup)="participacionTrabajadores($event)"
+                          (keypress)="keyPress($event)">
                       </td>
                   </tr>
                   </ng-container>
@@ -299,9 +303,9 @@
       </div>
       <div class="row">
         <div class="col-12 text-sm-right">
-          <a href="#" class="btn btn-sm m-1 btn-success">
+          <a (click)="verControlInformacion()" class="btn btn-sm m-1 btn-success">
             <i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
-          <a href="#" class="btn btn-sm m-1 btn-secondary">
+          <a (click)="guardarFormulario()" class="btn btn-sm m-1 btn-secondary">
             <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
         </div>
       </div>
@@ -316,52 +320,47 @@
   <p>
 
     <div class="modal-body">
-        <div class="row">
-          <div class="col-md mb-2">
-            <label for="inpDireccion" class="col-form-label col-form-label-sm">Concepto:</label>
-            <input type="text" class="form-control form-control-sm" id="inpDireccion" maxlength="200" 
-            [(ngModel)]="empresaServicio.concepto">
-          </div>
+      <div class="row">
+        <div class="col-md mb-2">
+          <label for="inpDireccion" class="col-form-label col-form-label-sm">Concepto:</label>
+          <input type="text" class="form-control form-control-sm" id="inpDireccion" maxlength="200" [(ngModel)]="empresaServicio.concepto">
         </div>
-        <div class="row pt-2">
-          <div class="col">
-            <fieldset>
-              <legend>Montos</legend>
-              <div class="row">
-                <div class="col">
-                  <label for="" class="col-form-label col-form-label-sm">Año {{anios[0]}}</label>
-                </div>
-                <div class="col">
-                  <input type="number" class="form-control form-control-sm" placeholder="" 
-                  [(ngModel)]="empresaServicio.anioA">
-                </div>
-                <div class="col">
-                  <label for="" class="col-form-label col-form-label-sm">Año {{anios[1]}}</label>
-                </div>
-                <div class="col">
-                  <input type="number" class="form-control form-control-sm" placeholder="" 
-                  [(ngModel)]="empresaServicio.anioB">
-                </div>
+      </div>
+      <div class="row pt-2">
+        <div class="col">
+          <fieldset>
+            <legend>Montos</legend>
+            <div class="row">
+              <div class="col">
+                <label for="" class="col-form-label col-form-label-sm">Año {{anios[0]}}</label>
               </div>
-              <br/>
-              <div class="row">
-                <div class="col">
-                  <label for="" class="col-form-label col-form-label-sm">Año {{anios[2]}}</label>
-                </div>
-                <div class="col">
-                  <input type="number" class="form-control form-control-sm" placeholder="" 
-                  [(ngModel)]="empresaServicio.anioC">
-                </div>
-                <div class="col">
-                  <label for="" class="col-form-label col-form-label-sm">Año {{anios[3]}}</label>
-                </div>
-                <div class="col">
-                  <input type="number" class="form-control form-control-sm" placeholder="" 
-                  [(ngModel)]="empresaServicio.anioD">
-                </div>
+              <div class="col">
+                <input type="number" class="form-control form-control-sm" placeholder="" [(ngModel)]="empresaServicio.anioA">
               </div>
-            </fieldset>
-          </div>
+              <div class="col">
+                <label for="" class="col-form-label col-form-label-sm">Año {{anios[1]}}</label>
+              </div>
+              <div class="col">
+                <input type="number" class="form-control form-control-sm" placeholder="" [(ngModel)]="empresaServicio.anioB">
+              </div>
+            </div>
+            <br/>
+            <div class="row">
+              <div class="col">
+                <label for="" class="col-form-label col-form-label-sm">Año {{anios[2]}}</label>
+              </div>
+              <div class="col">
+                <input type="number" class="form-control form-control-sm" placeholder="" [(ngModel)]="empresaServicio.anioC">
+              </div>
+              <div class="col">
+                <label for="" class="col-form-label col-form-label-sm">Año {{anios[3]}}</label>
+              </div>
+              <div class="col">
+                <input type="number" class="form-control form-control-sm" placeholder="" [(ngModel)]="empresaServicio.anioD">
+              </div>
+            </div>
+          </fieldset>
+        </div>
       </div>
   </p>
   <p-messages [(value)]="messagesForm"></p-messages>

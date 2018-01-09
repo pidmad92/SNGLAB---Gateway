@@ -21,7 +21,7 @@
                                     <div class="form-group row">
                                         <label for="inpLocal" class="col-sm-3 col-form-label">Local</label>
                                         <div class="col-sm-9">
-                                        <input type="text" class="form-control form-control-sm" id="inpLocal" value="LIMA CENTRO">
+                                        <input type="text" class="form-control form-control-sm" id="inpLocal" value="LIMA CENTRO" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -29,8 +29,9 @@
                                 <div class="form-group row">
                                     <label for="inpFecha" class="col-sm-3 col-form-label">Fecha</label>
                                     <div class="col-sm-9">
-                                    <!-- <input type="date" class="form-control form-control-sm" id="inpFecha" [(ngModel)]="fechoy"> -->
-                                    <input type="date" class="form-control form-control-sm" id="inpFecha">
+                                    <!-- <input type="date" class="form-control form-control-sm" id="inpFecha" [value]="fechoy"> -->
+                                    <!-- <input type="date" class="form-control form-control-sm" id="inpFecha"> -->
+                                    <p style="padding-top: 5px;"><span ng-non-bindable>{{ fechoy | date: 'dd/MM/yyyy' }}</span></p>
                                     </div>
                                 </div>
                                 </div>
@@ -47,8 +48,7 @@
                                             <div class="form-group row">
                                                 <label for="inpTipo" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo de documentos</label>
                                                 <div class="col-sm-6">
-                                                    <p-dropdown [options]="tipodocs" name="selectedTipodoc" [(ngModel)]="selectedTipodoc" [style]="{'width':'140px'}" placeholder="Seleccione"
-                                                    optionLabel="vDescorta" dataKey="id"></p-dropdown>
+                                                    <p-dropdown [options]="tipodocs" name="selectedTipodoc" [(ngModel)]="selectedTipodoc" [style]="{'width':'140px'}" placeholder="Seleccione" optionLabel="vDescorta" dataKey="id" (onChange)="inicializarFormulario()"></p-dropdown>
                                                 </div>
                                             </div>
                                         </div>
@@ -56,13 +56,13 @@
                                             <div class="form-group row">
                                                 <label for="inpNumero" class="col-sm-4 col-form-label col-form-label-sm text-sm-right">Número</label>
                                                 <div class="col-sm-8">
-                                                    <input type="number" class="form-control form-control-sm" id="inpNumero" name="vNumdocumento" [(ngModel)]="vNumdocumento">
+                                                    <input type="text" class="form-control form-control-sm" id="inpNumero" name="vNumdocumento" [(ngModel)]="vNumdocumento" [maxlength]="maxlengthDocIdent">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3">
+                                        <!-- <div class="col-lg-3">
                                             <p-checkbox name="selectedSucesion" class="px-2" binary="true" label="Sucesión Intestada" [(ngModel)]="trabajador.nFlgsuces" inputId="ny"></p-checkbox>
-                                        </div>
+                                        </div> -->
                                         <div class="col-md-2">
                                             <div class="form-group row">
                                                 <div class="col-sm-9">
@@ -76,7 +76,7 @@
                                 </form>
                                 <hr>
                                 <form>
-                                    <div *ngIf="trabajador.nFlgsuces" class="form-row">
+                                    <!-- <div *ngIf="trabajador.nFlgsuces" class="form-row">
                                         <div class="col-lg-12">
                                             <div class="form-group row">
                                                 <label for="inpNumero" class="col-sm-2 col-form-label col-form-label-sm ">Trabajador</label>
@@ -85,19 +85,19 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="row">
                                         <div class="col-md-3 mb-3">
                                             <label for="inpAP">Apellido Paterno:</label>
-                                            <input type="text" class="form-control form-control-sm" id="inpAP" name="vApepaterno" readonly required [(ngModel)]="trabajador.pernatural.vApepat">
+                                            <input type="text" class="form-control form-control-sm" id="inpAP" name="vApepaterno" required [(ngModel)]="trabajador.pernatural.vApepat" style="text-transform: uppercase">
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="inpAM">Apellido Materno:</label>
-                                            <input type="text" class="form-control form-control-sm" id="inpAM"  name="vApematerno" readonly required [(ngModel)]="trabajador.pernatural.vApemat">
+                                            <input type="text" class="form-control form-control-sm" id="inpAM"  name="vApematerno" required [(ngModel)]="trabajador.pernatural.vApemat" style="text-transform: uppercase">
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="inpN">Nombres:</label>
-                                            <input type="text" class="form-control form-control-sm" id="inpN" name="vNombres" readonly required [(ngModel)]="trabajador.pernatural.vNombres">
+                                            <input type="text" class="form-control form-control-sm" id="inpN" name="vNombres" required [(ngModel)]="trabajador.pernatural.vNombres" style="text-transform: uppercase">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -107,18 +107,18 @@
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="selSexo">Sexo:</label>
-                                            <select class="form-control form-control-sm" id="selSexo">
-                                            <option value="M">Masculino</option>
-                                            <option value="F">Femenino</option>
+                                            <select class="form-control form-control-sm" id="selSexo" name="selectedSexo" [(ngModel)]="trabajador.pernatural.vSexoper" placeholder="Seleccione">
+                                                <option value="M">Masculino</option>
+                                                <option value="F">Femenino</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="inpTelefono">Telefono:</label>
-                                            <input type="text" class="form-control form-control-sm" id="inpTelefono" name="vTelefono" readonly [(ngModel)]="trabajador.pernatural.vTelefono">
+                                            <input type="text" class="form-control form-control-sm" id="inpTelefono" name="vTelefono" [(ngModel)]="trabajador.pernatural.vTelefono">
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="inpCelular">Celular</label>
-                                            <input type="text" class="form-control form-control-sm" id="inpCelular" name="vCelular"  readonly [(ngModel)]="trabajador.pernatural.vCelular">
+                                            <input type="text" class="form-control form-control-sm" id="inpCelular" name="vCelular"  [(ngModel)]="trabajador.pernatural.vCelular">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -172,7 +172,7 @@
                                                     </div>
                                                     <div class="ui-grid-row form-group">
                                                             <div class="ui-grid-col-4"><label for="year">Dirección</label></div>
-                                                            <div class="ui-grid-col-8"><input type="text" name="dirper.vDircomple" [(ngModel)]="dirper.vDircomple" class="form-control"  id="direccion" /></div>
+                                                            <div class="ui-grid-col-8"><input type="text" name="dirper.vDircomple" [(ngModel)]="dirper.vDircomple" class="form-control"  id="direccion" style="text-transform: uppercase"/></div>
                                                     </div>
                                                 </div>
                                                 <p-footer>
@@ -188,13 +188,13 @@
                                             <div class="row">
                                                 <div class="col mb-3">
                                                     <label for="inpCorreo">Correo Electrónico:</label>
-                                                    <input type="text" class="form-control form-control-sm" id="inpCorreo" placeholder="" name="vEmail" readonly [(ngModel)]="trabajador.pernatural.vEmailper">
+                                                    <input type="text" class="form-control form-control-sm" id="inpCorreo" placeholder="" name="vEmail" [(ngModel)]="trabajador.pernatural.vEmailper">
                                                 </div>
                                             </div>
-                                            <div *ngIf="!trabajador.nFlgsuces" class="row">
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="selCargo">Presenta Discapacidad:</label>
-                                                    <select class="form-control form-control-sm" id="selCargo" name="discapacidad">
+                                            <!-- <div *ngIf="!trabajador.nFlgsuces" class="row"> -->
+                                                <!-- <div class="col-md-6 mb-3">
+                                                    <label for="selDiscapacidad">Presenta Discapacidad:</label>
+                                                    <select class="form-control form-control-sm" id="selDiscapacidad" name="discapacidad">
                                                             <option value="1">Si</option>
                                                             <option value="0">No</option>
                                                     </select>
@@ -205,8 +205,16 @@
                                                             <option value="1">Si</option>
                                                             <option value="0">No</option>
                                                     </select>
+                                                </div> -->
+                                                <div class="row">
+                                                        <div class="col mb-3">
+                                                        <label for="selCargo">Cargo:</label>
+                                                        <!-- <div class="col mb-3"> -->
+                                                            <p-dropdown [options]="cargos" name="selectedCargo"  [(ngModel)]="trabajador.cartrab.vDescartra" [style]="{'width':'140px'}" placeholder="Seleccione" optionLabel="vDescartra" dataKey="id"></p-dropdown>
+                                                        <!-- </div> -->
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            <!-- </div> -->
                                         </div>
                                     </div>
                                 </form>

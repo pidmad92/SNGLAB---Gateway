@@ -6,6 +6,9 @@ export class Componente implements BaseEntity {
         public año?: number,
         public codigo?: string,
         public cantidad?: number,
+        public vUsureg?: string,
+        public tFecReg?: any,
+        public nSedeReg?: number,
     ) {
         cantidad = 0;
     }

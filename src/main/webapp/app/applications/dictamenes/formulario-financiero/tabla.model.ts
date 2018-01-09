@@ -5,6 +5,7 @@ export class Tabla implements BaseEntity {
     constructor(
         public id?: number,
         public descripcion?: string,
+        public unidadmedida?: string,
         public componentes?: Componente[],
     ) {}
 }
