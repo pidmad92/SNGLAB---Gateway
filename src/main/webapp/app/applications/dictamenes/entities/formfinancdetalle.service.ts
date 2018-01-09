@@ -8,7 +8,7 @@ import { FormfinancDetalle } from './formfinancdetalle.model';
 import { ResponseWrapper, createRequestOption } from '../../../shared';
 import { SERVER_API_URL } from '../../../app.constants';
 import { DatePipe } from '@angular/common/src/pipes';
-import { Tabla } from '../formulario-financiero/tabla.model';
+import { Tabla } from '../formulario-financiero-privado/tabla.model';
 
 @Injectable()
 export class FormfinancDetalleService {

@@ -61,18 +61,28 @@ import { TipdocService, TipdocComponent } from '../../../entities/tipdoc/index';
 import { Empresa } from '../../general/servicesmodel/empresa.model';
 import { ReglaboralService } from '../../../entities/reglaboral/index';
 import { PerreglabService } from '../../../entities/perreglab/index';
-import { FormularioFinancieroN1Component,
-    FormularioFinancieroAnexo1AComponent,
-    FormularioFinancieroAnexo1BComponent,
-    FormularioFinancieroAnexo1CComponent,
-    FormularioFinancieroAnexo1DComponent,
-    FormularioFinancieroService} from '../formulario-financiero/index';
-import { FormularioFinancieroN2Component } from '../formulario-financiero/formulario-financiero-n2.component';
-import { FormularioFinancieroAnexo2AComponent } from '../formulario-financiero/formulario-financiero-anexo2a.component';
-import { FormularioFinancieroAnexo2BComponent } from '../formulario-financiero/formulario-financiero-anexo2b.component';
-import { FormularioFinancieroAnexo2CComponent } from '../formulario-financiero/formulario-financiero-anexo2c.component';
-import { FormularioFinancieroN3Component } from '../formulario-financiero/formulario-financiero-n3.component';
+import { FormularioFinancieroPrivadoN1Component,
+    FormularioFinancieroPrivadoAnexo1AComponent,
+    FormularioFinancieroPrivadoAnexo1BComponent,
+    FormularioFinancieroPrivadoAnexo1CComponent,
+    FormularioFinancieroPrivadoAnexo1DComponent,
+    FormularioFinancieroPrivadoService} from '../formulario-financiero-privado/index';
+import { FormularioFinancieroPrivadoN2Component } from '../formulario-financiero-privado/formulario-financiero-privado-n2.component';
+import { FormularioFinancieroPrivadoAnexo2AComponent } from '../formulario-financiero-privado/formulario-financiero-privado-anexo2a.component';
+import { FormularioFinancieroPrivadoAnexo2BComponent } from '../formulario-financiero-privado/formulario-financiero-privado-anexo2b.component';
+import { FormularioFinancieroPrivadoAnexo2CComponent } from '../formulario-financiero-privado/formulario-financiero-privado-anexo2c.component';
+import { FormularioFinancieroPrivadoN3Component } from '../formulario-financiero-privado/formulario-financiero-privado-n3.component';
 import { FormfinancService, FormfinancDetalleService } from '../entities/index';
+import { FormularioFinancieroFinancieroN1Component,
+         FormularioFinancieroFinancieroN2Component,
+         FormularioFinancieroFinancieroN2AComponent,
+         FormularioFinancieroFinancieroN2BComponent,
+         FormularioFinancieroFinancieroN2CComponent,
+         FormularioFinancieroFinancieroN3Component,
+         FormularioFinancieroFinancieroN4Component,
+         FormularioFinancieroFinancieroN5Component,
+         FormularioFinancieroFinancieroN6Component,
+         FormularioFinancieroFinancieroService} from '../formulario-financiero-financiero/index';
 
 const ENTITY_STATES = [
     ...ListadoSolicitudesRoute,
@@ -90,16 +100,25 @@ const ENTITY_STATES = [
         FormularioPerfil4Component,
         FormularioPerfil5Component,
         FormularioPerfil6Component,
-        FormularioFinancieroN1Component,
-        FormularioFinancieroAnexo1AComponent,
-        FormularioFinancieroAnexo1BComponent,
-        FormularioFinancieroAnexo1CComponent,
-        FormularioFinancieroAnexo1DComponent,
-        FormularioFinancieroN2Component,
-        FormularioFinancieroAnexo2AComponent,
-        FormularioFinancieroAnexo2BComponent,
-        FormularioFinancieroAnexo2CComponent,
-        FormularioFinancieroN3Component,
+        FormularioFinancieroPrivadoN1Component,
+        FormularioFinancieroPrivadoAnexo1AComponent,
+        FormularioFinancieroPrivadoAnexo1BComponent,
+        FormularioFinancieroPrivadoAnexo1CComponent,
+        FormularioFinancieroPrivadoAnexo1DComponent,
+        FormularioFinancieroPrivadoN2Component,
+        FormularioFinancieroPrivadoAnexo2AComponent,
+        FormularioFinancieroPrivadoAnexo2BComponent,
+        FormularioFinancieroPrivadoAnexo2CComponent,
+        FormularioFinancieroPrivadoN3Component,
+        FormularioFinancieroFinancieroN1Component,
+        FormularioFinancieroFinancieroN2Component,
+        FormularioFinancieroFinancieroN2AComponent,
+        FormularioFinancieroFinancieroN2BComponent,
+        FormularioFinancieroFinancieroN2CComponent,
+        FormularioFinancieroFinancieroN3Component,
+        FormularioFinancieroFinancieroN4Component,
+        FormularioFinancieroFinancieroN5Component,
+        FormularioFinancieroFinancieroN6Component,
         DireccionComponent,
         HechoinverComponent,
         ParticipaComponent,
@@ -149,7 +168,8 @@ const ENTITY_STATES = [
         FormularioPerfilService,
         ReglaboralService,
         PerreglabService,
-        FormularioFinancieroService,
+        FormularioFinancieroPrivadoService,
+        FormularioFinancieroFinancieroService,
         FormfinancService,
         FormfinancDetalleService,
     ],
