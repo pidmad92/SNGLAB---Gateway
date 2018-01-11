@@ -1,20 +1,20 @@
 import { Component, OnInit, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationStart, Event as NavigationEvent  } from '@angular/router';
 import { MenuItem, Message } from 'primeng/primeng';
+import { EnvioNotificacionWizardService } from './envio-notificacion-wizard/envio-notificacion-wizard.service';
+import { JhiEventManager } from 'ng-jhipster';
 
 @Component({
     selector: 'jhi-envio-notificacion',
     templateUrl: './envio-notificacion.component.html',
-    styles: [`
-        .ui-steps .ui-steps-item {
-            width: 33.33333%;
-        }
-    `],
+    styleUrls: ['envio-notificacion.scss'],
     encapsulation: ViewEncapsulation.None
 })
 export class EnvioNotificacionComponent implements OnInit, OnChanges {
 
     items: MenuItem[];
+    expedientes: any;
+    currentUrl = '/';
     msgs: Message[] = [];
     private routeExp = '/conciliaciones/expediente/envio-notificacion';
     activeIndex: number;
@@ -22,15 +22,25 @@ export class EnvioNotificacionComponent implements OnInit, OnChanges {
     router: any;
     routes = ['seleccion-expediente', 'verificacion-expediente', 'resumen-notificacion'];
 
-    constructor( router: Router) {
+    constructor( router: Router, private envioNotificacionService: EnvioNotificacionWizardService, private eventManager: JhiEventManager) {
         this.router = router;
         this.activeIndex = this.getStepCurrent(router.url);
+        router.events.forEach((event: NavigationEvent) => {
+            if (event instanceof NavigationStart) {
+                this.currentUrl = event.url;
+                this.activeIndex = this.getStepCurrent(this.currentUrl);
+            }
+        });
     }
 
     ngOnInit() {
+        this.envioNotificacionService.expedienteSeleccionado.subscribe((expedientes) => {
+            this.expedientes = expedientes;
+            this.isExpedientesSelect();
+        });
+
         this.items = [{
                 label: 'Seleccion del Expediente',
-                routerLink: [this.routeExp, { outlets: { wizard: ['seleccion-expediente'] } }],
                 routerLinkActiveOptions: '{exact: true}',
                 command: (event: any) => {
                     this.activeIndex = 0;
@@ -40,7 +50,6 @@ export class EnvioNotificacionComponent implements OnInit, OnChanges {
             },
             {
                 label: 'Verificación de Datos',
-                routerLink: [this.routeExp, { outlets: { wizard: ['verificacion-expediente'] } }],
                 routerLinkActiveOptions: '{exact: true}',
                 command: (event: any) => {
                     this.activeIndex = 1;
@@ -50,7 +59,6 @@ export class EnvioNotificacionComponent implements OnInit, OnChanges {
             },
             {
                 label: 'Resumen',
-                routerLink: [this.routeExp, { outlets: { wizard: ['resumen-notificacion'] } }],
                 routerLinkActiveOptions: 'active' ,
                 command: (event: any) => {
                     this.activeIndex = 2;
@@ -60,11 +68,20 @@ export class EnvioNotificacionComponent implements OnInit, OnChanges {
             },
         ];
     }
+    isExpedientesSelect() {
+        if ( Object.keys(this.expedientes).length === 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     getStepCurrent(url) {
         let ct = 0;
         for (const r of this.routes) {
+            console.log('Compare' + r + '|' + url);
             if ( url.indexOf(r) !== -1 ) {
+                console.log('GetStep' + ct);
                 return ct;
             }
             ct++;
@@ -84,7 +101,8 @@ export class EnvioNotificacionComponent implements OnInit, OnChanges {
 
     public next() {
         this.activeIndex++;
-        this.router.navigate(['/conciliaciones/envio-notificacion', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
+        console.log('Cambio de Rutas:' + this.activeIndex);
+        this.router.navigate(['/conciliaciones/expediente/envio-notificacion', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
         // show / hide steps and emit selected label
         this.ngOnChanges({
             activeIndex: {
@@ -94,11 +112,14 @@ export class EnvioNotificacionComponent implements OnInit, OnChanges {
                 isFirstChange: () => false
             }
         });
+        if (this.activeIndex === 2) {
+            this.eventManager.broadcast({ name: 'envioNotificaciones', content: 'OK'});
+        }
     }
 
     public previous() {
         this.activeIndex--;
-        this.router.navigate(['/conciliaciones/envio-notificacion', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
+        this.router.navigate(['/conciliaciones/expediente/envio-notificacion', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
         // show / hide steps and emit selected label
         this.ngOnChanges({
             activeIndex: {
