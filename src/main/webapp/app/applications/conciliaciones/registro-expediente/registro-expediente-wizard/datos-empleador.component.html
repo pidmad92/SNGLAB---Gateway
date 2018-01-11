@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col">
-        <div class="card card-mtpe mb-3">
+        <div class="card card-mtpe">
             <div class="card-header bg-light d-sm-flex justify-content-between p-1">
                 <h5><small class="ml-3">Registro de Expediente - Datos del Empleador</small></h5>
                 <h5 class="mb-0"><small>Paso 3 de 5</small></h5>
@@ -136,6 +136,11 @@
                                     <p-column field="prov" header="Provincia"></p-column>
                                     <p-column field="dist" header="Distrito"></p-column>
                                     <p-column field="direc.vDircomple" [style]="{'text-align':'left'}" header="Dirección"></p-column>
+                                    <p-column header="Notificar">
+                                        <ng-template let-data="rowData" pTemplate="body">
+                                            <span style="text-align:center">{{ (data.direc.nFlgnotifi===false)?'NO':'SI' }}</span>
+                                        </ng-template>
+                                    </p-column>
                                     <ng-template pTemplate="emptymessage">
                                         No se han encontrado registros
                                     </ng-template>
@@ -165,7 +170,7 @@
                                                 </div>
                                             </div>
                                             <div class="ui-grid-row form-group">
-                                                <div class="ui-grid-col-4"><label for="year">Distrito</label></div>
+                                                <div class="ui-grid-col-4"><label for="field_codDepto">Distrito</label></div>
                                                 <div class="ui-grid-col-8">
                                                     <select required class="form-control" id="field_codDepto" name="dirper.nCoddist" [(ngModel)]="dirper.nCoddist" >
                                                         <option value="{{distritos.vCoddis | number:'1.0'}}" *ngFor="let distritos of distris;">{{distritos.vDesdis}}</option>
@@ -173,8 +178,16 @@
                                                 </div>
                                             </div>
                                             <div class="ui-grid-row form-group">
-                                                    <div class="ui-grid-col-4"><label for="year">Dirección</label></div>
+                                                    <div class="ui-grid-col-4"><label for="dirper.vDircomple">Dirección</label></div>
                                                     <div class="ui-grid-col-8"><input type="text" name="dirper.vDircomple" [(ngModel)]="dirper.vDircomple" class="form-control"  id="direccion" /></div>
+                                            </div>
+                                            <div class="ui-grid-row form-group">
+                                                    <div class="ui-grid-col-4"><label for="groupflagNotifi">Notificar</label></div>
+                                                    <div class="ui-grid-col-8">
+                                                        <!-- <input type="text" name="dirper.vDircomple" [(ngModel)]="dirper.nFlgnotifi" class="form-control"  id="direccion" /> -->
+                                                        <p-radioButton name="groupflagNotifi" [value]="true" label="Si" [(ngModel)]="dirper.nFlgnotifi"></p-radioButton>
+                                                        <p-radioButton name="groupflagNotifi" [value]="false" label="No" [(ngModel)]="dirper.nFlgnotifi"></p-radioButton>        
+                                                    </div>
                                             </div>
                                         </div>
                                         <p-footer>

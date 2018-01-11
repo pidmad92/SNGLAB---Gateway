@@ -1,0 +1,85 @@
+<div class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
+    <div class="row">
+        <div class="col" style="text-align:center;">
+            <h5 class="title">FORMULARIO Nº 3</h5>
+            <h5 class="title">GASTOS DE PERSONAL RELACIONADOS AL COSTO DE PRODUCCIÓN O SERVICIOS</h5>
+            <h6 class="title">(Soles)</h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card card-mtpe mb-3">
+                <form [formGroup]="formGroup">
+                    <div class="card-body">
+
+                        <table class="table table-responsive table-bordered table-hover cabecera">
+                            <thead>
+                                <tr>
+                                    <td class="concepto" rowspan="2">Concepto</td>
+                                    <ng-container *ngFor="let a of anios">
+                                        <td colspan="3">{{a}}</td>
+                                    </ng-container>
+                                </tr>
+                                <tr>
+                                    <ng-container *ngFor="let a of anios">
+                                        <td>M.O.D.(1)</td>
+                                        <td>M.O.I.</td>
+                                        <td>G.O.</td>
+                                    </ng-container>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <ng-container *ngFor="let lista of formulario.listaGastosPersonal; let k = index; let total = count">
+                                    <tr>
+                                        <td class="concepto">{{lista.descripcion}}</td>
+                                        <ng-container *ngFor="let comp of lista.componentes">
+                                            <ng-container *ngIf="k < (total - 1)">
+                                                <td>
+                                                    <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                        id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotal($event)"
+                                                        (keypress)="keyPress($event)" maxlength="6">
+                                                </td>
+                                            </ng-container>
+                                            <ng-container *ngIf="k === (total - 1)">
+                                                <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                            </ng-container>
+                                        </ng-container>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+
+                        <div style="font-size:9pt;">
+                            <p>
+                                INSTRUCCIONES:
+                                <br/>(1) El total de la M.O.D debe corresponder al formulario Nº 1.
+                                <br/>&nbsp;&nbsp;&nbsp;M.O.D: Mano de obra directa
+                                <br/>&nbsp;&nbsp;&nbsp;M.O.I: Mano de obra indirecta
+                                <br/>&nbsp;&nbsp;&nbsp;G.O: Gastos Operativos
+                                <br/>(2) Otros Beneficios: Incluye indenminzaciones, incentivos por renuncia, etc.
+                                <br/>(3) Gastos de Personal por Contratos de Terceros: Incluye los pagos a Empresas de Servicios
+                                Especiales (Services) y de Empresas Tercerizadoras (Outsourcing).
+                                <br/>- La información de la columna A, B y C muestra la situación financiera correspondiente al
+                                día final de los tres últimos años terminados.
+                                <br/>- La columna D contiene información preliminar hasta el último periodo mensual declarado
+                                a la SUNAT (PDT 621) del ejercicio vigente (especificar mes y año).
+                                <br/>- La columna A, B y C se debe llenar con la información de la Declaración del Pago Anual
+                                por el Impuesto a la Renta de Tercera Categoría presentada a la SUNAT.
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col-12 text-sm-right">
+                    <a (click)="verControlInformacion()" class="btn btn-sm m-1 btn-success">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
+                    <a (click)="guardarFormulario()" class="btn btn-sm m-1 btn-secondary">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -39,8 +39,13 @@ export class AtencionEmpleadorComponent implements OnInit, OnDestroy {
     tippersona: string;
     direcciones: any[];
     pases: any[];
+    pasesofic: any[];
 
-    numOficina = '5';
+    maxlengthDocIdent: number;
+
+    numOficina = 5;
+    localidad = 'LIMA CENTRO';
+    consultor = 'ADMIN';
 
     constructor(
         private atencionEmpleadorService: AtencionEmpleadorService,
@@ -67,23 +72,17 @@ export class AtencionEmpleadorComponent implements OnInit, OnDestroy {
         this.vNumdoc = '';
         this.vRazsocial = '';
         this.tippersona = '0';
-        this.ngOnDestroy();
         this.displayDialog = false;
+        if (this.selectedTipodoc !== undefined) {
+            this.maxlengthDocIdent = this.selectedTipodoc.nNumdigi;
+        }
     }
 
     onRowSelect(event) {
         console.log(event.data);
-        this.atencionEmpleadorService.findAtencionsByEmpleador(event.data.empleador.id).subscribe(
-            (res: ResponseWrapper) => {
-                console.log(res.json);
-                this.atenciones = res.json;
-                this.currentSearch = '';
-            },
-            (res: ResponseWrapper) => this.onError(res.json)
-        );
-
+        this.ConsultaPasesOficina(event.data.empleador.id, this.numOficina, 1);
         this.displayDialog = true;
-        // this.data.cambiarPase(event.data);
+        this.ConsultaAtenciones(event.data.empleador.id);
         this.ConsultaDirecciones(event.data.empleador.id);
         this.ConsultaPases(event.data.empleador.id);
     }
@@ -119,6 +118,26 @@ export class AtencionEmpleadorComponent implements OnInit, OnDestroy {
         //     },
         //     (res: ResponseWrapper) => this.onError(res.json)
         // );
+    }
+
+    ConsultaPasesOficina(id_empl: number, id_ofic: number, estpase: number) {
+            this.atencionEmpleadorService.findPasesByEmpleadorOficinaEstadopase(id_empl, id_ofic, estpase).subscribe(
+                (res: ResponseWrapper) => {
+                    console.log(res.json);
+                    this.pasesofic = res.json;
+                },
+                (res: ResponseWrapper) => { this.onError(res.json); }
+            );
+    }
+    ConsultaAtenciones(id: string) {
+        this.atencionEmpleadorService.findAtencionsByEmpleador(id).subscribe(
+            (res: ResponseWrapper) => {
+                console.log(res.json);
+                this.atenciones = res.json;
+                this.currentSearch = '';
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
     ConsultaPases(id: number) {

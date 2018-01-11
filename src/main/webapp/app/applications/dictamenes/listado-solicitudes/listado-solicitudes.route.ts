@@ -12,11 +12,25 @@ import { FormularioPerfil3Component } from '../formulario-perfil/formulario-perf
 import { FormularioPerfil4Component } from '../formulario-perfil/formulario-perfil4.component';
 import { FormularioPerfil5Component } from '../formulario-perfil/formulario-perfil5.component';
 import { FormularioPerfil6Component } from '../formulario-perfil/formulario-perfil6.component';
-import { FormularioFinancieroN1Component,
-    FormularioFinancieroAnexo1AComponent,
-    FormularioFinancieroAnexo1BComponent,
-    FormularioFinancieroAnexo1CComponent,
-    FormularioFinancieroAnexo1DComponent } from '../formulario-financiero/index';
+import { FormularioFinancieroPrivadoN1Component,
+    FormularioFinancieroPrivadoAnexo1AComponent,
+    FormularioFinancieroPrivadoAnexo1BComponent,
+    FormularioFinancieroPrivadoAnexo1CComponent,
+    FormularioFinancieroPrivadoAnexo1DComponent,
+    FormularioFinancieroPrivadoN2Component,
+    FormularioFinancieroPrivadoAnexo2AComponent,
+    FormularioFinancieroPrivadoAnexo2BComponent,
+    FormularioFinancieroPrivadoAnexo2CComponent,
+    FormularioFinancieroPrivadoN3Component} from '../formulario-financiero-privado/index';
+import { FormularioFinancieroFinancieroN1Component,
+        FormularioFinancieroFinancieroN2Component,
+        FormularioFinancieroFinancieroN3Component,
+        FormularioFinancieroFinancieroN4Component,
+        FormularioFinancieroFinancieroN5Component,
+        FormularioFinancieroFinancieroN6Component,
+        FormularioFinancieroFinancieroN2AComponent,
+        FormularioFinancieroFinancieroN2BComponent,
+        FormularioFinancieroFinancieroN2CComponent} from '../formulario-financiero-financiero/index';
 
 export const ListadoSolicitudesRoute: Routes = [
     {
@@ -46,19 +60,61 @@ export const ListadoSolicitudesRoute: Routes = [
         path: 'dictamenes/formulario-perfil6',
         component: FormularioPerfil6Component,
     }, {
-        path: 'dictamenes/formulario-financiero-n1/:nCodffina',
-        component: FormularioFinancieroN1Component,
+        path: 'dictamenes/formulario-financiero-privado-n1/:nCodffina',
+        component: FormularioFinancieroPrivadoN1Component,
     }, {
-        path: 'dictamenes/formulario-financiero-anexo1a/:nCodffina',
-        component: FormularioFinancieroAnexo1AComponent,
+        path: 'dictamenes/formulario-financiero-privado-anexo1a/:nCodffina',
+        component: FormularioFinancieroPrivadoAnexo1AComponent,
     }, {
-        path: 'dictamenes/formulario-financiero-anexo1b/:nCodffina',
-        component: FormularioFinancieroAnexo1BComponent,
+        path: 'dictamenes/formulario-financiero-privado-anexo1b/:nCodffina',
+        component: FormularioFinancieroPrivadoAnexo1BComponent,
     }, {
-        path: 'dictamenes/formulario-financiero-anexo1c/:nCodffina',
-        component: FormularioFinancieroAnexo1CComponent,
+        path: 'dictamenes/formulario-financiero-privado-anexo1c/:nCodffina',
+        component: FormularioFinancieroPrivadoAnexo1CComponent,
     }, {
-        path: 'dictamenes/formulario-financiero-anexo1d/:nCodffina',
-        component: FormularioFinancieroAnexo1DComponent,
+        path: 'dictamenes/formulario-financiero-privado-anexo1d/:nCodffina',
+        component: FormularioFinancieroPrivadoAnexo1DComponent,
+    }, {
+        path: 'dictamenes/formulario-financiero-privado-n2/:nCodffina',
+        component: FormularioFinancieroPrivadoN2Component,
+    }, {
+        path: 'dictamenes/formulario-financiero-privado-anexo2a/:nCodffina',
+        component: FormularioFinancieroPrivadoAnexo2AComponent,
+    }, {
+        path: 'dictamenes/formulario-financiero-privado-anexo2b/:nCodffina',
+        component: FormularioFinancieroPrivadoAnexo2BComponent,
+    }, {
+        path: 'dictamenes/formulario-financiero-privado-anexo2c/:nCodffina',
+        component: FormularioFinancieroPrivadoAnexo2CComponent,
+    }, {
+        path: 'dictamenes/formulario-financiero-privado-n3/:nCodffina',
+        component: FormularioFinancieroPrivadoN3Component,
+    }, {
+        path: 'dictamenes/formulario-financiero-financiero-n1/:nCodffina',
+        component: FormularioFinancieroFinancieroN1Component,
+    }, {
+        path: 'dictamenes/formulario-financiero-financiero-n2/:nCodffina',
+        component: FormularioFinancieroFinancieroN2Component,
+    }, {
+        path: 'dictamenes/formulario-financiero-financiero-anexo2a/:nCodffina',
+        component: FormularioFinancieroFinancieroN2AComponent,
+    }, {
+        path: 'dictamenes/formulario-financiero-financiero-anexo2b/:nCodffina',
+        component: FormularioFinancieroFinancieroN2BComponent,
+    }, {
+        path: 'dictamenes/formulario-financiero-financiero-anexo2c/:nCodffina',
+        component: FormularioFinancieroFinancieroN2CComponent,
+    }, {
+        path: 'dictamenes/formulario-financiero-financiero-n3/:nCodffina',
+        component: FormularioFinancieroFinancieroN3Component,
+    }, {
+        path: 'dictamenes/formulario-financiero-financiero-n4/:nCodffina',
+        component: FormularioFinancieroFinancieroN4Component,
+    }, {
+        path: 'dictamenes/formulario-financiero-financiero-n5/:nCodffina',
+        component: FormularioFinancieroFinancieroN5Component,
+    }, {
+        path: 'dictamenes/formulario-financiero-financiero-n6/:nCodffina',
+        component: FormularioFinancieroFinancieroN6Component,
     },
 ];

@@ -1,3 +1,4 @@
+
 import { Pasegl } from '../../models/pasegl.model';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
@@ -11,24 +12,91 @@ import { Dirpernat } from '../../models/dirpernat.model';
 import { Dirperjuri } from '../../models/dirperjuri.model';
 import { Motatenofic } from '../../models/motatenofic.model';
 import { Motivpase } from '../../models/motivpase.model';
+import { Estexpedien } from './../../models/estexpedien.model';
+import { Concilia } from '../../models/concilia.model';
+import { Expediente } from '../../models/expediente.model';
+import { Horacon } from '../../models/horacon.model';
 
 @Injectable()
 export class DatosWizardService {
 
     private resource = '/defensa/api/';
 
-    private resourceTipoDoc     = this.resource + 'tipdocidents';
-    private resourceDPerNatu    = this.resource + 'dirpernats';
-    private resourceDPerJuri    = this.resource + 'dirperjuris';
-    private resourceMotivOfic   = this.resource + 'motatenofics/ofic';
-    private resourceMotivPases  = this.resource + 'motivpases';
+    private resourceTipoDoc         = this.resource + 'tipdocidents';
+    private resourceDPerNatu        = this.resource + 'dirpernats';
+    private resourceDPerJuri        = this.resource + 'dirperjuris';
+    private resourceMotivOfic       = this.resource + 'motatenofics/ofic';
+    private resourceMotivPases      = this.resource + 'motivpases';
+    private resourceExpedientes     = this.resource + 'expedientes';
+    private resourceEstExpediente   = this.resource + 'estexpediens';
+    private resourceHoracon         = this.resource + 'horacons';
+    private resourceConcilia        = this.resource + 'concilias';
 
-    private resourceDepa        = this.resource + 'departamentos';
-    private resourceProv        = this.resource + 'provincias';
-    private resourceDist        = this.resource + 'distritos';
+    private resourceDepa            = this.resource + 'departamentos';
+    private resourceProv            = this.resource + 'provincias';
+    private resourceDist            = this.resource + 'distritos';
     private resourcePersonaValidarServicio = '//localhost:8020/api/validarpersonaservicio';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils, private datePipe: DatePipe) { }
+
+    createExpediente(expediente: Expediente): Observable<Expediente> {
+        expediente.nUsuareg = 1;
+        expediente.nFlgactivo = true;
+        expediente.nSedereg = 1;
+        const copy = this.convertExpediente(expediente);
+        return this.http.post(this.resourceExpedientes, copy).map((res: Response) => {
+            const jsonResponse = res.json();
+            return this.convertItemFromServerExpediente(jsonResponse);
+        });
+    }
+    private convertItemFromServerExpediente(json: any): Expediente {
+        const entity: Expediente = Object.assign(new Expediente(), json);
+        entity.dFecregexp = this.dateUtils.convertLocalDateFromServer(json.dFecregexp);
+        entity.dFecmespar = this.dateUtils.convertLocalDateFromServer(json.dFecmespar);
+        entity.dFecArchiv = this.dateUtils.convertLocalDateFromServer(json.dFecArchiv);
+        entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+        return entity;
+    }
+    private convertExpediente(expediente: Expediente): Expediente {
+        const copy: Expediente = Object.assign({}, expediente);
+        const fecreg = this.datePipe.transform((expediente.dFecregexp), 'yyyy-MM-dd HH:mm:ss');
+        // console.log('Convert' + JSON.stringify(expediente) + fecreg);
+        copy.dFecregexp = this.dateUtils.toDate(fecreg);
+
+        copy.dFecmespar = this.dateUtils.toDate(expediente.dFecmespar);
+        copy.dFecArchiv = this.dateUtils.toDate(expediente.dFecArchiv);
+        copy.tFecreg = this.dateUtils.toDate(expediente.tFecreg);
+        copy.tFecupd = this.dateUtils.toDate(expediente.tFecupd);
+        return copy;
+    }
+
+    createConcilia(concilia: Concilia): Observable<Concilia> {
+        concilia.nUsuareg = 1;
+        concilia.nFlgactivo = true;
+        concilia.nSedereg = 1;
+        const copy = this.convertConcilia(concilia);
+        return this.http.post(this.resourceConcilia, copy).map((res: Response) => {
+            const jsonResponse = res.json();
+            return this.convertItemFromServerConcilia(jsonResponse);
+        });
+    }
+    private convertItemFromServerConcilia(json: any): Concilia {
+        const entity: Concilia = Object.assign(new Concilia(), json);
+        entity.dFecconci = this.dateUtils.convertLocalDateFromServer(json.dFecconci);
+        entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+        return entity;
+    }
+    private convertConcilia(concilia: Concilia): Concilia {
+        const copy: Concilia = Object.assign({}, concilia);
+        const fecreg = this.datePipe.transform((concilia.dFecconci), 'yyyy-MM-dd HH:mm:ss');
+        copy.dFecconci = this.dateUtils.toDate(fecreg);
+        // copy.dFecconci = this.dateUtils.convertLocalDateToServer(concilia.dFecconci);
+        copy.tFecreg = this.dateUtils.toDate(concilia.tFecreg);
+        copy.tFecupd = this.dateUtils.toDate(concilia.tFecupd);
+        return copy;
+    }
 
     createMotivPase(motivPase: Motivpase): Observable<Motivpase> {
         motivPase.nUsuareg = 1;
@@ -59,6 +127,31 @@ export class DatosWizardService {
 
     deleteMotivPase(id: number): Observable<Response> {
         return this.http.delete(`${this.resourceMotivPases}/${id}`);
+    }
+
+    buscarHoraPorFecha(fecha: any): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceHoracon}/fecha/${fecha}`)
+            .map((res: Response) => this.convertResponseOficPase(res));
+    }
+    buscarHoraPorId(id: any): Observable<Horacon> {
+        return this.http.get(`${this.resourceHoracon}/${id}`).map((res: Response) => {
+            const jsonResponse = res.json();
+            return this.convertItemFromServerHoracon(jsonResponse);
+        });
+    }
+    private convertResponseHoracon(res: Response): ResponseWrapper {
+        const jsonResponse = res.json();
+        const result = [];
+        for (let i = 0; i < jsonResponse.length; i++) {
+            result.push(this.convertItemFromServerHoracon(jsonResponse[i]));
+        }
+        return new ResponseWrapper(res.headers, result, res.status);
+    }
+    private convertItemFromServerHoracon(json: any): Horacon {
+        const entity: Horacon = Object.assign(new Horacon(), json);
+        entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+        return entity;
     }
 
     consultaMotivOfic(id: any): Observable<ResponseWrapper> {
@@ -143,6 +236,19 @@ export class DatosWizardService {
         entity.tFecupd = this.dateUtils
             .convertDateTimeFromServer(json.tFecupd);
             // .transform(json.tFecupd, 'dd-MM-yyyy');
+        return entity;
+    }
+
+    buscarEstexpedien(id: number): Observable<Estexpedien> {
+        return this.http.get(`${this.resourceEstExpediente}/${id}`).map((res: Response) => {
+            const jsonResponse = res.json();
+            return this.convertItemFromServerEstexpedien(jsonResponse);
+        });
+    }
+    private convertItemFromServerEstexpedien(json: any): Estexpedien {
+        const entity: Estexpedien = Object.assign(new Estexpedien(), json);
+        entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
         return entity;
     }
 

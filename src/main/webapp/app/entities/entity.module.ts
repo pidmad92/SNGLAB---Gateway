@@ -74,7 +74,6 @@ import { GatewayTipvinculoModule } from './tipvinculo/tipvinculo.module';
 import { GatewayAnexlaboralModule } from './anexlaboral/anexlaboral.module';
 import { GatewayDireccionModule } from './direccion/direccion.module';
 import { GatewayFormarchivoModule } from './formarchivo/formarchivo.module';
-import { GatewayFormfinancModule } from './formfinanc/formfinanc.module';
 import { GatewayFormperfilModule } from './formperfil/formperfil.module';
 import { GatewayHechoinverModule } from './hechoinver/hechoinver.module';
 import { GatewayNegocolectModule } from './negocolect/negocolect.module';
@@ -249,7 +248,6 @@ import { GatewayFederacionModule } from './federacion/federacion.module';
         GatewayAnexlaboralModule,
         GatewayDireccionModule,
         GatewayFormarchivoModule,
-        GatewayFormfinancModule,
         GatewayFormperfilModule,
         GatewayHechoinverModule,
         GatewayNegocolectModule,

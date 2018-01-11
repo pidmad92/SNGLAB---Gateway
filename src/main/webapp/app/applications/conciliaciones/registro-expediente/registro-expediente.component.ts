@@ -3,15 +3,12 @@ import { Router, NavigationStart, Event as NavigationEvent  } from '@angular/rou
 import { RegistroExpedienteWizardService } from './registro-expediente-wizard/registro-expediente-wizard.service';
 import { MenuItem, Message } from 'primeng/primeng';
 import { Pasegl } from './';
+import { JhiEventManager } from 'ng-jhipster';
 
 @Component({
     selector: 'jhi-registro-expediente',
     templateUrl: './registro-expediente.component.html',
-    styles: [`
-        .ui-steps .ui-steps-item {
-            width: 20%;
-        }
-    `],
+    styleUrls: ['registro-expediente.scss'],
     encapsulation: ViewEncapsulation.None
 })
 export class RegistroExpedienteComponent implements OnInit, OnChanges {
@@ -27,7 +24,7 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
     router: any;
     routes = ['datos-pase', 'datos-trabajador', 'datos-empleador', 'datos-expediente', 'datos-audiencia'];
 
-    constructor( router: Router, private data: RegistroExpedienteWizardService) {
+    constructor( router: Router, private data: RegistroExpedienteWizardService, private eventManager: JhiEventManager) {
         this.router = router;
         this.activeIndex = this.getStepCurrent(router.url);
         router.events.forEach((event: NavigationEvent) => {
@@ -136,17 +133,29 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
         });
     }
     public next() {
-        this.activeIndex++;
-        this.router.navigate(['/conciliaciones/expediente/registro', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
-        // show / hide steps and emit selected label
-        this.ngOnChanges({
-            activeIndex: {
-                currentValue: this.activeIndex,
-                previousValue: this.activeIndex - 1,
-                firstChange: false,
-                isFirstChange: () => false
+        if (this.activeIndex === 4) {
+            this.eventManager.broadcast({ name: 'saveExpedienteFinal', content: 'OK'});
+        } else {
+            this.activeIndex++;
+            console.log('Cambio de Rutas:' + this.activeIndex);
+            this.router.navigate(['/conciliaciones/expediente/registro', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
+            this.ngOnChanges({
+                activeIndex: {
+                    currentValue: this.activeIndex,
+                    previousValue: this.activeIndex - 1,
+                    firstChange: false,
+                    isFirstChange: () => false
+                }
+            });
+            if (this.activeIndex === 2) {
+                this.eventManager.broadcast({ name: 'saveTrabajador', content: 'OK'});
+            } else if (this.activeIndex === 3) {
+                this.eventManager.broadcast({ name: 'saveEmpleador', content: 'OK'});
+            } else if (this.activeIndex === 4) {
+                console.log('routeNEXT');
+                this.eventManager.broadcast({ name: 'saveExpediente', content: 'OK'});
             }
-        });
+        }
     }
 
     public previous() {

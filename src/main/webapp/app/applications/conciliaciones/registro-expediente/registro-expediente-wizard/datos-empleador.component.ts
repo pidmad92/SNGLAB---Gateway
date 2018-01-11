@@ -160,7 +160,7 @@ export class DatosEmpleadorComponent implements OnInit {
         this.displayDialog = true;
     }
     save() {
-        console.log('Grabar: ' + JSON.stringify(this.dirper));
+        // console.log('Grabar: ' + JSON.stringify(this.dirper));
         if (this.newDirec) {
             if (this.tipoPerNat) {
                 this.subscribeToSaveResponse(
@@ -186,6 +186,12 @@ export class DatosEmpleadorComponent implements OnInit {
         }
     }
     close() {
+        this.dirper.id = null;
+        this.dirper.nCoddepto = null;
+        this.dirper.nCodprov = null;
+        this.dirper.nCoddist = null;
+        this.dirper.vDircomple = null;
+        this.dirper.nFlgnotifi = false;
         this.displayDialog = false;
     }
     delete() {
@@ -211,7 +217,7 @@ export class DatosEmpleadorComponent implements OnInit {
         this.displayDialog = false;
     }
     private onSaveError() {
-        console.log('saveerror');
+        // console.log('saveerror');
     }
 
     cloneDirec(dir: Dirpernat): Dirpernat {

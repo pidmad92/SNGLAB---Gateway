@@ -21,8 +21,8 @@ import { ComboModel } from '../../../general/combobox.model';
 import { ResponseWrapper } from '../../../../shared';
 
 @Component({
-    selector: 'jhi-datos-trabajador',
-    templateUrl: './datos-trabajador.component.html'
+    selector: 'jhi-datos-representante',
+    templateUrl: './datos-representante.component.html'
 })
 export class DatosRepresentanteComponent implements OnInit, OnDestroy {
     // export class DatosTrabajadorComponent {
@@ -34,6 +34,8 @@ export class DatosRepresentanteComponent implements OnInit, OnDestroy {
     listacargo: Cartrab[] = [];
     tipodocs: Tipdocident[];
     selectedTipodoc: Tipdocident;
+    cargos: Cartrab[];
+    selectedCargo: Cartrab;
     private subscription: Subscription;
     private eventSubscriber: Subscription;
     vNumdocumento: String;
@@ -50,6 +52,14 @@ export class DatosRepresentanteComponent implements OnInit, OnDestroy {
     selecDirper: Dirpernat;
 
     actividadSelec: string;
+    fechoy: Date;
+    maxlengthDocIdent: number;
+    numOficina = 5;
+
+    vApepaterno: String;
+    vApematerno: String;
+    vNombres: String;
+    selectedSexo: String;
 
     constructor(
         private eventManager: JhiEventManager,
@@ -60,6 +70,36 @@ export class DatosRepresentanteComponent implements OnInit, OnDestroy {
         // private cartrabService: CartrabService,
         private route: ActivatedRoute
     ) {
+    }
+
+    inicializaTablas() {
+        this.dirpernat = [];
+    }
+
+    inicializarFormulario() {
+        this.inicializaTablas();
+        this.vNumdocumento = '';
+        this.displayDialog = false;
+        if (this.selectedTipodoc !== undefined) {
+            this.maxlengthDocIdent = this.selectedTipodoc.nNumdigi;
+        }
+        this.vApepaterno = '';
+        this.vApematerno = '';
+        this.vNombres = '';
+
+        if (this.trabajador !== null) {
+            this.trabajador.pernatural = new Pernatural();
+            this.trabajador.cartrab = new Cartrab();
+        }
+    }
+
+    loadCartrab() {
+        this.atencionEmpleadorService.findListaCartrab().subscribe(
+            (res: ResponseWrapper) => {
+                this.cargos = res.json;
+            },
+        (res: ResponseWrapper) => { this.onError(res.json); }
+        );
     }
 
     loadTipoDoc() {
@@ -80,11 +120,14 @@ export class DatosRepresentanteComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.fechoy = new Date();
         this.loadTipoDoc();
         this.loadDepartamentos();
+        this.loadCartrab();
         this.atencion = new Atencion();
         this.trabajador = new Trabajador();
         this.trabajador.pernatural = new Pernatural();
+        this.trabajador.cartrab = new Cartrab();
         // Se carga el tipo de actividad a realizar y los datos de la atención
         this.subscription = this.registroAtencionWizard.actividadSelec.subscribe((actividadSelect) => {
             this.actividadSelec = actividadSelect;
@@ -95,18 +138,22 @@ export class DatosRepresentanteComponent implements OnInit, OnDestroy {
                 } else if (this.actividadSelec === '1') { // Si el flujo es generado al presionar el boton nuevo registro se instanciaran los datos en blanco
                     this.trabajador = new Trabajador();
                     this.trabajador.pernatural = new Pernatural();
+                    this.trabajador.cartrab = new Cartrab();
                 } else {
                     if (atencion.datlab !== undefined ) { // Si la atencion datos laborales se obtienen los datos del trabajador de esta entidad
                         this.trabajador =  this.atencion.datlab.trabajador;
                         this.trabajador.pernatural = this.atencion.datlab.trabajador.pernatural;
+                        this.trabajador.cartrab = this.atencion.datlab.trabajador.cartrab;
                         this.selectedTipodoc = this.atencion.datlab.trabajador.pernatural.tipdocident;
                         this.vNumdocumento = this.atencion.datlab.trabajador.pernatural.vNumdoc;
+                        // this.selectedSexo = this.atencion.datlab.trabajador.pernatural.vSexoper;
                         this.dirper = new Dirpernat();
                         this.dirper.pernatural = this.trabajador.pernatural;
                         this.loadDirecPerNatu(this.trabajador.id);
                     } else { // Si la atención no tiene datos laborales se carga la información de la propia atención.
                         this.trabajador =  this.atencion.trabajador;
                         this.trabajador.pernatural = this.atencion.trabajador.pernatural;
+                        this.trabajador.cartrab = this.atencion.trabajador.cartrab;
                     }
                 }
                 console.log('Atencion');
@@ -213,6 +260,10 @@ export class DatosRepresentanteComponent implements OnInit, OnDestroy {
         this.atencionEmpleadorService.findTrabajadorByDocIdent(tipodoc, numdoc).subscribe((trabajador) => {
             console.log(trabajador);
             this.trabajador = trabajador;
+            console.log('ID Trabajador: ' + this.trabajador.id);
+            if (this.trabajador.id !== undefined) {
+                this.loadDirecPerNatu(this.trabajador.id);
+            }
         });
     }
     cloneDirec(dir: Dirpernat): Dirpernat {

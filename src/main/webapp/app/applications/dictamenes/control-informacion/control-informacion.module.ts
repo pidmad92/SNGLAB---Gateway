@@ -36,11 +36,13 @@ import { NegocolectService, NegocolectComponent } from '../../../entities/negoco
 import { ResulnegocService, ResulnegocComponent } from '../../../entities/resulnegoc/index';
 import { RespinformaService, RespinformaComponent } from '../../../entities/respinforma/index';
 import { AnexlaboralComponent, AnexlaboralService } from '../../../entities/anexlaboral/index';
-import { FormularioFinancieroN1Component,
-    FormularioFinancieroAnexo1AComponent,
-    FormularioFinancieroAnexo1BComponent,
-    FormularioFinancieroAnexo1CComponent,
-    FormularioFinancieroAnexo1DComponent } from '../formulario-financiero/index';
+import { FormularioFinancieroPrivadoN1Component,
+    FormularioFinancieroPrivadoAnexo1AComponent,
+    FormularioFinancieroPrivadoAnexo1BComponent,
+    FormularioFinancieroPrivadoAnexo1CComponent,
+    FormularioFinancieroPrivadoAnexo1DComponent } from '../formulario-financiero-privado/index';
+import { FormfinancService, FormfinancDetalleService } from '../entities/index';
+
 
 const ENTITY_STATES = [
     ...ControlInformacionRoute,
@@ -59,11 +61,11 @@ const ENTITY_STATES = [
         FormularioPerfil4Component,
         FormularioPerfil5Component,
         FormularioPerfil6Component,
-        FormularioFinancieroN1Component,
-        FormularioFinancieroAnexo1AComponent,
-        FormularioFinancieroAnexo1BComponent,
-        FormularioFinancieroAnexo1CComponent,
-        FormularioFinancieroAnexo1DComponent,
+        FormularioFinancieroPrivadoN1Component,
+        FormularioFinancieroPrivadoAnexo1AComponent,
+        FormularioFinancieroPrivadoAnexo1BComponent,
+        FormularioFinancieroPrivadoAnexo1CComponent,
+        FormularioFinancieroPrivadoAnexo1DComponent,
         ActieconComponent,
         NegocolectComponent,
         ResulnegocComponent,
@@ -91,6 +93,8 @@ const ENTITY_STATES = [
         ResulnegocService,
         RespinformaService,
         AnexlaboralService,
+        FormfinancService,
+        FormfinancDetalleService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,0 +1,404 @@
+<div class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
+    <div class="row">
+        <div class="col" style="text-align:center;">
+            <h5 class="title">ANEXO 1A</h5>
+            <h5 class="title">INGRESOS POR VENTAS NETAS Y/O SERVICIOS</h5>
+            <h6 class="title">(A valores históricos)</h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card card-mtpe mb-3">
+                <div class="card-body">
+                    <p>INGRESOS DE VENTAS NETOS U OPERACIÓN</p>
+                    <p>&nbsp; Nacional
+                        <a (click)="mostrarDialogNacional()" class="btn btn-sm btn-dark" style="float:right;color:white;">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
+                    </p>
+                    </p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr style="font-size:8.5pt;">
+                                <td rowspan="2">Productos y/o Servicios(1)</td>
+                                <td rowspan="2">Unidad de Medida</td>
+                                <ng-container *ngFor="let anio of anios">
+                                    <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">{{anio}}</td>
+                                </ng-container>
+                                <td rowspan="2">Acción</td>
+                            </tr>
+                            <tr style="font-size:7.5pt;">
+                                <ng-container *ngFor="let a of anios">
+                                    <td>Volumen Fisico de Ventas y/o Servicios</td>
+                                    <td>Precio Promedio de Ventas o Valor Unitario(2)</td>
+                                    <td style="border-right: 1px white solid;">Ingresos(3)</td>
+                                </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaNacional;">
+                                <tr>
+                                    <td>{{lista.descripcion}}</td>
+                                    <td>{{lista.unidadmedida}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes;">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteNacional(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteNacional(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td>SUBTOTAL</td>
+                                <td></td>
+                                <ng-container *ngFor="let lista of formulario.subtotalNacional;">
+                                    <ng-container *ngFor="let comp of lista.componentes;">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>&nbsp; Internacional
+                        <a (click)="mostrarDialogInternacional()" class="btn btn-sm btn-dark" style="float:right;color:white;">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a>
+                    </p>
+                    </p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr style="font-size:8.5pt;">
+                                <td rowspan="2">Productos y/o Servicios(1)</td>
+                                <td rowspan="2">Unidad de Medida</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td colspan="3" style="border-left: 1px white solid;border-right: 1px white solid;border-bottom: 1px white solid;">{{a}}</td>
+                                </ng-container>
+                                <td rowspan="2">Acción</td>
+                            </tr>
+                            <tr style="font-size:7.5pt;">
+                                <ng-container *ngFor="let a of anios">
+                                    <td>Volumen Fisico de Ventas y/o Servicios</td>
+                                    <td>Precio Promedio de Ventas o Valor Unitario(2)</td>
+                                    <td style="border-right: 1px white solid;">Ingresos(3)</td>
+                                </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaInternacional;">
+                                <tr>
+                                    <td>{{lista.descripcion}}</td>
+                                    <td>{{lista.unidadmedida}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes;">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]="" (click)="editarComponenteInternacional(lista)" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]="" (click)="eliminarComponenteInternacional(lista)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td>SUBTOTAL</td>
+                                <td></td>
+                                <ng-container *ngFor="let lista of formulario.subtotalInternacional;">
+                                    <ng-container *ngFor="let comp of lista.componentes;">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-responsive table-bordered table-hover">
+
+                        <tbody>
+                            <tr>
+                                <td class="concepto" style="width:150px">
+                                    <strong>INGRESO TOTAL (4)</strong>
+                                </td>
+                                <ng-container *ngFor="let lista of formulario.ingresoTotal;">
+                                    <ng-container *ngFor="let comp of lista.componentes;">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                </ng-container>
+                                <td style="width: 10%"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div style="font-size:9pt;">
+                        <br/>
+
+
+                        <p>
+                            INSTRUCCIONES:
+                            <br/> (1) Más de 15 productos y/o servicios considerarlos por líneas de producción y/o servicios.
+                            <br/> (2) Precio sin considerar el I.G.V.
+                            <br/> (3) Multiplicar el volumen físico por el precio promedio de ventas.
+                            <br/> (4) El ingreso total deberá consignar los mismos montos de las ventas netas o ingresos por servicios
+                            presentados en la Declaración del Pago Anual por el Impuesto a la Renta Tercera Categoría presentada
+                            a la SUNAT.
+                            <br/> -La información de la columna 2014, 2015 y 2016 corresponde a los resultados financieros de
+                            los tres últimos años.
+                            <br/> -La columna 2017 contiene información preliminar hasta el último periodo mensual declarado a
+                            la SUNAT (PDT 621) del ejercicio vigente (especificar mes y año).
+                            <br/>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-sm-right">
+                    <a (click)="verControlInformacion()" class="btn btn-sm m-1 btn-success">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
+                    <a (click)="guardarFormulario()" class="btn btn-sm m-1 btn-secondary">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+</div>
+
+<p-dialog [(visible)]="displayNacional" modal="modal" width="800" [responsive]="true">
+    <p-header>
+        Registro de Ventas Nacionales Netos U Operación
+    </p-header>
+    <p>
+
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Producto y/o Servicio:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ventasNacionales.producto">
+                </div>
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Unidad de Medida:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ventasNacionales.unidadMedida">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[0]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion"  maxlength="6" (keypress)="keyPress($event)" min="0" max="999999" [(ngModel)]="ventasNacionales.anioAvolumenfisico">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion"  maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasNacionales.anioApromedio">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[1]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion"  maxlength="6" (keypress)="keyPress($event)" min="0" max="999999" [(ngModel)]="ventasNacionales.anioBvolumenfisico">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion"  maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasNacionales.anioBpromedio">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[2]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion"  maxlength="6" (keypress)="keyPress($event)" min="0" max="999999" [(ngModel)]="ventasNacionales.anioCvolumenfisico">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion"  maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasNacionales.anioCpromedio">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[3]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion"  maxlength="6" (keypress)="keyPress($event)" min="0" max="999999" [(ngModel)]="ventasNacionales.anioDvolumenfisico">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasNacionales.anioDpromedio">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalNacional()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalNacional()">Añadir</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayInternacional" modal="modal" width="800" [responsive]="true">
+    <p-header>
+        Registro de Ventas Internacionales Netos U Operación
+    </p-header>
+    <p>
+
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Producto y/o Servicio:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ventasInternacionales.producto">
+                </div>
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Unidad de Medida:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="ventasInternacionales.unidadMedida">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[0]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion"  maxlength="6" (keypress)="keyPress($event)" min="0" max="999999" [(ngModel)]="ventasInternacionales.anioAvolumenfisico">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion"  maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasInternacionales.anioApromedio">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[1]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion"  maxlength="6" (keypress)="keyPress($event)" min="0" max="999999" [(ngModel)]="ventasInternacionales.anioBvolumenfisico">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion"  maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasInternacionales.anioBpromedio">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[2]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion"  maxlength="6" (keypress)="keyPress($event)" min="0" max="999999" [(ngModel)]="ventasInternacionales.anioCvolumenfisico">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion"  maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasInternacionales.anioCpromedio">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col">
+                    <fieldset>
+                        <legend>{{anios[3]}}</legend>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Volumen fisico de ventas y/o servicios:</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion"  maxlength="6" (keypress)="keyPress($event)" min="0" max="999999" [(ngModel)]="ventasInternacionales.anioDvolumenfisico">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">Precio promedio de ventas o valor unitario:</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion"  maxlength="6" (keypress)="keyPress($event)" [(ngModel)]="ventasInternacionales.anioDpromedio">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalInternacional()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalInternacional()">Añadir</button>
+    </p-footer>
+</p-dialog>

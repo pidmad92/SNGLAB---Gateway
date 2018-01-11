@@ -14,8 +14,16 @@ export class ReginternoService {
     private resourceSaveDenuInterna = '/denuncias/api/denunciasinterna';
     private resourceSearchUrl = '/consultas/api/_search/empleador';
     private resourceValidarRUC = '//localhost:8020/api/validarserviciosunat';
+    private resourcePersonaServicio = '//localhost:8020/api/personaservicio';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+
+    getPersonaServicio(personaNatural: any): any {
+        return this.http.post(`${this.resourcePersonaServicio}`, personaNatural).map((res: Response) => {
+            const jsonResponse = res.json();
+            return jsonResponse;
+        });
+    }
 
     guardarDenunciaExterna(denuncia: any): any {
         return this.http.post(`${this.resourceSaveDenuExterna}`, denuncia).map((res: Response) => {

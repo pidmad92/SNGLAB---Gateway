@@ -34,6 +34,7 @@ export class DatosTrabajadorComponent implements OnInit {
     departs: ResponseWrapper;
     provins: ResponseWrapper;
     distris: ResponseWrapper;
+    notificar = [];
 
     pasegl = new Pasegl();
     atencion: Atencion;
@@ -66,7 +67,7 @@ export class DatosTrabajadorComponent implements OnInit {
         this.datosWizardService.buscarDirecciones(id).subscribe(
             (res: ResponseWrapper) => {
                 this.dirpernat = res.json;
-                // console.log(JSON.stringify(this.dirpernat));
+                console.log(JSON.stringify(this.dirpernat));
             },
             (res: ResponseWrapper) => { this.onError(res.json); }
         );
@@ -95,6 +96,8 @@ export class DatosTrabajadorComponent implements OnInit {
             {name: 'Femenino', value: 'F'}
         ]
     }
+
+    cambiarEstadoNotificar() {}
 
     loadDepartamentos() {
         this.datosWizardService.consDep().subscribe((departamentos) => {
@@ -125,7 +128,7 @@ export class DatosTrabajadorComponent implements OnInit {
     onRowSelect(event) {
         this.newDirec = false;
         this.dirper = this.cloneDirec(event.data.direc);
-        console.log(this.dirper);
+        // console.log(this.dirper);
         this.loadProvincias(false, this.dirper.nCoddepto);
         this.loadDistritos(false, this.dirper.nCodprov);
         this.displayDialog = true;
@@ -149,7 +152,7 @@ export class DatosTrabajadorComponent implements OnInit {
     }
 
     save() {
-        console.log('Grabar: ' + JSON.stringify(this.dirper));
+        // console.log('Grabar: ' + JSON.stringify(this.dirper));
         if (this.newDirec) {
             this.subscribeToSaveResponse(
                  this.datosWizardService.createDir(this.dirper));
@@ -159,10 +162,16 @@ export class DatosTrabajadorComponent implements OnInit {
         }
         this.dirper = new Dirpernat();
     }
-    delete() {
+    eliminarDireccion() {
         this.displayDialog = false;
     }
-    close() {
+    cerrarModalDireccion() {
+        this.dirper.id = null;
+        this.dirper.nCoddepto = null;
+        this.dirper.nCodprov = null;
+        this.dirper.nCoddist = null;
+        this.dirper.vDircomple = null;
+        this.dirper.nFlgnotifi = false;
         this.displayDialog = false;
     }
 
@@ -180,7 +189,7 @@ export class DatosTrabajadorComponent implements OnInit {
         this.displayDialog = false;
     }
     private onSaveError() {
-        console.log('saveerror');
+        // console.log('saveerror');
     }
 
     private onError(error: any) {

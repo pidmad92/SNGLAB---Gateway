@@ -9,10 +9,14 @@ import { MessageService } from 'primeng/components/common/messageservice';
 import { RegistroAtencionRoute } from './';
 
 import { TrabajadorComponent } from './trabajador/trabajador.component';
+import { ModalBusquedaTrabajadorComponent, ModalBusquedaTrabajadorPopupComponent } from './trabajador/modal-busqueda-trabajador.component';
 import { EmpleadorComponent } from './empleador/empleador.component';
 import { DatosLaboralesComponent } from './datos-laborales/datos-laborales.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { TrabajadorService } from './trabajador/tabajador.service';
+import { ModalBusquedaTrabajadorService } from './trabajador/modal-busqueda-trabajador.service';
 
 const ENTITY_STATES = [
     ...RegistroAtencionRoute
@@ -31,12 +35,17 @@ const ENTITY_STATES = [
     declarations: [
         TrabajadorComponent,
         EmpleadorComponent,
-        DatosLaboralesComponent
+        DatosLaboralesComponent,
+        ModalBusquedaTrabajadorComponent,
+        ModalBusquedaTrabajadorPopupComponent,
     ],
     entryComponents: [
+      ModalBusquedaTrabajadorComponent,
     ],
     providers: [
-        MessageService
+        MessageService,
+        TrabajadorService,
+        ModalBusquedaTrabajadorService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

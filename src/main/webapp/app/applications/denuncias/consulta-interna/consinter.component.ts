@@ -114,7 +114,60 @@ export class ConsinterComponent implements OnInit {
                 });
         }
     }
-
+    generaReporte() {
+        switch (Number(this.criterioBus)) {
+            case 0:
+                if (this.criterioTipoDoc === undefined) {
+                    this.onError('Debe seleccionar el tipo de documento');
+                } else if (this.criterioNumDoc === undefined || this.criterioNumDoc.trim().length === 0) {
+                    this.onError('Debe ingresar el numero de RUC del empleado');
+                } else {
+                    this.consinterService.getReporte(
+                        this.criterioBus,
+                        this.criterioNumDoc,
+                        'null'
+                    );
+                }
+                break;
+            case 1:
+                if (this.criterioTipoDocDenu === undefined) {
+                    this.onError('Debe seleccionar el tipo de documento del denunciante');
+                } else if (this.criterioNumDocDenu === undefined || this.criterioNumDocDenu.trim().length === 0) {
+                    this.onError('Debe ingresar el numero de documento del denunciante');
+                } else {
+                    this.consinterService.getReporte(
+                        this.criterioBus,
+                        this.criterioTipoDocDenu,
+                        this.criterioNumDocDenu
+                    );
+                }
+                break;
+            case 2:
+                if (this.fechaInicio === undefined) {
+                    this.onError('Debe ingresar la fecha de inicio');
+                } else if (this.fechaFin === undefined) {
+                    this.onError('Debe ingresar la fecha de fin');
+                } else {
+                    this.consinterService.getReporte(
+                        this.criterioBus,
+                        this.formattedDate(this.fechaInicio),
+                        this.formattedDate(this.fechaFin)
+                    );
+                }
+                break;
+            case 3:
+                if (this.selectOrigen === undefined) {
+                    this.onError('Debe seleccionar el tipo de origen de la denuncia');
+                } else {
+                    this.consinterService.getReporte(
+                        this.criterioBus,
+                        this.selectOrigen.value,
+                        'null'
+                    );
+                }
+                break;
+        }
+    }
     buscarDenuncias() {
         console.log(this.criterioBus);
         switch (Number(this.criterioBus)) {
@@ -214,7 +267,7 @@ export class ConsinterComponent implements OnInit {
         if (month.length < 2) { month = '0' + month; }
         if (day.length < 2) { day = '0' + day; }
 
-        return `${day}/${month}/${year}`;
+        return `${day}-${month}-${year}`;
     }
 
     enviarConsulta() {
@@ -243,22 +296,33 @@ export class ConsinterComponent implements OnInit {
             this.onError('Debe seleccionar como minimo una denuncia.');
         } else {
             const codList: number[] = [];
+            let flag = true;
+            let objeto = [];
             // tslint:disable-next-line:forin
             for (const i in this.selectedResultado) {
-                codList.push(this.selectedResultado[i].serialize);
+                if (this.selectedResultado[i].observacion === undefined) {
+                    flag = false;
+                    objeto = [];
+                    break;
+                } else {
+                    objeto.push({ CodDenuncia: this.selectedResultado[i].serialize,
+                        observadenuncia: this.selectedResultado[i].observacion});
+                }
             }
-            this.consinterService.regAtenderDenu({
-                codSerialize: codList
-            }).subscribe(
-                (res: any) => {
-                    this.block = false;
-                    this.displayAtenderDenuncias = false;
-                    this.buscarDenuncias();
-                },
-                (res: any) => {
-                    this.onErrorAtenderDenu(res);
-                    this.block = false;
-                });
+            if (flag === true) {
+                if (objeto.length > 0) {
+                    this.consinterService.regAtenderDenu(objeto).subscribe(
+                        (res: any) => {
+                            this.block = false;
+                            this.displayAtenderDenuncias = false;
+                            this.buscarDenuncias();
+                        },
+                        (res: any) => {
+                            this.onErrorAtenderDenu(res);
+                            this.block = false;
+                        });
+                }
+            }
         }
     }
 

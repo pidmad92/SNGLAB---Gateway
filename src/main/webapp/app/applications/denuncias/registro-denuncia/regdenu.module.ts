@@ -18,8 +18,9 @@ import { CheckboxModule } from 'primeng/primeng';
 import { InputTextareaModule } from 'primeng/primeng';
 import { RadioButtonModule } from 'primeng/primeng';
 import { CalendarModule } from 'primeng/primeng';
-import {SpinnerModule} from 'primeng/primeng';
+import { SpinnerModule } from 'primeng/primeng';
 import { FileUploadModule } from 'primeng/primeng';
+import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
 import { ValidarrucService } from '../validar-ruc/validarruc.service';
 import { ValidarUsuarioService } from '../validar-usuario/validarusuario.service';
 
@@ -44,6 +45,7 @@ const ENTITY_STATES = [
         CalendarModule,
         FileUploadModule,
         SpinnerModule,
+        ConfirmDialogModule,
         GatewaySharedModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
@@ -56,6 +58,7 @@ const ENTITY_STATES = [
     providers: [
         RegdenuService,
         MessageService,
+        ConfirmationService,
         ValidarrucService,
         ValidarUsuarioService
     ],
