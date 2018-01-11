@@ -7,6 +7,7 @@ import { JhiPaginationUtil } from 'ng-jhipster';
 import { TrabajadorComponent } from './trabajador/trabajador.component';
 import { EmpleadorComponent } from './empleador/empleador.component';
 import { DatosLaboralesComponent } from './datos-laborales/datos-laborales.component';
+import { ModalBusquedaTrabajadorPopupComponent } from './trabajador/modal-busqueda-trabajador.component';
 
 export const RegistroAtencionRoute: Routes = [
     {
@@ -24,17 +25,17 @@ export const RegistroAtencionRoute: Routes = [
                     pageTitle: 'global.menu.entities.atencionTra'
                 },
                 canActivate: [UserRouteAccessService],
-                /*children: [
+                children: [
                     {
                         path: ':id',
-                        component: ModalBusquedaTrabajadorComponent,
+                        component: ModalBusquedaTrabajadorPopupComponent,
                         data: {
                             authorities: ['ROLE_USER'],
-                            pageTitle: 'global.menu.entities.consultaExpediente'
+                            pageTitle: 'global.menu.entities.atencionTra'
                         },
-                        outlet: 'popup-vinculos-laborales'
+                        outlet: 'popupexp'
                     }
-                ]*/
+                ]
             },
             {
                 path: 'empleador',
