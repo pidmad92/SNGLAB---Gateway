@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { ES } from './../../../applications.constant';
 import { SelectItem } from 'primeng/components/common/selectitem';
+import { JhiEventManager } from 'ng-jhipster';
 
 import { ResponseWrapper } from '../../../../shared';
 import { DatosWizardService } from './datos-wizard.service';
@@ -9,49 +12,62 @@ import { RegistroExpedienteWizardService } from './registro-expediente-wizard.se
 import { Motatenofic } from '../../models/motatenofic.model';
 import { Motivpase } from '../../models/motivpase.model';
 import { Pasegl } from '../../models/pasegl.model';
+import { Expediente } from '../../models/expediente.model';
+import { Estexpedien } from '../../models/estexpedien.model'
+import { Concilia } from '../../models/concilia.model';
+import { Empleador } from '../../models/empleador.model';
+import { Pernatural } from '../../models/pernatural.model';
+import { Perjuridica } from '../../models/perjuridica.model';
+import { Trabajador } from '../../models/trabajador.model';
+import { Horacon } from '../../models/horacon.model';
 
 @Component({
     selector: 'jhi-datos-expediente',
     templateUrl: './datos-expediente.component.html'
 })
-export class DatosExpedienteComponent implements OnInit {
+export class DatosExpedienteComponent implements OnInit, OnDestroy {
 
-    motivos: any;
+    private subscription: Subscription;
+    private eventSubscriber: Subscription;
+
     motivpase: Motivpase[];
     motivp: Motivpase;
     motatenofic: any[];
     motateno: Motatenofic;
     selectmotatenofic: Motatenofic[];
-    pasegl: Pasegl;
+    horacon: Horacon[] = [];
+    pasegl: any;
+    empleador: Empleador;
+    personaEmpleador: any;
+    trabajador: Trabajador;
+    personaTrabajador: Pernatural
 
-    documentos: any;
+    estadoExpediente: Estexpedien;
+    expediente: Expediente = new Expediente();
+    concilia: Concilia = new Concilia();
+
     displayDialog: boolean;
     es: any;
-    date1: Date;
+    fechaRegistro: Date;
     fechaAudiencia: Date;
     hora: SelectItem[];
     selectedHora: String;
+    fechaActual = new Date();
 
-    constructor(private datosWizardService: DatosWizardService,
+    constructor(
+        private datosWizardService: DatosWizardService,
+        private eventManager: JhiEventManager,
+        private router: Router,
+        private datePipe: DatePipe,
         private registroExpedienteWizard: RegistroExpedienteWizardService) {
-    }
-    loadMotivPase(idpase, idofic) {
-        const queryString = '/param?id_pase=' + idpase + '&id_ofic=' + idofic;
-        this.datosWizardService.consultaMotivPases(queryString).subscribe(
-            (res: ResponseWrapper) => {
-                this.motivpase = res.json;
-                console.log('Motivpase: ' + JSON.stringify(this.motivpase));
-            },
-            (res: ResponseWrapper) => { this.onError(res.json); }
-        );
     }
     loadMotivOfic(idpase) {
         this.datosWizardService.consultaMotivOfic(idpase).subscribe(
             (res: ResponseWrapper) => {
                 this.motatenofic = res.json;
-                console.log('Motivofic: ' + JSON.stringify(this.motatenofic));
+                // console.log('Motivofic: ' + JSON.stringify(this.motatenofic));
                 for (const mot of this.motatenofic) {
-                    console.log('for' + mot.idmotpase);
+                    // console.log('for' + mot.idmotpase);
                     if (mot.idmotpase !== null) {
                         if (this.selectmotatenofic === undefined) {
                             this.selectmotatenofic = new Array();
@@ -63,8 +79,98 @@ export class DatosExpedienteComponent implements OnInit {
             (res: ResponseWrapper) => { this.onError(res.json); }
         );
     }
+    cargarEstadoExpe(id) {
+        this.datosWizardService.buscarEstexpedien(id).subscribe((estadoExpediente) => {
+            this.estadoExpediente = estadoExpediente;
+        });
+    }
+    buscarHora() {
+        console.log('BUSCARHORA' + this.concilia.dFecconci);
+        const fecha = this.datePipe.transform(this.concilia.dFecconci, 'dd-MM-yyyy');
+        // console.log(fecha);
+        if (fecha === null) {
+            return;
+        }
+        if (fecha.length === 10) {
+            this.datosWizardService.buscarHoraPorFecha(fecha).subscribe(
+                (res: ResponseWrapper) => {
+                    this.horacon = res.json;
+                },
+                (res: ResponseWrapper) => { this.onError(res.json); }
+            );
+        }
+    }
+
+    ngOnInit() {
+        this.es = ES;
+        this.subscription = this.registroExpedienteWizard.paseSeleccionado.subscribe((pasegl) => {
+            if (pasegl.id) {
+                this.pasegl = pasegl;
+                this.empleador = ( this.pasegl.atencion.empleador !== null ) ? this.pasegl.atencion.empleador : this.pasegl.atencion.datlab.empleador;
+                this.personaEmpleador = ( this.empleador.pernatural !== null ) ? this.empleador.pernatural : this.empleador.perjuridica;
+                this.trabajador = ( this.pasegl.atencion.trabajador !== null ) ? this.pasegl.atencion.trabajador : this.pasegl.atencion.datlab.trabajador;
+                this.personaTrabajador = this.trabajador.pernatural;
+                this.registroExpedienteWizard.expedienteSeleccionado.subscribe((expediente) => {
+                    this.expediente = expediente;
+                    if ( expediente.nAnioexp === undefined ) {
+                        this.expediente.dFecregexp = this.fechaActual;
+                    }
+                });
+                this.registroExpedienteWizard.conciliaSeleccionado.subscribe((concilia) => {
+                    this.concilia = concilia;
+                    console.log('CONCEXP' + JSON.stringify(this.concilia));
+                    if (this.concilia.dFecconci !== null && this.concilia.dFecconci !== undefined) {
+                        this.buscarHora();
+                    }
+                });
+
+                // this.atencion = this.pasegl.atencion;// this.datlab = this.atencion.datlab;// this.trabajador = this.datlab.trabajador;
+                this.cargarEstadoExpe(1);
+                this.loadMotivOfic(pasegl.id);
+            } else {
+                this.router.navigate(['/conciliaciones/expediente/registro' , { outlets: { wizard: ['datos-pase'] } }]);
+            }
+        });
+        this.registerChangeInExpediente();
+    }
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+        this.eventManager.destroy(this.eventSubscriber);
+    }
+
+    registerChangeInExpediente() {
+        this.eventSubscriber = this.eventManager.subscribe('saveExpediente', (response) => this.cargarExpedienteConciliacion());
+    }
+    cargarExpedienteConciliacion() {
+        console.log('LOADEXPED');
+        const fechaActual = new Date();
+        const anio = fechaActual.getFullYear();
+        this.expediente.nAnioexp = anio;
+        this.expediente.vNomemplea = this.conseguirNombre(this.personaEmpleador);
+        this.expediente.vNomtrabaj = this.conseguirNombre(this.personaTrabajador);
+        this.expediente.empleador = this.empleador;
+        this.expediente.trabajador = this.trabajador;
+        this.expediente.pasegl = this.pasegl;
+        this.expediente.tippersona = this.empleador.tippersona;
+        this.expediente.estexpedien = this.estadoExpediente;
+        // this.concilia.expediente = this.expediente;
+
+        // console.log('PasarExpediente' + JSON.stringify(this.expediente));
+        this.registroExpedienteWizard.cambiarExpediente(this.expediente);
+        this.registroExpedienteWizard.cambiarConcilia(this.concilia);
+    }
+
+    conseguirNombre(persona: any) {
+        let nombre;
+        if (persona.vNombres !== undefined) {
+            nombre = persona.vNombres + ' ' + persona.vApepat + ' ' + persona.vApemat;
+        } else {
+            nombre = persona.vRazsocial;
+        }
+        return nombre;
+    }
     saveObservacion(event) {
-        console.log('EDIT' + JSON.stringify(event.data));
+        // console.log('EDIT' + JSON.stringify(event.data));
         this.motivp = new Motivpase();
         this.motivp.id = event.data.idmotpase;
         this.motivp.vObsmotpas = event.data.observacion;
@@ -80,10 +186,9 @@ export class DatosExpedienteComponent implements OnInit {
             this.loadMotivOfic(this.pasegl.id);
         }
     }
-
     saveMotivPase(event: any) {
-        console.log(event.data);
-        console.log(this.pasegl);
+        // console.log(event.data);
+        // console.log(this.pasegl);
         this.motivp = new Motivpase();
         // this.motivp.vObsmotpas = 'test';
         this.motivp.motatenofic = event.data.Motateno;
@@ -93,7 +198,7 @@ export class DatosExpedienteComponent implements OnInit {
         );
     }
     deleteMotivpase(event: any) {
-        console.log(event.data);
+        // console.log(event.data);
         // this.moduloEntidadService.delete(id).subscribe((response) => {});
     }
     private subscribeToSaveResponse(result: Observable<Motivpase>) {
@@ -113,44 +218,6 @@ export class DatosExpedienteComponent implements OnInit {
         }
         // this.isSaving = false;
         this.onError(error);
-    }
-    ngOnInit() {
-        this.es = ES;
-        this.registroExpedienteWizard.paseSeleccionado.subscribe((pasegl) => {
-            // this.loadMotivPase(pasegl.id, pasegl.oficina.id);
-            this.pasegl = pasegl;
-            this.loadMotivOfic(pasegl.id);
-        });
-        this.motivos = [
-            {codigoMotivos : '01', descripcion: 'Vacaciones Perdidas', observacion: '' },
-            {codigoMotivos : '02', descripcion: 'Remuneraciones Insolutas', observacion: '' },
-            {codigoMotivos : '03', descripcion: 'Gratificaciones Legales', observacion: 'De proceder via Judicial' },
-        ]
-        this.documentos = [
-            {codigoDocumentos : '01', descripcion: 'Acta de Inspección', observacion: '' },
-            {codigoDocumentos : '02', descripcion: 'Documentos Relacionados con el Conflicto', observacion: '' },
-            {codigoDocumentos : '03', descripcion: 'Copia de L.E.L./DNI/Partida de Nacimiento', observacion: '' },
-            {codigoDocumentos : '04', descripcion: 'Copia del Consolidado de Beneficios Sociales del MT', observacion: '' },
-            {codigoDocumentos : '05', descripcion: 'Copia de Audiencia de Conciliación', observacion: '' },
-        ]
-        this.hora = [
-            {label: '14:50:00', value: '1'},
-            {label: '15:40:00', value: '2'},
-            {label: '16:30:00', value: '3'},
-            {label: '17:20:00', value: '4'},
-        ];
-    }
-    showDialogToAdd() {
-        this.displayDialog = true;
-    }
-    onRowSelect(event) {
-        this.displayDialog = true;
-    }
-    save() {
-        this.displayDialog = false;
-    }
-    delete() {
-        this.displayDialog = false;
     }
     private onError(error: any) {
         // this.messages = [];

@@ -20,6 +20,8 @@ import { Horacon } from '../../models/horacon.model';
 @Injectable()
 export class DatosWizardService {
 
+    // private resourceSoapNotificacion = 'http://192.168.140.137:8080/tramite/webservice/serviciosstd?wsdl';
+    private resourceSoapNotificacion = '//192.168.140.75:8020/api/valida';
     private resource = '/defensa/api/';
 
     private resourceTipoDoc         = this.resource + 'tipdocidents';
@@ -38,6 +40,33 @@ export class DatosWizardService {
     private resourcePersonaValidarServicio = '//localhost:8020/api/validarpersonaservicio';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils, private datePipe: DatePipe) { }
+
+    createNotifacion(notificaciones: any): Observable<any> {
+        // notificaciones.nUsuareg = 1;
+        // notificaciones.nFlgactivo = true;
+        // notificaciones.nSedereg = 1;
+        // const copy = this.convertExpediente(expediente);
+        console.log('CREATE-NOTIFICACION');
+        return this.http.get(this.resourceSoapNotificacion, notificaciones).map((res: Response) => {
+            const jsonResponse = res.json();
+            console.log('RESPONSE' + JSON.stringify(res.json()));
+            return jsonResponse;
+        });
+    }
+
+    public createNotifacion2(notificaciones: any): Observable<any> {
+        console.log('CREATE-NOTIF2');
+        return this.http.get(this.resourceSoapNotificacion, notificaciones).map( (res) => {
+            const xmlresult = res.text();
+            console.log('Result' + xmlresult);
+            const result = xmlresult
+            return result;
+        });
+    }
+    // private convertItemFromServerExpediente(json: any): any {
+    //     const entity: Expediente = Object.assign(new Expediente(), json);
+    //     return entity;
+    // }
 
     createExpediente(expediente: Expediente): Observable<Expediente> {
         expediente.nUsuareg = 1;
@@ -216,7 +245,7 @@ export class DatosWizardService {
         return entity;
     }
 
-    consultaPaseGL(query: string): Observable<ResponseWrapper> {
+    consultaExpediente(query: string): Observable<ResponseWrapper> {
         return this.http.get(`${this.resource}/${query}`)
             .map((res: Response) => this.convertResponse(res));
     }
@@ -228,8 +257,8 @@ export class DatosWizardService {
         }
         return new ResponseWrapper(res.headers, result, res.status);
     }
-    private convertItemFromServer(json: any): Pasegl {
-        const entity: Pasegl = Object.assign(new Pasegl(), json);
+    private convertItemFromServer(json: any): Expediente {
+        const entity: Expediente = Object.assign(new Expediente(), json);
         entity.tFecreg = this.dateUtils
             .convertDateTimeFromServer(json.tFecreg);
             // .transform(json.tFecreg, 'dd-MM-yyyy');

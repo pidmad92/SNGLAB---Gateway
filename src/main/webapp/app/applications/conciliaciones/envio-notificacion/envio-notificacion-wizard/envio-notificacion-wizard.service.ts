@@ -1,7 +1,6 @@
 
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Pasegl } from './..';
 import { Datlab } from '../../models/datlab.model';
 import { Empleador } from '../../models/empleador.model';
 import { Trabajador } from '../../models/trabajador.model';
@@ -9,10 +8,7 @@ import { Expediente } from '../../models/expediente.model';
 import { Concilia } from '../../models/concilia.model';
 
 @Injectable()
-export class RegistroExpedienteWizardService {
-
-  private messageSource = new BehaviorSubject<Pasegl>(new Pasegl());
-  paseSeleccionado = this.messageSource.asObservable();
+export class EnvioNotificacionWizardService {
 
   private datlabSource = new BehaviorSubject<Datlab>(new Datlab());
   datlabSeleccionado = this.datlabSource.asObservable();
@@ -23,17 +19,13 @@ export class RegistroExpedienteWizardService {
   private trabajadorSource = new BehaviorSubject<Trabajador>(new Trabajador());
   trabajadorSeleccionado = this.trabajadorSource.asObservable();
 
-  private expedienteSource = new BehaviorSubject<Expediente>(new Expediente());
+  private expedienteSource = new BehaviorSubject<Expediente []>([]);
   expedienteSeleccionado = this.expedienteSource.asObservable();
 
   private conciliaSource = new BehaviorSubject<Concilia>(new Concilia());
   conciliaSeleccionado = this.conciliaSource.asObservable();
 
   constructor() { }
-
-  cambiarPase(pasegl: Pasegl) {
-    this.messageSource.next(pasegl)
-  }
 
   cambiarDatlab(datlab: Datlab) {
     this.datlabSource.next(datlab)
@@ -47,7 +39,7 @@ export class RegistroExpedienteWizardService {
     this.trabajadorSource.next(trabajador)
   }
 
-  cambiarExpediente(expediente: Expediente) {
+  cambiarExpediente(expediente: Expediente[]) {
     this.expedienteSource.next(expediente)
   }
 
