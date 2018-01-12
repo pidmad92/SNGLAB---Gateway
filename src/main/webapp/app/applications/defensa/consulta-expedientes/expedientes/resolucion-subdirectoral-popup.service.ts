@@ -2,12 +2,12 @@ import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
-import { Expediente } from './../../../entities/expediente/expediente.model';
-import { Concilia } from './concilia.model';
-import { ConciliaService } from './concilia.service';
+import { Expediente } from './../../../../entities/expediente/expediente.model';
+import { Concilia } from './../../audiencias/concilia.model';
+import { ConciliaService } from './../../audiencias/concilia.service';
 
 @Injectable()
-export class AudienciaConsultaPopupService {
+export class ResolucionSubdirectoralPopupService {
     private ngbModalRef: NgbModalRef;
     urlexit: string;
 
@@ -59,17 +59,13 @@ export class AudienciaConsultaPopupService {
     audienciaModalRef(component: Component, concilia: Concilia): NgbModalRef {
         this.urlexit = '';
 
-        if (this.router.url.indexOf('/defensa/expediente/consulta/exp-emitidos') === 0) {
-            this.urlexit = '/defensa/expediente/consulta/exp-emitidos';
-        } else if (this.router.url.indexOf('/defensa/expediente/consulta/exp-paramultar') === 0) {
+        if (this.router.url.indexOf('/defensa/expediente/consulta/exp-paramultar') === 0) {
             this.urlexit = '/defensa/expediente/consulta/exp-paramultar';
         } else if (this.router.url.indexOf('/defensa/expediente/consulta/exp-multados') === 0) {
             this.urlexit = '/defensa/expediente/consulta/exp-multados';
-        } else if (this.router.url.indexOf('/defensa/audiencia/consulta') === 0) {
-            this.urlexit = '/defensa/audiencia/consulta';
         }
 
-        const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
+        const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static', windowClass: 'modal-mg'});
         modalRef.componentInstance.concilia = concilia;
         modalRef.result.then((result) => {
             this.router.navigate([this.urlexit], { replaceUrl: true });

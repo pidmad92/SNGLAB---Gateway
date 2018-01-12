@@ -1,0 +1,96 @@
+
+            <div class="card-body">
+                <fieldset class="col">
+                    <legend>Búsqueda</legend>
+                    <form>
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p-radioButton name="groupname" value="1" label="Por: Nro. de Exp." [(ngModel)]="tipoBusqueda"></p-radioButton>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p-radioButton name="groupname" value="2" label="Por: Rango de Fechas" [(ngModel)]="tipoBusqueda"></p-radioButton>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngIf="tipoBusqueda==='1'" class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="vNumexp" class="col-sm-3 col-form-label">Nº Expediente:</label>
+                                    <div class="col-sm-4 px-0">
+                                        <input class="form-control form-control-sm" type="text" [(ngModel)]="vNumexp" name="vNumexp" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="tipoBusqueda==='2'" class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inpTipo" class="col-sm-3 col-form-label">Fechas:</label>
+                                    <p-calendar name="rangeDates" [(ngModel)]="rangeDates" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true"
+                                        yearRange="2000:2030" selectionMode="range" readonlyInput="true"></p-calendar>
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <button (click)="buscarAudiencia()" class="btn btn-sm btn-secondary px-3"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+                <div class="row my-2">
+                    <div class="col-md-2 text-center">
+                        <button type="button" (click)="AsignarDocumento()" class="btn btn-success"><i class="fa fa-archive" aria-hidden="true"></i> Agregar Documento</button>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <button type="button" (click)="ConsultaExpediente()" class="btn btn-success"><i class="fa fa-archive" aria-hidden="true"></i> Detalle expediente</button>
+                    </div> 
+                </div>
+            </div>
+
+            <form>
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <p-dataTable selectionMode="single" [value]="concilias" dataKey="id" (onRowSelect)="onRowSelect($event)"
+                        [rows]="5" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20]">
+                            <p-header>Expedientes</p-header>
+                            <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
+                                <ng-template let-i="rowIndex" pTemplate="body">
+                                    <span style="text-align:center">{{i+1}}</span>
+                                </ng-template>
+                            </p-column>
+                            <p-column field="expediente.vNumexp" header="Nro. Expediente"></p-column>
+                            <p-column field="fecregistro" header="Fecha"></p-column>
+                            <p-column field="abogado.vNomabogad" header="Conciliador"></p-column>
+                            <p-column field="nrodocemp" header="Razón Nro. RUC"></p-column>
+                            <p-column field="fullnameemp" header="Empleador"></p-column>
+                            <p-column field="nrodoctrab" header="Nro. Documento"></p-column>
+                            <p-column field="fullnametrab" header="Trabajador"></p-column>
+                        </p-dataTable>
+                    </div>
+                </div>
+            </form>
+
+            <form>
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <p-dataTable selectionMode="single" [value]="docexpediens" dataKey="id" (onRowSelect)="onRowSelect($event)"
+                        [rows]="5" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20]">
+                            <p-header>Documentos Emitidos</p-header>
+                            <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
+                                <ng-template let-i="rowIndex" pTemplate="body">
+                                    <span style="text-align:center">{{i+1}}</span>
+                                </ng-template>
+                            </p-column>
+                            <p-column field="tipdocexp.vDescrip" header="Tipo Documento"></p-column>
+                            <p-column field="tipproveid.vDescrip" header="Tipo Proveido"></p-column>
+                            <p-column field="dettipprov.vDescrip" header="Detalle Tipo Proveid"></p-column>
+                            <p-column field="fecregistro" header="Fecha"></p-column>
+                            <p-column field="vNumoficio" header="Nro. Oficio"></p-column>
+                            <p-column field="usuarioreg" header="Usuario"></p-column>
+                            <p-column field="observacion" header="Observación"></p-column> 
+                        </p-dataTable>
+                    </div>
+                </div>
+            </form>
+
+            <router-outlet name="popupdoc"></router-outlet>
+            <router-outlet name="popupexpm"></router-outlet>
