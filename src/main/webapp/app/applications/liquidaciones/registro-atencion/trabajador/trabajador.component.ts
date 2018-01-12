@@ -38,7 +38,7 @@ export class TrabajadorComponent implements OnInit {
     // Variables de Modelo - Entidad
 
     listaTipdocident: Tipdocident[];
-    listaTrabajador: Trabajador[] = [];
+    listaTrabajador: any[] = [];
 
     // Constructor
 
@@ -83,10 +83,8 @@ export class TrabajadorComponent implements OnInit {
     // 3. Al hacer click en el boton para buscar el trabajador
 
     buscarTrabajador(formBusquedaTrabajador: FormGroup) {
-      console.log(`Buscó al Trabajador:
-        Tip.Doc: ${formBusquedaTrabajador.value.documento.tipDoc}
-        Num.Doc: ${formBusquedaTrabajador.value.documento.numDoc}`);
-        console.log(formBusquedaTrabajador);
+      console.log(`Buscó al Trabajador con Tip.Doc: ${formBusquedaTrabajador.value.documento.tipDoc} y Num.Doc: ${formBusquedaTrabajador.value.documento.numDoc}`);
+        // console.log(formBusquedaTrabajador);
         this.buscarTrabajadorBaseDatos(formBusquedaTrabajador);
     };
 
@@ -98,7 +96,7 @@ export class TrabajadorComponent implements OnInit {
         (res: ResponseWrapper) => {
           this.listaTrabajador = res.json;
           if (JSON.stringify(this.listaTrabajador[0])) {
-            console.log(`¡Trabajador encontrado!...`);
+            console.log(`¡Trabajador encontrado! Trabajador con Id:${this.listaTrabajador[0].Trabajador.id}`);
             this.abrirPopupBusquedaVinculosLaborales();
           } else {
             console.log(`No existe el trabajador en la base de datos`);
@@ -107,8 +105,7 @@ export class TrabajadorComponent implements OnInit {
         },
         (res: ResponseWrapper) => {
           this.onError(res.json)
-        }
-      );
+        });
     }
 
     // Funciones Utilitarias - Busqueda Trabajador - I --------------------------------------------------------------------
@@ -116,8 +113,7 @@ export class TrabajadorComponent implements OnInit {
     // Al iniciar - llamar el servicio para llenar el combo del tipo de documento para la busqueda del trabajador
 
     cargarListaComboTipoDocumento() {
-      this.trabajadorService.consultaTipoDocIdentidad().subscribe(
-        (res: ResponseWrapper) => {
+      this.trabajadorService.consultaTipoDocIdentidad().subscribe((res: ResponseWrapper) => {
             this.listaTipdocident = res.json;
             /*console.log(`Resjson:
               ${JSON.stringify(res.json)}`);*/
@@ -125,8 +121,7 @@ export class TrabajadorComponent implements OnInit {
         },
         (res: ResponseWrapper) => {
           this.onError(res.json);
-        }
-      );
+        });
     };
 
     mostrarFormularioDatosTrabajador() {
@@ -196,9 +191,8 @@ export class TrabajadorComponent implements OnInit {
 
     // Abrir el popup de busqueda de vinculos laborales
     abrirPopupBusquedaVinculosLaborales() {
-      this.router.navigate(['/liquidaciones/registro-atencion/trabajador' , { outlets: { popupexp: [Number(JSON.stringify(this.listaTrabajador[0].id))] } }]);
+      this.router.navigate(['/liquidaciones/registro-atencion/trabajador' , { outlets: { popupexp: [Number(JSON.stringify(this.listaTrabajador[0].Trabajador.id))] } }]);
       // this.mostrarFormularioDatosTrabajador();
-      console.log(`Buscando vinculos laborales registrados...`);
     }
 
     // Funciones Utilitarias - Busqueda Trabajador - F --------------------------------------------------------------------
