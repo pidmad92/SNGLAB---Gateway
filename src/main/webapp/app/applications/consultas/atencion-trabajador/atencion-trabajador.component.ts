@@ -5,6 +5,7 @@ import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } f
 
 import { Atencion } from '../models/atencion.model';
 import { Trabajador } from '../models/trabajador.model';
+import { Pernatural } from '../models/pernatural.model';
 import { Tipdocident } from '../models/tipdocident.model';
 import { ComboModel } from '../../general/combobox.model';
 import { AtencionTrabajadorService } from './atencion-trabajador.service';
@@ -16,7 +17,6 @@ import { RegistroAtencionWizardService } from './atencion-trabajador-wizard/regi
     templateUrl: './atencion-trabajador.component.html'
 })
 export class AtencionTrabajadorComponent implements OnInit, OnDestroy {
-    trabajador: Trabajador[];
     atenciones: Atencion[];
     selecAten: any;
     currentAccount: any;
@@ -25,7 +25,7 @@ export class AtencionTrabajadorComponent implements OnInit, OnDestroy {
     selectedSucesion: any;
 
     trabajadorSelec: Object;
-    trabajadores: Trabajador;
+    trabajadores: Trabajador[];
 
     tipoBusqueda = '1';
     tipodocs: Tipdocident[];
@@ -35,6 +35,13 @@ export class AtencionTrabajadorComponent implements OnInit, OnDestroy {
     vApaterno: string;
     vAmaterno: string;
     displayDialog: boolean;
+
+    maxlengthDocIdent: number;
+    direcciones: any[];
+    pases: any[];
+
+    numOficina = 5;
+    paganterior = '0';
 
     constructor(
         private atencionTrabajadorService: AtencionTrabajadorService,
@@ -49,18 +56,31 @@ export class AtencionTrabajadorComponent implements OnInit, OnDestroy {
         this.currentSearch = activatedRoute.snapshot.params['search'] ? activatedRoute.snapshot.params['search'] : '';
     }
 
+    inicializaTablas() {
+        this.atenciones = [];
+        // this.direcciones = [];
+        // this.pases = [];
+        this.trabajadores = null;
+    }
+    inicializarFormulario() {
+        this.inicializaTablas();
+        this.vNumdoc = '';
+        this.vApaterno = '';
+        this.vAmaterno = '';
+        this.vNombre = '';
+        // this.tippersona = '0';
+        this.displayDialog = false;
+        if (this.selectedTipodoc !== undefined) {
+            this.maxlengthDocIdent = this.selectedTipodoc.nNumdigi;
+        }
+    }
+
     onRowSelect(event) {
         // console.log(event.data);
-        this.atencionTrabajadorService.findAtencionsByTrabajador(event.data.id).subscribe(
-            (res: ResponseWrapper) => {
-                // console.log(res.json);
-                this.atenciones = res.json;
-                this.currentSearch = '';
-            },
-            (res: ResponseWrapper) => this.onError(res.json)
-        );
-
         this.displayDialog = true;
+        this.ConsultaAtenciones(event.data.id);
+        this.ConsultaPases(event.data.id);
+        this.ConsultaDirecciones(event.data.id);
         // this.data.cambiarPase(event.data);
     }
     onRowUnselect(event) {
@@ -120,14 +140,47 @@ export class AtencionTrabajadorComponent implements OnInit, OnDestroy {
         this.displayDialog = false;
     }
     cargarRegistroAtencion(actividad: string) {
+        this.registroAtencionWizardService.cambiarActividad(null);
         // Validar si se envia una nueva atención una seleccionada
         const atencion: Atencion = (actividad === '1') ?  new Atencion() : this.selecAten.aten;
-        // console.log('NuevoReg: ' + actividad);
+        console.log('NuevoReg: ' + actividad);
         // console.log('Nuevo1' + JSON.stringify(atencion));
         this.registroAtencionWizardService.cambiarActividad(actividad);
         this.registroAtencionWizardService.cambiarAtencion(atencion);
+        this.registroAtencionWizardService.cambiarBandPagAnterior(this.paganterior);
         this.router.navigate(['/consultas/registro-atencion-trabajador', { outlets: { wizard: ['datos-trabajador'] } }]);
         // console.log('Nuevo2');
+    }
+
+    ConsultaAtenciones(id: string) {
+        this.atencionTrabajadorService.findAtencionsByTrabajador(id).subscribe(
+            (res: ResponseWrapper) => {
+                // console.log(res.json);
+                this.atenciones = res.json;
+                this.currentSearch = '';
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+    }
+
+    ConsultaDirecciones(id: number) {
+            this.atencionTrabajadorService.buscarDireccionesPerNat(id).subscribe(
+                (res: ResponseWrapper) => {
+                    // console.log(res.json);
+                    this.direcciones = res.json;
+                },
+                (res: ResponseWrapper) => { this.onError(res.json); }
+            );
+    }
+
+    ConsultaPases(id: number) {
+        this.atencionTrabajadorService.findPasesByTrabajador(id).subscribe(
+            (res: ResponseWrapper) => {
+                // console.log(res.json);
+                this.pases = res.json;
+            },
+            (res: ResponseWrapper) => { this.onError(res.json); }
+        );
     }
 
     search(query) {
@@ -147,6 +200,13 @@ export class AtencionTrabajadorComponent implements OnInit, OnDestroy {
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
+    // this.registroAtencionWizardService.cambiarAtencion(new Atencion());
+    // this.registroAtencionWizardService.accionaSeleccionado = new Accadoate();
+    // this.registroAtencionWizardService.datlabSeleccionado = null;
+    // this.registroAtencionWizardService.docingSeleccionado = null;
+    // this.registroAtencionWizardService.empleadorSeleccionado = null;
+    // this.registroAtencionWizardService.motateSeleccionado = null;
+    // this.registroAtencionWizardService.trabajadorSeleccionado = null;
         this.registerChangeInAtencionTrabajador();
     }
 

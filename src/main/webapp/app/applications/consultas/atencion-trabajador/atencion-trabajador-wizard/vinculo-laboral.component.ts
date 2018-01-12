@@ -119,16 +119,27 @@ export class VinculoLaboralComponent implements OnInit, OnDestroy {
                 } else if (this.actividadSelec === '3') {
                     // this.atencionTrabajadorService
                 } else {
-                    console.log('ATENCIONDATLAB: ' + JSON.stringify(atencion.datlab));
-                    if (atencion.datlab.id !== undefined) {
-                        this.atencion.datlab = new Datlab();
-                        this.atencion.regimenlab = new Regimenlab();
-                        this.atencion.datlab.motcese = new Motcese();
-                        this.atencion.datlab.nFlgsitlab = 2;
-                    }
                     // console.log('AtencionVinculo:' + JSON.stringify(this.atencion));
                     if (atencion.datlab !== undefined ) {
+                        console.log('AC.');
                         this.datosLab  = atencion.datlab;
+                        // this.nFlgsitlab = atencion.datlab.nFlgsitlab;
+                        console.log('ATENCIONDATLAB: ' + JSON.stringify(atencion.datlab));
+                        if (atencion.datlab.id !== undefined) {
+                            console.log('AB.');
+                            // this.atencion.datlab = new Datlab();
+                            this.atencion.datlab.modcontrato = null;
+                            this.atencion.datlab.dFecvincul = null;
+                            this.atencion.datlab.dFeccese = null;
+                            this.atencion.datlab.dFecfincon = null;
+                            this.atencion.datlab.id = undefined;
+                            this.atencion.datlab.regimenlab = new Regimenlab();
+                            this.atencion.datlab.motcese = new Motcese();
+                            this.atencion.datlab.nFlgsitlab = 2;
+                        }
+                    } else {
+                        this.atencion.datlab = new Datlab();
+                        this.atencion.datlab.nFlgsitlab = 2;
                     }
                 }
             });

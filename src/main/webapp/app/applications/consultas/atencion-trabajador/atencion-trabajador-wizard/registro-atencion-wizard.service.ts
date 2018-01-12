@@ -39,6 +39,9 @@ export class RegistroAtencionWizardService {
   private accionaSelSource = new BehaviorSubject<Accadoate []>([]);
   accionaSeleccionado = this.accionaSelSource.asObservable();
 
+  private paganteriorSource = new BehaviorSubject(null);
+  paganteriorSelec = this.paganteriorSource.asObservable();
+
   constructor() { }
 
   cambiarActividad(actividad: string) {
@@ -76,4 +79,9 @@ export class RegistroAtencionWizardService {
   cambiarAccionadop(accionadop: Accadoate[]) {
     this.accionaSelSource.next(accionadop);
   }
+
+  cambiarBandPagAnterior(pagante: string) {
+    this.paganteriorSource.next(pagante);
+  }
+
 }
