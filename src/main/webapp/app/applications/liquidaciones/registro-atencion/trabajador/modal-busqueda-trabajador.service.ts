@@ -14,7 +14,7 @@ import { Datlab } from './../../models/datlab.model';
 export class ModalBusquedaTrabajadorService {
     private ngbModalRef: NgbModalRef;
 
-    listaDatlab: Datlab[] = [];
+    listaDatlab: any[] = [];
 
     constructor(
         private datePipe: DatePipe,
@@ -31,34 +31,17 @@ export class ModalBusquedaTrabajadorService {
             if (isOpen) {
                 resolve(this.ngbModalRef);
             }
-
+            console.log(`Buscando vinculos laborales registrados...`);
             if (id) {
               console.log('Id del trabajador: ' + id);
               this.trabajadorService.findDatlabsByIdTrabajador(Number(id)).subscribe((res: ResponseWrapper) => {
                 this.listaDatlab = res.json;
-                console.log(this.listaDatlab);
-                // this.listaDatlab[0].tFecreg = this.datePipe.transform(this.listaDatlab[0].tFecreg, 'yyyy-MM-ddTHH:mm:ss');
-                // console.log(`¡Trabajador encontrado! Trabajador con Id:${this.listaDatlab[0].id}`);
-              });
-                /*this.conciliaService.find(id).subscribe((concilia) => {
-                    // concilia.tFecreg = this.datePipe
-                        // .transform(concilia.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
-                        if (concilia.dFecconci) {
-                            concilia.dFecconci = {
-                                year: concilia.dFecconci.getFullYear(),
-                                month: concilia.dFecconci.getMonth() + 1,
-                                day: concilia.dFecconci.getDate()
-                            };
-                        }
-                        concilia.tFecreg = this.datePipe
-                            .transform(concilia.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
-                        concilia.tFecupd = this.datePipe
-                            .transform(concilia.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
-                });*/
-                setTimeout(() => {
-                this.ngbModalRef = this.modalBusquedaModalRef(component, null);
+                this.ngbModalRef = this.modalBusquedaModalRef(component, this.listaDatlab);
                 resolve(this.ngbModalRef);
-                }, 0);
+                // this.listaDatlab[0].tFecreg = this.datePipe.transform(this.listaDatlab[0].tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                console.log(`¡Vinculos Laborales encontrados! Total de registros: ${this.listaDatlab.length}`);
+                // console.log(this.listaDatlab);
+              });
             } else {
                 // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
                 setTimeout(() => {
@@ -69,9 +52,9 @@ export class ModalBusquedaTrabajadorService {
         });
     }
 
-    modalBusquedaModalRef(component: Component, abogado: any): NgbModalRef {
+    modalBusquedaModalRef(component: Component, listaDatlab: any[]): NgbModalRef {
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
-        modalRef.componentInstance.abogado = abogado;
+        modalRef.componentInstance.listaDatlab = listaDatlab;
         modalRef.result.then((result) => {
             this.router.navigate(['liquidaciones/registro-atencion/trabajador'], { replaceUrl: true });
             this.ngbModalRef = null;

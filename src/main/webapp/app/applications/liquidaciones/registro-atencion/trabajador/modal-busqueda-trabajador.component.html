@@ -1,69 +1,48 @@
 <form role="form" novalidate>
     <div class="modal-header">
         <h5 class="modal-title" id="titleReg">Registros laborales</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="clear()">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="btnCancelar()">
           <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
         <div class="alert alert-info" role="alert">
             <div class="row">
-                <div class="col"><i class="fa fa-id-card" aria-hidden="true"></i> 79413933</div>
-                <div class="col"><i class="fa fa-user" aria-hidden="true"></i> Maldonado Diaz Pierre David</div>
+                <div class="col"><i class="fa fa-id-card" aria-hidden="true"></i> {{listaDatlab[0].datolab.trabajador.pernatural.vNumdoc}}</div>
+                <div class="col"><i class="fa fa-user" aria-hidden="true"></i> {{nomCompleto}}</div>
             </div>
         </div>
-        <p>Seleccione el registro</p>
-        <p-dataTable [value]="datlab" selectionMode="single" >
+        <!--p>Seleccione el registro</p-->
+        <p-dataTable [(selection)]="selecDatLab" [value]="listaDatlab" selectionMode="single" scrollable="true" scrollHeight="220px" dataKey="datolab.id">
             <p-header>Vinculos Laborales Registrados</p-header>
             <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
                 <ng-template let-i="rowIndex" pTemplate="body">
                     <span style="text-align:center">{{i+1}}</span>
                 </ng-template>
             </p-column>
-            <p-column field="" header="Fecha inicio"></p-column>
-            <p-column field="" header="Empleador"></p-column>
-            <p-column field="" header="Ultima atención"></p-column>
-            <p-column field="" header="Motivo de atención"></p-column>
-            <p-column field="" header="Pase"></p-column>
-            <p-column field="" header="Motivo del pase"></p-column>
+            <p-column field="datolab.dFecvincul" header="Fecha inicio"></p-column>
+            <p-column field="datolab.empleador.perjuridica.vRazsocial" header="Empleador"></p-column>
+            <p-column field="datolab.dFeccese" header="Fecha cese"></p-column>
+            <p-column field="datolab.regimenlab.vDesreglab" header="Regimen Laboral"></p-column>
+            <p-column field="datolab.motcese.vDesmotces" header="Motivo Cese"></p-column>
+            <p-column field="datolab.modcontrato.vDesmodcon" header="Modalidad de Contrato"></p-column>
+            <ng-template pTemplate="emptymessage">
+              No se han encontrado registros
+            </ng-template>
         </p-dataTable>
-        <!--table class="table table-responsive table-bordered table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Fecha inicio</th>
-                    <th>Empleador</th>
-                    <th>Ultima atención</th>
-                    <th>Motivo de atención</th>
-                    <th>Pase</th>
-                    <th>Motivo del pase</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>16/10/2017</td>
-                    <td>Coca-Cola</td>
-                    <td>Módulo de consultas</td>
-                    <td>Solicita informes <br> Solicita oficna policial</td>
-                    <td>Si</td>
-                    <td>Calculo de beneficio sociales & liquidaciones</td>
-                </tr>
-                <tr>
-                    <td>17/10/2017</td>
-                    <td>Aceros Arequipa</td>
-                    <td>Módulo de consultas</td>
-                    <td>Solicita informes</td>
-                    <td>No</td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table-->
     </div>
     <div class="card-footer text-center">
-        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" (click)="clear()">
+        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" (click)="btnCancelar()">
           <span class="fa fa-ban" aria-hidden="true"></span>&nbsp;
           <span>Cancelar</span>
         </button>
-        <a class="btn btn-sm btn-info"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
-        <a class="btn btn-sm btn-success"><i class="fa fa-cloud-download" aria-hidden="true"></i> Cargar</a>
+        <button type="button" class="btn btn-sm btn-info" data-dismiss="modal" (click)="btnNuevo($event)">
+          <span class="fa fa-plus" aria-hidden="true"></span>&nbsp;
+          <span>Nuevo</span>
+        </button>
+        <button type="button" class="btn btn-sm btn-success" data-dismiss="modal" (click)="btnCargar($event)">
+          <span class="fa fa-cloud-download" aria-hidden="true"></span>&nbsp;
+          <span>Cargar</span>
+        </button>
     </div>
 </form>

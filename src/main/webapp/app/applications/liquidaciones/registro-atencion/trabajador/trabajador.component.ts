@@ -12,10 +12,12 @@ import { MessageService } from 'primeng/components/common/messageservice';
 import { Tipdocident } from '../../models/tipdocident.model';
 import { Trabajador } from '../../models/trabajador.model';
 import { Pernatural } from '../../models/pernatural.model';
+import { Datlab } from './../../models/datlab.model';
 
 // Servicios
 
 import { TrabajadorService } from './tabajador.service';
+import { TrabajadorTransferService } from './trabajador-transfer.service'
 
 @Component({
     selector: 'jhi-trabajador',
@@ -39,6 +41,7 @@ export class TrabajadorComponent implements OnInit {
 
     listaTipdocident: Tipdocident[];
     listaTrabajador: any[] = [];
+    datlab: Datlab;
 
     // Constructor
 
@@ -46,6 +49,7 @@ export class TrabajadorComponent implements OnInit {
         private eventManager: JhiEventManager,
         private messageService: MessageService,
         private trabajadorService:  TrabajadorService,
+        private trabajadorTransferService: TrabajadorTransferService,
         private router: Router
     ) {
     };
@@ -62,6 +66,7 @@ export class TrabajadorComponent implements OnInit {
       this.cargarListaComboTipoDocumento();
       this.ocultarFormularioDatosTrabajador();
       this.ocultarImputTextNumPartidaSucesion();
+      this.recibirDatosLaboralesTrabajador()
     };
 
     // 1. Al hacer un cambio en el combo
@@ -111,6 +116,17 @@ export class TrabajadorComponent implements OnInit {
     // Funciones Utilitarias - Busqueda Trabajador - I --------------------------------------------------------------------
 
     // Al iniciar - llamar el servicio para llenar el combo del tipo de documento para la busqueda del trabajador
+
+    recibirDatosLaboralesTrabajador() {
+      this.eventSubscriber = this.eventManager.subscribe('cargarDatosLaboralesfromPopup', (response) => this.cargarDatosLaborales());
+    }
+
+    cargarDatosLaborales() {
+      this.trabajadorTransferService.datlabSeleccionado.subscribe((datlab) => {
+        this.datlab = datlab as Datlab;
+        console.log(this.datlab);
+      });
+    }
 
     cargarListaComboTipoDocumento() {
       this.trabajadorService.consultaTipoDocIdentidad().subscribe((res: ResponseWrapper) => {
