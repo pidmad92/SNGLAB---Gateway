@@ -164,7 +164,6 @@ export class AudienciaConsultaDialogComponent implements OnInit {
                         }
                         this.selectmotatenofic.push(mot);
                         this.selectmotatenoficstring.push(mot.idmotpase);
-                        console.log(this.selectmotatenoficstring);
                     }
                 }
 
@@ -177,9 +176,6 @@ export class AudienciaConsultaDialogComponent implements OnInit {
     ValidadCeroidmotate() {
         this.motatenofics.forEach((item, index) => {
             const concilia = item;
-            console.log('foreac');
-            console.log(concilia);
-            console.log(concilia.idmotpase);
             if (concilia.idmotpase == null ) {
                 this.motatenofics[index].idmotpase = 0;
                 this.motatenofics[index].motivselec = false;
@@ -192,8 +188,9 @@ export class AudienciaConsultaDialogComponent implements OnInit {
     ngOnInit() {
         this.es = ES;
         this.banPersona = '';
+        console.log('consulta audiencia');
+        console.log(this.concilia);
         this.expediente = this.concilia.expediente;
-        this.pasegl = this.expediente.pasegl;
         this.horacon = this.concilia.horacon;
         this.abogado = this.concilia.abogado;
         this.pasegl = this.expediente.pasegl;
@@ -227,9 +224,6 @@ export class AudienciaConsultaDialogComponent implements OnInit {
         this.varfecconci = this.concilia.dFecconci.day + '/' + this.concilia.dFecconci.month + '/' + this.concilia.dFecconci.year;
         this.varhorconci = this.horacon.vDescrip + ':00';
         this.varfecmp = this.expediente.dFecmespar == null ? '' : this.datePipe.transform(this.expediente.dFecmespar, 'dd-MM-yyyy');
-
-        console.log('Selector');
-        console.log(this.motatenofics);
 
     }
     clear() {

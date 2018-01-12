@@ -6,6 +6,7 @@ import { Datlab } from '../../models/datlab.model';
 import { Empleador } from '../../models/empleador.model';
 import { Trabajador } from '../../models/trabajador.model';
 import { Expediente } from '../../models/expediente.model';
+import { Concilia } from '../../models/concilia.model';
 
 @Injectable()
 export class RegistroExpedienteWizardService {
@@ -24,6 +25,9 @@ export class RegistroExpedienteWizardService {
 
   private expedienteSource = new BehaviorSubject<Expediente>(new Expediente());
   expedienteSeleccionado = this.expedienteSource.asObservable();
+
+  private conciliaSource = new BehaviorSubject<Concilia>(new Concilia());
+  conciliaSeleccionado = this.conciliaSource.asObservable();
 
   constructor() { }
 
@@ -45,6 +49,10 @@ export class RegistroExpedienteWizardService {
 
   cambiarExpediente(expediente: Expediente) {
     this.expedienteSource.next(expediente)
+  }
+
+  cambiarConcilia(concilia: Concilia) {
+    this.conciliaSource.next(concilia)
   }
 
 }

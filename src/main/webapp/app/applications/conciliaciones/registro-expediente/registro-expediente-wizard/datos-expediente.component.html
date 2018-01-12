@@ -1,18 +1,18 @@
 <div class="row">
     <div class="col">
-        <div class="card card-mtpe mb-3">
+        <div class="card card-mtpe">
             <div class="card-header bg-light d-sm-flex justify-content-between p-1">
                 <h5><small class="ml-3">Registro de Expediente - Datos del Expediente</small></h5>
                 <h5 class="mb-0 pr-3"><small>Paso 4 de 5</small></h5>
             </div>
             <div class="card-body">
-                <div class="defensa mb-2">
+                <div class="defensa mb-2 p-2">
                     <div class="form-row">
                         <div class="col-lg-5">
                             <div class="form-group row">
                             <label for="inpTipo" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Fecha de Registro</label>
                             <div class="col-sm-7">
-                                <p-calendar name="date1" [(ngModel)]="date1" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                                <p-calendar name="expediente.dFecregexp" [(ngModel)]="expediente.dFecregexp" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
                             </div>
                             </div>
                         </div>
@@ -20,7 +20,7 @@
                             <div class="form-group row">
                             <label for="inpNumero" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Registro M.P.</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control form-control-sm" id="inpNumero" placeholder="">
+                                <input type="text" name="expediente.vRegmespar" [(ngModel)]="expediente.vRegmespar"  class="form-control form-control-sm" id="inpNumero" placeholder="">
                             </div>
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <form>
-                        <div class="row">
+                        <div class="row mt-2">
                             <div class="col-md-12">
                                 <p-dataTable [value]="motatenofic" [editable]="true" [(selection)]="selectmotatenofic" (onEditComplete)="saveObservacion($event)" (onRowSelect)="saveMotivPase($event)" (onRowUnselect)="deleteMotivpase($event)" scrollable="true" scrollHeight="220px" dataKey="Motateno.id">
                                     <p-header>Motivos de la Conciliación</p-header>
@@ -52,35 +52,23 @@
                             </div>
                         </div>
                         <div class="row mt-4">
-                            <!-- <div class="col-md-6">
-                                <p-dataTable [value]="documentos" dataKey="codigoDocumentos">
-                                    <p-header>Documentos Presentados</p-header>
-                                    <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
-                                    <p-column field="descripcion" header="Descripción"></p-column>
-                                    <p-column field="observacion" header="Observación"></p-column>
-                                </p-dataTable>
-                            </div> -->
-                            <div class="col-md-12">
+                            <div class="col-md-4">
                                 <div class="row">
-                                    <div class="col-md-3 mb-2">
-                                        <div class="ui-g">
-                                            <label for="inpFechaAudiencia" class="col-form-label ui-g-6 pl-0 py-1">Fecha de Audiencia:</label>
-                                            <p-calendar name="fechaAudiencia" [(ngModel)]="fechaAudiencia" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
-                                        </div>
+                                    <div class="col-md-6 mb-2">
+                                        <label for="inpFechaAudiencia" class="col-form-label col-sm-12 pl-0 py-1">Fecha de Audiencia:</label>
+                                        <p-calendar name="concilia.dFecconci" (onClose)="buscarHora()" class="" (onSelect)="buscarHora()" [(ngModel)]="concilia.dFecconci" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
                                     </div>
-                                    <div class="col-md-3 mb-2">
-                                        <div class="ui-g">
-                                            <label for="inpHoraConciliacion" class="col-form-label ui-g-6 pl-0 py-1">Hora de Conciliación:</label>
-                                            <p-dropdown name="hora" [options]="hora" [(ngModel)]="selectedHora"></p-dropdown>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 mb-2">
-                                        <div class="ui-g">
-                                            <label for="inpObservacion" class="col-form-label  ui-g-3 col-form-label-sm">Observación:</label>
-                                            <textarea class="form-control" rows="3"></textarea>
-                                        </div>
+                                    <div class="col-md-6 mb-2">
+                                        <label for="inpHoraConciliacion" class="col-form-label pl-0 py-1">Hora de Conciliación:</label>
+                                        <select required class="form-control form-control-sm col-sm-10" id="field_horacon" name="concilia.horacon" [(ngModel)]="concilia.horacon" >
+                                            <option [ngValue]="hora.id === concilia.horacon?.id ? concilia.horacon : hora" *ngFor="let hora of horacon;">{{hora.vDescrip}}</option>
+                                        </select>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-md-8">
+                                <label for="inpObservacion" class="col-form-label  ui-g-3 pl-0">Observación:</label>
+                                <textarea name="expediente.vObservac" [(ngModel)]="expediente.vObservac" class="form-control" rows="3"></textarea>
                             </div>
                         </div>
                     </form>

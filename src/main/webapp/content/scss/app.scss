@@ -345,6 +345,8 @@ footer .footer{
 }
 .card-mtpe{
   border: 1px solid #ffc107;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 .card-mtpe > .card-header{
   border-bottom: 1px solid rgb(255, 193, 7);
@@ -714,11 +716,11 @@ legend{
   font-size:13px;
   font-weight:bold;
   margin-bottom: 0px; 
-  width: 35%; 
   border: 1px solid #f5911e;
   border-radius: 4px; 
-  padding: 2px 2px 2px 5px; 
+  padding: 3px 80px 3px 20px ; 
   background-color: #fff6eb;
+  width: auto;
 }
 @media (max-width: 575px) {
   legend{
@@ -1062,8 +1064,11 @@ body .ui-radiobutton .ui-radiobutton-box .ui-radiobutton-icon {
   margin: 0px auto 20px;
   padding: 5px;
   height: 50px;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.15rem;
+  // border: 1px solid rgba(0, 0, 0, 0.125);
+  border: 1px solid #ffc107;  
+  border-bottom-left-radius: 0.15rem;
+  border-bottom-right-radius: 0.15rem;
+
   border-top: 0px;
 }
 
@@ -1233,7 +1238,18 @@ body .ui-datatable .ui-datatable-data tr.ui-state-highlight{
 p-inputmask{
   display: inherit;
 }
-
+.ui-growl-item-container.ui-state-highlight.ui-growl-message-warn {
+  // background-color: #fcf8e3;
+  // color: #8a6d3b;
+  background-color: #FFB300;
+  border-color: #FFB300;
+  color:white;
+  
+}
+.ui-growl-title{
+  font-family: 'FranklinGothicStdMC';
+  font-size:14px;
+}
 
 .col-for-label {
   padding-top: calc(0.75rem - 1px * 2);
@@ -1255,3 +1271,18 @@ label.ui-chkbox-label{
 .rowAmarillo {
   background-color : yellow !important;
 }
+
+body .ui-state-disabled, body .ui-widget:disabled {
+background-color: #e9ecef;
+opacity: 1;
+}
+
+@media (min-width: 992px){  
+.modal-mg {
+  .modal-lg {
+    max-width: 1300px;
+  }
+}
+}
+
+  
