@@ -138,7 +138,6 @@ export class AudienciaConsultaComponent implements OnInit {
 
     private DatosFaltantes(item, index) {
         const concilia = item;
-        console.log(concilia);
         this.expediente = concilia.expediente;
         this.resulconci = concilia.resulconci;
         this.pasegl = this.expediente.pasegl;
@@ -153,7 +152,6 @@ export class AudienciaConsultaComponent implements OnInit {
         if (this.perjuridica != null) {
             this.concilias[index].nrodocemp = this.perjuridica.vNumdoc;
             this.concilias[index].fullnameemp = this.perjuridica.vRazsocial;
-            console.log(this.perjuridica.vNumdoc);
         }else {
             this.concilias[index].nrodocemp = this.pernaturalEMP.vNumdoc;
             this.concilias[index].fullnameemp = this.pernaturalEMP.vNombres + ' ' + this.pernaturalEMP.vApepat + ' ' + this.pernaturalEMP.vApemat ;
