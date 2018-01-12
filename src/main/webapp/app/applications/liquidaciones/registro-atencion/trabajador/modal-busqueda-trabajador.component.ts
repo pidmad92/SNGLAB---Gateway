@@ -30,12 +30,22 @@ export class ModalBusquedaTrabajadorComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        this.cargarDatos();
     }
 
     clear() {
         this.activeModal.dismiss('cancel');
     }
-/*
+
+    cargarDatos() {
+      console.log(`Buscando vinculos laborales registrados...`);
+      this.buscarDatosLaborales();
+    }
+
+    buscarDatosLaborales() {
+
+    }
+    /*
     save() {
         this.isSaving = true;
         if (this.datlab.id !== undefined) {
@@ -57,11 +67,11 @@ export class ModalBusquedaTrabajadorComponent implements OnInit {
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }
-*/
+
     private onSaveError() {
         this.isSaving = false;
     }
-
+*/
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
     }

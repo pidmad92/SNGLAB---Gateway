@@ -2,17 +2,25 @@ import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
+import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../../shared';
+
 import { DatePipe } from '@angular/common';
+
+import { TrabajadorService } from './tabajador.service';
+
+import { Datlab } from './../../models/datlab.model';
 
 @Injectable()
 export class ModalBusquedaTrabajadorService {
     private ngbModalRef: NgbModalRef;
 
+    listaDatlab: Datlab[] = [];
+
     constructor(
         private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
-
+        private trabajadorService: TrabajadorService,
     ) {
         this.ngbModalRef = null;
     }
@@ -25,6 +33,13 @@ export class ModalBusquedaTrabajadorService {
             }
 
             if (id) {
+              console.log('Id del trabajador: ' + id);
+              this.trabajadorService.findDatlabsByIdTrabajador(Number(id)).subscribe((res: ResponseWrapper) => {
+                this.listaDatlab = res.json;
+                console.log(this.listaDatlab);
+                // this.listaDatlab[0].tFecreg = this.datePipe.transform(this.listaDatlab[0].tFecreg, 'yyyy-MM-ddTHH:mm:ss');
+                // console.log(`¡Trabajador encontrado! Trabajador con Id:${this.listaDatlab[0].id}`);
+              });
                 /*this.conciliaService.find(id).subscribe((concilia) => {
                     // concilia.tFecreg = this.datePipe
                         // .transform(concilia.tFecreg, 'yyyy-MM-ddTHH:mm:ss');
@@ -40,9 +55,10 @@ export class ModalBusquedaTrabajadorService {
                         concilia.tFecupd = this.datePipe
                             .transform(concilia.tFecupd, 'yyyy-MM-ddTHH:mm:ss');
                 });*/
+                setTimeout(() => {
                 this.ngbModalRef = this.modalBusquedaModalRef(component, null);
                 resolve(this.ngbModalRef);
-
+                }, 0);
             } else {
                 // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
                 setTimeout(() => {
