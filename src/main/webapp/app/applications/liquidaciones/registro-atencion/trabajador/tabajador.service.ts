@@ -8,6 +8,7 @@ import { ResponseWrapper, createRequestOption } from '../../../../shared';
 
 import { Tipdocident } from '../../models/tipdocident.model';
 import { Trabajador } from '../../models/trabajador.model';
+import { Pernatural } from '../../models/pernatural.model';
 import { Datlab } from '../../models/datlab.model';
 
 import { ModalBusquedaTrabajadorService } from './modal-busqueda-trabajador.service';
@@ -122,6 +123,7 @@ export class TrabajadorService {
           const entity: Datlab = Object.assign(new Datlab(), json);
           entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
           entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+          // ((entity.trabajador as Trabajador).pernatural as Pernatural).dFecnac = this.dateUtils.convertLocalDateFromServer(json.dFecnac);
           return entity;
         }
 }

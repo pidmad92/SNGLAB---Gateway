@@ -31,6 +31,7 @@ const ENTITY_STATES = [
         FormsModule,
         ReactiveFormsModule,
         DataTableModule,
+        CalendarModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [

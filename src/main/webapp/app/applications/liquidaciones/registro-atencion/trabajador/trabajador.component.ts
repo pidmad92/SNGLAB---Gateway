@@ -14,6 +14,9 @@ import { Trabajador } from '../../models/trabajador.model';
 import { Pernatural } from '../../models/pernatural.model';
 import { Datlab } from './../../models/datlab.model';
 
+// Componentes
+import { ES } from './../../../applications.constant';
+
 // Servicios
 
 import { TrabajadorService } from './tabajador.service';
@@ -29,6 +32,7 @@ export class TrabajadorComponent implements OnInit {
     currentAccount: any;
     eventSubscriber: Subscription;
     currentSearch: string;
+    es: any;
 
     // Variables de control de la pagina
 
@@ -36,6 +40,7 @@ export class TrabajadorComponent implements OnInit {
     showFormularioDatosTrabajador: boolean;
     showImputTextNumPartidaSucesion: boolean;
     validatorNumDoc: ValidatorFn[];
+    formDatosTrabajador: FormGroup;
 
     // Variables de Modelo - Entidad
 
@@ -62,6 +67,7 @@ export class TrabajadorComponent implements OnInit {
     // Al cargar la pagina:
 
     ngOnInit() {
+      this.es = ES;
       this.contruirFormularioBusquedaTrabajador();
       this.cargarListaComboTipoDocumento();
       this.ocultarFormularioDatosTrabajador();
@@ -111,22 +117,18 @@ export class TrabajadorComponent implements OnInit {
         (res: ResponseWrapper) => {
           this.onError(res.json)
         });
-    }
+    };
+
+    // 5. Al hacer click en el boton siguiente
+
+    btnSiguiente(formBusquedaTrabajador: FormGroup) {
+      console.log('Presiono el boton siguiente');
+      this.router.navigate(['/liquidaciones/registro-atencion/empleador']);
+    };
 
     // Funciones Utilitarias - Busqueda Trabajador - I --------------------------------------------------------------------
 
     // Al iniciar - llamar el servicio para llenar el combo del tipo de documento para la busqueda del trabajador
-
-    recibirDatosLaboralesTrabajador() {
-      this.eventSubscriber = this.eventManager.subscribe('cargarDatosLaboralesfromPopup', (response) => this.cargarDatosLaborales());
-    }
-
-    cargarDatosLaborales() {
-      this.trabajadorTransferService.datlabSeleccionado.subscribe((datlab) => {
-        this.datlab = datlab as Datlab;
-        console.log(this.datlab);
-      });
-    }
 
     cargarListaComboTipoDocumento() {
       this.trabajadorService.consultaTipoDocIdentidad().subscribe((res: ResponseWrapper) => {
@@ -209,7 +211,88 @@ export class TrabajadorComponent implements OnInit {
     abrirPopupBusquedaVinculosLaborales() {
       this.router.navigate(['/liquidaciones/registro-atencion/trabajador' , { outlets: { popupexp: [Number(JSON.stringify(this.listaTrabajador[0].Trabajador.id))] } }]);
       // this.mostrarFormularioDatosTrabajador();
-    }
+    };
+
+    // Recibe los datos que podrian haber sido enviados del popup al formulario del trabajador
+    recibirDatosLaboralesTrabajador() {
+      this.eventSubscriber = this.eventManager.subscribe('cargarDatosLaboralesfromPopup', (response) => this.cargarDatosLaborales());
+    };
+
+    // Carga los datos laborales
+    cargarDatosLaborales() {
+      this.trabajadorTransferService.datlabSeleccionado.subscribe((datlab) => {
+        this.datlab = datlab as Datlab;
+        this.mostrarFormularioDatosTrabajador();
+        this.contruirFormularioDatosTrabajador();
+        this.setearValidacionesFormularioDatosTrabajador(this.formDatosTrabajador);
+        this.setearDatosTablaDirecciones();
+        // console.log(this.datlab);
+      });
+    };
+
+    // Construye el formulario de Datos del Trabajador
+
+    contruirFormularioDatosTrabajador() {
+      this.formDatosTrabajador = new FormGroup({});
+      this.formDatosTrabajador.addControl('apePat', new FormControl());
+      this.formDatosTrabajador.addControl('apeMat', new FormControl());
+      this.formDatosTrabajador.addControl('nombres', new FormControl());
+      // Sucesion
+      this.formDatosTrabajador.addControl('numPartSuc', new FormControl());
+      this.formDatosTrabajador.addControl('fecNac', new FormControl());
+      this.formDatosTrabajador.addControl('sexo', new FormControl());
+      this.formDatosTrabajador.addControl('numTel', new FormControl());
+      this.formDatosTrabajador.addControl('numCel', new FormControl());
+      // Dirección
+      this.formDatosTrabajador.addControl('email', new FormControl());
+      this.formDatosTrabajador.addControl('discap', new FormControl());
+      this.formDatosTrabajador.addControl('embarazo', new FormControl());
+      // Seteo Previo
+      (this.formDatosTrabajador.get('apePat') as FormControl).reset();
+      (this.formDatosTrabajador.get('apePat') as FormControl).setValidators(Validators.required);
+      (this.formDatosTrabajador.get('apeMat') as FormControl).reset();
+      (this.formDatosTrabajador.get('apeMat') as FormControl).setValidators(Validators.required);
+      (this.formDatosTrabajador.get('nombres') as FormControl).reset();
+      (this.formDatosTrabajador.get('nombres') as FormControl).setValidators(Validators.required);
+      // Sucesion
+      (this.formDatosTrabajador.get('fecNac') as FormControl).reset();
+      (this.formDatosTrabajador.get('fecNac') as FormControl).setValidators(Validators.required);
+      (this.formDatosTrabajador.get('sexo') as FormControl).reset();
+      (this.formDatosTrabajador.get('sexo') as FormControl).setValidators(Validators.required);
+      (this.formDatosTrabajador.get('numTel') as FormControl).reset();
+      (this.formDatosTrabajador.get('numCel') as FormControl).reset();
+      (this.formDatosTrabajador.get('email') as FormControl).reset();
+      (this.formDatosTrabajador.get('discap') as FormControl).reset();
+      (this.formDatosTrabajador.get('embarazo') as FormControl).reset();
+      /*this.formBusquedaTrabajador = new FormGroup({
+        'documento': new FormGroup({
+          'tipDoc': new FormControl(null, Validators.required), // this.formBusquedaTrabajador.value.documento.tipDoc
+          'numDoc': new FormControl(null, this.validatorNumDoc)
+          })
+        });*/
+    };
+
+    // Setea las validaciones para el formulario de Datos del Trabajador
+
+    setearValidacionesFormularioDatosTrabajador(formDatosTrabajador: FormGroup) {
+      // console.log('Setea validaciones');
+      (this.formDatosTrabajador.get('apePat') as FormControl).setValue(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).vApepat);
+      (this.formDatosTrabajador.get('apeMat') as FormControl).setValue(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).vApemat);
+      (this.formDatosTrabajador.get('nombres') as FormControl).setValue(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).vNombres);
+      (this.formDatosTrabajador.get('fecNac') as FormControl).setValue(new Date(
+      +(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).dFecnac as string).substring(0, 4),
+      +(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).dFecnac as string).substring(5, 7) - 1,
+      +(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).dFecnac as string).substring(8, 10)));
+      (this.formDatosTrabajador.get('sexo') as FormControl).setValue(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).vSexoper);
+      (this.formDatosTrabajador.get('numTel') as FormControl).setValue(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).vTelefono);
+      (this.formDatosTrabajador.get('numCel') as FormControl).setValue(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).vCelular);
+      (this.formDatosTrabajador.get('email') as FormControl).setValue(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).vEmailper);
+      // console.log((((this.datlab.trabajador as Trabajador).pernatural as Pernatural).dFecnac as Date));
+    };
+
+    setearDatosTablaDirecciones() {
+
+    };
 
     // Funciones Utilitarias - Busqueda Trabajador - F --------------------------------------------------------------------
-}
+};

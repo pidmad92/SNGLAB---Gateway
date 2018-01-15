@@ -48,11 +48,12 @@ export class ModalBusquedaTrabajadorComponent implements OnInit {
     btnCargar(event) {
       this.datLabSeleccionado = (this.selecDatLab.datolab as Datlab);
       this.data.cambiarDatlab(this.datLabSeleccionado);
+      console.log(`Cargando el vinculo laboral con Id:${this.datLabSeleccionado.id}...`);
       // this.data.cambiarDatlab(event.data);
       this.eventManager.broadcast({ name: 'cargarDatosLaboralesfromPopup', context: 'OK'});
       // this.eventSubscriber = this.eventManager.subscribe('cargarDatosLaboralesfromPopup', (response) => this.cargarExpedienteConciliacion());
 
-      console.log(this.datLabSeleccionado)
+      // console.log(this.datLabSeleccionado)
       this.activeModal.dismiss('cargarDatos');
     }
 
@@ -66,8 +67,8 @@ export class ModalBusquedaTrabajadorComponent implements OnInit {
     cargarDatosLaborales() {
       // Nombre completo del trabajador
       this.nomCompleto = this.listaDatlab[0].datolab.trabajador.pernatural.vApepat + ' ' +
-       this.listaDatlab[0].datolab.trabajador.pernatural.vApemat + ' ' +
-       this.listaDatlab[0].datolab.trabajador.pernatural.vNombres;
+      this.listaDatlab[0].datolab.trabajador.pernatural.vApemat + ' ' +
+      this.listaDatlab[0].datolab.trabajador.pernatural.vNombres;
       // El Dni y los datos laborales se jalaron directamente desde el las variables al campo y al prime datatable.
     }
 
