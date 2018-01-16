@@ -1,8 +1,8 @@
 import { Component, OnInit, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { Router, NavigationStart, Event as NavigationEvent  } from '@angular/router';
-import { RegistroExpedienteWizardService } from './registro-expediente-wizard/registro-expediente-wizard.service';
+// import { RegistroExpedienteWizardService } from './registro-expediente-wizard/registro-expediente-wizard.service';
 import { MenuItem, Message } from 'primeng/primeng';
-import { Pasegl } from './';
+// import { Pasegl } from './';
 import { JhiEventManager } from 'ng-jhipster';
 
 @Component({
@@ -13,7 +13,7 @@ import { JhiEventManager } from 'ng-jhipster';
 })
 export class RegistroExpedienteComponent implements OnInit, OnChanges {
 
-    pasegl = new Pasegl();
+    // pasegl = new Pasegl()
     currentUrl = '/';
     items: MenuItem[];
     msgs: Message[] = [];
@@ -24,22 +24,22 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
     router: any;
     routes = ['datos-pase', 'datos-trabajador', 'datos-empleador', 'datos-expediente', 'datos-audiencia'];
 
-    constructor( router: Router, private data: RegistroExpedienteWizardService, private eventManager: JhiEventManager) {
-        this.router = router;
-        this.activeIndex = this.getStepCurrent(router.url);
-        router.events.forEach((event: NavigationEvent) => {
-            if (event instanceof NavigationStart) {
-                this.currentUrl = event.url;
-                this.activeIndex = this.getStepCurrent(this.currentUrl);
-            }
-        });
-    }
+    // constructor( router: Router, private data: RegistroExpedienteWizardService, private eventManager: JhiEventManager) {
+    //     this.router = router;
+    //     this.activeIndex = this.getStepCurrent(router.url);
+    //     router.events.forEach((event: NavigationEvent) => {
+    //         if (event instanceof NavigationStart) {
+    //             this.currentUrl = event.url;
+    //             this.activeIndex = this.getStepCurrent(this.currentUrl);
+    //         }
+    //     });
+    // }
 
     ngOnInit() {
-        this.data.paseSeleccionado.subscribe((pasegl) => {
-            this.pasegl = pasegl;
-            this.isPaseSelect();
-        });
+        // this.data.paseSeleccionado.subscribe((pasegl) => {
+        //     this.pasegl = pasegl;
+        //     this.isPaseSelect();
+        // });
 
         this.items = [{
                 label: 'Datos del Pase',
@@ -92,13 +92,13 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
         ];
     }
 
-    isPaseSelect() {
-        if (typeof this.pasegl.id === 'undefined') {
-            return false;
-        } else {
-            return true;
-        }
-    }
+    // isPaseSelect() {
+    //     if (typeof this.pasegl.id === 'undefined') {
+    //         return false;
+    //     } else {
+    //         return true;
+    //     }
+    // }
 
     getStepCurrent(url) {
         let ct = 0;
@@ -132,31 +132,31 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
             }
         });
     }
-    public next() {
-        if (this.activeIndex === 4) {
-            this.eventManager.broadcast({ name: 'saveExpedienteFinal', content: 'OK'});
-        } else {
-            this.activeIndex++;
-            console.log('Cambio de Rutas:' + this.activeIndex);
-            this.router.navigate(['/conciliaciones/expediente/registro', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
-            this.ngOnChanges({
-                activeIndex: {
-                    currentValue: this.activeIndex,
-                    previousValue: this.activeIndex - 1,
-                    firstChange: false,
-                    isFirstChange: () => false
-                }
-            });
-            if (this.activeIndex === 2) {
-                this.eventManager.broadcast({ name: 'saveTrabajador', content: 'OK'});
-            } else if (this.activeIndex === 3) {
-                this.eventManager.broadcast({ name: 'saveEmpleador', content: 'OK'});
-            } else if (this.activeIndex === 4) {
-                console.log('routeNEXT');
-                this.eventManager.broadcast({ name: 'saveExpediente', content: 'OK'});
-            }
-        }
-    }
+    // public next() {
+    //     if (this.activeIndex === 4) {
+    //         this.eventManager.broadcast({ name: 'saveExpedienteFinal', content: 'OK'});
+    //     } else {
+    //         this.activeIndex++;
+    //         console.log('Cambio de Rutas:' + this.activeIndex);
+    //         this.router.navigate(['/conciliaciones/expediente/registro', { outlets: { wizard: [this.routes[this.activeIndex]] } }]);
+    //         this.ngOnChanges({
+    //             activeIndex: {
+    //                 currentValue: this.activeIndex,
+    //                 previousValue: this.activeIndex - 1,
+    //                 firstChange: false,
+    //                 isFirstChange: () => false
+    //             }
+    //         });
+    //         if (this.activeIndex === 2) {
+    //             this.eventManager.broadcast({ name: 'saveTrabajador', content: 'OK'});
+    //         } else if (this.activeIndex === 3) {
+    //             this.eventManager.broadcast({ name: 'saveEmpleador', content: 'OK'});
+    //         } else if (this.activeIndex === 4) {
+    //             console.log('routeNEXT');
+    //             this.eventManager.broadcast({ name: 'saveExpediente', content: 'OK'});
+    //         }
+    //     }
+    // }
 
     public previous() {
         this.activeIndex--;
