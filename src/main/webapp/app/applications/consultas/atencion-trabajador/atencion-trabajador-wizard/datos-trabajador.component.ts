@@ -17,6 +17,7 @@ import { Tipdocident } from '../../models/tipdocident.model';
 import { Cartrab } from '../../models/cartrab.model';
 import { ComboModel } from '../../../general/combobox.model';
 import { ResponseWrapper } from '../../../../shared';
+import { ES } from './../../../applications.constant';
 
 @Component({
     selector: 'jhi-datos-trabajador',
@@ -26,14 +27,18 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
     // export class DatosTrabajadorComponent {
 
     atencion: any;
-    trabajador: Trabajador;
+    // trabajador: Trabajador;
+    trabajador: any;
     pernatural: Pernatural;
     listadocident: Tipdocident[] = [];
     listacargo: Cartrab[] = [];
     tipodocs: Tipdocident[];
     selectedTipodoc: Tipdocident;
     private subscription: Subscription;
+    private atenSubscription: Subscription;
     private eventSubscriber: Subscription;
+    private bandPantSuscriber: Subscription;
+    private atenSuscriber: Subscription;
     vNumdocumento: String;
     routeSub: any;
     direcciones: any;
@@ -48,6 +53,16 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
     selecDirper: Dirpernat;
 
     actividadSelec: string;
+
+    fechoy: Date;
+    maxlengthDocIdent: number;
+    paganterior: string;
+    isVisible: boolean;
+
+    es: any;
+    dFecnac: Date;
+    // dFecnac: String;
+    accion: number;
 
     constructor(
         private eventManager: JhiEventManager,
@@ -71,47 +86,173 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
         this.atencionTrabajadorService.buscarDireccionesPerNat(id).subscribe(
             (res: ResponseWrapper) => {
                 this.dirpernat = res.json;
+                if (this.dirpernat !== undefined) {
+                    this.isVisible = true;
+                } else {
+                    this.isVisible = false;
+                }
             },
             (res: ResponseWrapper) => { this.onError(res.json); }
         );
     }
 
+    inicializaTablas() {
+        this.dirpernat = [];
+        this.dirper = new Dirpernat();
+        this.isVisible = false;
+    }
+
+    inicializarFormulario() {
+        this.inicializaTablas();
+        // this.vNumdocumento = '';
+        this.displayDialog = false;
+        if (this.trabajador !== null) {
+            // this.trabajador = new Trabajador();
+            this.trabajador.id = undefined;
+            this.trabajador.pernatural = new Pernatural();
+            this.trabajador.cartrab = new Cartrab();
+        }
+    }
+
+    changeTipdocident() {
+        this.vNumdocumento = '';
+        if (this.selectedTipodoc !== undefined) {
+            this.maxlengthDocIdent = this.selectedTipodoc.nNumdigi;
+        }
+        this.inicializarFormulario();
+    }
+
+    buscaTrabajadorByDocIdent() {
+        // this.inicializarFormulario();
+        //  const tipodoc = 1;
+        //  const numdoc =  this.vNumdocumento; //  '12345678';
+        // this.atencionTrabajadorService.findTrabajadorByDocIdent(tipodoc, numdoc).subscribe((trabajador) => {
+        //     this.trabajador = trabajador;
+        // });
+        console.log('Busca Trabajador...');
+        console.log(JSON.stringify(this.selectedTipodoc.id) + '|' + this.vNumdocumento);
+        if (this.selectedTipodoc.id === undefined || this.vNumdocumento === undefined) {
+            return;
+        }
+         const tipodoc = this.selectedTipodoc.id; // 1;
+         const numdoc =  this.vNumdocumento; //  '12345678';
+         console.log(tipodoc);
+         console.log(numdoc);
+        this.atencionTrabajadorService.findTrabajadorByDocIdent(tipodoc, numdoc).subscribe((trabajador) => {
+            console.log(trabajador);
+            this.trabajador = trabajador;
+            if (this.trabajador.id !== undefined) {
+                this.loadDirecPerNatu(this.trabajador.id);
+            }
+            this.registerChangeInTrabajador();
+            this.registroAtencionWizard.trabajadorSeleccionado.subscribe((loadtrabajador) => {
+                this.trabajador = loadtrabajador;
+            });
+        });
+    }
+
+    formattedDate(d: Date): string {
+        let month = String(d.getMonth() + 1);
+        let day = String(d.getDate());
+        const year = String(d.getFullYear());
+
+        if (month.length < 2) { month = '0' + month; }
+        if (day.length < 2) { day = '0' + day; }
+
+        return `${day}/${month}/${year}`;
+    }
+
     ngOnInit() {
+        this.accion = 1;
+        this.es = ES;
+        this.inicializaTablas();
+        this.fechoy = new Date();
         this.loadTipoDoc();
         this.loadDepartamentos();
         this.atencion = new Atencion();
         this.trabajador = new Trabajador();
         this.trabajador.pernatural = new Pernatural();
         // Se carga el tipo de actividad a realizar y los datos de la atención
-        this.subscription = this.registroAtencionWizard.actividadSelec.subscribe((actividadSelect) => {
-            this.actividadSelec = actividadSelect;
-            this.registroAtencionWizard.atenSeleccionado.subscribe((atencion) => {
+        this.subscription = this.registroAtencionWizard.actividadSelec.subscribe((actividadsel) => {
+            this.actividadSelec = actividadsel;
+            this.atenSubscription = this.registroAtencionWizard.atenSeleccionado.subscribe((atencion) => {
                 this.atencion = atencion;
-                if (this.actividadSelec === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
+                this.registroAtencionWizard.trabajadorSeleccionado.subscribe((loadtrabajador) => {
+                    this.trabajador = loadtrabajador;
+                this.bandPantSuscriber = this.registroAtencionWizard.paganteriorSelec.subscribe((paginante) => {
+                    this.paganterior = paginante;
+                    // console.log('Pagina Anterior: ' + paginante);
+                    console.log('actividadseleccionada: ' + actividadsel);
+                if (actividadsel === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
                     this.router.navigate(['/consultas/atencion-trabajador']);
-                } else if (this.actividadSelec === '1') { // Si el flujo es generado al clickear el boton nuevo registro se instanciaran los datos en blanco
-                    this.trabajador = new Trabajador();
-                    this.trabajador.pernatural = new Pernatural();
+                } else if (actividadsel === '1') { // Si el flujo es generado al clickear el boton nuevo registro se instanciaran los datos en blanco
+                        if (this.paganterior === '0') {
+                            // this.paganterior = '1';
+                            this.ngOnDestroy();
+                        } else {
+                            if (this.paganterior >= '1') {
+                                    console.log('Recupera trabajador grabado: ' + JSON.stringify(this.trabajador));
+                                    if (this.trabajador.id !== undefined) {
+                                        this.isVisible = true;
+                                        this.dirper = new Dirpernat();
+                                        this.dirpernat = [];
+                                        this.dirper.pernatural = this.trabajador.pernatural;
+                                        // console.log('Load Trabajador.Personanatural: ' + JSON.stringify(this.trabajador.pernatural));
+                                        this.selectedTipodoc = this.trabajador.pernatural.tipdocident;
+                                        this.vNumdocumento = this.trabajador.pernatural.vNumdoc;
+                                        // this.dFecnac = new Date(this.trabajador.pernatural.dFecnac);
+                                        this.dFecnac = this.atencionTrabajadorService.convertFechas(this.trabajador.pernatural.dFecnac);
+                                        this.loadDirecPerNatu(this.trabajador.id);
+                                    } else {
+                                        this.isVisible = false;
+                                        this.trabajador = new Trabajador();
+                                        this.trabajador.pernatural = new Pernatural();
+                                        this.dirpernat = [];
+                                        this.dirper = new Dirpernat();
+                                    }
+                            }
+                        }
+                        this.paganterior = '1';
                 } else {
                     if (atencion.datlab !== undefined ) { // Si la atencion datos laborales se obtienen los datos del trabajador de esta entidad
                         this.trabajador =  this.atencion.datlab.trabajador;
                         this.trabajador.pernatural = this.atencion.datlab.trabajador.pernatural;
                         this.selectedTipodoc = this.atencion.datlab.trabajador.pernatural.tipdocident;
                         this.vNumdocumento = this.atencion.datlab.trabajador.pernatural.vNumdoc;
+                        this.dFecnac = new Date(this.atencion.datlab.trabajador.pernatural.dFecnac);
+                        this.dFecnac = this.atencionTrabajadorService.convertFechas(this.atencion.datlab.trabajador.pernatural.dFecnac);
                         this.dirper = new Dirpernat();
                         this.dirper.pernatural = this.trabajador.pernatural;
                         this.loadDirecPerNatu(this.trabajador.id);
                     } else { // Si la atención no tiene datos laborales se carga la información de la propia atención.
                         this.trabajador =  this.atencion.trabajador;
                         this.trabajador.pernatural = this.atencion.trabajador.pernatural;
+                        this.selectedTipodoc = this.atencion.trabajador.pernatural.tipdocident;
+                        this.vNumdocumento = this.atencion.trabajador.pernatural.vNumdoc;
+                        // this.dFecnac = new Date(this.atencion.trabajador.pernatural.dFecnac);
+                        this.dFecnac = this.atencionTrabajadorService.convertFechas(this.atencion.trabajador.pernatural.dFecnac);
+                        this.dirper = new Dirpernat();
+                        this.dirper.pernatural = this.trabajador.pernatural;
+                        this.loadDirecPerNatu(this.trabajador.id);
                     }
                 }
+            });
+            this.registerChangePaganterior();
+            });
             });
             this.registerChangeInTrabajador();
         });
     }
     ngOnDestroy() {
-        this.subscription.unsubscribe();
+        if (this.subscription !== undefined) {
+            this.subscription.unsubscribe();
+        }
+        if (this.atenSubscription !== undefined) {
+            this.atenSubscription.unsubscribe();
+        }
+        if (this.eventSubscriber !== undefined) {
+            this.eventSubscriber.unsubscribe();
+        }
     }
 
     load(id) {
@@ -141,10 +282,24 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
             }
         });
     }
+
     showDialogToAdd() {
         this.newDirec = true;
         this.displayDialog = true;
+        this.accion = 1;
     }
+
+    showDialogToAction(accion: number) {
+        this.accion = accion;
+        if (this.accion === 2) {
+            console.log('Editar: ' + this.dirper);
+        } else if (this.accion === 3) {
+            console.log('Eliminar: ' + this.dirper);
+        }
+        this.newDirec = false;
+        this.displayDialog = true;
+    }
+
     onRowSelect(event) {
         this.newDirec = false;
         this.dirper = this.cloneDirec(event.data.direc);
@@ -152,6 +307,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
         this.loadDistritos(false, this.dirper.nCodprov);
         this.displayDialog = true;
     }
+
     save() {
         if (this.newDirec) {
             this.subscribeToSaveResponse(
@@ -168,12 +324,28 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
         this.displayDialog = false;
     }
     delete() {}
+
     registerChangeInTrabajador() {
-        this.eventSubscriber = this.eventManager.subscribe('saveTrabajador',
-        (response) => {
-            console.log('PasarAtencion' + JSON.stringify(this.trabajador));
+        // this.eventSubscriber = this.eventManager.subscribe('saveTrabajador',
+        // (response) => {
+            // console.log('PasarTrabajador' + JSON.stringify(this.trabajador));
+            // this.registroAtencionWizard.cambiarEstadoStep();
             this.registroAtencionWizard.cambiarTrabajador(this.trabajador);
-        });
+        // });
+    }
+
+    registerChangeAtencion(atencion: Atencion) {
+        // this.atenSuscriber = this.eventManager.subscribe('saveAten',
+        // (response) => {
+            this.registroAtencionWizard.cambiarAtencion(atencion);
+        // });
+    }
+
+    registerChangePaganterior() {
+        // this.bandPantSuscriber = this.eventManager.subscribe('savePageAnte',
+        // (response) => {
+            this.registroAtencionWizard.cambiarBandPagAnterior(this.paganterior);
+        // });
     }
 
     private subscribeToSaveResponse(result: Observable<Dirpernat>) {
@@ -199,13 +371,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
     trackCargos(index: number, item: Cartrab) {
         return item.vDescartra;
     }
-    buscaTrabajadorByDocIdent() {
-         const tipodoc = 1;
-         const numdoc =  this.vNumdocumento; //  '12345678';
-        this.atencionTrabajadorService.findTrabajadorByDocIdent(tipodoc, numdoc).subscribe((trabajador) => {
-            this.trabajador = trabajador;
-        });
-    }
+
     cloneDirec(dir: Dirpernat): Dirpernat {
         const direc = new Dirpernat();
         for (const prop in dir) {

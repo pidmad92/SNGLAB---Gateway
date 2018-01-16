@@ -18,6 +18,9 @@ export class Docexpedien implements BaseEntity {
         public dettipprov?: BaseEntity,
         public tipdocexp?: BaseEntity,
         public tipproveid?: BaseEntity,
+        public fecregistro?: string,
+        public usuarioreg?: string,
+        public observacion?: string,
     ) {
         this.nFlgactivo = false;
     }

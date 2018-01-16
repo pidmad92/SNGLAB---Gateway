@@ -4,7 +4,9 @@ import { Observable } from 'rxjs/Rx';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
+import { Pasegl } from '../models/pasegl.model';
 import { Atencion } from '../models/atencion.model';
+import { Empleador } from '../models/empleador.model';
 import { Datlab } from '../models/datlab.model';
 import { Dirpernat } from '../models/dirpernat.model';
 import { Dirperjuri } from '../models/dirperjuri.model';
@@ -31,6 +33,7 @@ export class AtencionTrabajadorService {
     private resource = '/consultas/api/';
 
     // RUTAS POR ENTIDAD
+    private resourcePasegl      = this.resource + 'pasegls';
     private resourceAtencion    = this.resource + 'atencions';
     private resourceDatoslab    = this.resource + 'datlabs';
     private resourceTipoDoc     = this.resource + 'tipdocidents';
@@ -187,6 +190,28 @@ export class AtencionTrabajadorService {
         }
     // --
 
+// PASES
+
+        // /**
+        //  * Buscar Pases de Empleador, para una oficina con un estado de pase
+        //  * @param  {String} id
+        //  * @returns Observable
+        //  */
+        // findPasesByEmpleadorOficinaEstadopase(id_trab: number, id_ofic: number, estpase: number): Observable<ResponseWrapper> {
+        //     return this.http.get(`${this.resourcePasegl}/pases/empleador/${id_trab}/oficina/${id_ofic}/estado/${estpase}`)
+        //         .map((res: Response) => this.convertResponsePase(res));
+        // }
+
+        /**
+         * Buscar Pases por código de Trabajador
+         * @param  {String} id
+         * @returns Observable
+         */
+        findPasesByTrabajador(id_trab: number): Observable<ResponseWrapper> {
+            return this.http.get(`${this.resourcePasegl}/pase/general/id_trabajador/${id_trab}`)
+                .map((res: Response) => this.convertResponsePase(res));
+        }
+
     // -- TRABAJADORES
 
         /**
@@ -237,6 +262,64 @@ export class AtencionTrabajadorService {
                 .map((res: Response) => this.convertResponseTrabajadorTrabajador(res));
         }
     // --
+
+// EMPLEADORES
+
+        /**
+         * Buscar Empleador por id
+         * @param  {number} id
+         * @returns Observable
+         */
+        findEmpleadorById(id: number): Observable<Empleador> {
+            return this.http.get(`${this.resourceEmpleador}/${id}`).map((res: Response) => {
+                const jsonResponse = res.json();
+                return this.convertItemFromServerEmpleador(jsonResponse);
+            });
+        }
+
+        /**
+         * Buscar Empleador por tipo de documento de identidad y nùmero de documento
+         * @param  {number} tipodoc
+         * @param  {String} numdoc
+         * @returns Observable
+         */
+        findEmpleadorsByDocIdent(tipodoc: number, numdoc: String, tipper: number): Observable<Empleador> {
+            return this.http.get(`${this.resourceEmpleador}/tipdoc/${tipodoc}/numdoc/${numdoc}/bandperjuri/${tipper}`)
+                .map((res: Response) => {
+                    const jsonResponse = res.json();
+                    return this.convertItemFromServerEmpleador(jsonResponse);
+                });
+        }
+
+        /** Buscar Consulta lista de Empleadores por tipo  de documento de identidad y nùmero de documento
+         * @param  {number} tipodoc
+         * @param  {String} numdoc
+         * @returns Observable
+         */
+        findConsultaEmpleadorsByDocIdent(tipodoc: number, numdoc: String, tipper: number): Observable<ResponseWrapper> {
+            return this.http.get(`${this.resourceEmpleador}/consulta/tipdoc/${tipodoc}/numdoc/${numdoc}/bandperjuri/${tipper}`)
+                .map((res: Response) => this.convertResponseEmpleadorEmpleador(res));
+        }
+
+        /**
+         * Buscar Empleador por Razón Social
+         * @param  {String} razsocial
+         * @returns Observable
+         */
+        findEmpleadorsByRazSocial(razsocial: String): Observable<ResponseWrapper> {
+            return this.http.get(`${this.resourceEmpleador}/razsocial/${razsocial}`)
+                .map((res: Response) => this.convertResponseEmpleadorEmpleador(res));
+        }
+
+        /**
+         * Buscar Empleador por Consulta Razón Social
+         * @param  {String} razsocial
+         * @returns Observable
+         */
+        findConsultaEmpleadorsByRazSocial(razsocial: String): Observable<ResponseWrapper> {
+            return this.http.get(`${this.resourceEmpleador}/consulta/razsocial/${razsocial}`)
+                .map((res: Response) => this.convertResponseEmpleadorEmpleador(res));
+        }
 
     // -- ATENCION
 
@@ -430,6 +513,12 @@ export class AtencionTrabajadorService {
         }
     // --
 
+// Convertir Fechas
+
+        convertFechas(fecha: any): any {
+            return this.dateUtils.toDate(fecha);
+        }
+
     // CONVERT RESPONSE FORMATED ELEMENT DATES
 
         private convertResponseTipoDocIdentidad(res: Response): ResponseWrapper {
@@ -500,6 +589,21 @@ export class AtencionTrabajadorService {
         }
         private convertItemFromServerDatlab(json: any): Datlab {
             const entity: Datlab = Object.assign(new Datlab(), json);
+            entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+            entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+            return entity;
+        }
+
+        private convertResponsePase(res: Response): ResponseWrapper {
+            const jsonResponse = res.json();
+            const result = [];
+            for (let i = 0; i < jsonResponse.length; i++) {
+                result.push(this.convertItemFromServerPase(jsonResponse[i]));
+            }
+            return new ResponseWrapper(res.headers, result, res.status);
+        }
+        private convertItemFromServerPase(json: any): Pasegl {
+            const entity: Pasegl = Object.assign(new Pasegl(), json);
             entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
             entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
             return entity;
@@ -732,6 +836,34 @@ export class AtencionTrabajadorService {
             copy.tFecupd = this.dateUtils.toDate(trabajador.tFecupd);
             return copy;
         }
+
+    /**
+     * Convert a Empleador to a JSON which can be sent to the server.
+     */
+    private convert(empleador: Empleador): Empleador {
+        const copy: Empleador = Object.assign({}, empleador);
+
+        copy.tFecreg = this.dateUtils.toDate(empleador.tFecreg);
+
+        copy.tFecupd = this.dateUtils.toDate(empleador.tFecupd);
+        return copy;
+    }
+
+    private convertResponseEmpleadorEmpleador(res: Response): ResponseWrapper {
+        const jsonResponse = res.json();
+        const result = [];
+        for (let i = 0; i < jsonResponse.length; i++) {
+            result.push(this.convertItemFromServerEmpleador(jsonResponse[i]));
+        }
+        return new ResponseWrapper(res.headers, result, res.status);
+    }
+    private convertItemFromServerEmpleador(json: any): Empleador {
+        const entity: Empleador = Object.assign(new Empleador(), json);
+        entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+        return entity;
+    }
+
         private convertDirPerNat(dirpernat: Dirpernat): Dirpernat {
             const copy: Dirpernat = Object.assign({}, dirpernat);
             copy.tFecreg = this.dateUtils.toDate(dirpernat.tFecreg);
@@ -750,4 +882,5 @@ export class AtencionTrabajadorService {
             copy.tFecupd = this.dateUtils.toDate(motivcese.tFecupd);
             return copy;
         }
+
 }

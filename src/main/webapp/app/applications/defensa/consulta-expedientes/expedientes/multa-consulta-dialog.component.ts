@@ -1,4 +1,4 @@
-import { ES } from './../../applications.constant';
+import { ES } from './../../../applications.constant';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
@@ -8,40 +8,40 @@ import { Observable } from 'rxjs/Rx';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
-import { AudienciaConsultaPopupService } from './audiencia-consulta-popup.service';
-import { ResponseWrapper } from './../../../shared';
+import { MultaConsultaPopupService } from './multa-consulta-popup.service';
+import { ResponseWrapper } from './../../../../shared';
 
 import { Message } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
-import { ComboModel } from './../../general/combobox.model';
-import { Concilia } from './concilia.model';
-import { Expediente } from './expediente.model';
-import { Horacon } from './horacon.model';
-import { Abogado } from './abogado.model';
-import { AbogadoService } from './abogado.service';
-import { ConciliaService } from './concilia.service';
-import { Pasegl } from './pasegl.model';
-import { Atencion } from './atencion.model';
-import { Datlab } from './datlab.model';
-import { Empleador } from './empleador.model';
-import { Perjuridica } from './perjuridica.model';
-import { Pernatural } from './pernatural.model';
-import { Trabajador } from './trabajador.model';
-import { Dirperjuri } from './dirperjuri.model';
-import { DirperjuriService } from './dirperjuri.service';
-import { Dirpernat } from './dirpernat.model';
-import { DirpernatService } from './dirpernat.service';
-import { Tipdocident} from './../../../entities/tipdocident/tipdocident.model';
-import { Motatenofic } from './motatenofic.model';
-import { Resulconci } from '../../../entities/resulconci/index';
-import { Tipresconc } from './tipresconc.model';
+import { ComboModel } from './../../../general/combobox.model';
+import { Concilia } from './../../audiencias/concilia.model';
+import { Expediente } from './../../audiencias/expediente.model';
+import { Horacon } from './../../audiencias/horacon.model';
+import { Abogado } from './../../audiencias/abogado.model';
+import { AbogadoService } from './../../audiencias/abogado.service';
+import { ConciliaService } from './../../audiencias/concilia.service';
+import { Pasegl } from './../../audiencias/pasegl.model';
+import { Atencion } from './../../audiencias/atencion.model';
+import { Datlab } from './../../audiencias/datlab.model';
+import { Empleador } from './../../audiencias/empleador.model';
+import { Perjuridica } from './../../audiencias/perjuridica.model';
+import { Pernatural } from './../../audiencias/pernatural.model';
+import { Trabajador } from './../../audiencias/trabajador.model';
+import { Dirperjuri } from './../../audiencias/dirperjuri.model';
+import { DirperjuriService } from './../../audiencias/dirperjuri.service';
+import { Dirpernat } from './../../audiencias/dirpernat.model';
+import { DirpernatService } from './../../audiencias/dirpernat.service';
+import { Tipdocident} from './../../../../entities/tipdocident/tipdocident.model';
+import { Motatenofic } from './../../audiencias/motatenofic.model';
+import { Resulconci } from '../../../../entities/resulconci/index';
+import { Tipresconc } from './../../audiencias/tipresconc.model';
 
 @Component({
     selector: 'jhi-audiencia-consulta-dialog',
-    templateUrl: './audiencia-consulta-dialog.component.html'
+    templateUrl: './multa-consulta-dialog.component.html'
 })
 
-export class AudienciaConsultaDialogComponent implements OnInit {
+export class MultaConsultaDialogComponent implements OnInit {
 
     es: any;
     fechaAudiencia: Date;
@@ -53,6 +53,8 @@ export class AudienciaConsultaDialogComponent implements OnInit {
     direcciones: any;
     motivos: any;
     audiencia: any;
+    disabledSegInst: boolean;
+    disabledInstJud: boolean;
 
     // CLases
     concilia: Concilia;
@@ -188,9 +190,9 @@ export class AudienciaConsultaDialogComponent implements OnInit {
     ngOnInit() {
         this.es = ES;
         this.banPersona = '';
-        console.log('consulta audiencia');
-        console.log(this.concilia);
+        this.disabledSegInst = true;
         this.expediente = this.concilia.expediente;
+        this.pasegl = this.expediente.pasegl;
         this.horacon = this.concilia.horacon;
         this.abogado = this.concilia.abogado;
         this.pasegl = this.expediente.pasegl;
@@ -253,23 +255,23 @@ export class AudienciaConsultaDialogComponent implements OnInit {
     selector: 'jhi-audiencia-popup',
     template: ''
 })
-export class AudienciaConsultaPopupComponent implements OnInit, OnDestroy {
+export class MultaConsultaPopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 
     constructor(
         private route: ActivatedRoute,
-        private audienciaConsultaPopupService: AudienciaConsultaPopupService
+        private multaConsultaPopupService: MultaConsultaPopupService
     ) { }
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
-                this.audienciaConsultaPopupService
-                    .open(AudienciaConsultaDialogComponent as Component, params['id']);
+                this.multaConsultaPopupService
+                    .open(MultaConsultaDialogComponent as Component, params['id']);
             } else {
-                this.audienciaConsultaPopupService
-                    .open(AudienciaConsultaDialogComponent as Component);
+                this.multaConsultaPopupService
+                    .open(MultaConsultaDialogComponent as Component);
             }
         });
     }

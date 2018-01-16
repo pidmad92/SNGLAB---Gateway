@@ -154,6 +154,7 @@ export class AtencionTrabajadorWizardComponent implements OnInit, OnChanges  {
                 isFirstChange: () => false
             }
         });
+
     }
 
 }

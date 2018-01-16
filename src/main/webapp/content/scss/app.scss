@@ -716,11 +716,11 @@ legend{
   font-size:13px;
   font-weight:bold;
   margin-bottom: 0px; 
-  width: 35%; 
   border: 1px solid #f5911e;
   border-radius: 4px; 
-  padding: 2px 2px 2px 5px; 
+  padding: 3px 80px 3px 20px ; 
   background-color: #fff6eb;
+  width: auto;
 }
 @media (max-width: 575px) {
   legend{
@@ -1291,3 +1291,16 @@ label.ui-chkbox-label{
   background-color : yellow !important;
 }
 
+
+body .ui-state-disabled, body .ui-widget:disabled {
+  background-color: #e9ecef;
+  opacity: 1;
+}
+
+@media (min-width: 992px){  
+  .modal-mg {
+    .modal-lg {
+      max-width: 1300px;
+    }
+  }
+}
