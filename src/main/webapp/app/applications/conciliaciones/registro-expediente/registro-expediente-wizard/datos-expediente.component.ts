@@ -7,6 +7,7 @@ import { SelectItem } from 'primeng/components/common/selectitem';
 import { JhiEventManager } from 'ng-jhipster';
 
 import { ResponseWrapper } from '../../../../shared';
+import { Message } from 'primeng/components/common/api';
 import { DatosWizardService } from './datos-wizard.service';
 import { RegistroExpedienteWizardService } from './registro-expediente-wizard.service';
 import { Motatenofic } from '../../models/motatenofic.model';
@@ -20,6 +21,7 @@ import { Pernatural } from '../../models/pernatural.model';
 import { Perjuridica } from '../../models/perjuridica.model';
 import { Trabajador } from '../../models/trabajador.model';
 import { Horacon } from '../../models/horacon.model';
+declare var $: any;
 
 @Component({
     selector: 'jhi-datos-expediente',
@@ -46,6 +48,9 @@ export class DatosExpedienteComponent implements OnInit, OnDestroy {
     expediente: Expediente = new Expediente();
     concilia: Concilia = new Concilia();
 
+    block: boolean;
+    mensajes: Message[] = [];
+
     displayDialog: boolean;
     es: any;
     fechaRegistro: Date;
@@ -62,9 +67,11 @@ export class DatosExpedienteComponent implements OnInit, OnDestroy {
         private registroExpedienteWizard: RegistroExpedienteWizardService) {
     }
     loadMotivOfic(idpase) {
+        this.block = true;
         this.datosWizardService.consultaMotivOfic(idpase).subscribe(
             (res: ResponseWrapper) => {
                 this.motatenofic = res.json;
+                this.block = false;
                 // console.log('Motivofic: ' + JSON.stringify(this.motatenofic));
                 for (const mot of this.motatenofic) {
                     // console.log('for' + mot.idmotpase);
@@ -76,7 +83,7 @@ export class DatosExpedienteComponent implements OnInit, OnDestroy {
                     }
                 }
             },
-            (res: ResponseWrapper) => { this.onError(res.json); }
+            (res: ResponseWrapper) => { this.onError(res.json); this.block = false; }
         );
     }
     cargarEstadoExpe(id) {
@@ -91,12 +98,19 @@ export class DatosExpedienteComponent implements OnInit, OnDestroy {
         if (fecha === null) {
             return;
         }
+        this.block = true;
         if (fecha.length === 10) {
             this.datosWizardService.buscarHoraPorFecha(fecha).subscribe(
                 (res: ResponseWrapper) => {
+                    this.block = false;
                     this.horacon = res.json;
+                    this.mensajes = [];
+                    this.mensajes.push({severity: 'success', summary: 'Mensaje de Confirmación', detail: 'Horas de conciliación actualizadas correctamente'});
+                    setTimeout(function() {
+                        $('#field_horacon').focus();
+                    });
                 },
-                (res: ResponseWrapper) => { this.onError(res.json); }
+                (res: ResponseWrapper) => { this.onError(res.json); this.block = false; }
             );
         }
     }
@@ -123,7 +137,9 @@ export class DatosExpedienteComponent implements OnInit, OnDestroy {
                         this.buscarHora();
                     }
                 });
-
+                setTimeout(function() {
+                    $('#inpNumero').focus();
+                });
                 // this.atencion = this.pasegl.atencion;// this.datlab = this.atencion.datlab;// this.trabajador = this.datlab.trabajador;
                 this.cargarEstadoExpe(1);
                 this.loadMotivOfic(pasegl.id);
@@ -156,6 +172,8 @@ export class DatosExpedienteComponent implements OnInit, OnDestroy {
         // this.concilia.expediente = this.expediente;
 
         // console.log('PasarExpediente' + JSON.stringify(this.expediente));
+        console.log('Conciliacion');
+        console.log(this.concilia);
         this.registroExpedienteWizard.cambiarExpediente(this.expediente);
         this.registroExpedienteWizard.cambiarConcilia(this.concilia);
     }
@@ -169,7 +187,7 @@ export class DatosExpedienteComponent implements OnInit, OnDestroy {
         }
         return nombre;
     }
-    saveObservacion(event) {
+    grabarObservacion(event) {
         // console.log('EDIT' + JSON.stringify(event.data));
         this.motivp = new Motivpase();
         this.motivp.id = event.data.idmotpase;
@@ -181,12 +199,12 @@ export class DatosExpedienteComponent implements OnInit, OnDestroy {
         this.motivp.pasegl = this.pasegl;
         if (event.data.idmotpase !== null) {
             this.subscribeToSaveResponse(
-                this.datosWizardService.updateMotivPase(this.motivp));
+                this.datosWizardService.updateMotivPase(this.motivp), 'Observación Agregada correctamente');
         } else {
             this.loadMotivOfic(this.pasegl.id);
         }
     }
-    saveMotivPase(event: any) {
+    grabarMotivPase(event: any) {
         // console.log(event.data);
         // console.log(this.pasegl);
         this.motivp = new Motivpase();
@@ -194,21 +212,25 @@ export class DatosExpedienteComponent implements OnInit, OnDestroy {
         this.motivp.motatenofic = event.data.Motateno;
         this.motivp.pasegl = this.pasegl;
         this.subscribeToSaveResponse(
-             this.datosWizardService.createMotivPase(this.motivp)
+             this.datosWizardService.createMotivPase(this.motivp) , 'Motivo del pase agregado correctamente'
         );
     }
-    deleteMotivpase(event: any) {
-        // console.log(event.data);
+    borrarMotivpase(event: any) {
+        this.datosWizardService.deleteMotivPase(event.data.idmotpase).subscribe((response) => {
+            this.mensajes = [];
+            this.mensajes.push({severity: 'success', summary: 'Mensaje de Confirmación', detail: 'Motivo del pase deseleccionado correctamente'});
+        });
+        console.log(event.data);
         // this.moduloEntidadService.delete(id).subscribe((response) => {});
     }
-    private subscribeToSaveResponse(result: Observable<Motivpase>) {
+    private subscribeToSaveResponse(result: Observable<Motivpase>, mensaje: string) {
         result.subscribe((res: Motivpase) =>
-            this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
+            this.onSaveSuccess(res, mensaje), (res: Response) => this.onSaveError(res));
     }
-    private onSaveSuccess(result: Motivpase) {
+    private onSaveSuccess(result: Motivpase, mensaje: string) {
         this.loadMotivOfic(this.pasegl.id);
-        // this.eventManager.broadcast({ name: 'moduloEntidadListModification', content: 'OK'});
-        // this.isSaving = false;
+        this.mensajes = [];
+        this.mensajes.push({severity: 'success', summary: 'Mensaje de Confirmación', detail: mensaje});
     }
     private onSaveError(error) {
         try {

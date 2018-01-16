@@ -43,7 +43,7 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
 
         this.items = [{
                 label: 'Datos del Pase',
-                routerLink: [this.routeExp, { outlets: { wizard: ['datos-pase'] } }],
+                // routerLink: [this.routeExp, { outlets: { wizard: ['datos-pase'] } }],
                 routerLinkActiveOptions: '{exact: true}',
                 command: (event: any) => {
                     this.activeIndex = 0;
@@ -53,7 +53,7 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
             },
             {
                 label: 'Datos del Trabajador',
-                routerLink: [this.routeExp, { outlets: { wizard: ['datos-trabajador'] } }],
+                // routerLink: [this.routeExp, { outlets: { wizard: ['datos-trabajador'] } }],
                 routerLinkActiveOptions: '{exact: true}',
                 command: (event: any) => {
                     this.activeIndex = 1;
@@ -63,7 +63,7 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
             },
             {
                 label: 'Datos del Empleador',
-                routerLink: [this.routeExp, { outlets: { wizard: ['datos-empleador'] } }],
+                // routerLink: [this.routeExp, { outlets: { wizard: ['datos-empleador'] } }],
                 routerLinkActiveOptions: 'active' ,
                 command: (event: any) => {
                     this.activeIndex = 2;
@@ -73,7 +73,7 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
             },
             {
                 label: 'Datos del Expediente',
-                routerLink: [this.routeExp, { outlets: { wizard: ['datos-expediente'] } }],
+                // routerLink: [this.routeExp, { outlets: { wizard: ['datos-expediente'] } }],
                 command: (event: any) => {
                     this.activeIndex = 3;
                     this.msgs.length = 0;
@@ -82,7 +82,7 @@ export class RegistroExpedienteComponent implements OnInit, OnChanges {
             },
             {
                 label: 'Audiencia',
-                routerLink: [this.routeExp, { outlets: { wizard: ['datos-audiencia'] } }],
+                // routerLink: [this.routeExp, { outlets: { wizard: ['datos-audiencia'] } }],
                 command: (event: any) => {
                     this.activeIndex = 4;
                     this.msgs.length = 0;

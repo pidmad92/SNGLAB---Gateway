@@ -42,7 +42,7 @@ export class SeleccionExpedienteComponent implements OnInit {
 
     ngOnInit() {
         this.es = ES;
-        this.cargarTipoDocumento();
+        // this.cargarTipoDocumento();
         this.envioNotificacionService.expedienteSeleccionado.subscribe((exp) => {
             // console.log('EXP1: ' + JSON.stringify(exp, null, '\t'));
         });
@@ -58,11 +58,11 @@ export class SeleccionExpedienteComponent implements OnInit {
     buscarExpediente() {
         let queryString = '';
         if (this.tipoBusqueda === '1') {
-            queryString = '/expedientes/params?nro_exp=' + this.nExpediente;
+            queryString = 'expedientes/notificacion/params?nro_exp=' + this.nExpediente;
         } else {
             const fec_ini = this.datePipe.transform(this.rangeDates[0], 'dd-MM-yyyy');
             const fec_fin = this.datePipe.transform(this.rangeDates[1], 'dd-MM-yyyy');
-            queryString = '/expedientes/params?fec_ini=' + fec_ini + '&fec_fin=' + fec_fin;
+            queryString = 'expedientes/notificacion/params?fec_ini=' + fec_ini + '&fec_fin=' + fec_fin;
         }
         this.datosWizardService.consultaExpediente(queryString).subscribe(
             (res: ResponseWrapper) => {

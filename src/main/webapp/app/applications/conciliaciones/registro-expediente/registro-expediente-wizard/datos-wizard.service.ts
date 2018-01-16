@@ -340,13 +340,18 @@ export class DatosWizardService {
             return this.convertItemFromServer(jsonResponse);
         });
     }
-
     updateDirPerJu(dirperjuri: Dirperjuri): Observable<Dirperjuri> {
         const copy = this.convert(dirperjuri);
         return this.http.put(this.resourceDPerJuri, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
+    }
+    deleteDirPerNatural(id: number): Observable<Response> {
+        return this.http.delete(`${this.resourceDPerNatu}/${id}`);
+    }
+    deleteDirPerJuridica(id: number): Observable<Response> {
+        return this.http.delete(`${this.resourceDPerJuri}/${id}`);
     }
 
     private convert(dirpernat: Dirpernat): Dirpernat {

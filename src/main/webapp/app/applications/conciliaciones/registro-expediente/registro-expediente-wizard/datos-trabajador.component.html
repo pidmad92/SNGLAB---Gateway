@@ -1,3 +1,5 @@
+<p-blockUI [blocked]="block"></p-blockUI>
+<p-growl [(value)]="mensajes"></p-growl>
 <div class="row">
     <div class="col">
         <div class="card card-mtpe">
@@ -6,42 +8,41 @@
                 <h5 class="mb-0 pr-3"><small>Paso 2 de 5</small></h5>
             </div>
             <div class="card-body">
-                <p-messages [(value)]="messages"></p-messages>
-                <div class="defensa mb-2">
+                <div class="defensa px-2">
                     <div class="row">
                         <div class="col-md-6 mb-2">
-                            <label for="inpAP" class="col-form-label col-form-label-sm">Tipo de documento:</label>
+                            <label for="inpAP" class="col-form-label col-form-label">Tipo de documento:</label>
                             <br>
                             <p-dropdown [disabled]="true"  [options]="tipodocs" readonly name="selectedTipodoc" [(ngModel)]="selectedTipodoc" [style]="{'width':'100%'}" placeholder="Seleccione"
                                     optionLabel="name"></p-dropdown>
                         </div>
                         <div class="col-md-6 mb-2">
-                            <label for="inpAP" class="col-form-label col-form-label-sm">Número Documento:</label>
+                            <label for="inpAP" class="col-form-label col-form-label">Número de Documento:</label>
                             <input class="form-control form-control-sm" readonly type="text" [(ngModel)]="pernatural.vNumdoc" name="pernatural.vNumdoc" />
                         </div>
                     </div>
                     <form>
                         <div class="row">
                             <div class="col-md-3 mb-2">
-                                <label for="inpAP" class="col-form-label col-form-label-sm">Apellido Paterno:</label>
+                                <label for="inpAP" class="col-form-label col-form-label">Apellido Paterno:</label>
                                 <input type="text" [(ngModel)]="pernatural.vApepat" readonly name="pernatural.vApepat" class="form-control form-control-sm" >
                             </div>
                             <div class="col-md-3 mb-2">
-                                <label for="inpAM" class="col-form-label col-form-label-sm">Apellido Materno:</label>
+                                <label for="inpAM" class="col-form-label col-form-label">Apellido Materno:</label>
                                 <input type="text" [(ngModel)]="pernatural.vApemat" readonly name="pernatural.vApemat" class="form-control form-control-sm" >
                             </div>
                             <div class="col-md-6 mb-2">
-                                <label for="inpN" class="col-form-label col-form-label-sm">Nombres:</label>
+                                <label for="inpN" class="col-form-label col-form-label">Nombres:</label>
                                 <input type="text" [(ngModel)]="pernatural.vNombres" readonly name="pernatural.vNombres" class="form-control form-control-sm" >
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-3 mb-2">
-                                <label for="pernatural.dFecnac" class="col-form-label col-form-label-sm">Fecha de Nacimiento:</label>
+                                <label for="pernatural.dFecnac" class="col-form-label col-form-label">Fecha de Nacimiento:</label>
                                 <input type="date" [(ngModel)]="pernatural.dFecnac" readonly name="pernatural.dFecnac" class="form-control form-control-sm"  >
                             </div>
                             <div class="col-md-3 mb-2">
-                                <label for="pernatural.vSexoper" class="col-form-label col-form-label-sm">Sexo:</label>
+                                <label for="pernatural.vSexoper" class="col-form-label col-form-label">Sexo:</label>
                                 <br>
                                 <p-dropdown [disabled]="true" [options]="sexo" name="pernatural.vSexoper" readonly [(ngModel)]="pernatural.vSexoper" [style]="{'width':'100%'}" optionLabel="name"></p-dropdown>
                                 <!-- <select class="form-control form-control-sm" id="selectSexo">
@@ -50,18 +51,18 @@
                                 </select> -->
                             </div>
                             <div class="col-md-3">
-                                <label for="pernatural.vTelefono" class="col-form-label col-form-label-sm">Telefono:</label>
+                                <label for="pernatural.vTelefono" class="col-form-label col-form-label">Telefono:</label>
                                 <input type="text" [(ngModel)]="pernatural.vTelefono" readonly name="pernatural.vTelefono" class="form-control form-control-sm" >
                             </div>
                             <div class="col-md-3">
-                                <label for="pernatural.vCelular" class="col-form-label col-form-label-sm">Celular:</label>
+                                <label for="pernatural.vCelular" class="col-form-label col-form-label">Celular:</label>
                                 <input type="text" [(ngModel)]="pernatural.vCelular" readonly name="pernatural.vCelular" class="form-control form-control-sm" >
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-12">
-                                <p-dataTable [value]="dirpernat" selectionMode="single" [(selection)]="selecDirper"  (onRowSelect)="onRowSelect($event)" dataKey="direc.id">
-                                    <p-header>Direcciones</p-header>
+                                <p-dataTable [value]="dirpernat" selectionMode="single" [(selection)]="selecDirper"  (onRowSelect)="seleccionarDireccion($event)" dataKey="direc.id">
+                                    <p-header>DIRECCIONES</p-header>
                                     <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
                                         <ng-template let-i="rowIndex" pTemplate="body">
                                             <span style="text-align:center">{{i+1}}</span>
@@ -80,11 +81,11 @@
                                         No se han encontrado registros
                                     </ng-template>
                                     <p-footer><div class="ui-helper-clearfix" style="width:100%">
-                                        <button type="button" class="btn btn-sm btn-primary" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Añadir Dirección"></button></div>
+                                        <button type="button" class="btn btn-sm btn-primary" pButton icon="fa-plus" style="float:left" (click)="abrirModalDireccion()" label="Añadir Dirección"></button></div>
                                     </p-footer>
                                 </p-dataTable>
                                 <p-dialog [width]="500" header="Dirección:" [(visible)]="displayDialog" (onHide)="cerrarModalDireccion()" [draggable]="false" [responsive]="true" showEffect="fade" [modal]="true">
-                                    <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+                                    <form name="editForm" role="form" novalidate (ngSubmit)="grabarDireccion()" #editForm="ngForm">
                                         <div class="ui-grid ui-grid-responsive ui-fluid" style="height:160px;">
                                             <input type="hidden" class="form-control" name="dirper.id" [(ngModel)]="dirper.id" readonly />
                                             <input type="hidden" name="dirper.pernatural" [(ngModel)]="dirper.pernatural">
@@ -121,8 +122,8 @@
                                                     <div class="ui-grid-col-4"><label for="year">Notificar</label></div>
                                                     <div class="ui-grid-col-8">
                                                         <!-- <input type="text" name="dirper.vDircomple" [(ngModel)]="dirper.nFlgnotifi" class="form-control"  id="direccion" /> -->
-                                                        <p-radioButton name="groupflagNotifi" [value]="true" label="Si" [(ngModel)]="dirper.nFlgnotifi" (onClick)="cambiarEstadoNotificar()"></p-radioButton>
-                                                        <p-radioButton name="groupflagNotifi" [value]="false" label="No" [(ngModel)]="dirper.nFlgnotifi" (onClick)="cambiarEstadoNotificar()"></p-radioButton>        
+                                                        <p-radioButton name="groupflagNotifi" [value]="true" label="Si" [(ngModel)]="dirper.nFlgnotifi"></p-radioButton>
+                                                        <p-radioButton name="groupflagNotifi" [value]="false" label="No" [(ngModel)]="dirper.nFlgnotifi"></p-radioButton>        
                                                     </div>
                                             </div>
                                         </div>

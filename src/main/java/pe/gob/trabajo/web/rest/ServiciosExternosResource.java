@@ -73,7 +73,7 @@ public class ServiciosExternosResource {
         ExpedienteWSDto consultaExpediente = port_tramite.consultaExpediente(2017, "001239");
         System.out.println(consultaExpediente.getAsunto());
                 
-        return null;
+        return consultaExpediente;
     }
     @PostMapping("/validarpersonaservicio")
     @Timed

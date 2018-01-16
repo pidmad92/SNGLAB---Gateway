@@ -1,42 +1,28 @@
+<p-blockUI [blocked]="block"></p-blockUI>
+<p-growl [(value)]="mensajes"></p-growl>
 <div class="row">
     <div class="col">
         <div class="card card-mtpe">
             <div class="card-header bg-light d-sm-flex justify-content-between p-1">
                 <h5><small class="ml-3">Registro de Expediente - Datos del Empleador</small></h5>
-                <h5 class="mb-0"><small>Paso 3 de 5</small></h5>
+                <h5 class="mb-0 pr-3"><small>Paso 3 de 5</small></h5>
             </div>
             <div class="card-body">
-                <div class="defensa mb-2">
-                    <div class="form-row">
-                        <div class="col-lg-5">
-                            <div class="form-group row">
-                                <label for="inpTipo" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo de documentos</label>
-                                <div class="col-sm-7">
-                                    <p-dropdown [options]="tipodocs" readonly name="selectedTipodoc" [(ngModel)]="selectedTipodoc" [style]="{'width':'140px'}" placeholder="Seleccione"
+                <div class="defensa px-2">
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <label for="inpAP" class="col-form-label col-form-label">Tipo de documento:</label>
+                            <br>
+                            <p-dropdown [disabled]="true"  [options]="tipodocs" readonly name="selectedTipodoc" [(ngModel)]="selectedTipodoc" [style]="{'width':'100%'}" placeholder="Seleccione"
                                     optionLabel="name"></p-dropdown>
-                                    <!-- <select class="form-control form-control-sm" [(ngModel)]="tipoDocumento" id="inpTipo">
-                                        <option>RUC</option>
-                                        <option>DNI</option>
-                                    </select> -->
-                                </div>
-                            </div>
                         </div>
-                        <div class="col-lg-4">
-                            <div class="form-group row">
-                            <label for="inpNumero" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Número</label>
-                            <div *ngIf="selectedTipodoc.value!=='2'" class="col-sm-5">
+                        <div class="col-md-5 mb-2 ">
+                            <label for="inpNumero" class="col-form-label col-form-label">Número de Documento</label>
+                            <div *ngIf="selectedTipodoc.value!=='2'">
                                 <input class="form-control form-control-sm" readonly type="text" [(ngModel)]="pernatural.vNumdoc" name="pernatural.vNumdoc" />
                             </div>
-                            <div *ngIf="selectedTipodoc.value==='2'" class="col-sm-5">
+                            <div *ngIf="selectedTipodoc.value==='2'">
                                 <input class="form-control form-control-sm" readonly type="text" [(ngModel)]="perjuridica.vNumdoc" name="perjuridica.vNumdoc" />
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="form-group row">
-                            <div class="col-sm-9">
-                                <a href="#" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#regLaborales"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
-                            </div>
                             </div>
                         </div>
                     </div>
@@ -46,29 +32,29 @@
                                 <div class="row d-flex justify-content-between">
                                 <div class="col-md-5 mb-2">
                                     <label for="inpAP" class="col-form-label col-form-label-sm">Apellido Paterno:</label>
-                                    <input type="text" [(ngModel)]="pernatural.vApepat" name="pernatural.vApepat" class="form-control form-control-sm" >
+                                    <input type="text" [(ngModel)]="pernatural.vApepat" readonly name="pernatural.vApepat" class="form-control form-control-sm" >
                                 </div>
                                 <div class="col-md-5 mb-2">
                                     <label for="inpAM" class="col-form-label col-form-label-sm">Apellido Materno:</label>
-                                    <input type="text" [(ngModel)]="pernatural.vApemat" name="pernatural.vApemat" class="form-control form-control-sm" >
+                                    <input type="text" [(ngModel)]="pernatural.vApemat" readonly name="pernatural.vApemat" class="form-control form-control-sm" >
                                 </div>
                                 </div>  
                             </div>
                             <div class="col-md-5">
                                 <label for="inpN" class="col-form-label col-form-label-sm">Nombres:</label>
-                                <input type="text" [(ngModel)]="pernatural.vNombres" name="pernatural.vNombres" class="form-control form-control-sm" >
+                                <input type="text" [(ngModel)]="pernatural.vNombres" readonly name="pernatural.vNombres" class="form-control form-control-sm" >
                             </div>
                         </div>
                         <div *ngIf="selectedTipodoc.value!=='2'" class="row">
                             <div class="col-md-7">
                                 <div class="row d-flex justify-content-between">
                                 <div class="col-md-5 mb-2">
-                                    <label for="inpFec" class="col-form-label col-form-label-sm">Fecha de Nacimiento:</label>
-                                    <input type="text" [(ngModel)]="pernatural.dFecnac" name="pernatural.dFecnac" class="form-control form-control-sm"  >
+                                    <label for="inpFec" class="col-form-label col-form-label">Fecha de Nacimiento:</label>
+                                    <input type="text" [(ngModel)]="pernatural.dFecnac" readonly name="pernatural.dFecnac" class="form-control form-control-sm"  >
                                 </div>
                                 <div class="col-md-5 mb-2">
-                                    <label for="selectSexo" class="col-form-label col-form-label-sm">Sexo:</label>
-                                    <p-dropdown [options]="sexo" name="pernatural.vSexoper" [(ngModel)]="pernatural.vSexoper" [style]="{'width':'100%'}" optionLabel="name"></p-dropdown>
+                                    <label for="selectSexo" class="col-form-label col-form-label">Sexo:</label>
+                                    <p-dropdown [options]="sexo" name="pernatural.vSexoper" [disabled]="true"  [(ngModel)]="pernatural.vSexoper" [style]="{'width':'100%'}" optionLabel="name"></p-dropdown>
                                     <!-- <select class="form-control form-control-sm" id="selectSexo">
                                     <option>Masculino</option>
                                     <option>Femenino</option>
@@ -79,38 +65,38 @@
                             <div class="col-md-5">
                                 <div class="row">
                                 <div class="col-md-6">
-                                    <label for="inpTele" class="col-form-label col-form-label-sm">Telefono:</label>
-                                    <input type="text" [(ngModel)]="pernatural.vTelefono" name="pernatural.vTelefono" class="form-control form-control-sm" >
+                                    <label for="inpTele" class="col-form-label col-form-label">Telefono:</label>
+                                    <input type="text" [(ngModel)]="pernatural.vTelefono" readonly name="pernatural.vTelefono" class="form-control form-control-sm" >
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inpCel" class="col-form-label col-form-label-sm">Celular:</label>
-                                    <input type="text" [(ngModel)]="pernatural.vCelular" name="pernatural.vCelular" class="form-control form-control-sm" >
+                                    <label for="inpCel" class="col-form-label col-form-label">Celular:</label>
+                                    <input type="text" [(ngModel)]="pernatural.vCelular" readonly name="pernatural.vCelular" class="form-control form-control-sm" >
                                 </div>
                                 </div>
                             </div>
                         </div>
                         <div *ngIf="selectedTipodoc.value==='2'" class="row">
-                            <div class="col-md-7 mb-2">
-                                <label for="inpFec" class="col-form-label col-form-label-sm">Razón social:</label>
+                            <div class="col-md-6 mb-2">
+                                <label for="inpFec" class="col-form-label col-form-label">Razón social:</label>
                                 <!-- <input type="text" class="form-control form-control-sm" id="inpFec" placeholder="" value="MINIST DE TRABAJO Y PROMOCIÓN DEL EMPLEO">   -->
-                                <input type="text" [(ngModel)]="perjuridica.vRazsocial" name="perjuridica.vRazsocial" class="form-control form-control-sm" >
+                                <input type="text" [(ngModel)]="perjuridica.vRazsocial" readonly name="perjuridica.vRazsocial" class="form-control form-control-sm" >
                             </div>
                             <div class="col-md-5 mb-2">
                                 <div class="row">
                                 <div class="col-md-6">
-                                    <label for="inpTele" class="col-form-label col-form-label-sm">Telefono:</label>
-                                    <input type="text" [(ngModel)]="perjuridica.vTelefono" name="perjuridica.vTelefono" class="form-control form-control-sm" >
+                                    <label for="inpTele" class="col-form-label col-form-label">Telefono:</label>
+                                    <input type="text" [(ngModel)]="perjuridica.vTelefono" readonly name="perjuridica.vTelefono" class="form-control form-control-sm" >
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inpCel" class="col-form-label col-form-label-sm">Fax:</label>
-                                    <input type="text" [(ngModel)]="perjuridica.vFaxperju" name="perjuridica.vFaxperju" class="form-control form-control-sm" >
+                                    <label for="inpCel" class="col-form-label col-form-label">Fax:</label>
+                                    <input type="text" [(ngModel)]="perjuridica.vFaxperju" readonly name="perjuridica.vFaxperju" class="form-control form-control-sm" >
                                 </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-12">
-                                <p-dataTable *ngIf="selectedTipodoc.value!=='2'" [value]="dirpernat" selectionMode="single" [(selection)]="selecDirper"  (onRowSelect)="onRowSelect($event)" dataKey="direc.id">
+                                <p-dataTable *ngIf="selectedTipodoc.value!=='2'" [value]="dirpernat" selectionMode="single" [(selection)]="selecDirper"  (onRowSelect)="seleccionarDireccion($event)" dataKey="direc.id">
                                     <p-header>Direcciones</p-header>
                                     <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
                                         <ng-template let-i="rowIndex" pTemplate="body">
@@ -122,11 +108,11 @@
                                     <p-column field="dist" header="Distrito"></p-column>
                                     <p-column field="direc.vDircomple" [style]="{'text-align':'left'}" header="Dirección"></p-column>
                                     <p-footer><div class="ui-helper-clearfix" style="width:100%">
-                                        <button type="button" class="btn btn-sm btn-primary" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Añadir Dirección"></button></div>
+                                        <button type="button" class="btn btn-sm btn-primary" pButton icon="fa-plus" style="float:left" (click)="abrirModalDireccion()" label="Añadir Dirección"></button></div>
                                     </p-footer>
                                 </p-dataTable>
-                                <p-dataTable *ngIf="selectedTipodoc.value==='2'" [value]="dirperjuri" selectionMode="single" [(selection)]="selecDirper"  (onRowSelect)="onRowSelect($event)" dataKey="direc.id">
-                                    <p-header>Direcciones</p-header>
+                                <p-dataTable *ngIf="selectedTipodoc.value==='2'" [value]="dirperjuri" selectionMode="single" [(selection)]="selecDirper"  (onRowSelect)="seleccionarDireccion($event)" dataKey="direc.id">
+                                    <p-header>DIRECCIONES</p-header>
                                     <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
                                         <ng-template let-i="rowIndex" pTemplate="body">
                                             <span style="text-align:center">{{i+1}}</span>
@@ -145,11 +131,11 @@
                                         No se han encontrado registros
                                     </ng-template>
                                     <p-footer><div class="ui-helper-clearfix" style="width:100%">
-                                        <button type="button" class="btn btn-sm btn-primary" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Añadir Dirección"></button></div>
+                                        <button type="button" class="btn btn-sm btn-primary" pButton icon="fa-plus" style="float:left" (click)="abrirModalDireccion()" label="Añadir Dirección"></button></div>
                                     </p-footer>
                                 </p-dataTable>
-                                <p-dialog [width]="500" header="Dirección:" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
-                                    <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+                                <p-dialog [width]="500" header="Dirección:" [(visible)]="displayDialog" (onHide)="cerrarModalDireccion()" [draggable]="false" [responsive]="true" showEffect="fade" [modal]="true">
+                                    <form name="editForm" role="form" novalidate (ngSubmit)="grabarDireccion()" #editForm="ngForm">
                                         <div class="ui-grid ui-grid-responsive ui-fluid" style="height:200px;">
                                             <input type="hidden" class="form-control" name="dirper.id" [(ngModel)]="dirper.id" readonly />
                                             <input type="hidden" name="dirper.perjuridica" [(ngModel)]="dirper.perjuridica">
@@ -192,8 +178,8 @@
                                         </div>
                                         <p-footer>
                                             <div class="ui-dialog-buttonpane ui-helper-clearfix">
-                                                <button pButton class="ui-button-info" icon="fa-close" type="button" (click)="close()" label="Cancelar"></button>
-                                                <button pButton class="ui-button-danger" icon="fa-trash-o" type="button" (click)="delete()" label="Eliminar"></button>
+                                                <button pButton class="ui-button-info" icon="fa-close" type="button" (click)="cerrarModalDireccion()" label="Cancelar"></button>
+                                                <button *ngIf="!newDirec" pButton class="ui-button-danger" icon="fa-trash-o" type="button" (click)="eliminarDireccion()" label="Eliminar"></button>
                                                 <button pButton class="ui-button-success" icon="fa-save" type="submit" label="Grabar"></button>
                                             </div>
                                         </p-footer>

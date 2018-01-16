@@ -1,3 +1,5 @@
+<p-blockUI [blocked]="block"></p-blockUI>
+<p-growl [(value)]="mensajes"></p-growl>
 <div class="row">
     <div class="col">
         <div class="card card-mtpe">
@@ -8,7 +10,7 @@
             <div class="card-body">
                 <div class="defensa mb-2">
                     <div class="row my-3">
-                        <div class="col-md-12">
+                        <div class="col-md-9 mx-auto">
                             <p-dataTable [value]="conciliaciones" dataKey="dFecconci">
                                 <p-header>Audiencias</p-header>
                                 <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
@@ -16,15 +18,22 @@
                                         <span style="text-align:center">{{i+1}}</span>
                                     </ng-template>
                                 </p-column>
-                                <p-column field="dFecconci" [style]="{'width':'90px'}" styleClass="text-center" header="Fecha" >
+                                <p-column field="dFecconci" [style]="{'width':'90px'}" styleClass="text-center" header="Fecha de Conciliación" >
                                     <ng-template let-data="rowData" pTemplate="body">
                                         <span>{{ data.dFecconci | date: 'dd/MM/yyyy' }}</span>
                                     </ng-template>
                                 </p-column>
                                 <p-column field="horacon.vDescrip" [style]="{'width':'60px'}" styleClass="text-center" header="Hora"></p-column>
-                                <p-column field="conciliador" header="Conciliador"></p-column>
-                                <p-column field="resultado" header="Resultado"></p-column>
-                                <p-column field="tresultado" header="Tipo de Resultado"></p-column>
+                                <p-column field="vRegmespar" [style]="{'width':'80px'}" styleClass="text-center" header="Registro M.P.">
+                                    <ng-template let-data="rowData" pTemplate="body">
+                                        <span>{{ expediente.vRegmespar }}</span>
+                                    </ng-template>
+                                </p-column>
+                                <p-column field="observacion" header="Observación">
+                                    <ng-template let-data="rowData" pTemplate="body">
+                                        <span>{{ expediente.vObservac }}</span>
+                                    </ng-template>
+                                </p-column>
                                 <ng-template pTemplate="emptymessage">
                                     No se han encontrado registros
                                 </ng-template>
@@ -42,3 +51,13 @@
         <button pButton class="ui-button-info"  type="button"  icon="fa-close" label="Cancelar" (click)="cd.reject()"></button>
     </p-footer>
 </p-confirmDialog>
+<p-dialog [width]="500" header="Registro de Expediente" [(visible)]="displayDialog" (onHide)="cerrarModal()" [draggable]="false" [responsive]="true" showEffect="fade" [modal]="true">
+        <div class="ui-grid ui-grid-responsive ui-fluid" >
+            <div class="ui-grid-row form-group mb-2">
+                <div class="ui-grid-col-8 mx-auto"><label for="dirper.nCoddepto">Expediente registrado con el código: <span class="{{expedienteGrabado.vNumexp}}">{{expedienteGrabado.vNumexp}}</span></label></div>
+            </div>
+        </div>
+        <p-footer>
+                <button class="btn btn-success" (click)="cerrarModal()" type="button">Aceptar</button>
+        </p-footer>
+</p-dialog>

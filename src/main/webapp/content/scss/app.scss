@@ -791,6 +791,25 @@ table.list tbody{
   .form-check-input{
     margin-top: 0.25rem;
   }
+  .ui-dropdown.ui-state-disabled .ui-dropdown-trigger, .ui-dropdown.ui-state-disabled .ui-dropdown-label{
+    background-color: #E9ECEF;
+  }
+  .ui-dropdown.ui-state-disabled{
+    opacity: 1;
+  }
+  .ui-datatable-scrollable-wrapper {
+    border-right: 1px solid #CDCDCD;
+    border-bottom: 1px solid #CDCDCD;
+  }
+  .ui-datatable .ui-datatable-data > tr > td, .ui-datatable .ui-datatable-tfoot > tr > td{
+    padding: 1px 6px;
+  }
+  .ui-datatable .ui-datatable-thead > tr > th{
+    font-size:13px;
+  }
+  .ui-datatable .ui-datatable-thead > tr > th{
+    padding: 3px 6px;
+  }
 }
 
 /*calculo beneficios*/
@@ -1271,3 +1290,4 @@ label.ui-chkbox-label{
 .rowAmarillo {
   background-color : yellow !important;
 }
+

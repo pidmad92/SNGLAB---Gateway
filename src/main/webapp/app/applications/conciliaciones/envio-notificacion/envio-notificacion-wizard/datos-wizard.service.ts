@@ -246,7 +246,7 @@ export class DatosWizardService {
     }
 
     consultaExpediente(query: string): Observable<ResponseWrapper> {
-        return this.http.get(`${this.resource}/${query}`)
+        return this.http.get(`${this.resource}${query}`)
             .map((res: Response) => this.convertResponse(res));
     }
     private convertResponse(res: Response): ResponseWrapper {

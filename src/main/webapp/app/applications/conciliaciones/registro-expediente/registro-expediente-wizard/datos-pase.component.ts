@@ -12,6 +12,12 @@ import { RegistroExpedienteWizardService } from './registro-expediente-wizard.se
 import { Message } from 'primeng/primeng';
 import { MessageService } from 'primeng/components/common/messageservice';
 
+import { Concilia } from './../../models/concilia.model';
+import { Trabajador } from './../../models/trabajador.model';
+import { Expediente } from './../../models/expediente.model';
+import { Datlab } from './../../models/datlab.model';
+import { Empleador } from './../../models/empleador.model';
+
 @Component({
     selector: 'jhi-datos-pase',
     templateUrl: './datos-pase.component.html',
@@ -51,18 +57,15 @@ export class DatosPaseComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.data.paseSeleccionado.subscribe((pasegl) => this.pasegl = pasegl);
-        this.es = ES;
-        // this.pases = [
-        //     {codPase : '895624233', fechaPase: '02/02/2017', rucEmp: '2334343333', razonSocial: 'Ministerio de Trabajo',
-        //      nroTra: '23341289', nomTra: 'Pedro Peña Salazar', ofDer: 'Liquidaciones'},
-        // {codPase : '454545541', fechaPase: '03/02/2017', rucEmp: '2143423331', razonSocial: 'Apple S.A.C.', nroTra: '3432233', nomTra: 'Nombre aleaotorio', ofDer: 'Consultas'},
-        // {codPase : '454545542', fechaPase: '03/02/2017', rucEmp: '2143423331', razonSocial: 'Apple S.A.C.', nroTra: '3433233', nomTra: 'Nombre aleaotorio', ofDer: 'Consultas'},
-        // {codPase : '454545543', fechaPase: '03/02/2017', rucEmp: '2143423331', razonSocial: 'Apple S.A.C.', nroTra: '3423233', nomTra: 'Nombre aleaotorio', ofDer: 'Consultas'},
-        // {codPase : '454545544', fechaPase: '03/02/2017', rucEmp: '2143423331', razonSocial: 'Apple S.A.C.', nroTra: '3423233', nomTra: 'Nombre aleaotorio', ofDer: 'Consultas'},
-        // {codPase : '454545545', fechaPase: '03/02/2017', rucEmp: '2143423331', razonSocial: 'Apple S.A.C.', nroTra: '3433233', nomTra: 'Nombre aleaotorio', ofDer: 'Consultas'}
-        // ]
         this.cargarTipoDocumentos();
+        this.es = ES;
+        this.data.cambiarPase(new Pasegl());
+        // Validar
+        this.data.cambiarDatlab(new Datlab());
+        this.data.cambiarEmpleador(new Empleador());
+        this.data.cambiarTrabajador(new Trabajador());
+        this.data.cambiarExpediente(new Expediente());
+        this.data.cambiarConcilia(new Concilia());
     }
 
     cargarTipoDocumentos() {
