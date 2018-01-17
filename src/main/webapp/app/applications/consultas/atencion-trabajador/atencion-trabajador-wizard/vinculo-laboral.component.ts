@@ -44,6 +44,8 @@ export class VinculoLaboralComponent implements OnInit, OnDestroy {
     nuevoMotivo = '';
 
     checkedsel = [];
+    fechoy: Date;
+    tipoVinculo = '1';
 
     constructor(
         private router: Router,
@@ -63,7 +65,7 @@ export class VinculoLaboralComponent implements OnInit, OnDestroy {
         this.atencionTrabajadorService.findListaMotivcese().subscribe(
             (res: ResponseWrapper) => {
                 this.motivcese = res.json;
-                console.log('Motivcese:' + JSON.stringify(this.motivcese));
+                // console.log('Motivcese:' + JSON.stringify(this.motivcese));
                 if (motiv !== undefined) {
                     this.atencion.datlab.motcese = motiv;
                 }
@@ -75,7 +77,7 @@ export class VinculoLaboralComponent implements OnInit, OnDestroy {
         this.atencionTrabajadorService.findListaModContrato().subscribe(
             (res: ResponseWrapper) => {
                 this.modcontrato = res.json;
-                console.log('Modcontrato:' + JSON.stringify(this.modcontrato));
+                // console.log('Modcontrato:' + JSON.stringify(this.modcontrato));
             },
             (res: ResponseWrapper) => { this.onError(res.json); }
         );
@@ -103,7 +105,17 @@ export class VinculoLaboralComponent implements OnInit, OnDestroy {
         });
     }
 
+    changeTipoVinculo() {
+        if (this.tipoVinculo === '1') {
+            this.atencion.datlab.nFlgsitlab = true;
+        } else {
+            this.atencion.datlab.nFlgsitlab = false;
+        }
+        this.registroAtencionWizard.cambiarDatlab(this.atencion.datlab);
+    }
+
     ngOnInit() {
+        this.fechoy = new Date();
         this.regimenlab = [];
         this.loadMotivCese();
         this.loadRegimenlab();
@@ -122,9 +134,16 @@ export class VinculoLaboralComponent implements OnInit, OnDestroy {
                     // console.log('AtencionVinculo:' + JSON.stringify(this.atencion));
                     if (atencion.datlab !== undefined ) {
                         console.log('AC.');
-                        this.datosLab  = atencion.datlab;
-                        // this.nFlgsitlab = atencion.datlab.nFlgsitlab;
+                        // this.datosLab  = atencion.datlab;
+                        this.atencion.datlab = atencion.datlab;
+                        // console.log('Situacion Laboral: ' + this.datosLab.nFlgsitlab);
                         console.log('ATENCIONDATLAB: ' + JSON.stringify(atencion.datlab));
+                        if (this.atencion.datlab.nFlgsitlab) {
+                            this.tipoVinculo = '1';
+                        } else {
+                            this.tipoVinculo = '0';
+                        }
+
                         if (atencion.datlab.id !== undefined) {
                             console.log('AB.');
                             // this.atencion.datlab = new Datlab();
@@ -135,11 +154,15 @@ export class VinculoLaboralComponent implements OnInit, OnDestroy {
                             this.atencion.datlab.id = undefined;
                             this.atencion.datlab.regimenlab = new Regimenlab();
                             this.atencion.datlab.motcese = new Motcese();
-                            this.atencion.datlab.nFlgsitlab = 2;
+                            this.atencion.datlab.nFlgsitlab = true;
+                            this.tipoVinculo = '1';
                         }
                     } else {
+                        // console.log('No hay Datlab');
                         this.atencion.datlab = new Datlab();
-                        this.atencion.datlab.nFlgsitlab = 2;
+                        // this.atencion.datlab.nFlgsitlab = '2';
+                        // this.atencion.datlab.nFlgsitlab = 1;
+                        // this.tipoVinculo = 1;
                     }
                 }
             });
@@ -178,7 +201,8 @@ export class VinculoLaboralComponent implements OnInit, OnDestroy {
 
     private subscribeToSaveResponse(result: Observable<Motcese>) {
         result.subscribe(
-            (res: Motcese) => { this.viewAnotherMotiv = false; this.loadMotivCese(res); console.log(res); },
+            // (res: Motcese) => { this.viewAnotherMotiv = false; this.loadMotivCese(res); console.log(res); },
+            (res: Motcese) => { this.viewAnotherMotiv = false; this.loadMotivCese(res); },
             (res: Response) => this.onSaveError()
         );
     }

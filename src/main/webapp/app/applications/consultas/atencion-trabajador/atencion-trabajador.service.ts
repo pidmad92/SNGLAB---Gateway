@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Rx';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
+import { Pernatural } from '../models/pernatural.model';
+import { Sucesor } from '../models/sucesor.model';
 import { Pasegl } from '../models/pasegl.model';
 import { Atencion } from '../models/atencion.model';
 import { Empleador } from '../models/empleador.model';
@@ -53,6 +55,8 @@ export class AtencionTrabajadorService {
     private resourceMotcese     = this.resource + 'motcese';
     private resourceRegimenlab  = this.resource + 'regimenlabs';
     private resourceModcontrato = this.resource + 'modcontratoes';
+    private resourceSucesor     = this.resource + 'sucesors';
+    private resourcePernatural  = this.resource + 'pernaturals';
 
     // RUTAS DE UBIGEO
     private resourceDepa = this.resource + 'departamentos';
@@ -105,6 +109,16 @@ export class AtencionTrabajadorService {
                 .map((res: Response) => this.convertResponseTipoDocIdentidad(res));
         }
     // --
+// -- DIRECCIONES DE SUCESOR
+        /**
+         * Retorna las direcciones de una persona natural
+         * @param  {number} id
+         * @returns Observable
+         */
+        buscarDireccionesSucesor(id: number): Observable<ResponseWrapper> {
+            return this.http.get(`${this.resourceDPerNat}/sucesor/id/${id}`)
+                .map((res: Response) => this.convertResponseDirPerNat(res));
+        }
 
     // -- DIRECCIONES PERSONA NATURAL
 
@@ -211,6 +225,46 @@ export class AtencionTrabajadorService {
             return this.http.get(`${this.resourcePasegl}/pase/general/id_trabajador/${id_trab}`)
                 .map((res: Response) => this.convertResponsePase(res));
         }
+// -- PERSONA NATURAL
+
+        /**
+         * Buscar trabajador por tipo de documento de identidad y nùmero de documento
+         * @param  {number} tipodoc
+         * @param  {String} numdoc
+         * @returns Observable
+         */
+        findPernaturalByDocIdent(tipodoc: number, numdoc: String): Observable<Pernatural> {
+            return this.http.get(`${this.resourcePernatural}/tipdoc/${tipodoc}/numdoc/${numdoc}`)
+                .map((res: Response) => {
+                    const jsonResponse = res.json();
+                    return this.convertItemFromServerPernatural(jsonResponse);
+                });
+        }
+
+// -- SUCESOR
+
+        /**
+         * Buscar trabajador por id
+         * @param  {number} id
+         * @returns Observable
+         */
+        findSucesorByTrabajador(id: number): Observable<Sucesor> {
+            return this.http.get(`${this.resourceSucesor}/trabajador/id/${id}`).map((res: Response) => {
+                const jsonResponse = res.json();
+                return this.convertItemFromServerSucesor(jsonResponse);
+            });
+        }
+
+        createSucesorTrab(sucesor: Sucesor): Observable<Sucesor> {
+            sucesor.nUsuareg = 1;
+            sucesor.nFlgactivo = true;
+            sucesor.nSedereg = 1;
+            const copy = this.convertSucesor(sucesor);
+            return this.http.post(this.resourceDatoslab, copy).map((res: Response) => {
+                const jsonResponse = res.json();
+                return this.convertItemFromServerSucesor(jsonResponse);
+            });
+        }
 
     // -- TRABAJADORES
 
@@ -258,6 +312,18 @@ export class AtencionTrabajadorService {
          * @returns Observable
          */
         findTrabajadorsByName(nombres: String, apellidopat: String, apellidomat: String): Observable<ResponseWrapper> {
+            if (nombres === null || nombres === '') {
+                // console.log('this.nombres ' + this.nombres);
+                nombres = '***';
+            }
+            if (apellidopat === null || apellidopat === '') {
+                // console.log('apellidopat ' + apellidopat);
+                apellidopat = '***';
+            }
+            if (apellidomat === null || apellidomat === '') {
+                // console.log('apellidomat ' + apellidomat);
+                apellidomat = '***';
+            }
             return this.http.get(`${this.resourceTrabajador}/nombres/${nombres}/apellidopat/${apellidopat}/apellidomat/${apellidomat}`)
                 .map((res: Response) => this.convertResponseTrabajadorTrabajador(res));
         }
@@ -624,6 +690,21 @@ export class AtencionTrabajadorService {
             return entity;
         }
 
+        private convertItemFromServerPernatural(json: any): Pernatural {
+            const entity: Pernatural = Object.assign(new Pernatural(), json);
+            entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+            entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+            return entity;
+        }
+
+        private convertItemFromServerSucesor(json: any): Sucesor {
+            const entity: Sucesor = Object.assign(new Sucesor(), json);
+            // console.log('Sucesor Convertido:' + entity);
+            entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+            entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+            return entity;
+        }
+
         private convertResponseMotateofi(res: Response): ResponseWrapper {
             const jsonResponse = res.json();
             const result = [];
@@ -804,6 +885,12 @@ export class AtencionTrabajadorService {
             const copy: Datlab = Object.assign({}, datlab);
             copy.tFecreg = this.dateUtils.toDate(datlab.tFecreg);
             copy.tFecupd = this.dateUtils.toDate(datlab.tFecupd);
+            return copy;
+        }
+        private convertSucesor(sucesor: Sucesor): Sucesor {
+            const copy: Sucesor = Object.assign({}, sucesor);
+            copy.tFecreg = this.dateUtils.toDate(sucesor.tFecreg);
+            copy.tFecupd = this.dateUtils.toDate(sucesor.tFecupd);
             return copy;
         }
         private convertMotateselec(motateselec: Motateselec): Motateselec {

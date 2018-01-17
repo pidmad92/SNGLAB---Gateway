@@ -61,9 +61,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <div class="col-lg-3">
+                                        <div class="col-lg-3">
                                             <p-checkbox name="selectedSucesion" class="px-2" binary="true" label="Sucesión Intestada" [(ngModel)]="trabajador.nFlgsuces" inputId="ny"></p-checkbox>
-                                        </div> -->
+                                        </div>
                                         <div class="col-md-2">
                                             <div class="form-group row">
                                                 <div class="col-sm-9">
@@ -77,20 +77,16 @@
                                 </form>
                                 <hr>
                                 <form>
-                                    <!-- <div *ngIf="trabajador.nFlgsuces" class="form-row">
-                                        <div class="col-lg-12">
-                                            <div class="form-group row">
-                                                <label for="inSucesorTrab" class="col-sm-2 col-form-label col-form-label-sm ">Trabajador</label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" class="form-control form-control-sm" id="inpTrabajador" name="trabajador">
-                                                </div>
-                                            </div>
+                                    <div *ngIf="trabajador.nFlgsuces" class="form-row">
+                                        <div class="col-md-12 mb-3">
+                                            <label for="inSucesorTrab" class="col-form-label-sm">Trabajador</label>
+                                            <input type="text" class="form-control form-control-sm" id="inpTrabajador" name="trabajador" [(ngModel)]="predecesor" readonly>
                                         </div>
                                     </div> 
                                     <div *ngIf="trabajador.nFlgsuces" class="row">
                                         <label for="inSucesor" class="col-sm-2 col-form-label col-form-label-sm ">DATOS DEL SUCESOR</label>
-                                    </div> -->
-                                    <div class="row">
+                                    </div>
+                                    <div class="row" *ngIf="!trabajador.nFlgsuces">
                                         <div class="col-md-3 mb-3">
                                             <label for="inpAP">Apellido Paterno:</label>
                                             <input type="text" class="form-control form-control-sm" id="inpAP" name="vApepaterno" required [(ngModel)]="trabajador.pernatural.vApepat" style="text-transform: uppercase">
@@ -104,7 +100,7 @@
                                             <input type="text" class="form-control form-control-sm" id="inpN" name="vNombres" required [(ngModel)]="trabajador.pernatural.vNombres" style="text-transform: uppercase">
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row" *ngIf="!trabajador.nFlgsuces">
                                         <div class="col-md-3 mb-3">
                                             <label for="inpFN">Fecha de Nacimiento</label>
                                             <input type="date" class="form-control form-control-sm" id="inpFN" name="dFecnacimiento" [(ngModel)]="trabajador.pernatural.dFecnac">
@@ -114,9 +110,9 @@
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="selSexo">Sexo:</label>
-                                            <select class="form-control form-control-sm" id="selSexo" name="selectedSexo" [(ngModel)]="trabajador.pernatural.vSexoper" placeholder="Seleccione">
-                                            <option value="M">Masculino</option>
-                                            <option value="F">Femenino</option>
+                                            <select class="form-control form-control-sm" id="selSexo" name="selectedSexo" required [(ngModel)]="trabajador.pernatural.vSexoper" placeholder="Seleccione">
+                                                <option value="M">Masculino</option>
+                                                <option value="F">Femenino</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
@@ -128,7 +124,7 @@
                                             <input type="text" class="form-control form-control-sm" id="inpCelular" name="vCelular"  [(ngModel)]="trabajador.pernatural.vCelular">
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row" *ngIf="!trabajador.nFlgsuces">
                                         <div class="col-md-6 mb-3">
                                             <p-dataTable [value]="dirpernat" [scrollable]="true" scrollHeight="100px" selectionMode="single" [(selection)]="selecDirper"  (onRowSelect)="onRowSelect($event)" dataKey="direc.id">
                                                 <p-header>Direcciones</p-header>
@@ -166,7 +162,7 @@
                                                     </div>
                                                 </p-footer>
                                             </p-dataTable>
-                                                <p-dialog [width]="500" header="Dirección:" [closable]="false" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+                                                <p-dialog [width]="500" header="Dirección del Trabajador:" [closable]="false" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
                                                 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
                                                 <div class="ui-grid ui-grid-responsive ui-fluid" style="height:200px;">
                                                     <input type="hidden" class="form-control" name="dirper.id" [(ngModel)]="dirper.id" readonly />
@@ -240,6 +236,200 @@
                                     </div>
                                 </form>
                             </div>
+                            <!-- DATO DEL SUCESOR: INICIO -->
+                            <div class="card-body" *ngIf="trabajador.nFlgsuces">
+                                    <form>
+                                        <div class="form-row">
+                                            <div class="col-lg-4 ">
+                                                <div class="form-group row">
+                                                    <label for="inpTiposu" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo de documentos</label>
+                                                    <div class="col-sm-6">
+                                                        <p-dropdown [options]="tipodocs" name="selectedTipodocsu" [(ngModel)]="selectedTipodocsu" [style]="{'width':'140px'}" placeholder="Seleccione" optionLabel="vDescorta" dataKey="id" (onChange)="changeTipdocidentsu()"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="form-group row">
+                                                    <label for="inpNumerosu" class="col-sm-4 col-form-label col-form-label-sm text-sm-right">Número</label>
+                                                    <div class="col-sm-8">
+                                                        <!-- <input type="number" class="form-control form-control-sm" id="inpNumero" name="vNumdocumento" [(ngModel)]="vNumdocumento"> -->
+                                                        <input type="text" class="form-control form-control-sm" id="inpNumerosu" name="vNumdocumentosu" [(ngModel)]="vNumdocumentosu" [maxlength]="maxlengthDocIdent">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-lg-3">
+                                                <p-checkbox name="selectedSucesion" class="px-2" binary="true" label="Sucesión Intestada" [(ngModel)]="trabajador.nFlgsuces" inputId="ny"></p-checkbox>
+                                            </div> -->
+                                            <div class="col-md-2">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-9">
+                                                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" (click)="buscaTrabajadorByDocIdent()">
+                                                                <span></span>&nbsp;<span><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <hr>
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-3 mb-3">
+                                                <label for="inpAPsu">Apellido Paterno:</label>
+                                                <input type="text" class="form-control form-control-sm" id="inpAPsu" name="vApepaternosu" required [(ngModel)]="sucesor.pernatural.vApepat" style="text-transform: uppercase">
+                                            </div>
+                                            <div class="col-md-3 mb-3">
+                                                <label for="inpAMsu">Apellido Materno:</label>
+                                                <input type="text" class="form-control form-control-sm" id="inpAMsu"  name="vApematernosu" required [(ngModel)]="sucesor.pernatural.vApemat" style="text-transform: uppercase">
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="inpNsu">Nombres:</label>
+                                                <input type="text" class="form-control form-control-sm" id="inpNsu" name="vNombressu" required [(ngModel)]="sucesor.pernatural.vNombres" style="text-transform: uppercase">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3 mb-3">
+                                                <label for="inpFNsu">Fecha de Nacimiento</label>
+                                                <input type="date" class="form-control form-control-sm" id="inpFNsu" name="dFecnacimiento" [(ngModel)]="sucesor.pernatural.dFecnac">
+                                                <!-- <p-calendar name="dFecnacimiento" [(ngModel)]="dFecnac" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true"></p-calendar> -->
+                                                <!-- <p-calendar [(ngModel)]="dFecnac" name="dFecnac" [locale]="es" dateFormat="dd/mm/yy"></p-calendar> -->
+                                                <!-- <p-calendar name="dFecnacimiento" [(ngModel)]="trabajador.pernatural.dFecnac" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true"></p-calendar> -->
+                                            </div>
+                                            <div class="col-md-3 mb-3">
+                                                <label for="selSexosu">Sexo:</label>
+                                                <select class="form-control form-control-sm" id="selSexosu" name="selectedSexosu" required [(ngModel)]="sucesor.pernatural.vSexoper" placeholder="Seleccione">
+                                                    <option value="M">Masculino</option>
+                                                    <option value="F">Femenino</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3 mb-3">
+                                                <label for="inpTelefonosu">Telefono:</label>
+                                                <input type="text" class="form-control form-control-sm" id="inpTelefonosu" name="vTelefonosu" [(ngModel)]="sucesor.pernatural.vTelefono">
+                                            </div>
+                                            <div class="col-md-3 mb-3">
+                                                <label for="inpCelularsu">Celular</label>
+                                                <input type="text" class="form-control form-control-sm" id="inpCelularsu" name="vCelularsu"  [(ngModel)]="sucesor.pernatural.vCelular">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <p-dataTable [value]="dirpersucesor" [scrollable]="true" scrollHeight="100px" selectionMode="single" [(selection)]="selecDirper"  (onRowSelect)="onRowSelectsu($event)" dataKey="direc.id">
+                                                    <p-header>Direcciones</p-header>
+                                                    <p-column [style]="{'width':'35px', 'text-align':'center'}" header="#">
+                                                        <ng-template let-i="rowIndex" pTemplate="body">
+                                                            <span style="text-align:center">{{i+1}}</span>
+                                                        </ng-template>
+                                                    </p-column>
+                                                    <p-column field="dpto" header="Depto."></p-column>
+                                                    <p-column field="prov" header="Provincia"></p-column>
+                                                    <p-column field="dist" header="Distrito"></p-column>
+                                                    <p-column field="direc.vDircomple" [style]="{'text-align':'left'}" header="Dirección"></p-column>
+                                                    <p-column header="Notificar">
+                                                        <ng-template let-data="rowData" pTemplate="body">
+                                                            <span style="text-align:center">{{ (data.direc.nFlgnotifi===false)?'':'SI' }}</span>
+                                                        </ng-template>
+                                                    </p-column>
+                                                    <p-column header=" " [style]="{'width':'40px', 'text-align':'center'}">
+                                                        <ng-template let-h="rowData" pTemplate="body">
+                                                             <button class="ui-button-info" type="button"  pButton (click)="showDialogToActionsu(2)" icon="fa-edit" label=" " title="Editar"></button>
+                                                        </ng-template>
+                                                   </p-column>
+                                                    <p-column header=" " [style]="{'width':'40px', 'text-align':'center'}">        
+                                                        <ng-template let-h="rowData" pTemplate="body">
+                                                             <button class="ui-button-danger" type="button"  pButton (click)="showDialogToActionsu(3)" icon="fa-remove" label=" " title="Eliminar"></button>
+                                                             <!-- <button pButton class="ui-button-danger" icon="fa-trash-o" type="button" (click)="delete()" label="Eliminar"></button> -->
+                                                        </ng-template>
+                                                   </p-column> 
+                                                    <ng-template pTemplate="emptymessage">
+                                                            No se han encontrado registros
+                                                    </ng-template>
+                                                    <p-footer>
+                                                        <div class="ui-helper-clearfix" style="width:100%">
+                                                            <button *ngIf="isVisible" type="button" class="btn btn-sm btn-primary" pButton icon="fa-plus" style="float:left" (click)="showDialogToAddsu()" label="Añadir Dirección" title="Añadir Dirección a la Lista"></button>
+                                                        </div>
+                                                    </p-footer>
+                                                </p-dataTable>
+                                                    <p-dialog [width]="500" header="Dirección del Sucesor:" [closable]="false" [(visible)]="displayDialogsu" [responsive]="true" showEffect="fade" [modal]="true">
+                                                    <form name="editForm" role="form" novalidate (ngSubmit)="savesu()" #editForm="ngForm">
+                                                    <div class="ui-grid ui-grid-responsive ui-fluid" style="height:200px;">
+                                                        <input type="hidden" class="form-control" name="dirpersu.id" [(ngModel)]="dirpersu.id" readonly />
+                                                        <input type="hidden" name="dirpersu.pernatural" [(ngModel)]="dirpersu.pernatural">
+                                                        <div class="ui-grid-row form-group">
+                                                            <div class="ui-grid-col-4"><label for="vin">Departamento</label></div>
+                                                            <div class="ui-grid-col-8">
+                                                                <select (change)="loadProvincias(true, $event.target.value)" required class="form-control" id="field_codDepto" name="dirpersu.nCoddepto" [(ngModel)]="dirpersu.nCoddepto" >
+                                                                    <option value="{{departamentos.vCoddep | number:'1.0'}}" *ngFor="let departamentos of departs;">{{departamentos.vDesdep}}</option>
+                                                                </select>
+                                                                <!-- <p-dropdown [(ngModel)]="dirper.nCoddepto" name="dirper.nCoddepto" [style]="{'width':'150px'}" dataKey="dirper.vcoddep" optionLabel="vdesdep" [options]="departs"></p-dropdown> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class="ui-grid-row form-group">
+                                                            <div class="ui-grid-col-4"><label for="year">Provincia</label></div>
+                                                            <div class="ui-grid-col-8">
+                                                                <select (change)="loadDistritos(true, $event.target.value)" required class="form-control" id="field_codDepto" name="dirpersu.nCodprov" [(ngModel)]="dirpersu.nCodprov" >
+                                                                    <option value="{{provincias.vCodpro | number:'1.0'}}" *ngFor="let provincias of provins;">{{provincias.vDespro}}</option>
+                                                                </select>
+                                                                <!-- <p-dropdown [(ngModel)]="dirper.nCodprov" name="dirper.nCodprov" [style]="{'width':'150px'}" dataKey="vcodpro" optionLabel="vdespro" [options]="provins"></p-dropdown> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class="ui-grid-row form-group">
+                                                            <div class="ui-grid-col-4"><label for="year">Distrito</label></div>
+                                                            <div class="ui-grid-col-8">
+                                                                <select required class="form-control" id="field_codDepto" name="dirpersu.nCoddist" [(ngModel)]="dirpersu.nCoddist" >
+                                                                    <option value="{{distritos.vCoddis | number:'1.0'}}" *ngFor="let distritos of distris;">{{distritos.vDesdis}}</option>
+                                                                </select>
+                                                                <!-- <p-dropdown [(ngModel)]="dirper.nCoddist" name="dirper.nCoddist" [style]="{'width':'150px'}" dataKey="dirper.vcoddis" optionLabel="vdesdis" [options]="distris"></p-dropdown> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class="ui-grid-row form-group">
+                                                                <div class="ui-grid-col-4"><label for="year">Dirección</label></div>
+                                                                <div class="ui-grid-col-8"><input type="text" name="dirpersu.vDircomple" [(ngModel)]="dirpersu.vDircomple" class="form-control"  id="direccion" /></div>
+                                                        </div>
+                                                    </div>
+                                                    <p-footer>
+                                                        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                                                            <button pButton class="ui-button-info" icon="fa-close" type="button" (click)="closesu()" label="Cancelar"></button>
+                                                            <button *ngIf="accionsu === 3" pButton class="ui-button-danger" icon="fa-trash-o" type="button" (click)="deletesu()" label="Eliminar"></button>
+                                                            <button *ngIf="accionsu !== 3" pButton class="ui-button-success" icon="fa-save" type="submit" label="Grabar"></button>
+                                                        </div>
+                                                    </p-footer>
+                                                    </form>
+                                                </p-dialog>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <div class="row">
+                                                    <div class="col mb-3">
+                                                        <label for="inpCorreosu">Correo Electrónico:</label>
+                                                        <input type="text" class="form-control form-control-sm" id="inpCorreosu" placeholder="" name="vEmailsu" [(ngModel)]="sucesor.pernatural.vEmailper">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col mb-3">
+                                                        <label for="inpPartidasu">Código de Partida:</label>
+                                                        <input type="text" class="form-control form-control-sm" id="inpPartidasu" placeholder="" name="partidasu" [(ngModel)]="sucesor.vCodpartid" requerired>
+                                                    </div>
+                                                </div>
+                                                <!-- <div *ngIf="!trabajador.nFlgsuces" class="row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="selCargo">Presenta Discapacidad:</label>
+                                                        <select class="form-control form-control-sm" id="selCargo" name="discapacidad">
+                                                                <option value="0">No</option>
+                                                                <option value="1">Si</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="inpCelular">Presenta Embarazo</label>
+                                                        <select class="form-control form-control-sm" id="selEmbarazo" name="embarazo">
+                                                                <option value="0">No</option>
+                                                                <option value="1">Si</option>
+                                                        </select>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>    
+                            <!-- DATOS DEL SUCESOR: FINAL -->
                         </div>
                     </div>
                 </div>
