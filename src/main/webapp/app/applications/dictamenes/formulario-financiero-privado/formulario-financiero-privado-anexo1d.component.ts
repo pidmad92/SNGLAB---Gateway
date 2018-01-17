@@ -276,7 +276,7 @@ export class FormularioFinancieroPrivadoAnexo1DComponent implements OnInit, OnDe
                                 this.formulario.listaGastosVentasDistribucion[i].descripcion = objetos[cont - 1].vDesffina;
                                 this.formulario.listaGastosVentasDistribucion[i].unidadmedida = objetos[cont - 1].vUndffina;
                                 this.formulario.listaGastosVentasDistribucion[i].componentes.push(comp);
-                            break;
+                                break;
                             case 2:
                                 if (this.formulario.listaGastosVenDistriServPorTerceros[i] === undefined) {
                                     this.formulario.listaGastosVenDistriServPorTerceros[i] = new Tabla();
@@ -287,7 +287,7 @@ export class FormularioFinancieroPrivadoAnexo1DComponent implements OnInit, OnDe
                                 this.formulario.listaGastosVenDistriServPorTerceros[i].descripcion = objetos[cont - 1].vDesffina;
                                 this.formulario.listaGastosVenDistriServPorTerceros[i].unidadmedida = objetos[cont - 1].vUndffina;
                                 this.formulario.listaGastosVenDistriServPorTerceros[i].componentes.push(comp);
-                            break;
+                                break;
                             case 3:
                                 if (this.formulario.listaGastosDiversionGestion[i] === undefined) {
                                     this.formulario.listaGastosDiversionGestion[i] = new Tabla();
@@ -298,7 +298,7 @@ export class FormularioFinancieroPrivadoAnexo1DComponent implements OnInit, OnDe
                                 this.formulario.listaGastosDiversionGestion[i].descripcion = objetos[cont - 1].vDesffina;
                                 this.formulario.listaGastosDiversionGestion[i].unidadmedida = objetos[cont - 1].vUndffina;
                                 this.formulario.listaGastosDiversionGestion[i].componentes.push(comp);
-                            break;
+                                break;
                             case 4:
                                 if (this.formulario.listaProvisiones[i] === undefined) {
                                     this.formulario.listaProvisiones[i] = new Tabla();
@@ -309,7 +309,7 @@ export class FormularioFinancieroPrivadoAnexo1DComponent implements OnInit, OnDe
                                 this.formulario.listaProvisiones[i].descripcion = objetos[cont - 1].vDesffina;
                                 this.formulario.listaProvisiones[i].unidadmedida = objetos[cont - 1].vUndffina;
                                 this.formulario.listaProvisiones[i].componentes.push(comp);
-                            break;
+                                break;
                             case 5:
                                 if (this.formulario.listaGastosAdministracion[i] === undefined) {
                                     this.formulario.listaGastosAdministracion[i] = new Tabla();
@@ -320,7 +320,7 @@ export class FormularioFinancieroPrivadoAnexo1DComponent implements OnInit, OnDe
                                 this.formulario.listaGastosAdministracion[i].descripcion = objetos[cont - 1].vDesffina;
                                 this.formulario.listaGastosAdministracion[i].unidadmedida = objetos[cont - 1].vUndffina;
                                 this.formulario.listaGastosAdministracion[i].componentes.push(comp);
-                            break;
+                                break;
                             case 6:
                                 if (this.formulario.listaGastosDentroAdminServPorTerceros[i] === undefined) {
                                     this.formulario.listaGastosDentroAdminServPorTerceros[i] = new Tabla();
@@ -331,7 +331,7 @@ export class FormularioFinancieroPrivadoAnexo1DComponent implements OnInit, OnDe
                                 this.formulario.listaGastosDentroAdminServPorTerceros[i].descripcion = objetos[cont - 1].vDesffina;
                                 this.formulario.listaGastosDentroAdminServPorTerceros[i].unidadmedida = objetos[cont - 1].vUndffina;
                                 this.formulario.listaGastosDentroAdminServPorTerceros[i].componentes.push(comp);
-                            break;
+                                break;
                             case 7:
                                 if (this.formulario.listaIngresosFinancieros[i] === undefined) {
                                     this.formulario.listaIngresosFinancieros[i] = new Tabla();
@@ -342,7 +342,7 @@ export class FormularioFinancieroPrivadoAnexo1DComponent implements OnInit, OnDe
                                 this.formulario.listaIngresosFinancieros[i].descripcion = objetos[cont - 1].vDesffina;
                                 this.formulario.listaIngresosFinancieros[i].unidadmedida = objetos[cont - 1].vUndffina;
                                 this.formulario.listaIngresosFinancieros[i].componentes.push(comp);
-                            break;
+                                break;
                             case 8:
                                 if (this.formulario.listaGastosFinancieros[i] === undefined) {
                                     this.formulario.listaGastosFinancieros[i] = new Tabla();
@@ -353,7 +353,7 @@ export class FormularioFinancieroPrivadoAnexo1DComponent implements OnInit, OnDe
                                 this.formulario.listaGastosFinancieros[i].descripcion = objetos[cont - 1].vDesffina;
                                 this.formulario.listaGastosFinancieros[i].unidadmedida = objetos[cont - 1].vUndffina;
                                 this.formulario.listaGastosFinancieros[i].componentes.push(comp);
-                            break;
+                                break;
                             case 9:
                                 if (this.formulario.listaOtrosIngresos[i] === undefined) {
                                     this.formulario.listaOtrosIngresos[i] = new Tabla();
@@ -364,7 +364,7 @@ export class FormularioFinancieroPrivadoAnexo1DComponent implements OnInit, OnDe
                                 this.formulario.listaOtrosIngresos[i].descripcion = objetos[cont - 1].vDesffina;
                                 this.formulario.listaOtrosIngresos[i].unidadmedida = objetos[cont - 1].vUndffina;
                                 this.formulario.listaOtrosIngresos[i].componentes.push(comp);
-                            break;
+                                break;
                             case 10:
                                 if (this.formulario.listaOtrosEgresos[i] === undefined) {
                                     this.formulario.listaOtrosEgresos[i] = new Tabla();
@@ -375,7 +375,7 @@ export class FormularioFinancieroPrivadoAnexo1DComponent implements OnInit, OnDe
                                 this.formulario.listaOtrosEgresos[i].descripcion = objetos[cont - 1].vDesffina;
                                 this.formulario.listaOtrosEgresos[i].unidadmedida = objetos[cont - 1].vUndffina;
                                 this.formulario.listaOtrosEgresos[i].componentes.push(comp);
-                            break;
+                                break;
                         }
 
                         if (cont % 4 === 0 && (cont - 1) !== 0) {
@@ -545,25 +545,25 @@ export class FormularioFinancieroPrivadoAnexo1DComponent implements OnInit, OnDe
 
         const componenteAnioA = new Componente();
         componenteAnioA.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_SERVICIOS_PRESTADOS_TERCEROS + '_' +
-                                 this.formulario.listaGastosVenDistriServPorTerceros.length + '_' + this.anios[0];
+            this.formulario.listaGastosVenDistriServPorTerceros.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.gastosVenDistriServPorTerceros.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
         componenteAnioB.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_SERVICIOS_PRESTADOS_TERCEROS + '_' +
-                                 this.formulario.listaGastosVenDistriServPorTerceros.length + '_' + this.anios[1];
+            this.formulario.listaGastosVenDistriServPorTerceros.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.gastosVenDistriServPorTerceros.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
         componenteAnioC.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_SERVICIOS_PRESTADOS_TERCEROS + '_' +
-                                 this.formulario.listaGastosVenDistriServPorTerceros.length + '_' + this.anios[2];
+            this.formulario.listaGastosVenDistriServPorTerceros.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.gastosVenDistriServPorTerceros.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
         componenteAnioD.codigo = this.constantes.FORM1ANEX1D_COD_GASTOS_SERVICIOS_PRESTADOS_TERCEROS + '_' +
-                                 this.formulario.listaGastosVenDistriServPorTerceros.length + '_' + this.anios[3];
+            this.formulario.listaGastosVenDistriServPorTerceros.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.gastosVenDistriServPorTerceros.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarGastosVenDistriServPorTerceros) {
@@ -961,25 +961,25 @@ export class FormularioFinancieroPrivadoAnexo1DComponent implements OnInit, OnDe
 
         const componenteAnioA = new Componente();
         componenteAnioA.codigo = this.constantes.FORM1ANEX1D_COD_DENTRO_ADMINISTRACION_GASTOS_SERVICIOS_PRESTADOS_TERCEROS + '_' +
-                                 this.formulario.listaGastosDentroAdminServPorTerceros.length + '_' + this.anios[0];
+            this.formulario.listaGastosDentroAdminServPorTerceros.length + '_' + this.anios[0];
         componenteAnioA.cantidad = this.gastosDentroAdminServPorTerceros.anioA;
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
         componenteAnioB.codigo = this.constantes.FORM1ANEX1D_COD_DENTRO_ADMINISTRACION_GASTOS_SERVICIOS_PRESTADOS_TERCEROS + '_' +
-                                 this.formulario.listaGastosDentroAdminServPorTerceros.length + '_' + this.anios[1];
+            this.formulario.listaGastosDentroAdminServPorTerceros.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.gastosDentroAdminServPorTerceros.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
         componenteAnioC.codigo = this.constantes.FORM1ANEX1D_COD_DENTRO_ADMINISTRACION_GASTOS_SERVICIOS_PRESTADOS_TERCEROS + '_' +
-                                 this.formulario.listaGastosDentroAdminServPorTerceros.length + '_' + this.anios[2];
+            this.formulario.listaGastosDentroAdminServPorTerceros.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.gastosDentroAdminServPorTerceros.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
         componenteAnioD.codigo = this.constantes.FORM1ANEX1D_COD_DENTRO_ADMINISTRACION_GASTOS_SERVICIOS_PRESTADOS_TERCEROS + '_' +
-                                 this.formulario.listaGastosDentroAdminServPorTerceros.length + '_' + this.anios[3];
+            this.formulario.listaGastosDentroAdminServPorTerceros.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.gastosDentroAdminServPorTerceros.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarGastosDentroAdminServPorTerceros) {
@@ -1466,27 +1466,32 @@ export class FormularioFinancieroPrivadoAnexo1DComponent implements OnInit, OnDe
     }
 
     guardarFormulario() {
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosAdministracion, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosDentroAdminServPorTerceros, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosDiversionGestion, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosFinancieros, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosVenDistriServPorTerceros, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosVentasDistribucion, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaIngresosFinancieros, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaOtrosEgresos, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaOtrosIngresos, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaProvisiones, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastosAdministracion, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastosDentroAdminServPorTerceros, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastosDiversionGestion, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastosFinancieros, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastosVenDistriServPorTerceros, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastosVentasDistribucion, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalIngresosFinancieros, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalOtrosEgresos, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalOtrosIngresos, this.nCodffina, 'f1anex1d');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalProvisiones, this.nCodffina, 'f1anex1d');
-        this.verControlInformacion();
+        this.formfinancdetalleService.desactivarFormulario(this.nCodffina, 'f1anex1d').subscribe(
+            (res: ResponseWrapper) => {
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosAdministracion, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosDentroAdminServPorTerceros, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosDiversionGestion, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosFinancieros, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosVenDistriServPorTerceros, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosVentasDistribucion, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaIngresosFinancieros, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaOtrosEgresos, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaOtrosIngresos, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaProvisiones, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastosAdministracion, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastosDentroAdminServPorTerceros, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastosDiversionGestion, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastosFinancieros, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastosVenDistriServPorTerceros, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastosVentasDistribucion, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalIngresosFinancieros, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalOtrosEgresos, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalOtrosIngresos, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalProvisiones, this.nCodffina);
+                this.verControlInformacion();
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
     verControlInformacion() {

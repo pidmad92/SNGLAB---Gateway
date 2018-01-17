@@ -107,6 +107,168 @@ export class FormularioFinancieroFinancieroN2Component implements OnInit, OnDest
 
     construirFormulario() {
         this.formulario = new Formulario2();
+
+        const activocorrienteDesc = [
+            this.constantes.FORM2_AC_DISPONIBLE,
+            this.constantes.FORM2_AC_FONDOSINTERBANCARIOS,
+            this.constantes.FORM2_AC_INVCAMBIORESUL,
+            this.constantes.FORM2_AC_INVDISPONIBLEVENTA,
+            this.constantes.FORM2_AC_INVVENCIMIENTO,
+            this.constantes.FORM2_AC_CARTERACREDNETOS,
+            this.constantes.FORM2_AC_CARTERACREDVIG,
+            this.constantes.FORM2_AC_CARTERACREDREEST,
+            this.constantes.FORM2_AC_CARTERACREDREFIN,
+            this.constantes.FORM2_AC_CARTERACREDVENC,
+            this.constantes.FORM2_AC_CARTERACREDCOBRA,
+            this.constantes.FORM2_AC_PROVCRED,
+            this.constantes.FORM2_AC_DERIVADOSNEGOC,
+            this.constantes.FORM2_AC_DEVIVADOSCOBER,
+            this.constantes.FORM2_AC_CUENTASCOBRAR,
+            this.constantes.FORM2_AC_IMPCORRIENTES,
+            this.constantes.FORM2_AC_OTROS,
+            this.constantes.FORM2_AC_TOTAL
+        ];
+        const activocorrienteCod = [
+            this.constantes.FORM2_COD_AC_DISPONIBLE,
+            this.constantes.FORM2_COD_AC_FONDOSINTERBANCARIOS,
+            this.constantes.FORM2_COD_AC_INVCAMBIORESUL,
+            this.constantes.FORM2_COD_AC_INVDISPONIBLEVENTA,
+            this.constantes.FORM2_COD_AC_INVVENCIMIENTO,
+            this.constantes.FORM2_COD_AC_CARTERACREDNETOS,
+            this.constantes.FORM2_COD_AC_CARTERACREDVIG,
+            this.constantes.FORM2_COD_AC_CARTERACREDREEST,
+            this.constantes.FORM2_COD_AC_CARTERACREDREFIN,
+            this.constantes.FORM2_COD_AC_CARTERACREDVENC,
+            this.constantes.FORM2_COD_AC_CARTERACREDCOBRA,
+            this.constantes.FORM2_COD_AC_PROVCRED,
+            this.constantes.FORM2_COD_AC_DERIVADOSNEGOC,
+            this.constantes.FORM2_COD_AC_DEVIVADOSCOBER,
+            this.constantes.FORM2_COD_AC_CUENTASCOBRAR,
+            this.constantes.FORM2_COD_AC_IMPCORRIENTES,
+            this.constantes.FORM2_COD_AC_OTROS,
+            this.constantes.FORM2_COD_AC_TOTAL
+        ];
+        this.formulario.listaActivoCorriente = this.crearlistacomponentes(activocorrienteDesc, activocorrienteCod, true);
+
+        const activonocorrienteDesc = [
+            this.constantes.FORM2_ANC_CATERACREDNETOS,
+            this.constantes.FORM2_ANC_CARTERACREDVIG,
+            this.constantes.FORM2_ANC_CARTERACREDREEST,
+            this.constantes.FORM2_ANC_CARTERACREDREFIN,
+            this.constantes.FORM2_ANC_CARTERACREDVENC,
+            this.constantes.FORM2_ANC_CARTERACREDCOBRANZA,
+            this.constantes.FORM2_ANC_PROVCREDITOS,
+            this.constantes.FORM2_ANC_BIENES,
+            this.constantes.FORM2_ANC_PARTICIPACIONES,
+            this.constantes.FORM2_ANC_INMMOBEQUIPONETO,
+            this.constantes.FORM2_ANC_ACTIVOSINTANGIBLES,
+            this.constantes.FORM2_ANC_IMPCORRIENTES,
+            this.constantes.FORM2_ANC_IMPDIFERIDO,
+            this.constantes.FORM2_ANC_MANTENIDOSVENTA,
+            this.constantes.FORM2_ANC_OTROS,
+            this.constantes.FORM2_ANC_TOTAL
+        ];
+        const activonocorrienteCod = [
+            this.constantes.FORM2_COD_ANC_CATERACREDNETOS,
+            this.constantes.FORM2_COD_ANC_CARTERACREDVIG,
+            this.constantes.FORM2_COD_ANC_CARTERACREDREEST,
+            this.constantes.FORM2_COD_ANC_CARTERACREDREFIN,
+            this.constantes.FORM2_COD_ANC_CARTERACREDVENC,
+            this.constantes.FORM2_COD_ANC_CARTERACREDCOBRANZA,
+            this.constantes.FORM2_COD_ANC_PROVCREDITOS,
+            this.constantes.FORM2_COD_ANC_BIENES,
+            this.constantes.FORM2_COD_ANC_PARTICIPACIONES,
+            this.constantes.FORM2_COD_ANC_INMMOBEQUIPONETO,
+            this.constantes.FORM2_COD_ANC_ACTIVOSINTANGIBLES,
+            this.constantes.FORM2_COD_ANC_IMPCORRIENTES,
+            this.constantes.FORM2_COD_ANC_IMPDIFERIDO,
+            this.constantes.FORM2_COD_ANC_MANTENIDOSVENTA,
+            this.constantes.FORM2_COD_ANC_OTROS,
+            this.constantes.FORM2_COD_ANC_TOTAL
+        ];
+        this.formulario.listaActivoNoCorriente = this.crearlistacomponentes(activonocorrienteDesc, activonocorrienteCod, true);
+
+        const totalActivoDesc = [this.constantes.FORM2_TOTALACTIVO];
+        const totalActivoCod = [this.constantes.FORM2_COD_TOTALACTIVO];
+        this.formulario.totalActivo = this.creartotales(totalActivoDesc, totalActivoCod);
+
+        const pasivocorrienteDesc = [
+            this.constantes.FORM2_PC_OBLIGPUBLICO,
+            this.constantes.FORM2_PC_FONDOSINTER,
+            this.constantes.FORM2_PC_DEPSISFINANCIERO,
+            this.constantes.FORM2_PC_ADEUDOSOBLIGFINAN,
+            this.constantes.FORM2_PC_DERIVADOSNEGOC,
+            this.constantes.FORM2_PC_DERIVADOSCOBER,
+            this.constantes.FORM2_PC_CUENTASPAGAR,
+            this.constantes.FORM2_PC_PROVISIONES,
+            this.constantes.FORM2_PC_IMPCORRIENTES,
+            this.constantes.FORM2_PC_IMPDIFERIDO,
+            this.constantes.FORM2_PC_OTROS,
+            this.constantes.FORM2_PC_TOTAL
+        ];
+        const pasivocorrienteCod = [
+            this.constantes.FORM2_COD_PC_OBLIGPUBLICO,
+            this.constantes.FORM2_COD_PC_FONDOSINTER,
+            this.constantes.FORM2_COD_PC_DEPSISFINANCIERO,
+            this.constantes.FORM2_COD_PC_ADEUDOSOBLIGFINAN,
+            this.constantes.FORM2_COD_PC_DERIVADOSNEGOC,
+            this.constantes.FORM2_COD_PC_DERIVADOSCOBER,
+            this.constantes.FORM2_COD_PC_CUENTASPAGAR,
+            this.constantes.FORM2_COD_PC_PROVISIONES,
+            this.constantes.FORM2_COD_PC_IMPCORRIENTES,
+            this.constantes.FORM2_COD_PC_IMPDIFERIDO,
+            this.constantes.FORM2_COD_PC_OTROS,
+            this.constantes.FORM2_COD_PC_TOTAL
+        ];
+        this.formulario.listaPasivoCorriente = this.crearlistacomponentes(pasivocorrienteDesc, pasivocorrienteCod, true);
+
+        const pasivonocorrienteDesc = [
+            this.constantes.FORM2_PNC_OBLIGPUBLICO,
+            this.constantes.FORM2_PNC_DEPSISFINANCIERO,
+            this.constantes.FORM2_PNC_ADEUDOSOBLIGFINAN,
+            this.constantes.FORM2_PNC_IMPDIFERIDO,
+            this.constantes.FORM2_PNC_PROVISIONES,
+            this.constantes.FORM2_PNC_OTROS,
+            this.constantes.FORM2_PNC_TOTAL
+        ];
+        const pasivonocorrienteCod = [
+            this.constantes.FORM2_COD_PNC_OBLIGPUBLICO,
+            this.constantes.FORM2_COD_PNC_DEPSISFINANCIERO,
+            this.constantes.FORM2_COD_PNC_ADEUDOSOBLIGFINAN,
+            this.constantes.FORM2_COD_PNC_IMPDIFERIDO,
+            this.constantes.FORM2_COD_PNC_PROVISIONES,
+            this.constantes.FORM2_COD_PNC_OTROS,
+            this.constantes.FORM2_COD_PNC_TOTAL
+        ];
+        this.formulario.listaPasivoNoCorriente = this.crearlistacomponentes(pasivonocorrienteDesc, pasivonocorrienteCod, true);
+
+        const totalPasivoDesc = [this.constantes.FORM2_TOTALPASIVO];
+        const totalPasivoCod = [this.constantes.FORM2_COD_TOTALPASIVO];
+        this.formulario.totalPasivo = this.creartotales(totalPasivoDesc, totalPasivoCod);
+
+        const patrimonioDesc = [
+            this.constantes.FORM2_PAT_CAPITALSOCIAL,
+            this.constantes.FORM2_PAT_CAPITALADICIONAL,
+            this.constantes.FORM2_PAT_RESERVAS,
+            this.constantes.FORM2_PAT_AJUSTESPATRIMONIO,
+            this.constantes.FORM2_PAT_RESULACUMULADOS,
+            this.constantes.FORM2_PAT_RESULNETOEJERCICIO,
+            this.constantes.FORM2_PAT_TOTALPATRIMONIO
+        ];
+        const patrimonioCod = [
+            this.constantes.FORM2_COD_PAT_CAPITALSOCIAL,
+            this.constantes.FORM2_COD_PAT_CAPITALADICIONAL,
+            this.constantes.FORM2_COD_PAT_RESERVAS,
+            this.constantes.FORM2_COD_PAT_AJUSTESPATRIMONIO,
+            this.constantes.FORM2_COD_PAT_RESULACUMULADOS,
+            this.constantes.FORM2_COD_PAT_RESULNETOEJERCICIO,
+            this.constantes.FORM2_COD_PAT_TOTALPATRIMONIO
+        ];
+        this.formulario.listaPatrimonio = this.crearlistacomponentes(patrimonioDesc, patrimonioCod, true);
+
+        const totalPasivoPatrimonioDesc = [this.constantes.FORM2_TOTALPASIVOPATRIMONIO];
+        const totalPasivoPatrimonioCod = [this.constantes.FORM2_COD_TOTALPASIVOPATRIMONIO];
+        this.formulario.totalPasivoPatrimonio = this.creartotales(totalPasivoPatrimonioDesc, totalPasivoPatrimonioCod);
     }
 
     // Funcionaes para la creacion de Formularios
@@ -227,7 +389,20 @@ export class FormularioFinancieroFinancieroN2Component implements OnInit, OnDest
     }
 
     guardarFormulario() {
-        this.verControlInformacion();
+        this.formfinancdetalleService.desactivarFormulario(this.nCodffina, 'ff2').subscribe(
+            (res: ResponseWrapper) => {
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaActivoCorriente, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaActivoNoCorriente, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPasivoCorriente, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPasivoNoCorriente, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPatrimonio, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalActivo, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPasivo, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPasivoPatrimonio, this.nCodffina);
+                this.verControlInformacion();
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
     verControlInformacion() {

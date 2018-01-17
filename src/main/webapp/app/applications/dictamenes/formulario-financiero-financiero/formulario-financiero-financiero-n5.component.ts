@@ -107,6 +107,139 @@ export class FormularioFinancieroFinancieroN5Component implements OnInit, OnDest
 
     construirFormulario() {
         this.formulario = new Formulario5();
+
+        const totalcoorpDesc = [this.constantes.FORM5_TOTAL_CREDCORPORATIVOS];
+        const totalcoorpCod = [this.constantes.FORM5_COD_TOTAL_CREDCORPORATIVOS];
+        this.formulario.totalCredCoorporativos = this.creartotales(totalcoorpDesc, totalcoorpCod);
+
+        const totalgrandesDesc = [this.constantes.FORM5_TOTAL_CREDGRANDESEMPRESAS];
+        const totalgrandesCod = [this.constantes.FORM5_COD_TOTAL_CREDGRANDESEMPRESAS];
+        this.formulario.totalCredGrandesEmpresas = this.creartotales(totalgrandesDesc, totalgrandesCod);
+
+        const totalmedianasDesc = [this.constantes.FORM5_TOTAL_CREDMEDIANASEMPRESAS];
+        const totalmedianasCod = [this.constantes.FORM5_COD_TOTAL_CREDMEDIANASEMPRESAS];
+        this.formulario.totalCredMedianasEmpresas = this.creartotales(totalmedianasDesc, totalmedianasCod);
+
+        const totalpequeniasDesc = [this.constantes.FORM5_TOTAL_CREDPEQUENIASEMPRESAS];
+        const totalpequeniasCod = [this.constantes.FORM5_COD_TOTAL_CREDPEQUENIASEMPRESAS];
+        this.formulario.totalCredPequeniasEmpresas = this.creartotales(totalpequeniasDesc, totalpequeniasCod);
+
+        const totalmicroDesc = [this.constantes.FORM5_TOTAL_CREDMICROEMPRESAS];
+        const totalmicroCod = [this.constantes.FORM5_COD_TOTAL_CREDMICROEMPRESAS];
+        this.formulario.totalCredMicroEmpresas = this.creartotales(totalmicroDesc, totalmicroCod);
+
+        const totalconsumoDesc = [this.constantes.FORM5_TOTAL_CREDCONSUMO];
+        const totalconsumoCod = [this.constantes.FORM5_COD_TOTAL_CREDCONSUMO];
+        this.formulario.totalCredConsumo = this.creartotales(totalconsumoDesc, totalconsumoCod);
+
+        const totalhipotecarioDesc = [this.constantes.FORM5_TOTAL_CREDHIPOVIVIENDA];
+        const totalhipotecarioCod = [this.constantes.FORM5_COD_TOTAL_CREDHIPOVIVIENDA];
+        this.formulario.totalCredHipotecariosVivienda = this.creartotales(totalhipotecarioDesc, totalhipotecarioCod);
+
+        const coorpDesc = [this.constantes.FORM5_TARJETACREDITO,
+        this.constantes.FORM5_DESCUENTOS,
+        this.constantes.FORM5_PRESTAMOS,
+        this.constantes.FORM5_FACTORING,
+        this.constantes.FORM5_ARRENFINANC,
+        this.constantes.FORM5_COMERCIOEXTERIOR,
+        this.constantes.FORM5_OTROS];
+        const coorpCod = [this.constantes.FORM5_COD_CREDCORPORATIVOS_TARJETACREDITO,
+        this.constantes.FORM5_COD_CREDCORPORATIVOS_DESCUENTOS,
+        this.constantes.FORM5_COD_CREDCORPORATIVOS_PRESTAMOS,
+        this.constantes.FORM5_COD_CREDCORPORATIVOS_FACTORING,
+        this.constantes.FORM5_COD_CREDCORPORATIVOS_ARRENFINANC,
+        this.constantes.FORM5_COD_CREDCORPORATIVOS_COMERCIOEXTERIOR,
+        this.constantes.FORM5_COD_CREDCORPORATIVOS_OTROS];
+        this.formulario.listaCredCoorporativos = this.crearlistacomponentes(coorpDesc, coorpCod, false);
+
+        const grandesDesc = [this.constantes.FORM5_TARJETACREDITO,
+        this.constantes.FORM5_DESCUENTOS,
+        this.constantes.FORM5_PRESTAMOS,
+        this.constantes.FORM5_FACTORING,
+        this.constantes.FORM5_ARRENFINANC,
+        this.constantes.FORM5_COMERCIOEXTERIOR,
+        this.constantes.FORM5_OTROS];
+        const grandesCod = [this.constantes.FORM5_COD_CREDGRANDESEMPRESAS_TARJETACREDITO,
+        this.constantes.FORM5_COD_CREDGRANDESEMPRESAS_DESCUENTOS,
+        this.constantes.FORM5_COD_CREDGRANDESEMPRESAS_PRESTAMOS,
+        this.constantes.FORM5_COD_CREDGRANDESEMPRESAS_FACTORING,
+        this.constantes.FORM5_COD_CREDGRANDESEMPRESAS_ARRENFINANC,
+        this.constantes.FORM5_COD_CREDGRANDESEMPRESAS_COMERCIOEXTERIOR,
+        this.constantes.FORM5_COD_CREDGRANDESEMPRESAS_OTROS];
+        this.formulario.listaCredGrandesEmpresas = this.crearlistacomponentes(grandesDesc, grandesCod, false);
+
+        const medianasDesc = [this.constantes.FORM5_TARJETACREDITO,
+        this.constantes.FORM5_DESCUENTOS,
+        this.constantes.FORM5_PRESTAMOS,
+        this.constantes.FORM5_FACTORING,
+        this.constantes.FORM5_ARRENFINANC,
+        this.constantes.FORM5_COMERCIOEXTERIOR,
+        this.constantes.FORM5_OTROS];
+        const medianasCod = [this.constantes.FORM5_COD_CREDMEDIANASEMPRESAS_TARJETACREDITO,
+        this.constantes.FORM5_COD_CREDMEDIANASEMPRESAS_DESCUENTOS,
+        this.constantes.FORM5_COD_CREDMEDIANASEMPRESAS_PRESTAMOS,
+        this.constantes.FORM5_COD_CREDMEDIANASEMPRESAS_FACTORING,
+        this.constantes.FORM5_COD_CREDMEDIANASEMPRESAS_ARRENFINANC,
+        this.constantes.FORM5_COD_CREDMEDIANASEMPRESAS_COMERCIOEXTERIOR,
+        this.constantes.FORM5_COD_CREDMEDIANASEMPRESAS_OTROS];
+        this.formulario.listaCredMedianasEmpresas = this.crearlistacomponentes(medianasDesc, medianasCod, false);
+
+        const pequeniasDesc = [this.constantes.FORM5_TARJETACREDITO,
+        this.constantes.FORM5_DESCUENTOS,
+        this.constantes.FORM5_PRESTAMOS,
+        this.constantes.FORM5_FACTORING,
+        this.constantes.FORM5_ARRENFINANC,
+        this.constantes.FORM5_COMERCIOEXTERIOR,
+        this.constantes.FORM5_OTROS];
+        const pequeniasCod = [this.constantes.FORM5_COD_CREDPEQUENIASEMPRESAS_TARJETACREDITO,
+        this.constantes.FORM5_COD_CREDPEQUENIASEMPRESAS_DESCUENTOS,
+        this.constantes.FORM5_COD_CREDPEQUENIASEMPRESAS_PRESTAMOS,
+        this.constantes.FORM5_COD_CREDPEQUENIASEMPRESAS_FACTORING,
+        this.constantes.FORM5_COD_CREDPEQUENIASEMPRESAS_ARRENFINANC,
+        this.constantes.FORM5_COD_CREDPEQUENIASEMPRESAS_COMERCIOEXTERIOR,
+        this.constantes.FORM5_COD_CREDPEQUENIASEMPRESAS_OTROS];
+        this.formulario.listaCredPequeniasEmpresas = this.crearlistacomponentes(pequeniasDesc, pequeniasCod, false);
+
+        const microDesc = [this.constantes.FORM5_TARJETACREDITO,
+        this.constantes.FORM5_DESCUENTOS,
+        this.constantes.FORM5_PRESTAMOS,
+        this.constantes.FORM5_FACTORING,
+        this.constantes.FORM5_ARRENFINANC,
+        this.constantes.FORM5_COMERCIOEXTERIOR,
+        this.constantes.FORM5_OTROS];
+        const microCod = [this.constantes.FORM5_COD_CREDMICROEMPRESAS_TARJETACREDITO,
+        this.constantes.FORM5_COD_CREDMICROEMPRESAS_DESCUENTOS,
+        this.constantes.FORM5_COD_CREDMICROEMPRESAS_PRESTAMOS,
+        this.constantes.FORM5_COD_CREDMICROEMPRESAS_FACTORING,
+        this.constantes.FORM5_COD_CREDMICROEMPRESAS_ARRENFINANC,
+        this.constantes.FORM5_COD_CREDMICROEMPRESAS_COMERCIOEXTERIOR,
+        this.constantes.FORM5_COD_CREDMICROEMPRESAS_OTROS];
+        this.formulario.listaCredMicroEmpresas = this.crearlistacomponentes(microDesc, microCod, false);
+
+        const consumoDesc = [this.constantes.FORM5_TARJETACREDITO,
+        this.constantes.FORM5_PRESTAMOS,
+        this.constantes.FORM5_PRESTAMOSREVOLVENTES,
+        this.constantes.FORM5_PRESTAMOSNOREVOLVENTES,
+        this.constantes.FORM5_PRESTAMOSAUTOS,
+        this.constantes.FORM5_ARRENFINANC,
+        this.constantes.FORM5_OTROS];
+        const consumoCod = [this.constantes.FORM5_COD_CREDCONSUMO_TARJETACREDITO,
+        this.constantes.FORM5_COD_CREDCONSUMO_PRESTAMOS,
+        this.constantes.FORM5_COD_CREDCONSUMO_PRESTAMOSREVOLVENTES,
+        this.constantes.FORM5_COD_CREDCONSUMO_PRESTAMOSNOREVOLVENTES,
+        this.constantes.FORM5_COD_CREDCONSUMO_PRESTAMOSAUTOS,
+        this.constantes.FORM5_COD_CREDCONSUMO_COMERCIOEXTERIOR,
+        this.constantes.FORM5_COD_CREDCONSUMO_OTROS];
+        this.formulario.listaCredConsumo = this.crearlistacomponentes(consumoDesc, consumoCod, false);
+
+        const hipotecarioDesc = [this.constantes.FORM5_PRESTAMOS,
+        this.constantes.FORM5_PRESTAMOSMIVIVIENDA,
+        this.constantes.FORM5_OTROS];
+        const hipotecarioCod = [this.constantes.FORM5_COD_CREDHIPOVIVIENDA_PRESTAMOS,
+        this.constantes.FORM5_COD_CREDHIPOVIVIENDA_PRESTAMOSMIVIVIENDA,
+        this.constantes.FORM5_COD_CREDHIPOVIVIENDA_OTROS];
+        this.formulario.listaCredHipotecariosVivienda = this.crearlistacomponentes(hipotecarioDesc, hipotecarioCod, false);
+
     }
 
     // Funcionaes para la creacion de Formularios
@@ -227,7 +360,26 @@ export class FormularioFinancieroFinancieroN5Component implements OnInit, OnDest
     }
 
     guardarFormulario() {
-        this.verControlInformacion();
+        this.formfinancdetalleService.desactivarFormulario(this.nCodffina, 'ff5').subscribe(
+            (res: ResponseWrapper) => {
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaCredCoorporativos, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaCredGrandesEmpresas, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaCredMedianasEmpresas, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaCredPequeniasEmpresas, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaCredMicroEmpresas, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaCredConsumo, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaCredHipotecariosVivienda, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCredCoorporativos, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCredGrandesEmpresas, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCredMedianasEmpresas, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCredPequeniasEmpresas, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCredMicroEmpresas, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCredConsumo, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCredHipotecariosVivienda, this.nCodffina);
+                this.verControlInformacion();
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
     verControlInformacion() {

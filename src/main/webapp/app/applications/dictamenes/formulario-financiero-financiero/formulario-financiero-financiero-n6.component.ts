@@ -107,6 +107,88 @@ export class FormularioFinancieroFinancieroN6Component implements OnInit, OnDest
 
     construirFormulario() {
         this.formulario = new Formulario6();
+
+        const creditosDesc = [
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_AGRICULTURA,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_PESCA,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_MINERIA,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_INDMANUFACTURERA,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_ALIMENTOS,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_TEXTILES,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_MADERA,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_FABSUSTANCIASQUIMICAS,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_FABPRODUCTOSCAUCHO,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_FABPRODUCTOSMINERALES,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_FABMETALES,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_MAQUINARIA,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_FABVEHICULOSTRANSPORTE,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_RESTOMANUFACTURA,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_ELECGASAGUA,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_CONSTRUCCION,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_COMERCIO,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_VENTAREPARACIONVEHICULOS,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_COMERCIOMAYOR,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_COMERCIOMENOR,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_HOTELESRESTAURANTES,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_TRANSPORTEALMCOMUNI,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_INTERFINANCIERA,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_ACTINMOBILIARIASEMPRALQUI,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_ACTINMOBILIARIASALQUI,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_ACTEMPRESARIAL,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_ADMINISTRACIONPUBLICA,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_ENSEÑANZA,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_SERVSOCIALESSALUD,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_OTRASACTIVIDADES,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_HOGARESPRIVADOS,
+            this.constantes.FORM6_DIRECTIPOCREDSECTECO_TOTAL
+        ];
+        const creditosCod = [
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_AGRICULTURA,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_PESCA,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_MINERIA,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_INDMANUFACTURERA,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_ALIMENTOS,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_TEXTILES,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_MADERA,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_FABSUSTANCIASQUIMICAS,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_FABPRODUCTOSCAUCHO,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_FABPRODUCTOSMINERALES,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_FABMETALES,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_MAQUINARIA,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_FABVEHICULOSTRANSPORTE,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_RESTOMANUFACTURA,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_ELECGASAGUA,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_CONSTRUCCION,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_COMERCIO,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_VENTAREPARACIONVEHICULOS,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_COMERCIOMAYOR,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_COMERCIOMENOR,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_HOTELESRESTAURANTES,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_TRANSPORTEALMCOMUNI,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_INTERFINANCIERA,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_ACTINMOBILIARIASEMPRALQUI,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_ACTINMOBILIARIASALQUI,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_ACTEMPRESARIAL,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_ADMINISTRACIONPUBLICA,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_ENSEÑANZA,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_SERVSOCIALESSALUD,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_OTRASACTIVIDADES,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_HOGARESPRIVADOS,
+            this.constantes.FORM6_COD_DIRECTIPOCREDSECTECO_TOTAL
+        ];
+        this.formulario.listaCreditos = this.crearlistacomponentes(creditosDesc, creditosCod, true);
+
+        const creditosHipDesc = [this.constantes.FORM6_CREDITOSHIPOTECARIOSVIVIENDA];
+        const creditosHipCod = [this.constantes.FORM6_COD_CREDITOSHIPOTECARIOSVIVIENDA];
+        this.formulario.listaCreditosHipotecarios = this.crearlistacomponentes(creditosHipDesc, creditosHipCod, false);
+
+        const creditosConsumoDesc = [this.constantes.FORM6_CREDITOSCONSUMO];
+        const creditosConsumoCod = [this.constantes.FORM6_COD_CREDITOSCONSUMO];
+        this.formulario.listaCreditosConsumo = this.crearlistacomponentes(creditosConsumoDesc, creditosConsumoCod, false);
+
+        const totalDesc = [this.constantes.FORM6_TOTALCREDITOS];
+        const totalCod = [this.constantes.FORM6_COD_TOTALCREDITOS];
+        this.formulario.totalCreditos = this.creartotales(totalDesc, totalCod);
     }
 
     // Funcionaes para la creacion de Formularios
@@ -203,7 +285,84 @@ export class FormularioFinancieroFinancieroN6Component implements OnInit, OnDest
     // -------------------------------------------------------------------
     // Calculos del Formulario
     // -------------------------------------------------------------------
+    subtotalCreditos(event: any) {
+        const columna: string[] = event.target.id.split('_');
+        const idx = columna[2];
+        const idy = this.formulario.listaCreditos.length - 1;
+        let suma = 0;
 
+        for (let i = 0; i < this.formulario.listaCreditos.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaCreditos[i].componentes.length; j++) {
+                if (this.formulario.listaCreditos[i].componentes[j].codigo === event.target.id) {
+                    this.formulario.listaCreditos[i].componentes[j].cantidad = Number(event.target.value);
+                }
+            }
+        }
+
+        for (let i = 0; i < this.formulario.listaCreditos.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaCreditos[i].componentes.length; j++) {
+                if (this.formulario.listaCreditos[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                    suma += Number(this.formulario.listaCreditos[i].componentes[j].cantidad);
+                }
+            }
+        }
+        this.formulario.listaCreditos[idy].componentes[idx].cantidad = suma;
+        this.totalCreditos();
+    }
+
+    subtotalCreditosHipotecarios(event: any) {
+        const columna: string[] = event.target.id.split('_');
+
+        for (let i = 0; i < this.formulario.listaCreditosHipotecarios.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaCreditosHipotecarios[i].componentes.length; j++) {
+                if (this.formulario.listaCreditosHipotecarios[i].componentes[j].codigo === event.target.id) {
+                    this.formulario.listaCreditosHipotecarios[i].componentes[j].cantidad = Number(event.target.value);
+                }
+            }
+        }
+        this.totalCreditos();
+    }
+
+    subtotalCreditosConsumo(event: any) {
+        const columna: string[] = event.target.id.split('_');
+
+        for (let i = 0; i < this.formulario.listaCreditosConsumo.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaCreditosConsumo[i].componentes.length; j++) {
+                if (this.formulario.listaCreditosConsumo[i].componentes[j].codigo === event.target.id) {
+                    this.formulario.listaCreditosConsumo[i].componentes[j].cantidad = Number(event.target.value);
+                }
+            }
+        }
+
+        this.totalCreditos();
+    }
+
+    totalCreditos() {
+        let ingreso1 = 0;
+        let ingreso2 = 0;
+        let ingreso3 = 0;
+        let ingreso4 = 0;
+
+        const idx = this.formulario.listaCreditos.length - 1;
+
+        ingreso1 = this.formulario.listaCreditos[idx].componentes[0].cantidad +
+            this.formulario.listaCreditosHipotecarios[0].componentes[0].cantidad +
+            this.formulario.listaCreditosConsumo[0].componentes[0].cantidad;
+        ingreso2 = this.formulario.listaCreditos[idx].componentes[1].cantidad +
+            this.formulario.listaCreditosHipotecarios[0].componentes[1].cantidad +
+            this.formulario.listaCreditosConsumo[0].componentes[1].cantidad;
+        ingreso3 = this.formulario.listaCreditos[idx].componentes[2].cantidad +
+            this.formulario.listaCreditosHipotecarios[0].componentes[2].cantidad +
+            this.formulario.listaCreditosConsumo[0].componentes[2].cantidad;
+        ingreso4 = this.formulario.listaCreditos[idx].componentes[3].cantidad +
+            this.formulario.listaCreditosHipotecarios[0].componentes[3].cantidad +
+            this.formulario.listaCreditosConsumo[0].componentes[3].cantidad;
+
+        this.formulario.totalCreditos.componentes[0].cantidad = ingreso1;
+        this.formulario.totalCreditos.componentes[1].cantidad = ingreso2;
+        this.formulario.totalCreditos.componentes[2].cantidad = ingreso3;
+        this.formulario.totalCreditos.componentes[3].cantidad = ingreso4;
+    }
     // -------------------------------------------------------------------
     // Solo numeros
     keyPress(event: any) {
@@ -227,7 +386,16 @@ export class FormularioFinancieroFinancieroN6Component implements OnInit, OnDest
     }
 
     guardarFormulario() {
-        this.verControlInformacion();
+        this.formfinancdetalleService.desactivarFormulario(this.nCodffina, 'ff6').subscribe(
+            (res: ResponseWrapper) => {
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaCreditos, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaCreditosHipotecarios, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaCreditosConsumo, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCreditos, this.nCodffina);
+                this.verControlInformacion();
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
     verControlInformacion() {
