@@ -3,8 +3,11 @@ import { RouterModule } from '@angular/router';
 import { GatewaySharedModule } from '../../../shared';
 import { MessagesModule } from 'primeng/primeng';
 import { MessageModule } from 'primeng/primeng';
-import { DialogModule } from 'primeng/primeng';
 import { MessageService } from 'primeng/components/common/messageservice';
+
+import { StepsModule, ToggleButtonModule, CalendarModule, RadioButtonModule, DataTableModule, SharedModule,
+    DialogModule, DropdownModule, ConfirmDialogModule, BlockUIModule } from 'primeng/primeng';
+import {GrowlModule} from 'primeng/components/growl/growl';
 
 import {
     AtencionLegajoComponent,
@@ -19,7 +22,20 @@ const ENTITY_STATES = [
     imports: [
         MessagesModule,
         MessageModule,
+        GatewaySharedModule,
+        MessagesModule,
+        MessageModule,
+        StepsModule,
+        ToggleButtonModule,
+        CalendarModule,
+        RadioButtonModule,
+        DataTableModule,
+        SharedModule,
         DialogModule,
+        DropdownModule,
+        GrowlModule,
+        ConfirmDialogModule,
+        BlockUIModule,
         GatewaySharedModule,
         RouterModule.forChild(ENTITY_STATES)
     ],

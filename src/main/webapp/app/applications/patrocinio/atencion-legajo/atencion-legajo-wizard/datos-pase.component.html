@@ -1,0 +1,79 @@
+<p-blockUI [blocked]="block"></p-blockUI>
+<p-growl [(value)]="mensajes"></p-growl>
+<div class="row">
+    <div class="col">
+        <div class="card card-mtpe">
+            <div class="card-header bg-light d-sm-flex justify-content-between p-1">
+                <h5><small class="ml-3">Registro de Expediente - Pase</small></h5>
+                <h5 class="mb-0 pr-3"><small>Paso 1 de 5</small></h5>
+            </div>
+            <div class="card-body">
+                <div class="defensa px-2">
+                    <div class="panel">
+                        <form (ngSubmit)="buscarPase()">
+                            <div class="form-row">
+                                <div class="col-md-3">
+                                    <!-- <p-toggleButton name="checked2" [(ngModel)]="checked2" onLabel="Por: N° Documentos" offLabel="Por: Rango de Fechas"></p-toggleButton> -->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p-radioButton name="groupname" value="1" label="Por: Nro. de Doc." [(ngModel)]="tipoBusqueda"></p-radioButton>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p-radioButton name="groupname" value="2" label="Por: Rango de Fechas" [(ngModel)]="tipoBusqueda"></p-radioButton>        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="tipoBusqueda==='1'" class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="inpTipo" class="col-sm-3 col-form-label">Tipo de documento:</label>
+                                        <div class="col-sm-4 px-0">
+                                            <p-dropdown [options]="tipodocs" name="selectedTipodoc" [(ngModel)]="selectedTipodoc" [style]="{'width':'140px'}" placeholder="Seleccione" optionLabel="name"></p-dropdown>
+                                        </div>
+                                        <label for="inpNumero" class="col-sm-2 col-form-label">Número:</label>
+                                        <div class="col-sm-3 px-0">
+                                            <input class="form-control form-control-sm" type="text" [(ngModel)]="vNumdoc" name="vNumdoc" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="tipoBusqueda==='2'" class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="inpTipo" class="col-sm-3 col-form-label">Fechas:</label>
+                                        <p-calendar name="rangeDates" [(ngModel)]="rangeDates" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" selectionMode="range" readonlyInput="true"></p-calendar>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <button type="submit" class="btn btn-sm btn-secondary px-3"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</button>
+                                </div>
+                            </div>
+                        </form>
+                        <br>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <p-dataTable [value]="pasegls" [(selection)]="pasesDoc" selectionMode="single" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" dataKey="id">
+                                            <p-header>PASES</p-header>
+                                            <p-column [style]="{'width':'38px'}" selectionMode="single"></p-column>
+                                            <!-- <p-column field="codPase" header="Cod. Pase"></p-column> -->
+                                            <p-column  header="Fecha de Pase">
+                                                <ng-template let-data="rowData" pTemplate="body">
+                                                    <span style="text-align:center">{{data.tFecreg | date:'dd-MM-yyyy'}}</span>
+                                                </ng-template>
+                                            </p-column>
+                                            <p-column field="atencion.datlab.empleador.perjuridica.vNumdoc" header="RUC Empleador"></p-column>
+                                            <p-column field="atencion.datlab.empleador.perjuridica.vRazsocial" header="Razón Social del Empleador"></p-column>
+                                            <p-column field="atencion.datlab.trabajador.pernatural.vNumdoc" header="Nro. Documento Trabajador"></p-column>
+                                            <p-column field="atencion.datlab.trabajador.pernatural.vNombres" header="Apellidos y Nombres Trabajador"></p-column>
+                                            <p-column field="atencion.oficina.vDesofic" header="Of. de Derivación"></p-column>
+                                            <ng-template pTemplate="emptymessage">
+                                                No se han encontrado registros
+                                            </ng-template>
+                                    </p-dataTable>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
