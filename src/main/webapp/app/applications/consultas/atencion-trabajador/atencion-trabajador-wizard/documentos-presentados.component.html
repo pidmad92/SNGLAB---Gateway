@@ -5,13 +5,14 @@
 				<h5 class="mb-0"><small><i class="fa fa-user" aria-hidden="true"></i> Registro de Atención del Trabajador</small></h5>
 			</div>
 			<div class="card-body">
+				<div class="consultas-laborales mb-2">
 				<form>
 					<div class="form-row mb-2">
 						<div class="col-md">
 						<div class="form-group row">
 							<label for="inpTicket" class="col-sm-3 col-form-label">Ticket</label>
 							<div class="col-sm-9">
-							<input type="text" class="form-control form-control-sm" id="inpTicket" placeholder="">
+								<input type="text" class="form-control form-control-sm" id="inpTicket" name="atencion.vNumticket" [(ngModel)]="atencion.vNumticket" placeholder="" style="text-transform: uppercase">
 							</div>
 						</div>
 						</div>
@@ -19,7 +20,7 @@
 						<div class="form-group row">
 							<label for="inpLocal" class="col-sm-3 col-form-label">Local</label>
 							<div class="col-sm-9">
-							<input type="text" class="form-control form-control-sm" id="inpLocal" value="LIMA CENTRO">
+							<input type="text" class="form-control form-control-sm" id="inpLocal" value="LIMA CENTRO" readonly>
 							</div>
 						</div>
 						</div>
@@ -28,7 +29,8 @@
 							<label for="inpFecha" class="col-sm-3 col-form-label">Fecha</label>
 							<div class="col-sm-9">
 							<!-- <input type="date" class="form-control form-control-sm" id="inpFecha" [(ngModel)]="fechoy"> -->
-							<input type="date" class="form-control form-control-sm" id="inpFecha">
+							<!-- <input type="date" class="form-control form-control-sm" id="inpFecha"> -->
+								<p style="padding-top: 5px;"><span ng-non-bindable>{{ fechoy | date: 'dd/MM/yyyy' }}</span></p>
 							</div>
 						</div>
 						</div>
@@ -58,6 +60,7 @@
 							</div>
 						</div>
 					</div>
+				</div>
 				</div>
 			</div>
 		</div>

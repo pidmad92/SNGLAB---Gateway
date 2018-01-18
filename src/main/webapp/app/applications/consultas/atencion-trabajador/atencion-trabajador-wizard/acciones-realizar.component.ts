@@ -20,6 +20,7 @@ import { Docpresate } from '../../models/docpresate.model';
 import { Docinperdlb } from '../../models/docinperdlb.model';
 import { Accadoate } from '../../models/accadoate.model';
 import { Tipvinculo } from '../../models/tipvinculo.model';
+import { Sucesor } from '../../models/sucesor.model';
 
 @Component({
     selector: 'jhi-acciones-realizar',
@@ -33,6 +34,7 @@ export class AccionesRealizarComponent implements OnInit, OnDestroy {
     trabajador: Trabajador;
     empleador: Empleador;
     motcese: Motcese;
+    sucesor: Sucesor;
 
     motateselec: Motateselec[];
     docinperdlb: Docinperdlb[];
@@ -49,6 +51,8 @@ export class AccionesRealizarComponent implements OnInit, OnDestroy {
 
     private subscription: Subscription;
     private eventSubscriber: Subscription;
+
+    fechoy: Date;
 
     loadAccionadop() {
         this.atencionTrabajadorService.findListaAccionadop().subscribe(
@@ -85,10 +89,14 @@ export class AccionesRealizarComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.fechoy = new Date();
         this.subscription = this.registroAtencionWizard.actividadSelec.subscribe((actividadSelect) => {
             this.actividadSelec = actividadSelect;
             this.registroAtencionWizard.atenSeleccionado.subscribe((atencion) => {
                 this.atencion = atencion;
+                if (atencion.vNumticket !== undefined) {
+                    this.atencion.vNumticket = atencion.vNumticket.toUpperCase();
+                }
                 if (this.actividadSelec === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
                     this.router.navigate(['/consultas/atencion-trabajador']);
                 } else if (this.actividadSelec === '3') {
@@ -117,9 +125,13 @@ export class AccionesRealizarComponent implements OnInit, OnDestroy {
                     this.registroAtencionWizard.accionaSeleccionado.subscribe((accadoate) => {
                         this.accadoate = accadoate;
                     });
+                    this.registroAtencionWizard.sucesorSeleccionado.subscribe((sucesor) => {
+                        this.sucesor = sucesor;
+                    });
                 }
             });
             this.registerChangeInAccionadops();
+
         });
     }
 

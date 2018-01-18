@@ -12,7 +12,7 @@
                                 <div class="form-group row">
                                     <label for="inpTicket" class="col-sm-3 col-form-label">Ticket</label>
                                     <div class="col-sm-9">
-                                    <!-- <input type="text" class="form-control form-control-sm" id="inpTicket" name="atencion.vNumticket" [(ngModel)]="atencion.vNumticket" placeholder=""> -->
+                                        <input type="text" class="form-control form-control-sm" id="inpTicket" name="atencion.vNumticket" [(ngModel)]="atencion.vNumticket" placeholder="" style="text-transform: uppercase">
                                     </div>
                                 </div>
                             </div>
@@ -20,7 +20,7 @@
                                 <div class="form-group row">
                                     <label for="inpLocal" class="col-sm-3 col-form-label">Local</label>
                                     <div class="col-sm-9">
-                                    <input type="text" class="form-control form-control-sm" id="inpLocal" value="LIMA CENTRO">
+                                    <input type="text" class="form-control form-control-sm" id="inpLocal" value="LIMA CENTRO" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -29,7 +29,7 @@
                                     <label for="inpFecha" class="col-sm-3 col-form-label">Fecha</label>
                                     <div class="col-sm-9">
                                     <!-- <input type="date" class="form-control form-control-sm" id="inpFecha" [(ngModel)]="fechoy"> -->
-                                    <input type="date" class="form-control form-control-sm" id="inpFecha">
+                                        <p style="padding-top: 5px;"><span ng-non-bindable>{{ fechoy | date: 'dd/MM/yyyy' }}</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -48,46 +48,31 @@
                                             <div class="col-md-6 py-2 px-4">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <p-radioButton name="groupname" value="1" label="Con Vínculo Laboral" [(ngModel)]="atencion.datlab.nFlgsitlab"></p-radioButton>
+                                                        <!-- <p-radioButton name="groupname" value=1 label="Con Vínculo Laboral" [(ngModel)]="atencion.datlab.nFlgsitlab"></p-radioButton> -->
+                                                        <p-radioButton name="groupname" value='1' label="Con Vínculo Laboral" [(ngModel)]="tipoVinculo" (click)="changeTipoVinculo()"></p-radioButton>
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <p-radioButton name="groupname" value="2" label="Sin Vínculo Laboral" [(ngModel)]="atencion.datlab.nFlgsitlab"></p-radioButton>        
+                                                        <!-- <p-radioButton name="groupname" value=0 label="Sin Vínculo Laboral" [(ngModel)]="atencion.datlab.nFlgsitlab"></p-radioButton> -->
+                                                        <p-radioButton name="groupname" value='0' label="Sin Vínculo Laboral" [(ngModel)]="tipoVinculo" (click)="changeTipoVinculo()"></p-radioButton>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label for="inpN">Regimen:</label>
-                                                <select required class="form-control form-control-sm " id="field_regimenlab" name="regimenlab" [(ngModel)]="atencion.datlab.regimenlab" >
-                                                    <option [ngValue]="regimenlabo.id === atencion.datlab.regimenlab?.id ? atencion.datlab.regimenlab : regimenlabo" *ngFor="let regimenlabo of regimenlab;">{{ regimenlabo.vDesreglab }}</option>
-                                                </select>
-                                                <!-- <select class="form-control form-control-sm"></select> -->
+                                            <div class="col-md-6 mb-3" *ngIf="tipoVinculo==='0'">
+                                            <!-- <div class="col-md-6 mb-3" *ngIf="atencion.datlab.nFlgsitlab===0"> -->
+                                                <label for="inpN">Fecha de Cese:</label>
+                                                <input type="date" class="form-control form-control-sm" id="inpN" name="dFeccese" [(ngModel)]="atencion.datlab.dFeccese">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="row ">
-                                            <div class="col-md-6 mb-3">
-                                                <label for="inpN">Fecha de Ingreso:</label>
-                                                {{atencion.datlab.dFecvincul}}
-                                                <input type="date" class="form-control form-control-sm" id="inpN" name="dFecvincul" [(ngModel)]="atencion.datlab.dFecvincul"  >
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                    <label for="inpN">Fecha de Cese:</label>
-                                                    <input type="date" class="form-control form-control-sm" id="inpN" name="dFeccese" [(ngModel)]="atencion.datlab.dFeccese"  >
-                                                </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6" *ngIf="tipoVinculo==='0'">
+                                    <!-- <div class="col-md-6" *ngIf="atencion.datlab.nFlgsitlab===0"> -->
                                         <div class="row ">
                                             <div class="col-md-6 mb-3">
                                                 <label for="inpN">Motivo de Cese:</label>
-                                                <select (change)="selectMotivCese($event.target)"  class="form-control form-control-sm " id="field_motcese" name="motcese" [(ngModel)]="atencion.datlab.motcese" >
+                                                <select (change)="selectMotivCese($event.target)"  class="form-control form-control-sm " id="field_motcese" name="motcese" [(ngModel)]="atencion.datlab.motcese">
                                                     <option value="0">OTROS</option>
                                                     <option [ngValue]="motivocese.id === atencion.datlab.motcese?.id ? atencion.datlab.motcese : motivocese" *ngFor="let motivocese of motivcese;">{{motivocese.vDesmotces}}</option>
                                                 </select>
-                                                
                                             </div>
                                             <div class="col-md-6 mb-3" *ngIf="viewAnotherMotiv">
                                                 <label for="inpN">Otro Motivo:</label>
@@ -100,6 +85,25 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="row ">
+                                                <div class="col-md-6 mb-3">
+                                                        <label for="inpN">Regimen:</label>
+                                                        <select required class="form-control form-control-sm " id="field_regimenlab" name="regimenlab" [(ngModel)]="atencion.datlab.regimenlab" >
+                                                            <option [ngValue]="regimenlabo.id === atencion.datlab.regimenlab?.id ? atencion.datlab.regimenlab : regimenlabo" *ngFor="let regimenlabo of regimenlab;">{{ regimenlabo.vDesreglab }}</option>
+                                                        </select>
+                                                        <!-- <select class="form-control form-control-sm"></select> -->
+                                                    </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                    <label for="inpN">Fecha de Ingreso:</label>
+                                                    <!-- {{ atencion.datlab.dFecvincul | date: 'dd/MM/yyyy' }} -->
+                                                    <input type="date" class="form-control form-control-sm" id="inpN" name="dFecvincul" [(ngModel)]="atencion.datlab.dFecvincul"  >
+                                                </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">

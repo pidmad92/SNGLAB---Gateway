@@ -213,6 +213,9 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
                 this.atencion = atencion;
                 this.registroAtencionWizard.empleadorSeleccionado.subscribe((loadempleador) => {
                     this.empleador = loadempleador;
+                    if (atencion.vNumticket !== undefined) {
+                        this.atencion.vNumticket = atencion.vNumticket.toUpperCase();
+                    }
                     console.log('Actividad selecionada: ' + this.actividadSelec);
                     if (this.actividadSelec === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
                         this.router.navigate(['/consultas/atencion-trabajador']);

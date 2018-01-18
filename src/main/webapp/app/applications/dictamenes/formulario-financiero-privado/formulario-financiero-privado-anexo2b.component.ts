@@ -79,7 +79,7 @@ export class FormularioFinancieroPrivadoAnexo2BComponent implements OnInit, OnDe
 
     load(nCodffina) {
         this.nCodffina = nCodffina;
-     }
+    }
 
     ngOnInit() {
         this.loadAll();
@@ -689,9 +689,14 @@ export class FormularioFinancieroPrivadoAnexo2BComponent implements OnInit, OnDe
     }
 
     guardarFormulario() {
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaA, this.nCodffina, 'f2anex2b');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaB, this.nCodffina, 'f2anex2b');
-        this.verControlInformacion();
+        this.formfinancdetalleService.desactivarFormulario(this.nCodffina, 'f2anex2b').subscribe(
+            (res: ResponseWrapper) => {
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaA, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaB, this.nCodffina);
+                this.verControlInformacion();
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
     verControlInformacion() {

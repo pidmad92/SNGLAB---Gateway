@@ -102,129 +102,129 @@ export class FormularioFinancieroPrivadoAnexo2AComponent implements OnInit, OnDe
         this.formulario = new FormularioAnexo2A();
 
         const lista1Desc: string[] = [this.constantes.FORM2ANEX2A_FEAOC1,
-                                      this.constantes.FORM2ANEX2A_FEAOC2,
-                                      this.constantes.FORM2ANEX2A_FEAOC3,
-                                      this.constantes.FORM2ANEX2A_FEAOC4,
-                                      this.constantes.FORM2ANEX2A_FEAOC5];
+        this.constantes.FORM2ANEX2A_FEAOC2,
+        this.constantes.FORM2ANEX2A_FEAOC3,
+        this.constantes.FORM2ANEX2A_FEAOC4,
+        this.constantes.FORM2ANEX2A_FEAOC5];
         const lista1Cod: string[] = [this.constantes.FORM2ANEX2A_COD_FEAOC1,
-                                     this.constantes.FORM2ANEX2A_COD_FEAOC2,
-                                     this.constantes.FORM2ANEX2A_COD_FEAOC3,
-                                     this.constantes.FORM2ANEX2A_COD_FEAOC4,
-                                     this.constantes.FORM2ANEX2A_COD_FEAOC5];
+        this.constantes.FORM2ANEX2A_COD_FEAOC2,
+        this.constantes.FORM2ANEX2A_COD_FEAOC3,
+        this.constantes.FORM2ANEX2A_COD_FEAOC4,
+        this.constantes.FORM2ANEX2A_COD_FEAOC5];
         this.formulario.lista1 = this.crearlistacomponentes(lista1Desc, lista1Cod, false);
 
         const lista2Desc: string[] = [this.constantes.FORM2ANEX2A_FEAOP1,
-                                    this.constantes.FORM2ANEX2A_FEAOP2,
-                                    this.constantes.FORM2ANEX2A_FEAOP3,
-                                    this.constantes.FORM2ANEX2A_FEAOP4,
-                                    this.constantes.FORM2ANEX2A_FEAOP5];
+        this.constantes.FORM2ANEX2A_FEAOP2,
+        this.constantes.FORM2ANEX2A_FEAOP3,
+        this.constantes.FORM2ANEX2A_FEAOP4,
+        this.constantes.FORM2ANEX2A_FEAOP5];
         const lista2Cod: string[] = [this.constantes.FORM2ANEX2A_COD_FEAOP1,
-                                    this.constantes.FORM2ANEX2A_COD_FEAOP2,
-                                    this.constantes.FORM2ANEX2A_COD_FEAOP3,
-                                    this.constantes.FORM2ANEX2A_COD_FEAOP4,
-                                    this.constantes.FORM2ANEX2A_COD_FEAOP5];
+        this.constantes.FORM2ANEX2A_COD_FEAOP2,
+        this.constantes.FORM2ANEX2A_COD_FEAOP3,
+        this.constantes.FORM2ANEX2A_COD_FEAOP4,
+        this.constantes.FORM2ANEX2A_COD_FEAOP5];
         this.formulario.lista2 = this.crearlistacomponentes(lista2Desc, lista2Cod, false);
 
         const lista3Desc: string[] = [this.constantes.FORM2ANEX2A_FEAOEE1,
-                                    this.constantes.FORM2ANEX2A_FEAOEE2,
-                                    this.constantes.FORM2ANEX2A_FEAOEE3,
-                                    this.constantes.FORM2ANEX2A_FEAOEE4,
-                                    this.constantes.FORM2ANEX2A_FEAOEE5,
-                                    this.constantes.FORM2ANEX2A_FEAOEE6];
+        this.constantes.FORM2ANEX2A_FEAOEE2,
+        this.constantes.FORM2ANEX2A_FEAOEE3,
+        this.constantes.FORM2ANEX2A_FEAOEE4,
+        this.constantes.FORM2ANEX2A_FEAOEE5,
+        this.constantes.FORM2ANEX2A_FEAOEE6];
         const lista3Cod: string[] = [this.constantes.FORM2ANEX2A_COD_FEAOEE1,
-                                    this.constantes.FORM2ANEX2A_COD_FEAOEE2,
-                                    this.constantes.FORM2ANEX2A_COD_FEAOEE3,
-                                    this.constantes.FORM2ANEX2A_COD_FEAOEE4,
-                                    this.constantes.FORM2ANEX2A_COD_FEAOEE5,
-                                    this.constantes.FORM2ANEX2A_COD_FEAOEE6];
+        this.constantes.FORM2ANEX2A_COD_FEAOEE2,
+        this.constantes.FORM2ANEX2A_COD_FEAOEE3,
+        this.constantes.FORM2ANEX2A_COD_FEAOEE4,
+        this.constantes.FORM2ANEX2A_COD_FEAOEE5,
+        this.constantes.FORM2ANEX2A_COD_FEAOEE6];
         this.formulario.lista3 = this.crearlistacomponentes(lista3Desc, lista3Cod, false);
 
         const lista4Desc: string[] = [this.constantes.FORM2ANEX2A_FEAIC1,
-                                    this.constantes.FORM2ANEX2A_FEAIC2,
-                                    this.constantes.FORM2ANEX2A_FEAIC3,
-                                    this.constantes.FORM2ANEX2A_FEAIC4,
-                                    this.constantes.FORM2ANEX2A_FEAIC5,
-                                    this.constantes.FORM2ANEX2A_FEAIC6,
-                                    this.constantes.FORM2ANEX2A_FEAIC7,
-                                    this.constantes.FORM2ANEX2A_FEAIC8,
-                                    this.constantes.FORM2ANEX2A_FEAIC9,
-                                    this.constantes.FORM2ANEX2A_FEAIC10,
-                                    this.constantes.FORM2ANEX2A_FEAIC11,
-                                    this.constantes.FORM2ANEX2A_FEAIC12];
+        this.constantes.FORM2ANEX2A_FEAIC2,
+        this.constantes.FORM2ANEX2A_FEAIC3,
+        this.constantes.FORM2ANEX2A_FEAIC4,
+        this.constantes.FORM2ANEX2A_FEAIC5,
+        this.constantes.FORM2ANEX2A_FEAIC6,
+        this.constantes.FORM2ANEX2A_FEAIC7,
+        this.constantes.FORM2ANEX2A_FEAIC8,
+        this.constantes.FORM2ANEX2A_FEAIC9,
+        this.constantes.FORM2ANEX2A_FEAIC10,
+        this.constantes.FORM2ANEX2A_FEAIC11,
+        this.constantes.FORM2ANEX2A_FEAIC12];
         const lista4Cod: string[] = [this.constantes.FORM2ANEX2A_COD_FEAIC1,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIC2,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIC3,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIC4,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIC5,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIC6,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIC7,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIC8,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIC9,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIC10,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIC11,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIC12];
+        this.constantes.FORM2ANEX2A_COD_FEAIC2,
+        this.constantes.FORM2ANEX2A_COD_FEAIC3,
+        this.constantes.FORM2ANEX2A_COD_FEAIC4,
+        this.constantes.FORM2ANEX2A_COD_FEAIC5,
+        this.constantes.FORM2ANEX2A_COD_FEAIC6,
+        this.constantes.FORM2ANEX2A_COD_FEAIC7,
+        this.constantes.FORM2ANEX2A_COD_FEAIC8,
+        this.constantes.FORM2ANEX2A_COD_FEAIC9,
+        this.constantes.FORM2ANEX2A_COD_FEAIC10,
+        this.constantes.FORM2ANEX2A_COD_FEAIC11,
+        this.constantes.FORM2ANEX2A_COD_FEAIC12];
         this.formulario.lista4 = this.crearlistacomponentes(lista4Desc, lista4Cod, false);
 
         const lista5Desc: string[] = [this.constantes.FORM2ANEX2A_FEAIP1,
-                                    this.constantes.FORM2ANEX2A_FEAIP2,
-                                    this.constantes.FORM2ANEX2A_FEAIP3,
-                                    this.constantes.FORM2ANEX2A_FEAIP4,
-                                    this.constantes.FORM2ANEX2A_FEAIP5,
-                                    this.constantes.FORM2ANEX2A_FEAIP6,
-                                    this.constantes.FORM2ANEX2A_FEAIP7,
-                                    this.constantes.FORM2ANEX2A_FEAIP8,
-                                    this.constantes.FORM2ANEX2A_FEAIP9,
-                                    this.constantes.FORM2ANEX2A_FEAIP10,
-                                    this.constantes.FORM2ANEX2A_FEAIP11,
-                                    this.constantes.FORM2ANEX2A_FEAIP12];
+        this.constantes.FORM2ANEX2A_FEAIP2,
+        this.constantes.FORM2ANEX2A_FEAIP3,
+        this.constantes.FORM2ANEX2A_FEAIP4,
+        this.constantes.FORM2ANEX2A_FEAIP5,
+        this.constantes.FORM2ANEX2A_FEAIP6,
+        this.constantes.FORM2ANEX2A_FEAIP7,
+        this.constantes.FORM2ANEX2A_FEAIP8,
+        this.constantes.FORM2ANEX2A_FEAIP9,
+        this.constantes.FORM2ANEX2A_FEAIP10,
+        this.constantes.FORM2ANEX2A_FEAIP11,
+        this.constantes.FORM2ANEX2A_FEAIP12];
         const lista5Cod: string[] = [this.constantes.FORM2ANEX2A_COD_FEAIP1,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIP2,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIP3,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIP4,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIP5,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIP6,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIP7,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIP8,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIP9,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIP10,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIP11,
-                                    this.constantes.FORM2ANEX2A_COD_FEAIP12];
+        this.constantes.FORM2ANEX2A_COD_FEAIP2,
+        this.constantes.FORM2ANEX2A_COD_FEAIP3,
+        this.constantes.FORM2ANEX2A_COD_FEAIP4,
+        this.constantes.FORM2ANEX2A_COD_FEAIP5,
+        this.constantes.FORM2ANEX2A_COD_FEAIP6,
+        this.constantes.FORM2ANEX2A_COD_FEAIP7,
+        this.constantes.FORM2ANEX2A_COD_FEAIP8,
+        this.constantes.FORM2ANEX2A_COD_FEAIP9,
+        this.constantes.FORM2ANEX2A_COD_FEAIP10,
+        this.constantes.FORM2ANEX2A_COD_FEAIP11,
+        this.constantes.FORM2ANEX2A_COD_FEAIP12];
         this.formulario.lista5 = this.crearlistacomponentes(lista5Desc, lista5Cod, false);
 
         const lista6Desc: string[] = [this.constantes.FORM2ANEX2A_FEAFC1,
-                                    this.constantes.FORM2ANEX2A_FEAFC2,
-                                    this.constantes.FORM2ANEX2A_FEAFC3,
-                                    this.constantes.FORM2ANEX2A_FEAFC4,
-                                    this.constantes.FORM2ANEX2A_FEAFC5,
-                                    this.constantes.FORM2ANEX2A_FEAFC6];
+        this.constantes.FORM2ANEX2A_FEAFC2,
+        this.constantes.FORM2ANEX2A_FEAFC3,
+        this.constantes.FORM2ANEX2A_FEAFC4,
+        this.constantes.FORM2ANEX2A_FEAFC5,
+        this.constantes.FORM2ANEX2A_FEAFC6];
         const lista6Cod: string[] = [this.constantes.FORM2ANEX2A_COD_FEAFC1,
-                                    this.constantes.FORM2ANEX2A_COD_FEAFC2,
-                                    this.constantes.FORM2ANEX2A_COD_FEAFC3,
-                                    this.constantes.FORM2ANEX2A_COD_FEAFC4,
-                                    this.constantes.FORM2ANEX2A_COD_FEAFC5,
-                                    this.constantes.FORM2ANEX2A_COD_FEAFC6];
+        this.constantes.FORM2ANEX2A_COD_FEAFC2,
+        this.constantes.FORM2ANEX2A_COD_FEAFC3,
+        this.constantes.FORM2ANEX2A_COD_FEAFC4,
+        this.constantes.FORM2ANEX2A_COD_FEAFC5,
+        this.constantes.FORM2ANEX2A_COD_FEAFC6];
         this.formulario.lista6 = this.crearlistacomponentes(lista6Desc, lista6Cod, false);
 
         const lista7Desc: string[] = [this.constantes.FORM2ANEX2A_FEAFP1,
-                                    this.constantes.FORM2ANEX2A_FEAFP2,
-                                    this.constantes.FORM2ANEX2A_FEAFP3,
-                                    this.constantes.FORM2ANEX2A_FEAFP4,
-                                    this.constantes.FORM2ANEX2A_FEAFP5,
-                                    this.constantes.FORM2ANEX2A_FEAFP6,
-                                    this.constantes.FORM2ANEX2A_FEAFP7,
-                                    this.constantes.FORM2ANEX2A_FEAFP8,
-                                    this.constantes.FORM2ANEX2A_FEAFP9,
-                                    this.constantes.FORM2ANEX2A_FEAFP10];
+        this.constantes.FORM2ANEX2A_FEAFP2,
+        this.constantes.FORM2ANEX2A_FEAFP3,
+        this.constantes.FORM2ANEX2A_FEAFP4,
+        this.constantes.FORM2ANEX2A_FEAFP5,
+        this.constantes.FORM2ANEX2A_FEAFP6,
+        this.constantes.FORM2ANEX2A_FEAFP7,
+        this.constantes.FORM2ANEX2A_FEAFP8,
+        this.constantes.FORM2ANEX2A_FEAFP9,
+        this.constantes.FORM2ANEX2A_FEAFP10];
         const lista7Cod: string[] = [this.constantes.FORM2ANEX2A_COD_FEAFP1,
-                                    this.constantes.FORM2ANEX2A_COD_FEAFP2,
-                                    this.constantes.FORM2ANEX2A_COD_FEAFP3,
-                                    this.constantes.FORM2ANEX2A_COD_FEAFP4,
-                                    this.constantes.FORM2ANEX2A_COD_FEAFP5,
-                                    this.constantes.FORM2ANEX2A_COD_FEAFP6,
-                                    this.constantes.FORM2ANEX2A_COD_FEAFP7,
-                                    this.constantes.FORM2ANEX2A_COD_FEAFP8,
-                                    this.constantes.FORM2ANEX2A_COD_FEAFP9,
-                                    this.constantes.FORM2ANEX2A_COD_FEAFP10];
+        this.constantes.FORM2ANEX2A_COD_FEAFP2,
+        this.constantes.FORM2ANEX2A_COD_FEAFP3,
+        this.constantes.FORM2ANEX2A_COD_FEAFP4,
+        this.constantes.FORM2ANEX2A_COD_FEAFP5,
+        this.constantes.FORM2ANEX2A_COD_FEAFP6,
+        this.constantes.FORM2ANEX2A_COD_FEAFP7,
+        this.constantes.FORM2ANEX2A_COD_FEAFP8,
+        this.constantes.FORM2ANEX2A_COD_FEAFP9,
+        this.constantes.FORM2ANEX2A_COD_FEAFP10];
         this.formulario.lista7 = this.crearlistacomponentes(lista7Desc, lista7Cod, false);
 
         const lista8Desc: string[] = [this.constantes.FORM2ANEX2A_EVTCEEE1];
@@ -366,7 +366,7 @@ export class FormularioFinancieroPrivadoAnexo2AComponent implements OnInit, OnDe
                 }
             }
         }
-       this.total1();
+        this.total1();
     }
 
     actualizarCampos2Total1(event: any) {
@@ -381,7 +381,7 @@ export class FormularioFinancieroPrivadoAnexo2AComponent implements OnInit, OnDe
                 }
             }
         }
-       this.total1();
+        this.total1();
     }
 
     actualizarCampos3Total1(event: any) {
@@ -396,7 +396,7 @@ export class FormularioFinancieroPrivadoAnexo2AComponent implements OnInit, OnDe
                 }
             }
         }
-       this.total1();
+        this.total1();
     }
 
     total1() {
@@ -454,7 +454,7 @@ export class FormularioFinancieroPrivadoAnexo2AComponent implements OnInit, OnDe
                 }
             }
         }
-       this.total2();
+        this.total2();
     }
 
     actualizarCampos2Total2(event: any) {
@@ -469,7 +469,7 @@ export class FormularioFinancieroPrivadoAnexo2AComponent implements OnInit, OnDe
                 }
             }
         }
-       this.total2();
+        this.total2();
     }
 
     total2() {
@@ -516,7 +516,7 @@ export class FormularioFinancieroPrivadoAnexo2AComponent implements OnInit, OnDe
                 }
             }
         }
-       this.total3();
+        this.total3();
     }
 
     actualizarCampos2Total3(event: any) {
@@ -531,7 +531,7 @@ export class FormularioFinancieroPrivadoAnexo2AComponent implements OnInit, OnDe
                 }
             }
         }
-       this.total3();
+        this.total3();
     }
 
     total3() {
@@ -567,12 +567,12 @@ export class FormularioFinancieroPrivadoAnexo2AComponent implements OnInit, OnDe
 
     total_I_II_II() {
         this.formulario.total4.componentes[0].cantidad = this.formulario.total1.componentes[0].cantidad +
-                                                         this.formulario.total2.componentes[0].cantidad +
-                                                         this.formulario.total3.componentes[0].cantidad;
+            this.formulario.total2.componentes[0].cantidad +
+            this.formulario.total3.componentes[0].cantidad;
 
         this.formulario.total4.componentes[1].cantidad = this.formulario.total1.componentes[1].cantidad +
-                                                         this.formulario.total2.componentes[1].cantidad +
-                                                         this.formulario.total3.componentes[1].cantidad;
+            this.formulario.total2.componentes[1].cantidad +
+            this.formulario.total3.componentes[1].cantidad;
         this.total5();
     }
 
@@ -659,22 +659,27 @@ export class FormularioFinancieroPrivadoAnexo2AComponent implements OnInit, OnDe
     }
 
     guardarFormulario() {
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista1, this.nCodffina, 'f2anex2a');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista2, this.nCodffina, 'f2anex2a');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista3, this.nCodffina, 'f2anex2a');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista4, this.nCodffina, 'f2anex2a');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista5, this.nCodffina, 'f2anex2a');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista6, this.nCodffina, 'f2anex2a');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista7, this.nCodffina, 'f2anex2a');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.lista8, this.nCodffina, 'f2anex2a');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.lista9, this.nCodffina, 'f2anex2a');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total1, this.nCodffina, 'f2anex2a');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total2, this.nCodffina, 'f2anex2a');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total3, this.nCodffina, 'f2anex2a');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total4, this.nCodffina, 'f2anex2a');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total5, this.nCodffina, 'f2anex2a');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total6, this.nCodffina, 'f2anex2a');
-        this.verControlInformacion();
+        this.formfinancdetalleService.desactivarFormulario(this.nCodffina, 'f2anex2a').subscribe(
+            (res: ResponseWrapper) => {
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista1, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista2, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista3, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista4, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista5, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista6, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.lista7, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.lista8, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.lista9, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total1, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total2, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total3, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total4, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total5, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.total6, this.nCodffina);
+                this.verControlInformacion();
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
     verControlInformacion() {

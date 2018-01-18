@@ -107,6 +107,42 @@ export class FormularioFinancieroFinancieroN3Component implements OnInit, OnDest
 
     construirFormulario() {
         this.formulario = new Formulario3();
+
+        const direcDesc = [this.constantes.FORM3_ESTRUCCREDDIRECMOD_CUENTASCORRIENTES,
+        this.constantes.FORM3_ESTRUCCREDDIRECMOD_TARJETASCREDITO,
+        this.constantes.FORM3_ESTRUCCREDDIRECMOD_DESCUENTOS,
+        this.constantes.FORM3_ESTRUCCREDDIRECMOD_PRESTAMOS,
+        this.constantes.FORM3_ESTRUCCREDDIRECMOD_HIPOVIVIENDA,
+        this.constantes.FORM3_ESTRUCCREDDIRECMOD_FACTORING,
+        this.constantes.FORM3_ESTRUCCREDDIRECMOD_ARRENDAFINANC,
+        this.constantes.FORM3_ESTRUCCREDDIRECMOD_COMERCIOEXTERIOR,
+        this.constantes.FORM3_ESTRUCCREDDIRECMOD_OTROS,
+        this.constantes.FORM3_ESTRUCCREDDIRECMOD_TOTAL];
+        const direcCod = [this.constantes.FORM3_COD_ESTRUCCREDDIRECMOD_CUENTASCORRIENTES,
+        this.constantes.FORM3_COD_ESTRUCCREDDIRECMOD_TARJETASCREDITO,
+        this.constantes.FORM3_COD_ESTRUCCREDDIRECMOD_DESCUENTOS,
+        this.constantes.FORM3_COD_ESTRUCCREDDIRECMOD_PRESTAMOS,
+        this.constantes.FORM3_COD_ESTRUCCREDDIRECMOD_HIPOVIVIENDA,
+        this.constantes.FORM3_COD_ESTRUCCREDDIRECMOD_FACTORING,
+        this.constantes.FORM3_COD_ESTRUCCREDDIRECMOD_ARRENDAFINANC,
+        this.constantes.FORM3_COD_ESTRUCCREDDIRECMOD_COMERCIOEXTERIOR,
+        this.constantes.FORM3_COD_ESTRUCCREDDIRECMOD_OTROS,
+        this.constantes.FORM3_COD_ESTRUCCREDDIRECMOD_TOTAL];
+        this.formulario.listaEstrucCredDirecModalidad = this.crearlistacomponentes(direcDesc, direcCod, true);
+
+        const indirecDesc = [this.constantes.FORM3_ESTRUCCREDINDIREC_AVALES,
+        this.constantes.FORM3_ESTRUCCREDINDIREC_CARTASFIANZAS,
+        this.constantes.FORM3_ESTRUCCREDINDIREC_CARTASCREDITO,
+        this.constantes.FORM3_ESTRUCCREDINDIREC_ACEPBANCARIA,
+        this.constantes.FORM3_ESTRUCCREDINDIREC_LINEASCRED,
+        this.constantes.FORM3_ESTRUCCREDINDIREC_TOTAL];
+        const indirecCod = [this.constantes.FORM3_COD_ESTRUCCREDINDIREC_AVALES,
+        this.constantes.FORM3_COD_ESTRUCCREDINDIREC_CARTASFIANZAS,
+        this.constantes.FORM3_COD_ESTRUCCREDINDIREC_CARTASCREDITO,
+        this.constantes.FORM3_COD_ESTRUCCREDINDIREC_ACEPBANCARIA,
+        this.constantes.FORM3_COD_ESTRUCCREDINDIREC_LINEASCRED,
+        this.constantes.FORM3_COD_ESTRUCCREDINDIREC_TOTAL];
+        this.formulario.listaEstrucCredIndirectos = this.crearlistacomponentes(indirecDesc, indirecCod, true);
     }
 
     // Funcionaes para la creacion de Formularios
@@ -227,7 +263,14 @@ export class FormularioFinancieroFinancieroN3Component implements OnInit, OnDest
     }
 
     guardarFormulario() {
-        this.verControlInformacion();
+        this.formfinancdetalleService.desactivarFormulario(this.nCodffina, 'ff3').subscribe(
+            (res: ResponseWrapper) => {
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaEstrucCredDirecModalidad, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaEstrucCredIndirectos, this.nCodffina);
+                this.verControlInformacion();
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
     verControlInformacion() {

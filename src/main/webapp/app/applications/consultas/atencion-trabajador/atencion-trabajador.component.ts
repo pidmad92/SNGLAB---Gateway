@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } from 'ng-jhipster';
 
 import { Atencion } from '../models/atencion.model';
@@ -42,6 +43,9 @@ export class AtencionTrabajadorComponent implements OnInit, OnDestroy {
 
     numOficina = 5;
     paganterior = '0';
+
+    private paganteriorSource = new BehaviorSubject(null);
+    paganteriorSelec = this.paganteriorSource.asObservable();
 
     constructor(
         private atencionTrabajadorService: AtencionTrabajadorService,
@@ -128,7 +132,7 @@ export class AtencionTrabajadorComponent implements OnInit, OnDestroy {
                 (res: ResponseWrapper) => { this.onError(res.json); }
             );
         } else {
-            this.atencionTrabajadorService.findTrabajadorsByName(this.vNombre, this.vApaterno, this.vAmaterno ).subscribe(
+            this.atencionTrabajadorService.findTrabajadorsByName(this.vNombre.toUpperCase(), this.vApaterno.toUpperCase(), this.vAmaterno.toUpperCase() ).subscribe(
                 (res: ResponseWrapper) => {
                     this.trabajadores = res.json;
                 },
@@ -208,6 +212,7 @@ export class AtencionTrabajadorComponent implements OnInit, OnDestroy {
     // this.registroAtencionWizardService.motateSeleccionado = null;
     // this.registroAtencionWizardService.trabajadorSeleccionado = null;
         this.registerChangeInAtencionTrabajador();
+        this.registerChangePaganterior();
     }
 
     ngOnDestroy() {
@@ -219,6 +224,17 @@ export class AtencionTrabajadorComponent implements OnInit, OnDestroy {
     }
     registerChangeInAtencionTrabajador() {
         this.eventSubscriber = this.eventManager.subscribe('atencionTrabajadorListModification', (response) => this.loadAll());
+    }
+
+    registerChangePaganterior() {
+        // this.bandPantSuscriber = this.eventManager.subscribe('savePageAnte',
+        // (response) => {
+            this.cambiarBandPagAnterior(this.paganterior);
+        // });
+    }
+
+    cambiarBandPagAnterior(pagante: string) {
+        this.paganteriorSource.next(pagante);
     }
 
     private onError(error) {

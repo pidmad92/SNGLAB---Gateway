@@ -134,86 +134,75 @@ export class FormfinancDetalleService {
 
     private onError(error: any) { }
 
-    guardarFormFinancieroTablas(datepipe: DatePipe, tablas: Tabla[], nCodffina: number, formulario: string) {
+    guardarFormFinancieroTablas(datepipe: DatePipe, tablas: Tabla[], nCodffina: number) {
+        for (let i = 0; i < tablas.length; i++) {
+            for (let j = 0; j < tablas[i].componentes.length; j++) {
+                const obj = new FormfinancDetalle();
 
-        this.desactivarFormulario(nCodffina, formulario).subscribe(
-            (res: ResponseWrapper) => {
-                for (let i = 0; i < tablas.length; i++) {
-                    for (let j = 0; j < tablas[i].componentes.length; j++) {
-                        const obj = new FormfinancDetalle();
+                obj.nCodfdetal = tablas[i].componentes[j].id;
+                obj.nCodffina = nCodffina;
+                obj.nValffina = tablas[i].componentes[j].cantidad;
+                obj.vDesffina = tablas[i].descripcion;
+                obj.vUndffina = tablas[i].unidadmedida;
+                obj.vCompone = tablas[i].componentes[j].codigo;
 
-                        obj.nCodfdetal = tablas[i].componentes[j].id;
-                        obj.nCodffina = nCodffina;
-                        obj.nValffina = tablas[i].componentes[j].cantidad;
-                        obj.vDesffina = tablas[i].descripcion;
-                        obj.vUndffina = tablas[i].unidadmedida;
-                        obj.vCompone = tablas[i].componentes[j].codigo;
+                if (obj.nCodfdetal === undefined) {
+                    obj.vUsuareg = 'UsuReg1';
+                    obj.tFecreg = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
+                    obj.nSedereg = 0;
+                    obj.nFlgactivo = true;
 
-                        if (obj.nCodfdetal === undefined) {
-                            obj.vUsuareg = 'UsuReg1';
-                            obj.tFecreg = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
-                            obj.nSedereg = 0;
-                            obj.nFlgactivo = true;
-
-                            obj.vUsuaupd = null;
-                            obj.nSedeupd = null;
-                            obj.tFecupd = null;
-                            this.create(obj).subscribe();
-                        } else {
-                            obj.vUsuareg = tablas[i].componentes[j].vUsureg;
-                            obj.tFecreg = datepipe.transform(tablas[i].componentes[j].tFecReg, 'yyyy-MM-dd HH:mm:ss');
-                            obj.nSedereg = tablas[i].componentes[j].nSedeReg;
-                            obj.nFlgactivo = true;
-                            obj.vUsuaupd = 'UsuReg1';
-                            obj.tFecupd = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
-                            obj.nSedeupd = 0;
-                            obj.nFlgactivo = true;
-                            this.update(obj).subscribe();
-                        }
-                    }
+                    obj.vUsuaupd = null;
+                    obj.nSedeupd = null;
+                    obj.tFecupd = null;
+                    this.create(obj).subscribe();
+                } else {
+                    obj.vUsuareg = tablas[i].componentes[j].vUsureg;
+                    obj.tFecreg = datepipe.transform(tablas[i].componentes[j].tFecReg, 'yyyy-MM-dd HH:mm:ss');
+                    obj.nSedereg = tablas[i].componentes[j].nSedeReg;
+                    obj.nFlgactivo = true;
+                    obj.vUsuaupd = 'UsuReg1';
+                    obj.tFecupd = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
+                    obj.nSedeupd = 0;
+                    obj.nFlgactivo = true;
+                    this.update(obj).subscribe();
                 }
-            },
-            (res: ResponseWrapper) => this.onError(res.json)
-        );
+            }
+        }
     }
 
-    guardarFormFinanciero(datepipe: DatePipe, tablas: Tabla, nCodffina: number, formulario: string) {
+    guardarFormFinanciero(datepipe: DatePipe, tablas: Tabla, nCodffina: number) {
 
-        this.desactivarFormulario(nCodffina, formulario).subscribe(
-            (res: ResponseWrapper) => {
-                for (let j = 0; j < tablas.componentes.length; j++) {
-                    const obj = new FormfinancDetalle();
-                    obj.nCodfdetal = tablas.componentes[j].id;
-                    obj.nCodffina = nCodffina;
-                    obj.nValffina = tablas.componentes[j].cantidad;
-                    obj.vDesffina = tablas.descripcion;
-                    obj.vUndffina = tablas.unidadmedida;
-                    obj.vCompone = tablas.componentes[j].codigo;
+        for (let j = 0; j < tablas.componentes.length; j++) {
+            const obj = new FormfinancDetalle();
+            obj.nCodfdetal = tablas.componentes[j].id;
+            obj.nCodffina = nCodffina;
+            obj.nValffina = tablas.componentes[j].cantidad;
+            obj.vDesffina = tablas.descripcion;
+            obj.vUndffina = tablas.unidadmedida;
+            obj.vCompone = tablas.componentes[j].codigo;
 
-                    if (obj.nCodfdetal === undefined) {
-                        obj.vUsuareg = 'UsuReg1';
-                        obj.tFecreg = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
-                        obj.nSedereg = 0;
-                        obj.nFlgactivo = true;
+            if (obj.nCodfdetal === undefined) {
+                obj.vUsuareg = 'UsuReg1';
+                obj.tFecreg = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
+                obj.nSedereg = 0;
+                obj.nFlgactivo = true;
 
-                        obj.vUsuaupd = null;
-                        obj.nSedeupd = null;
-                        obj.tFecupd = null;
-                        this.create(obj).subscribe();
-                    } else {
-                        obj.vUsuareg = tablas.componentes[j].vUsureg;
-                        obj.tFecreg = datepipe.transform(tablas.componentes[j].tFecReg, 'yyyy-MM-dd HH:mm:ss');
-                        obj.nSedereg = tablas.componentes[j].nSedeReg;
-                        obj.vUsuaupd = 'UsuReg1';
-                        obj.tFecupd = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
-                        obj.nSedeupd = 0;
-                        obj.nFlgactivo = true;
-                        this.update(obj).subscribe();
-                    }
-                }
-            },
-            (res: ResponseWrapper) => this.onError(res.json)
-        );
+                obj.vUsuaupd = null;
+                obj.nSedeupd = null;
+                obj.tFecupd = null;
+                this.create(obj).subscribe();
+            } else {
+                obj.vUsuareg = tablas.componentes[j].vUsureg;
+                obj.tFecreg = datepipe.transform(tablas.componentes[j].tFecReg, 'yyyy-MM-dd HH:mm:ss');
+                obj.nSedereg = tablas.componentes[j].nSedeReg;
+                obj.vUsuaupd = 'UsuReg1';
+                obj.tFecupd = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
+                obj.nSedeupd = 0;
+                obj.nFlgactivo = true;
+                this.update(obj).subscribe();
+            }
+        }
     }
 
 }
