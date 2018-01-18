@@ -1,6 +1,8 @@
+<p-blockUI [blocked]="block"></p-blockUI>
+<p-growl [(value)]="mensajes"></p-growl>
 <div class="row">
     <div class="col">
-        <div class="card card-mtpe mb-3">
+        <div class="card card-mtpe">
             <div class="card-header bg-light d-sm-flex justify-content-between p-1">
                 <h5><small class="ml-3">Registro de Expediente - Audiencia</small></h5>
                 <h5 class="mb-0 pr-3"><small>Paso 5 de 5</small></h5>
@@ -8,15 +10,30 @@
             <div class="card-body">
                 <div class="defensa mb-2">
                     <div class="row my-3">
-                        <div class="col-md-12">
-                            <p-dataTable [value]="audiencia" dataKey="item">
+                        <div class="col-md-9 mx-auto">
+                            <p-dataTable [value]="conciliaciones" dataKey="dFecconci">
                                 <p-header>Audiencias</p-header>
-                                <p-column field="item" header="N°"></p-column>
-                                <p-column field="fecha" header="Fecha"></p-column>
-                                <p-column field="hora" header="Hora"></p-column>
-                                <p-column field="conciliador" header="Conciliador"></p-column>
-                                <p-column field="resultado" header="Resultado"></p-column>
-                                <p-column field="tresultado" header="Tipo de Resultado"></p-column>
+                                <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
+                                    <ng-template let-i="rowIndex" pTemplate="body">
+                                        <span style="text-align:center">{{i+1}}</span>
+                                    </ng-template>
+                                </p-column>
+                                <p-column field="dFecconci" [style]="{'width':'90px'}" styleClass="text-center" header="Fecha de Conciliación" >
+                                    <ng-template let-data="rowData" pTemplate="body">
+                                        <span>{{ data.dFecconci | date: 'dd/MM/yyyy' }}</span>
+                                    </ng-template>
+                                </p-column>
+                                <p-column field="horacon.vDescrip" [style]="{'width':'60px'}" styleClass="text-center" header="Hora"></p-column>
+                                <p-column field="vRegmespar" [style]="{'width':'80px'}" styleClass="text-center" header="Registro M.P.">
+                                    <ng-template let-data="rowData" pTemplate="body">
+                                        <span>{{ expediente.vRegmespar }}</span>
+                                    </ng-template>
+                                </p-column>
+                                <p-column field="observacion" header="Observación">
+                                    <ng-template let-data="rowData" pTemplate="body">
+                                        <span>{{ expediente.vObservac }}</span>
+                                    </ng-template>
+                                </p-column>
                                 <ng-template pTemplate="emptymessage">
                                     No se han encontrado registros
                                 </ng-template>
@@ -28,3 +45,19 @@
         </div>
     </div>
 </div>
+<p-confirmDialog header="Registrar Expediente" icon="fa fa-question-circle" #cd width="425">
+    <p-footer>
+        <button pButton class="ui-button-success" type="button"  icon="fa-save" label="Aceptar" (click)="cd.accept()"></button>
+        <button pButton class="ui-button-info"  type="button"  icon="fa-close" label="Cancelar" (click)="cd.reject()"></button>
+    </p-footer>
+</p-confirmDialog>
+<p-dialog [width]="500" header="Registro de Expediente" [(visible)]="displayDialog" (onHide)="cerrarModal()" [draggable]="false" [responsive]="true" showEffect="fade" [modal]="true">
+        <div class="ui-grid ui-grid-responsive ui-fluid" >
+            <div class="ui-grid-row form-group mb-2">
+                <div class="ui-grid-col-8 mx-auto"><label for="dirper.nCoddepto">Expediente registrado con el código: <span class="{{expedienteGrabado.vNumexp}}">{{expedienteGrabado.vNumexp}}</span></label></div>
+            </div>
+        </div>
+        <p-footer>
+                <button class="btn btn-success" (click)="cerrarModal()" type="button">Aceptar</button>
+        </p-footer>
+</p-dialog>

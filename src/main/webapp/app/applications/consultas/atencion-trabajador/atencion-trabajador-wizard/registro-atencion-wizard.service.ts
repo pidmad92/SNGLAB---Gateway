@@ -8,6 +8,7 @@ import { Motateselec } from '../../models/motateselec.model';
 import { Docinperdlb } from '../../models/docinperdlb.model';
 import { Docpresate } from '../../models/docpresate.model';
 import { Accadoate } from '../../models/accadoate.model';
+import { Sucesor } from '../../models/sucesor.model';
 
 @Injectable()
 export class RegistroAtencionWizardService {
@@ -38,6 +39,12 @@ export class RegistroAtencionWizardService {
 
   private accionaSelSource = new BehaviorSubject<Accadoate []>([]);
   accionaSeleccionado = this.accionaSelSource.asObservable();
+
+  private paganteriorSource = new BehaviorSubject(null);
+  paganteriorSelec = this.paganteriorSource.asObservable();
+
+  private sucesorSource = new BehaviorSubject<Sucesor>(new Sucesor());
+  sucesorSeleccionado = this.sucesorSource.asObservable();
 
   constructor() { }
 
@@ -75,5 +82,13 @@ export class RegistroAtencionWizardService {
 
   cambiarAccionadop(accionadop: Accadoate[]) {
     this.accionaSelSource.next(accionadop);
+  }
+
+  cambiarBandPagAnterior(pagante: string) {
+    this.paganteriorSource.next(pagante);
+  }
+
+  cambiarSucesor(sucesor: Sucesor) {
+    this.sucesorSource.next(sucesor)
   }
 }

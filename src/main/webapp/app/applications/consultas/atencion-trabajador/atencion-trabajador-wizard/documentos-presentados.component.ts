@@ -34,6 +34,8 @@ export class DocumentosPresentadosComponent implements OnInit, OnDestroy {
     actividadSelec: string;
     checkedsel = [];
 
+    fechoy: Date;
+
     loadDocingpre() {
         this.atencionTrabajadorService.findListaDocumentosActivos().subscribe(
             (res: ResponseWrapper) => {
@@ -77,6 +79,7 @@ export class DocumentosPresentadosComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.fechoy = new Date();
         this.subscription = this.registroAtencionWizard.actividadSelec.subscribe((actividadSelect) => {
             this.actividadSelec = actividadSelect;
             this.registroAtencionWizard.atenSeleccionado.subscribe((atencion) => {

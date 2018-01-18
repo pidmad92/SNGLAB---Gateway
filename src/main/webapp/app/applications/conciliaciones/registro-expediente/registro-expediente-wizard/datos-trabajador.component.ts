@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Rx';
 
 import { Message } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { padWithZero  } from './../../../applications.constant';
 
 import { ResponseWrapper } from '../../../../shared';
 import { ComboModel } from '../../../general/combobox.model';
@@ -31,9 +32,13 @@ export class DatosTrabajadorComponent implements OnInit {
     selectedTipodoc: ComboModel;
     sexo: any;
 
+    block: boolean;
+    mensajes: Message[] = [];
+
     departs: ResponseWrapper;
     provins: ResponseWrapper;
     distris: ResponseWrapper;
+    notificar = [];
 
     pasegl = new Pasegl();
     atencion: Atencion;
@@ -63,12 +68,14 @@ export class DatosTrabajadorComponent implements OnInit {
         );
     }
     loadDirecPerNatu(id: any) {
+        this.block = true;
         this.datosWizardService.buscarDirecciones(id).subscribe(
             (res: ResponseWrapper) => {
                 this.dirpernat = res.json;
-                // console.log(JSON.stringify(this.dirpernat));
+                this.block = false;
+                console.log(JSON.stringify(this.dirpernat));
             },
-            (res: ResponseWrapper) => { this.onError(res.json); }
+            (res: ResponseWrapper) => { this.onError(res.json); this.block = false; }
         );
     }
 
@@ -96,36 +103,13 @@ export class DatosTrabajadorComponent implements OnInit {
         ]
     }
 
-    loadDepartamentos() {
-        this.datosWizardService.consDep().subscribe((departamentos) => {
-            this.departs = departamentos.json;
-        });
-    }
-    loadProvincias(init: boolean, idDept) {
-        this.datosWizardService.consProv(this.padWithZero(idDept)).subscribe((provincias) => {
-            this.provins = provincias.json;
-            if (init) {
-                this.dirper.nCodprov = Number(this.provins[0].vCodpro);
-                this.loadDistritos(true, this.provins[0].vCodpro);
-            }
-        });
-    }
-    loadDistritos(init: boolean, idProv) {
-        this.datosWizardService.consDis(this.padWithZero(this.dirper.nCoddepto), this.padWithZero(idProv)).subscribe((distritos) => {
-            this.distris = distritos.json;
-            if (init) {
-                this.dirper.nCoddist = Number(this.distris[0].vCoddis);
-            }
-        });
-    }
-    showDialogToAdd() {
+    abrirModalDireccion() {
         this.newDirec = true;
         this.displayDialog = true;
     }
-    onRowSelect(event) {
+    seleccionarDireccion(event) {
         this.newDirec = false;
         this.dirper = this.cloneDirec(event.data.direc);
-        console.log(this.dirper);
         this.loadProvincias(false, this.dirper.nCoddepto);
         this.loadDistritos(false, this.dirper.nCodprov);
         this.displayDialog = true;
@@ -139,30 +123,34 @@ export class DatosTrabajadorComponent implements OnInit {
         }
         return direc;
     }
-
-    padWithZero(number) {
-        let num_form = '' + number;
-        if (num_form.length < 2) {
-            num_form = '0' + num_form;
-        }
-        return num_form;
-    }
-
-    save() {
-        console.log('Grabar: ' + JSON.stringify(this.dirper));
+    grabarDireccion() {
+        this.block = true;
         if (this.newDirec) {
             this.subscribeToSaveResponse(
-                 this.datosWizardService.createDir(this.dirper));
+                 this.datosWizardService.createDir(this.dirper), 'La direccion se ha agregado correctamente');
         } else {
             this.subscribeToSaveResponse(
-                this.datosWizardService.updateDir(this.dirper));
+                this.datosWizardService.updateDir(this.dirper), 'La direccion se ha actualizado correctamente');
         }
-        this.dirper = new Dirpernat();
     }
-    delete() {
-        this.displayDialog = false;
+    eliminarDireccion() {
+        console.log(this.dirper)
+        this.block = true;
+        this.datosWizardService.deleteDirPerNatural(this.dirper.id).subscribe((response) => {
+            this.loadDirecPerNatu(this.pernatural.id);
+            this.mensajes = [];
+            this.mensajes.push({severity: 'success', summary: 'Mensaje de Confirmación', detail: 'Dirección eliminada correctamente'});
+            this.cerrarModalDireccion();
+            this.block = false;
+        });
     }
-    close() {
+    cerrarModalDireccion() {
+        this.dirper.id = null;
+        this.dirper.nCoddepto = null;
+        this.dirper.nCodprov = null;
+        this.dirper.nCoddist = null;
+        this.dirper.vDircomple = null;
+        this.dirper.nFlgnotifi = false;
         this.displayDialog = false;
     }
 
@@ -170,27 +158,50 @@ export class DatosTrabajadorComponent implements OnInit {
         return this.dirpernat.indexOf(this.selecDirper);
     }
 
-    private subscribeToSaveResponse(result: Observable<Dirpernat>) {
+    private subscribeToSaveResponse(result: Observable<Dirpernat>, mensaje: string) {
         result.subscribe((res: Dirpernat) =>
-            this.onSaveSuccess(res), (res: Response) => this.onSaveError());
+            this.onSaveSuccess(res, mensaje), (res: Response) => this.onSaveError());
     }
 
-    private onSaveSuccess(result: Dirpernat) {
+    private onSaveSuccess(result: Dirpernat, mensaje: string) {
         this.loadDirecPerNatu(this.pernatural.id);
-        this.displayDialog = false;
+        this.mensajes = [];
+        this.mensajes.push({severity: 'success', summary: 'Mensaje de Confirmación', detail: mensaje});
+        this.cerrarModalDireccion();
+        this.block = false;
     }
     private onSaveError() {
-        console.log('saveerror');
+        this.mensajes = [];
+        this.mensajes.push({severity: 'error', summary: 'Mensaje de Error', detail: 'Hubo un problema al intentar agregar la dirección'});
+        this.cerrarModalDireccion();
+        this.block = false;
     }
 
     private onError(error: any) {
-        // this.messages = [];
-        // this.messages.push({ severity: 'error', summary: 'Mensaje de Error', detail: error.message });
+        this.mensajes = [];
+        this.mensajes.push({severity: 'error', summary: 'Mensaje de Error', detail: 'Hubo un problema en cargar la información'});
     }
 
-    private onErrorMultiple(errorList: any) {
-        for (let i = 0; i < errorList.length; i++) {
-            this.messagesForm.push(errorList[i]);
-        }
+    loadDepartamentos() {
+        this.datosWizardService.consDep().subscribe((departamentos) => {
+            this.departs = departamentos.json;
+        });
+    }
+    loadProvincias(init: boolean, idDept) {
+        this.datosWizardService.consProv(padWithZero(idDept)).subscribe((provincias) => {
+            this.provins = provincias.json;
+            if (init) {
+                this.dirper.nCodprov = Number(this.provins[0].vCodpro);
+                this.loadDistritos(true, this.provins[0].vCodpro);
+            }
+        });
+    }
+    loadDistritos(init: boolean, idProv) {
+        this.datosWizardService.consDis(padWithZero(this.dirper.nCoddepto), padWithZero(idProv)).subscribe((distritos) => {
+            this.distris = distritos.json;
+            if (init) {
+                this.dirper.nCoddist = Number(this.distris[0].vCoddis);
+            }
+        });
     }
 }

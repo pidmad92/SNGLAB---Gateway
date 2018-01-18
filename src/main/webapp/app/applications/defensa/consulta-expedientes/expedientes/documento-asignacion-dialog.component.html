@@ -1,0 +1,75 @@
+<div>
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAbogadoLabel">Asignación Documentos</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body pt-0">
+        <p-messages [(value)]="messagesDocumento"></p-messages>
+        <div class="row">
+            <div class="col-12 backmodal">
+                <span class="fa fa-file-text-o"></span>&nbsp;N° Expediente: {{numero_exp}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-calendar"></span>&nbsp;Fecha de Registro Expediente: {{varfechahoraconci}}
+            </div>
+        </div>
+        <!-- <div class="form-group row">
+            <label class="col-form-label col-md-4">Empleador:</label>
+            <div class="col-md-8">
+                <label class="col-form-label">{{fullnameemp}}</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-md-4">Trabajador:</label>
+            <div class="col-md-8">
+                <label class="col-form-label">{{fullnametrab}}</label>
+            </div>
+        </div> -->
+        <div class="form-group row">
+            <label class="col-form-label col-md-3">Tipo Documento:</label>
+            <div class="col-md-9">
+                <p-dropdown [options]="tipdocexps" name="selectedTipDocExp" [(ngModel)]="selectedTipDocExp"
+                 placeholder="Seleccione" name="selectedTipDocExp" (onChange) = "ObtenerTipProv()"
+                 optionLabel="name" autoWidth="false"  [style]="{'width':'100%'}"></p-dropdown>    
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-md-3">Tipo Proveido:</label>
+            <div class="col-md-9">
+                <p-dropdown [options]="tipproveids" name="SelectedTipProveid" [(ngModel)]="SelectedTipProveid"
+                placeholder="Seleccione" name="SelectedTipProveid" (onChange) = "ObtenerDetProv()"
+                optionLabel="name" [disabled]="tipprovdisabled" autoWidth="false"  [style]="{'width':'100%'}"></p-dropdown>  
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-md-3">Detalle Proveido:</label>
+            <div class="col-md-9">
+                <p-dropdown [options]="dettipprovs" name="SelectedDetTipProv" [(ngModel)]="SelectedDetTipProv"
+                placeholder="Seleccione" name="SelectedDetTipProv" optionLabel="name" 
+                [disabled]="detprovdisabled" autoWidth="false"  [style]="{'width':'100%'}"></p-dropdown>  
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-md-3">Nro Oficio:</label>
+            <div class="col-md-2">
+                <input type="text" class="form-control form-control-sm" name="nro_oficio" id="nro_oficio" [(ngModel)]="nro_oficio" [disabled]="oficiodisabled"/>
+            </div>
+            <label class="col-form-label col-md-1">Fecha:</label>
+            <div class="col-md-3">
+                <p-calendar class="form-control-sm" name="fechaRegDoc" [(ngModel)]="fechaRegDoc" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+            </div>
+            <label class="col-form-label col-md-1">Folios:</label>
+            <div class="col-md-2">
+                <input type="text" class="form-control form-control-sm" name="nro_folios" id="nro_folios" [(ngModel)]="nro_folios" />
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" [disabled]="isSaving" class="btn btn-warning" (click)="save()">
+            <span class="fa fa-floppy-o"></span>&nbsp;<span>Guardar</span>
+        </button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span >Cancelar</span>
+        </button>
+    </div>
+</div>
+    

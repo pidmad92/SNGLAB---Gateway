@@ -72,7 +72,7 @@
                                 <div class="form-group row" [ngClass]="{'has-danger': !formBusquedaTrabajador.controls['documento'].controls['tipDoc'].valid && formBusquedaTrabajador.get('documento.tipDoc').touched}">
                                     <label for="inpTipo" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo de documento</label>
                                     <div class="col-sm-7">
-                                        <select class="form-control form-control-sm" id="inpTipo" formControlName="tipDoc" ngModel name="tipDoc" (change)="resetFormularioTrabajador()">
+                                        <select class="form-control form-control-sm" id="inpTipo" formControlName="tipDoc" ngModel name="tipDoc" (change)="cambioComboBusquedaTrabajador(formBusquedaTrabajador)">
                                           <option value="">Seleccione un Documento</option>
                                           <option *ngFor="let tipDoc of listaTipdocident" [value]="tipDoc.id">{{tipDoc.vDescorta}}</option>
                                         </select>
@@ -86,7 +86,7 @@
                                 <div class="form-group row" [ngClass]="{'has-danger': !formBusquedaTrabajador.controls['documento'].controls['numDoc'].valid && formBusquedaTrabajador.get('documento.numDoc').touched}">
                                     <label for="inpNumero" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Número</label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control form-control-sm" id="inpNumero" placeholder="" formControlName="numDoc">
+                                        <input type="text" class="form-control form-control-sm" id="inpNumero" placeholder="" formControlName="numDoc" (change)="cambioInputBusquedaTrabajador(formBusquedaTrabajador)">
                                     </div>
                                 </div>
                                 <div *ngIf="formBusquedaTrabajador.get('documento.numDoc').errors?.required && formBusquedaTrabajador.get('documento.numDoc').touched" class="alert alert-danger form-control-sm" role="alert">
@@ -102,25 +102,25 @@
                             <div class="col-lg-2">
                                 <div class="form-group row">
                                     <div class="col-sm-9">
-                                      <button [disabled]="!formBusquedaTrabajador.valid" type="submit" class="btn btn-sm btn-secondary" data-toggle="modal"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</button>
+                                      <button [disabled]="!formBusquedaTrabajador.valid" type="submit" class="btn btn-sm btn-secondary"><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </form>
-                    <form *ngIf="showFormularioDatosTrabajador == true">
+                    <form *ngIf="showFormularioDatosTrabajador == true" [formGroup]="formDatosTrabajador" (ngSubmit)="btnSiguiente(formDatosTrabajador)">
                         <div class="row">
                             <div class="col-md-2 mb-2">
                                 <label for="inpAP" class="col-form-label col-form-label-sm">Apellido Paterno:</label>
-                                <input type="text" class="form-control form-control-sm" id="inpAP" placeholder="" value="">
+                                <input type="text" class="form-control form-control-sm" id="inpAP" formControlName="apePat" placeholder="" value="">
                             </div>
                             <div class="col-md-2 mb-2">
                                 <label for="inpAM" class="col-form-label col-form-label-sm">Apellido Materno:</label>
-                                <input type="text" class="form-control form-control-sm" id="inpAM" placeholder="" value="">
+                                <input type="text" class="form-control form-control-sm" id="inpAM" formControlName="apeMat" placeholder="" value="">
                             </div>
                             <div class="col-md-3 mb-2">
                                 <label for="inpN" class="col-form-label col-form-label-sm">Nombres:</label>
-                                <input type="text" class="form-control form-control-sm" id="inpN" placeholder="" value="">
+                                <input type="text" class="form-control form-control-sm" id="inpN" formControlName="nombres" placeholder="" value="">
                             </div>
                             <div class="col-md-2 mb-2">
                                 <label for="inpN" class="col-form-label col-form-label-sm">Sucesion Intestada:</label>
@@ -135,22 +135,23 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 mb-2">
+                            <div *ngIf="showImputTextNumPartidaSucesion == true" class="col-md-3 mb-2">
                                 <label for="inpPartida" class="col-form-label col-form-label-sm">N° Partida de Sucesión Intersada:</label>
-                                <input type="text" class="form-control form-control-sm" id="inpPartida" placeholder="" value="">
+                                <input type="text" class="form-control form-control-sm" id="inpPartida" formControlName="numPartSuc" placeholder="" value="">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-2 mb-2">
                                 <label for="inpFec" class="col-form-label col-form-label-sm">Fecha de Nacimiento:</label>
-                                <input type="text" class="form-control form-control-sm" id="inpFec" placeholder="" value="">
+                                <p-calendar [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030"  formControlName="fecNac" showIcon="true"></p-calendar>
+                                <!--input type="text" class="form-control form-control-sm" id="inpFec" formControlName="fecNac" placeholder="" value=""-->
                             </div>
                             <div class="col-md-2 mb-2">
                                 <label for="selectSexo" class="col-form-label col-form-label-sm">Sexo:</label>
-                                <select class="form-control form-control-sm" id="selectSexo">
-                          <option>Masculino</option>
-                          <option>Femenino</option>
-                        </select>
+                                <select class="form-control form-control-sm" id="selectSexo" formControlName="sexo">
+                                  <option>M</option>
+                                  <option>F</option>
+                                </select>
                             </div>
                             <div class="col-md-3 mb-2">
                             </div>
@@ -158,11 +159,11 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="inpTele" class="col-form-label col-form-label-sm">Telefono:</label>
-                                        <input type="text" class="form-control form-control-sm" id="inpTele" placeholder="" value="">
+                                        <input type="text" class="form-control form-control-sm" id="inpTele" formControlName="numTel" placeholder="" value="">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="inpCel" class="col-form-label col-form-label-sm">Celular:</label>
-                                        <input type="text" class="form-control form-control-sm" id="inpCel" placeholder="" value="">
+                                        <input type="text" class="form-control form-control-sm" id="inpCel" formControlName="numCel" placeholder="" value="">
                                     </div>
                                 </div>
                             </div>
@@ -209,32 +210,36 @@
                                 <div class="row">
                                     <div class="col mb-2">
                                         <label for="inpCorreo" class="col-form-label col-form-label-sm">Correo Eléctronico:</label>
-                                        <input type="text" class="form-control form-control-sm" id="inpCorreo" placeholder="" value="">
+                                        <input type="text" class="form-control form-control-sm" id="inpCorreo" formControlName="email" placeholder="" value="">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="selectDisca" class="col-form-label col-form-label-sm">Presenta Discapacidad:</label>
-                                        <select class="form-control form-control-sm" id="selectDisca">
-                              <option>Ninguno</option>
-                              <option>...</option>
-                            </select>
+                                        <select class="form-control form-control-sm" id="selectDisca" formControlName="sexo">
+                                          <option>Ninguno</option>
+                                          <option>...</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="selectEmba" class="col-form-label col-form-label-sm">Presenta Embarazo:</label>
-                                        <select class="form-control form-control-sm" id="selectEmba">
-                              <option>No</option>
-                              <option>Si</option>
-                            </select>
+                                        <select class="form-control form-control-sm" id="selectEmba" formControlName="embarazo">
+                                          <option>No</option>
+                                          <option>Si</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col text-sm-right">
-                                <a href="#" class="btn btn-sm m-1 btn-danger" data-toggle="modal" data-target="#termAtencion"><i class="fa fa-times-circle" aria-hidden="true"></i> Terminar atención</a>
-                                <a href="#" class="btn btn-sm m-1 btn-warning" data-toggle="modal" data-target="#generarPase"><i class="fa fa-exchange" aria-hidden="true"></i> Generar pase</a>
-                                <a [routerLink]="['/liquidaciones/registro-atencion/empleador']" class="btn btn-sm m-1 btn-success"><i class="fa fa-chevron-right" aria-hidden="true"></i> Siguiente</a>
+                                <a href="#" class="btn btn-sm m-1 btn-danger"><i class="fa fa-times-circle" aria-hidden="true"></i> Terminar atención</a>
+                                <a href="#" class="btn btn-sm m-1 btn-warning"><i class="fa fa-exchange" aria-hidden="true"></i> Generar pase</a>
+                                <!--a [routerLink]="['/liquidaciones/registro-atencion/empleador']" class="btn btn-sm m-1 btn-success"><i class="fa fa-chevron-right" aria-hidden="true"></i> Siguiente</a-->
+                                <button type="submit" class="btn btn-sm m-1 btn-success">
+                                  <span class="fa fa-chevron-right" aria-hidden="true"></span>&nbsp;
+                                  <span>Siguiente</span>
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -243,3 +248,4 @@
         </div>
     </div>
 </div>
+<router-outlet name="popupexp"></router-outlet>

@@ -9,6 +9,7 @@ import { ConciliaService } from './concilia.service';
 @Injectable()
 export class AudienciaConsultaPopupService {
     private ngbModalRef: NgbModalRef;
+    urlexit: string;
 
     constructor(
         private datePipe: DatePipe,
@@ -56,13 +57,25 @@ export class AudienciaConsultaPopupService {
     }
 
     audienciaModalRef(component: Component, concilia: Concilia): NgbModalRef {
+        this.urlexit = '';
+
+        if (this.router.url.indexOf('/defensa/expediente/consulta/exp-emitidos') === 0) {
+            this.urlexit = '/defensa/expediente/consulta/exp-emitidos';
+        } else if (this.router.url.indexOf('/defensa/expediente/consulta/exp-paramultar') === 0) {
+            this.urlexit = '/defensa/expediente/consulta/exp-paramultar';
+        } else if (this.router.url.indexOf('/defensa/expediente/consulta/exp-multados') === 0) {
+            this.urlexit = '/defensa/expediente/consulta/exp-multados';
+        } else if (this.router.url.indexOf('/defensa/audiencia/consulta') === 0) {
+            this.urlexit = '/defensa/audiencia/consulta';
+        }
+
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
         modalRef.componentInstance.concilia = concilia;
         modalRef.result.then((result) => {
-            this.router.navigate(['defensa/audiencia/consulta'], { replaceUrl: true });
+            this.router.navigate([this.urlexit], { replaceUrl: true });
             this.ngbModalRef = null;
         }, (reason) => {
-            this.router.navigate(['defensa/audiencia/consulta'], { replaceUrl: true });
+            this.router.navigate([this.urlexit], { replaceUrl: true });
             this.ngbModalRef = null;
         });
         return modalRef;

@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { JhiEventManager } from 'ng-jhipster';
 
+import { Atencion } from '../../models/atencion.model';
 import { Motate } from '../../models/motate.model';
 import { Motatenofic } from '../../models/motatenofic.model';
 import { Motateselec } from '../../models/motateselec.model';
@@ -33,6 +34,9 @@ export class MotivosConsultaComponent implements OnInit, OnDestroy {
 
     checkedsel = [];
     actividadSelec: string;
+
+    fechoy: Date;
+    numOficina = 5;
 
     constructor(
         private eventManager: JhiEventManager,
@@ -73,19 +77,22 @@ export class MotivosConsultaComponent implements OnInit, OnDestroy {
         });
     }
     ngOnInit() {
+        this.fechoy = new Date();
+        this.atencion = new Atencion();
         this.subscription = this.registroAtencionWizard.actividadSelec.subscribe((actividadSelect) => {
             this.actividadSelec = actividadSelect;
             this.registroAtencionWizard.atenSeleccionado.subscribe((atencion) => {
+                this.atencion = atencion;
                 if (this.actividadSelec === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
                     this.router.navigate(['/consultas/atencion-trabajador']);
                 } else if ( this.actividadSelec === '3' ) {
                     // Consultar los motivos generales por oficina y los motivos marcados
-                    this.atencionTrabajadorService.findListaMotateSelec(atencion.id, 5).subscribe(() => {
+                    this.atencionTrabajadorService.findListaMotateSelec(atencion.id, this.numOficina).subscribe(() => {
 
                     });
                 } else {
                     // Cargar los motivos por el código de la oficina de consultas laborales '5'
-                    this.loadMotivOfic(5);
+                    this.loadMotivOfic(this.numOficina);
                     // Consultar de forma interna por los motivos seleccionados
                 }
             });
@@ -154,7 +161,7 @@ export class MotivosConsultaComponent implements OnInit, OnDestroy {
             this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
     }
     private onSaveSuccess(result: Motateselec) {
-        this.loadMotivOfic(5);
+        this.loadMotivOfic(this.numOficina);
         // this.eventManager.broadcast({ name: 'moduloEntidadListModification', content: 'OK'});
         // this.isSaving = false;
     }

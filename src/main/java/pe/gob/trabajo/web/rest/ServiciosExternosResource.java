@@ -61,7 +61,7 @@ public class ServiciosExternosResource {
 
     @GetMapping("/valida")
     @Timed
-    public PersonaValidarServicioDTO valida() throws ErrorDeServicio, pe.gob.trabajo.service.wstramite.ErrorDeServicio {
+    public HojaDeRutaEllipse valida() throws ErrorDeServicio, pe.gob.trabajo.service.wstramite.ErrorDeServicio {
         Situacionmitramite_Service servicio_tramite = new Situacionmitramite_Service();
         Serviciosstd_Service servicio_std = new Serviciosstd_Service();
         Serviciosstd port_std = servicio_std.getServiciosSTDPort();
@@ -73,7 +73,7 @@ public class ServiciosExternosResource {
         ExpedienteWSDto consultaExpediente = port_tramite.consultaExpediente(2017, "001239");
         System.out.println(consultaExpediente.getAsunto());
                 
-        return null;
+        return expedienteEllipse;
     }
     @PostMapping("/validarpersonaservicio")
     @Timed

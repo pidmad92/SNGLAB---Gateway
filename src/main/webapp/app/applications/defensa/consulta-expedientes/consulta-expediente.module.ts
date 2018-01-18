@@ -26,7 +26,30 @@ import {
     import { AccionExpedienteObservarPopupComponent } from './accion-expedientes/accion-expediente-observar-dialog.component';
     import { AccionExpedienteObservarPopupService} from './accion-expedientes/accion-expediente-observar-popup.service';
 
-import { TabViewModule, DataTableModule, CheckboxModule, DropdownModule, CalendarModule } from 'primeng/primeng';
+    import { ExpedienteEmitidoComponent } from './expedientes/expediente-emitido.component';
+    import { ExpedienteMultadoComponent } from './expedientes/expediente-multado.component';
+    import { ExpedienteParaMultarComponent } from './expedientes/expediente-paramultar.component';
+
+    import {
+        DocumentoAsignacionPopupComponent,
+        DocumentoAsignacionDialogComponent } from './expedientes/documento-asignacion-dialog.component';
+    import { DocumentoAsignacionPopupService } from './expedientes/documento-asignacion-popup.service';
+
+    import {
+        MultaConsultaPopupComponent,
+        MultaConsultaDialogComponent } from './expedientes/multa-consulta-dialog.component';
+    import { MultaConsultaPopupService } from './expedientes/multa-consulta-popup.service';
+
+    import {
+        ResolucionSubdirectoralPopupComponent,
+        ResolucionSubdirectoralDialogComponent } from './expedientes/resolucion-subdirectoral-dialog.component';
+    import { ResolucionSubdirectoralPopupService } from './expedientes/resolucion-subdirectoral-popup.service';
+
+    import { ConciliaService } from './../audiencias/concilia.service';
+    import { TipdocexpService } from './tipdocexp.service';
+    import { DocexpedienService } from './../consulta-expedientes/docexpedien.service';
+
+import { TabViewModule, DataTableModule, CheckboxModule, DropdownModule, CalendarModule, RadioButtonModule, MessagesModule, MessageModule } from 'primeng/primeng';
 
 const ENTITY_STATES = [
     ...consultaExpedienteRoute
@@ -36,10 +59,13 @@ const ENTITY_STATES = [
     imports: [
         GatewaySharedModule,
         TabViewModule,
+        MessageModule,
+        MessagesModule,
         DataTableModule,
         CheckboxModule,
         DropdownModule,
         CalendarModule,
+        RadioButtonModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
@@ -56,7 +82,17 @@ const ENTITY_STATES = [
         AccionExpedienteArchivarDialogComponent,
         AccionExpedienteArchivarPopupComponent,
         AccionExpedienteObservarDialogComponent,
-        AccionExpedienteObservarPopupComponent
+        AccionExpedienteObservarPopupComponent,
+        ExpedienteEmitidoComponent,
+        ExpedienteMultadoComponent,
+        ExpedienteParaMultarComponent,
+        DocumentoAsignacionPopupComponent,
+        DocumentoAsignacionDialogComponent,
+        MultaConsultaPopupComponent,
+        MultaConsultaDialogComponent,
+        ResolucionSubdirectoralPopupComponent,
+        ResolucionSubdirectoralDialogComponent
+       // AudienciaConsultaPopupComponent
 
     ],
     entryComponents: [
@@ -73,7 +109,17 @@ const ENTITY_STATES = [
         AccionExpedienteArchivarDialogComponent,
         AccionExpedienteArchivarPopupComponent,
         AccionExpedienteObservarDialogComponent,
-        AccionExpedienteObservarPopupComponent
+        AccionExpedienteObservarPopupComponent,
+        ExpedienteEmitidoComponent,
+        ExpedienteMultadoComponent,
+        ExpedienteParaMultarComponent,
+        DocumentoAsignacionPopupComponent,
+        DocumentoAsignacionDialogComponent,
+        MultaConsultaPopupComponent,
+        MultaConsultaDialogComponent,
+        ResolucionSubdirectoralPopupComponent,
+        ResolucionSubdirectoralDialogComponent
+        // AudienciaConsultaPopupComponent
     ],
     providers: [
         ConsultaExpedientePopupService,
@@ -81,7 +127,13 @@ const ENTITY_STATES = [
         ConsultaExpedienteObservarPopupService,
         AccionExpedientePopupService,
         AccionExpedienteArchivarPopupService,
-        AccionExpedienteObservarPopupService
+        AccionExpedienteObservarPopupService,
+        DocumentoAsignacionPopupService,
+        ConciliaService,
+        TipdocexpService,
+        DocexpedienService,
+        MultaConsultaPopupService,
+        ResolucionSubdirectoralPopupService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
