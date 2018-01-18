@@ -84,13 +84,16 @@ export class DocumentosPresentadosComponent implements OnInit, OnDestroy {
             this.actividadSelec = actividadSelect;
             this.registroAtencionWizard.atenSeleccionado.subscribe((atencion) => {
                 this.atencion = atencion;
-                if (this.actividadSelec === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
-                    this.router.navigate(['/consultas/atencion-trabajador']);
-                } else if (this.actividadSelec === '3') {
-                    // this.atencionTrabajadorService
-                } else {
-                    this.loadDocingpre();
+                if (atencion.vNumticket !== undefined) {
+                    this.atencion.vNumticket = atencion.vNumticket.toUpperCase();
                 }
+                    if (this.actividadSelec === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
+                        this.router.navigate(['/consultas/atencion-trabajador']);
+                    } else if (this.actividadSelec === '3') {
+                        // this.atencionTrabajadorService
+                    } else {
+                        this.loadDocingpre();
+                    }
             });
             this.registerChangeInDocpre();
         });

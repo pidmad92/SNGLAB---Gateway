@@ -168,11 +168,10 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
         this.dirpersu = new Dirpernat();
     }
 
-    buscaSucesorByDocIdent() {
+    buscaPernaturalByDocIdent() {
         if (this.selectedTipodocsu.id === undefined || this.vNumdocumentosu === undefined) {
             return;
-        }
-        if (this.selectedTipodocsu.id === this.selectedTipodoc.id || this.vNumdocumentosu === this.vNumdocumento) {
+        } else if (this.vNumdocumentosu === this.vNumdocumento) {
             return;
         }
         this.atencionTrabajadorService.findPernaturalByDocIdent(this.selectedTipodocsu.id, this.vNumdocumentosu).subscribe((personanatural) => {
@@ -286,8 +285,9 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                     this.trabajador = loadtrabajador;
                 this.bandPantSuscriber = this.registroAtencionWizard.paganteriorSelec.subscribe((paginante) => {
                     this.paganterior = paginante;
-                    // console.log('Pagina Anterior: ' + paginante);
-                    // console.log('actividadseleccionada: ' + actividadsel);
+                    if (atencion.vNumticket !== undefined) {
+                        this.atencion.vNumticket = atencion.vNumticket.toUpperCase();
+                    }
                 if (actividadsel === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
                     this.router.navigate(['/consultas/atencion-trabajador']);
                 } else if (actividadsel === '1') { // Si el flujo es generado al clickear el boton nuevo registro se instanciaran los datos en blanco

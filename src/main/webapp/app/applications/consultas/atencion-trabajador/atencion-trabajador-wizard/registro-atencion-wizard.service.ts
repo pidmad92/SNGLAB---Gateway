@@ -91,4 +91,5 @@ export class RegistroAtencionWizardService {
   cambiarSucesor(sucesor: Sucesor) {
     this.sucesorSource.next(sucesor)
   }
+
 }
