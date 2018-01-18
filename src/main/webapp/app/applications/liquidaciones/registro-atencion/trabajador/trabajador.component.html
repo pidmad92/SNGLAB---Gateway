@@ -128,8 +128,8 @@
                                     <div class="input-group">
                                         <!--input type="hidden" name="toggle" [(ngModel)]="binding"-->
                                         <div id="radioBtn" class="btn-group">
-                                            <a class="btn btn-dark btn-sm active" data-toggle="happy" data-title="Y">SI</a>
-                                            <a class="btn btn-dark btn-sm notActive" data-toggle="happy" data-title="N">NO</a>
+                                            <a class="btn btn-dark btn-sm notActive" data-toggle="happy" data-title="Y">SI</a>
+                                            <a class="btn btn-dark btn-sm active" data-toggle="happy" data-title="N">NO</a>
                                         </div>
                                         <input type="hidden" name="happy" id="happy">
                                     </div>
@@ -149,8 +149,8 @@
                             <div class="col-md-2 mb-2">
                                 <label for="selectSexo" class="col-form-label col-form-label-sm">Sexo:</label>
                                 <select class="form-control form-control-sm" id="selectSexo" formControlName="sexo">
-                                  <option>M</option>
-                                  <option>F</option>
+                                  <option value="M">MASCULINO</option>
+                                  <option value="F">FEMENINO</option>
                                 </select>
                             </div>
                             <div class="col-md-3 mb-2">
@@ -171,40 +171,68 @@
                         <div class="row mb-2">
                             <div class="col-md-7">
                                 <label for="" class="col-form-label col-form-label-sm">Direcciones:</label>
-                                <table class="table table-responsive table-striped table-hover table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Departamento</th>
-                                            <th>Provincia</th>
-                                            <th>Distrito</th>
-                                            <th>Dirección</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!--tr>
-                                            <td>Lima</td>
-                                            <td>Lima</td>
-                                            <td>Puente Piedra</td>
-                                            <td>Mz. D Lt 18 Urb la Capitana</td>
-                                            <td>
-                                                <a href="#" class="text-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                                <a href="#" class="text-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lima</td>
-                                            <td>Lima</td>
-                                            <td>Jesus Maria</td>
-                                            <td>Av. Salaverry</td>
-                                            <td>
-                                                <a href="#" class="text-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                                <a href="#" class="text-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                            </td>
-                                        </tr-->
-                                    </tbody>
-                                </table>
-                                <a href="#" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#regDirec"><i class="fa fa-plus" aria-hidden="true"></i> Añadir Dirección</a>
+                                <p-dataTable [value]="listaDirpernat" [scrollable]="true" scrollHeight="100px" selectionMode="single" (onRowSelect)="eventodireccionSeleccionada($event)" [(selection)]="selecDirper"  dataKey="id">
+              									    <p-column [style]="{'width':'35px', 'text-align':'center'}" header="#">
+              									    	<ng-template let-i="rowIndex" pTemplate="body">
+              									    		<span style="text-align:center">{{i+1}}</span>
+              									    	</ng-template>
+              									    </p-column>
+              									    <p-column field="dpto" header="Depto."></p-column>
+              									    <p-column field="prov" header="Provincia"></p-column>
+              									    <p-column field="dist" header="Distrito"></p-column>
+              									    <p-column field="direc.vDircomple" [style]="{'text-align':'left'}" header="Dirección"></p-column>
+                                    <ng-template pTemplate="emptymessage">
+                                        No se han encontrado registros
+                                    </ng-template>
+                                    <p-footer><div class="ui-helper-clearfix" style="width:100%">
+                                        <button type="button" class="btn btn-sm btn-primary" pButton icon="fa-plus" style="float:left" (click)="btnAnadirDireccion()" label="Añadir Dirección"></button></div>
+                                    </p-footer>
+                                </p-dataTable>
+                                <p-dialog [width]="500" header="Dirección:" [(visible)]="popupDirecion" (onHide)="cerrarPopupDireccion()" [draggable]="false" [responsive]="true" showEffect="fade" [modal]="true">
+                                    <form [formGroup]="formPopupDireccion" role="form" novalidate (ngSubmit)="AnadirDireccion()">
+                                        <div class="ui-grid ui-grid-responsive ui-fluid" style="height:160px;">
+                                            <div class="ui-grid-row form-group mb-2">
+                                                <div class="ui-grid-col-4"><label for="">Departamento</label></div>
+                                                <div class="ui-grid-col-8">
+                                                    <select required class="form-control form-control-sm" formControlName="departamento" name="departamento" ngModel (change)="cargarListaComboProvincia($event.target.value)">
+                                                        <option value="">Seleccione un Departamento</option>
+                                                        <option *ngFor="let departamento of departs" [value]="departamento.vCoddep">{{departamento.vDesdep}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="ui-grid-row form-group mb-2">
+                                                <hr>
+                                                <div class="ui-grid-col-4"><label for="dirper.nCodprov">Provincia</label></div>
+                                                <div class="ui-grid-col-8">
+                                                  <select required class="form-control form-control-sm" formControlName="provincia" name="provincia" ngModel (change)="cargarListaComboDistrito($event.target.value)">
+                                                      <option value="">Seleccione una Provincia</option>
+                                                      <option *ngFor="let provincia of provins" [value]="provincia.vCodpro">{{provincia.vDespro}}</option>
+                                                  </select>
+                                                </div>
+                                            </div>
+                                            <div class="ui-grid-row form-group mb-2">
+                                                <div class="ui-grid-col-4"><label for="dirper.nCoddist">Distrito</label></div>
+                                                <div class="ui-grid-col-8">
+                                                  <select required class="form-control form-control-sm" formControlName="distrito" name="distrito" ngModel>
+                                                      <option value="">Seleccione un Distrito</option>
+                                                      <option *ngFor="let distrito of distris" [value]="distrito.vCoddis">{{distrito.vDesdis}}</option>
+                                                  </select>
+                                                </div>
+                                            </div>
+                                            <div class="ui-grid-row form-group mb-2">
+                                                <div class="ui-grid-col-4"><label for="">Dirección</label></div>
+                                                <div class="ui-grid-col-8"><input type="text" name="" ngModel class="form-control form-control-sm" formControlName="direccion" id="direccion"/></div>
+                                            </div>
+                                          </div>
+                                        <p-footer>
+                                            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                                                <button pButton class="ui-button-info" icon="fa-close" type="button" (click)="cerrarPopupDireccion()" label="Cancelar"></button>
+                                                <button *ngIf="!newDirec" pButton class="ui-button-danger" icon="fa-trash-o" type="button" (click)="eliminarDireccion()" label="Eliminar"></button>
+                                                <button pButton class="ui-button-success" icon="fa-plus" type="submit" label="Añadir"></button>
+                                            </div>
+                                        </p-footer>
+                                    </form>
+                                </p-dialog>
                             </div>
                             <div class="col-md-5">
                                 <div class="row">
@@ -216,16 +244,20 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="selectDisca" class="col-form-label col-form-label-sm">Presenta Discapacidad:</label>
-                                        <select class="form-control form-control-sm" id="selectDisca" formControlName="sexo">
-                                          <option>Ninguno</option>
-                                          <option>...</option>
+                                        <!--select required class="form-control form-control-sm" formControlName="distrito" name="distrito" ngModel>
+                                            <option value="">Seleccione un Distrito</option>
+                                            <option *ngFor="let distrito of distris" [value]="distrito.vCoddis">{{distrito.vDesdis}}</option>
+                                        </select-->
+                                        <select class="form-control form-control-sm" id="selectDisca" formControlName="discap" ngModel>
+                                          <option value="">Ninguna</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="selectEmba" class="col-form-label col-form-label-sm">Presenta Embarazo:</label>
-                                        <select class="form-control form-control-sm" id="selectEmba" formControlName="embarazo">
-                                          <option>No</option>
-                                          <option>Si</option>
+                                        <select class="form-control form-control-sm" id="selectEmba" formControlName="embarazo" ngModel>
+                                          <!--Por default habria que poner -0 en el set-<option value="">Seleccione una Opcion</option-->
+                                          <option value="0">No</option>
+                                          <option value="1">Si</option>
                                         </select>
                                     </div>
                                 </div>
@@ -235,7 +267,6 @@
                             <div class="col text-sm-right">
                                 <a href="#" class="btn btn-sm m-1 btn-danger"><i class="fa fa-times-circle" aria-hidden="true"></i> Terminar atención</a>
                                 <a href="#" class="btn btn-sm m-1 btn-warning"><i class="fa fa-exchange" aria-hidden="true"></i> Generar pase</a>
-                                <!--a [routerLink]="['/liquidaciones/registro-atencion/empleador']" class="btn btn-sm m-1 btn-success"><i class="fa fa-chevron-right" aria-hidden="true"></i> Siguiente</a-->
                                 <button type="submit" class="btn btn-sm m-1 btn-success">
                                   <span class="fa fa-chevron-right" aria-hidden="true"></span>&nbsp;
                                   <span>Siguiente</span>
