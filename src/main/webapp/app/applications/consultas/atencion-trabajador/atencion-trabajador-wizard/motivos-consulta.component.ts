@@ -83,18 +83,21 @@ export class MotivosConsultaComponent implements OnInit, OnDestroy {
             this.actividadSelec = actividadSelect;
             this.registroAtencionWizard.atenSeleccionado.subscribe((atencion) => {
                 this.atencion = atencion;
-                if (this.actividadSelec === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
-                    this.router.navigate(['/consultas/atencion-trabajador']);
-                } else if ( this.actividadSelec === '3' ) {
-                    // Consultar los motivos generales por oficina y los motivos marcados
-                    this.atencionTrabajadorService.findListaMotateSelec(atencion.id, this.numOficina).subscribe(() => {
-
-                    });
-                } else {
-                    // Cargar los motivos por el código de la oficina de consultas laborales '5'
-                    this.loadMotivOfic(this.numOficina);
-                    // Consultar de forma interna por los motivos seleccionados
+                if (atencion.vNumticket !== undefined) {
+                    this.atencion.vNumticket = atencion.vNumticket.toUpperCase();
                 }
+                    if (this.actividadSelec === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
+                        this.router.navigate(['/consultas/atencion-trabajador']);
+                    } else if ( this.actividadSelec === '3' ) {
+                        // Consultar los motivos generales por oficina y los motivos marcados
+                        this.atencionTrabajadorService.findListaMotateSelec(atencion.id, this.numOficina).subscribe(() => {
+
+                        });
+                    } else {
+                        // Cargar los motivos por el código de la oficina de consultas laborales '5'
+                        this.loadMotivOfic(this.numOficina);
+                        // Consultar de forma interna por los motivos seleccionados
+                    }
             });
         });
         this.registerChangeInMotivos();

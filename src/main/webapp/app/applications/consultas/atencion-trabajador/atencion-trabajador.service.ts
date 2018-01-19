@@ -694,6 +694,7 @@ export class AtencionTrabajadorService {
             const entity: Pernatural = Object.assign(new Pernatural(), json);
             entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
             entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+            // console.log('Persona Natural: ' + entity);
             return entity;
         }
 

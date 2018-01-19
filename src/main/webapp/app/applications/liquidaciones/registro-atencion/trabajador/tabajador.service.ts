@@ -10,6 +10,7 @@ import { Tipdocident } from '../../models/tipdocident.model';
 import { Trabajador } from '../../models/trabajador.model';
 import { Pernatural } from '../../models/pernatural.model';
 import { Datlab } from '../../models/datlab.model';
+import { Dirpernat } from './../../models/dirpernat.model';
 
 import { ModalBusquedaTrabajadorService } from './modal-busqueda-trabajador.service';
 
@@ -23,6 +24,10 @@ export class TrabajadorService {
     private resourceTipdocident = this.resource + 'tipdocidents';
     private resourceTrabajador  = this.resource + 'trabajadors';
     private resourceDatoslab    = this.resource + 'datlabs';
+    private resourceDirpernats  = this.resource + 'dirpernats';
+    private resourceDepa        = this.resource + 'departamentos';
+    private resourceProv        = this.resource + 'provincias';
+    private resourceDist        = this.resource + 'distritos';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -76,6 +81,33 @@ export class TrabajadorService {
              .map((res: Response) => this.convertResponseDatlabDatlab(res));
      }
 
+     // BUSQUEDA DIRECCIONES DEL Trabajador
+     /**
+      * Buscar lista de Direcciones por Id del trabajador
+      * @param  {number} idTrabajador
+      * @returns Observable
+      */
+     buscarDireccionesPerNat(idTrabajador: number): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceDirpernats}/trabajador/id/${idTrabajador}`)
+          .map((res: Response) => this.convertResponseDirpernatsDirpernats(res));
+     }
+
+    // CONVERT RESPONSE FORMATED ELEMENT - Dirpernats
+    convertResponseDirpernatsDirpernats(res: Response): ResponseWrapper {
+    const jsonResponse = res.json();
+    const result = [];
+    for (let i = 0; i < jsonResponse.length; i++) {
+        result.push(this.convertItemFromServerDirpernats(jsonResponse[i]));
+    }
+    return new ResponseWrapper(res.headers, result, res.status);
+    }
+    private convertItemFromServerDirpernats(json: any): Dirpernat {
+        const entity: Dirpernat = Object.assign(new Dirpernat(), json);
+        entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+        return entity;
+    }
+
     // CONVERT RESPONSE FORMATED ELEMENT - Tipdocident
 
     private convertResponseTipdocident(res: Response): ResponseWrapper {
@@ -126,4 +158,23 @@ export class TrabajadorService {
           // ((entity.trabajador as Trabajador).pernatural as Pernatural).dFecnac = this.dateUtils.convertLocalDateFromServer(json.dFecnac);
           return entity;
         }
+
+        consDep(req?: any): Observable<ResponseWrapper> {
+            const options = createRequestOption(req);
+            return this.http.get(this.resourceDepa, options)
+                .map((res: Response) => this.convertResponseUbigeo(res));
+        }
+        consProv(id: string): Observable<ResponseWrapper> {
+            return this.http.get(`${this.resourceProv}/${id}`)
+                .map((res: Response) => this.convertResponseUbigeo(res));
+        }
+        consDis(id: string, idprov: string): Observable<ResponseWrapper> {
+            return this.http.get(`${this.resourceDist}/${id}/${idprov}`)
+                .map((res: Response) => this.convertResponseUbigeo(res));
+        }
+        private convertResponseUbigeo(res: Response): ResponseWrapper {
+            const jsonResponse = res.json();
+            return new ResponseWrapper(res.headers, jsonResponse, res.status);
+        }
+
 }
