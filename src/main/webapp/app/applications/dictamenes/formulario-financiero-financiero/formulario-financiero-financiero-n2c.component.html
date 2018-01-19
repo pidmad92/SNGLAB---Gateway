@@ -28,7 +28,7 @@
                                         <ng-container *ngIf="k < (total - 1)">
                                             <td>
                                                 <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
-                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}"
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalActivosCorrientesDisp($event)"
                                                     (keypress)="keyPress($event)" maxlength="6">
                                             </td>
                                         </ng-container>
@@ -60,7 +60,7 @@
                                         <ng-container *ngIf="k < (total - 1)">
                                             <td>
                                                 <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
-                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}"
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalACCredNetoVig($event)"
                                                     (keypress)="keyPress($event)" maxlength="6">
                                             </td>
                                         </ng-container>
@@ -90,7 +90,7 @@
                                     <ng-container *ngFor="let comp of lista.componentes">
                                             <td>
                                                 <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
-                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}"
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalACReestructu($event)"
                                                     (keypress)="keyPress($event)" maxlength="6">
                                             </td>
                                     </ng-container>
@@ -117,7 +117,7 @@
                                         <ng-container *ngIf="k < (total - 1)">
                                             <td>
                                                 <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
-                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}"
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalACAtrasados($event)"
                                                     (keypress)="keyPress($event)" maxlength="6">
                                             </td>
                                         </ng-container>
@@ -142,7 +142,7 @@
                     </table>
 
                     <p>&nbsp;&nbsp;OTROS ACTIVOS CORRIENTES (*)
-                    <a href="#" class="btn btn-sm btn-dark" style="float:right;"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a></p>
+                    <a (click)="mostrarDialogOtrosAC()" class="btn btn-sm btn-dark" style="float:right;color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a></p>
                     <table class="table table-responsive table-bordered table-hover cabecera">
                         <thead>
                             <tr>
@@ -200,7 +200,7 @@
                                         <ng-container *ngIf="k < (total - 1)">
                                             <td>
                                                 <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
-                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}"
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalANCCredNetoVig($event)"
                                                     (keypress)="keyPress($event)" maxlength="6">
                                             </td>
                                         </ng-container>
@@ -230,7 +230,7 @@
                                     <ng-container *ngFor="let comp of lista.componentes">
                                             <td>
                                                 <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
-                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}"
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalANCReestructu($event)"
                                                     (keypress)="keyPress($event)" maxlength="6">
                                             </td>
                                     </ng-container>
@@ -257,7 +257,7 @@
                                         <ng-container *ngIf="k < (total - 1)">
                                             <td>
                                                 <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
-                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}"
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalANCAtrasados($event)"
                                                     (keypress)="keyPress($event)" maxlength="6">
                                             </td>
                                         </ng-container>
@@ -282,7 +282,7 @@
                     </table>
 
                     <p>&nbsp;&nbsp;OTROS ACTIVOS CORRIENTES (*)
-                    <a href="#" class="btn btn-sm btn-dark" style="float:right;"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a></p>
+                    <a (click)="mostrarDialogOtrosANC()" class="btn btn-sm btn-dark" style="float:right;color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a></p>
                     <table class="table table-responsive table-bordered table-hover cabecera">
                         <thead>
                             <tr>
@@ -322,7 +322,7 @@
 
                     <p>PASIVOS CORRIENTES</p>
                     <p>&nbsp;&nbsp;OTROS PASIVOS CORRIENTES (*)
-                    <a href="#" class="btn btn-sm btn-dark" style="float:right;"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a></p>
+                    <a (click)="mostrarDialogOtrosPC()" class="btn btn-sm btn-dark" style="float:right;color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a></p>
                     <table class="table table-responsive table-bordered table-hover cabecera">
                         <thead>
                             <tr>
@@ -363,7 +363,7 @@
 
                     <p>PASIVOS NO CORRIENTES</p>
                     <p>&nbsp;&nbsp;OTROS PASIVOS NO CORRIENTES (*)
-                    <a href="#" class="btn btn-sm btn-dark" style="float:right;"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a></p>
+                    <a (click)="mostrarDialogOtrosPNC()" class="btn btn-sm btn-dark" style="float:right;color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a></p>
                     <table class="table table-responsive table-bordered table-hover cabecera">
                         <thead>
                             <tr>
@@ -422,3 +422,239 @@
         </div>
     </div>
 </div>
+
+<p-dialog [(visible)]="displayOtrosAC" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Otros Ingresos
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosAC.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosAC.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosAC.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosAC.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosAC.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalOtrosAC()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalOtrosAC()">Añadir</button>
+    </p-footer>
+  </p-dialog>
+
+  <p-dialog [(visible)]="displayOtrosANC" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Otros Ingresos
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosANC.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosANC.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosANC.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosANC.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosANC.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalOtrosANC()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalOtrosANC()">Añadir</button>
+    </p-footer>
+  </p-dialog>
+
+  <p-dialog [(visible)]="displayOtrosPC" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Otros Ingresos
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPC.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPC.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPC.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPC.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPC.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalOtrosPC()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalOtrosPC()">Añadir</button>
+    </p-footer>
+  </p-dialog>
+
+  <p-dialog [(visible)]="displayOtrosPNC" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Otros Ingresos
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPNC.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPNC.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPNC.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPNC.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPNC.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalOtrosPNC()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalOtrosPNC()">Añadir</button>
+    </p-footer>
+  </p-dialog>

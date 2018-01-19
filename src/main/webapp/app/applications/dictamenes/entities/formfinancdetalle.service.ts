@@ -9,6 +9,7 @@ import { ResponseWrapper, createRequestOption } from '../../../shared';
 import { SERVER_API_URL } from '../../../app.constants';
 import { DatePipe } from '@angular/common/src/pipes';
 import { Tabla } from '../formulario-financiero-privado/tabla.model';
+import { Tabla2 } from '../formulario-financiero-financiero/tabla2.model';
 
 @Injectable()
 export class FormfinancDetalleService {
@@ -178,6 +179,77 @@ export class FormfinancDetalleService {
             obj.nCodfdetal = tablas.componentes[j].id;
             obj.nCodffina = nCodffina;
             obj.nValffina = tablas.componentes[j].cantidad;
+            obj.vDesffina = tablas.descripcion;
+            obj.vUndffina = tablas.unidadmedida;
+            obj.vCompone = tablas.componentes[j].codigo;
+
+            if (obj.nCodfdetal === undefined) {
+                obj.vUsuareg = 'UsuReg1';
+                obj.tFecreg = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
+                obj.nSedereg = 0;
+                obj.nFlgactivo = true;
+
+                obj.vUsuaupd = null;
+                obj.nSedeupd = null;
+                obj.tFecupd = null;
+                this.create(obj).subscribe();
+            } else {
+                obj.vUsuareg = tablas.componentes[j].vUsureg;
+                obj.tFecreg = datepipe.transform(tablas.componentes[j].tFecReg, 'yyyy-MM-dd HH:mm:ss');
+                obj.nSedereg = tablas.componentes[j].nSedeReg;
+                obj.vUsuaupd = 'UsuReg1';
+                obj.tFecupd = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
+                obj.nSedeupd = 0;
+                obj.nFlgactivo = true;
+                this.update(obj).subscribe();
+            }
+        }
+    }
+
+    guardarFormFinancieroTablas2(datepipe: DatePipe, tablas: Tabla2[], nCodffina: number) {
+        for (let i = 0; i < tablas.length; i++) {
+            for (let j = 0; j < tablas[i].componentes.length; j++) {
+                const obj = new FormfinancDetalle();
+
+                obj.nCodfdetal = tablas[i].componentes[j].id;
+                obj.nCodffina = nCodffina;
+                obj.nValffina = Number(tablas[i].componentes[j].cantidad);
+                obj.vDesffina = tablas[i].descripcion;
+                obj.vUndffina = tablas[i].unidadmedida;
+                obj.vCompone = tablas[i].componentes[j].codigo;
+
+                if (obj.nCodfdetal === undefined) {
+                    obj.vUsuareg = 'UsuReg1';
+                    obj.tFecreg = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
+                    obj.nSedereg = 0;
+                    obj.nFlgactivo = true;
+
+                    obj.vUsuaupd = null;
+                    obj.nSedeupd = null;
+                    obj.tFecupd = null;
+                    this.create(obj).subscribe();
+                } else {
+                    obj.vUsuareg = tablas[i].componentes[j].vUsureg;
+                    obj.tFecreg = datepipe.transform(tablas[i].componentes[j].tFecReg, 'yyyy-MM-dd HH:mm:ss');
+                    obj.nSedereg = tablas[i].componentes[j].nSedeReg;
+                    obj.nFlgactivo = true;
+                    obj.vUsuaupd = 'UsuReg1';
+                    obj.tFecupd = datepipe.transform((new Date), 'yyyy-MM-dd HH:mm:ss');
+                    obj.nSedeupd = 0;
+                    obj.nFlgactivo = true;
+                    this.update(obj).subscribe();
+                }
+            }
+        }
+    }
+
+    guardarFormFinanciero2(datepipe: DatePipe, tablas: Tabla2, nCodffina: number) {
+
+        for (let j = 0; j < tablas.componentes.length; j++) {
+            const obj = new FormfinancDetalle();
+            obj.nCodfdetal = tablas.componentes[j].id;
+            obj.nCodffina = nCodffina;
+            obj.nValffina = Number(tablas.componentes[j].cantidad);
             obj.vDesffina = tablas.descripcion;
             obj.vUndffina = tablas.unidadmedida;
             obj.vCompone = tablas.componentes[j].codigo;

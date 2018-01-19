@@ -312,8 +312,7 @@ export class FormularioFinancieroFinancieroN6Component implements OnInit, OnDest
 
     subtotalCreditosHipotecarios(event: any) {
         const columna: string[] = event.target.id.split('_');
-
-        for (let i = 0; i < this.formulario.listaCreditosHipotecarios.length - 1; i++) {
+        for (let i = 0; i < this.formulario.listaCreditosHipotecarios.length; i++) {
             for (let j = 0; j < this.formulario.listaCreditosHipotecarios[i].componentes.length; j++) {
                 if (this.formulario.listaCreditosHipotecarios[i].componentes[j].codigo === event.target.id) {
                     this.formulario.listaCreditosHipotecarios[i].componentes[j].cantidad = Number(event.target.value);
@@ -326,7 +325,7 @@ export class FormularioFinancieroFinancieroN6Component implements OnInit, OnDest
     subtotalCreditosConsumo(event: any) {
         const columna: string[] = event.target.id.split('_');
 
-        for (let i = 0; i < this.formulario.listaCreditosConsumo.length - 1; i++) {
+        for (let i = 0; i < this.formulario.listaCreditosConsumo.length; i++) {
             for (let j = 0; j < this.formulario.listaCreditosConsumo[i].componentes.length; j++) {
                 if (this.formulario.listaCreditosConsumo[i].componentes[j].codigo === event.target.id) {
                     this.formulario.listaCreditosConsumo[i].componentes[j].cantidad = Number(event.target.value);

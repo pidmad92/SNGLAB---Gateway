@@ -13,11 +13,12 @@ import { Solicform, SolicformService } from '../../../entities/solicform/index';
 import { Solicitud, SolicitudService } from '../../../entities/solicitud/index';
 import { Formulario4 } from './formulario4.model';
 import { Constants } from './constants';
-import { Tabla } from './tabla.model';
+import { Tabla2 } from './tabla2.model';
 import { Componente } from './componente.model';
 import { FormfinancService } from '../entities/formfinanc.service';
 import { FormfinancDetalleService } from '../entities/formfinancdetalle.service';
 import { FormfinancDetalle } from '../entities/index';
+import { ComponenteDecimal } from './componenteDecimal.model';
 
 @Component({
     selector: 'jhi-formulario-financiero-financiero-n4',
@@ -251,20 +252,20 @@ export class FormularioFinancieroFinancieroN4Component implements OnInit, OnDest
 
     // Funcionaes para la creacion de Formularios
     // -------------------------------------------------------------------
-    crearcomponentes(desc: string[], cod: string[]): Tabla {
-        const t = new Tabla();
-        t.componentes = new Array<Componente>();
+    crearcomponentes(desc: string[], cod: string[]): Tabla2 {
+        const t = new Tabla2();
+        t.componentes = new Array<ComponenteDecimal>();
         for (let j = 0; j < desc.length; j++) {
             t.descripcion = desc[j];
             for (let i = 0; i < this.anios.length; i++) {
-                t.componentes[i] = new Componente();
+                t.componentes[i] = new ComponenteDecimal();
                 t.componentes[i].codigo = cod[j] + '_' + i + '_' + this.anios[i];
-                t.componentes[i].cantidad = 0;
+                t.componentes[i].cantidad = '0';
                 t.componentes[i].año = this.anios[i];
                 this.formfinancdetalleService.obtenerComponente(this.nCodffina, t.componentes[i].codigo).subscribe(
                     (formfinancdetalle) => {
                         if (formfinancdetalle !== undefined) {
-                            t.componentes[i].cantidad = formfinancdetalle.nValffina;
+                            t.componentes[i].cantidad = String(formfinancdetalle.nValffina);
                             t.componentes[i].id = formfinancdetalle.nCodfdetal;
                             t.componentes[i].vUsureg = formfinancdetalle.vUsuareg;
                             t.componentes[i].tFecReg = formfinancdetalle.tFecreg;
@@ -280,20 +281,20 @@ export class FormularioFinancieroFinancieroN4Component implements OnInit, OnDest
         return t;
     }
 
-    creartotales(desc: string[], cod: string[]): Tabla {
-        const t = new Tabla();
-        t.componentes = new Array<Componente>();
+    creartotales(desc: string[], cod: string[]): Tabla2 {
+        const t = new Tabla2();
+        t.componentes = new Array<ComponenteDecimal>();
         for (let j = 0; j < desc.length; j++) {
             t.descripcion = desc[j];
             for (let i = 0; i < this.anios.length; i++) {
-                t.componentes[i] = new Componente();
+                t.componentes[i] = new ComponenteDecimal();
                 t.componentes[i].codigo = cod[j] + '_' + i + '_' + this.anios[i];
-                t.componentes[i].cantidad = 0;
+                t.componentes[i].cantidad = '0';
                 t.componentes[i].año = this.anios[i];
                 this.formfinancdetalleService.obtenerComponente(this.nCodffina, t.componentes[i].codigo).subscribe(
                     (formfinancdetalle) => {
                         if (formfinancdetalle !== undefined) {
-                            t.componentes[i].cantidad = formfinancdetalle.nValffina;
+                            t.componentes[i].cantidad = String(formfinancdetalle.nValffina);
                             t.componentes[i].id = formfinancdetalle.nCodfdetal;
                             t.componentes[i].vUsureg = formfinancdetalle.vUsuareg;
                             t.componentes[i].tFecReg = formfinancdetalle.tFecreg;
@@ -306,20 +307,20 @@ export class FormularioFinancieroFinancieroN4Component implements OnInit, OnDest
         return t;
     }
 
-    crearlistacomponentes(desc: string[], cod: string[], subtotal: boolean): Tabla[] {
-        const t = new Array<Tabla>();
+    crearlistacomponentes(desc: string[], cod: string[], subtotal: boolean): Tabla2[] {
+        const t = new Array<Tabla2>();
         for (let j = 0; j < desc.length; j++) {
-            t[j] = new Tabla();
+            t[j] = new Tabla2();
             t[j].descripcion = desc[j];
-            t[j].componentes = new Array<Componente>();
+            t[j].componentes = new Array<ComponenteDecimal>();
             for (let i = 0; i < this.anios.length; i++) {
-                t[j].componentes[i] = new Componente();
+                t[j].componentes[i] = new ComponenteDecimal();
                 t[j].componentes[i].codigo = cod[j] + '_' + i + '_' + this.anios[i];
-                t[j].componentes[i].cantidad = 0;
+                t[j].componentes[i].cantidad = '0';
                 this.formfinancdetalleService.obtenerComponente(this.nCodffina, t[j].componentes[i].codigo).subscribe(
                     (formfinancdetalle) => {
                         if (formfinancdetalle !== undefined) {
-                            t[j].componentes[i].cantidad = formfinancdetalle.nValffina;
+                            t[j].componentes[i].cantidad = String(formfinancdetalle.nValffina);
                             t[j].componentes[i].id = formfinancdetalle.nCodfdetal;
                             t[j].componentes[i].vUsureg = formfinancdetalle.vUsuareg;
                             t[j].componentes[i].tFecReg = formfinancdetalle.tFecreg;
@@ -343,12 +344,588 @@ export class FormularioFinancieroFinancieroN4Component implements OnInit, OnDest
     // -------------------------------------------------------------------
     // Calculos del Formulario
     // -------------------------------------------------------------------
+    subtotalCredCoorp(event: any) {
+        if (event.key !== '.') {
 
+            const columna: string[] = event.target.id.split('_');
+            const idx = columna[2];
+            const idy = this.formulario.listaCredCoorporativos.length - 1;
+            let suma = 0;
+            for (let i = 0; i < this.formulario.listaCredCoorporativos.length - 1; i++) {
+                for (let j = 0; j < this.formulario.listaCredCoorporativos[i].componentes.length; j++) {
+                    if (this.formulario.listaCredCoorporativos[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                        if (this.formulario.listaCredCoorporativos[i].componentes[j].codigo !== event.target.id) {
+                            suma += Number(this.formulario.listaCredCoorporativos[i].componentes[j].cantidad);
+                        }
+                    }
+                }
+            }
+            if (suma < 100) {
+                let valorEntrada = Number(event.target.value);
+                const suma2 = valorEntrada + suma;
+
+                if (suma2 > 100) {
+                    valorEntrada = 100 - suma;
+                }
+
+                for (let i = 0; i < this.formulario.listaCredCoorporativos.length - 1; i++) {
+                    for (let j = 0; j < this.formulario.listaCredCoorporativos[i].componentes.length; j++) {
+                        if (this.formulario.listaCredCoorporativos[i].componentes[j].codigo === event.target.id) {
+                            event.target.value = valorEntrada;
+                            this.formulario.listaCredCoorporativos[i].componentes[j].cantidad = String(valorEntrada);
+                        }
+                    }
+                }
+            } else {
+                for (let i = 0; i < this.formulario.listaCredCoorporativos.length - 1; i++) {
+                    for (let j = 0; j < this.formulario.listaCredCoorporativos[i].componentes.length; j++) {
+                        if (this.formulario.listaCredCoorporativos[i].componentes[j].codigo === event.target.id) {
+                            event.target.value = 0;
+                            this.formulario.listaCredCoorporativos[i].componentes[j].cantidad = '0';
+                        }
+                    }
+                }
+            }
+
+            this.totalCoorp();
+        }
+    }
+
+    totalCoorp() {
+        let suma1 = 0;
+        let suma2 = 0;
+        let suma3 = 0;
+        let suma4 = 0;
+
+        for (let i = 0; i < this.formulario.listaCredCoorporativos.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaCredCoorporativos[i].componentes.length; j++) {
+                switch (j) {
+                    case 0: suma1 += Number(this.formulario.listaCredCoorporativos[i].componentes[j].cantidad);
+                        break;
+                    case 1: suma2 += Number(this.formulario.listaCredCoorporativos[i].componentes[j].cantidad);
+                        break;
+                    case 2: suma3 += Number(this.formulario.listaCredCoorporativos[i].componentes[j].cantidad);
+                        break;
+                    case 3: suma4 += Number(this.formulario.listaCredCoorporativos[i].componentes[j].cantidad);
+                        break;
+                }
+            }
+        }
+
+        this.formulario.totalCredCoorporativos.componentes[0].cantidad = String(suma1.toFixed(2));
+        this.formulario.totalCredCoorporativos.componentes[1].cantidad = String(suma2.toFixed(2));
+        this.formulario.totalCredCoorporativos.componentes[2].cantidad = String(suma3.toFixed(2));
+        this.formulario.totalCredCoorporativos.componentes[3].cantidad = String(suma4.toFixed(2));
+        this.totalCreditosDirectos();
+    }
+
+    subtotalCredGrandes(event: any) {
+        if (event.key !== '.') {
+            const columna: string[] = event.target.id.split('_');
+            const idx = columna[2];
+            const idy = this.formulario.listaCredGrandesEmpresas.length - 1;
+            let suma = 0;
+            for (let i = 0; i < this.formulario.listaCredMedianasEmpresas.length - 1; i++) {
+                for (let j = 0; j < this.formulario.listaCredGrandesEmpresas[i].componentes.length; j++) {
+                    if (this.formulario.listaCredGrandesEmpresas[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                        if (this.formulario.listaCredGrandesEmpresas[i].componentes[j].codigo !== event.target.id) {
+                            suma += Number(this.formulario.listaCredGrandesEmpresas[i].componentes[j].cantidad);
+                        }
+                    }
+                }
+            }
+            if (suma < 100) {
+                let valorEntrada = Number(event.target.value);
+                const suma2 = valorEntrada + suma;
+
+                if (suma2 > 100) {
+                    valorEntrada = 100 - suma;
+                }
+
+                for (let i = 0; i < this.formulario.listaCredGrandesEmpresas.length - 1; i++) {
+                    for (let j = 0; j < this.formulario.listaCredGrandesEmpresas[i].componentes.length; j++) {
+                        if (this.formulario.listaCredGrandesEmpresas[i].componentes[j].codigo === event.target.id) {
+                            event.target.value = valorEntrada;
+                            this.formulario.listaCredGrandesEmpresas[i].componentes[j].cantidad = String(valorEntrada);
+                        }
+                    }
+                }
+            } else {
+                for (let i = 0; i < this.formulario.listaCredGrandesEmpresas.length - 1; i++) {
+                    for (let j = 0; j < this.formulario.listaCredGrandesEmpresas[i].componentes.length; j++) {
+                        if (this.formulario.listaCredGrandesEmpresas[i].componentes[j].codigo === event.target.id) {
+                            event.target.value = 0;
+                            this.formulario.listaCredGrandesEmpresas[i].componentes[j].cantidad = '0';
+                        }
+                    }
+                }
+            }
+
+            this.totalGrandes();
+        }
+    }
+
+    totalGrandes() {
+        let suma1 = 0;
+        let suma2 = 0;
+        let suma3 = 0;
+        let suma4 = 0;
+
+        for (let i = 0; i < this.formulario.listaCredGrandesEmpresas.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaCredGrandesEmpresas[i].componentes.length; j++) {
+                switch (j) {
+                    case 0: suma1 += Number(this.formulario.listaCredGrandesEmpresas[i].componentes[j].cantidad);
+                        break;
+                    case 1: suma2 += Number(this.formulario.listaCredGrandesEmpresas[i].componentes[j].cantidad);
+                        break;
+                    case 2: suma3 += Number(this.formulario.listaCredGrandesEmpresas[i].componentes[j].cantidad);
+                        break;
+                    case 3: suma4 += Number(this.formulario.listaCredGrandesEmpresas[i].componentes[j].cantidad);
+                        break;
+                }
+            }
+        }
+
+        this.formulario.totalCredGrandesEmpresas.componentes[0].cantidad = String(suma1.toFixed(2));
+        this.formulario.totalCredGrandesEmpresas.componentes[1].cantidad = String(suma2.toFixed(2));
+        this.formulario.totalCredGrandesEmpresas.componentes[2].cantidad = String(suma3.toFixed(2));
+        this.formulario.totalCredGrandesEmpresas.componentes[3].cantidad = String(suma4.toFixed(2));
+        this.totalCreditosDirectos();
+    }
+
+    subtotalCredMedianas(event: any) {
+        if (event.key !== '.') {
+            const columna: string[] = event.target.id.split('_');
+            const idx = columna[2];
+            const idy = this.formulario.listaCredMedianasEmpresas.length - 1;
+            let suma = 0;
+            for (let i = 0; i < this.formulario.listaCredMedianasEmpresas.length - 1; i++) {
+                for (let j = 0; j < this.formulario.listaCredMedianasEmpresas[i].componentes.length; j++) {
+                    if (this.formulario.listaCredMedianasEmpresas[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                        if (this.formulario.listaCredMedianasEmpresas[i].componentes[j].codigo !== event.target.id) {
+                            suma += Number(this.formulario.listaCredMedianasEmpresas[i].componentes[j].cantidad);
+                        }
+                    }
+                }
+            }
+            if (suma < 100) {
+                let valorEntrada = Number(event.target.value);
+                const suma2 = valorEntrada + suma;
+
+                if (suma2 > 100) {
+                    valorEntrada = 100 - suma;
+                }
+
+                for (let i = 0; i < this.formulario.listaCredMedianasEmpresas.length - 1; i++) {
+                    for (let j = 0; j < this.formulario.listaCredMedianasEmpresas[i].componentes.length; j++) {
+                        if (this.formulario.listaCredMedianasEmpresas[i].componentes[j].codigo === event.target.id) {
+                            event.target.value = valorEntrada;
+                            this.formulario.listaCredMedianasEmpresas[i].componentes[j].cantidad = String(valorEntrada);
+                        }
+                    }
+                }
+            } else {
+                for (let i = 0; i < this.formulario.listaCredMedianasEmpresas.length - 1; i++) {
+                    for (let j = 0; j < this.formulario.listaCredMedianasEmpresas[i].componentes.length; j++) {
+                        if (this.formulario.listaCredMedianasEmpresas[i].componentes[j].codigo === event.target.id) {
+                            event.target.value = 0;
+                            this.formulario.listaCredMedianasEmpresas[i].componentes[j].cantidad = '0';
+                        }
+                    }
+                }
+            }
+
+            this.totalMedianas();
+        }
+    }
+
+    totalMedianas() {
+        let suma1 = 0;
+        let suma2 = 0;
+        let suma3 = 0;
+        let suma4 = 0;
+
+        for (let i = 0; i < this.formulario.listaCredMedianasEmpresas.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaCredMedianasEmpresas[i].componentes.length; j++) {
+                switch (j) {
+                    case 0: suma1 += Number(this.formulario.listaCredMedianasEmpresas[i].componentes[j].cantidad);
+                        break;
+                    case 1: suma2 += Number(this.formulario.listaCredMedianasEmpresas[i].componentes[j].cantidad);
+                        break;
+                    case 2: suma3 += Number(this.formulario.listaCredMedianasEmpresas[i].componentes[j].cantidad);
+                        break;
+                    case 3: suma4 += Number(this.formulario.listaCredMedianasEmpresas[i].componentes[j].cantidad);
+                        break;
+                }
+            }
+        }
+
+        this.formulario.totalCredMedianasEmpresas.componentes[0].cantidad = String(suma1.toFixed(2));
+        this.formulario.totalCredMedianasEmpresas.componentes[1].cantidad = String(suma2.toFixed(2));
+        this.formulario.totalCredMedianasEmpresas.componentes[2].cantidad = String(suma3.toFixed(2));
+        this.formulario.totalCredMedianasEmpresas.componentes[3].cantidad = String(suma4.toFixed(2));
+        this.totalCreditosDirectos();
+    }
+
+    subtotalCredPequenias(event: any) {
+        if (event.key !== '.') {
+            const columna: string[] = event.target.id.split('_');
+            const idx = columna[2];
+            const idy = this.formulario.listaCredPequeniasEmpresas.length - 1;
+            let suma = 0;
+            for (let i = 0; i < this.formulario.listaCredPequeniasEmpresas.length - 1; i++) {
+                for (let j = 0; j < this.formulario.listaCredPequeniasEmpresas[i].componentes.length; j++) {
+                    if (this.formulario.listaCredPequeniasEmpresas[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                        if (this.formulario.listaCredPequeniasEmpresas[i].componentes[j].codigo !== event.target.id) {
+                            suma += Number(this.formulario.listaCredPequeniasEmpresas[i].componentes[j].cantidad);
+                        }
+                    }
+                }
+            }
+            if (suma < 100) {
+                let valorEntrada = Number(event.target.value);
+                const suma2 = valorEntrada + suma;
+
+                if (suma2 > 100) {
+                    valorEntrada = 100 - suma;
+                }
+
+                for (let i = 0; i < this.formulario.listaCredPequeniasEmpresas.length - 1; i++) {
+                    for (let j = 0; j < this.formulario.listaCredPequeniasEmpresas[i].componentes.length; j++) {
+                        if (this.formulario.listaCredPequeniasEmpresas[i].componentes[j].codigo === event.target.id) {
+                            event.target.value = valorEntrada;
+                            this.formulario.listaCredPequeniasEmpresas[i].componentes[j].cantidad = String(valorEntrada);
+                        }
+                    }
+                }
+            } else {
+                for (let i = 0; i < this.formulario.listaCredPequeniasEmpresas.length - 1; i++) {
+                    for (let j = 0; j < this.formulario.listaCredPequeniasEmpresas[i].componentes.length; j++) {
+                        if (this.formulario.listaCredPequeniasEmpresas[i].componentes[j].codigo === event.target.id) {
+                            event.target.value = 0;
+                            this.formulario.listaCredPequeniasEmpresas[i].componentes[j].cantidad = '0';
+                        }
+                    }
+                }
+            }
+
+            this.totalPequenias();
+        }
+    }
+
+    totalPequenias() {
+        let suma1 = 0;
+        let suma2 = 0;
+        let suma3 = 0;
+        let suma4 = 0;
+
+        for (let i = 0; i < this.formulario.listaCredPequeniasEmpresas.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaCredPequeniasEmpresas[i].componentes.length; j++) {
+                switch (j) {
+                    case 0: suma1 += Number(this.formulario.listaCredPequeniasEmpresas[i].componentes[j].cantidad);
+                        break;
+                    case 1: suma2 += Number(this.formulario.listaCredPequeniasEmpresas[i].componentes[j].cantidad);
+                        break;
+                    case 2: suma3 += Number(this.formulario.listaCredPequeniasEmpresas[i].componentes[j].cantidad);
+                        break;
+                    case 3: suma4 += Number(this.formulario.listaCredPequeniasEmpresas[i].componentes[j].cantidad);
+                        break;
+                }
+            }
+        }
+
+        this.formulario.totalCredPequeniasEmpresas.componentes[0].cantidad = String(suma1.toFixed(2));
+        this.formulario.totalCredPequeniasEmpresas.componentes[1].cantidad = String(suma2.toFixed(2));
+        this.formulario.totalCredPequeniasEmpresas.componentes[2].cantidad = String(suma3.toFixed(2));
+        this.formulario.totalCredPequeniasEmpresas.componentes[3].cantidad = String(suma4.toFixed(2));
+        this.totalCreditosDirectos();
+    }
+
+    subtotalCredMicro(event: any) {
+        if (event.key !== '.') {
+            const columna: string[] = event.target.id.split('_');
+            const idx = columna[2];
+            const idy = this.formulario.listaCredMicroEmpresas.length - 1;
+            let suma = 0;
+            for (let i = 0; i < this.formulario.listaCredMicroEmpresas.length - 1; i++) {
+                for (let j = 0; j < this.formulario.listaCredMicroEmpresas[i].componentes.length; j++) {
+                    if (this.formulario.listaCredMicroEmpresas[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                        if (this.formulario.listaCredMicroEmpresas[i].componentes[j].codigo !== event.target.id) {
+                            suma += Number(this.formulario.listaCredMicroEmpresas[i].componentes[j].cantidad);
+                        }
+                    }
+                }
+            }
+            if (suma < 100) {
+                let valorEntrada = Number(event.target.value);
+                const suma2 = valorEntrada + suma;
+
+                if (suma2 > 100) {
+                    valorEntrada = 100 - suma;
+                }
+
+                for (let i = 0; i < this.formulario.listaCredMicroEmpresas.length - 1; i++) {
+                    for (let j = 0; j < this.formulario.listaCredMicroEmpresas[i].componentes.length; j++) {
+                        if (this.formulario.listaCredMicroEmpresas[i].componentes[j].codigo === event.target.id) {
+                            event.target.value = valorEntrada;
+                            this.formulario.listaCredMicroEmpresas[i].componentes[j].cantidad = String(valorEntrada);
+                        }
+                    }
+                }
+            } else {
+                for (let i = 0; i < this.formulario.listaCredMicroEmpresas.length - 1; i++) {
+                    for (let j = 0; j < this.formulario.listaCredMicroEmpresas[i].componentes.length; j++) {
+                        if (this.formulario.listaCredMicroEmpresas[i].componentes[j].codigo === event.target.id) {
+                            event.target.value = 0;
+                            this.formulario.listaCredMicroEmpresas[i].componentes[j].cantidad = '0';
+                        }
+                    }
+                }
+            }
+
+            this.totalMicro();
+        }
+    }
+
+    totalMicro() {
+        let suma1 = 0;
+        let suma2 = 0;
+        let suma3 = 0;
+        let suma4 = 0;
+
+        for (let i = 0; i < this.formulario.listaCredMicroEmpresas.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaCredMicroEmpresas[i].componentes.length; j++) {
+                switch (j) {
+                    case 0: suma1 += Number(this.formulario.listaCredMicroEmpresas[i].componentes[j].cantidad);
+                        break;
+                    case 1: suma2 += Number(this.formulario.listaCredMicroEmpresas[i].componentes[j].cantidad);
+                        break;
+                    case 2: suma3 += Number(this.formulario.listaCredMicroEmpresas[i].componentes[j].cantidad);
+                        break;
+                    case 3: suma4 += Number(this.formulario.listaCredMicroEmpresas[i].componentes[j].cantidad);
+                        break;
+                }
+            }
+        }
+
+        this.formulario.totalCredMicroEmpresas.componentes[0].cantidad = String(suma1.toFixed(2));
+        this.formulario.totalCredMicroEmpresas.componentes[1].cantidad = String(suma2.toFixed(2));
+        this.formulario.totalCredMicroEmpresas.componentes[2].cantidad = String(suma3.toFixed(2));
+        this.formulario.totalCredMicroEmpresas.componentes[3].cantidad = String(suma4.toFixed(2));
+        this.totalCreditosDirectos();
+    }
+
+    subtotalCredConsumo(event: any) {
+        if (event.key !== '.') {
+            const columna: string[] = event.target.id.split('_');
+            const idx = columna[2];
+            const idy = this.formulario.listaCredConsumo.length - 1;
+            let suma = 0;
+            for (let i = 0; i < this.formulario.listaCredConsumo.length - 1; i++) {
+                for (let j = 0; j < this.formulario.listaCredConsumo[i].componentes.length; j++) {
+                    if (this.formulario.listaCredConsumo[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                        if (this.formulario.listaCredConsumo[i].componentes[j].codigo !== event.target.id) {
+                            suma += Number(this.formulario.listaCredConsumo[i].componentes[j].cantidad);
+                        }
+                    }
+                }
+            }
+            if (suma < 100) {
+                let valorEntrada = Number(event.target.value);
+                const suma2 = valorEntrada + suma;
+
+                if (suma2 > 100) {
+                    valorEntrada = 100 - suma;
+                }
+
+                for (let i = 0; i < this.formulario.listaCredConsumo.length - 1; i++) {
+                    for (let j = 0; j < this.formulario.listaCredConsumo[i].componentes.length; j++) {
+                        if (this.formulario.listaCredConsumo[i].componentes[j].codigo === event.target.id) {
+                            event.target.value = valorEntrada;
+                            this.formulario.listaCredConsumo[i].componentes[j].cantidad = String(valorEntrada);
+                        }
+                    }
+                }
+            } else {
+                for (let i = 0; i < this.formulario.listaCredConsumo.length - 1; i++) {
+                    for (let j = 0; j < this.formulario.listaCredConsumo[i].componentes.length; j++) {
+                        if (this.formulario.listaCredConsumo[i].componentes[j].codigo === event.target.id) {
+                            event.target.value = 0;
+                            this.formulario.listaCredConsumo[i].componentes[j].cantidad = '0';
+                        }
+                    }
+                }
+            }
+
+            this.totalConsumo();
+        }
+    }
+
+    totalConsumo() {
+        let suma1 = 0;
+        let suma2 = 0;
+        let suma3 = 0;
+        let suma4 = 0;
+
+        for (let i = 0; i < this.formulario.listaCredConsumo.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaCredConsumo[i].componentes.length; j++) {
+                switch (j) {
+                    case 0: suma1 += Number(this.formulario.listaCredConsumo[i].componentes[j].cantidad);
+                        break;
+                    case 1: suma2 += Number(this.formulario.listaCredConsumo[i].componentes[j].cantidad);
+                        break;
+                    case 2: suma3 += Number(this.formulario.listaCredConsumo[i].componentes[j].cantidad);
+                        break;
+                    case 3: suma4 += Number(this.formulario.listaCredConsumo[i].componentes[j].cantidad);
+                        break;
+                }
+            }
+        }
+
+        this.formulario.totalCredConsumo.componentes[0].cantidad = String(suma1.toFixed(2));
+        this.formulario.totalCredConsumo.componentes[1].cantidad = String(suma2.toFixed(2));
+        this.formulario.totalCredConsumo.componentes[2].cantidad = String(suma3.toFixed(2));
+        this.formulario.totalCredConsumo.componentes[3].cantidad = String(suma4.toFixed(2));
+        this.totalCreditosDirectos();
+    }
+
+    subtotalCredHipotecariosVivienda(event: any) {
+        if (event.key !== '.') {
+            const columna: string[] = event.target.id.split('_');
+            const idx = columna[2];
+            const idy = this.formulario.listaCredHipotecariosVivienda.length - 1;
+            let suma = 0;
+            for (let i = 0; i < this.formulario.listaCredHipotecariosVivienda.length - 1; i++) {
+                for (let j = 0; j < this.formulario.listaCredHipotecariosVivienda[i].componentes.length; j++) {
+                    if (this.formulario.listaCredHipotecariosVivienda[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                        if (this.formulario.listaCredHipotecariosVivienda[i].componentes[j].codigo !== event.target.id) {
+                            suma += Number(this.formulario.listaCredHipotecariosVivienda[i].componentes[j].cantidad);
+                        }
+                    }
+                }
+            }
+            if (suma < 100) {
+                let valorEntrada = Number(event.target.value);
+                const suma2 = valorEntrada + suma;
+
+                if (suma2 > 100) {
+                    valorEntrada = 100 - suma;
+                }
+
+                for (let i = 0; i < this.formulario.listaCredHipotecariosVivienda.length - 1; i++) {
+                    for (let j = 0; j < this.formulario.listaCredHipotecariosVivienda[i].componentes.length; j++) {
+                        if (this.formulario.listaCredHipotecariosVivienda[i].componentes[j].codigo === event.target.id) {
+                            event.target.value = valorEntrada;
+                            this.formulario.listaCredHipotecariosVivienda[i].componentes[j].cantidad = String(valorEntrada);
+                        }
+                    }
+                }
+            } else {
+                for (let i = 0; i < this.formulario.listaCredHipotecariosVivienda.length - 1; i++) {
+                    for (let j = 0; j < this.formulario.listaCredHipotecariosVivienda[i].componentes.length; j++) {
+                        if (this.formulario.listaCredHipotecariosVivienda[i].componentes[j].codigo === event.target.id) {
+                            event.target.value = 0;
+                            this.formulario.listaCredHipotecariosVivienda[i].componentes[j].cantidad = '0';
+                        }
+                    }
+                }
+            }
+
+            this.totalHipotecariosVivienda();
+        }
+    }
+
+    totalHipotecariosVivienda() {
+        let suma1 = 0;
+        let suma2 = 0;
+        let suma3 = 0;
+        let suma4 = 0;
+
+        for (let i = 0; i < this.formulario.listaCredHipotecariosVivienda.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaCredHipotecariosVivienda[i].componentes.length; j++) {
+                switch (j) {
+                    case 0: suma1 += Number(this.formulario.listaCredHipotecariosVivienda[i].componentes[j].cantidad);
+                        break;
+                    case 1: suma2 += Number(this.formulario.listaCredHipotecariosVivienda[i].componentes[j].cantidad);
+                        break;
+                    case 2: suma3 += Number(this.formulario.listaCredHipotecariosVivienda[i].componentes[j].cantidad);
+                        break;
+                    case 3: suma4 += Number(this.formulario.listaCredHipotecariosVivienda[i].componentes[j].cantidad);
+                        break;
+                }
+            }
+        }
+
+        this.formulario.totalCredHipotecariosVivienda.componentes[0].cantidad = String(suma1.toFixed(2));
+        this.formulario.totalCredHipotecariosVivienda.componentes[1].cantidad = String(suma2.toFixed(2));
+        this.formulario.totalCredHipotecariosVivienda.componentes[2].cantidad = String(suma3.toFixed(2));
+        this.formulario.totalCredHipotecariosVivienda.componentes[3].cantidad = String(suma4.toFixed(2));
+        this.totalCreditosDirectos();
+
+    }
+
+    totalCreditosDirectos() {
+        let suma1 = 0;
+        let suma2 = 0;
+        let suma3 = 0;
+        let suma4 = 0;
+
+        suma1 = Number(this.formulario.totalCredCoorporativos.componentes[0].cantidad) +
+            Number(this.formulario.totalCredGrandesEmpresas.componentes[0].cantidad) +
+            Number(this.formulario.totalCredMedianasEmpresas.componentes[0].cantidad) +
+            Number(this.formulario.totalCredPequeniasEmpresas.componentes[0].cantidad) +
+            Number(this.formulario.totalCredMicroEmpresas.componentes[0].cantidad) +
+            Number(this.formulario.totalCredHipotecariosVivienda.componentes[0].cantidad) +
+            Number(this.formulario.totalCredConsumo.componentes[0].cantidad);
+
+        suma2 = Number(this.formulario.totalCredCoorporativos.componentes[1].cantidad) +
+            Number(this.formulario.totalCredGrandesEmpresas.componentes[1].cantidad) +
+            Number(this.formulario.totalCredMedianasEmpresas.componentes[1].cantidad) +
+            Number(this.formulario.totalCredPequeniasEmpresas.componentes[1].cantidad) +
+            Number(this.formulario.totalCredMicroEmpresas.componentes[1].cantidad) +
+            Number(this.formulario.totalCredHipotecariosVivienda.componentes[1].cantidad) +
+            Number(this.formulario.totalCredConsumo.componentes[1].cantidad);
+
+        suma3 = Number(this.formulario.totalCredCoorporativos.componentes[2].cantidad) +
+            Number(this.formulario.totalCredGrandesEmpresas.componentes[2].cantidad) +
+            Number(this.formulario.totalCredMedianasEmpresas.componentes[2].cantidad) +
+            Number(this.formulario.totalCredPequeniasEmpresas.componentes[2].cantidad) +
+            Number(this.formulario.totalCredMicroEmpresas.componentes[2].cantidad) +
+            Number(this.formulario.totalCredHipotecariosVivienda.componentes[2].cantidad) +
+            Number(this.formulario.totalCredConsumo.componentes[2].cantidad);
+
+        suma4 = Number(this.formulario.totalCredCoorporativos.componentes[3].cantidad) +
+            Number(this.formulario.totalCredGrandesEmpresas.componentes[3].cantidad) +
+            Number(this.formulario.totalCredMedianasEmpresas.componentes[3].cantidad) +
+            Number(this.formulario.totalCredPequeniasEmpresas.componentes[3].cantidad) +
+            Number(this.formulario.totalCredMicroEmpresas.componentes[3].cantidad) +
+            Number(this.formulario.totalCredHipotecariosVivienda.componentes[3].cantidad) +
+            Number(this.formulario.totalCredConsumo.componentes[3].cantidad);
+
+        this.formulario.totalCredDirectos.componentes[0].cantidad = (suma1 / 7).toFixed(2);
+        this.formulario.totalCredDirectos.componentes[1].cantidad = (suma2 / 7).toFixed(2);
+        this.formulario.totalCredDirectos.componentes[2].cantidad = (suma3 / 7).toFixed(2);
+        this.formulario.totalCredDirectos.componentes[3].cantidad = (suma4 / 7).toFixed(2);
+
+    }
+
+    subtotalCreditoDirectoSoles(event: any) {
+        if (event.key !== '.') {
+            const columna: string[] = event.target.id.split('_');
+            for (let i = 0; i < this.formulario.listaCredDirectosSoles.length; i++) {
+                for (let j = 0; j < this.formulario.listaCredDirectosSoles[i].componentes.length; j++) {
+                    if (this.formulario.listaCredDirectosSoles[i].componentes[j].codigo === event.target.id) {
+                        this.formulario.listaCredDirectosSoles[i].componentes[j].cantidad = String(event.target.value);
+                    }
+                }
+            }
+        }
+    }
     // -------------------------------------------------------------------
     // Solo numeros
     keyPress(event: any) {
-        const pattern = /[0-9]/;
-        const inputChar = String.fromCharCode(event.charCode);
+        const pattern = /^([0-9]+\.?[0-9]{0,2})$/;
+        const inputChar = event.target.value + '' + String.fromCharCode(event.charCode);
         if (!pattern.test(inputChar)) {
             event.preventDefault();
         }
@@ -369,22 +946,22 @@ export class FormularioFinancieroFinancieroN4Component implements OnInit, OnDest
     guardarFormulario() {
         this.formfinancdetalleService.desactivarFormulario(this.nCodffina, 'ff4').subscribe(
             (res: ResponseWrapper) => {
-                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaCredCoorporativos, this.nCodffina);
-                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaCredGrandesEmpresas, this.nCodffina);
-                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaCredMedianasEmpresas, this.nCodffina);
-                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaCredPequeniasEmpresas, this.nCodffina);
-                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaCredMicroEmpresas, this.nCodffina);
-                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaCredConsumo, this.nCodffina);
-                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaCredHipotecariosVivienda, this.nCodffina);
-                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaCredDirectosSoles, this.nCodffina);
-                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCredCoorporativos, this.nCodffina);
-                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCredGrandesEmpresas, this.nCodffina);
-                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCredMedianasEmpresas, this.nCodffina);
-                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCredPequeniasEmpresas, this.nCodffina);
-                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCredMicroEmpresas, this.nCodffina);
-                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCredConsumo, this.nCodffina);
-                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCredHipotecariosVivienda, this.nCodffina);
-                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCredDirectos, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas2(this.datepipe, this.formulario.listaCredCoorporativos, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas2(this.datepipe, this.formulario.listaCredGrandesEmpresas, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas2(this.datepipe, this.formulario.listaCredMedianasEmpresas, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas2(this.datepipe, this.formulario.listaCredPequeniasEmpresas, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas2(this.datepipe, this.formulario.listaCredMicroEmpresas, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas2(this.datepipe, this.formulario.listaCredConsumo, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas2(this.datepipe, this.formulario.listaCredHipotecariosVivienda, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas2(this.datepipe, this.formulario.listaCredDirectosSoles, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero2(this.datepipe, this.formulario.totalCredCoorporativos, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero2(this.datepipe, this.formulario.totalCredGrandesEmpresas, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero2(this.datepipe, this.formulario.totalCredMedianasEmpresas, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero2(this.datepipe, this.formulario.totalCredPequeniasEmpresas, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero2(this.datepipe, this.formulario.totalCredMicroEmpresas, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero2(this.datepipe, this.formulario.totalCredConsumo, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero2(this.datepipe, this.formulario.totalCredHipotecariosVivienda, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero2(this.datepipe, this.formulario.totalCredDirectos, this.nCodffina);
                 this.verControlInformacion();
             },
             (res: ResponseWrapper) => this.onError(res.json)

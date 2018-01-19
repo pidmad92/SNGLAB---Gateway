@@ -37,7 +37,7 @@
                                     <ng-container *ngFor="let comp of lista.componentes">
                                             <td>
                                                 <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
-                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}"
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalCredCoorp($event)"
                                                     (keypress)="keyPress($event)" maxlength="6">
                                             </td>
                                     </ng-container>
@@ -74,7 +74,7 @@
                                     <ng-container *ngFor="let comp of lista.componentes">
                                             <td>
                                                 <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
-                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}"
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalCredGrandes($event)"
                                                     (keypress)="keyPress($event)" maxlength="6">
                                             </td>
                                     </ng-container>
@@ -111,7 +111,7 @@
                                     <ng-container *ngFor="let comp of lista.componentes">
                                             <td>
                                                 <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
-                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}"
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalCredMedianas($event)"
                                                     (keypress)="keyPress($event)" maxlength="6">
                                             </td>
                                     </ng-container>
@@ -148,7 +148,7 @@
                                     <ng-container *ngFor="let comp of lista.componentes">
                                             <td>
                                                 <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
-                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}"
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalCredPequenias($event)"
                                                     (keypress)="keyPress($event)" maxlength="6">
                                             </td>
                                     </ng-container>
@@ -185,7 +185,7 @@
                                     <ng-container *ngFor="let comp of lista.componentes">
                                             <td>
                                                 <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
-                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}"
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalCredMicro($event)"
                                                     (keypress)="keyPress($event)" maxlength="6">
                                             </td>
                                     </ng-container>
@@ -222,7 +222,7 @@
                                     <ng-container *ngFor="let comp of lista.componentes">
                                             <td>
                                                 <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
-                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}"
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalCredConsumo($event)"
                                                     (keypress)="keyPress($event)" maxlength="6">
                                             </td>
                                     </ng-container>
@@ -259,7 +259,7 @@
                                     <ng-container *ngFor="let comp of lista.componentes">
                                             <td>
                                                 <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
-                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}"
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalCredHipotecariosVivienda($event)"
                                                     (keypress)="keyPress($event)" maxlength="6">
                                             </td>
                                     </ng-container>
