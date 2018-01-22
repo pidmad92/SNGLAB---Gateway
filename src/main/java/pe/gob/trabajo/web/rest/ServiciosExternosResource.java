@@ -64,6 +64,7 @@ public class ServiciosExternosResource {
     @PostMapping("/valida")
     @Timed
     public HojaDeEnvioWsDtoArray ValidarCrearNotifacion(@RequestBody MsgDestinatarioArray msgDestinatario) throws ErrorDeServicio, pe.gob.trabajo.service.wstramite.ErrorDeServicio {
+        log.debug("REST request to save ValidarCrearNotificacion : {}");
         Situacionmitramite_Service servicio_tramite = new Situacionmitramite_Service();
         Serviciosstd_Service servicio_std = new Serviciosstd_Service();
         Serviciosstd port_std = servicio_std.getServiciosSTDPort();
