@@ -14,6 +14,9 @@ export * from '../models/perjuridica.model';
 export * from '../models/pernatural.model';
 export * from '../models/trabajador.model';
 export * from '../models/tipdocident.model';
+export * from '../models/tipdocident.model';
+export * from '../models/notifica.model';
+export * from '../models/direcnotif.model';
 
 // export * from './atencion-empleador.service';
 // export * from './atencion-empleador.component';

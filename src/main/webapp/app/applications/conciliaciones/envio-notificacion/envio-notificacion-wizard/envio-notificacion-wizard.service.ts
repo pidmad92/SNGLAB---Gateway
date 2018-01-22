@@ -25,6 +25,9 @@ export class EnvioNotificacionWizardService {
   private conciliaSource = new BehaviorSubject<Concilia>(new Concilia());
   conciliaSeleccionado = this.conciliaSource.asObservable();
 
+  private notificacionSource = new BehaviorSubject<any>([]);
+  notificacionSeleccionado = this.notificacionSource.asObservable();
+
   constructor() { }
 
   cambiarDatlab(datlab: Datlab) {
@@ -45,6 +48,10 @@ export class EnvioNotificacionWizardService {
 
   cambiarConcilia(concilia: Concilia) {
     this.conciliaSource.next(concilia)
+  }
+
+  cambiarNotificacion(notificacion: any) {
+    this.notificacionSource.next(notificacion)
   }
 
 }

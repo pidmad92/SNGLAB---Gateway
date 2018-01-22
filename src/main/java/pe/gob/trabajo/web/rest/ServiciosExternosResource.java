@@ -36,7 +36,9 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 import javax.xml.soap.SOAPException;
 import pe.gob.trabajo.service.wsstd.ErrorDeServicio;
+import pe.gob.trabajo.service.wsstd.HojaDeEnvioWsDtoArray;
 import pe.gob.trabajo.service.wsstd.HojaDeRutaEllipse;
+import pe.gob.trabajo.service.wsstd.MsgDestinatarioArray;
 import pe.gob.trabajo.service.wsstd.Serviciosstd;
 import pe.gob.trabajo.service.wsstd.Serviciosstd_Service;
 import pe.gob.trabajo.service.wstramite.ExpedienteWSDto;
@@ -59,21 +61,23 @@ public class ServiciosExternosResource {
         this.ciuperjuridicaRepository = ciuperjuridicaRepository;
     }
 
-    @GetMapping("/valida")
+    @PostMapping("/valida")
     @Timed
-    public HojaDeRutaEllipse valida() throws ErrorDeServicio, pe.gob.trabajo.service.wstramite.ErrorDeServicio {
+    public HojaDeEnvioWsDtoArray ValidarCrearNotifacion(@RequestBody MsgDestinatarioArray msgDestinatario) throws ErrorDeServicio, pe.gob.trabajo.service.wstramite.ErrorDeServicio {
         Situacionmitramite_Service servicio_tramite = new Situacionmitramite_Service();
         Serviciosstd_Service servicio_std = new Serviciosstd_Service();
         Serviciosstd port_std = servicio_std.getServiciosSTDPort();
         Situacionmitramite port_tramite = servicio_tramite.getSituaciondemitramiteSTDPort();
         
-        HojaDeRutaEllipse expedienteEllipse = port_std.expedienteEllipse("T-001239-2017");
-        System.out.println(expedienteEllipse.getAsunto());
+        HojaDeEnvioWsDtoArray hojaDeEnviosWsToArray = port_std.crearMensajeria(5, 4, msgDestinatario);
         
-        ExpedienteWSDto consultaExpediente = port_tramite.consultaExpediente(2017, "001239");
-        System.out.println(consultaExpediente.getAsunto());
+        // HojaDeRutaEllipse expedienteEllipse = port_std.expedienteEllipse("T-001239-2017");
+        // System.out.println(expedienteEllipse.getAsunto());
+        
+        // ExpedienteWSDto consultaExpediente = port_tramite.consultaExpediente(2017, "001239");
+        // System.out.println(consultaExpediente.getAsunto());
                 
-        return expedienteEllipse;
+        return hojaDeEnviosWsToArray;
     }
     @PostMapping("/validarpersonaservicio")
     @Timed

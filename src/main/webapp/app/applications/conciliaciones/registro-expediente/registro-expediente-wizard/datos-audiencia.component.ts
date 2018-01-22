@@ -79,7 +79,7 @@ export class DatosAudienciaComponent implements OnInit, OnDestroy {
 
     confirmar() {
         this.confirmationService.confirm({
-            message: '¿Esta seguro de registrar esta atención?',
+            message: '¿Esta seguro de registrar este expediente?',
             icon: 'fa fa-question-circle',
             accept: () => {
                 this.grabarDatos();
@@ -133,8 +133,7 @@ export class DatosAudienciaComponent implements OnInit, OnDestroy {
     }
 
     registerChangeInAudiencia() {
-        this.eventSubscriber = this.eventManager.subscribe('saveExpedienteFinal',
-        (response) => {
+        this.eventSubscriber = this.eventManager.subscribe('saveExpedienteFinal', (response) => {
             this.confirmar();
         });
     }

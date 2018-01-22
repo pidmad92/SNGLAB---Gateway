@@ -7,7 +7,7 @@ import { ResponseWrapper } from '../../../../shared';
 import { DatePipe } from '@angular/common';
 import { ComboModel } from '../../../general/combobox.model';
 import { DatosWizardService } from './datos-wizard.service';
-import { Pasegl, RegistroExpedienteService } from './../';
+import { Pasegl } from './../';
 import { RegistroExpedienteWizardService } from './registro-expediente-wizard.service';
 import { Message } from 'primeng/primeng';
 import { MessageService } from 'primeng/components/common/messageservice';
@@ -43,29 +43,29 @@ export class DatosPaseComponent implements OnInit {
 
     onRowSelect(event) {
         // console.log(event.data);
-        this.data.cambiarPase(event.data);
+        this.registroExpedienteWizardService.cambiarPase(event.data);
     }
     onRowUnselect(event) {
-        this.data.cambiarPase(new Pasegl());
+        this.registroExpedienteWizardService.cambiarPase(new Pasegl());
     }
 
     constructor(
         private datePipe: DatePipe,
         private datosPaseService: DatosWizardService,
-        private data: RegistroExpedienteWizardService,
+        private registroExpedienteWizardService: RegistroExpedienteWizardService,
         private messageService: MessageService
     ) {}
 
     ngOnInit() {
         this.cargarTipoDocumentos();
         this.es = ES;
-        this.data.cambiarPase(new Pasegl());
+        this.registroExpedienteWizardService.cambiarPase(new Pasegl());
         // Validar
-        this.data.cambiarDatlab(new Datlab());
-        this.data.cambiarEmpleador(new Empleador());
-        this.data.cambiarTrabajador(new Trabajador());
-        this.data.cambiarExpediente(new Expediente());
-        this.data.cambiarConcilia(new Concilia());
+        this.registroExpedienteWizardService.cambiarDatlab(new Datlab());
+        this.registroExpedienteWizardService.cambiarEmpleador(new Empleador());
+        this.registroExpedienteWizardService.cambiarTrabajador(new Trabajador());
+        this.registroExpedienteWizardService.cambiarExpediente(new Expediente());
+        this.registroExpedienteWizardService.cambiarConcilia(new Concilia());
     }
 
     cargarTipoDocumentos() {

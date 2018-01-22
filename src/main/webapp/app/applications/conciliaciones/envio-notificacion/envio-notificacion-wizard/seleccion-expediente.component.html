@@ -1,3 +1,5 @@
+<p-blockUI [blocked]="block"></p-blockUI>
+<p-growl [(value)]="mensajes"></p-growl>
 <div class="row">
     <div class="col">
         <div class="card card-mtpe">
@@ -40,7 +42,7 @@
                     <form>
                         <div class="row mt-2">
                             <div class="col-md-12">
-                                <p-dataTable [value]="expedientes" [(selection)]="selecExpedientes" (onRowSelect)="agregarExpediente($event)" (onRowUnselect)="borrarExpediente($event)" dataKey="id">
+                                <p-dataTable [value]="expedientes" selectionMode="multiple" [(selection)]="selecExpedientes" (onRowSelect)="agregarExpediente($event)" (onRowUnselect)="borrarExpediente($event)" dataKey="id">
                                     <p-header>Expedientes</p-header>
                                     <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
                                     <p-column styleClass="text-center" field="vNumexp" header="Cod. Expediente"></p-column>

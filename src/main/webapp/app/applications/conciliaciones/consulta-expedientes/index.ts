@@ -1,5 +1,6 @@
 
 export * from './consulta-expediente.component';
+export * from './consulta-expediente.service';
 export * from './consulta-expediente-dialog.component';
 export * from './consulta-expediente-popup.service';
 

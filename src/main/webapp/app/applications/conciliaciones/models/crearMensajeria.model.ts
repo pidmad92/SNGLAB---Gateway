@@ -1,14 +1,5 @@
 import { BaseEntity } from '../../../shared';
 
-export class CrearMensajeria {
-    constructor(
-        public idAreaRemite?: any,
-        public idUserDespacho?: any,
-        public msgDestinatario?: MesgDestinario,
-    ) {
-    }
-}
-
 export class MesgDestinario {
     constructor(
         public item?: Item[]

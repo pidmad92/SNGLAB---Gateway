@@ -36,6 +36,9 @@ export class Expediente implements BaseEntity {
         public resolutor?: BaseEntity,
         public trabajadorDireccion?: any,
         public empleadorDireccion?: any,
+        public tipoNotificacion?: any,
+        public tipoEnvio?: any,
+        public nroFolios?: any
     ) {
         this.nFlgexpobs = false;
         this.nFlgarchiv = false;

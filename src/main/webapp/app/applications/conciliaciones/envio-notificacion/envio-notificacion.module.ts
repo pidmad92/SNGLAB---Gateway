@@ -1,7 +1,8 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { StepsModule, CheckboxModule, ToggleButtonModule, CalendarModule, RadioButtonModule, DataTableModule,
-    SharedModule, DialogModule, DropdownModule, PickListModule } from 'primeng/primeng';
+    SharedModule, DialogModule, DropdownModule, PickListModule, ConfirmDialogModule, BlockUIModule } from 'primeng/primeng';
+import {GrowlModule} from 'primeng/components/growl/growl';
 
 import { GatewaySharedModule } from '../../../shared';
 import { EnvioNotificacionComponent, envioNotificacionRoute } from './';
@@ -29,6 +30,9 @@ const ENTITY_STATES = [
         DialogModule,
         DropdownModule,
         PickListModule,
+        GrowlModule,
+        ConfirmDialogModule,
+        BlockUIModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [

@@ -109,10 +109,12 @@ export class AudienciaComponent implements OnInit {
     }
 
     AsignarAbogado() {
-        //  console.log(this.datepipe.transform(this.fechaAudiencia, 'dd/MM/yyyy'));
+        console.log('ASIG');
+        console.log(this.datepipe.transform(this.fechaAudiencia, 'dd/MM/yyyy'));
         if (this.fechaAudiencia) {
             let fechabusqueda = '';
             fechabusqueda = this.datepipe.transform(this.fechaAudiencia, 'dd-MM-yyyy');
+            console.log(fechabusqueda);
             this.conciliaService.SearfechaVar(fechabusqueda
                 ).subscribe(
                     (res: ResponseWrapper) => {
