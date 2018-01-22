@@ -34,10 +34,12 @@ export class DocumentosPresentadosComponent implements OnInit, OnDestroy {
     actividadSelec: string;
     checkedsel = [];
 
+    fechoy: Date;
+
     loadDocingpre() {
         this.atencionTrabajadorService.findListaDocumentosActivos().subscribe(
             (res: ResponseWrapper) => {
-                console.log(JSON.stringify(res.json));
+                // console.log(JSON.stringify(res.json));
                 this.listDocumentosPre = res.json;
                 this.loadDocpreSelect();
             },
@@ -50,13 +52,13 @@ export class DocumentosPresentadosComponent implements OnInit, OnDestroy {
             this.documentoPreSelecs = documentoPreSelec;
             this.selectListDocumentoPre = [];
             if (documentoPreSelec.length !== 0) {
-                console.log('LISTA:' + JSON.stringify(documentoPreSelec));
+                // console.log('LISTA:' + JSON.stringify(documentoPreSelec));
                 for (const docpre of documentoPreSelec) {
                     let index = 0;
                     for (const docpresel of this.listDocumentosPre) {
-                        console.log('COMP: ' + docpresel.id + docpre.documento.id);
+                        // console.log('COMP: ' + docpresel.id + docpre.documento.id);
                         if (docpresel.id === docpre.documento.id) {
-                            console.log('ASD');
+                            // console.log('ASD');
                             this.listDocumentosPre[index].observacion = docpre.vObsdopate;
                         }
                         index++;
@@ -77,17 +79,21 @@ export class DocumentosPresentadosComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.fechoy = new Date();
         this.subscription = this.registroAtencionWizard.actividadSelec.subscribe((actividadSelect) => {
             this.actividadSelec = actividadSelect;
             this.registroAtencionWizard.atenSeleccionado.subscribe((atencion) => {
                 this.atencion = atencion;
-                if (this.actividadSelec === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
-                    this.router.navigate(['/consultas/atencion-trabajador']);
-                } else if (this.actividadSelec === '3') {
-                    // this.atencionTrabajadorService
-                } else {
-                    this.loadDocingpre();
+                if (atencion.vNumticket !== undefined) {
+                    this.atencion.vNumticket = atencion.vNumticket.toUpperCase();
                 }
+                    if (this.actividadSelec === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
+                        this.router.navigate(['/consultas/atencion-trabajador']);
+                    } else if (this.actividadSelec === '3') {
+                        // this.atencionTrabajadorService
+                    } else {
+                        this.loadDocingpre();
+                    }
             });
             this.registerChangeInDocpre();
         });
@@ -109,15 +115,15 @@ export class DocumentosPresentadosComponent implements OnInit, OnDestroy {
     }
 
     saveObservacion(event) {
-        console.log('EDIT1' + JSON.stringify(event));
-        console.log('EDIT2' + JSON.stringify(this.documentoPreSelecs));
+        // console.log('EDIT1' + JSON.stringify(event));
+        // console.log('EDIT2' + JSON.stringify(this.documentoPreSelecs));
         let motivocheck = false;
         for (const valid of this.checkedsel) {
             if (valid === event.data.id) {
                 motivocheck = true;
             }
         }
-        console.log('MotivoCheck: ' + motivocheck);
+        // console.log('MotivoCheck: ' + motivocheck);
         if (motivocheck === true) {
             for (const docs of this.documentoPreSelecs) {
                 if ( docs.documento.id === event.data.id) {
@@ -127,7 +133,7 @@ export class DocumentosPresentadosComponent implements OnInit, OnDestroy {
         }else {
             event.data.observacion = '';
         }
-        console.log('Mod' + JSON.stringify(this.documentoPreSelecs));
+        // console.log('Mod' + JSON.stringify(this.documentoPreSelecs));
     }
 
     saveDoc(event: any) {

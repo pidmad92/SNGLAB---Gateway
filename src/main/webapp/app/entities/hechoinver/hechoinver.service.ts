@@ -11,8 +11,9 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class HechoinverService {
 
-    private resourceUrl = SERVER_API_URL + 'api/hechoinvers';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/hechoinvers';
+    private resourceDictamenes = 'dictamenes/';
+    private resourceUrl = SERVER_API_URL + this.resourceDictamenes +  'api/hechoinvers';
+    private resourceSearchUrl = SERVER_API_URL + this.resourceDictamenes +  'api/_search/hechoinvers';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -90,14 +91,14 @@ export class HechoinverService {
 
     obtenerHechoInversionPorTipo(codFormPerfil: number, tipo: string): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/listarHechosInversiones';
+        const url = SERVER_API_URL +  this.resourceDictamenes +  'api/listarHechosInversiones';
         return this.http.get(url +  '?tipo=' + tipo + '&codFormPerfil=' + codFormPerfil, options)
             .map((res: Response) => this.convertResponse(res));
     }
 
     eliminar(codFormPerfil: number) {
         const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/eliminarHecho';
+        const url = SERVER_API_URL + this.resourceDictamenes +   'api/eliminarHecho';
         return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
             .map((res: Response) => {
                 const jsonResponse = res.json();

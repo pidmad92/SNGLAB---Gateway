@@ -11,8 +11,9 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class SolicitudService {
 
-    private resourceUrl = SERVER_API_URL + '/api/solicituds';
-    private resourceSearchUrl = SERVER_API_URL + '/api/_search/solicituds';
+    private resourceDictamenes = 'dictamenes/';
+    private resourceUrl = SERVER_API_URL + this.resourceDictamenes + '/api/solicituds';
+    private resourceSearchUrl = SERVER_API_URL + this.resourceDictamenes + '/api/_search/solicituds';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -106,28 +107,28 @@ export class SolicitudService {
 
     obtenerlistaSolicitudes(req?: any): Observable<ResponseWrapper> {
         const options = createRequestOption(req);
-        const url = SERVER_API_URL + '/api/obtenerSolicitud';
+        const url = SERVER_API_URL + this.resourceDictamenes + '/api/obtenerSolicitud';
         return this.http.get(url + '?', options)
             .map((res: Response) => this.convertResponse(res));
     }
 
     obtenerlistaSolicitudesPorRuc(ruc: string): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + '/api/obtenerSolicitudPorRuc';
+        const url = SERVER_API_URL + this.resourceDictamenes + '/api/obtenerSolicitudPorRuc';
         return this.http.get(url + '?ruc=' + ruc, options)
             .map((res: Response) => this.convertResponse(res));
     }
 
     buscarSolicitudes(ruc: string, razonsocial: string): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + '/api/buscarSolicitudes';
+        const url = SERVER_API_URL + this.resourceDictamenes + '/api/buscarSolicitudes';
         return this.http.get(url + '?&ruc=' + ruc + '&razonSocial=' + razonsocial.toUpperCase() , options)
             .map((res: Response) => this.convertResponse(res));
     }
 
     eliminarSolicitud(codSolicitud: number): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + '/api/eliminarSolicitud';
+        const url = SERVER_API_URL + this.resourceDictamenes + '/api/eliminarSolicitud';
         return this.http.get(url + '?&codSolicitud=' + codSolicitud, options)
             .map((res: Response) => this.convertResponse(res));
     }

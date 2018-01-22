@@ -11,8 +11,9 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class ReglaboralService {
 
-    private resourceUrl = SERVER_API_URL + 'api/reglaborals';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/reglaborals';
+    private resourceDictamenes = 'dictamenes/';
+    private resourceUrl = SERVER_API_URL + this.resourceDictamenes +  'api/reglaborals';
+    private resourceSearchUrl = SERVER_API_URL + this.resourceDictamenes +  'api/_search/reglaborals';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -90,19 +91,19 @@ export class ReglaboralService {
 
     obtenerRegimenesLaboralesPrivado(): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        return this.http.get('/api/obtenerRegimenesLaboralesPrivado', options)
+        return this.http.get(SERVER_API_URL +   this.resourceDictamenes +  '/api/obtenerRegimenesLaboralesPrivado', options)
             .map((res: Response) => this.convertResponse(res));
     }
 
     obtenerRegimenesLaboralesPublico(): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        return this.http.get('/api/obtenerRegimenesLaboralesPublico', options)
+        return this.http.get(SERVER_API_URL +   this.resourceDictamenes +  '/api/obtenerRegimenesLaboralesPublico', options)
             .map((res: Response) => this.convertResponse(res));
     }
 
     obtenerRegimenesLaboralesOtros(): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        return this.http.get('/api/obtenerRegimenesLaboralesOtros', options)
+        return this.http.get( SERVER_API_URL +  this.resourceDictamenes +  '/api/obtenerRegimenesLaboralesOtros', options)
             .map((res: Response) => this.convertResponse(res));
     }
 }

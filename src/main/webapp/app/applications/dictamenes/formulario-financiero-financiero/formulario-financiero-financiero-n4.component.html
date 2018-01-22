@@ -1,0 +1,334 @@
+<div class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
+    <div class="row">
+        <div class="col" style="text-align:center;">
+            <h5 class="title">FORMULARIO N° 4</h5>
+            <h5 class="title">ESTRUCTURA DE LOS CRÉDITOS DIRECTOS SEGÚN TIPO Y MODALIDAD</h5>
+            <h5 class="title">(En porcentajes del Total de Créditos Directos)</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card card-mtpe mb-3">
+                <div class="card-body">
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="concepto">Colocaciones</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="concepto">{{formulario.totalCredCoorporativos.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalCredCoorporativos.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}%</td>
+                                </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaCredCoorporativos">
+                                <tr>
+                                    <td class="concepto">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                            <td>
+                                                <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalCredCoorp($event)"
+                                                    (keypress)="keyPress($event)" maxlength="6">
+                                            </td>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="concepto">Colocaciones</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="concepto">{{formulario.totalCredGrandesEmpresas.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalCredGrandesEmpresas.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}%</td>
+                                </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaCredGrandesEmpresas">
+                                <tr>
+                                    <td class="concepto">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                            <td>
+                                                <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalCredGrandes($event)"
+                                                    (keypress)="keyPress($event)" maxlength="6">
+                                            </td>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="concepto">Colocaciones</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="concepto">{{formulario.totalCredMedianasEmpresas.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalCredMedianasEmpresas.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}%</td>
+                                </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaCredMedianasEmpresas">
+                                <tr>
+                                    <td class="concepto">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                            <td>
+                                                <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalCredMedianas($event)"
+                                                    (keypress)="keyPress($event)" maxlength="6">
+                                            </td>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="concepto">Colocaciones</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="concepto">{{formulario.totalCredPequeniasEmpresas.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalCredPequeniasEmpresas.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}%</td>
+                                </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaCredPequeniasEmpresas">
+                                <tr>
+                                    <td class="concepto">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                            <td>
+                                                <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalCredPequenias($event)"
+                                                    (keypress)="keyPress($event)" maxlength="6">
+                                            </td>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="concepto">Colocaciones</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="concepto">{{formulario.totalCredMicroEmpresas.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalCredMicroEmpresas.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}%</td>
+                                </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaCredMicroEmpresas">
+                                <tr>
+                                    <td class="concepto">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                            <td>
+                                                <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalCredMicro($event)"
+                                                    (keypress)="keyPress($event)" maxlength="6">
+                                            </td>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="concepto">Colocaciones</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="concepto">{{formulario.totalCredConsumo.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalCredConsumo.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}%</td>
+                                </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaCredConsumo">
+                                <tr>
+                                    <td class="concepto">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                            <td>
+                                                <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalCredConsumo($event)"
+                                                    (keypress)="keyPress($event)" maxlength="6">
+                                            </td>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="concepto">Colocaciones</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="concepto">{{formulario.totalCredHipotecariosVivienda.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalCredHipotecariosVivienda.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}%</td>
+                                </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaCredHipotecariosVivienda">
+                                <tr>
+                                    <td class="concepto">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                            <td>
+                                                <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalCredHipotecariosVivienda($event)"
+                                                    (keypress)="keyPress($event)" maxlength="6">
+                                            </td>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <tbody>
+                            <tr>
+                                <td class="concepto">{{formulario.totalCredDirectos.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalCredDirectos.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}%</td>
+                                </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="concepto">Colocaciones</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaCredDirectosSoles">
+                                <tr>
+                                    <td class="concepto">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                            <td>
+                                                <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalCreditoDirectoSoles($event)"
+                                                    (keypress)="keyPress($event)" maxlength="6">
+                                            </td>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+
+                    <p>
+                        <div style="font-size:9pt;">
+                            <p>INSTRUCCIONES:
+                                <br/> (*) El Total de los Créditos Directos deben ser iguales a los totales reportados en las
+                                cuentas Creditos Vigentes, Refinanciados y Restructurados, etc en el Formulario 2.
+                                <br/> En porcentajes, los totales deben ser igual al 100%.
+                                <br/> - La información de la columna {{anios[0]}}, {{anios[1]}} y {{anios[2]}} corresponde a los resultados financieros correspondientes
+                                a los tres últimos años.
+                                <br/> - La columna {{anios[3]}} contiene información preliminar hasta el último periodo mensual declarado
+                                a la SUNAT (PDT 621) del ejercicio vigente (especificar mes y año) o a la Superintendencia
+                                de Banca y Seguros (SBS) o a la institución donde presentan la información.
+                                <br/>
+                            </p>
+                        </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-sm-right">
+                    <a (click)="verControlInformacion()" class="btn btn-sm m-1 btn-success">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
+                    <a (click)="guardarFormulario()" class="btn btn-sm m-1 btn-secondary">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

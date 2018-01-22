@@ -5,13 +5,14 @@
 					<h5 class="mb-0"><small><i class="fa fa-user" aria-hidden="true"></i> Registro de Atención del Trabajador</small></h5>
 				</div>
 				<div class="card-body">
+						<div class="consultas-laborales mb-2">
 					<form>
 						<div class="form-row mb-2">
 							<div class="col-md">
 							<div class="form-group row">
 								<label for="inpTicket" class="col-sm-3 col-form-label">Ticket</label>
 								<div class="col-sm-9">
-								<input type="text" class="form-control form-control-sm" id="inpTicket" placeholder="">
+									<input type="text" class="form-control form-control-sm" id="inpTicket" name="atencion.vNumticket" [(ngModel)]="atencion.vNumticket" placeholder="" style="text-transform: uppercase">
 								</div>
 							</div>
 							</div>
@@ -19,7 +20,7 @@
 							<div class="form-group row">
 								<label for="inpLocal" class="col-sm-3 col-form-label">Local</label>
 								<div class="col-sm-9">
-								<input type="text" class="form-control form-control-sm" id="inpLocal" value="LIMA CENTRO">
+								<input type="text" class="form-control form-control-sm" id="inpLocal" value="LIMA CENTRO" readonly>
 								</div>
 							</div>
 							</div>
@@ -28,7 +29,8 @@
 								<label for="inpFecha" class="col-sm-3 col-form-label">Fecha</label>
 								<div class="col-sm-9">
 								<!-- <input type="date" class="form-control form-control-sm" id="inpFecha" [(ngModel)]="fechoy"> -->
-								<input type="date" class="form-control form-control-sm" id="inpFecha">
+								<!-- <input type="date" class="form-control form-control-sm" id="inpFecha"> -->
+									<p style="padding-top: 5px;"><span ng-non-bindable>{{ fechoy | date: 'dd/MM/yyyy' }}</span></p>
 								</div>
 							</div>
 							</div>
@@ -60,12 +62,93 @@
 						</div>
 					</div>
 				</div>
+				</div>
 			</div>
 		</div>
 	</div>
+
 	<p-confirmDialog header="Registrar Atencion" icon="fa fa-question-circle" #cd width="425">
 		<p-footer>
 			<button type="button" pButton icon="fa-close" label="Cancelar" (click)="cd.reject()"></button>
 			<button type="button" pButton icon="fa-check" label="Aceptar" (click)="cd.accept()"></button>
 		</p-footer>
 	</p-confirmDialog>
+	<p-footer>
+		<button type="button" class="btn btn-sm btn-primary" pButton icon="fa-plus" style="float:left" (click)="showDialogPase()" label="Generar Pase"></button>
+	</p-footer>
+	<p-dialog [width]="800" header="Generar Pase" [closable]="false" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+		<form name="editForm" role="form" novalidate (ngSubmit)="saveall()" #editForm="ngForm">
+		<div class="ui-grid ui-grid-responsive ui-fluid" style="height:500px;">
+			<!-- <input type="hidden" class="form-control" name="dirper.id" [(ngModel)]="dirper.id" readonly />
+			<input type="hidden" name="dirper.f" [(ngModel)]="dirper.perjuridica"> -->
+			<div class="ui-grid-row form-group">
+				<div class="ui-grid-col-4"><label for="vin">Oficina Destino</label></div>
+				<div class="ui-grid-col-8">
+					<div class="col-sm-6">
+						<p-dropdown [options]="oficinas" name="selectedOficina" (onChange)="changeOficina()" [(ngModel)]="selectedOficina" [style]="{'width':'140px'}" placeholder="Seleccione"
+						optionLabel="vDesofic" dataKey="id"></p-dropdown>
+					</div>
+				</div>
+			</div>
+			<div class="ui-grid-row form-group">
+				<!-- <div class="ui-grid-col-4"><label for="year">Motivos de Pase</label></div> -->
+				<div class="ui-grid-col-12">
+					<!-- <select (change)="loadDistritos(true, $event.target.value)" required class="form-control" id="field_codDepto" name="dirper.nCodprov" [(ngModel)]="dirper.nCodprov" >
+						<option value="{{provincias.vCodpro | number:'1.0'}}" *ngFor="let provincias of provins;">{{provincias.vDespro}}</option>
+					</select> -->
+					<!-- <p-dropdown [(ngModel)]="dirper.nCodprov" name="dirper.nCodprov" [style]="{'width':'150px'}" dataKey="vcodpro" optionLabel="vdespro" [options]="provins"></p-dropdown> -->
+					<div class="card">
+						<div class="card-header bg-secondary text-white d-sm-flex justify-content-between p-1">
+							<h6 class="mb-0"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Motivos de Pase</h6>
+						</div>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-12">
+									<p-dataTable [value]="motatenofic" [editable]="true" [(selection)]="selectmotatenofic" (onEditComplete)="saveObservacion($event)" (onRowSelect)="saveMotSel($event)" (onRowUnselect)="deleteMotSel($event)" scrollable="true" scrollHeight="220px" dataKey="motate.id">
+										<p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+										<p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
+											<ng-template let-i="rowIndex" pTemplate="body">
+												<span style="text-align:center">{{i+1}}</span>
+											</ng-template>
+										</p-column>
+										<p-column [style]="{'width':'30%'}" field="motate.vDesmotate" header="Descripción"></p-column>
+										<p-column [style]="{'text-align':'left'}" field="observacion" header="Observación" [editable]="true"></p-column>
+										<p-column [style]="{'text-align':'left'}" [hidden]="true" field="check" header="Checked"></p-column>
+									</p-dataTable>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="ui-grid-row form-group">
+				<div class="ui-grid-col-12"><label for="year">Datos Generales</label></div>
+			</div>
+			<div class="ui-grid-row form-group">
+				<div class="ui-grid-col-4"><label for="year">Trabajador</label></div>
+				<div class="ui-grid-col-8">
+					<input type="text" class="form-control form-control-sm" id="inpTrabajador" name="trabajadorx" [(ngModel)]="trabajadorx" readonly>
+				</div>
+			</div>
+			<div class="ui-grid-row form-group"></div>
+				<div class="ui-grid-col-4"><label for="year">Empleador</label></div>
+				<div class="ui-grid-col-8">
+					<input type="text" class="form-control form-control-sm" id="inpEmpleador" name="empleadorx" [(ngModel)]="empleadorx" readonly>
+				</div>
+			</div>
+			<div class="ui-grid-row form-group">
+				<div class="ui-grid-col-4"><label for="year">Observación del Pase</label></div>
+				<div class="ui-grid-col-8">
+					<input type="text" class="form-control form-control-sm" id="inpObsPase" name="ObsPase" [(ngModel)]="pase.vObspase">
+				</div>
+			</div>
+		</div>
+		<!-- <p-footer> -->
+			<div class="ui-dialog-buttonpane ui-helper-clearfix">
+				<button pButton class="ui-button-info" icon="fa-close" type="button" (click)="close()" label="Cancelar"></button>
+				<!-- <button *ngIf="accion === 3" pButton class="ui-button-danger" icon="fa-trash-o" type="button" (click)="delete()" label="Eliminar"></button> -->
+				<button pButton class="ui-button-success" icon="fa-save" type="submit" label="Grabar"></button>
+			</div>
+		<!-- </p-footer> -->
+		</form>
+	</p-dialog>	

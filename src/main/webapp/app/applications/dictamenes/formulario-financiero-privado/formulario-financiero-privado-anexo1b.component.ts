@@ -242,8 +242,13 @@ export class FormularioFinancieroPrivadoAnexo1BComponent implements OnInit, OnDe
     }
 
     guardarFormulario() {
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaProductos, this.nCodffina, 'f1anex1b');
-        this.verControlInformacion();
+        this.formfinancdetalleService.desactivarFormulario(this.nCodffina, 'f1anex1b').subscribe(
+            (res: ResponseWrapper) => {
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaProductos, this.nCodffina);
+                this.verControlInformacion();
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
     verControlInformacion() {

@@ -9,6 +9,8 @@
 			(click)="previous()" label="Previous"><i class="fa fa-chevron-left" aria-hidden="true"></i>Anterior</button>
 		<button type="button" *ngIf="activeIndex < items.length - 1" class="btn btn-sm  mx-1 btn-dark float-right"
 			(click)="next()" label="Next">Siguiente <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+		<!-- <button type="button" *ngIf="activeIndex === items.length-1" class="btn btn-sm m-1 px-3 btn-primary float-right"
+			(click)="showDialogPase()" label="Next">Generar Pase <i class="fa fa-chevron-right" aria-hidden="true"></i></button> -->
 		<button type="button" *ngIf="activeIndex === items.length-1" class="btn btn-sm m-1 px-3 btn-primary float-right"
 			(click)="next()" label="Next">Finalizar Registro <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
 	</div>

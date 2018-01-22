@@ -79,7 +79,7 @@ export class FormularioFinancieroPrivadoN3Component implements OnInit, OnDestroy
 
     load(nCodffina) {
         this.nCodffina = nCodffina;
-     }
+    }
 
     ngOnInit() {
         this.loadAll();
@@ -104,21 +104,21 @@ export class FormularioFinancieroPrivadoN3Component implements OnInit, OnDestroy
         this.formulario = new FormularioN3();
 
         const desc: string[] = [this.constantes.FORM3_CR,
-                                this.constantes.FORM3_CNR,
-                                this.constantes.FORM3_CT,
-                                this.constantes.FORM3_ACS,
-                                this.constantes.FORM3_CTS,
-                                this.constantes.FORM3_OB,
-                                this.constantes.FORM3_GPCT,
-                                this.constantes.FORM3_TOTAL];
+        this.constantes.FORM3_CNR,
+        this.constantes.FORM3_CT,
+        this.constantes.FORM3_ACS,
+        this.constantes.FORM3_CTS,
+        this.constantes.FORM3_OB,
+        this.constantes.FORM3_GPCT,
+        this.constantes.FORM3_TOTAL];
         const cod: string[] = [this.constantes.FORM3_COD_CR,
-                                this.constantes.FORM3_COD_CNR,
-                                this.constantes.FORM3_COD_CT,
-                                this.constantes.FORM3_COD_ACS,
-                                this.constantes.FORM3_COD_CTS,
-                                this.constantes.FORM3_COD_OB,
-                                this.constantes.FORM3_COD_GPCT,
-                                this.constantes.FORM3_COD_TOTAL];
+        this.constantes.FORM3_COD_CNR,
+        this.constantes.FORM3_COD_CT,
+        this.constantes.FORM3_COD_ACS,
+        this.constantes.FORM3_COD_CTS,
+        this.constantes.FORM3_COD_OB,
+        this.constantes.FORM3_COD_GPCT,
+        this.constantes.FORM3_COD_TOTAL];
         this.formulario.listaGastosPersonal = this.crearlistacomponentes(desc, cod, true);
     }
 
@@ -207,8 +207,13 @@ export class FormularioFinancieroPrivadoN3Component implements OnInit, OnDestroy
     }
 
     guardarFormulario() {
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosPersonal, this.nCodffina, 'f3');
-        this.verControlInformacion();
+        this.formfinancdetalleService.desactivarFormulario(this.nCodffina, 'f3').subscribe(
+            (res: ResponseWrapper) => {
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosPersonal, this.nCodffina);
+                this.verControlInformacion();
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
     verControlInformacion() {

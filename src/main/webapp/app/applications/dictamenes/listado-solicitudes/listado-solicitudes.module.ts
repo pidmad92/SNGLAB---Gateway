@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { GatewaySharedModule } from '../../../shared';
-import {DialogModule, TabViewModule, DropdownModule, MessagesModule, MessageModule, BlockUIModule, MultiSelectModule} from 'primeng/primeng';
+import { DialogModule, TabViewModule, DropdownModule, MessagesModule, MessageModule, BlockUIModule, MultiSelectModule } from 'primeng/primeng';
 
 import {
     SolicitudService,
@@ -17,7 +17,8 @@ import {
     solicitudPopupRoute,
 } from '../../../entities/solicitud/';
 
-import { ListadoSolicitudesService,
+import {
+    ListadoSolicitudesService,
     ListadoSolicitudesComponent,
     ListadoSolicitudesRoute,
 } from './';
@@ -28,7 +29,8 @@ import {
     SolicformComponent,
 } from '../../../entities/solicform/';
 
-import { DireccionService,
+import {
+    DireccionService,
     direccionRoute,
     DireccionComponent,
 } from '../../../entities/direccion/index';
@@ -36,14 +38,17 @@ import { DireccionService,
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ControlInformacionComponent } from '../control-informacion/index';
 import { FormularioPerfilComponent, FormularioPerfilService } from '../formulario-perfil/index';
-import { FormperfilComponent,
-         formperfilRoute,
-         FormperfilService } from '../../../entities/formperfil/index';
+import {
+    FormperfilComponent,
+    formperfilRoute,
+    FormperfilService
+} from '../../../entities/formperfil/index';
 
-         import { ActieconService,
-            ActieconComponent,
-            actieconRoute,
-    } from '../../../entities/actiecon';
+import {
+    ActieconService,
+    ActieconComponent,
+    actieconRoute,
+} from '../../../entities/actiecon';
 import { FormularioPerfil2Component } from '../formulario-perfil/formulario-perfil2.component';
 import { FormularioPerfil3Component } from '../formulario-perfil/formulario-perfil3.component';
 import { FormularioPerfil4Component } from '../formulario-perfil/formulario-perfil4.component';
@@ -61,28 +66,32 @@ import { TipdocService, TipdocComponent } from '../../../entities/tipdoc/index';
 import { Empresa } from '../../general/servicesmodel/empresa.model';
 import { ReglaboralService } from '../../../entities/reglaboral/index';
 import { PerreglabService } from '../../../entities/perreglab/index';
-import { FormularioFinancieroPrivadoN1Component,
+import {
+    FormularioFinancieroPrivadoN1Component,
     FormularioFinancieroPrivadoAnexo1AComponent,
     FormularioFinancieroPrivadoAnexo1BComponent,
     FormularioFinancieroPrivadoAnexo1CComponent,
     FormularioFinancieroPrivadoAnexo1DComponent,
-    FormularioFinancieroPrivadoService} from '../formulario-financiero-privado/index';
+    FormularioFinancieroPrivadoService
+} from '../formulario-financiero-privado/index';
 import { FormularioFinancieroPrivadoN2Component } from '../formulario-financiero-privado/formulario-financiero-privado-n2.component';
 import { FormularioFinancieroPrivadoAnexo2AComponent } from '../formulario-financiero-privado/formulario-financiero-privado-anexo2a.component';
 import { FormularioFinancieroPrivadoAnexo2BComponent } from '../formulario-financiero-privado/formulario-financiero-privado-anexo2b.component';
 import { FormularioFinancieroPrivadoAnexo2CComponent } from '../formulario-financiero-privado/formulario-financiero-privado-anexo2c.component';
 import { FormularioFinancieroPrivadoN3Component } from '../formulario-financiero-privado/formulario-financiero-privado-n3.component';
 import { FormfinancService, FormfinancDetalleService } from '../entities/index';
-import { FormularioFinancieroFinancieroN1Component,
-         FormularioFinancieroFinancieroN2Component,
-         FormularioFinancieroFinancieroN2AComponent,
-         FormularioFinancieroFinancieroN2BComponent,
-         FormularioFinancieroFinancieroN2CComponent,
-         FormularioFinancieroFinancieroN3Component,
-         FormularioFinancieroFinancieroN4Component,
-         FormularioFinancieroFinancieroN5Component,
-         FormularioFinancieroFinancieroN6Component,
-         FormularioFinancieroFinancieroService} from '../formulario-financiero-financiero/index';
+import {
+    FormularioFinancieroFinancieroN1Component,
+    FormularioFinancieroFinancieroN2Component,
+    FormularioFinancieroFinancieroN2AComponent,
+    FormularioFinancieroFinancieroN2BComponent,
+    FormularioFinancieroFinancieroN2CComponent,
+    FormularioFinancieroFinancieroN3Component,
+    FormularioFinancieroFinancieroN4Component,
+    FormularioFinancieroFinancieroN5Component,
+    FormularioFinancieroFinancieroN6Component,
+    FormularioFinancieroFinancieroService
+} from '../formulario-financiero-financiero/index';
 
 const ENTITY_STATES = [
     ...ListadoSolicitudesRoute,
@@ -175,4 +184,4 @@ const ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class GatewayListadoSolicitudesModule {}
+export class GatewayListadoSolicitudesModule { }

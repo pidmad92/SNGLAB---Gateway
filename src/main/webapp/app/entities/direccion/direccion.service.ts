@@ -11,8 +11,9 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class DireccionService {
 
-    private resourceUrl = SERVER_API_URL + 'api/direccions';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/direccions';
+    private resourceDictamenes = 'dictamenes/';
+    private resourceUrl = SERVER_API_URL + this.resourceDictamenes +  'api/direccions';
+    private resourceSearchUrl = SERVER_API_URL + this.resourceDictamenes +  'api/_search/direccions';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -90,14 +91,14 @@ export class DireccionService {
 
     obtenerDireccion(codFormPerfil: number): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/obtenerDireccion';
+        const url = SERVER_API_URL + this.resourceDictamenes +   'api/obtenerDireccion';
         return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
             .map((res: Response) => this.convertResponse(res));
     }
 
     eliminar(codFormPerfil: number) {
         const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/eliminarDireccion';
+        const url = SERVER_API_URL + this.resourceDictamenes +   'api/eliminarDireccion';
         return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
             .map((res: Response) => {
                 const jsonResponse = res.json();

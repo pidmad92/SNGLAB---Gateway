@@ -842,23 +842,28 @@ export class FormularioFinancieroPrivadoN1Component implements OnInit, OnDestroy
     }
 
     guardarFormulario() {
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.listaTotalIngresos, this.nCodffina, 'f1');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaEmpresaProduccion, this.nCodffina, 'f1');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaEmpresaServicios, this.nCodffina, 'f1');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosOperativos1, this.nCodffina, 'f1');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosOperativos2, this.nCodffina, 'f1');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaParticipacion, this.nCodffina, 'f1');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaImpuestoRenta, this.nCodffina, 'f1');
+        this.formfinancdetalleService.desactivarFormulario(this.nCodffina, 'f1').subscribe(
+            (res: ResponseWrapper) => {
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.listaTotalIngresos, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaEmpresaProduccion, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaEmpresaServicios, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosOperativos1, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaGastosOperativos2, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaParticipacion, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaImpuestoRenta, this.nCodffina);
 
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCostos, this.nCodffina, 'f1');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalServicios, this.nCodffina, 'f1');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.utilidadBrutaCostos, this.nCodffina, 'f1');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastos, this.nCodffina, 'f1');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.utilidadOperativa, this.nCodffina, 'f1');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.utilidadAntParti, this.nCodffina, 'f1');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.utilidadAntImp, this.nCodffina, 'f1');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.utilidadEjercicio, this.nCodffina, 'f1');
-        this.verControlInformacion();
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalCostos, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalServicios, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.utilidadBrutaCostos, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalGastos, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.utilidadOperativa, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.utilidadAntParti, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.utilidadAntImp, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.utilidadEjercicio, this.nCodffina);
+                this.verControlInformacion();
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
     verControlInformacion() {

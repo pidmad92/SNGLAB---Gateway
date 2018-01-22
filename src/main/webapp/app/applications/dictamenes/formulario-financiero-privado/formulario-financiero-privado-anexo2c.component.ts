@@ -2034,35 +2034,40 @@ export class FormularioFinancieroPrivadoAnexo2CComponent implements OnInit, OnDe
     }
 
     guardarFormulario() {
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaACCuentasCobrarComerciales, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaACCuentasCobrarComercialesRelacionadas, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaACCuentasCobrarDiversas, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaACCuentasCobrarDiversas, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaACOtrasCuentas, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaANCOtrasCuentas, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPCCuentasPagarComerciales, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPCCuentasPagarComercialesRelacionadas, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPCObligacionesFinancieras, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPCOtrasCuentas, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPCProvisiones, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPNCObligacionesFinancieras, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPNCOtrasCuentas, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPNCProvisiones, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPResultadosNoRealizados, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalACCuentasCobrarComerciales, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalACCuentasCobrarComercialesRelacionadas, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalACCuentasCobrarDiversas, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalACOtrasCuentas, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPCCuentasPagarComerciales, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPCCuentasPagarComercialesRelacionadas, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPCObligacionesFinancieras, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPCOtrasCuentas, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPCProvisiones, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPNCObligacionesFinancieras, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPNCOtrasCuentas, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPNCProvisiones, this.nCodffina, 'f2anex2c');
-        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPResultadosNoRealizados, this.nCodffina, 'f2anex2c');
+        this.formfinancdetalleService.desactivarFormulario(this.nCodffina, 'f2anex2c').subscribe(
+            (res: ResponseWrapper) => {
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaACCuentasCobrarComerciales, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaACCuentasCobrarComercialesRelacionadas, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaACCuentasCobrarDiversas, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaACCuentasCobrarDiversas, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaACOtrasCuentas, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaANCOtrasCuentas, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPCCuentasPagarComerciales, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPCCuentasPagarComercialesRelacionadas, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPCObligacionesFinancieras, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPCOtrasCuentas, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPCProvisiones, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPNCObligacionesFinancieras, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPNCOtrasCuentas, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPNCProvisiones, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaPResultadosNoRealizados, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalACCuentasCobrarComerciales, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalACCuentasCobrarComercialesRelacionadas, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalACCuentasCobrarDiversas, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalACOtrasCuentas, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPCCuentasPagarComerciales, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPCCuentasPagarComercialesRelacionadas, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPCObligacionesFinancieras, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPCOtrasCuentas, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPCProvisiones, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPNCObligacionesFinancieras, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPNCOtrasCuentas, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPNCProvisiones, this.nCodffina);
+        this.formfinancdetalleService.guardarFormFinanciero(this.datepipe, this.formulario.totalPResultadosNoRealizados, this.nCodffina);
         this.verControlInformacion();
+    },
+    (res: ResponseWrapper) => this.onError(res.json)
+);
     }
 
     verControlInformacion() {

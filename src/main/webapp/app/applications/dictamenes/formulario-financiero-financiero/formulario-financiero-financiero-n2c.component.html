@@ -1,0 +1,660 @@
+<div class="content-wrapper right-col col-12 col-sm-12 col-md-12 col-lg-12 py-2">
+    <div class="row">
+        <div class="col" style="text-align:center;">
+            <h5 class="title">ANEXO 2C</h5>
+            <h5 class="title">DETALLE DE CUENTAS</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card card-mtpe mb-3">
+                <div class="card-body">
+                    <p>ACTIVOS CORRIENTES</p>
+                    <p>&nbsp;&nbsp;DISPONIBLE</p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="concepto">Concepto</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaACDisponible; let k = index; let total = count">
+                                <tr>
+                                    <td class="concepto">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <ng-container *ngIf="k < (total - 1)">
+                                            <td>
+                                                <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalActivosCorrientesDisp($event)"
+                                                    (keypress)="keyPress($event)" maxlength="6">
+                                            </td>
+                                        </ng-container>
+                                        <ng-container *ngIf="k === (total - 1)">
+                                            <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                        </ng-container>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+                    <p>&nbsp;&nbsp;CARTERA DE CRÉDITOS NETOS (*)</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;Vigentes</p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="concepto">Concepto</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaACCateraCredNetos; let k = index; let total = count">
+                                <tr>
+                                    <td class="concepto">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <ng-container *ngIf="k < (total - 1)">
+                                            <td>
+                                                <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalACCredNetoVig($event)"
+                                                    (keypress)="keyPress($event)" maxlength="6">
+                                            </td>
+                                        </ng-container>
+                                        <ng-container *ngIf="k === (total - 1)">
+                                            <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                        </ng-container>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;Refinanciados y Reestructurados</p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="concepto">Concepto</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaACRefinanReestruc">
+                                <tr>
+                                    <td class="concepto">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                            <td>
+                                                <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalACReestructu($event)"
+                                                    (keypress)="keyPress($event)" maxlength="6">
+                                            </td>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;Atrasados</p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="concepto">Concepto</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaACAtrasados; let k = index; let total = count">
+                                <tr>
+                                    <td class="concepto">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <ng-container *ngIf="k < (total - 1)">
+                                            <td>
+                                                <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalACAtrasados($event)"
+                                                    (keypress)="keyPress($event)" maxlength="6">
+                                            </td>
+                                        </ng-container>
+                                        <ng-container *ngIf="k === (total - 1)">
+                                            <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                        </ng-container>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-responsive table-bordered table-hover">
+                        <tbody>
+                            <tr>
+                                <td class="concepto">{{formulario.totalACTotal.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalACTotal.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>&nbsp;&nbsp;OTROS ACTIVOS CORRIENTES (*)
+                    <a (click)="mostrarDialogOtrosAC()" class="btn btn-sm btn-dark" style="float:right;color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a></p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="dinamico">Concepto</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaACOtros;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]=""  class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]=""  class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalACOtros.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalACOtros.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>ACTIVOS NO CORRIENTES</p>
+                    <p>&nbsp;&nbsp;CARTERA DE CRÉDITOS NETOS (*)</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;Vigentes</p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="concepto">Concepto</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaANCCateraCredNetos; let k = index; let total = count">
+                                <tr>
+                                    <td class="concepto">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <ng-container *ngIf="k < (total - 1)">
+                                            <td>
+                                                <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalANCCredNetoVig($event)"
+                                                    (keypress)="keyPress($event)" maxlength="6">
+                                            </td>
+                                        </ng-container>
+                                        <ng-container *ngIf="k === (total - 1)">
+                                            <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                        </ng-container>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;Refinanciados y Reestructurados</p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="concepto">Concepto</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaANCRefinanReestruc">
+                                <tr>
+                                    <td class="concepto">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                            <td>
+                                                <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalANCReestructu($event)"
+                                                    (keypress)="keyPress($event)" maxlength="6">
+                                            </td>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;Atrasados</p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="concepto">Concepto</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaANCAtrasados; let k = index; let total = count">
+                                <tr>
+                                    <td class="concepto">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <ng-container *ngIf="k < (total - 1)">
+                                            <td>
+                                                <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                    id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalANCAtrasados($event)"
+                                                    (keypress)="keyPress($event)" maxlength="6">
+                                            </td>
+                                        </ng-container>
+                                        <ng-container *ngIf="k === (total - 1)">
+                                            <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                        </ng-container>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-responsive table-bordered table-hover">
+                        <tbody>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalANCTotal.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalANCTotal.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>&nbsp;&nbsp;OTROS ACTIVOS CORRIENTES (*)
+                    <a (click)="mostrarDialogOtrosANC()" class="btn btn-sm btn-dark" style="float:right;color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a></p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="dinamico">Concepto</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaANCOtros;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]=""  class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]=""  class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalANCOtros.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalANCOtros.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>PASIVOS CORRIENTES</p>
+                    <p>&nbsp;&nbsp;OTROS PASIVOS CORRIENTES (*)
+                    <a (click)="mostrarDialogOtrosPC()" class="btn btn-sm btn-dark" style="float:right;color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a></p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="dinamico">Concepto</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaPCOtros;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]=""  class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]=""  class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalPCOtros.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalPCOtros.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                    <p>PASIVOS NO CORRIENTES</p>
+                    <p>&nbsp;&nbsp;OTROS PASIVOS NO CORRIENTES (*)
+                    <a (click)="mostrarDialogOtrosPNC()" class="btn btn-sm btn-dark" style="float:right;color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a></p>
+                    <table class="table table-responsive table-bordered table-hover cabecera">
+                        <thead>
+                            <tr>
+                                <td class="dinamico">Concepto</td>
+                                <ng-container *ngFor="let a of anios">
+                                    <td>{{a}}</td>
+                               </ng-container>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let lista of formulario.listaPNCOtros;">
+                                <tr style="height:28px;">
+                                    <td class="dinamico">{{lista.descripcion}}</td>
+                                    <ng-container *ngFor="let comp of lista.componentes">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                    <td style="text-align: center;width: 10%">
+                                        <a [routerLink]=""  class="btn btn-sm btn-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a [routerLink]=""  class="btn btn-sm btn-danger">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <tr>
+                                <td class="dinamico">{{formulario.totalPNCOtros.descripcion}}</td>
+                                <ng-container *ngFor="let comp of formulario.totalPNCOtros.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>
+                        <div style="font-size:9pt;">
+                            <p>INSTRUCCIONES:
+                                <br/> (*) Desagregar en cuentas de la clase 6 a dos digitos.
+                                <br/> - El total de las columnas {{anios[0]}}, {{anios[1]}}, {{anios[2]}} y {{anios[3]}} deben ser igual al formulario N° 2
+                                <br/>
+                            </p>
+                        </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-sm-right">
+                    <a (click)="verControlInformacion()" class="btn btn-sm m-1 btn-success">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>
+                    <a (click)="guardarFormulario()" class="btn btn-sm m-1 btn-secondary">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-dialog [(visible)]="displayOtrosAC" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Otros Ingresos
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosAC.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosAC.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosAC.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosAC.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosAC.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalOtrosAC()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalOtrosAC()">Añadir</button>
+    </p-footer>
+  </p-dialog>
+
+  <p-dialog [(visible)]="displayOtrosANC" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Otros Ingresos
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosANC.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosANC.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosANC.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosANC.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosANC.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalOtrosANC()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalOtrosANC()">Añadir</button>
+    </p-footer>
+  </p-dialog>
+
+  <p-dialog [(visible)]="displayOtrosPC" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Otros Ingresos
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPC.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPC.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPC.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPC.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPC.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalOtrosPC()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalOtrosPC()">Añadir</button>
+    </p-footer>
+  </p-dialog>
+
+  <p-dialog [(visible)]="displayOtrosPNC" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Otros Ingresos
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPNC.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPNC.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPNC.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPNC.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosPNC.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalOtrosPNC()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalOtrosPNC()">Añadir</button>
+    </p-footer>
+  </p-dialog>

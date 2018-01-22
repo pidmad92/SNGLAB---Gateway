@@ -15,82 +15,29 @@
                 <thead>
                    <tr>
                        <td class="concepto">Concepto</td>
-                       <td>2014</td>
-                       <td>2015</td>
-                       <td>2016</td>
-                       <td>2017</td>
+                       <ng-container *ngFor="let a of anios">
+                        <td>{{a}}</td>
+                       </ng-container>
                    </tr>
                </thead>
                    <tbody>
-                   <tr>
-                       <td class="concepto">Disponible</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Fondos Interbancarios</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr><tr>
-                       <td class="concepto">Inversiones a Valor Razonable con Cambios en Resultados</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Inversiones Disponibles para la venta</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Inversiones a Vencimiento</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Cartera de Créditos Directos</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Resultado por Operaciones de Cobertura</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Cuentas por Cobrar</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Otros Ingresos Financieros</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">TOTAL DE INGRESOS POR INTERESES</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                    </tr>
+                    <ng-container *ngFor="let lista of formulario.listaIngresosIntereses; let k = index; let total = count">
+                        <tr>
+                            <td class="concepto">{{lista.descripcion}}</td>
+                            <ng-container *ngFor="let comp of lista.componentes">
+                                <ng-container *ngIf="k < (total - 1)">
+                                    <td>
+                                        <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                            id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalIngresoIntereses($event)"
+                                            (keypress)="keyPress($event)" maxlength="6">
+                                    </td>
+                                </ng-container>
+                                <ng-container *ngIf="k === (total - 1)">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                            </ng-container>
+                        </tr>
+                    </ng-container>
                    </tbody>
                 </table>
                 <p>GASTOS POR INTERESES</p>
@@ -98,136 +45,90 @@
                 <thead>
                    <tr>
                        <td class="concepto">Concepto</td>
-                       <td>2014</td>
-                       <td>2015</td>
-                       <td>2016</td>
-                       <td>2017</td>
+                       <ng-container *ngFor="let a of anios">
+                        <td>{{a}}</td>
+                        </ng-container>
                    </tr>
                </thead>
                    <tbody>
-                    <tr>
-                       <td class="concepto">Obligaciones con el Público</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Fondos Interbancarios</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Depósitos de Empresas del Sistema Financiero y Organismos Financieros Internacionales</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Adeudos y Obligaciones Financieras</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Diferencia de Cambio</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Cuentas por pagar</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Resultado por Operaciones de Cobertura </td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Otros Gastos Financieros</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>							 
-                    <tr>
-                       <td class="concepto"><strong>TOTAL GASTOS POR INTERESES</strong></td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                    </tr>
+                    <ng-container *ngFor="let lista of formulario.listaGastosIntereses; let k = index; let total = count">
+                        <tr>
+                            <td class="concepto">{{lista.descripcion}}</td>
+                            <ng-container *ngFor="let comp of lista.componentes">
+                                <ng-container *ngIf="k < (total - 1)">
+                                    <td>
+                                        <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                            id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalGastosIntereses($event)"
+                                            (keypress)="keyPress($event)" maxlength="6">
+                                    </td>
+                                </ng-container>
+                                <ng-container *ngIf="k === (total - 1)">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                            </ng-container>
+                        </tr>
+                    </ng-container>
                    </tbody>
                 </table>
                 
                 <table class="table table-responsive table-bordered table-hover">
                    <tbody>
                     <tr>
-                       <td class="concepto"><strong>MARGEN FINANCIERO BRUTO</strong></td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                        <td class="concepto">{{formulario.totalMargenFinanBruto.descripcion}}</td>
+                        <ng-container *ngFor="let comp of formulario.totalMargenFinanBruto.componentes">
+                          <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                        </ng-container>
                     </tr>
                    </tbody>
                 </table>
                 
                 <p class="col">PROVISIONES PARA CRÉDITOS DIRECTOS (1)
-                <a href="#" class="btn btn-sm btn-dark" style="float:right;"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a></p>
+                <a (click)="mostrarDialogProvisiones()" class="btn btn-sm btn-dark" style="float:right;color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a></p>
                 
                 <table class="table table-responsive table-bordered table-hover cabecera">
                 <thead>
                    <tr>
                        <td class="dinamico">Concepto</td>
-                       <td>2014</td>
-                       <td>2015</td>
-                       <td>2016</td>
-                       <td>2017</td>
+                       <ng-container *ngFor="let a of anios">
+                        <td>{{a}}</td>
+                        </ng-container>
                        <td></td>
                    </tr>
                </thead>
                    <tbody>
-                    <tr style="height:28px;">
-                       <td class="dinamico"></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td style="text-align: center;width: 10%">
-                    <a href="" class="btn btn-sm btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a>
-                   </td>
-                    </tr>
-                    <tr>
-                       <td class="dinamico"><strong>TOTAL PROVISIONES PARA CRÉDITOS DIRECTOS</strong></td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td style="text-align: center;width: 10%"></td>
-                    </tr>
+                        <ng-container *ngFor="let lista of formulario.listaProvisionesCredDirec;">
+                            <tr style="height:28px;">
+                                <td class="dinamico">{{lista.descripcion}}</td>
+                                <ng-container *ngFor="let comp of lista.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td style="text-align: center;width: 10%">
+                                    <a [routerLink]="" (click)="editarComponenteProvisiones(lista)"  class="btn btn-sm btn-warning">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </a>
+                                    <a [routerLink]="" (click)="eliminarComponenteProvisiones(lista)"  class="btn btn-sm btn-danger">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </ng-container>
+                        <tr>
+                            <td class="dinamico">{{formulario.totalProvisionesCredDirec.descripcion}}</td>
+                            <ng-container *ngFor="let comp of formulario.totalProvisionesCredDirec.componentes">
+                                <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                            </ng-container>
+                            <td></td>
+                        </tr>
                    </tbody>
                 </table>
 
                    <table class="table table-responsive table-bordered table-hover">
                    <tbody>
                     <tr>
-                       <td class="concepto"><strong>MARGEN FINANCIERO BRUTO</strong></td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                        <td class="concepto">{{formulario.totalMargenFinanNetoDespProv.descripcion}}</td>
+                        <ng-container *ngFor="let comp of formulario.totalMargenFinanNetoDespProv.componentes">
+                            <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                        </ng-container>
                     </tr>
                    </tbody>
                 </table>
@@ -237,48 +138,29 @@
                 <thead>
                    <tr>
                        <td class="concepto">Concepto</td>
-                       <td>2014</td>
-                       <td>2015</td>
-                       <td>2016</td>
-                       <td>2017</td>
+                       <ng-container *ngFor="let a of anios">
+                        <td>{{a}}</td>
+                    </ng-container>
                    </tr>
                </thead>
                    <tbody>
-                    <tr>
-                       <td class="concepto">Ingresos por Créditos Indirectos</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Ingresos por Fideicomisos y Comisiones de Confianza</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Ingresos por Emisión de Dinero Electrónico</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Ingresos Diversos</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto"><strong>TOTAL INGRESOS POR SERVICIOS FINANCIEROS</strong></td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                    </tr>
+                        <ng-container *ngFor="let lista of formulario.listaIngresosServFinan; let k = index; let total = count">
+                            <tr>
+                                <td class="concepto">{{lista.descripcion}}</td>
+                                <ng-container *ngFor="let comp of lista.componentes">
+                                    <ng-container *ngIf="k < (total - 1)">
+                                        <td>
+                                            <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalIngresosServFinancieros($event)"
+                                                (keypress)="keyPress($event)" maxlength="6">
+                                        </td>
+                                    </ng-container>
+                                    <ng-container *ngIf="k === (total - 1)">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                </ng-container>
+                            </tr>
+                        </ng-container>
                    </tbody>
                 </table>
                 
@@ -287,59 +169,39 @@
                 <thead>
                    <tr>
                        <td class="concepto">Concepto</td>
-                       <td>2014</td>
-                       <td>2015</td>
-                       <td>2016</td>
-                       <td>2017</td>
+                       <ng-container *ngFor="let a of anios">
+                        <td>{{a}}</td>
+                    </ng-container>
                    </tr>
                </thead>
                    <tbody>
-                    <tr>
-                       <td class="concepto">Gastos por Créditos indirectos</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Gastos por Fideicomisos y Comisiones de Confianza</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Primas al Fondo Seguro de Depósito</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Gastos Diversos</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto"><strong>TOTAL GASTOS POR SERVICIOS FINANCIEROS</strong></td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                    </tr>
+                        <ng-container *ngFor="let lista of formulario.listaGastosServFinan; let k = index; let total = count">
+                            <tr>
+                                <td class="concepto">{{lista.descripcion}}</td>
+                                <ng-container *ngFor="let comp of lista.componentes">
+                                    <ng-container *ngIf="k < (total - 1)">
+                                        <td>
+                                            <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalGastosServFinancieros($event)"
+                                                (keypress)="keyPress($event)" maxlength="6">
+                                        </td>
+                                    </ng-container>
+                                    <ng-container *ngIf="k === (total - 1)">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                </ng-container>
+                            </tr>
+                        </ng-container>
                    </tbody>
                 </table>
                 
                 <table class="table table-responsive table-bordered table-hover">
                    <tbody>
                     <tr>
-                       <td class="concepto"><strong>MARGEN FINANCIERO NETO DE INGRESOS Y GASTOS POR SERVICIOS FINANCIEROS</strong></td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                        <td class="concepto">{{formulario.totalMargenFinanNetoIngGastosServFinan.descripcion}}</td>
+                        <ng-container *ngFor="let comp of formulario.totalMargenFinanNetoIngGastosServFinan.componentes">
+                            <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                        </ng-container>
                     </tr>
                    </tbody>
                 </table>
@@ -348,31 +210,34 @@
                <thead>
                    <tr>
                        <td class="concepto">Concepto</td>
-                       <td>2014</td>
-                       <td>2015</td>
-                       <td>2016</td>
-                       <td>2017</td>
+                       <ng-container *ngFor="let a of anios">
+                        <td>{{a}}</td>
+                    </ng-container>
                    </tr>
                </thead>
                    <tbody>
-                    <tr>
-                       <td class="concepto"><strong>RESULTADO POR OPERACIONES FINANCIERAS (ROF)</strong></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
+                        <ng-container *ngFor="let lista of formulario.listaResultadoOpeFinan;">
+                            <tr>
+                                <td class="concepto">{{lista.descripcion}}</td>
+                                <ng-container *ngFor="let comp of lista.componentes">
+                                        <td>
+                                            <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalROF($event)"
+                                                (keypress)="keyPress($event)" maxlength="6">
+                                        </td>
+                                </ng-container>
+                            </tr>
+                        </ng-container>
                    </tbody>
                 </table>
                 
                 <table class="table table-responsive table-bordered table-hover">
                    <tbody>
                     <tr>
-                       <td class="concepto"><strong>MARGEN OPERACIONAL</strong></td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                        <td class="concepto">{{formulario.totalMargenOperacional.descripcion}}</td>
+                        <ng-container *ngFor="let comp of formulario.totalMargenOperacional.componentes">
+                            <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                        </ng-container>
                     </tr>
                    </tbody>
                 </table>
@@ -382,47 +247,64 @@
                 <thead>
                    <tr>
                        <td class="concepto">Concepto</td>
-                       <td>2014</td>
-                       <td>2015</td>
-                       <td>2016</td>
-                       <td>2017</td>
+                       <ng-container *ngFor="let a of anios">
+                        <td>{{a}}</td>
+                    </ng-container>
                    </tr>
                </thead>
                    <tbody>
+                        <ng-container *ngFor="let lista of formulario.listaGastosAdministracion; let k = index; let total = count">
+                            <tr>
+                                <td class="concepto">{{lista.descripcion}}</td>
+                                <ng-container *ngFor="let comp of lista.componentes">
+                                    <ng-container *ngIf="k < (total - 1)">
+                                        <td>
+                                            <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalGastosAdmin($event)"
+                                                (keypress)="keyPress($event)" maxlength="6">
+                                        </td>
+                                    </ng-container>
+                                    <ng-container *ngIf="k === (total - 1)">
+                                        <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                    </ng-container>
+                                </ng-container>
+                            </tr>
+                        </ng-container>
+                   </tbody>
+                </table>
+                
+                <table class="table table-responsive table-bordered table-hover cabecera">
+               <thead>
+                   <tr>
+                       <td class="concepto">Concepto</td>
+                       <ng-container *ngFor="let a of anios">
+                        <td>{{a}}</td>
+                    </ng-container>
+                   </tr>
+               </thead>
+                   <tbody>
+                        <ng-container *ngFor="let lista of formulario.listaDepresacionesAmortizaciones;">
+                            <tr>
+                                <td class="concepto">{{lista.descripcion}}</td>
+                                <ng-container *ngFor="let comp of lista.componentes">
+                                        <td>
+                                            <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalDepresaciones($event)"
+                                                (keypress)="keyPress($event)" maxlength="6">
+                                        </td>
+                                </ng-container>
+                            </tr>
+                        </ng-container>
+                   </tbody>
+                </table>
+                
+                <table class="table table-responsive table-bordered table-hover">
+                   <tbody>
                     <tr>
-                       <td class="concepto">Personal</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Directorio</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Servicios Recibidos de Terceros</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto">Impuestos y Contribuciones</td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                    <tr>
-                       <td class="concepto"><strong>TOTAL GASTOS DE ADMINISTRACIÓN</strong></td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                        <td class="concepto">{{formulario.totalMargenOperacionalNeto.descripcion}}</td>
+                        <ng-container *ngFor="let comp of formulario.totalMargenOperacionalNeto.componentes">
+                            <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                        </ng-container>
                     </tr>
                    </tbody>
                 </table>
@@ -431,153 +313,127 @@
                <thead>
                    <tr>
                        <td class="concepto">Concepto</td>
-                       <td>2014</td>
-                       <td>2015</td>
-                       <td>2016</td>
-                       <td>2017</td>
+                       <ng-container *ngFor="let a of anios">
+                        <td>{{a}}</td>
+                    </ng-container>
                    </tr>
                </thead>
                    <tbody>
-                    <tr>
-                       <td class="concepto"><strong>DEPRECIACIONES Y AMORTIZACIONES</strong></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
+                        <ng-container *ngFor="let lista of formulario.listaValuacionActivosProvisiones;">
+                            <tr>
+                                <td class="concepto">{{lista.descripcion}}</td>
+                                <ng-container *ngFor="let comp of lista.componentes">
+                                        <td>
+                                            <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalValuacion($event)"
+                                                (keypress)="keyPress($event)" maxlength="6">
+                                        </td>
+                                </ng-container>
+                            </tr>
+                        </ng-container>
                    </tbody>
                 </table>
                 
                 <table class="table table-responsive table-bordered table-hover">
                    <tbody>
                     <tr>
-                       <td class="concepto"><strong>MARGEN OPERACIONAL NETO</strong></td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                    </tr>
-                   </tbody>
-                </table>
-                
-                <table class="table table-responsive table-bordered table-hover cabecera">
-               <thead>
-                   <tr>
-                       <td class="concepto">Concepto</td>
-                       <td>2014</td>
-                       <td>2015</td>
-                       <td>2016</td>
-                       <td>2017</td>
-                   </tr>
-               </thead>
-                   <tbody>
-                    <tr>
-                       <td class="concepto"><strong>VALUACIÓN DE ACTIVOS Y PROVISIONES</strong></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
-                   </tbody>
-                </table>
-                
-                <table class="table table-responsive table-bordered table-hover">
-                   <tbody>
-                    <tr>
-                       <td class="concepto"><strong>RESULTADO DE OPERACIÓN</strong></td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                        <td class="concepto">{{formulario.totalResultadoOperacion.descripcion}}</td>
+                        <ng-container *ngFor="let comp of formulario.totalResultadoOperacion.componentes">
+                            <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                        </ng-container>
                     </tr>
                    </tbody>
                 </table>
                 
                 
                 <p class="col">OTROS INGRESOS (1)
-                <a href="#" class="btn btn-sm btn-dark" style="float:right;"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a></p>
+                <a (click)="mostrarDialogOtrosIngresos()" class="btn btn-sm btn-dark" style="float:right;color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a></p>
                 
                 <table class="table table-responsive table-bordered table-hover cabecera">
                 <thead>
                    <tr>
                        <td class="dinamico">Concepto</td>
-                       <td>2014</td>
-                       <td>2015</td>
-                       <td>2016</td>
-                       <td>2017</td>
+                       <ng-container *ngFor="let a of anios">
+                        <td>{{a}}</td>
+                    </ng-container>
                        <td></td>
                    </tr>
                </thead>
                    <tbody>
-                    <tr style="height:28px;">
-                       <td class="dinamico"></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td style="text-align: center;width: 10%">
-                    <a href="" class="btn btn-sm btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a>
-                   </td>
-                    </tr>
-                    <tr>
-                       <td class="dinamico"><strong>TOTAL OTROS INGRESOS</strong></td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td style="text-align: center;width: 10%"></td>
-                    </tr>
+                        <ng-container *ngFor="let lista of formulario.listaOtrosIngresos;">
+                            <tr style="height:28px;">
+                                <td class="dinamico">{{lista.descripcion}}</td>
+                                <ng-container *ngFor="let comp of lista.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td style="text-align: center;width: 10%">
+                                    <a [routerLink]="" (click)="editarComponenteOtrosIngresos(lista)"  class="btn btn-sm btn-warning">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </a>
+                                    <a [routerLink]="" (click)="eliminarComponenteOtrosIngresos(lista)"  class="btn btn-sm btn-danger">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </ng-container>
+                        <tr>
+                            <td class="dinamico">{{formulario.totalOtrosIngresos.descripcion}}</td>
+                            <ng-container *ngFor="let comp of formulario.totalOtrosIngresos.componentes">
+                                <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                            </ng-container>
+                            <td></td>
+                        </tr>
                    </tbody>
                 </table>
                 
                 
                 <p class="col">OTROS GASTOS (1)
-                <a href="#" class="btn btn-sm btn-dark" style="float:right;"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a></p>
+                <a (click)="mostrarDialogOtrosGastos()" class="btn btn-sm btn-dark" style="float:right;color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Agregar Otro</a></p>
                 
                 <table class="table table-responsive table-bordered table-hover cabecera">
                 <thead>
                    <tr>
                        <td class="dinamico">Concepto</td>
-                       <td>2014</td>
-                       <td>2015</td>
-                       <td>2016</td>
-                       <td>2017</td>
+                       <ng-container *ngFor="let a of anios">
+                        <td>{{a}}</td>
+                    </ng-container>
                        <td></td>
                    </tr>
                </thead>
                    <tbody>
-                    <tr style="height:28px;">
-                       <td class="dinamico"></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td style="text-align: center;width: 10%">
-                    <a href="" class="btn btn-sm btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a>
-                   </td>
-                    </tr>
-                    <tr>
-                       <td class="dinamico"><strong>TOTAL OTROS GASTOS</strong></td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td style="text-align: center;width: 10%"></td>
-                    </tr>
-                   </tbody>
+                        <ng-container *ngFor="let lista of formulario.listaOtrosGastos;">
+                            <tr style="height:28px;">
+                                <td class="dinamico">{{lista.descripcion}}</td>
+                                <ng-container *ngFor="let comp of lista.componentes">
+                                    <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                                </ng-container>
+                                <td style="text-align: center;width: 10%">
+                                    <a [routerLink]="" (click)="editarComponenteOtrosGastos(lista)"  class="btn btn-sm btn-warning">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </a>
+                                    <a [routerLink]="" (click)="eliminarComponenteOtrosGastos(lista)"  class="btn btn-sm btn-danger">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </ng-container>
+                        <tr>
+                            <td class="dinamico">{{formulario.totalOtrosGastos.descripcion}}</td>
+                            <ng-container *ngFor="let comp of formulario.totalOtrosGastos.componentes">
+                                <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                            </ng-container>
+                            <td></td>
+                        </tr>
                 </table>
                 
                 
                 <table class="table table-responsive table-bordered table-hover">
                    <tbody>
                     <tr>
-                       <td class="concepto"><strong>TOTAL OTROS INGRESOS Y OTROS GASTOS</strong></td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                        <td class="concepto">{{formulario.totalOtrosIngresosOtrosGastos.descripcion}}</td>
+                        <ng-container *ngFor="let comp of formulario.totalOtrosIngresosOtrosGastos.componentes">
+                            <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                        </ng-container>
                     </tr>
                    </tbody>
                 </table>
@@ -585,11 +441,10 @@
                 <table class="table table-responsive table-bordered table-hover">
                    <tbody>
                     <tr>
-                       <td class="concepto"><strong>RESULTADO ANTES DE IMPUESTO A LA RENTA</strong></td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                        <td class="concepto">{{formulario.totalResultadoAntesImpRenta.descripcion}}</td>
+                        <ng-container *ngFor="let comp of formulario.totalResultadoAntesImpRenta.componentes">
+                            <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                        </ng-container>
                     </tr>
                    </tbody>
                 </table>
@@ -598,31 +453,34 @@
                <thead>
                    <tr>
                        <td class="concepto">Concepto</td>
-                       <td>2014</td>
-                       <td>2015</td>
-                       <td>2016</td>
-                       <td>2017</td>
+                       <ng-container *ngFor="let a of anios">
+                            <td>{{a}}</td>
+                       </ng-container>
                    </tr>
                </thead>
                    <tbody>
-                    <tr>
-                       <td class="concepto"><strong>IMPUESTO A LA RENTA</strong></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                       <td><input type="text" class="form-control form-control-sm text-lg-right" name="" id="" value="0.00"></td>
-                    </tr>
+                        <ng-container *ngFor="let lista of formulario.listaImpuestoRenta;">
+                            <tr>
+                                <td class="concepto">{{lista.descripcion}}</td>
+                                <ng-container *ngFor="let comp of lista.componentes">
+                                        <td>
+                                            <input type="text" [formControl]="formGroup.controls[comp.codigo]" class="form-control form-control-sm text-lg-right" name=""
+                                                id="{{comp.codigo}}" value="{{comp.cantidad}}" (keyup)="subtotalImpRent($event)"
+                                                (keypress)="keyPress($event)" maxlength="6">
+                                        </td>
+                                </ng-container>
+                            </tr>
+                        </ng-container>
                    </tbody>
                 </table>
                 
                 <table class="table table-responsive table-bordered table-hover">
                    <tbody>
                     <tr>
-                       <td class="concepto"><strong>RESULTADO NETO DEL EJERCICIO</strong></td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
-                       <td class="text-right" style="padding-right: 20px!important;">0.00</td>
+                        <td class="concepto">{{formulario.totalResultadoNetoEjercicio.descripcion}}</td>
+                        <ng-container *ngFor="let comp of formulario.totalResultadoNetoEjercicio.componentes">
+                            <td class="text-right" style="padding-right: 20px!important;">{{comp.cantidad}}</td>
+                        </ng-container>
                     </tr>
                    </tbody>
                 </table>
@@ -630,9 +488,9 @@
                 <div style="font-size:9pt;">
                 <p>INSTRUCCIONES:<br/>
                    (1) Desagregar las cuentas solicitadas. Insertar más filas de ser necesario.<br/>
-                   - La información de la columna A, B y C corresponde a los resultados financieros correspondientes a los tres últimos años.<br/>
-                   - La columna D contiene información preliminar hasta el último periodo mensual declarado a la SUNAT (PDT 621) del ejercicio vigente (especificar mes y año).<br/>
-                   - La columna A,B,C se debe llenar con la información de la Declaración Jurada Pago Anual Impuesto a la Renta Tercera Categoría presentada a la SUNAT o a la Superintendencia de Banca y Seguros (SBS) o a la institución donde presentan la información.<br/>
+                   - La información de la columna {{anios[0]}}, {{anios[1]}} y {{anios[2]}} corresponde a los resultados financieros correspondientes a los tres últimos años.<br/>
+                   - La columna {{anios[3]}} contiene información preliminar hasta el último periodo mensual declarado a la SUNAT (PDT 621) del ejercicio vigente (especificar mes y año).<br/>
+                   - La columna {{anios[0]}}, {{anios[1]}}, {{anios[2]}} se debe llenar con la información de la Declaración Jurada Pago Anual Impuesto a la Renta Tercera Categoría presentada a la SUNAT o a la Superintendencia de Banca y Seguros (SBS) o a la institución donde presentan la información.<br/>
                 </p>
                 </div>
                </div>
@@ -648,3 +506,180 @@
        </div>
     </div>
    </div>
+
+   <p-dialog [(visible)]="displayProvisiones" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Provisiones
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="provisiones.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="provisiones.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="provisiones.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="provisiones.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="provisiones.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalProvisiones()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalProvisiones()">Añadir</button>
+    </p-footer>
+  </p-dialog>
+  
+  <p-dialog [(visible)]="displayOtrosIngresos" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Otros Ingresos
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosIngresos.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosIngresos.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosIngresos.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosIngresos.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosIngresos.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalOtrosIngresos()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalOtrosIngresos()">Añadir</button>
+    </p-footer>
+  </p-dialog>
+  
+  <p-dialog [(visible)]="displayOtrosGastos" modal="modal" width="600" [responsive]="true">
+    <p-header>
+        Registro de Otros Gastos
+    </p-header>
+    <p>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <label for="inpDireccion" class="col-form-label col-form-label-sm">Descripcion:</label>
+                    <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosGastos.descripcion">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Monto</legend>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[0]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosGastos.anioA">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[1]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosGastos.anioB">
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[2]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosGastos.anioC">
+                            </div>
+                            <div class="col col-sm-2">
+                                <label for="inpDireccion" class="col-form-label col-form-label-sm">{{anios[3]}}</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control form-control-sm" id="inpDireccion" placeholder="" [(ngModel)]="otrosGastos.anioD">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </p>
+    <p-messages [(value)]="messagesForm"></p-messages>
+    <p-footer class="text-sm-right">
+        <button class="btn btn-sm m-1 btn-success" icon="fa-check" (click)="cancelarModalOtrosGastos()">Cancelar</button>
+        <button class="btn btn-sm m-1 btn-secondary" icon="fa-close" (click)="guardarModalOtrosGastos()">Añadir</button>
+    </p-footer>
+  </p-dialog>

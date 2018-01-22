@@ -79,7 +79,7 @@ export class FormularioFinancieroPrivadoAnexo2BComponent implements OnInit, OnDe
 
     load(nCodffina) {
         this.nCodffina = nCodffina;
-     }
+    }
 
     ngOnInit() {
         this.loadAll();
@@ -238,12 +238,10 @@ export class FormularioFinancieroPrivadoAnexo2BComponent implements OnInit, OnDe
     crearlistacomponentes(desc: string[], cod: string[], subtotal: boolean, anio: number): Tabla[] {
         const t = new Array<Tabla>();
         for (let j = 0; j < desc.length; j++) {
-            console.log('j: ' + j);
             t[j] = new Tabla();
             t[j].descripcion = desc[j];
             t[j].componentes = new Array<Componente>();
             for (let i = 0; i < 14; i++) {
-                console.log('i: ' + i);
                 t[j].componentes[i] = new Componente();
                 t[j].componentes[i].codigo = cod[j] + '_' + i + '_' + anio;
                 t[j].componentes[i].cantidad = 0;
@@ -689,9 +687,14 @@ export class FormularioFinancieroPrivadoAnexo2BComponent implements OnInit, OnDe
     }
 
     guardarFormulario() {
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaA, this.nCodffina, 'f2anex2b');
-        this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaB, this.nCodffina, 'f2anex2b');
-        this.verControlInformacion();
+        this.formfinancdetalleService.desactivarFormulario(this.nCodffina, 'f2anex2b').subscribe(
+            (res: ResponseWrapper) => {
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaA, this.nCodffina);
+                this.formfinancdetalleService.guardarFormFinancieroTablas(this.datepipe, this.formulario.listaB, this.nCodffina);
+                this.verControlInformacion();
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
     }
 
     verControlInformacion() {

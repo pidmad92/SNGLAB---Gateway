@@ -6,6 +6,9 @@ import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } f
 import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../../shared';
 import { Message } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
+import {SelectItem} from 'primeng/primeng';
+
+import { padWithZero  } from './../../../applications.constant';
 
 // Modelos
 
@@ -13,6 +16,7 @@ import { Tipdocident } from '../../models/tipdocident.model';
 import { Trabajador } from '../../models/trabajador.model';
 import { Pernatural } from '../../models/pernatural.model';
 import { Datlab } from './../../models/datlab.model';
+import { Dirpernat } from './../../models/dirpernat.model';
 
 // Componentes
 import { ES } from './../../../applications.constant';
@@ -37,16 +41,31 @@ export class TrabajadorComponent implements OnInit {
     // Variables de control de la pagina
 
     formBusquedaTrabajador: FormGroup;
+    formPopupDireccion: FormGroup;
     showFormularioDatosTrabajador: boolean;
     showImputTextNumPartidaSucesion: boolean;
     validatorNumDoc: ValidatorFn[];
     formDatosTrabajador: FormGroup;
+    popupDirecion: boolean;
+    showComboProvincia: boolean;
+    showComboDistrito: boolean;
+    showInputDireccion: boolean;
 
     // Variables de Modelo - Entidad
 
     listaTipdocident: Tipdocident[];
     listaTrabajador: any[] = [];
     datlab: Datlab;
+    listaDirpernat: Dirpernat[] = [];
+    dirpernat: Dirpernat;
+    selecDirper: Dirpernat;
+    departamento: SelectItem[];
+    provincia: SelectItem[];
+    distrito: SelectItem[];
+    departs: ResponseWrapper;
+    provins: ResponseWrapper;
+    distris: ResponseWrapper;
+    newDirec: boolean;
 
     // Constructor
 
@@ -72,7 +91,11 @@ export class TrabajadorComponent implements OnInit {
       this.cargarListaComboTipoDocumento();
       this.ocultarFormularioDatosTrabajador();
       this.ocultarImputTextNumPartidaSucesion();
-      this.recibirDatosLaboralesTrabajador()
+      this.recibirDatosLaboralesTrabajador();
+      this.contruirFormularioPopupDireccion();
+      this.showComboProvincia = false;
+      this.showComboDistrito = false;
+      this.showInputDireccion = false;
     };
 
     // 1. Al hacer un cambio en el combo
@@ -95,38 +118,56 @@ export class TrabajadorComponent implements OnInit {
 
     buscarTrabajador(formBusquedaTrabajador: FormGroup) {
       console.log(`Buscó al Trabajador con Tip.Doc: ${formBusquedaTrabajador.value.documento.tipDoc} y Num.Doc: ${formBusquedaTrabajador.value.documento.numDoc}`);
-        // console.log(formBusquedaTrabajador);
         this.buscarTrabajadorBaseDatos(formBusquedaTrabajador);
     };
 
-    // 4.
+    // 4. Al hacer click en una direccion de la tabla de direcciones
 
-    buscarTrabajadorBaseDatos(formBusquedaTrabajador: FormGroup) {
-      console.log(`Buscando al trabajador en Base de Datos...`);
-      this.trabajadorService.findTrabajadorsByDocIdent(Number(formBusquedaTrabajador.value.documento.tipDoc), formBusquedaTrabajador.value.documento.numDoc as String).subscribe(
-        (res: ResponseWrapper) => {
-          this.listaTrabajador = res.json;
-          if (JSON.stringify(this.listaTrabajador[0])) {
-            console.log(`¡Trabajador encontrado! Trabajador con Id:${this.listaTrabajador[0].Trabajador.id}`);
-            this.abrirPopupBusquedaVinculosLaborales();
-          } else {
-            console.log(`No existe el trabajador en la base de datos`);
-            this.buscarTrabajadorReniec(formBusquedaTrabajador);
-          }
-        },
-        (res: ResponseWrapper) => {
-          this.onError(res.json)
-        });
+    eventodireccionSeleccionada(event) {
+      this.newDirec = false;
+      this.abrirPopupDireccion(event.data.direc);
     };
 
-    // 5. Al hacer click en el boton siguiente
+    // 5. Al hacer click en nueva direccion
+
+    btnAnadirDireccion() {
+      this.newDirec = true;
+      this.abrirPopupDireccion('');
+      console.log(`Añadir direccion`);
+    };
+
+    // 6. En el Popup de Direcciones:
+
+    // 6.1 Al hacer click en el boton eliminar direccion
+
+    eliminarDireccion() {
+      console.log(`Quitando Direccion`);
+      this.popupDirecion = false;
+    };
+
+    // 6.2 Al hacer click en el boton guardar
+
+    AnadirDireccion() {
+      console.log(`Mostrando Direccion...`);
+      this.popupDirecion = false;
+    };
+
+    // 6.3 Al hacer click en el boton cancelar
+
+    cerrarPopupDireccion() {
+      this.popupDirecion = false;
+    };
+
+    // 7. Al hacer click en el boton siguiente
 
     btnSiguiente(formBusquedaTrabajador: FormGroup) {
       console.log('Presiono el boton siguiente');
       this.router.navigate(['/liquidaciones/registro-atencion/empleador']);
     };
 
+    // --------------------------------------------------------------------------------------------------------------------
     // Funciones Utilitarias - Busqueda Trabajador - I --------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------------------------------------
 
     // Al iniciar - llamar el servicio para llenar el combo del tipo de documento para la busqueda del trabajador
 
@@ -198,6 +239,26 @@ export class TrabajadorComponent implements OnInit {
           'numDoc': new FormControl(null, this.validatorNumDoc)
           })
         });*/
+    };
+
+    // Busca el trabajador en la Base de Datos
+
+    buscarTrabajadorBaseDatos(formBusquedaTrabajador: FormGroup) {
+      console.log(`Buscando al trabajador en Base de Datos...`);
+      this.trabajadorService.findTrabajadorsByDocIdent(Number(formBusquedaTrabajador.value.documento.tipDoc), formBusquedaTrabajador.value.documento.numDoc as String).subscribe(
+        (res: ResponseWrapper) => {
+          this.listaTrabajador = res.json;
+          if (JSON.stringify(this.listaTrabajador[0])) {
+            console.log(`¡Trabajador encontrado! Trabajador con Id:${this.listaTrabajador[0].Trabajador.id}`);
+            this.abrirPopupBusquedaVinculosLaborales();
+          } else {
+            console.log(`No existe el trabajador en la base de datos`);
+            this.buscarTrabajadorReniec(formBusquedaTrabajador);
+          }
+        },
+        (res: ResponseWrapper) => {
+          this.onError(res.json)
+        });
     };
 
     // Busca el trabajador en la Reniec
@@ -291,7 +352,80 @@ export class TrabajadorComponent implements OnInit {
     };
 
     setearDatosTablaDirecciones() {
+      this.cargarDirecPerNatu((this.datlab.trabajador as Trabajador).id);
 
+    };
+
+    cargarDirecPerNatu(id: number) {
+        this.trabajadorService.buscarDireccionesPerNat(id).subscribe(
+            (res: ResponseWrapper) => {
+                this.listaDirpernat = res.json;
+                console.log(`El trabajador tiene ${this.listaDirpernat.length} registros de Direcciones`);
+            },
+            (res: ResponseWrapper) => { this.onError(res.json); }
+        );
+    };
+
+    btnEliminarDireccion(id: number) {
+      console.log(`Elimino la direccion con id: ${id}`);
+    };
+
+    abrirPopupDireccion(ubigeo: any) {
+      this.popupDirecion = true;
+      (this.formPopupDireccion.get('departamento') as FormControl).setValue('');
+      (this.formPopupDireccion.get('provincia') as FormControl).setValue('');
+      (this.formPopupDireccion.get('distrito') as FormControl).setValue('');
+      this.cargarListaComboDepartamento(); // Sucesivamente cargara los demas
+      if (!this.newDirec) {
+        this.setearDatosPopupDirecciones(ubigeo);
+      };
+    };
+
+    contruirFormularioPopupDireccion() {
+      this.formPopupDireccion = new FormGroup({});
+      this.formPopupDireccion.addControl('departamento', new FormControl());
+      this.formPopupDireccion.addControl('provincia', new FormControl());
+      this.formPopupDireccion.addControl('distrito', new FormControl());
+      this.formPopupDireccion.addControl('direccion', new FormControl());
+      (this.formPopupDireccion.get('departamento') as FormControl).setValidators(Validators.required);
+      (this.formPopupDireccion.get('provincia') as FormControl).setValidators(Validators.required);
+      (this.formPopupDireccion.get('distrito') as FormControl).setValidators(Validators.required);
+      (this.formPopupDireccion.get('direccion') as FormControl).setValidators(Validators.required);
+    };
+
+    setearDatosPopupDirecciones(ubigeo: any) {
+      (this.formPopupDireccion.get('departamento') as FormControl).setValue(padWithZero(ubigeo.nCoddepto));
+      this.cargarListaComboProvincia(ubigeo.nCoddepto);
+      (this.formPopupDireccion.get('provincia') as FormControl).setValue(padWithZero(ubigeo.nCodprov));
+      this.cargarListaComboDistrito(ubigeo.nCodprov);
+      (this.formPopupDireccion.get('distrito') as FormControl).setValue(padWithZero(ubigeo.nCoddist));
+      (this.formPopupDireccion.get('direccion') as FormControl).setValue(ubigeo.vDircomple);
+    };
+
+    cargarListaComboDepartamento() {
+      this.trabajadorService.consDep().subscribe((departamentos) => {
+          this.departs = departamentos.json;
+      });
+      (this.formPopupDireccion.get('provincia') as FormControl).setValue('');
+      (this.formPopupDireccion.get('distrito') as FormControl).setValue('');
+      (this.formPopupDireccion.get('direccion') as FormControl).setValue('');
+    };
+
+    cargarListaComboProvincia(idDept) {
+      (this.formPopupDireccion.get('provincia') as FormControl).setValue('');
+      (this.formPopupDireccion.get('distrito') as FormControl).setValue('');
+      (this.formPopupDireccion.get('direccion') as FormControl).setValue('');
+      this.trabajadorService.consProv(padWithZero(idDept)).subscribe((provincias) => {
+          this.provins = provincias.json;
+      });
+    };
+
+    cargarListaComboDistrito(idProv) {
+      (this.formPopupDireccion.get('distrito') as FormControl).setValue('');
+      (this.formPopupDireccion.get('direccion') as FormControl).setValue('');
+      this.trabajadorService.consDis(padWithZero(this.formPopupDireccion.value.departamento), padWithZero(idProv)).subscribe((distritos) => {
+          this.distris = distritos.json;
+      });
     };
 
     // Funciones Utilitarias - Busqueda Trabajador - F --------------------------------------------------------------------
