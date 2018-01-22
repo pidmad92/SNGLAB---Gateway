@@ -144,7 +144,7 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
         this.atencionTrabajadorService.buscarDireccionesPerNat(id).subscribe(
             (res: ResponseWrapper) => {
                 // console.log('DIRECCIONES: ' + JSON.stringify(this.dirpernat));
-                console.log(res.json);
+                // console.log(res.json);
                 // this.dirpernat = res.json;
                 this.dirper = res.json;
                 if (this.dirper !== undefined) {
@@ -162,11 +162,11 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
             if (this.selectedTipodoc === undefined || this.selectedTipodoc.id === undefined || this.vNumdocumento === undefined || this.vNumdocumento === '') {
                 return;
             }
-            console.log(JSON.stringify(this.selectedTipodoc.id) + '|' + this.vNumdocumento);
+            // console.log(JSON.stringify(this.selectedTipodoc.id) + '|' + this.vNumdocumento);
          const tipodoc = this.selectedTipodoc.id; // 2;
          const numdoc =  this.vNumdocumento; //  '11111111111';
         this.atencionTrabajadorService.findEmpleadorsByDocIdent(tipodoc, numdoc, Number(this.tippersona)).subscribe((empleador) => {
-            console.log(empleador);
+            // console.log(empleador);
             this.empleador = empleador;
             if (this.empleador.id !== undefined) {
                 if (this.tippersona === '1') {
@@ -216,7 +216,7 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
                     if (atencion.vNumticket !== undefined) {
                         this.atencion.vNumticket = atencion.vNumticket.toUpperCase();
                     }
-                    console.log('Actividad selecionada: ' + this.actividadSelec);
+                    // console.log('Actividad selecionada: ' + this.actividadSelec);
                     if (this.actividadSelec === null) { // Si la página se refresca se pierde la actividad y se redirige al inicio
                         this.router.navigate(['/consultas/atencion-trabajador']);
                     } else if (this.actividadSelec === '1') { // Si el flujo es generado al presionar el boton nuevo registro se instanciaran los datos en blanco
@@ -318,7 +318,7 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
                                     this.atencion.datlab.empleador.perjuridica = new Perjuridica();
                                 }
                             } else if (atencion.empleador !== undefined) {
-                                console.log('NRO2');
+                                // console.log('NRO2');
                                 this.empleador =  this.atencion.empleador;
                                 // console.log('this.atencion.empleador.perjuridica: ' + JSON.stringify(this.atencion.empleador.perjuridica));
                                 // console.log('this.atencion.empleador.pernatural: ' + JSON.stringify(this.atencion.empleador.pernatural));
@@ -409,9 +409,9 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
     showDialogToAction(accion: number) {
         this.accion = accion;
         if (this.accion === 2) {
-            console.log('Editar: ' + this.dirper);
+            // console.log('Editar: ' + this.dirper);
         } else if (this.accion === 3) {
-            console.log('Eliminar: ' + this.dirper);
+            // console.log('Eliminar: ' + this.dirper);
         }
         this.newDirec = false;
         this.displayDialog = true;
@@ -435,9 +435,9 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
         //     this.subscribeToSaveResponse(
         //         this.atencionTrabajadorService.updateDirPerjuri(this.dirper));
         // }
-        console.log('Grabar: ' + JSON.stringify(this.dirper));
+        // console.log('Grabar: ' + JSON.stringify(this.dirper));
         if (this.newDirec) {
-            console.log('Insertar');
+            // console.log('Insertar');
             if (this.tippersona === '1') {
                 this.subscribeToSaveResponseDirperjuri(
                      this.atencionTrabajadorService.createDirPerJuri(this.dirper));
@@ -446,7 +446,7 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
                     this.atencionTrabajadorService.createDirPerNat(this.dirper));
             }
         } else {
-            console.log('Actualizar');
+            // console.log('Actualizar');
             if (this.tippersona === '1') {
                 this.subscribeToSaveResponseDirperjuri(
                     this.atencionTrabajadorService.updateDirPerjuri(this.dirper));
@@ -490,14 +490,14 @@ export class DatosEmpleadorComponent implements OnInit, OnDestroy {
         this.close()
     }
     private onSaveError() {
-        console.log('saveerror');
+        // console.log('saveerror');
     }
 
     close() {
         // this.dirper = new Dirperjuri();
         // this.dirper.perjuridica = this.empleador.perjuridica;
         // this.displayDialog = false;
-        console.log('TipPersona: ' + this.tippersona);
+        // console.log('TipPersona: ' + this.tippersona);
         if (this.tippersona === '1') {
             // this.dirper = new Dirperjuri();
             this.dirper.perjuridica = this.empleador.perjuridica;

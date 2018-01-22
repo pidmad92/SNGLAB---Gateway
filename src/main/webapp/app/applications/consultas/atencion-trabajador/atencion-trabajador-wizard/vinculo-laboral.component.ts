@@ -136,11 +136,11 @@ export class VinculoLaboralComponent implements OnInit, OnDestroy {
                 } else {
                     // console.log('AtencionVinculo:' + JSON.stringify(this.atencion));
                     if (atencion.datlab !== undefined ) {
-                        console.log('AC.');
+                        // console.log('AC.');
                         // this.datosLab  = atencion.datlab;
                         this.atencion.datlab = atencion.datlab;
                         // console.log('Situacion Laboral: ' + this.datosLab.nFlgsitlab);
-                        console.log('ATENCIONDATLAB: ' + JSON.stringify(atencion.datlab));
+                        // console.log('ATENCIONDATLAB: ' + JSON.stringify(atencion.datlab));
                         if (this.atencion.datlab.nFlgsitlab) {
                             this.tipoVinculo = '1';
                         } else {
@@ -148,7 +148,7 @@ export class VinculoLaboralComponent implements OnInit, OnDestroy {
                         }
 
                         if (atencion.datlab.id !== undefined) {
-                            console.log('AB.');
+                            // console.log('AB.');
                             // this.atencion.datlab = new Datlab();
                             this.atencion.datlab.modcontrato = null;
                             this.atencion.datlab.dFecvincul = null;
