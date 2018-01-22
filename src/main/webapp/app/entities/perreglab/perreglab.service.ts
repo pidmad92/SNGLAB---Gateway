@@ -6,12 +6,14 @@ import { JhiDateUtils } from 'ng-jhipster';
 
 import { Perreglab } from './perreglab.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
+import { SERVER_API_URL } from '../../app.constants';
 
 @Injectable()
 export class PerreglabService {
 
-    private resourceUrl = '/api/perreglabs';
-    private resourceSearchUrl = '/api/_search/perreglabs';
+    private resourceDictamenes = 'dictamenes/';
+    private resourceUrl = SERVER_API_URL + this.resourceDictamenes +  '/api/perreglabs';
+    private resourceSearchUrl = SERVER_API_URL + this.resourceDictamenes +  '/api/_search/perreglabs';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -87,13 +89,13 @@ export class PerreglabService {
 
     obtenerRegimenesSeleccionados(codPerfil: number, codRegimen: number): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        return this.http.get('api/obtenerRegimenesSeleccionados?codPerfil=' + codPerfil + '&codRegimen=' + codRegimen, options)
+        return this.http.get(SERVER_API_URL +   this.resourceDictamenes +  'api/obtenerRegimenesSeleccionados?codPerfil=' + codPerfil + '&codRegimen=' + codRegimen, options)
             .map((res: any) => this.convertResponse(res));
     }
 
     eliminarRegimenes(codPerfil: number, codRegimen: number): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        return this.http.get('api/eliminarRegimenes?codPerfil=' + codPerfil + '&codRegimen=' + codRegimen, options)
+        return this.http.get(SERVER_API_URL +   this.resourceDictamenes +  'api/eliminarRegimenes?codPerfil=' + codPerfil + '&codRegimen=' + codRegimen, options)
             .map((res: any) => this.convertResponse(res));
     }
 

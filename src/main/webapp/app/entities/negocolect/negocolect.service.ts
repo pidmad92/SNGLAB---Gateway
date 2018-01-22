@@ -11,8 +11,9 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class NegocolectService {
 
-    private resourceUrl = SERVER_API_URL + 'api/negocolects';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/negocolects';
+    private resourceDictamenes = 'dictamenes/';
+    private resourceUrl = SERVER_API_URL + this.resourceDictamenes +  'api/negocolects';
+    private resourceSearchUrl = SERVER_API_URL + this.resourceDictamenes +  'api/_search/negocolects';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -98,21 +99,21 @@ export class NegocolectService {
 
     obtenerNegociacion(codFormPerfil: number, tipo: string): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/listarNegociacionColectiva';
+        const url = SERVER_API_URL + this.resourceDictamenes +   'api/listarNegociacionColectiva';
         return this.http.get(url + '?tipo=' + tipo + '&codFormPerfil=' + codFormPerfil, options)
             .map((res: Response) => this.convertResponse(res));
     }
 
     obtenerNegociacionSolicitante(codFormPerfil: number, tipo: string): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/listarNegociacionColectiva';
+        const url = SERVER_API_URL + this.resourceDictamenes +   'api/listarNegociacionColectiva';
         return this.http.get(url + '?tipo=' + tipo + '&codFormPerfil=' + codFormPerfil, options)
             .map((res: Response) => this.convertResponse(res));
     }
 
     eliminar(codFormPerfil: number) {
         const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/eliminarNego';
+        const url = SERVER_API_URL + this.resourceDictamenes +   'api/eliminarNego';
         return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
             .map((res: Response) => {
                 const jsonResponse = res.json();

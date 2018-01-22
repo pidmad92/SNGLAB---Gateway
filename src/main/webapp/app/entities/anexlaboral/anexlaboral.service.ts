@@ -13,8 +13,9 @@ import { ModelAnexoDetalle } from './index';
 @Injectable()
 export class AnexlaboralService {
 
-    private resourceUrl = SERVER_API_URL + 'api/anexlaborals';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/anexlaborals';
+    private resourceDictamenes = 'dictamenes/';
+    private resourceUrl = SERVER_API_URL + this.resourceDictamenes +  'api/anexlaborals';
+    private resourceSearchUrl = SERVER_API_URL + this.resourceDictamenes + 'api/_search/anexlaborals';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -92,7 +93,7 @@ export class AnexlaboralService {
 
     obtenerListadoLaboral(codFormPerfil: number): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/listarAnexoLaboral';
+        const url = SERVER_API_URL + this.resourceDictamenes +  'api/listarAnexoLaboral';
         return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
             .map((res: Response) => this.convertResponseAnexo(res));
     }
@@ -116,7 +117,7 @@ export class AnexlaboralService {
 
     eliminar(codFormPerfil: number) {
         const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/eliminarAnexo';
+        const url = SERVER_API_URL + this.resourceDictamenes +  'api/eliminarAnexo';
         return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
             .map((res: Response) => {
                 const jsonResponse = res.json();
@@ -125,7 +126,7 @@ export class AnexlaboralService {
     }
 
     obtenerDatosAnexo(anio: number, tipo: string, declegal: string, componente: string): Observable<Anexlaboral> {
-        return this.http.get(SERVER_API_URL + 'api/obtenerDatosAnexo?anio=' + anio + '&tipo=' + tipo + '&declegal=' + declegal
+        return this.http.get(SERVER_API_URL + this.resourceDictamenes +  'api/obtenerDatosAnexo?anio=' + anio + '&tipo=' + tipo + '&declegal=' + declegal
             + '&componente=' + componente).map((res: Response) => {
                 return res.text() ? this.convertItemFromServer(res.json()) : null;
             }).first();

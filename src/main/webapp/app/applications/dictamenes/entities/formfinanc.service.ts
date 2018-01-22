@@ -13,8 +13,9 @@ import { FormfinancDetalle } from './formfinancdetalle.model';
 @Injectable()
 export class FormfinancService {
 
-    private resourceUrl = SERVER_API_URL + 'api/formfinancs';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/formfinancs';
+    private resourceDictamenes = 'dictamenes/';
+    private resourceUrl = SERVER_API_URL + this.resourceDictamenes + 'api/formfinancs';
+    private resourceSearchUrl = SERVER_API_URL + this.resourceDictamenes + 'api/_search/formfinancs';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 

@@ -14,8 +14,9 @@ import { Tabla2 } from '../formulario-financiero-financiero/tabla2.model';
 @Injectable()
 export class FormfinancDetalleService {
 
-    private resourceUrl = SERVER_API_URL + 'api/formfinancdetals';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/formfinancdetals';
+    private resourceDictamenes = 'dictamenes/';
+    private resourceUrl = SERVER_API_URL + this.resourceDictamenes + 'api/formfinancdetals';
+    private resourceSearchUrl = SERVER_API_URL + this.resourceDictamenes + 'api/_search/formfinancdetals';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -93,7 +94,7 @@ export class FormfinancDetalleService {
 
     obtenerComponente(codffina: number, componente: string): Observable<FormfinancDetalle> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/obtenerComponente';
+        const url = SERVER_API_URL + this.resourceDictamenes + 'api/obtenerComponente';
         return this.http.get(url + '?codffina=' + codffina + '&componente=' + componente, options)
             .map((res: Response) => {
                 if (res.text().length !== 0) {
@@ -107,28 +108,28 @@ export class FormfinancDetalleService {
 
     obtenerListaComponente(codffina: number, componente: string): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/obtenerListaComponente';
+        const url = SERVER_API_URL + this.resourceDictamenes + 'api/obtenerListaComponente';
         return this.http.get(url + '?codffina=' + codffina + '&componente=' + componente, options)
             .map((res: Response) => this.convertResponse(res));
     }
 
     obtenerListaComponenteExcluido(codffina: number, componente: string, excluido: string): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/obtenerListaComponenteExcluido';
+        const url = SERVER_API_URL + this.resourceDictamenes + 'api/obtenerListaComponenteExcluido';
         return this.http.get(url + '?codffina=' + codffina + '&componente=' + componente + '&excluido=' + excluido, options)
             .map((res: Response) => this.convertResponse(res));
     }
 
     obtenerListaComponentes(codffina: number, componente: string, componente2: string): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/obtenerListaComponentes';
+        const url = SERVER_API_URL + this.resourceDictamenes + 'api/obtenerListaComponentes';
         return this.http.get(url + '?codffina=' + codffina + '&componente=' + componente + '&componente2=' + componente2, options)
             .map((res: Response) => this.convertResponse(res));
     }
 
     desactivarFormulario(codffina: number, formulario: string): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + '/api/desactivarFormulario';
+        const url = SERVER_API_URL + this.resourceDictamenes + '/api/desactivarFormulario';
         return this.http.get(url + '?&codffina=' + codffina + '&formulario=' + formulario, options)
             .map((res: Response) => this.convertResponse(res));
     }

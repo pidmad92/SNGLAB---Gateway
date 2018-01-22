@@ -11,8 +11,9 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class ParticipaService {
 
-    private resourceUrl = SERVER_API_URL + 'api/participas';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/participas';
+    private resourceDictamenes = 'dictamenes/';
+    private resourceUrl = SERVER_API_URL + this.resourceDictamenes +  'api/participas';
+    private resourceSearchUrl = SERVER_API_URL + this.resourceDictamenes +  'api/_search/participas';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -90,14 +91,14 @@ export class ParticipaService {
 
     obtenerParticipacionPorTipo(codFormPerfil: number, tipoParticipacion: string): Observable<ResponseWrapper> {
         const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/listarParticipacion';
+        const url = SERVER_API_URL +  this.resourceDictamenes +  'api/listarParticipacion';
         return this.http.get(url + '?codFormPerfil=' + codFormPerfil + '&tipoParticipacion=' + tipoParticipacion, options)
             .map((res: Response) => this.convertResponse(res));
     }
 
     eliminar(codFormPerfil: number) {
         const options = createRequestOption();
-        const url = SERVER_API_URL + 'api/eliminarParticipa';
+        const url = SERVER_API_URL + this.resourceDictamenes +  'api/eliminarParticipa';
         return this.http.get(url + '?codFormPerfil=' + codFormPerfil, options)
             .map((res: Response) => {
                 const jsonResponse = res.json();

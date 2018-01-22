@@ -11,8 +11,9 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class UsusolService {
 
-    private resourceUrl = SERVER_API_URL + '/api/ususols';
-    private resourceSearchUrl = SERVER_API_URL + '/api/_search/ususols';
+    private resourceDictamenes = 'dictamenes/';
+    private resourceUrl = SERVER_API_URL + this.resourceDictamenes +  '/api/ususols';
+    private resourceSearchUrl = SERVER_API_URL + this.resourceDictamenes +  '/api/_search/ususols';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -77,7 +78,7 @@ export class UsusolService {
 
     obtenerUsuarioPorTipo(codSolicitud: number, tipoUsuario: string): Observable<Ususol> {
         const options = createRequestOption();
-        return this.http.get('/api/obtenerUsuarioPorTipo?codSolicitud=' + codSolicitud + '&tipoUsuario=' + tipoUsuario, options)
+        return this.http.get(SERVER_API_URL +   this.resourceDictamenes +  'api/obtenerUsuarioPorTipo?codSolicitud=' + codSolicitud + '&tipoUsuario=' + tipoUsuario, options)
             .map((res: Response) => {
                 try {
                     const jsonResponse = res.json();

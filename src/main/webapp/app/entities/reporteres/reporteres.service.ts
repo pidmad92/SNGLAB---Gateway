@@ -11,8 +11,9 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class ReporteresService {
 
-    private resourceUrl = SERVER_API_URL + 'api/reporteres';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/reporteres';
+    private resourceDictamenes = 'dictamenes/';
+    private resourceUrl = SERVER_API_URL + this.resourceDictamenes +  'api/reporteres';
+    private resourceSearchUrl = SERVER_API_URL + this.resourceDictamenes +  'api/_search/reporteres';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
