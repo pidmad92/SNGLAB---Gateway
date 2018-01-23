@@ -6,17 +6,26 @@ import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiLanguageService } f
 import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../../shared';
 import { Message } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
-import {SelectItem} from 'primeng/primeng';
+import {SelectItem, DataTable} from 'primeng/primeng';
 
 import { padWithZero  } from './../../../applications.constant';
 
 // Modelos
-
 import { Tipdocident } from '../../models/tipdocident.model';
+
+import { Atencion } from './../../models/atencion.model';
 import { Trabajador } from '../../models/trabajador.model';
 import { Pernatural } from '../../models/pernatural.model';
-import { Datlab } from './../../models/datlab.model';
 import { Dirpernat } from './../../models/dirpernat.model';
+import { Sucesor } from './../../models/sucesor.model';
+
+import { Empleador } from './../../models/empleador.model';
+import { Datlab } from './../../models/datlab.model';
+
+
+
+
+
 
 // Componentes
 import { ES } from './../../../applications.constant';
@@ -50,14 +59,11 @@ export class TrabajadorComponent implements OnInit {
     showComboProvincia: boolean;
     showComboDistrito: boolean;
     showInputDireccion: boolean;
+    sucesion: boolean;
 
     // Variables de Modelo - Entidad
 
     listaTipdocident: Tipdocident[];
-    listaTrabajador: any[] = [];
-    datlab: Datlab;
-    listaDirpernat: Dirpernat[] = [];
-    dirpernat: Dirpernat;
     selecDirper: Dirpernat;
     departamento: SelectItem[];
     provincia: SelectItem[];
@@ -66,6 +72,17 @@ export class TrabajadorComponent implements OnInit {
     provins: ResponseWrapper;
     distris: ResponseWrapper;
     newDirec: boolean;
+
+    // Modelo principal
+
+    modelRegistroAtencion: Atencion = new Atencion();
+    modelDatosTrabajador: Trabajador = new Trabajador();
+    modelPersonaNatural: Pernatural = new Pernatural();
+    modelTipoDocIdentidad: Tipdocident = new Tipdocident();
+    modelDireccionesPerNat: Dirpernat[] = [];
+    modelSucesor: Sucesor = new Sucesor();
+    modelDatosEmpleador: Empleador = new Empleador();
+    modelDatosLaborales: Datlab = new Datlab();
 
     // Constructor
 
@@ -96,6 +113,7 @@ export class TrabajadorComponent implements OnInit {
       this.showComboProvincia = false;
       this.showComboDistrito = false;
       this.showInputDireccion = false;
+      this.sucesion = false;
     };
 
     // 1. Al hacer un cambio en el combo
@@ -117,8 +135,13 @@ export class TrabajadorComponent implements OnInit {
     // 3. Al hacer click en el boton para buscar el trabajador
 
     buscarTrabajador(formBusquedaTrabajador: FormGroup) {
-      console.log(`Buscó al Trabajador con Tip.Doc: ${formBusquedaTrabajador.value.documento.tipDoc} y Num.Doc: ${formBusquedaTrabajador.value.documento.numDoc}`);
-        this.buscarTrabajadorBaseDatos(formBusquedaTrabajador);
+      // Asigna datos del formulario al modelo
+      this.modelTipoDocIdentidad.id = formBusquedaTrabajador.value.documento.tipDoc as number;
+      this.modelPersonaNatural.tipdocident = this.modelTipoDocIdentidad;
+      this.modelPersonaNatural.vNumdoc = formBusquedaTrabajador.value.documento.numDoc as string;
+      console.log(`Buscó al Trabajador con Tip.Doc: ${this.modelPersonaNatural.tipdocident.id} y Num.Doc: ${this.modelPersonaNatural.vNumdoc}`);
+      // Busca al trabajador
+      this.buscarTrabajadorBaseDatos(this.modelPersonaNatural.tipdocident.id as number, this.modelPersonaNatural.vNumdoc as string);
     };
 
     // 4. Al hacer click en una direccion de la tabla de direcciones
@@ -165,6 +188,11 @@ export class TrabajadorComponent implements OnInit {
       this.router.navigate(['/liquidaciones/registro-atencion/empleador']);
     };
 
+    // 8. Al presionar en cualquiera de los lados del boton Sucesion Intestada
+    btnSucesion(opcion: boolean) {
+      this.sucesion = opcion;
+    };
+
     // --------------------------------------------------------------------------------------------------------------------
     // Funciones Utilitarias - Busqueda Trabajador - I --------------------------------------------------------------------
     // --------------------------------------------------------------------------------------------------------------------
@@ -174,8 +202,8 @@ export class TrabajadorComponent implements OnInit {
     cargarListaComboTipoDocumento() {
       this.trabajadorService.consultaTipoDocIdentidad().subscribe((res: ResponseWrapper) => {
             this.listaTipdocident = res.json;
-            /*console.log(`Resjson:
-              ${JSON.stringify(res.json)}`);*/
+            console.log(`Resjson:
+              ${JSON.stringify(res.json)}`);
             this.currentSearch = '';
         },
         (res: ResponseWrapper) => {
@@ -243,17 +271,17 @@ export class TrabajadorComponent implements OnInit {
 
     // Busca el trabajador en la Base de Datos
 
-    buscarTrabajadorBaseDatos(formBusquedaTrabajador: FormGroup) {
+    buscarTrabajadorBaseDatos(idTipDocIdent: number, numDocIdent: string) {
       console.log(`Buscando al trabajador en Base de Datos...`);
-      this.trabajadorService.findTrabajadorsByDocIdent(Number(formBusquedaTrabajador.value.documento.tipDoc), formBusquedaTrabajador.value.documento.numDoc as String).subscribe(
+      this.trabajadorService.findTrabajadorsByDocIdent(idTipDocIdent, numDocIdent).subscribe(
         (res: ResponseWrapper) => {
-          this.listaTrabajador = res.json;
-          if (JSON.stringify(this.listaTrabajador[0])) {
-            console.log(`¡Trabajador encontrado! Trabajador con Id:${this.listaTrabajador[0].Trabajador.id}`);
+          if (res.json[0]) {
+            this.modelDatosTrabajador = res.json[0].Trabajador;
+            console.log(`¡Trabajador encontrado! Trabajador con Id:${this.modelDatosTrabajador.id}`);
             this.abrirPopupBusquedaVinculosLaborales();
           } else {
             console.log(`No existe el trabajador en la base de datos`);
-            this.buscarTrabajadorReniec(formBusquedaTrabajador);
+            // this.buscarTrabajadorReniec(formBusquedaTrabajador);
           }
         },
         (res: ResponseWrapper) => {
@@ -270,7 +298,7 @@ export class TrabajadorComponent implements OnInit {
 
     // Abrir el popup de busqueda de vinculos laborales
     abrirPopupBusquedaVinculosLaborales() {
-      this.router.navigate(['/liquidaciones/registro-atencion/trabajador' , { outlets: { popupexp: [Number(JSON.stringify(this.listaTrabajador[0].Trabajador.id))] } }]);
+      this.router.navigate(['/liquidaciones/registro-atencion/trabajador' , { outlets: { popupexp: [Number(JSON.stringify(this.modelDatosTrabajador.id))] } }]);
       // this.mostrarFormularioDatosTrabajador();
     };
 
@@ -282,12 +310,12 @@ export class TrabajadorComponent implements OnInit {
     // Carga los datos laborales
     cargarDatosLaborales() {
       this.trabajadorTransferService.datlabSeleccionado.subscribe((datlab) => {
-        this.datlab = datlab as Datlab;
+        this.modelDatosLaborales = datlab as Datlab;
         this.mostrarFormularioDatosTrabajador();
         this.contruirFormularioDatosTrabajador();
         this.setearValidacionesFormularioDatosTrabajador(this.formDatosTrabajador);
         this.setearDatosTablaDirecciones();
-        // console.log(this.datlab);
+        // console.log(this.modelDatosLaborales);
       });
     };
 
@@ -337,37 +365,56 @@ export class TrabajadorComponent implements OnInit {
 
     setearValidacionesFormularioDatosTrabajador(formDatosTrabajador: FormGroup) {
       // console.log('Setea validaciones');
-      (this.formDatosTrabajador.get('apePat') as FormControl).setValue(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).vApepat);
-      (this.formDatosTrabajador.get('apeMat') as FormControl).setValue(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).vApemat);
-      (this.formDatosTrabajador.get('nombres') as FormControl).setValue(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).vNombres);
+      (this.formDatosTrabajador.get('apePat') as FormControl).setValue(((this.modelDatosLaborales.trabajador as Trabajador).pernatural as Pernatural).vApepat);
+      (this.formDatosTrabajador.get('apeMat') as FormControl).setValue(((this.modelDatosLaborales.trabajador as Trabajador).pernatural as Pernatural).vApemat);
+      (this.formDatosTrabajador.get('nombres') as FormControl).setValue(((this.modelDatosLaborales.trabajador as Trabajador).pernatural as Pernatural).vNombres);
       (this.formDatosTrabajador.get('fecNac') as FormControl).setValue(new Date(
-      +(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).dFecnac as string).substring(0, 4),
-      +(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).dFecnac as string).substring(5, 7) - 1,
-      +(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).dFecnac as string).substring(8, 10)));
-      (this.formDatosTrabajador.get('sexo') as FormControl).setValue(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).vSexoper);
-      (this.formDatosTrabajador.get('numTel') as FormControl).setValue(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).vTelefono);
-      (this.formDatosTrabajador.get('numCel') as FormControl).setValue(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).vCelular);
-      (this.formDatosTrabajador.get('email') as FormControl).setValue(((this.datlab.trabajador as Trabajador).pernatural as Pernatural).vEmailper);
-      // console.log((((this.datlab.trabajador as Trabajador).pernatural as Pernatural).dFecnac as Date));
+      +(((this.modelDatosLaborales.trabajador as Trabajador).pernatural as Pernatural).dFecnac as string).substring(0, 4),
+      +(((this.modelDatosLaborales.trabajador as Trabajador).pernatural as Pernatural).dFecnac as string).substring(5, 7) - 1,
+      +(((this.modelDatosLaborales.trabajador as Trabajador).pernatural as Pernatural).dFecnac as string).substring(8, 10)));
+      (this.formDatosTrabajador.get('sexo') as FormControl).setValue(((this.modelDatosLaborales.trabajador as Trabajador).pernatural as Pernatural).vSexoper);
+      (this.formDatosTrabajador.get('numTel') as FormControl).setValue(((this.modelDatosLaborales.trabajador as Trabajador).pernatural as Pernatural).vTelefono);
+      (this.formDatosTrabajador.get('numCel') as FormControl).setValue(((this.modelDatosLaborales.trabajador as Trabajador).pernatural as Pernatural).vCelular);
+      (this.formDatosTrabajador.get('email') as FormControl).setValue(((this.modelDatosLaborales.trabajador as Trabajador).pernatural as Pernatural).vEmailper);
+      // console.log((((this.modelDatosLaborales.trabajador as Trabajador).pernatural as Pernatural).dFecnac as Date));
+      // console.log(formDatosTrabajador.get('sexo').value);
     };
 
     setearDatosTablaDirecciones() {
-      this.cargarDirecPerNatu((this.datlab.trabajador as Trabajador).id);
-
+      this.cargarDirecPerNatu((this.modelDatosLaborales.trabajador as Trabajador).id);
     };
 
     cargarDirecPerNatu(id: number) {
         this.trabajadorService.buscarDireccionesPerNat(id).subscribe(
             (res: ResponseWrapper) => {
-                this.listaDirpernat = res.json;
-                console.log(`El trabajador tiene ${this.listaDirpernat.length} registros de Direcciones`);
+                // console.log(JSON.stringify(res.json));
+                this.modelDireccionesPerNat = res.json;
+
+                console.log(`El trabajador tiene ${this.modelDireccionesPerNat.length} registros de Direcciones`);
+                console.log(JSON.stringify(this.modelDireccionesPerNat));
             },
             (res: ResponseWrapper) => { this.onError(res.json); }
         );
     };
 
-    btnEliminarDireccion(id: number) {
-      console.log(`Elimino la direccion con id: ${id}`);
+    /*
+    cargarDirecPerNatu(id: number) {
+        this.trabajadorService.buscarDireccionesPerNat(id).subscribe(
+            (res: ResponseWrapper) => {
+                for (let direc of res.json){
+                  this.modelDireccionesPerNat.push(direc as Dirpernat);
+                }
+                console.log(`El trabajador tiene ${this.modelDireccionesPerNat.length} registros de Direcciones`);
+                console.log(this.modelDireccionesPerNat[0]);
+            },
+            (res: ResponseWrapper) => { this.onError(res.json); }
+        );
+    };
+    */
+
+    btnEliminarDireccion(rowIndex, dtDirecciones: DataTable) {
+      this.modelDireccionesPerNat.splice(rowIndex,1);
+      dtDirecciones.reset();
     };
 
     abrirPopupDireccion(ubigeo: any) {

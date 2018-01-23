@@ -126,16 +126,14 @@
                                 <label for="inpN" class="col-form-label col-form-label-sm">Sucesion Intestada:</label>
                                 <div class="col-sm-7 col-md-7">
                                     <div class="input-group">
-                                        <!--input type="hidden" name="toggle" [(ngModel)]="binding"-->
                                         <div id="radioBtn" class="btn-group">
-                                            <a class="btn btn-dark btn-sm notActive" data-toggle="happy" data-title="Y">SI</a>
-                                            <a class="btn btn-dark btn-sm active" data-toggle="happy" data-title="N">NO</a>
+                                            <a class="btn btn-dark btn-sm" [ngClass]="{ active: sucesion == true, notActive: sucesion == false}" data-title="Y" (click)="btnSucesion(true)">SI</a>
+                                            <a class="btn btn-dark btn-sm" [ngClass]="{ active: sucesion == false, notActive: sucesion == true}" data-title="N" (click)="btnSucesion(false)">NO</a>
                                         </div>
-                                        <input type="hidden" name="happy" id="happy">
                                     </div>
                                 </div>
                             </div>
-                            <div *ngIf="showImputTextNumPartidaSucesion == true" class="col-md-3 mb-2">
+                            <div *ngIf="sucesion == true" class="col-md-3 mb-2">
                                 <label for="inpPartida" class="col-form-label col-form-label-sm">N° Partida de Sucesión Intersada:</label>
                                 <input type="text" class="form-control form-control-sm" id="inpPartida" formControlName="numPartSuc" placeholder="" value="">
                             </div>
@@ -171,7 +169,7 @@
                         <div class="row mb-2">
                             <div class="col-md-7">
                                 <label for="" class="col-form-label col-form-label-sm">Direcciones:</label>
-                                <p-dataTable [value]="listaDirpernat" [scrollable]="true" scrollHeight="100px" selectionMode="single" (onRowSelect)="eventodireccionSeleccionada($event)" [(selection)]="selecDirper"  dataKey="id">
+                                <p-dataTable #dtDirecciones [value]="modelDireccionesPerNat" [scrollable]="true" scrollHeight="100px" selectionMode="single" (onRowSelect)="eventodireccionSeleccionada($event)" [(selection)]="selecDirper"  dataKey="direc.id">
               									    <p-column [style]="{'width':'35px', 'text-align':'center'}" header="#">
               									    	<ng-template let-i="rowIndex" pTemplate="body">
               									    		<span style="text-align:center">{{i+1}}</span>
@@ -181,6 +179,11 @@
               									    <p-column field="prov" header="Provincia"></p-column>
               									    <p-column field="dist" header="Distrito"></p-column>
               									    <p-column field="direc.vDircomple" [style]="{'text-align':'left'}" header="Dirección"></p-column>
+                                    <p-column [style]="{'width':'35px'}" styleClass="text-center">
+                                        <ng-template let-i="rowIndex" pTemplate="body">
+                                            <button pButton class="ui-button-danger" icon="fa-trash-o" type="button" (click)="btnEliminarDireccion(i,dtDirecciones)"></button>
+                                        </ng-template>
+                                    </p-column>
                                     <ng-template pTemplate="emptymessage">
                                         No se han encontrado registros
                                     </ng-template>
@@ -189,7 +192,7 @@
                                     </p-footer>
                                 </p-dataTable>
                                 <p-dialog [width]="500" header="Dirección:" [(visible)]="popupDirecion" (onHide)="cerrarPopupDireccion()" [draggable]="false" [responsive]="true" showEffect="fade" [modal]="true">
-                                    <form [formGroup]="formPopupDireccion" role="form" novalidate (ngSubmit)="AnadirDireccion()">
+                                    <form [formGroup]="formPopupDireccion" role="form" novalidate (ngSubmit)="anadirDireccion()">
                                         <div class="ui-grid ui-grid-responsive ui-fluid" style="height:160px;">
                                             <div class="ui-grid-row form-group mb-2">
                                                 <div class="ui-grid-col-4"><label for="">Departamento</label></div>
@@ -252,7 +255,7 @@
                                           <option value="">Ninguna</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div  *ngIf="formDatosTrabajador.get('sexo').value == 'F'" class="col-md-6">
                                         <label for="selectEmba" class="col-form-label col-form-label-sm">Presenta Embarazo:</label>
                                         <select class="form-control form-control-sm" id="selectEmba" formControlName="embarazo" ngModel>
                                           <!--Por default habria que poner -0 en el set-<option value="">Seleccione una Opcion</option-->
