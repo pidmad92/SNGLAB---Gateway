@@ -9,7 +9,7 @@ import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../../shared';
 
 @Component({
     selector: 'jhi-atencion-legajo',
-    templateUrl: './legajo-atencion.component.html'
+    templateUrl: './atencion-legajo.component.html'
 })
 
 export class AtencionLegajoComponent implements OnInit {

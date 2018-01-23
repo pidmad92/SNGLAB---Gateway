@@ -12,7 +12,7 @@ export const AtencionLegajoRoute: Routes = [
         component: AtencionLegajoComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'global.menu.entities.AtencionLegajo'
+            pageTitle: 'global.menu.entities.patrocionioRegistroAtencion'
         },
         canActivate: [UserRouteAccessService],
         children: [

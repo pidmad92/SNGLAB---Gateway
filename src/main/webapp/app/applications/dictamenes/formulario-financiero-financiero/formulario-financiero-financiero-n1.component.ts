@@ -153,17 +153,17 @@ export class FormularioFinancieroFinancieroN1Component implements OnInit, OnDest
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.constantes.FORM1_COD_PROCREDIR + 'b_' + this.formulario.listaProvisionesCredDirec.length + '_' + this.anios[0];
+        componenteAnioB.codigo = this.constantes.FORM1_COD_PROCREDIR + 'b_' + this.formulario.listaProvisionesCredDirec.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.provisiones.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.constantes.FORM1_COD_PROCREDIR + 'c_' + this.formulario.listaProvisionesCredDirec.length + '_' + this.anios[0];
+        componenteAnioC.codigo = this.constantes.FORM1_COD_PROCREDIR + 'c_' + this.formulario.listaProvisionesCredDirec.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.provisiones.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.constantes.FORM1_COD_PROCREDIR + 'd_' + this.formulario.listaProvisionesCredDirec.length + '_' + this.anios[0];
+        componenteAnioD.codigo = this.constantes.FORM1_COD_PROCREDIR + 'd_' + this.formulario.listaProvisionesCredDirec.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.provisiones.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarProvisiones) {
@@ -256,17 +256,17 @@ export class FormularioFinancieroFinancieroN1Component implements OnInit, OnDest
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.constantes.FORM1_COD_OTROSING + 'b_' + this.formulario.listaOtrosIngresos.length + '_' + this.anios[0];
+        componenteAnioB.codigo = this.constantes.FORM1_COD_OTROSING + 'b_' + this.formulario.listaOtrosIngresos.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.otrosIngresos.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.constantes.FORM1_COD_OTROSING + 'c_' + this.formulario.listaOtrosIngresos.length + '_' + this.anios[0];
+        componenteAnioC.codigo = this.constantes.FORM1_COD_OTROSING + 'c_' + this.formulario.listaOtrosIngresos.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.otrosIngresos.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.constantes.FORM1_COD_OTROSING + 'd_' + this.formulario.listaOtrosIngresos.length + '_' + this.anios[0];
+        componenteAnioD.codigo = this.constantes.FORM1_COD_OTROSING + 'd_' + this.formulario.listaOtrosIngresos.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.otrosIngresos.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarOtrosIngresos) {
@@ -359,17 +359,17 @@ export class FormularioFinancieroFinancieroN1Component implements OnInit, OnDest
         t.componentes.push(componenteAnioA);
 
         const componenteAnioB = new Componente();
-        componenteAnioB.codigo = this.constantes.FORM1_COD_OTROSGAS + 'b_' + this.formulario.listaOtrosGastos.length + '_' + this.anios[0];
+        componenteAnioB.codigo = this.constantes.FORM1_COD_OTROSGAS + 'b_' + this.formulario.listaOtrosGastos.length + '_' + this.anios[1];
         componenteAnioB.cantidad = this.otrosGastos.anioB;
         t.componentes.push(componenteAnioB);
 
         const componenteAnioC = new Componente();
-        componenteAnioC.codigo = this.constantes.FORM1_COD_OTROSGAS + 'c_' + this.formulario.listaOtrosGastos.length + '_' + this.anios[0];
+        componenteAnioC.codigo = this.constantes.FORM1_COD_OTROSGAS + 'c_' + this.formulario.listaOtrosGastos.length + '_' + this.anios[2];
         componenteAnioC.cantidad = this.otrosGastos.anioC;
         t.componentes.push(componenteAnioC);
 
         const componenteAnioD = new Componente();
-        componenteAnioD.codigo = this.constantes.FORM1_COD_OTROSGAS + 'd_' + this.formulario.listaOtrosGastos.length + '_' + this.anios[0];
+        componenteAnioD.codigo = this.constantes.FORM1_COD_OTROSGAS + 'd_' + this.formulario.listaOtrosGastos.length + '_' + this.anios[3];
         componenteAnioD.cantidad = this.otrosGastos.anioD;
         t.componentes.push(componenteAnioD);
         if (this.editarOtrosGastos) {

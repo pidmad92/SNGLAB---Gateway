@@ -365,7 +365,294 @@ export class FormularioFinancieroFinancieroN2Component implements OnInit, OnDest
     // -------------------------------------------------------------------
     // Calculos del Formulario
     // -------------------------------------------------------------------
+    subtotalCarteraCredNetos(event: any) {
+        const columna: string[] = event.target.id.split('_');
+        const idx = columna[2];
+        let suma = 0;
+        let suma2 = 0;
 
+        const idy = this.formulario.listaActivoCorriente.length - 1;
+
+        for (let i = 0; i < this.formulario.listaActivoCorriente.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaActivoCorriente[i].componentes.length; j++) {
+                if (this.formulario.listaActivoCorriente[i].componentes[j].codigo === event.target.id) {
+                    this.formulario.listaActivoCorriente[i].componentes[j].cantidad = Number(event.target.value);
+                }
+            }
+        }
+
+        for (let i = 0; i < this.formulario.listaActivoCorriente.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaActivoCorriente[i].componentes.length; j++) {
+                if (this.formulario.listaActivoCorriente[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                    if (i === 6 || i === 7 || i === 8 || i === 9 || i === 10) {
+                        suma += Number(this.formulario.listaActivoCorriente[i].componentes[j].cantidad);
+                    }
+                    if (i === 11) {
+                        suma -= Number(this.formulario.listaActivoCorriente[i].componentes[j].cantidad);
+                    }
+                }
+            }
+        }
+
+        for (let i = 0; i < this.formulario.listaActivoCorriente.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaActivoCorriente[i].componentes.length; j++) {
+                if (this.formulario.listaActivoCorriente[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                    if (i !== 6 && i !== 7 && i !== 8 && i !== 9 && i !== 10 && i !== 11) {
+                        suma2 += Number(this.formulario.listaActivoCorriente[i].componentes[j].cantidad);
+                    }
+                }
+            }
+        }
+        this.formulario.listaActivoCorriente[5].componentes[idx].cantidad = suma;
+        this.formulario.listaActivoCorriente[idy].componentes[idx].cantidad = suma2;
+        this.totalActivos();
+    }
+
+    subtotalActivoCorriente(event: any) {
+        const columna: string[] = event.target.id.split('_');
+        const idx = columna[2];
+        const idy = this.formulario.listaActivoCorriente.length - 1;
+        let suma = 0;
+
+        for (let i = 0; i < this.formulario.listaActivoCorriente.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaActivoCorriente[i].componentes.length; j++) {
+                if (this.formulario.listaActivoCorriente[i].componentes[j].codigo === event.target.id) {
+                    this.formulario.listaActivoCorriente[i].componentes[j].cantidad = Number(event.target.value);
+                }
+            }
+        }
+
+        for (let i = 0; i < this.formulario.listaActivoCorriente.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaActivoCorriente[i].componentes.length; j++) {
+                if (this.formulario.listaActivoCorriente[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                    if (i !== 6 && i !== 7 && i !== 8 && i !== 9 && i !== 10 && i !== 11) {
+                        suma += Number(this.formulario.listaActivoCorriente[i].componentes[j].cantidad);
+                    }
+                }
+            }
+        }
+        this.formulario.listaActivoCorriente[idy].componentes[idx].cantidad = suma;
+        this.totalActivos();
+    }
+
+    totalActivos() {
+        let ingreso1 = 0;
+        let ingreso2 = 0;
+        let ingreso3 = 0;
+        let ingreso4 = 0;
+
+        const idx = this.formulario.listaActivoCorriente.length - 1;
+        const jdx = this.formulario.listaActivoNoCorriente.length - 1;
+
+        ingreso1 += this.formulario.listaActivoCorriente[idx].componentes[0].cantidad;
+        ingreso2 += this.formulario.listaActivoCorriente[idx].componentes[1].cantidad;
+        ingreso3 += this.formulario.listaActivoCorriente[idx].componentes[2].cantidad;
+        ingreso4 += this.formulario.listaActivoCorriente[idx].componentes[3].cantidad;
+
+        ingreso1 += this.formulario.listaActivoNoCorriente[jdx].componentes[0].cantidad;
+        ingreso2 += this.formulario.listaActivoNoCorriente[jdx].componentes[1].cantidad;
+        ingreso3 += this.formulario.listaActivoNoCorriente[jdx].componentes[2].cantidad;
+        ingreso4 += this.formulario.listaActivoNoCorriente[jdx].componentes[3].cantidad;
+
+        this.formulario.totalActivo.componentes[0].cantidad = ingreso1;
+        this.formulario.totalActivo.componentes[1].cantidad = ingreso2;
+        this.formulario.totalActivo.componentes[2].cantidad = ingreso3;
+        this.formulario.totalActivo.componentes[3].cantidad = ingreso4;
+    }
+
+    subtotalANCCarteraCredNetos(event: any) {
+        const columna: string[] = event.target.id.split('_');
+        const idx = columna[2];
+        let suma = 0;
+        let suma2 = 0;
+
+        const idy = this.formulario.listaActivoNoCorriente.length - 1;
+
+        for (let i = 0; i < this.formulario.listaActivoNoCorriente.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaActivoNoCorriente[i].componentes.length; j++) {
+                if (this.formulario.listaActivoNoCorriente[i].componentes[j].codigo === event.target.id) {
+                    this.formulario.listaActivoNoCorriente[i].componentes[j].cantidad = Number(event.target.value);
+                }
+            }
+        }
+
+        for (let i = 0; i < this.formulario.listaActivoNoCorriente.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaActivoNoCorriente[i].componentes.length; j++) {
+                if (this.formulario.listaActivoNoCorriente[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                    if (i === 1 || i === 2 || i === 3 || i === 4 || i === 5) {
+                        suma += Number(this.formulario.listaActivoNoCorriente[i].componentes[j].cantidad);
+                    }
+                    if (i === 6) {
+                        suma -= Number(this.formulario.listaActivoNoCorriente[i].componentes[j].cantidad);
+                    }
+                }
+            }
+        }
+        for (let i = 0; i < this.formulario.listaActivoNoCorriente.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaActivoNoCorriente[i].componentes.length; j++) {
+                if (this.formulario.listaActivoNoCorriente[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                    if (i !== 1 && i !== 2 && i !== 3 && i !== 4 && i !== 5 && i !== 6) {
+                        suma2 += Number(this.formulario.listaActivoNoCorriente[i].componentes[j].cantidad);
+                    }
+                }
+            }
+        }
+        this.formulario.listaActivoNoCorriente[0].componentes[idx].cantidad = suma;
+        this.formulario.listaActivoNoCorriente[idy].componentes[idx].cantidad = suma2;
+        this.totalActivos();
+    }
+
+    subtotalActivoNoCorriente(event: any) {
+        const columna: string[] = event.target.id.split('_');
+        const idx = columna[2];
+        const idy = this.formulario.listaActivoNoCorriente.length - 1;
+        let suma = 0;
+
+        for (let i = 0; i < this.formulario.listaActivoNoCorriente.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaActivoNoCorriente[i].componentes.length; j++) {
+                if (this.formulario.listaActivoNoCorriente[i].componentes[j].codigo === event.target.id) {
+                    this.formulario.listaActivoNoCorriente[i].componentes[j].cantidad = Number(event.target.value);
+                }
+            }
+        }
+
+        for (let i = 0; i < this.formulario.listaActivoNoCorriente.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaActivoNoCorriente[i].componentes.length; j++) {
+                if (this.formulario.listaActivoNoCorriente[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                    if (i !== 1 && i !== 2 && i !== 3 && i !== 4 && i !== 5 && i !== 6) {
+                        suma += Number(this.formulario.listaActivoNoCorriente[i].componentes[j].cantidad);
+                    }
+                }
+            }
+        }
+        this.formulario.listaActivoNoCorriente[idy].componentes[idx].cantidad = suma;
+        this.totalActivos();
+    }
+
+    subtotalPasivoCorriente(event: any) {
+        const columna: string[] = event.target.id.split('_');
+        const idx = columna[2];
+        const idy = this.formulario.listaPasivoCorriente.length - 1;
+        let suma = 0;
+
+        for (let i = 0; i < this.formulario.listaPasivoCorriente.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaPasivoCorriente[i].componentes.length; j++) {
+                if (this.formulario.listaPasivoCorriente[i].componentes[j].codigo === event.target.id) {
+                    this.formulario.listaPasivoCorriente[i].componentes[j].cantidad = Number(event.target.value);
+                }
+            }
+        }
+
+        for (let i = 0; i < this.formulario.listaPasivoCorriente.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaPasivoCorriente[i].componentes.length; j++) {
+                if (this.formulario.listaPasivoCorriente[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                    suma += Number(this.formulario.listaPasivoCorriente[i].componentes[j].cantidad);
+                }
+            }
+        }
+        this.formulario.listaPasivoCorriente[idy].componentes[idx].cantidad = suma;
+        this.totalPasivos();
+    }
+
+    subtotalPasivoNoCorriente(event: any) {
+        const columna: string[] = event.target.id.split('_');
+        const idx = columna[2];
+        const idy = this.formulario.listaPasivoNoCorriente.length - 1;
+        let suma = 0;
+
+        for (let i = 0; i < this.formulario.listaPasivoNoCorriente.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaPasivoNoCorriente[i].componentes.length; j++) {
+                if (this.formulario.listaPasivoNoCorriente[i].componentes[j].codigo === event.target.id) {
+                    this.formulario.listaPasivoNoCorriente[i].componentes[j].cantidad = Number(event.target.value);
+                }
+            }
+        }
+
+        for (let i = 0; i < this.formulario.listaPasivoNoCorriente.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaPasivoNoCorriente[i].componentes.length; j++) {
+                if (this.formulario.listaPasivoNoCorriente[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                    suma += Number(this.formulario.listaPasivoNoCorriente[i].componentes[j].cantidad);
+                }
+            }
+        }
+        this.formulario.listaPasivoNoCorriente[idy].componentes[idx].cantidad = suma;
+        this.totalPasivos();
+    }
+
+    subtotalPatrimonio(event: any) {
+        const columna: string[] = event.target.id.split('_');
+        const idx = columna[2];
+        const idy = this.formulario.listaPatrimonio.length - 1;
+        let suma = 0;
+
+        for (let i = 0; i < this.formulario.listaPatrimonio.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaPatrimonio[i].componentes.length; j++) {
+                if (this.formulario.listaPatrimonio[i].componentes[j].codigo === event.target.id) {
+                    this.formulario.listaPatrimonio[i].componentes[j].cantidad = Number(event.target.value);
+                }
+            }
+        }
+
+        for (let i = 0; i < this.formulario.listaPatrimonio.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaPatrimonio[i].componentes.length; j++) {
+                if (this.formulario.listaPatrimonio[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                    suma += Number(this.formulario.listaPatrimonio[i].componentes[j].cantidad);
+                }
+            }
+        }
+        this.formulario.listaPatrimonio[idy].componentes[idx].cantidad = suma;
+        this.totalPasivosPatrimonio();
+    }
+
+    totalPasivos() {
+        let ingreso1 = 0;
+        let ingreso2 = 0;
+        let ingreso3 = 0;
+        let ingreso4 = 0;
+
+        const idx = this.formulario.listaPasivoCorriente.length - 1;
+        const jdx = this.formulario.listaPasivoNoCorriente.length - 1;
+
+        ingreso1 += this.formulario.listaPasivoCorriente[idx].componentes[0].cantidad;
+        ingreso2 += this.formulario.listaPasivoCorriente[idx].componentes[1].cantidad;
+        ingreso3 += this.formulario.listaPasivoCorriente[idx].componentes[2].cantidad;
+        ingreso4 += this.formulario.listaPasivoCorriente[idx].componentes[3].cantidad;
+
+        ingreso1 += this.formulario.listaPasivoNoCorriente[jdx].componentes[0].cantidad;
+        ingreso2 += this.formulario.listaPasivoNoCorriente[jdx].componentes[1].cantidad;
+        ingreso3 += this.formulario.listaPasivoNoCorriente[jdx].componentes[2].cantidad;
+        ingreso4 += this.formulario.listaPasivoNoCorriente[jdx].componentes[3].cantidad;
+
+        this.formulario.totalPasivo.componentes[0].cantidad = ingreso1;
+        this.formulario.totalPasivo.componentes[1].cantidad = ingreso2;
+        this.formulario.totalPasivo.componentes[2].cantidad = ingreso3;
+        this.formulario.totalPasivo.componentes[3].cantidad = ingreso4;
+        this.totalPasivosPatrimonio();
+    }
+
+    totalPasivosPatrimonio() {
+        let ingreso1 = 0;
+        let ingreso2 = 0;
+        let ingreso3 = 0;
+        let ingreso4 = 0;
+
+        const jdx = this.formulario.listaPatrimonio.length - 1;
+
+        ingreso1 += this.formulario.totalPasivo.componentes[0].cantidad;
+        ingreso2 += this.formulario.totalPasivo.componentes[1].cantidad;
+        ingreso3 += this.formulario.totalPasivo.componentes[2].cantidad;
+        ingreso4 += this.formulario.totalPasivo.componentes[3].cantidad;
+
+        ingreso1 += this.formulario.listaPatrimonio[jdx].componentes[0].cantidad;
+        ingreso2 += this.formulario.listaPatrimonio[jdx].componentes[1].cantidad;
+        ingreso3 += this.formulario.listaPatrimonio[jdx].componentes[2].cantidad;
+        ingreso4 += this.formulario.listaPatrimonio[jdx].componentes[3].cantidad;
+
+        this.formulario.totalPasivoPatrimonio.componentes[0].cantidad = ingreso1;
+        this.formulario.totalPasivoPatrimonio.componentes[1].cantidad = ingreso2;
+        this.formulario.totalPasivoPatrimonio.componentes[2].cantidad = ingreso3;
+        this.formulario.totalPasivoPatrimonio.componentes[3].cantidad = ingreso4;
+    }
     // -------------------------------------------------------------------
     // Solo numeros
     keyPress(event: any) {

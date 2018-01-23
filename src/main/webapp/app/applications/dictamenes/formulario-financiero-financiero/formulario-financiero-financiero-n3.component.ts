@@ -239,7 +239,53 @@ export class FormularioFinancieroFinancieroN3Component implements OnInit, OnDest
     // -------------------------------------------------------------------
     // Calculos del Formulario
     // -------------------------------------------------------------------
+    subtotalDirectos(event: any) {
+        const columna: string[] = event.target.id.split('_');
+        const idx = columna[2];
+        const idy = this.formulario.listaEstrucCredDirecModalidad.length - 1;
+        let suma = 0;
 
+        for (let i = 0; i < this.formulario.listaEstrucCredDirecModalidad.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaEstrucCredDirecModalidad[i].componentes.length; j++) {
+                if (this.formulario.listaEstrucCredDirecModalidad[i].componentes[j].codigo === event.target.id) {
+                    this.formulario.listaEstrucCredDirecModalidad[i].componentes[j].cantidad = Number(event.target.value);
+                }
+            }
+        }
+
+        for (let i = 0; i < this.formulario.listaEstrucCredDirecModalidad.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaEstrucCredDirecModalidad[i].componentes.length; j++) {
+                if (this.formulario.listaEstrucCredDirecModalidad[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                    suma += Number(this.formulario.listaEstrucCredDirecModalidad[i].componentes[j].cantidad);
+                }
+            }
+        }
+        this.formulario.listaEstrucCredDirecModalidad[idy].componentes[idx].cantidad = suma;
+    }
+
+    subtotalIndirectos(event: any) {
+        const columna: string[] = event.target.id.split('_');
+        const idx = columna[2];
+        const idy = this.formulario.listaEstrucCredIndirectos.length - 1;
+        let suma = 0;
+
+        for (let i = 0; i < this.formulario.listaEstrucCredIndirectos.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaEstrucCredIndirectos[i].componentes.length; j++) {
+                if (this.formulario.listaEstrucCredIndirectos[i].componentes[j].codigo === event.target.id) {
+                    this.formulario.listaEstrucCredIndirectos[i].componentes[j].cantidad = Number(event.target.value);
+                }
+            }
+        }
+
+        for (let i = 0; i < this.formulario.listaEstrucCredIndirectos.length - 1; i++) {
+            for (let j = 0; j < this.formulario.listaEstrucCredIndirectos[i].componentes.length; j++) {
+                if (this.formulario.listaEstrucCredIndirectos[i].componentes[j].codigo.indexOf(columna[2] + '_' + columna[3]) !== -1) {
+                    suma += Number(this.formulario.listaEstrucCredIndirectos[i].componentes[j].cantidad);
+                }
+            }
+        }
+        this.formulario.listaEstrucCredIndirectos[idy].componentes[idx].cantidad = suma;
+    }
     // -------------------------------------------------------------------
     // Solo numeros
     keyPress(event: any) {

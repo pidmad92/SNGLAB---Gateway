@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { GatewaySharedModule } from '../../../shared';
 import {
     ConsultaExpedienteComponent,
+    ConsultaExpedienteService,
     ConsultaExpedienteDialogComponent,
     ConsultaExpedientePopupComponent,
     ConsultaExpedientePopupService,
@@ -14,7 +15,8 @@ import {
     ConsultaExpedienteObservarPopupComponent,
     ConsultaExpedienteObservarPopupService,
     consultaExpedienteRoute } from './';
-import { TabViewModule, DataTableModule, CheckboxModule, DropdownModule, CalendarModule } from 'primeng/primeng';
+import { TabViewModule, DataTableModule, CheckboxModule, DropdownModule, CalendarModule, RadioButtonModule, ConfirmDialogModule, BlockUIModule } from 'primeng/primeng';
+import {GrowlModule} from 'primeng/components/growl/growl';
 
 const ENTITY_STATES = [
     ...consultaExpedienteRoute
@@ -28,6 +30,9 @@ const ENTITY_STATES = [
         CheckboxModule,
         DropdownModule,
         CalendarModule,
+        RadioButtonModule,
+        ConfirmDialogModule,
+        BlockUIModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
@@ -50,6 +55,7 @@ const ENTITY_STATES = [
         ConsultaExpedienteObservarPopupComponent
     ],
     providers: [
+        ConsultaExpedienteService,
         ConsultaExpedientePopupService,
         ConsultaExpedienteArchivarPopupService,
         ConsultaExpedienteObservarPopupService

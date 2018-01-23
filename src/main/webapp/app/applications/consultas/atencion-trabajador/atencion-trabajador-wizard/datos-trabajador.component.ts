@@ -209,7 +209,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
             this.trabajador = trabajador;
             if (this.trabajador.id !== undefined) {
                 this.loadDirecPerNatu(this.trabajador.id);
-                if (this. trabajador.nFlgsuces) {
+                if (this.trabajador.nFlgsuces) {
                     this.atencionTrabajadorService.findSucesorByTrabajador(this.trabajador.id).subscribe((sucesor) => {
                         this.sucesor = sucesor;
                         if (this.sucesor.id !== undefined) {
@@ -219,6 +219,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                             this.vNumdocumentosu = this.sucesor.pernatural.vNumdoc;
                             this.dirpersu.pernatural = this.sucesor.pernatural;
                             this.loadDirecPerSucesor(this.sucesor.id);
+                            this.registerChangeSucesor();
                         } else {
                             this.dirpersu = new Dirpernat();
                             this.dirpersucesor = [];
@@ -227,7 +228,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                             this.sucesor.trabajador = new Trabajador();
                         }
                     });
-                    this.registerChangeSucesor();
+                    // this.registerChangeSucesor();
                 }
             }
             this.registerChangeInTrabajador();
@@ -292,6 +293,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                     this.router.navigate(['/consultas/atencion-trabajador']);
                 } else if (actividadsel === '1') { // Si el flujo es generado al clickear el boton nuevo registro se instanciaran los datos en blanco
                         if (this.paganterior === '0') {
+                            // console.log('Entro PaginaAnterior Cero');
                             this.isVisible = false;
                             this.trabajador = new Trabajador();
                             this.trabajador.pernatural = new Pernatural();
@@ -306,6 +308,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                             this.ngOnDestroy();
                         } else {
                             if (this.paganterior >= '1') {
+                                // console.log('Entro Pagina ANterior mayor a uno');
                                     // console.log('Recupera trabajador grabado: ' + JSON.stringify(this.trabajador));
                                     if (this.trabajador.id !== undefined) {
                                         this.isVisible = true;
@@ -325,9 +328,11 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                                         this.sucesor.pernatural = new Pernatural();
                                         this.sucesor.trabajador = new Trabajador();
                                         if (this.trabajador.nFlgsuces) {
+                                            // console.log('Trabajador con sucesor 1');
                                             this.registroAtencionWizard.sucesorSeleccionado.subscribe((loadSucesor) => {
                                                 this.sucesor = loadSucesor;
                                                 if (this.sucesor.id !== undefined) {
+                                                    // console.log('sucesor ya grabado 1');
                                                     this.sucesor.pernatural = loadSucesor.pernatural;
                                                     this.sucesor.trabajador = loadSucesor.trabajador;
                                                     this.selectedTipodocsu = this.sucesor.pernatural.tipdocident;
@@ -335,20 +340,28 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                                                     // this.dFecnac = this.atencionTrabajadorService.convertFechas(this.trabajador.pernatural.dFecnac);
                                                     this.dirpersu.pernatural = this.sucesor.pernatural;
                                                     this.loadDirecPerSucesor(this.sucesor.pernatural.id);
+                                                } else {
+                                                    // console.log('tiene sucesor pero aun no se ha grabado');
+                                                    // this.sucesor = new Sucesor();
+                                                    // this.sucesor.pernatural = new Pernatural();
+                                                    // this.sucesor.trabajador = new Trabajador();
+                                                    // this.selectedTipodocsu = undefined;
+                                                    // this.vNumdocumentosu = '';
                                                 }
                                             });
                                         }
                                     } else {
+                                        // console.log('Actividad 1, trabajador undefined');
                                         this.isVisible = false;
                                         this.trabajador = new Trabajador();
                                         this.trabajador.pernatural = new Pernatural();
-                                        this.sucesor = new Sucesor();
-                                        this.sucesor.pernatural = new Pernatural();
-                                        this.sucesor.trabajador = new Trabajador();
+                                        // this.sucesor = new Sucesor();
+                                        // this.sucesor.pernatural = new Pernatural();
+                                        // this.sucesor.trabajador = new Trabajador();
                                         this.dirpernat = [];
                                         this.dirper = new Dirpernat();
-                                        this.dirpersu = new Dirpernat();
-                                        this.dirpersucesor = [];
+                                        // this.dirpersu = new Dirpernat();
+                                        // this.dirpersucesor = [];
                                     }
                             }
                         }
@@ -371,11 +384,13 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                         this.sucesor.pernatural = new Pernatural();
                         this.sucesor.trabajador = new Trabajador();
                         if (this.trabajador.nFlgsuces) {
+                            // console.log('atencion datlab trabajador con sucesor');
                             this.registroAtencionWizard.sucesorSeleccionado.subscribe((loadSucesor) => {
                                 this.sucesor = loadSucesor;
                                 // this.sucesor.pernatural = loadSucesor.pernatural;
                                 // console.log('Atencion.datlab.Sucesor1: ' + JSON.stringify(this.sucesor));
                                 if (this.sucesor.id === undefined) {
+                                    // console.log('atencion datlab trabajador sucesor aun no grabado');
                                     this.sucesor = new Sucesor();
                                     this.sucesor.pernatural = new Pernatural();
                                     this.sucesor.trabajador = new Trabajador();
@@ -385,13 +400,16 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                                         this.sucesor = sucesor;
                                         // console.log('Atencion.datlab.Sucesor2: ' + JSON.stringify(this.sucesor));
                                         if (this.sucesor.id !== undefined) {
+                                            // console.log('atencion datlab trabajdor sucesor encontrado: ');
                                             this.sucesor.pernatural = sucesor.pernatural;
                                             this.sucesor.trabajador = sucesor.trabajador;
                                             this.selectedTipodocsu = this.sucesor.pernatural.tipdocident;
                                             this.vNumdocumentosu = this.sucesor.pernatural.vNumdoc;
                                             this.dirpersu.pernatural = this.sucesor.pernatural;
                                             this.loadDirecPerSucesor(this.sucesor.pernatural.id);
+                                            this.registerChangeSucesor();
                                         } else {
+                                            // console.log('atencion datlab trabajador sucesor no encntrado');
                                             this.dirpersu = new Dirpernat();
                                             this.dirpersucesor = [];
                                             this.sucesor = new Sucesor();
@@ -401,15 +419,17 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                                     });
                                 } else if (this.sucesor.id !== undefined) {
                                         // console.log('Existe Sucesor!');
+                                        // console.log('atencion datlab trabajador sucesor ya grabado');
                                         this.sucesor.pernatural = loadSucesor.pernatural;
                                         this.sucesor.trabajador = loadSucesor.trabajador;
                                         this.selectedTipodocsu = this.sucesor.pernatural.tipdocident;
-                                        this.vNumdocumento = this.sucesor.pernatural.vNumdoc;
+                                        this.vNumdocumentosu = this.sucesor.pernatural.vNumdoc;
                                         this.dirpersu.pernatural = this.sucesor.pernatural;
                                         this.loadDirecPerSucesor(this.sucesor.pernatural.id);
                                 }
                             });
                         } else {
+                            // console.log('atencion datlab trabajador sin sucesor');
                             this.dirpersu = new Dirpernat();
                             this.dirpersucesor = [];
                             this.sucesor = new Sucesor();
@@ -431,10 +451,12 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                         this.sucesor.pernatural = new Pernatural();
                         this.sucesor.trabajador = new Trabajador();
                         if (this.trabajador.nFlgsuces) {
+                            // console.log('atencion trabajador con sucesor');
                             this.registroAtencionWizard.sucesorSeleccionado.subscribe((loadSucesor) => {
                                 this.sucesor = loadSucesor;
                                 // console.log('Atencion.trabajador.Sucesor3: ' + JSON.stringify(this.sucesor));
                                 if (this.sucesor.id === undefined) {
+                                    // console.log('atencion trabajador sucesor aun no grabado');
                                     this.sucesor = new Sucesor();
                                     this.sucesor.pernatural = new Pernatural();
                                     this.sucesor.trabajador = new Trabajador();
@@ -442,13 +464,16 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                                         this.sucesor = sucesor;
                                         // console.log('Atencion.trabajador.Sucesor4: ' + JSON.stringify(this.sucesor));
                                         if (this.sucesor.id !== undefined) {
+                                            // console.log('atencion trabajador sucesor encontrado');
                                             this.sucesor.pernatural = sucesor.pernatural;
                                             this.sucesor.trabajador = sucesor.trabajador;
                                             this.selectedTipodocsu = this.sucesor.pernatural.tipdocident;
                                             this.vNumdocumentosu = this.sucesor.pernatural.vNumdoc;
                                             this.dirpersu.pernatural = this.sucesor.pernatural;
                                             this.loadDirecPerSucesor(this.sucesor.pernatural.id);
+                                            this.registerChangeSucesor();
                                         } else {
+                                            // console.log('atencion trabajador sucesor no encontrado');
                                             this.dirpersu = new Dirpernat();
                                             this.dirpersucesor = [];
                                             this.sucesor = new Sucesor();
@@ -458,6 +483,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                                     });
                                 }
                                 if (this.sucesor.id !== undefined) {
+                                    // console.log('atencion trabajador sucesor ya grabado');
                                     this.sucesor.pernatural = loadSucesor.pernatural;
                                     this.sucesor.trabajador = loadSucesor.trabajador;
                                     this.selectedTipodocsu = this.sucesor.pernatural.tipdocident;
@@ -467,6 +493,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                                 }
                             });
                         } else {
+                            // console.log('atencion trabajador sin sucesor');
                             this.dirpersu = new Dirpernat();
                             this.dirpersucesor = [];
                             this.sucesor = new Sucesor();
@@ -476,6 +503,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
                     }
                 }
             });
+            // console.log('OnInit antes de registrar sucesor: ' + JSON.stringify(this.sucesor));
             this.registerChangeSucesor();
             this.registerChangePaganterior();
             });
@@ -543,9 +571,9 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
     showDialogToAction(accion: number) {
         this.accion = accion;
         if (this.accion === 2) {
-            console.log('Editar: ' + this.dirper);
+            // console.log('Editar: ' + this.dirper);
         } else if (this.accion === 3) {
-            console.log('Eliminar: ' + this.dirper);
+            // console.log('Eliminar: ' + this.dirper);
         }
         this.newDirec = false;
         this.displayDialog = true;
@@ -554,9 +582,9 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
     showDialogToActionsu(accion: number) {
         this.accionsu = accion;
         if (this.accionsu === 2) {
-            console.log('Editar: ' + this.dirpersu);
+            // console.log('Editar: ' + this.dirpersu);
         } else if (this.accionsu === 3) {
-            console.log('Eliminar: ' + this.dirpersu);
+            // console.log('Eliminar: ' + this.dirpersu);
         }
         this.newDirecsu = false;
         this.displayDialogsu = true;
@@ -597,7 +625,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
             this.subscribeToSaveResponse(
                 this.atencionTrabajadorService.updateDirPerNat(this.dirpersu));
         }
-        this.dirper = new Dirpernat();
+        this.dirpersu = new Dirpernat();
     }
 
     close() {
@@ -617,7 +645,13 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
     deletesu() {}
 
     registerChangeSucesor() {
+        // console.log('Registrar Sucesor: ' + JSON.stringify(this.sucesor));
+        // this.sucesor.pernatural.tipdocident = this.selectedTipodocsu;
+        // this.sucesor.pernatural.vNumdoc = this.vNumdocumentosu;
         this.registroAtencionWizard.cambiarSucesor(this.sucesor);
+        // this.registroAtencionWizard.sucesorSeleccionado.subscribe((loadSucesor) => {
+        //     this.sucesor = loadSucesor;
+        // });
     }
 
     registerChangeInTrabajador() {
@@ -653,7 +687,7 @@ export class DatosTrabajadorComponent implements OnInit, OnDestroy {
         this.close();
     }
     private onSaveError() {
-        console.log('saveerror');
+        // console.log('saveerror');
     }
 
     previousState() {

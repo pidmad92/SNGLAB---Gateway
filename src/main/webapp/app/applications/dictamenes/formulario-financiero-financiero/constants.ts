@@ -508,7 +508,7 @@ export class Constants {
     //  TOTAL CARTERA DE CRÉDITOS NETOS
     public readonly FORM2C_COD_AC_CARTERANETO_TOTAL = 'ff2c_accarteranetototal';
     //  OTROS ACTIVOS CORRIENTES (*)
-    public readonly FORM2C_COD_AC_OTROSCORRIENTES = 'ff2c_acotros';
+    public readonly FORM2C_COD_AC_OTROSCORRIENTES = 'ff2c_zac';
     public readonly FORM2C_COD_AC_OTROSCORRIENTES_TOTAL = 'ff2c_acotrostotal';
     // ACTIVOS NO CORRIENTES
     //  CARTERA DE CRÉDITOS NETOS (*)
@@ -527,23 +527,23 @@ export class Constants {
     //      Refinanciados y Reestructurados
     public readonly FORM2C_COD_ANC_CARTERANETOS_REFINANREESTRUC = 'ff2c_anccarteranetosrefinanreestruc';
     //      Atrasados
-    public readonly FORM2C_COD_ANC_CARTERANETOS_ATRASADOS_VENCIDOS = 'ff2c_anccarteranetos';
-    public readonly FORM2C_COD_ANC_CARTERANETOS_ATRASADOS_COBRAJUDICIAL = 'ff2c_anccarteranetos';
-    public readonly FORM2C_COD_ANC_CARTERANETOS_ATRASADOS_PROVISIONES = 'ff2c_anccarteranetos';
-    public readonly FORM2C_COD_ANC_CARTERANETOS_ATRASADOS_INTCOMINODEVENGADOS = 'ff2c_anccarteranetos';
-    public readonly FORM2C_COD_ANC_CARTERANETOS_ATRASADOS_TOTAL = 'ff2c_anccarteranetos';
+    public readonly FORM2C_COD_ANC_CARTERANETOS_ATRASADOS_VENCIDOS = 'ff2c_anccarteranetosatrasadosvencidos';
+    public readonly FORM2C_COD_ANC_CARTERANETOS_ATRASADOS_COBRAJUDICIAL = 'ff2c_anccarteranetosatrasadoscobrajudicial';
+    public readonly FORM2C_COD_ANC_CARTERANETOS_ATRASADOS_PROVISIONES = 'ff2c_anccarteranetosatrasadospovisiones';
+    public readonly FORM2C_COD_ANC_CARTERANETOS_ATRASADOS_INTCOMINODEVENGADOS = 'ff2c_anccarteranetosatrasadosintcominodevengados';
+    public readonly FORM2C_COD_ANC_CARTERANETOS_ATRASADOS_TOTAL = 'ff2c_anccarteranetosatrasadostotal';
     //  TOTAL CARTERA DE CRÉDITOS NETOS (*)
     public readonly FORM2C_COD_ANC_CARTERANETOS_TOTAL = 'ff2c_anccarteranetostotal';
     //  OTROS ACTIVOS CORRIENTES (*)
-    public readonly FORM2C_COD_ANC_OTROSCORRIENTES = 'ff2c_ancotros';
+    public readonly FORM2C_COD_ANC_OTROSCORRIENTES = 'ff2c_zan';
     public readonly FORM2C_COD_ANC_OTROSCORRIENTES_TOTAL = 'ff2c_ancotrostotal';
     // PASIVOS CORRIENTES
     //  OTROS PASIVOS CORRIENTES (*)
-    public readonly FORM2C_COD_PC_OTROS = 'ff2c_pcotros';
+    public readonly FORM2C_COD_PC_OTROS = 'ff2c_zpc';
     public readonly FORM2C_COD_PC_OTROS_TOTAL = 'ff2c_pcotrostotal';
     // PASIVOS NO CORRIENTES
     //  OTROS PASIVOS NO CORRIENTES (*)
-    public readonly FORM2C_COD_PNC_OTROS = 'ff2c_pncotros';
+    public readonly FORM2C_COD_PNC_OTROS = 'ff2c_zpn';
     public readonly FORM2C_COD_PNC_OTROS_TOTAL = 'ff2c_pncotrostotal';
     // Formulario 3
     // -----------------------------------------------------------------

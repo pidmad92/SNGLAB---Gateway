@@ -1,7 +1,9 @@
+<p-blockUI [blocked]="block"></p-blockUI>
+<p-growl [(value)]="mensajes"></p-growl>
 <div class="row mt-3">
     <div class="col">
-        <div class="card card-panel mb-3">
-            <div class="card-header d-sm-flex justify-content-between">
+        <div class="card card-mtpe mb-3">
+            <div class="card-header bg-light d-sm-flex justify-content-between p-1">
                 <h5>Consulta de Expediente</h5>
             </div>
             <div class="card-body">
@@ -12,34 +14,25 @@
                             <form>
                                 <div class="form-row">
                                     <div class="col-md-9">
-                                        <div class="form-group row">
+                                        <div class="form-group row mb-3">
                                             <label for="inpTipo" class="col-sm-3 col-form-label">Ubicación:</label>
                                             <div class="col-sm-3 pl-0">
-                                                <select class="form-control form-control-sm" id="inpTipo">
-                                                    <option>DNI</option>
-                                                    <option>RUC</option>
-                                                </select>
+                                                <p-dropdown name="ubicacion" optionLabel="descUbicacion" inputId="id" [options]="ubicacion" [(ngModel)]="selectedUbicacion" placeholder="Seleccione la ubicación"></p-dropdown>
                                             </div>
                                             <label for="inpNumero" class="col-sm-2 col-form-label">Conciliador:</label>
                                             <div class="col-sm-4">
-                                                <select class="form-control form-control-sm" id="inpTipo">
-                                                    <option>DNI</option>
-                                                    <option>RUC</option>
-                                                </select>
+                                                <p-dropdown name="abogados" optionLabel="vNomabogad" inputId="id" [options]="abogados" [(ngModel)]="selectedAbogado" placeholder="Seleccione al Abogado Conciliador"></p-dropdown>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inpTipo" class="col-sm-3 col-form-label">Resultado de Aud.:</label>
                                             <div class="col-sm-9 pl-0">
-                                                <select class="form-control form-control-sm" id="inpTipo">
-                                                    <option>DNI</option>
-                                                    <option>RUC</option>
-                                                </select>
+                                                <p-dropdown name="resulconci" optionLabel="vDescrip" inputId="id" [options]="resultadoConci" [(ngModel)]="selectedResulconci" placeholder="Seleccione el Resultado de la Conciliación"></p-dropdown>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <a href="#" class="btn btn-sm btn-secondary "><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
+                                        <a href="#" (click)="buscarExpedientes()" class="btn btn-sm btn-secondary "><i class="fa fa-search-plus" aria-hidden="true"></i> Buscar</a>
                                     </div>
                                 </div>
                             </form>

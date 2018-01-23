@@ -703,3 +703,8 @@ table thead tr {
   width:50px;
   margin:auto;
 }
+ul.lista li, ul.lista li a {
+  position: relative!important;
+  cursor: default!important;
+  font-size: 9pt!important;
+}

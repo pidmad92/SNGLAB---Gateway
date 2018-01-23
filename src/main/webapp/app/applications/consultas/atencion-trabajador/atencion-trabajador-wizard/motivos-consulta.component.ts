@@ -181,7 +181,7 @@ export class MotivosConsultaComponent implements OnInit, OnDestroy {
     registerChangeInMotivos() {
         this.eventSubscriber = this.eventManager.subscribe('saveMotivos',
         (response) => {
-            console.log('PasarObjetoMot' + JSON.stringify(this.motsels));
+            // console.log('PasarObjetoMot' + JSON.stringify(this.motsels));
             this.registroAtencionWizard.cambiarMotivos(this.motsels);
         });
     }

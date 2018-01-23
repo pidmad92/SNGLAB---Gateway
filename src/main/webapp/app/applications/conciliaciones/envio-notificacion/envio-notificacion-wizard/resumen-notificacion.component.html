@@ -1,28 +1,37 @@
-RESUMEN NOTIFICACION
+<p-blockUI [blocked]="block"></p-blockUI>
+<p-growl [(value)]="mensajes"></p-growl>
 <div class="row">
     <div class="col">
-        <div class="card card-panel">
-                <div class="card-header d-sm-flex justify-content-between">
-                    <h5>Envio de Notificacion<small class="ml-3">Resumen</small></h5>
-                    <h5 class="mb-0"><small>Paso 3 de 3</small></h5>
-                </div>
-                <div class="card-body">
-                    <div class="row my-3">
-                        <div class="col-md-12">
-                            <p-dataTable [value]="notificaciones" dataKey="codigo">
-                                <p-header>Notificaciones Enviadas</p-header>
-                                <p-column field="item" header="Item"></p-column>
-                                <p-column field="henvio" header="Hoja de Envió"></p-column>
-                                <p-column field="nexpediente" header="N° Expediente"></p-column>                                
-                                <p-column field="nombrerazon" header="Nombre o Razón Social"></p-column>
-                                <p-column field="direccion" header="Dirección Destinatario"></p-column>
-                                <p-column field="faudiencia" header="Fecha Audiencia"></p-column>
-                                <p-column field="tipodoc" header="Tipo Doc."></p-column>
-                                <p-column field="notificar" header="Notificar"></p-column>
-                            </p-dataTable>
-                        </div>
+        <div class="card card-mtpe">
+            <div class="card-header bg-light d-sm-flex justify-content-between p-1">
+                <h5><small class="ml-3">Envió de Notificaciones - Resumen</small></h5>
+                <h5 class="mb-0"><small>Paso 3 de 3</small></h5>
+            </div>
+            <div class="card-body">
+                <div class="row my-3">
+                    <div class="col-md-12">
+                        <p-dataTable [value]="response.item" dataKey="codigo">
+                            <p-header>Notificaciones Enviadas</p-header>
+                            <p-column [style]="{'width':'50px', 'text-align':'center'}" header="Item">
+                                <ng-template let-i="rowIndex" pTemplate="body">
+                                    <span style="text-align:center">{{i+1}}</span>
+                                </ng-template>
+                            </p-column>
+                            <p-column field="doNohetxt" header="Hoja de Envió"></p-column>
+                            <p-column field="nexpediente" header="N° Expediente"></p-column>                                
+                            <p-column field="nrodocumento" header="N° Documento"></p-column>
+                            <p-column field="nombrerazon" header="Nombre o Razón Social"></p-column>
+                            <p-column field="direccion" header="Dirección Destinatario"></p-column>
+                            <p-column field="faudiencia" header="Fecha Audiencia"></p-column>
+                            <p-column field="tipodoc" header="Tipo Not."></p-column>
+                            <p-column field="notificar" header="Notificar"></p-column>
+                            <ng-template pTemplate="emptymessage">
+                                No se han encontrado registros
+                            </ng-template>
+                        </p-dataTable>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 </div>

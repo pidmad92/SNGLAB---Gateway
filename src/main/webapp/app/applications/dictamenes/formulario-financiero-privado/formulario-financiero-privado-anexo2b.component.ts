@@ -238,12 +238,10 @@ export class FormularioFinancieroPrivadoAnexo2BComponent implements OnInit, OnDe
     crearlistacomponentes(desc: string[], cod: string[], subtotal: boolean, anio: number): Tabla[] {
         const t = new Array<Tabla>();
         for (let j = 0; j < desc.length; j++) {
-            console.log('j: ' + j);
             t[j] = new Tabla();
             t[j].descripcion = desc[j];
             t[j].componentes = new Array<Componente>();
             for (let i = 0; i < 14; i++) {
-                console.log('i: ' + i);
                 t[j].componentes[i] = new Componente();
                 t[j].componentes[i].codigo = cod[j] + '_' + i + '_' + anio;
                 t[j].componentes[i].cantidad = 0;

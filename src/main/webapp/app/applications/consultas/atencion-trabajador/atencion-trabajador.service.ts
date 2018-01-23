@@ -28,6 +28,7 @@ import { Modcontrato } from '../models/modcontrato.model';
 import { ResponseWrapper, createRequestOption } from '../../../shared';
 import {ComboModel} from '../../general/combobox.model';
 import { Tipdocident } from '../models/tipdocident.model';
+import { Oficina } from '../models/oficina.model';
 
 @Injectable()
 export class AtencionTrabajadorService {
@@ -57,6 +58,7 @@ export class AtencionTrabajadorService {
     private resourceModcontrato = this.resource + 'modcontratoes';
     private resourceSucesor     = this.resource + 'sucesors';
     private resourcePernatural  = this.resource + 'pernaturals';
+    private resourceOficinas    = this.resource + 'oficinas';
 
     // RUTAS DE UBIGEO
     private resourceDepa = this.resource + 'departamentos';
@@ -97,6 +99,17 @@ export class AtencionTrabajadorService {
                 .map((res: Response) => this.convertResponseUbigeo(res));
         }
     // --
+
+// -- OFICINAS
+
+        /**
+         * Tipo de Documento de Identidad
+         * @returns Observable
+         */
+        consultaOficinas(): Observable<ResponseWrapper> {
+            return this.http.get(this.resourceOficinas + '/activos', null)
+                .map((res: Response) => this.convertResponseOficinas(res));
+        }
 
     // -- TIPO DE DOCUMENTO
 
@@ -586,6 +599,20 @@ export class AtencionTrabajadorService {
         }
 
     // CONVERT RESPONSE FORMATED ELEMENT DATES
+
+    private convertResponseOficinas(res: Response): ResponseWrapper {
+        const jsonResponse = res.json();
+        const result = [];
+        for (let i = 0; i < jsonResponse.length; i++) {
+            result.push(this.convertItemFromServerOficinas(jsonResponse[i]));
+        }
+        return new ResponseWrapper(res.headers, result, res.status);
+    }
+
+    private convertItemFromServerOficinas(json: any): Oficina {
+        const entity: Oficina = Object.assign(new Oficina(), json);
+        return entity;
+    }
 
         private convertResponseTipoDocIdentidad(res: Response): ResponseWrapper {
             const jsonResponse = res.json();

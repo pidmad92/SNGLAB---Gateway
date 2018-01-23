@@ -1,3 +1,5 @@
+<p-blockUI [blocked]="block"></p-blockUI>
+<p-growl [(value)]="mensajes"></p-growl>
 <div class="row">
     <div class="col">
             <div class="card card-mtpe">
@@ -16,7 +18,7 @@
                                     <div class="form-group row">
                                         <label for="inpTipo" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo de Notificación</label>
                                         <div class="col-sm-7">
-                                            <p-dropdown name="tipoNotificacion" [options]="tipoNotificacion" [(ngModel)]="selectedTNotificacion" placeholder="Seleccione el Tipo de Notificación"></p-dropdown>
+                                            <p-dropdown name="tipoNotificacion" optionLabel="vDescrip" inputId="id" [options]="tipoNotificacion" [(ngModel)]="expediente.tipoNotificacion" placeholder="Seleccione el Tipo de Notificación"></p-dropdown>
                                         </div>
                                     </div>
                                 </div>
@@ -24,7 +26,7 @@
                                     <div class="form-group row">
                                         <label for="inpNumero" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">Tipo de Envió</label>
                                         <div class="col-sm-5">
-                                            <p-dropdown name="tipoEnvio" [options]="tipoEnvio" [(ngModel)]="selectedTEnvio" placeholder="Seleccione el Tipo de Envió"></p-dropdown>
+                                            <p-dropdown name="tipoenvNotificacion" optionLabel="vDescrip" inputId="id" [options]="tipoenvNotificacion" [(ngModel)]="expediente.tipoEnvio" placeholder="Seleccione el Tipo de Envió"></p-dropdown>
                                         </div>
                                     </div>
                                 </div>
@@ -32,7 +34,7 @@
                                     <div class="form-group row">
                                         <label for="inpNumero" class="col-sm-5 col-form-label col-form-label-sm text-sm-right">N° de Folios</label>
                                         <div class="col-sm-5">
-                                            <input type="number" class="form-control form-control-sm" id="inpNumero" placeholder="">
+                                            <input type="number" class="form-control form-control-sm" id="inpNumero" name="expediente.nroFolios" [(ngModel)]="expediente.nroFolios" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -51,6 +53,9 @@
                                         <p-column field="prov" header="Provincia"></p-column>
                                         <p-column field="dist" header="Distrito"></p-column>
                                         <p-column field="direc.vDircomple" header="Dirección"></p-column>
+                                        <ng-template pTemplate="emptymessage">
+                                            No se han encontrado registros
+                                        </ng-template>
                                     </p-dataTable>
                                 </div>
                             </div>
@@ -67,6 +72,9 @@
                                         <p-column field="prov" header="Provincia"></p-column>
                                         <p-column field="dist" header="Distrito"></p-column>
                                         <p-column field="direc.vDircomple" header="Dirección"></p-column>
+                                        <ng-template pTemplate="emptymessage">
+                                            No se han encontrado registros
+                                        </ng-template>
                                     </p-dataTable>
                                 </div>
                             </div>
@@ -76,3 +84,9 @@
         </div>
     </div>
 </div>
+<p-confirmDialog header="Enviar Notificaciones" icon="fa fa-question-circle" #cd width="425">
+    <p-footer>
+        <button pButton class="ui-button-success" type="button"  icon="fa-save" label="Aceptar" (click)="cd.accept()"></button>
+        <button pButton class="ui-button-info"  type="button"  icon="fa-close" label="Cancelar" (click)="cd.reject()"></button>
+    </p-footer>
+</p-confirmDialog>

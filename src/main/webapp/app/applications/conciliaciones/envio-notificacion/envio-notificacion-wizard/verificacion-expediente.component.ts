@@ -5,15 +5,23 @@ import { SelectItem } from 'primeng/primeng';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { JhiEventManager } from 'ng-jhipster';
 
+import { Message } from 'primeng/primeng';
+import { ConfirmationService } from 'primeng/components/common/api';
+import { padWithZero  } from './../../../applications.constant';
+
+import { Tipnotif } from './../../models/tipnotif.model';
+import { Tipenvnot } from './../../models/tipenvnot.model';
+
 import { ResponseWrapper } from '../../../../shared';
 import { DatosWizardService } from './datos-wizard.service';
-import { Expediente, Empleador, Dirperjuri, Dirpernat } from './../';
+import { Expediente, Empleador, Dirperjuri, Dirpernat, Notifica, Direcnotif } from './../';
 import { EnvioNotificacionWizardService } from './envio-notificacion-wizard.service';
-import { CrearMensajeria, MesgDestinario, Item, Administrado } from './../../models/crearMensajeria.model';
+import { MesgDestinario, Item, Administrado } from './../../models/crearMensajeria.model';
 
 @Component({
     selector: 'jhi-verificacion-expediente',
-    templateUrl: './verificacion-expediente.component.html'
+    templateUrl: './verificacion-expediente.component.html',
+    providers: [ConfirmationService]
 })
 export class VerificacionExpedienteComponent implements OnInit, OnDestroy {
 
@@ -22,32 +30,39 @@ export class VerificacionExpedienteComponent implements OnInit, OnDestroy {
 
     expedientes: Expediente[];
     empleador: Empleador;
+    notifica: Notifica;
+    direcnotif: Direcnotif;
 
-    tipoNotificacion: SelectItem[];
-    tipoEnvio: SelectItem[];
+    idNotificacion = [];
+    tipoNotificacion: Tipnotif;
+    tipoenvNotificacion: Tipenvnot;
     selectedTNotificacion: String;
     selectedTEnvio: String;
-    direcciones: any;
-    direccionesEmp: any;
+
+    block: boolean;
+    mensajes: Message[] = [];
 
     dirperjuri: Dirperjuri[];
     dirpernat: Dirpernat[];
 
-    soapNotificacion: CrearMensajeria;
+    msgDestinatario: MesgDestinario;
 
-    direcSelec: CrearMensajeria;
+    direcSelec: MesgDestinario;
 
     constructor(
         private eventManager: JhiEventManager,
         private datosWizardService: DatosWizardService,
         private router: Router,
-        private envioNotificacionService: EnvioNotificacionWizardService
+        private envioNotificacionService: EnvioNotificacionWizardService,
+        private confirmationService: ConfirmationService,
     ) {}
 
     conseguirDirecciones( idTrabajador, idEmpleador, isPersonaJuridica, indice ) {
+        this.block = true;
         this.datosWizardService.buscarDirecciones(idTrabajador).subscribe(
             (res: ResponseWrapper) => {
                 this.expedientes[indice].trabajadorDireccion = res.json;
+                this.block = false;
             },
             (res: ResponseWrapper) => { this.onError(res.json); }
         );
@@ -65,8 +80,28 @@ export class VerificacionExpedienteComponent implements OnInit, OnDestroy {
             );
         }
     }
+    loadTipnotif() {
+        this.datosWizardService.buscarTipnotif().subscribe(
+            (res: ResponseWrapper) => {
+                console.log(res.json);
+                this.tipoNotificacion = res.json;
+            },
+            (res: ResponseWrapper) => { this.onError(res.json); }
+        );
+    }
+    loadTipenvnotif() {
+        this.datosWizardService.buscarTipenvnot().subscribe(
+            (res: ResponseWrapper) => {
+                console.log(res.json);
+                this.tipoenvNotificacion = res.json;
+            },
+            (res: ResponseWrapper) => { this.onError(res.json); }
+        );
+    }
 
     ngOnInit() {
+        this.loadTipnotif();
+        this.loadTipenvnotif();
         this.subscription = this.envioNotificacionService.expedienteSeleccionado.subscribe((expedientes: any) => {
             this.expedientes = expedientes;
             if ( Object.keys(this.expedientes).length === 0) {
@@ -82,24 +117,6 @@ export class VerificacionExpedienteComponent implements OnInit, OnDestroy {
                 });
             }
         });
-
-        this.tipoNotificacion = [
-            {label: 'Conciliación', value: '1'},
-            {label: 'Requerimiento', value: '2'},
-            {label: 'Proveído de Archivo', value: '3'},
-            {label: 'Vuelvase a Notificar', value: '4'},
-        ];
-        this.tipoEnvio = [
-            {label: 'Urgente', value: '1'},
-        ];
-        this.direcciones = [
-            {departamento : 'Lima', provincia: 'Lima', distrito: 'Rimac',  direccion: 'Ministerio de Trabajo'},
-            {departamento : 'Lima', provincia: 'Huaura', distrito: 'Huaura', direccion: 'Apple S.A.C.'},
-        ]
-        this.direccionesEmp = [
-            {departamento : 'Lima', provincia: 'Huaura', distrito: 'Huaura', direccion: 'Apple S.A.C.'},
-        ]
-
         this.registerChangeInExpediente();
     }
     ngOnDestroy() {
@@ -114,65 +131,149 @@ export class VerificacionExpedienteComponent implements OnInit, OnDestroy {
 
     registerChangeInExpediente() {
         this.eventSubscriber = this.eventManager.subscribe('envioNotificaciones', (response) => {
-            // console.log('EXPEDIENTES: ' + JSON.stringify(this.expedientes));
-            this.cargarExpediente();
+            let mostrarMensaje = false;
+            this.expedientes.forEach((expediente) => {
+                console.log('Tenvio' + expediente.nroFolios);
+                if (expediente.tipoEnvio === null || expediente.tipoEnvio === undefined) {
+                    this.mensajes = [];
+                    this.mensajes.push({ severity: 'warn', summary: 'Mensaje de Alerta', detail: 'No se ha ingresado uno de los tipos de envió' });
+                    mostrarMensaje = true;
+                } else if (expediente.tipoNotificacion === null || expediente.tipoNotificacion === undefined) {
+                    this.mensajes = [];
+                    this.mensajes.push({ severity: 'warn', summary: 'Mensaje de Alerta', detail: 'No se ha ingresado uno de los tipos de notificación' });
+                    mostrarMensaje = true;
+                } else if (expediente.nroFolios === null || expediente.nroFolios === undefined) {
+                    this.mensajes = [];
+                    this.mensajes.push({ severity: 'warn', summary: 'Mensaje de Alerta', detail: 'No se ha ingresado uno de los números de folios' });
+                    mostrarMensaje = true;
+                }
+            });
+            console.log('CONFIRMAR');
+            if (!mostrarMensaje) {
+                this.confirmar();
+            }
         });
     }
-    padWithZero(number) {
-        let num_form = '' + number;
-        if (num_form.length < 2) {
-            num_form = '0' + num_form;
-        }
-        return num_form;
+    confirmar() {
+        this.confirmationService.confirm({
+            message: '¿Esta seguro de registrar esta atención?',
+            icon: 'fa fa-question-circle',
+            accept: () => {
+                this.cargarExpediente();
+            }
+        });
     }
 
     cargarExpediente() {
         let cont = 0;
-
-        this.soapNotificacion = new CrearMensajeria();
-        this.soapNotificacion.msgDestinatario = new MesgDestinario();
-
-        this.soapNotificacion.idAreaRemite = '5';
-        this.soapNotificacion.idUserDespacho = '4';
-        this.soapNotificacion.msgDestinatario = new MesgDestinario();
-        this.soapNotificacion.msgDestinatario.item = [];
+        this.msgDestinatario = new MesgDestinario();
+        this.msgDestinatario.item = [];
         this.expedientes.forEach((expediente, index) => {
             expediente.trabajadorDireccion.forEach((trabajadorDireccion) => {
                 if (trabajadorDireccion.direc.nFlgnotifi === true) {
-                    console.log('INDICE' + cont);
-                    // console.log('DeptNotificar' + this.padWithZero(trabajadorDireccion.direc.nCoddepto));
-                    this.soapNotificacion.msgDestinatario.item[cont] = new Item();
-                    this.soapNotificacion.msgDestinatario.item[cont].administrado = new Administrado();
-                    this.soapNotificacion.msgDestinatario.item[cont].administrado.departamento = this.padWithZero(trabajadorDireccion.direc.nCoddepto);
-                    this.soapNotificacion.msgDestinatario.item[cont].administrado.distrito = this.padWithZero(trabajadorDireccion.direc.nCoddist);
-                    this.soapNotificacion.msgDestinatario.item[cont].administrado.domicilio = trabajadorDireccion.direc.vDircomple;
-                    this.soapNotificacion.msgDestinatario.item[cont].administrado.nombreRemitente =
-                        trabajadorDireccion.direc.pernatural.vNombres + trabajadorDireccion.direc.pernatural.vApepat + trabajadorDireccion.direc.pernatural.vApemat;
-                    this.soapNotificacion.msgDestinatario.item[cont].administrado.numeroDocumentoIdent = trabajadorDireccion.direc.pernatural.vNumdoc;
-                    this.soapNotificacion.msgDestinatario.item[cont].administrado.pais = '173';
-                    this.soapNotificacion.msgDestinatario.item[cont].administrado.provincia = this.padWithZero(trabajadorDireccion.direc.nCodprov);
-                    this.soapNotificacion.msgDestinatario.item[cont].administrado.tipoAdministrado = '1';
-                    this.soapNotificacion.msgDestinatario.item[cont].administrado.tipoDocumentoIdent = '2';
-                    this.soapNotificacion.msgDestinatario.item[cont].asunto = 'HOJA DE ENVIO DE PRUEBA POR WS';
-                    this.soapNotificacion.msgDestinatario.item[cont].idClase = '1';
-                    this.soapNotificacion.msgDestinatario.item[cont].nivelSegu = 'NORMAL';
-                    this.soapNotificacion.msgDestinatario.item[cont].noDocumento = '78549';
-                    this.soapNotificacion.msgDestinatario.item[cont].numFolios = '2';
-                    this.soapNotificacion.msgDestinatario.item[cont].numeroExpediente = '';
-                    this.soapNotificacion.msgDestinatario.item[cont].paraNombre = 'MARIANO MELGAR';
-                    this.soapNotificacion.msgDestinatario.item[cont].tipoDespacho = 'URGENTE';
+                    this.msgDestinatarioPersona(trabajadorDireccion, cont);
                     cont++;
                 }
             });
-            console.log('SOAP' + JSON.stringify(this.soapNotificacion));
+            expediente.empleadorDireccion.forEach((empleadorDireccion) => {
+                if (empleadorDireccion.direc.nFlgnotifi === true) {
+                    this.msgDestinatarioPersona(empleadorDireccion, cont)
+                    cont++;
+                }
+            });
+            console.log('SOAP' + JSON.stringify(this.msgDestinatario));
             this.subscribeToSaveResponseNotificacion(
-                this.datosWizardService.createNotifacion(this.soapNotificacion));
+                this.datosWizardService.createNotifacion(this.msgDestinatario));
         });
     }
     private subscribeToSaveResponseNotificacion(result: Observable<any>) {
+        this.block = true;
+        let index = 0;
         result.subscribe((res: any) => {
-            console.log('OKNOTIFICACION');
-        }, (res: Response) => this.onError('Error Datlab'));
+            console.log('RESULT');
+            console.log(res);
+            this.expedientes.forEach((expediente) => {
+                console.log('SAVE EXPEDIENTE');
+                console.log(expediente);
+                this.notifica = new Notifica();
+                this.notifica.expediente = expediente;
+                this.notifica.nNumfolios = expediente.nroFolios;
+                this.notifica.tipenvnot = expediente.tipoEnvio;
+                this.notifica.tipnotif = expediente.tipoNotificacion;
+                this.notifica.vHojaenvio = res.item[index].doNohetxt;
+                this.notifica.direcnotifs = expediente.trabajadorDireccion;
+                this.subscribeToSaveNotifica(
+                    this.datosWizardService.createTableDirecNotifica(expediente.trabajadorDireccion), 'Las direcciones se han enviado correctamente');
+                index++;
+                if (expediente.empleadorDireccion !== null) {
+                    this.notifica = new Notifica();
+                    this.notifica.expediente = expediente;
+                    this.notifica.nNumfolios = expediente.nroFolios;
+                    this.notifica.tipenvnot = expediente.tipoEnvio;
+                    this.notifica.tipnotif = expediente.tipoNotificacion;
+                    this.notifica.vHojaenvio = res.item[index].doNohetxt;
+                    this.notifica.direcnotifs = expediente.empleadorDireccion;
+                    this.subscribeToSaveNotifica(
+                        this.datosWizardService.createTableDirecNotifica(expediente.empleadorDireccion), 'Las direcciones se han enviado correctamente');
+                    index++;
+                }
+            });
+            console.log('NOTIFICA SAVE');
+            console.log(this.notifica);
+           this.subscribeToSaveNotifica(
+                this.datosWizardService.createTableNotifica(this.notifica), 'Las notificaciónes se han enviado correctamente');
+        }, (res: Response) => {
+            this.onError('Error en la respuesta del servidor por favor vuelva a intentarlo');
+            this.block = false;
+        });
+    }
+
+    private subscribeToSaveDirecNotifica(result: Observable<Direcnotif>, mensaje: string) {
+        result.subscribe((res: any) => {
+            console.log('DIRECGRABADO');
+        }, (res: Response) => this.onError('Error en la respuesta del servidor por favor vuelva a intentarlo'));
+    }
+
+    private subscribeToSaveNotifica(result: Observable<Notifica>, mensaje: string) {
+        result.subscribe((res: any) => {
+            console.log('GRABADO');
+            console.log(res);
+            this.idNotificacion.push(res.id);
+            console.log('IDNOTIF');
+            console.log(this.idNotificacion);
+            this.block = false;
+            this.envioNotificacionService.cambiarNotificacion(this.idNotificacion);
+            this.eventManager.broadcast({ name: 'end', content: 'OK'});
+        }, (res: Response) => this.onError('Error en la respuesta del servidor por favor vuelva a intentarlo'));
+    }
+
+    private msgDestinatarioPersona(personaDireccion, cont ) {
+        this.msgDestinatario.item[cont] = new Item();
+        this.msgDestinatario.item[cont].administrado = new Administrado();
+        this.msgDestinatario.item[cont].administrado.departamento = padWithZero(personaDireccion.direc.nCoddepto);
+        this.msgDestinatario.item[cont].administrado.distrito = padWithZero(personaDireccion.direc.nCoddist);
+        this.msgDestinatario.item[cont].administrado.domicilio = personaDireccion.direc.vDircomple;
+        if (personaDireccion.direc.pernatural !== undefined) {
+            this.msgDestinatario.item[cont].administrado.nombreRemitente =
+                personaDireccion.direc.pernatural.vNombres + ' ' + personaDireccion.direc.pernatural.vApepat + ' ' + personaDireccion.direc.pernatural.vApemat;
+            this.msgDestinatario.item[cont].administrado.numeroDocumentoIdent = personaDireccion.direc.pernatural.vNumdoc;
+        } else {
+            this.msgDestinatario.item[cont].administrado.nombreRemitente =
+                personaDireccion.direc.perjuridica.vRazsocial;
+            this.msgDestinatario.item[cont].administrado.numeroDocumentoIdent = personaDireccion.direc.perjuridica.vNumdoc;
+        }
+        this.msgDestinatario.item[cont].administrado.pais = '173';
+        this.msgDestinatario.item[cont].administrado.provincia = padWithZero(personaDireccion.direc.nCodprov);
+        this.msgDestinatario.item[cont].administrado.tipoAdministrado = '1';
+        this.msgDestinatario.item[cont].administrado.tipoDocumentoIdent = '2';
+        this.msgDestinatario.item[cont].asunto = 'HOJA DE ENVIO DE PRUEBA POR WS1';
+        this.msgDestinatario.item[cont].idClase = '1';
+        this.msgDestinatario.item[cont].nivelSegu = 'NORMAL';
+        this.msgDestinatario.item[cont].noDocumento = '78549';
+        this.msgDestinatario.item[cont].numFolios = '2';
+        this.msgDestinatario.item[cont].numeroExpediente = '';
+        this.msgDestinatario.item[cont].paraNombre = 'MARIANO MELGAR';
+        this.msgDestinatario.item[cont].tipoDespacho = 'URGENTE';
     }
 
 }

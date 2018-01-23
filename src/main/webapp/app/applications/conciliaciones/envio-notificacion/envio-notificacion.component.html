@@ -1,14 +1,17 @@
-<p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="false"></p-steps>
+<p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
 <router-outlet name="wizard"></router-outlet>
 
 <div class="footer-steps">
-	<button type="button" *ngIf="activeIndex > 0" class="btn btn-sm m-1 px-3 btn-success float-left"
+	<button type="button" *ngIf="activeIndex > 0 && activeIndex < items.length - 1" class="btn btn-sm m-1 px-3 btn-success float-left"
 		(click)="previous()" label="Previous"><i class="fa fa-chevron-left" aria-hidden="true"></i> Anterior</button>
-	<button type="button" *ngIf="activeIndex < items.length - 1 && activeIndex != 0" class="btn btn-sm m-1 px-3 btn-success float-right"
+
+	<button type="button" *ngIf="activeIndex < items.length - 1 && activeIndex < items.length - 2 && activeIndex != 0" class="btn btn-sm m-1 px-3 btn-success float-right"
 		(click)="next()" label="Next">Siguiente <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+
 	<button type="button" *ngIf="activeIndex === 0" class="btn btn-sm m-1 px-3 btn-primary float-right"
 		(click)="next()" [disabled]="!isExpedientesSelect()" label="Next">Iniciar Envio de Notificaciones <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-	<button type="button" *ngIf="activeIndex === items.length-1" class="btn btn-sm m-1 px-3 btn-primary float-right"
+
+	<button type="button" *ngIf="activeIndex === items.length-2" class="btn btn-sm m-1 px-3 btn-primary float-right"
 		(click)="next()" label="Next">Enviar Notificación <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
 </div>
 

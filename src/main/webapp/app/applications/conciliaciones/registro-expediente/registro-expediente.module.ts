@@ -16,7 +16,6 @@ import {MessagesModule} from 'primeng/primeng';
 import {MessageModule} from 'primeng/primeng';
 import {MessageService} from 'primeng/components/common/messageservice';
 
-import { RegistroExpedienteService } from './registro-expediente.service';
 import { DatosWizardService } from './registro-expediente-wizard/datos-wizard.service';
 import { RegistroExpedienteWizardService } from './registro-expediente-wizard/registro-expediente-wizard.service';
 
@@ -59,7 +58,6 @@ const ENTITY_STATES = [
         DatosAudienciaComponent
     ],
     providers: [
-        RegistroExpedienteService,
         RegistroExpedienteWizardService,
         DatosWizardService,
         MessageService

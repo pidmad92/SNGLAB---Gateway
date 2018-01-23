@@ -16,12 +16,16 @@ import { Estexpedien } from './../../models/estexpedien.model';
 import { Concilia } from '../../models/concilia.model';
 import { Expediente } from '../../models/expediente.model';
 import { Horacon } from '../../models/horacon.model';
+import { Notifica } from '../../models/notifica.model';
+import { Tipnotif } from '../../models/tipnotif.model';
+import { Tipenvnot } from '../../models/tipenvnot.model';
+import { Direcnotif } from '../../models/direcnotif.model';
 
 @Injectable()
 export class DatosWizardService {
 
     // private resourceSoapNotificacion = 'http://192.168.140.137:8080/tramite/webservice/serviciosstd?wsdl';
-    private resourceSoapNotificacion = '//192.168.140.75:8020/api/valida';
+    private resourceSoapNotificacion = '//localhost:8020/api/valida';
     private resource = '/defensa/api/';
 
     private resourceTipoDoc         = this.resource + 'tipdocidents';
@@ -33,6 +37,10 @@ export class DatosWizardService {
     private resourceEstExpediente   = this.resource + 'estexpediens';
     private resourceHoracon         = this.resource + 'horacons';
     private resourceConcilia        = this.resource + 'concilias';
+    private resourceNotifica        = this.resource + 'notificas';
+    private resourceTipnotif        = this.resource + 'tipnotifs';
+    private resourceTipenvnot       = this.resource + 'tipenvnots';
+    private resourceDirecnotif      = this.resource + 'direcnotifs';
 
     private resourceDepa            = this.resource + 'departamentos';
     private resourceProv            = this.resource + 'provincias';
@@ -41,15 +49,58 @@ export class DatosWizardService {
 
     constructor(private http: Http, private dateUtils: JhiDateUtils, private datePipe: DatePipe) { }
 
+    createTableNotifica(notifica: Notifica): Observable<Notifica> {
+        notifica.nUsuareg = 1;
+        notifica.nFlgactivo = true;
+        notifica.nSedereg = 1;
+        const copy = this.convertNotifica(notifica);
+        return this.http.post(this.resourceNotifica, copy).map((res: Response) => {
+            const jsonResponse = res.json();
+            return this.convertItemFromServerNotifica(jsonResponse);
+        });
+    }
+    private convertNotifica(notifica: Notifica): Notifica {
+        const copy: Notifica = Object.assign({}, notifica);
+        copy.tFecreg = this.dateUtils.toDate(notifica.tFecreg);
+        copy.tFecupd = this.dateUtils.toDate(notifica.tFecupd);
+        return copy;
+    }
+
+    findNotifica(id: number): Observable<Notifica> {
+        return this.http.get(`${this.resourceNotifica}/${id}`).map((res: Response) => {
+            const jsonResponse = res.json();
+            return this.convertItemFromServerNotifica(jsonResponse);
+        });
+    }
+
+    queryNotifica(req?: any): Observable<ResponseWrapper> {
+        const options = createRequestOption(req);
+        return this.http.get(this.resourceNotifica, options)
+            .map((res: Response) => this.convertResponseNotifica(res));
+    }
+    private convertResponseNotifica(res: Response): ResponseWrapper {
+        const jsonResponse = res.json();
+        const result = [];
+        for (let i = 0; i < jsonResponse.length; i++) {
+            result.push(this.convertItemFromServerNotifica(jsonResponse[i]));
+        }
+        return new ResponseWrapper(res.headers, result, res.status);
+    }
+    private convertItemFromServerNotifica(json: any): Notifica {
+        const entity: Notifica = Object.assign(new Notifica(), json);
+        entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+        return entity;
+    }
+
     createNotifacion(notificaciones: any): Observable<any> {
         // notificaciones.nUsuareg = 1;
         // notificaciones.nFlgactivo = true;
         // notificaciones.nSedereg = 1;
         // const copy = this.convertExpediente(expediente);
         console.log('CREATE-NOTIFICACION');
-        return this.http.get(this.resourceSoapNotificacion, notificaciones).map((res: Response) => {
+        return this.http.post(this.resourceSoapNotificacion, notificaciones).map((res: Response) => {
             const jsonResponse = res.json();
-            console.log('RESPONSE' + JSON.stringify(res.json()));
             return jsonResponse;
         });
     }
@@ -67,6 +118,41 @@ export class DatosWizardService {
     //     const entity: Expediente = Object.assign(new Expediente(), json);
     //     return entity;
     // }
+    createTableDirecNotifica(direcnotif: Direcnotif): Observable<Notifica> {
+        direcnotif.nUsuareg = 1;
+        direcnotif.nFlgactivo = true;
+        direcnotif.nSedereg = 1;
+        const copy = this.convertDirecNotifica(direcnotif);
+        return this.http.post(this.resourceDirecnotif, copy).map((res: Response) => {
+            const jsonResponse = res.json();
+            return this.convertItemFromServerNotifica(jsonResponse);
+        });
+    }
+    private convertDirecNotifica(direcnotif: Direcnotif): Direcnotif {
+        const copy: Direcnotif = Object.assign({}, direcnotif);
+        copy.tFecreg = this.dateUtils.toDate(direcnotif.tFecreg);
+        copy.tFecupd = this.dateUtils.toDate(direcnotif.tFecupd);
+        return copy;
+    }
+    buscarDireccionesNotifica(idnotifica: number): Observable<ResponseWrapper> {
+        return this.http.get(`${this.resourceDirecnotif}/notifica/${idnotifica}`)
+            .map((res: Response) => this.convertDirNotificaResponse(res));
+    }
+    private convertDirNotificaResponse(res: Response): ResponseWrapper {
+        console.log('CONVERT' + JSON.stringify(res.json()));
+        const jsonResponse = res.json();
+        const result = [];
+        for (let i = 0; i < jsonResponse.length; i++) {
+            result.push(this.convertItemDirNotificaFromServer(jsonResponse[i]));
+        }
+        return new ResponseWrapper(res.headers, result, res.status);
+    }
+    private convertItemDirNotificaFromServer(json: any): Direcnotif {
+        const entity: Direcnotif = Object.assign(new Direcnotif(), json);
+        entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+        return entity;
+    }
 
     createExpediente(expediente: Expediente): Observable<Expediente> {
         expediente.nUsuareg = 1;
@@ -156,6 +242,46 @@ export class DatosWizardService {
 
     deleteMotivPase(id: number): Observable<Response> {
         return this.http.delete(`${this.resourceMotivPases}/${id}`);
+    }
+
+    buscarTipenvnot(req?: any): Observable<ResponseWrapper> {
+        const options = createRequestOption(req);
+        return this.http.get(this.resourceTipenvnot, options)
+            .map((res: Response) => this.convertResponseTipenvnot(res));
+    }
+    private convertResponseTipenvnot(res: Response): ResponseWrapper {
+        const jsonResponse = res.json();
+        const result = [];
+        for (let i = 0; i < jsonResponse.length; i++) {
+            result.push(this.convertItemFromServerTipenvnot(jsonResponse[i]));
+        }
+        return new ResponseWrapper(res.headers, result, res.status);
+    }
+    private convertItemFromServerTipenvnot(json: any): Tipenvnot {
+        const entity: Tipenvnot = Object.assign(new Tipenvnot(), json);
+        entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+        return entity;
+    }
+
+    buscarTipnotif(req?: any): Observable<ResponseWrapper> {
+        const options = createRequestOption(req);
+        return this.http.get(this.resourceTipnotif, options)
+            .map((res: Response) => this.convertResponseTipnotif(res));
+    }
+    private convertResponseTipnotif(res: Response): ResponseWrapper {
+        const jsonResponse = res.json();
+        const result = [];
+        for (let i = 0; i < jsonResponse.length; i++) {
+            result.push(this.convertItemFromServerTipnotif(jsonResponse[i]));
+        }
+        return new ResponseWrapper(res.headers, result, res.status);
+    }
+    private convertItemFromServerTipnotif(json: any): Tipnotif {
+        const entity: Tipnotif = Object.assign(new Tipnotif(), json);
+        entity.tFecreg = this.dateUtils.convertDateTimeFromServer(json.tFecreg);
+        entity.tFecupd = this.dateUtils.convertDateTimeFromServer(json.tFecupd);
+        return entity;
     }
 
     buscarHoraPorFecha(fecha: any): Observable<ResponseWrapper> {
